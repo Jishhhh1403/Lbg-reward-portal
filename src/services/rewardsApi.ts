@@ -1,0 +1,171 @@
+import type {
+  BrandOption,
+  CustomerSummary,
+  DashboardData,
+  PointsProvider,
+  WalletTransactionItem,
+} from '../types/rewards'
+
+const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL ?? ''
+const LATENCY_MS = 650
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function tryFetch<T>(path: string, init?: RequestInit): Promise<T | null> {
+  if (!API_BASE_URL) return null
+  try {
+    const res = await fetch(`${API_BASE_URL}${path}`, {
+      headers: { 'Content-Type': 'application/json' },
+      ...init,
+    })
+    if (!res.ok) throw new Error(`Request failed with status ${res.status}`)
+    return (await res.json()) as T
+  } catch (error) {
+    console.warn(`[rewardsApi] Falling back to demo data for ${path}:`, error)
+    return null
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Demo seed data                                                      */
+/* ------------------------------------------------------------------ */
+
+export const DEMO_CUSTOMER: CustomerSummary = {
+  customerId: 'cst_90124',
+  userName: 'Alex Morgan',
+  phone: '07700900123',
+  totalLbgCoins: 12480,
+  totalBrandPoints: 38250,
+  brandsConnected: 6,
+  tier: 'Gold',
+  lastSyncedAt: new Date(Date.now() - 4 * 60 * 1000).toISOString(),
+}
+
+export const DEMO_BRANDS: BrandOption[] = [
+  { id: 'brd_avios', name: 'Avios', category: 'Travel', logoText: 'AV', color: '#cc0000', minRedeem: 1000 },
+  { id: 'brd_ba', name: 'British Airways', category: 'Travel', logoText: 'BA', color: '#1d4ed8', minRedeem: 2000 },
+  { id: 'brd_tesco', name: 'Tesco Clubcard', category: 'Groceries', logoText: 'TC', color: '#00539f', minRedeem: 500 },
+  { id: 'brd_sainsburys', name: "Sainsbury's", category: 'Groceries', logoText: "S'", color: '#f06c00', minRedeem: 500 },
+  { id: 'brd_nandos', name: "Nando's", category: 'Dining', logoText: 'N', color: '#dc2626', minRedeem: 750 },
+  { id: 'brd_costa', name: 'Costa Coffee', category: 'Dining', logoText: 'CC', color: '#8b1d1d', minRedeem: 400 },
+  { id: 'brd_amazon', name: 'Amazon', category: 'Shopping', logoText: 'AZ', color: '#ff9900', minRedeem: 1500 },
+  { id: 'brd_asos', name: 'ASOS', category: 'Shopping', logoText: 'AS', color: '#111827', minRedeem: 1200 },
+  { id: 'brd_boots', name: 'Boots', category: 'Health', logoText: 'BO', color: '#0e7490', minRedeem: 600 },
+  { id: 'brd_holland', name: 'Holland & Barrett', category: 'Health', logoText: 'HB', color: '#15803d', minRedeem: 800 },
+  { id: 'brd_cineworld', name: 'Cineworld', category: 'Entertainment', logoText: 'CW', color: '#7c3aed', minRedeem: 900 },
+  { id: 'brd_spotify', name: 'Spotify', category: 'Entertainment', logoText: 'SP', color: '#16a34a', minRedeem: 700 },
+  { id: 'brd_uber', name: 'Uber', category: 'Travel', logoText: 'UB', color: '#0f172a', minRedeem: 500 },
+]
+
+export const DEMO_POINTS_BY_BRAND: PointsProvider[] = [
+  { brandId: 'brd_avios', brandName: 'Avios', category: 'Travel', points: 9400, color: '#cc0000', logoText: 'AV' },
+  { brandId: 'brd_tesco', brandName: 'Tesco Clubcard', category: 'Groceries', points: 8150, color: '#00539f', logoText: 'TC' },
+  { brandId: 'brd_amazon', brandName: 'Amazon', category: 'Shopping', points: 6300, color: '#ff9900', logoText: 'AZ' },
+  { brandId: 'brd_nandos', brandName: "Nando's", category: 'Dining', points: 4750, color: '#dc2626', logoText: 'N' },
+  { brandId: 'brd_boots', brandName: 'Boots', category: 'Health', points: 5250, color: '#0e7490', logoText: 'BO' },
+  { brandId: 'brd_cineworld', brandName: 'Cineworld', category: 'Entertainment', points: 4400, color: '#7c3aed', logoText: 'CW' },
+]
+
+function daysAgo(days: number, hour = 12): string {
+  const d = new Date()
+  d.setDate(d.getDate() - days)
+  d.setHours(hour, 24, 0, 0)
+  return d.toISOString()
+}
+
+export const DEMO_TRANSACTIONS: WalletTransactionItem[] = [
+  { id: 'tx_01', type: 'EARN', description: 'Points earned at Nando\u2019s', amount: 320, currency: 'BRAND_POINT', createdAt: daysAgo(0, 13) },
+  { id: 'tx_02', type: 'CONVERT', description: 'Converted Tesco Clubcard points to LBG coins', amount: 850, currency: 'LBG_COIN', createdAt: daysAgo(1) },
+  { id: 'tx_03', type: 'REDEEM', description: 'Redeemed coins at Costa Coffee', amount: -450, currency: 'LBG_COIN', createdAt: daysAgo(3) },
+  { id: 'tx_04', type: 'EARN', description: 'Points earned at Tesco Clubcard', amount: 540, currency: 'BRAND_POINT', createdAt: daysAgo(5) },
+  { id: 'tx_05', type: 'EARN', description: 'Points earned at Avios', amount: 1250, currency: 'BRAND_POINT', createdAt: daysAgo(8) },
+  { id: 'tx_06', type: 'CONVERT', description: 'Converted Amazon points to LBG coins', amount: 600, currency: 'LBG_COIN', createdAt: daysAgo(11) },
+  { id: 'tx_07', type: 'REDEEM', description: 'Redeemed coins at Cineworld', amount: -900, currency: 'LBG_COIN', createdAt: daysAgo(14) },
+  { id: 'tx_08', type: 'EARN', description: 'Points earned at Boots', amount: 210, currency: 'BRAND_POINT', createdAt: daysAgo(18) },
+]
+
+/* ------------------------------------------------------------------ */
+/* Public service functions (mirror documented backend endpoints)      */
+/* ------------------------------------------------------------------ */
+
+export async function loginWithPassword(
+  phone: string,
+  password: string,
+): Promise<{ customerId: string; userName: string; phone: string }> {
+  await tryFetch('/api/v1/customers/login/password', {
+    method: 'POST',
+    body: JSON.stringify({ phone, password }),
+  })
+  await delay(LATENCY_MS)
+  if (!phone.trim() || !password.trim()) {
+    throw new Error('Enter your phone number and password to continue.')
+  }
+  const customer = DEMO_CUSTOMER
+  return { customerId: customer.customerId, userName: customer.userName, phone }
+}
+
+export async function signupCustomer(payload: {
+  name: string
+  email: string
+  phone: string
+  password: string
+}): Promise<void> {
+  await tryFetch('/api/v1/customers/signup', { method: 'POST', body: JSON.stringify(payload) })
+  await delay(LATENCY_MS)
+}
+
+export async function fetchBrandOptions(): Promise<BrandOption[]> {
+  const remote = await tryFetch<BrandOption[]>('/api/v1/brands')
+  if (remote?.length) return remote
+  await delay(250)
+  return DEMO_BRANDS
+}
+
+export async function fetchEarnedRewardMapByBrand(
+  customerId: string,
+): Promise<Record<string, string>> {
+  const remote = await tryFetch<Array<{ brandId: string; rewardId: string }>>(
+    `/api/v1/rewards?customer_id=${encodeURIComponent(customerId)}&status=EARNED&limit=500`,
+  )
+  if (remote) {
+    return Object.fromEntries(remote.map((r) => [r.brandId, r.rewardId]))
+  }
+  await delay(200)
+  return Object.fromEntries(DEMO_POINTS_BY_BRAND.map((p, i) => [p.brandId, `rwd_${1000 + i}`]))
+}
+
+export async function fetchWalletTransactions(
+  customerId: string,
+  limit = 25,
+): Promise<WalletTransactionItem[]> {
+  const remote = await tryFetch<WalletTransactionItem[]>(
+    `/api/v1/wallet/${encodeURIComponent(customerId)}/transactions?limit=${limit}`,
+  )
+  if (remote) return remote
+  await delay(350)
+  return DEMO_TRANSACTIONS.slice(0, limit)
+}
+
+export async function fetchCustomerDashboardById(customerId: string): Promise<DashboardData> {
+  const remote = await tryFetch<DashboardData>(`/api/v1/customers/${encodeURIComponent(customerId)}/summary`)
+  if (remote) return remote
+  await delay(300)
+  return {
+    customer: DEMO_CUSTOMER,
+    pointsByBrand: DEMO_POINTS_BY_BRAND,
+  }
+}
+
+export async function fetchCustomerDashboard(phone: string): Promise<DashboardData> {
+  const remote = await tryFetch<DashboardData>(
+    `/api/v1/customers/lookup/summary?phone=${encodeURIComponent(phone)}`,
+  )
+  if (remote) return remote
+  await delay(300)
+  return {
+    customer: { ...DEMO_CUSTOMER, phone },
+    pointsByBrand: DEMO_POINTS_BY_BRAND,
+  }
+}
