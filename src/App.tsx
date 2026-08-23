@@ -1,9 +1,10 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type { AppStep, BrandOption, CustomerSummary, PointsProvider } from './types/rewards'
 import AuthPage from './pages/AuthPage'
 import BankHomePage from './pages/BankHomePage'
 import RewardsDashboardPage from './pages/RewardsDashboardPage'
+import SplashPage from './pages/SplashPage'
 import {
   fetchBrandOptions,
   fetchCustomerDashboardById,
@@ -156,13 +157,20 @@ export default function App() {
       setMobile(res.phone)
       setSignupFlow(false)
       await loadDashboardData(res.customerId)
-      setStep('home')
+      setStep('splash')
     } catch (error) {
       setLoginError(error instanceof Error ? error.message : 'Sign-in failed. Please try again.')
     } finally {
       setIsLoading(false)
     }
   }
+
+  /* Splash shows for its full progress animation, then continues to home. */
+  useEffect(() => {
+    if (step !== 'splash') return
+    const timer = window.setTimeout(() => setStep('home'), 3000)
+    return () => window.clearTimeout(timer)
+  }, [step])
 
   const handleSignOut = useCallback(() => {
     setCustomerId(null)
@@ -201,11 +209,16 @@ export default function App() {
 
   /* ---------------- render ---------------- */
 
-  const pageKey = step === 'home' ? 'home' : step === 'dashboard' ? 'dashboard' : 'auth'
+  const pageKey = step === 'home' ? 'home' : step === 'dashboard' ? 'dashboard' : step === 'splash' ? 'splash' : 'auth'
+
+  const isAuth = step === 'mobile' || step === 'otp' || step === 'password' || step === 'signup'
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-gradient-to-br from-slate-800 via-brand-900 to-slate-900 sm:p-6">
-      <div className="relative flex h-dvh w-full max-w-[430px] flex-col overflow-hidden bg-white shadow-2xl sm:h-[min(920px,94dvh)] sm:rounded-[2.25rem] sm:ring-1 sm:ring-white/10">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-800 via-brand-900 to-slate-900 sm:p-6">
+      <div className="relative flex h-screen w-full max-w-[430px] flex-col overflow-hidden shadow-2xl sm:h-[min(920px,94vh)]">
+        <div
+          className={`absolute inset-0 z-0 ${isAuth ? 'bg-black text-white' : 'bg-white text-slate-900'} rounded-[2.25rem] ring-1 ring-white/10`}
+        />
         <AnimatePresence mode="wait">
           <motion.div
             key={pageKey}
@@ -213,11 +226,11 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.24, ease: 'easeOut' }}
-            className="h-full"
+            className="h-full relative z-10"
           >
             {(step === 'mobile' || step === 'otp' || step === 'password' || step === 'signup') && (
-              <div className="no-scrollbar h-full overflow-y-auto bg-white">
-                <div className="mx-auto h-full max-w-md px-6 py-10">
+              <div className="no-scrollbar h-full overflow-y-auto bg-transparent">
+                <div className="h-full w-full px-0 py-0">
                   <AuthPage
                     step={step}
                     mobile={mobile}
@@ -245,6 +258,8 @@ export default function App() {
                 </div>
               </div>
             )}
+
+            {step === 'splash' && <SplashPage />}
 
             {step === 'home' && userName && (
               <BankHomePage

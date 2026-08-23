@@ -1,4 +1,4 @@
-export type AppStep = 'mobile' | 'otp' | 'password' | 'signup' | 'home' | 'dashboard'
+export type AppStep = 'mobile' | 'otp' | 'password' | 'signup' | 'splash' | 'home' | 'dashboard'
 
 export type DashboardTab = 'home' | 'activity' | 'profile'
 
@@ -9,6 +9,8 @@ export interface BrandOption {
   logoText: string
   color: string
   minRedeem?: number
+  /** Optional brand logo image; falls back to the colored logoText tile */
+  logoUrl?: string
 }
 
 export interface PointsProvider {
@@ -18,6 +20,8 @@ export interface PointsProvider {
   points: number
   color: string
   logoText: string
+  /** Optional brand logo image; falls back to the colored logoText tile */
+  logoUrl?: string
 }
 
 export interface CustomerSummary {

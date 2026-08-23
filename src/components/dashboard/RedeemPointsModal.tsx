@@ -19,6 +19,7 @@ interface CatalogItem {
   logoText: string
   color: string
   yourPoints: number
+  logoUrl?: string
 }
 
 export default function RedeemPointsModal({
@@ -41,6 +42,7 @@ export default function RedeemPointsModal({
         logoText: p.logoText,
         color: p.color,
         yourPoints: p.points,
+        logoUrl: p.logoUrl,
       })),
     [pointsData],
   )
@@ -130,12 +132,20 @@ export default function RedeemPointsModal({
                   onClick={() => setRedirectTarget(item)}
                   className="flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 text-left shadow-card transition hover:border-brand-300"
                 >
-                  <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white"
-                    style={{ backgroundColor: item.color }}
-                  >
-                    {item.logoText}
-                  </span>
+                  {item.logoUrl ? (
+                    <img
+                      src={item.logoUrl}
+                      alt={item.name}
+                      className="h-11 w-11 shrink-0 rounded-xl border border-slate-200 bg-white object-contain p-1"
+                    />
+                  ) : (
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white"
+                      style={{ backgroundColor: item.color }}
+                    >
+                      {item.logoText}
+                    </span>
+                  )}
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold text-slate-900">{item.name}</span>
                     <span className="mt-0.5 flex items-center gap-1 text-xs text-slate-500">

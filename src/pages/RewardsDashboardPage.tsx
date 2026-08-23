@@ -1,12 +1,16 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import IconButton from '@mui/material/IconButton'
+import Avatar from '@mui/material/Avatar'
+import ButtonBase from '@mui/material/ButtonBase'
 import {
   Activity,
   ArrowLeft,
   ArrowDownCircle,
   Bell,
   ChevronRight,
-  Coins,
   Crown,
   Gem,
   Gift,
@@ -68,6 +72,9 @@ import {
   getInitials,
   normalizeTransactionDescription,
 } from '../utils/format'
+import { shadows } from '../theme'
+import silverCardImg from '../assets/silvercard-cropped.webp'
+import lbgCoinImg from '../assets/lbg-coin.webp'
 
 interface RewardsDashboardPageProps {
   customer: CustomerSummary
@@ -78,15 +85,23 @@ interface RewardsDashboardPageProps {
   onRefresh: () => Promise<void>
 }
 
+const MotionBox = motion.create(Box)
+const MotionButton = motion.create(ButtonBase)
+const MotionImg = motion.create('img')
+
 /* ------------------------------------------------------------------ */
 /* Tier logic                                                          */
 /* ------------------------------------------------------------------ */
 
 const TIERS = [
   { name: 'Silver', min: 0, icon: Medal },
-  { name: 'Gold', min: 5000, icon: Crown },
-  { name: 'Platinum', min: 15000, icon: Gem },
+  { name: 'Gold', min: 15000, icon: Crown },
+  { name: 'Platinum', min: 25000, icon: Gem },
 ] as const
+
+/* Points scheduled to expire at the next partner reset
+   TODO: source from the customer summary endpoint once available */
+const EXPIRING_POINTS = 1250
 
 function useTier(totalPoints: number) {
   return useMemo(() => {
@@ -120,7 +135,14 @@ export default function RewardsDashboardPage({
   const [txLoading, setTxLoading] = useState(false)
   const [txError, setTxError] = useState('')
 
-  const tier = useTier(customer.totalLbgCoins + customer.totalBrandPoints / 2)
+  const tier = useTier(customer.totalLbgCoins)
+
+  /* Journey-scale progress for the hero slider: LBG coins earned out of the
+     final (Platinum) threshold of 25,000. */
+  const journeyProgress = Math.min(
+    100,
+    Math.round((customer.totalLbgCoins / TIERS[TIERS.length - 1].min) * 100),
+  )
 
   useEffect(() => {
     let cancelled = false
@@ -204,156 +226,407 @@ export default function RewardsDashboardPage({
   }
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden bg-slate-100">
+    <Box
+      sx={{
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        overflow: 'hidden',
+        bgcolor: '#f1f5f9',
+        
+      }}
+    >
       {/* Header */}
-      <div className="bg-gradient-to-br from-brand-800 via-brand-700 to-brand-600 px-5 pt-5 text-white">
-        <div className="flex items-center justify-between">
-          <button
+      <Box
+        sx={{
+          background: 'linear-gradient(to bottom right, #064836, #045a42, #006a4d)',
+          padding: '20px 20px 0',
+          color: '#ffffff',
+          
+        }}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '28px' }}>
+          <ButtonBase
             onClick={onBackToHome}
-            className="-ml-1 flex items-center gap-1 rounded-lg p-1.5 text-sm font-medium transition hover:bg-white/10"
+            disableRipple
+            sx={{
+              marginLeft: '-4px',
+              flexShrink: 0,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              borderRadius: '8px',
+              padding: '6px',
+              fontSize: 16,
+              fontWeight: 500,
+              fontFamily: 'inherit',
+              color: 'inherit',
+              '&:hover': { bgcolor: 'rgba(255,255,255,0.10)' },
+            }}
           >
-            <ArrowLeft size={17} /> Home
-          </button>
-          <p className="text-sm font-semibold tracking-wide">Rewards</p>
-          <div className="flex items-center gap-0.5">
-            <motion.button
+            <ArrowLeft size={17} />
+          </ButtonBase>
+          <Typography
+            sx={{
+              flex: 1,
+              minWidth: 0,
+              textAlign: 'center',
+              fontSize: 16,
+              fontWeight: 600,
+              letterSpacing: '0.02em',
+            }}
+          >
+            Welcome to LBG Reward Coins
+          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: '2px', flexShrink: 0 }}>
+            <MotionButton
               whileTap={{ rotate: -180 }}
               onClick={handleRefresh}
-              className="rounded-full p-2 transition hover:bg-white/10"
               aria-label="Refresh"
+              disableRipple
+              sx={{
+                color: 'inherit',
+                borderRadius: '999px',
+                padding: '8px',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.10)' },
+              }}
             >
               <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
-            </motion.button>
-            <button className="rounded-full p-2 transition hover:bg-white/10" aria-label="Notifications">
+            </MotionButton>
+            <IconButton
+              aria-label="Notifications"
+              sx={{
+                color: 'inherit',
+                borderRadius: '999px',
+                padding: '8px',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.10)' },
+              }}
+            >
               <Bell size={16} />
-            </button>
-          </div>
-        </div>
+            </IconButton>
+          </Box>
+        </Box>
 
         <AnimatePresence mode="wait">
           {activeTab !== 'activity' && (
-            <motion.div key="hero" exit={{ opacity: 0, y: -8 }} className="pb-4">
+            <MotionBox key="hero" exit={{ opacity: 0, y: -8 }} sx={{ paddingBottom: 4 }}>
               {/* Coins hero */}
-              <motion.div
+              <MotionBox
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
-                className="mt-3 rounded-3xl bg-white/12 p-5 backdrop-blur-sm"
+                sx={{
+                  marginTop: '12px',
+                  borderRadius: '24px',
+                  color: '#0f172a',
+                  backgroundImage: `url(${silverCardImg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  padding: '20px',
+                  
+                }}
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-brand-100">
-                    <Coins size={15} className="text-gold-300" /> LBG Coins
-                  </div>
-                  <span className="rounded-full bg-gold-400/90 px-2.5 py-0.5 text-[11px] font-bold text-brand-900">
+                <Box sx={{ display: 'flex', alignItems: 'stretch', justifyContent: 'space-between', marginTop: '-8px' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '4px',
+                      marginTop: '14px',
+                      paddingTop: '-5px'
+                    }}
+                  >
+                    {/* Card-holder name with a punched-in letterpress finish */}
+                    <Box
+                      sx={{
+                        fontSize: 14,
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.22em',
+                        color: 'rgba(30,41,59,0.72)',
+                        textShadow:
+                          '0 1px 0 rgba(255,255,255,0.95), 0 -1px 1px rgba(15,23,42,0.30), 0 2px 3px rgba(15,23,42,0.12)',
+                      }}
+                    >
+                      {customer.userName}
+                    </Box>
+                    <Box
+                      sx={{
+                        fontSize: 12,
+                        fontWeight: 500,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.14em',
+                      }}
+                    >
+                      Your LBG Coins
+                    </Box>
+                    <MotionBox
+                      key={customer.totalLbgCoins}
+                      initial={{ scale: 0.94, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                      sx={{ fontSize: 34, fontWeight: 900, letterSpacing: '-0.025em' , mt: -1}}
+                    >
+                      {formatPoints(customer.totalLbgCoins)}
+                    </MotionBox>
+                    {/* Current-tier tag */}
+                    <Box
+                      sx={{
+                        alignSelf: 'flex-start',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        borderRadius: '999px',
+                        border: '1px solid rgba(30,41,59,0.35)',
+                        bgcolor: 'rgba(255,255,255,0.5)',
+                        paddingX: '10px',
+                        paddingTop: '3px',
+                        paddingBottom: '3px',
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: '#334155',
+                      }}
+                    >
+                      <tier.current.icon size={12} /> {tier.current.name}
+                    </Box>
+                  </Box>
+                  <MotionImg
+                    src={lbgCoinImg}
+                    alt="LBG Coin"
+                    initial={{ rotateY: 0 }}
+                    animate={{ rotateY: 360 }}
+                    transition={{ duration: 1.5, ease: 'easeInOut' }}
+                    style={{ width: 'auto', objectFit: 'contain' }}
+                  />
+                  {/* <Box
+                    sx={{
+                      borderRadius: '999px',
+                      bgcolor: 'rgba(221,190,114,0.9)',
+                      paddingX: '10px',
+                      paddingTop: '2px',
+                      paddingBottom: '2px',
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: '#073a2d',
+                    }}
+                  >
                     {tier.current.name.toUpperCase()}
-                  </span>
-                </div>
-                <motion.p
-                  key={customer.totalLbgCoins}
-                  initial={{ scale: 0.94, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                  className="mt-2 text-4xl font-black tracking-tight"
+                  </Box> */}
+                </Box>
+                <Typography
+                  sx={{ marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: 12 }}
                 >
-                  {formatPoints(customer.totalLbgCoins)}
-                </motion.p>
-                <p className="mt-1 flex items-center gap-1 text-xs text-brand-100">
-                  <TrendingUp size={13} className="text-emerald-300" /> +850 this month ·{' '}
+                  <TrendingUp size={13} color="#059669" /> +850 vs last month{' '}
+                  <span style={{ opacity: 0.55 }}>|</span>{' '}
                   {formatLastSyncedAt(customer.lastSyncedAt)}
-                </p>
+                </Typography>
 
                 {/* Tier progress */}
-                <div className="mt-4">
-                  <div className="mb-1.5 flex justify-between text-[11px] font-medium text-brand-100">
-                    {TIERS.map((t) => (
-                      <span
-                        key={t.name}
-                        className={`flex items-center gap-1 ${
-                          tier.current.name === t.name ? 'text-gold-300' : ''
-                        }`}
-                      >
-                        <t.icon size={11} /> {t.name}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="relative h-2 overflow-hidden rounded-full bg-white/20">
-                    <motion.div
-                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-brand-300 to-gold-400"
+                <Box sx={{ marginTop: 2,  }}>
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      marginBottom: '6px',
+                      height: 16,
+                    }}
+                  >
+                    {TIERS.map((t, i) => {
+                      /* Anchor each label at its true position on the 0–25k journey scale */
+                      const pos = (t.min / TIERS[TIERS.length - 1].min) * 100
+                      const anchor =
+                        i === 0
+                          ? { left: 0 }
+                          : i === TIERS.length - 1
+                            ? { right: 0 }
+                            : { left: `${pos}%`, transform: 'translateX(-50%)' }
+                      return (
+                        <Box
+                          key={t.name}
+                          sx={{
+                            position: 'absolute',
+                            top: 0,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            fontSize: 11,
+                            fontWeight: 500,
+                            whiteSpace: 'nowrap',
+                            color: '#585d64',
+                            ...(tier.current.name === t.name && { color: '#585d64', fontWeight: 700 }),
+                            ...anchor,
+                          }}
+                        >
+                          <t.icon size={11} /> {t.name}
+                        </Box>
+                      )
+                    })}
+                  </Box>
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      height: 8,
+                      overflow: 'hidden',
+                      borderRadius: '999px',
+                      bgcolor: '#e5e7eb',
+                    }}
+                  >
+                    <MotionBox
                       initial={{ width: 0 }}
-                      animate={{ width: `${tier.progress}%` }}
+                      animate={{ width: `${journeyProgress}%` }}
                       transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        borderRadius: '999px',
+                        background: '#006a4d',
+                      }}
                     />
-                  </div>
-                  <p className="mt-1.5 text-[11px] text-brand-100">
-                    {tier.next
-                      ? `${formatPoints(Math.max(0, tier.next.min - (customer.totalLbgCoins + Math.floor(totalPoints / 2))))} pts to ${tier.next.name}`
-                      : 'Top tier reached — enjoy your Platinum perks'}
-                  </p>
-                </div>
-              </motion.div>
+                  </Box>
+                  <Box
+                    sx={{
+                      marginTop: '6px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 11 }}>
+                      {tier.next
+                        ? `${formatPoints(Math.max(0, tier.next.min - customer.totalLbgCoins))} pts to ${tier.next.name}`
+                        : 'Top tier reached — enjoy your Platinum perks'}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '2px',
+                        fontSize: 11,
+                        fontWeight: 600,
+                        color: '#006a4d',
+                      }}
+                    >
+                      Know more <ChevronRight size={13} />
+                    </Box>
+                  </Box>
+                </Box>
+              </MotionBox>
 
               {/* Action buttons */}
-              <div className="mt-4 grid grid-cols-2 gap-2.5 pb-1">
-                <motion.button
+              <Box sx={{ marginTop: 2, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '10px', paddingBottom: '4px' }}>
+                <MotionButton
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setLocateOpen(true)}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-white/15 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/25"
+                  disableRipple
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    borderRadius: '12px',
+                    bgcolor: 'rgba(255,255,255,0.15)',
+                    paddingTop: '12px',
+                    paddingBottom: '12px',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    fontFamily: 'inherit',
+                    color: 'inherit',
+                    backdropFilter: 'blur(4px)',
+                    '&:hover': { bgcolor: 'rgba(255,255,255,0.25)' },
+                  }}
                 >
                   <Link2 size={16} /> Locate Points
-                </motion.button>
-                <motion.button
+                </MotionButton>
+                <MotionButton
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setRedeemOpen(true)}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gold-400 py-3 text-sm font-bold text-brand-900 shadow-card transition hover:bg-gold-300"
+                  disableRipple
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    borderRadius: '12px',
+                    bgcolor: '#ddbe72',
+                    paddingTop: '12px',
+                    paddingBottom: '12px',
+                    fontSize: 14,
+                    fontWeight: 700,
+                    fontFamily: 'inherit',
+                    color: '#073a2d',
+                    boxShadow: shadows.card,
+                    '&:hover': { bgcolor: '#ecd9a8' },
+                  }}
                 >
                   <Gift size={16} /> Redeem Coins
-                </motion.button>
-              </div>
-            </motion.div>
+                </MotionButton>
+              </Box>
+            </MotionBox>
           )}
         </AnimatePresence>
-      </div>
+      </Box>
 
       {/* Scrollable body */}
-      <div className="no-scrollbar relative -mt-3 flex-1 overflow-y-auto rounded-t-3xl bg-slate-100">
+      <Box
+        className="no-scrollbar"
+        sx={{
+          position: 'relative',
+          marginTop: '-12px',
+          flex: 1,
+          minHeight: 0,
+          overflowY: 'auto',
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24,
+          bgcolor: '#f1f5f9',
+          
+        }}
+      >
         <AnimatePresence mode="wait">
           {activeTab === 'home' && (
-            <motion.div
+            <MotionBox
               key="tab-home"
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.22 }}
-              className="space-y-6 p-5 pb-24"
+              sx={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px', paddingBottom: '96px',  }}
             >
               {/* Metrics */}
-              <section className="grid grid-cols-3 gap-2.5">
+              <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '10px' }}>
                 <MetricTile
                   label="Total points"
-                  value={formatPoints(totalPoints)}
+                  value={formatPoints(customer.totalLbgCoins)}
                   tone="white"
+                  valueColor="#006a4d"
                   infoText="Sum of points held across all connected partner brands."
                 />
                 <MetricTile
                   label="Brands linked"
                   value={String(customer.brandsConnected)}
                   tone="white"
+                  valueColor="#0284c7"
                   infoText="Partner loyalty programmes connected to this wallet."
                 />
                 <MetricTile
-                  label="Coins earned"
-                  value={formatPoints(customer.totalLbgCoins)}
-                  tone="brand"
-                  infoText="LBG coins minted after converting brand points."
+                  label="Expiring soon"
+                  value={formatPoints(EXPIRING_POINTS)}
+                  tone="white"
+                  valueColor="#ef4444"
+                  infoText="Points that will expire at the next partner reset."
                 />
-              </section>
+              </Box>
 
               {/* Smart rewards */}
-              <section className="space-y-3">
-                <div className="flex items-center gap-1.5 px-1">
-                  <Sparkles size={14} className="text-brand-700" />
-                  <h2 className="text-sm font-semibold text-slate-800">Smart rewards</h2>
-                </div>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: '6px', paddingX: '4px' }}>
+                  <Sparkles size={14} color="#045a42" />
+                  <Typography sx={{ fontSize: 14, fontWeight: 600, color: '#1e293b' }}>Smart rewards</Typography>
+                </Box>
 
                 <SyncStatusCard
                   status="synced"
@@ -371,7 +644,15 @@ export default function RewardsDashboardPage({
 
                 <BonusRewardCard points={250} expiresIn="2 hours" />
 
-                <div className="grid grid-cols-2 items-stretch gap-3 [&>*]:h-full">
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                    alignItems: 'stretch',
+                    gap: '12px',
+                    '& > *': { height: '100%' },
+                  }}
+                >
                   <StreakCard
                     streakDays={6}
                     message="You're on a roll this month."
@@ -388,7 +669,7 @@ export default function RewardsDashboardPage({
                       .slice(0, 3)
                       .map((p) => ({ name: p.brandName, points: p.points }))}
                   />
-                </div>
+                </Box>
 
                 <ChallengeCard
                   title="Autumn Points Sprint"
@@ -399,7 +680,15 @@ export default function RewardsDashboardPage({
                   participants={2418}
                 />
 
-                <div className="grid grid-cols-2 items-stretch gap-3 [&>*]:h-full">
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                    alignItems: 'stretch',
+                    gap: '12px',
+                    '& > *': { height: '100%' },
+                  }}
+                >
                   <GoalProgressCard
                     goalName={`${tier.next ? tier.next.name : 'Platinum'} tier status`}
                     current={walletValue}
@@ -413,7 +702,7 @@ export default function RewardsDashboardPage({
                     }
                   />
                   <AddGoalCard subtitle="e.g. Flights, gadgets, treats" />
-                </div>
+                </Box>
 
                 <Leaderboard entries={leaderboardEntries} period="weekly" />
 
@@ -448,7 +737,15 @@ export default function RewardsDashboardPage({
                   onViewAll={() => setRedeemOpen(true)}
                 />
 
-                <div className="grid grid-cols-2 items-stretch gap-3 [&>*]:h-full">
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                    alignItems: 'stretch',
+                    gap: '12px',
+                    '& > *': { height: '100%' },
+                  }}
+                >
                   <TangibleValueCard
                     cashValue={`£${(totalPoints * 0.005).toFixed(2)}`}
                     pointsEquivalent={totalPoints}
@@ -465,7 +762,7 @@ export default function RewardsDashboardPage({
                     message="Convert any brand points and earn double LBG coins."
                     onClaim={() => setRedeemOpen(true)}
                   />
-                </div>
+                </Box>
 
                 <RecommendedActions
                   actions={[
@@ -475,7 +772,15 @@ export default function RewardsDashboardPage({
                   ]}
                 />
 
-                <div className="grid grid-cols-2 items-stretch gap-3 [&>*]:h-full">
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                    alignItems: 'stretch',
+                    gap: '12px',
+                    '& > *': { height: '100%' },
+                  }}
+                >
                   <ExpiringPointsAlert
                     expiringPoints={1250}
                     daysLeft={21}
@@ -489,7 +794,7 @@ export default function RewardsDashboardPage({
                     minutes={32}
                     message="Flash pricing on featured rewards"
                   />
-                </div>
+                </Box>
 
                 <MilestoneCard
                   milestones={[
@@ -516,7 +821,15 @@ export default function RewardsDashboardPage({
 
                 <ProjectionChart data={projectionData} growthLabel="Projected growth at 12% annually" />
 
-                <div className="grid grid-cols-2 items-stretch gap-3 [&>*]:h-full">
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                    alignItems: 'stretch',
+                    gap: '12px',
+                    '& > *': { height: '100%' },
+                  }}
+                >
                   <FutureValueCard
                     currentValue={totalPoints}
                     projectedValue={projectionData[projectionData.length - 1]?.value ?? totalPoints}
@@ -531,7 +844,7 @@ export default function RewardsDashboardPage({
                     percentage={tier.progress}
                     estimatedCompletion="2028"
                   />
-                </div>
+                </Box>
 
                 <EducationalInsightCard
                   insight="Points lose an average of 8% of their redemption value for every year they sit unused. Converting early locks in today's rates."
@@ -561,53 +874,113 @@ export default function RewardsDashboardPage({
                   ctaText="Explore brands"
                   onCta={() => setLocateOpen(true)}
                 />
-              </section>
+              </Box>
 
               {/* Your points by brand */}
-              <section>
-                <h2 className="mb-2.5 px-1 text-sm font-semibold text-slate-800">Your points by brand</h2>
-                <div className="no-scrollbar -mx-5 flex snap-x gap-3 overflow-x-auto px-5 pb-1">
+              <Box>
+                <Typography sx={{ marginBottom: '10px', paddingX: '4px', fontSize: 14, fontWeight: 600, color: '#1e293b' }}>
+                  Your points by brand
+                </Typography>
+                <Box
+                  className="no-scrollbar"
+                  sx={{
+                    marginX: '-20px',
+                    display: 'flex',
+                    gap: '12px',
+                    overflowX: 'auto',
+                    scrollSnapType: 'x mandatory',
+                    paddingX: '20px',
+                    paddingBottom: '4px',
+                  }}
+                >
                   {pointsByBrand.map((provider, i) => (
-                    <motion.div
+                    <MotionBox
                       key={provider.brandId}
                       initial={{ opacity: 0, y: 14 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.05 * i }}
                       whileTap={{ scale: 0.97 }}
-                      className="w-36 shrink-0 snap-start rounded-2xl bg-white p-3.5 shadow-card"
+                      sx={{
+                        width: 144,
+                        flexShrink: 0,
+                        scrollSnapAlign: 'start',
+                        borderRadius: '16px',
+                        bgcolor: '#ffffff',
+                        padding: '14px',
+                        boxShadow: shadows.card,
+                      }}
                     >
-                      <span className="flex items-start justify-between">
-                        <span
-                          className="flex h-9 w-9 items-center justify-center rounded-xl text-xs font-bold text-white"
-                          style={{ backgroundColor: provider.color }}
+                      <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            height: 36,
+                            width: 36,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: '12px',
+                            fontSize: 12,
+                            fontWeight: 700,
+                            color: '#ffffff',
+                            backgroundColor: provider.color,
+                          }}
                         >
                           {provider.logoText}
-                        </span>
+                        </Box>
                         {earnedRewardMap[provider.brandId] && (
-                          <span className="rounded-full bg-brand-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-brand-700">
+                          <Box
+                            sx={{
+                              borderRadius: '999px',
+                              bgcolor: '#eef7f3',
+                              paddingX: '6px',
+                              paddingTop: '2px',
+                              paddingBottom: '2px',
+                              fontSize: 9,
+                              fontWeight: 700,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.05em',
+                              color: '#045a42',
+                            }}
+                          >
                             Convert
-                          </span>
+                          </Box>
                         )}
-                      </span>
-                      <p className="mt-2 truncate text-xs font-medium text-slate-500">{provider.brandName}</p>
-                      <p className="text-base font-bold text-slate-900">{formatPoints(provider.points)}</p>
-                      <p className="text-[10px] uppercase tracking-wide text-slate-400">points</p>
-                    </motion.div>
+                      </Box>
+                      <Typography
+                        sx={{
+                          marginTop: '8px',
+                          fontSize: 12,
+                          fontWeight: 500,
+                          color: '#64748b',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {provider.brandName}
+                      </Typography>
+                      <Typography sx={{ fontSize: 16, fontWeight: 700, color: '#0f172a' }}>
+                        {formatPoints(provider.points)}
+                      </Typography>
+                      <Typography sx={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#94a3b8' }}>
+                        points
+                      </Typography>
+                    </MotionBox>
                   ))}
-                </div>
-              </section>
+                </Box>
+              </Box>
 
               {/* Eligible brands by category */}
-              <section>
+              <Box>
                 <BrandExplorerCard
                   categories={brandCategories}
                   actionLabel="View all"
                   onExplore={() => setLocateOpen(true)}
                 />
-              </section>
+              </Box>
 
               {/* Insights */}
-              <section>
+              <Box>
                 <RewardsInsightCard
                   title="Your Rewards Insight"
                   topBrandName={topBrand?.brandName}
@@ -622,129 +995,259 @@ export default function RewardsDashboardPage({
                   ctaText="Redeem smarter"
                   onCta={() => setRedeemOpen(true)}
                 />
-              </section>
-            </motion.div>
+              </Box>
+            </MotionBox>
           )}
 
           {activeTab === 'activity' && (
-            <motion.div
+            <MotionBox
               key="tab-activity"
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.22 }}
-              className="p-5 pb-24"
+              sx={{ padding: '20px', paddingBottom: '96px' }}
             >
-              <h2 className="mb-3 px-1 text-sm font-semibold text-slate-800">Wallet transactions</h2>
+              <Typography sx={{ marginBottom: '12px', paddingX: '4px', fontSize: 14, fontWeight: 600, color: '#1e293b' }}>
+                Wallet transactions
+              </Typography>
               {txLoading && (
-                <div className="flex items-center justify-center gap-2 rounded-2xl bg-white p-8 text-sm text-slate-500 shadow-card">
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    borderRadius: '16px',
+                    bgcolor: '#ffffff',
+                    padding: '32px',
+                    fontSize: 14,
+                    color: '#64748b',
+                    boxShadow: shadows.card,
+                  }}
+                >
                   <Loader2 size={16} className="animate-spin" /> Loading transactions…
-                </div>
+                </Box>
               )}
               {!txLoading && txError && (
-                <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">{txError}</div>
+                <Box
+                  sx={{
+                    borderRadius: '16px',
+                    border: '1px solid #fecaca',
+                    bgcolor: '#fef2f2',
+                    padding: 2,
+                    fontSize: 14,
+                    color: '#b91c1c',
+                  }}
+                >
+                  {txError}
+                </Box>
               )}
               {!txLoading && !txError && transactions.length === 0 && (
-                <div className="rounded-2xl bg-white p-8 text-center text-sm text-slate-400 shadow-card">
+                <Box
+                  sx={{
+                    borderRadius: '16px',
+                    bgcolor: '#ffffff',
+                    padding: '32px',
+                    textAlign: 'center',
+                    fontSize: 14,
+                    color: '#94a3b8',
+                    boxShadow: shadows.card,
+                  }}
+                >
                   No transactions yet.
-                </div>
+                </Box>
               )}
               {!txLoading && !txError && transactions.length > 0 && (
-                <ol className="space-y-2.5">
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {transactions.map((tx, i) => {
                     const positive = tx.amount >= 0
                     const tint =
                       tx.type === 'EARN'
-                        ? 'bg-brand-50 text-brand-700'
+                        ? { bgcolor: '#eef7f3', color: '#045a42' }
                         : tx.type === 'CONVERT'
-                          ? 'bg-sky-50 text-sky-600'
-                          : 'bg-gold-50 text-gold-600'
+                          ? { bgcolor: '#f0f9ff', color: '#0284c7' }
+                          : { bgcolor: '#fdf9ef', color: '#a98a41' }
                     const Icon =
                       tx.type === 'EARN' ? ArrowDownCircle : tx.type === 'CONVERT' ? RefreshCw : Gift
                     return (
-                      <motion.li
+                      <MotionBox
                         key={tx.id}
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: Math.min(i * 0.04, 0.4) }}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '12px',
+                          borderRadius: '16px',
+                          bgcolor: '#ffffff',
+                          padding: '14px',
+                          boxShadow: shadows.card,
+                        }}
                       >
-                        <div className="flex items-center gap-3 rounded-2xl bg-white p-3.5 shadow-card">
-                          <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${tint}`}>
-                            <Icon size={17} />
-                          </span>
-                          <div className="min-w-0 flex-1">
-                            <p className="truncate text-sm font-medium text-slate-900">
-                              {normalizeTransactionDescription(tx.description)}
-                            </p>
-                            <p className="text-xs capitalize text-slate-400">
-                              {tx.type.toLowerCase()} · {formatTransactionDate(tx.createdAt)}
-                            </p>
-                          </div>
-                          <p
-                            className={`shrink-0 text-sm font-bold tabular-nums ${
-                              positive ? 'text-emerald-600' : 'text-slate-900'
-                            }`}
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            height: 40,
+                            width: 40,
+                            flexShrink: 0,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: '999px',
+                            ...tint,
+                          }}
+                        >
+                          <Icon size={17} />
+                        </Box>
+                        <Box sx={{ minWidth: 0, flex: 1 }}>
+                          <Typography
+                            sx={{
+                              fontSize: 14,
+                              fontWeight: 500,
+                              color: '#0f172a',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              whiteSpace: 'nowrap',
+                            }}
                           >
-                            {positive ? '+' : ''}
-                            {formatPoints(tx.amount)}
-                          </p>
-                        </div>
-                      </motion.li>
+                            {normalizeTransactionDescription(tx.description)}
+                          </Typography>
+                          <Typography sx={{ fontSize: 12, textTransform: 'capitalize', color: '#94a3b8' }}>
+                            {tx.type.toLowerCase()} · {formatTransactionDate(tx.createdAt)}
+                          </Typography>
+                        </Box>
+                        <Typography
+                          sx={{
+                            flexShrink: 0,
+                            fontSize: 14,
+                            fontWeight: 700,
+                            fontVariantNumeric: 'tabular-nums',
+                            color: positive ? '#059669' : '#0f172a',
+                          }}
+                        >
+                          {positive ? '+' : ''}
+                          {formatPoints(tx.amount)}
+                        </Typography>
+                      </MotionBox>
                     )
                   })}
-                </ol>
+                </Box>
               )}
-            </motion.div>
+            </MotionBox>
           )}
 
           {activeTab === 'profile' && (
-            <motion.div
+            <MotionBox
               key="tab-profile"
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.22 }}
-              className="space-y-4 p-5 pb-24"
+              sx={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '20px', paddingBottom: '96px' }}
             >
-              <div className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-card">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white">
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: '16px', borderRadius: '16px', bgcolor: '#ffffff', padding: '20px', boxShadow: shadows.card }}>
+                <Avatar
+                  sx={{
+                    height: 56,
+                    width: 56,
+                    bgcolor: '#006a4d',
+                    fontSize: 18,
+                    fontWeight: 700,
+                  }}
+                >
                   {getInitials(customer.userName)}
-                </span>
-                <div>
-                  <p className="text-base font-bold text-slate-900">{customer.userName}</p>
-                  <p className="text-sm text-slate-500">
+                </Avatar>
+                <Box>
+                  <Typography sx={{ fontSize: 16, fontWeight: 700, color: '#0f172a' }}>{customer.userName}</Typography>
+                  <Typography sx={{ fontSize: 14, color: '#64748b' }}>
                     {customer.phone.replace(/(\d{4})(\d{3})(\d{3})/, '$1 $2 $3')}
-                  </p>
-                  <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-gold-50 px-2 py-0.5 text-[11px] font-bold text-gold-600">
+                  </Typography>
+                  <Box
+                    sx={{
+                      marginTop: '4px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      borderRadius: '999px',
+                      bgcolor: '#fdf9ef',
+                      paddingX: '8px',
+                      paddingTop: '2px',
+                      paddingBottom: '2px',
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: '#a98a41',
+                    }}
+                  >
                     <Crown size={11} /> {tier.current.name} member
-                  </span>
-                </div>
-              </div>
+                  </Box>
+                </Box>
+              </Box>
 
-              <div className="divide-y divide-slate-200 overflow-hidden rounded-2xl bg-white shadow-card">
+              <Box
+                sx={{
+                  overflow: 'hidden',
+                  borderRadius: '16px',
+                  bgcolor: '#ffffff',
+                  boxShadow: shadows.card,
+                }}
+              >
                 {[
                   ['Linked accounts', `${customer.brandsConnected} brands connected`],
                   ['Security & PIN', 'Face ID, password'],
                   ['Notifications', 'Offers and conversions'],
                   ['Help centre', 'FAQs and support'],
-                ].map(([title, sub]) => (
-                  <button key={title} className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition hover:bg-slate-50">
-                    <UserRound size={16} className="text-slate-400" />
-                    <span className="flex-1">
-                      <span className="block text-sm font-medium text-slate-900">{title}</span>
-                      <span className="block text-xs text-slate-400">{sub}</span>
-                    </span>
-                    <ChevronRight size={15} className="text-slate-300" />
-                  </button>
+                ].map(([title, sub], i) => (
+                  <ButtonBase
+                    key={title}
+                    disableRipple
+                    sx={{
+                      display: 'flex',
+                      width: '100%',
+                      alignItems: 'center',
+                      gap: '12px',
+                      paddingX: '16px',
+                      paddingTop: '14px',
+                      paddingBottom: '14px',
+                      textAlign: 'left',
+                      ...(i > 0 && { borderTop: '1px solid #e2e8f0' }),
+                      '&:hover': { bgcolor: '#f8fafc' },
+                    }}
+                  >
+                    <UserRound size={16} color="#94a3b8" />
+                    <Box sx={{ flex: 1 }}>
+                      <Typography component="span" sx={{ display: 'block', fontSize: 14, fontWeight: 500, color: '#0f172a' }}>
+                        {title}
+                      </Typography>
+                      <Typography component="span" sx={{ display: 'block', fontSize: 12, color: '#94a3b8' }}>
+                        {sub}
+                      </Typography>
+                    </Box>
+                    <ChevronRight size={15} color="#cbd5e1" />
+                  </ButtonBase>
                 ))}
-              </div>
-            </motion.div>
+              </Box>
+            </MotionBox>
           )}
         </AnimatePresence>
-      </div>
+      </Box>
 
       {/* Bottom nav */}
-      <nav className="relative z-20 flex items-stretch justify-around border-t border-slate-200 bg-white/95 px-2 pb-5 pt-2 backdrop-blur">
+      <Box
+        sx={{
+          position: 'relative',
+          zIndex: 20,
+          display: 'flex',
+          alignItems: 'stretch',
+          justifyContent: 'space-around',
+          borderTop: '1px solid #e2e8f0',
+          bgcolor: 'rgba(255,255,255,0.95)',
+          backdropFilter: 'blur(8px)',
+          paddingX: '8px',
+          paddingTop: '8px',
+          paddingBottom: '20px',
+        }}
+      >
         {(
           [
             { id: 'home', label: 'Home', icon: Home },
@@ -754,28 +1257,46 @@ export default function RewardsDashboardPage({
         ).map(({ id, label, icon: Icon }) => {
           const active = activeTab === id
           return (
-            <button
+            <ButtonBase
               key={id}
               onClick={() => setActiveTab(id)}
-              className="relative flex flex-1 flex-col items-center gap-0.5 py-1"
+              disableRipple
+              sx={{
+                position: 'relative',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '2px',
+                paddingTop: '4px',
+                paddingBottom: '4px',
+                borderRadius: 0,
+              }}
             >
-              <motion.span animate={active ? { scale: 1.08, y: -1 } : { scale: 1, y: 0 }}>
-                <Icon size={19} className={active ? 'text-brand-700' : 'text-slate-400'} />
-              </motion.span>
-              <span className={`text-[11px] font-medium ${active ? 'text-brand-700' : 'text-slate-400'}`}>
+              <MotionBox animate={active ? { scale: 1.08, y: -1 } : { scale: 1, y: 0 }}>
+                <Icon size={19} color={active ? '#045a42' : '#94a3b8'} />
+              </MotionBox>
+              <Typography sx={{ fontSize: 11, fontWeight: 500, color: active ? '#045a42' : '#94a3b8' }}>
                 {label}
-              </span>
+              </Typography>
               {active && (
-                <motion.span
+                <MotionBox
                   layoutId="nav-pill"
-                  className="absolute -top-[9px] h-1 w-8 rounded-full bg-brand-600"
                   transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                  sx={{
+                    position: 'absolute',
+                    top: -9,
+                    height: 4,
+                    width: 32,
+                    borderRadius: '999px',
+                    bgcolor: '#006a4d',
+                  }}
                 />
               )}
-            </button>
+            </ButtonBase>
           )
         })}
-      </nav>
+      </Box>
 
       {/* Modals */}
       <LocatePointsModal
@@ -793,6 +1314,6 @@ export default function RewardsDashboardPage({
         pointsData={pointsByBrand}
         onClose={() => setRedeemOpen(false)}
       />
-    </div>
+    </Box>
   )
 }
