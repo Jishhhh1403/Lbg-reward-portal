@@ -1,4 +1,9 @@
 import { motion } from 'framer-motion'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import IconButton from '@mui/material/IconButton'
+import Avatar from '@mui/material/Avatar'
+import ButtonBase from '@mui/material/ButtonBase'
 import {
   ArrowDownLeft,
   ArrowUpRight,
@@ -6,20 +11,28 @@ import {
   ChevronRight,
   CreditCard,
   Gift,
+  HandCoins,
+  Home,
   Landmark,
   LogOut,
   MoreHorizontal,
   PieChart,
   QrCode,
-  Sparkles,
+  Receipt,
+  ShieldCheck,
+  TrendingUp,
 } from 'lucide-react'
 import { formatCurrencyGBP } from '../utils/format'
+import { shadows } from '../theme'
 
 interface BankHomePageProps {
   userName: string
   onOpenRewards: () => void
   onSignOut: () => void
 }
+
+const MotionBox = motion.create(Box)
+const MotionButton = motion.create(ButtonBase)
 
 const container = {
   hidden: {},
@@ -36,150 +49,504 @@ const recentTx = [
   { id: 'r3', label: 'Costa Coffee', detail: 'Dining · Mon', amount: -3.85 },
 ]
 
+/* Profile photos live in src/assets/customers, named after the customer's first name
+   (e.g. "Alex.jpeg" for "Alex Morgan"). Drop in a new file per customer and
+   it is picked up automatically; otherwise the avatar falls back to initials. */
+const PROFILE_PHOTOS = import.meta.glob<string>('../assets/customers/*.{jpeg,jpg,png}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+
+function getProfilePhoto(userName: string): string | undefined {
+  const firstName = userName.trim().split(/\s+/)[0]?.toLowerCase()
+  if (!firstName) return undefined
+  const entry = Object.entries(PROFILE_PHOTOS).find(([path]) => {
+    const fileName = path.split('/').pop() ?? ''
+    const baseName = fileName.replace(/\.[^.]+$/, '').toLowerCase()
+    return baseName === firstName
+  })
+  return entry?.[1]
+}
+
 export default function BankHomePage({ userName, onOpenRewards, onSignOut }: BankHomePageProps) {
   const firstName = userName.split(/\s+/)[0] ?? userName
+  const profilePhoto = getProfilePhoto(userName)
 
   return (
-    <motion.div
+    <MotionBox
       variants={container}
       initial="hidden"
       animate="visible"
-      className="no-scrollbar h-full overflow-y-auto bg-slate-100 pb-8"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        bgcolor: '#f1f5f9',
+        color: '#ffffff',
+        overflow: 'hidden',
+      }}
     >
+      <Box
+        className="no-scrollbar"
+        sx={{ flex: 1, minHeight: 0, overflowY: 'auto', paddingBottom: 4 }}
+      >
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-5 pt-6 text-white">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-sm font-bold backdrop-blur">
+      <Box
+        sx={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          background: 'linear-gradient(to bottom right, #045a42, #006a4d, #238762)',
+          padding: '24px 20px 0',
+          color: '#ffffff',
+          
+        }}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' , marginTop: 3}}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Avatar
+              src={profilePhoto}
+              alt={userName}
+              sx={{
+                width: 40,
+                height: 40,
+                bgcolor: 'rgba(255,255,255,0.2)',
+                fontSize: 14,
+                fontWeight: 700,
+                backdropFilter: 'blur(8px)',
+                '& .MuiAvatar-img': { objectFit: 'cover' },
+              }}
+            >
               {userName
                 .split(/\s+/)
                 .map((p) => p.charAt(0))
                 .slice(0, 2)
                 .join('')
                 .toUpperCase()}
-            </span>
-            <div>
-              <p className="text-xs text-brand-100">Good morning</p>
-              <p className="text-base font-semibold">{firstName}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-1">
-            <button className="rounded-full p-2 transition hover:bg-white/15" aria-label="Notifications">
+            </Avatar>
+            <Box>
+              <Typography sx={{ fontSize: 16, color: '#d7ece2' }}>Good morning, {firstName}</Typography>
+              {/* <Typography sx={{ fontSize: 16, fontWeight: 600 }}>{firstName}</Typography> */}
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <IconButton
+              aria-label="Notifications"
+              sx={{
+                color: 'inherit',
+                borderRadius: '999px',
+                padding: 1,
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.15)' },
+              }}
+            >
               <Bell size={19} />
-              <span className="sr-only">Notifications</span>
-            </button>
-            <button onClick={onSignOut} className="rounded-full p-2 transition hover:bg-white/15" aria-label="Sign out">
+              <Box component="span" sx={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
+                Notifications
+              </Box>
+            </IconButton>
+            <IconButton
+              onClick={onSignOut}
+              aria-label="Sign out"
+              sx={{
+                color: 'inherit',
+                borderRadius: '999px',
+                padding: 1,
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.15)' },
+              }}
+            >
               <LogOut size={19} />
-            </button>
-          </div>
-        </div>
+            </IconButton>
+          </Box>
+        </Box>
 
-        <motion.div variants={item} className="mt-5 rounded-2xl bg-white/12 p-4 backdrop-blur-sm">
-          <p className="text-xs font-medium uppercase tracking-wider text-brand-100">Everyday Spend · •• 4821</p>
-          <p className="mt-1.5 text-3xl font-bold tracking-tight">{formatCurrencyGBP(3184.62)}</p>
-          <div className="mt-4 flex gap-2.5">
+        <MotionBox
+          variants={item}
+          sx={{
+            marginTop: '20px',
+            borderRadius: '16px',
+            bgcolor: 'rgba(255,255,255,0.12)',
+            padding: 2,
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: 12,
+              fontWeight: 500,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              color: '#ffffff',
+            }}
+          >
+            LLOYDS ACCOUNT
+          </Typography>
+          <Typography sx={{fontSize: 12,}}>11-01-23 | 45832378</Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Box sx={{ minWidth: 0 }}>
+              <Typography sx={{ marginTop: '6px', fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em' }}>
+                {formatCurrencyGBP(3184.62)}
+              </Typography>
+              <Typography sx={{ marginTop: '2px', fontSize: 12, color: '#d7ece2' }}>Available balance</Typography>
+            </Box>
+            <Box
+              component="button"
+              sx={{
+                flexShrink: 0,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+                borderRadius: '999px',
+                border: '1px solid rgba(255,255,255,0.35)',
+                background: 'transparent',
+                cursor: 'pointer',
+                marginLeft: '12px',
+                paddingLeft: '12px',
+                paddingRight: '12px',
+                paddingTop: '6px',
+                paddingBottom: '6px',
+                fontSize: 12,
+                fontWeight: 600,
+                color: '#ffffff',
+                fontFamily: 'inherit',
+                transition: 'background-color 0.2s',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.15)' },
+              }}
+            >
+              View account <ChevronRight size={13} />
+            </Box>
+          </Box>
+          {/* <Box sx={{ marginTop: 2, display: 'flex', gap: '10px' , border: '1px solid red'}}>
             {[
               { icon: ArrowUpRight, label: 'Pay' },
               { icon: ArrowDownLeft, label: 'Request' },
               { icon: QrCode, label: 'Scan' },
               { icon: Gift, label: 'Rewards', highlight: true },
             ].map(({ icon: Icon, label, highlight }) => (
-              <button
+              <MotionButton
                 key={label}
+                disableRipple
                 onClick={highlight ? onOpenRewards : undefined}
-                className={`flex flex-1 flex-col items-center gap-1 rounded-xl py-2.5 text-[11px] font-semibold transition ${
-                  highlight ? 'bg-gold-400 text-brand-900 hover:bg-gold-300' : 'bg-white/15 hover:bg-white/25'
-                }`}
+                sx={[
+                  {
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '4px',
+                    borderRadius: '12px',
+                    paddingTop: '10px',
+                    paddingBottom: '10px',
+                    fontSize: 11,
+                    fontWeight: 600,
+                    fontFamily: 'inherit',
+                    border: 'none',
+                    cursor: 'pointer',
+                    color: 'inherit',
+                  },
+                  highlight
+                    ? { bgcolor: '#ddbe72', '&:hover': { bgcolor: '#ecd9a8' } }
+                    : { bgcolor: 'rgba(255,255,255,0.15)', '&:hover': { bgcolor: 'rgba(255,255,255,0.25)' } },
+                ]}
               >
                 <Icon size={17} />
                 {label}
-              </button>
+              </MotionButton>
             ))}
-          </div>
-        </motion.div>
+          </Box> */}
+        </MotionBox>
 
         {/* Rounded bottom edge into content */}
-        <div className="h-6" />
-      </div>
-      <div className="-mt-6 rounded-t-3xl bg-slate-100 pt-5" />
+        <Box sx={{ height: 24 }} />
+      </Box>
+      <Box
+        sx={{
+          marginTop: -3,
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24,
+          bgcolor: '#f1f5f9',
+          paddingTop: 2.5,
+        }}
+      />
 
-      <div className="space-y-5 px-5">
+      <Box sx={{ paddingX: 2.5}}>
         {/* Rewards spotlight */}
-        <motion.button
+        {/* <MotionButton
           variants={item}
           whileTap={{ scale: 0.98 }}
+          disableRipple
           onClick={onOpenRewards}
-          className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-brand-800 to-brand-600 p-4 text-left shadow-card"
+          sx={{
+            position: 'relative',
+            width: '100%',
+            overflow: 'hidden',
+            borderRadius: '16px',
+            background: 'linear-gradient(to right, #064836, #006a4d)',
+            padding: 2,
+            textAlign: 'left',
+            border: 'none',
+            cursor: 'pointer',
+            fontFamily: 'inherit',
+            boxShadow: shadows.card,
+            marginBottom: '20px',
+            '&:hover .spotlight-pill': { bgcolor: 'rgba(255,255,255,0.25)' },
+          }}
         >
-          <div className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full bg-gold-400/20" />
-          <Sparkles size={16} className="text-gold-300" />
-          <p className="mt-2 text-lg font-bold text-white">
-            You have <span className="text-gold-300">12,480 LBG coins</span> waiting
-          </p>
-          <p className="mt-0.5 text-xs text-brand-100">Consolidated from 6 brands · Gold tier</p>
-          <span className="mt-3 inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white transition group-hover:bg-white/25">
+          <Box
+            sx={{
+              position: 'absolute',
+              right: -32,
+              top: -40,
+              height: 128,
+              width: 128,
+              borderRadius: '999px',
+              bgcolor: 'rgba(221,190,114,0.2)',
+              pointerEvents: 'none',
+            }}
+          />
+          <Sparkles size={16} color="#ecd9a8" />
+          <Typography sx={{ marginTop: '8px', fontSize: 18, fontWeight: 700, color: '#ffffff' }}>
+            You have{' '}
+            <Box component="span" sx={{ color: '#ecd9a8' }}>
+              12,480 LBG coins
+            </Box>{' '}
+            waiting
+          </Typography>
+          <Typography sx={{ marginTop: '2px', fontSize: 12, color: '#d7ece2' }}>
+            Consolidated from 6 brands · Gold tier
+          </Typography>
+          <Box
+            className="spotlight-pill"
+            component="span"
+            sx={{
+              marginTop: '12px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              borderRadius: '999px',
+              bgcolor: 'rgba(255,255,255,0.15)',
+              paddingLeft: '12px',
+              paddingRight: '12px',
+              paddingTop: '6px',
+              paddingBottom: '6px',
+              fontSize: 12,
+              fontWeight: 600,
+              color: '#ffffff',
+              transition: 'background-color 0.2s',
+            }}
+          >
             Open rewards <ChevronRight size={13} />
-          </span>
-        </motion.button>
+          </Box>
+        </MotionButton> */}
 
         {/* Quick actions */}
-        <motion.section variants={item}>
-          <h2 className="mb-2.5 px-1 text-sm font-semibold text-slate-700">Quick actions</h2>
-          <div className="grid grid-cols-4 gap-2.5">
+        <MotionBox variants={item}>
+          <Typography sx={{ marginBottom: '10px', paddingX: '4px', fontSize: 14, fontWeight: 600, color: '#334155', marginTop: '20px' }}>
+            Quick actions
+          </Typography>
+          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '10px' }}>
             {[
-              { icon: Gift, label: 'Rewards', action: onOpenRewards },
+              
               { icon: CreditCard, label: 'Cards' },
               { icon: Landmark, label: 'Accounts' },
               { icon: PieChart, label: 'Insights' },
               { icon: ArrowUpRight, label: 'Send' },
               { icon: QrCode, label: 'Payee' },
+              { icon: Receipt, label: 'Pay a bill' },
+              { icon: Gift, label: 'Rewards', action: onOpenRewards },
               { icon: MoreHorizontal, label: 'More' },
             ].map(({ icon: Icon, label, action }) => (
-              <motion.button
+              <MotionButton
                 key={label}
                 variants={item}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.96 }}
+                disableRipple
                 onClick={action}
-                className="flex flex-col items-center gap-1.5 rounded-2xl bg-white p-3 shadow-card"
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '6px',
+                  borderRadius: '16px',
+                  bgcolor: '#ffffff',
+                  padding: '12px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  boxShadow: shadows.card,
+                }}
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                <Box
+                  sx={{
+                    display: 'flex',
+                    height: 36,
+                    width: 36,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '12px',
+                    bgcolor: '#eef7f3',
+                    color: '#045a42',
+                  }}
+                >
                   <Icon size={17} />
-                </span>
-                <span className="text-[11px] font-medium text-slate-600">{label}</span>
-              </motion.button>
+                </Box>
+                <Typography sx={{ fontSize: 11, fontWeight: 500, color: '#475569' }}>{label}</Typography>
+              </MotionButton>
             ))}
-          </div>
-        </motion.section>
+          </Box>
+        </MotionBox>
 
         {/* Recent transactions */}
-        <motion.section variants={item}>
-          <div className="mb-2.5 flex items-center justify-between px-1">
-            <h2 className="text-sm font-semibold text-slate-700">Recent transactions</h2>
-            <button className="text-xs font-semibold text-brand-700 hover:underline">View all</button>
-          </div>
-          <div className="divide-y divide-slate-200 overflow-hidden rounded-2xl bg-white shadow-card">
-            {recentTx.map((tx) => (
-              <div key={tx.id} className="flex items-center gap-3 px-4 py-3">
-                <span
-                  className={`flex h-9 w-9 items-center justify-center rounded-full ${
-                    tx.amount > 0 ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'
-                  }`}
+        <MotionBox variants={item} sx={{ marginTop: '20px' }}>
+          <Box sx={{ marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingX: '4px' }}>
+            <Typography sx={{ fontSize: 14, fontWeight: 600, color: '#334155' }}>Recent transactions</Typography>
+            <Box
+              component="button"
+              sx={{
+                border: 'none',
+                background: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                fontSize: 12,
+                fontWeight: 600,
+                color: '#045a42',
+                fontFamily: 'inherit',
+                '&:hover': { textDecoration: 'underline' },
+              }}
+            >
+              View all
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              overflow: 'hidden',
+              borderRadius: '16px',
+              bgcolor: '#ffffff',
+              boxShadow: shadows.card,
+            }}
+          >
+            {recentTx.map((tx, i) => (
+              <Box
+                key={tx.id}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  paddingX: 2,
+                  paddingTop: '12px',
+                  paddingBottom: '12px',
+                  ...(i > 0 && { borderTop: '1px solid #e2e8f0' }),
+                }}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    height: 36,
+                    width: 36,
+                    flexShrink: 0,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '999px',
+                    ...(tx.amount > 0
+                      ? { bgcolor: '#ecfdf5', color: '#059669' }
+                      : { bgcolor: '#f1f5f9', color: '#64748b' }),
+                  }}
                 >
                   {tx.amount > 0 ? <ArrowDownLeft size={16} /> : <ArrowUpRight size={16} />}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-slate-900">{tx.label}</p>
-                  <p className="text-xs text-slate-400">{tx.detail}</p>
-                </div>
-                <p className={`text-sm font-semibold ${tx.amount > 0 ? 'text-emerald-600' : 'text-slate-900'}`}>
+                </Box>
+                <Box sx={{ minWidth: 0, flex: 1 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 14,
+                      fontWeight: 500,
+                      color: '#0f172a',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {tx.label}
+                  </Typography>
+                  <Typography sx={{ fontSize: 12, color: '#94a3b8' }}>{tx.detail}</Typography>
+                </Box>
+                <Typography
+                  sx={{
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: tx.amount > 0 ? '#059669' : '#0f172a',
+                  }}
+                >
                   {formatCurrencyGBP(tx.amount)}
-                </p>
-              </div>
+                </Typography>
+              </Box>
             ))}
-          </div>
-        </motion.section>
-      </div>
-    </motion.div>
+          </Box>
+        </MotionBox>
+      </Box>
+      </Box>
+
+      {/* Bottom navigation (fixed for this page) */}
+      <Box
+        sx={{
+          flexShrink: 0,
+          display: 'flex',
+          alignItems: 'stretch',
+          borderTop: '1px solid #e2e8f0',
+          bgcolor: '#ffffff',
+          backdropFilter: 'blur(8px)',
+          paddingX: 1,
+          paddingTop: 0.5,
+          paddingBottom: 2,
+        }}
+      >
+        {(
+          [
+            { id: 'home', label: 'Home', icon: Home },
+            { id: 'loans', label: 'Loans', icon: HandCoins },
+            { id: 'investment', label: 'Investment', icon: TrendingUp },
+            { id: 'insurance', label: 'Insurance', icon: ShieldCheck },
+          ] as const
+        ).map(({ id, label, icon: Icon }) => {
+          const active = id === 'home'
+          return (
+            <ButtonBase
+              key={id}
+              disableRipple
+              sx={{
+                position: 'relative',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '2px',
+                paddingTop: '10px',
+                paddingBottom: '2px',
+                borderRadius: 0,
+              }}
+            >
+              {active && (
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: 32,
+                    height: 3,
+                    borderRadius: '999px',
+                    bgcolor: '#006a4d',
+                  }}
+                />
+              )}
+              <Icon size={19} color={active ? '#045a42' : '#94a3b8'} />
+              <Typography sx={{ fontSize: 11, fontWeight: 500, color: active ? '#045a42' : '#94a3b8' }}>
+                {label}
+              </Typography>
+            </ButtonBase>
+          )
+        })}
+      </Box>
+    </MotionBox>
   )
 }

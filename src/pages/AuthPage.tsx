@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { Phone } from 'lucide-react'
 import type { AppStep } from '../types/rewards'
 import type { PersonaOption } from '../types/sdui'
-import MobileStep from '../components/auth/MobileStep'
 import OtpStep from '../components/auth/OtpStep'
 import PasswordStep from '../components/auth/PasswordStep'
 import SignupStep from '../components/auth/SignupStep'
@@ -43,27 +43,20 @@ export default function AuthPage(props: AuthPageProps) {
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden">
-      {/* Decorative header */}
-      <div className="relative bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 pb-16 pt-12 text-white">
-        <div className="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-white/10" />
-        <div className="pointer-events-none absolute -bottom-10 right-10 h-28 w-28 rounded-full bg-white/5" />
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 text-lg font-black backdrop-blur">
-            UR
+      {/* Dark header */}
+      <div className="px-6 pb-6 pt-8 text-center relative">
+        <h1 className="text-lg font-semibold text-white mt-5 ">Log on</h1>
+          <div className="absolute right-6 top-6 h-9 w-9 rounded-full border border-white/30 bg-white/5 flex items-center justify-center mt-5">
+            <Phone size={14} className="text-white/70" />
           </div>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-100">Unified Rewards</p>
-            <p className="text-xs text-brand-200">One wallet. Every brand.</p>
-          </div>
-        </div>
       </div>
 
-      {/* Card */}
+      {/* Card (dark) */}
       <motion.div
         initial={{ y: 36, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-        className="no-scrollbar relative -mt-10 flex-1 overflow-y-auto rounded-t-3xl bg-white px-6 pb-8 pt-7 shadow-card"
+        className="no-scrollbar relative -mt-4 flex-1 overflow-y-auto rounded-t-3xl bg-black px-6 pb-8 pt-4"
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -75,18 +68,89 @@ export default function AuthPage(props: AuthPageProps) {
             transition={{ duration: 0.22, ease: 'easeOut' }}
           >
             {step === 'mobile' && (
-              <MobileStep
-                mobile={props.mobile}
-                password={props.password}
-                loginError={props.loginError}
-                isLoading={props.isLoading}
-                onMobileChange={props.onMobileChange}
-                onPasswordChange={props.onPasswordChange}
-                onSignInWithPassword={props.onSignInWithPassword}
-                onOpenPasswordStep={props.onOpenPasswordStep}
-                onOpenSignup={props.onOpenSignup}
-                onPersonaLogin={props.onPersonaLogin}
-              />
+              <div className="max-w-lg mx-auto space-y-4">
+                <div className="text-center">
+                 
+                  <p className="text-sm text-slate-300" style={{fontSize: '1rem'}}>Please enter your logon details.</p>
+                </div>
+
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    props.onSignInWithPassword()
+                  }}
+                  className="space-y-4"
+                >
+                  <div>
+                    <input
+                      id="user"
+                      type="text"
+                      placeholder="User ID"
+                      value={props.mobile}
+                      onChange={props.onMobileChange}
+                      className="w-full rounded-xl border border-slate-700 bg-transparent py-3 px-4 text-sm text-white placeholder:text-slate-400 outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <input
+                      id="password"
+                      type="password"
+                      placeholder="Password"
+                      value={props.password}
+                      onChange={props.onPasswordChange}
+                      className="w-full rounded-xl border border-slate-700 bg-transparent py-3 px-4 text-sm text-white placeholder:text-slate-400 outline-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-800/60 py-3.5 text-sm font-semibold text-slate-300 disabled:cursor-not-allowed disabled:opacity-50" style={{fontSize: '1rem'}}
+                  >
+                    Continue
+                  </button>
+                </form>
+
+                <div className="pt-2 text-center text-sm text-slate-300" style={{fontSize: '1rem'}}>I've forgotten my logon details</div>
+
+                <div className="h-6 sm:h-8" />
+                <div className="mt-22 border-t border-slate-500 pt-6 text-center text-slate-300 space-y-4">
+                  <h2 className="text-lg font-semibold text-slate-100">Not used Internet Banking with us before?</h2>
+                  <div className="max-w-xl mx-auto text-sm text-slate-400 flex items-start gap-3">
+                    {/* <Lock size={18} className="mt-1 text-lime-400 flex-shrink-0" /> */}
+                    <p>If you bank with us, you can manage your accounts online. First, you'll need to create your logon details.</p>
+                  </div>
+                  <div className="flex justify-center">
+                    <button
+                      onClick={props.onOpenSignup}
+                      className="mt-4 inline-block w-64 rounded-full bg-green-500 py-3 text-sm font-semibold text-black"
+                    >
+                      Create logon details
+                    </button>
+                  </div>
+                </div>
+
+                <div className="mt-8 border-t border-slate-500 pt-6 text-center text-slate-300 space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-slate-400">Quick demo</p>
+                  <p className="text-[11px] text-slate-500">Tap a persona to explore the rewards dashboard instantly.</p>
+                  <div className="flex flex-wrap justify-center gap-2 pt-1">
+                    {([
+                      { id: 'p_high', name: 'High Earner', points: 28500, tier: 'Platinum' },
+                      { id: 'p_mid', name: 'Active Saver', points: 9800, tier: 'Gold' },
+                      { id: 'p_low', name: 'New Member', points: 1200, tier: 'Silver' },
+                    ] as const).map((p) => (
+                      <button
+                        key={p.id}
+                        type="button"
+                        onClick={() => props.onPersonaLogin(p)}
+                        className="rounded-lg border border-slate-600 bg-slate-800/60 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700/60"
+                      >
+                        {p.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
             )}
             {step === 'otp' && (
               <OtpStep

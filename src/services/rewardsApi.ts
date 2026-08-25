@@ -5,6 +5,22 @@ import type {
   PointsProvider,
   WalletTransactionItem,
 } from '../types/rewards'
+import alphaMedicolLogo from '../assets/AlphaMedicol.png'
+import rinkoffBakeryLogo from '../assets/rinkoffbakery.png'
+import broadwayMarketLogo from '../assets/broadwaymarket.png'
+import bankOfScotlandLogo from '../assets/bankofscotland.png'
+import amcLogo from '../assets/amc.png'
+import blackHorseLogo from '../assets/blackhorse.png'
+import birminghamLogo from '../assets/brimingham.png'
+import cavendishOnlineLogo from '../assets/Cavendishonline.png'
+import embarkLogo from '../assets/embark.jpeg'
+import hgpLogo from '../assets/hgp.png'
+import ldcLogo from '../assets/ldc.png'
+import lexAutoleaseLogo from '../assets/lexautolease.png'
+import lloydsWealthLogo from "../assets/Lloyd's wealth.png"
+import lloydsLivingLogo from '../assets/lloydsliving.png'
+import scottishWidowsLogo from '../assets/scottishwidows.png'
+import mbnaLogo from '../assets/mbna.png'
 
 const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL ?? ''
 const LATENCY_MS = 650
@@ -58,6 +74,22 @@ export const DEMO_BRANDS: BrandOption[] = [
   { id: 'brd_cineworld', name: 'Cineworld', category: 'Entertainment', logoText: 'CW', color: '#7c3aed', minRedeem: 900 },
   { id: 'brd_spotify', name: 'Spotify', category: 'Entertainment', logoText: 'SP', color: '#16a34a', minRedeem: 700 },
   { id: 'brd_uber', name: 'Uber', category: 'Travel', logoText: 'UB', color: '#0f172a', minRedeem: 500 },
+  { id: 'brd_alphamedicol', name: 'AlphaMedicol', category: 'Health', logoText: 'AM', color: '#0e7490', minRedeem: 600, logoUrl: alphaMedicolLogo },
+  { id: 'brd_rinkoff', name: 'Rinkoff Bakery', category: 'Dining', logoText: 'RB', color: '#b45309', minRedeem: 500, logoUrl: rinkoffBakeryLogo },
+  { id: 'brd_broadway', name: 'Broadway Market', category: 'Shopping', logoText: 'BM', color: '#4d7c0f', minRedeem: 500, logoUrl: broadwayMarketLogo },
+  { id: 'brd_bankofscotland', name: 'Bank of Scotland', category: 'Banking', logoText: 'BS', color: '#1e40af', minRedeem: 500, logoUrl: bankOfScotlandLogo },
+  { id: 'brd_amc', name: 'AMC', category: 'Banking', logoText: 'AM', color: '#0369a1', minRedeem: 500, logoUrl: amcLogo },
+  { id: 'brd_blackhorse', name: 'Black Horse', category: 'Banking', logoText: 'BH', color: '#065f46', minRedeem: 500, logoUrl: blackHorseLogo },
+  { id: 'brd_birmingham', name: 'Birmingham', category: 'Banking', logoText: 'BI', color: '#7c2d12', minRedeem: 500, logoUrl: birminghamLogo },
+  { id: 'brd_cavendish', name: 'Cavendish Online', category: 'Banking', logoText: 'CO', color: '#4338ca', minRedeem: 500, logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5174' },
+  { id: 'brd_embark', name: 'Embark', category: 'Insurance', logoText: 'EM', color: '#9d174d', minRedeem: 500, logoUrl: embarkLogo },
+  { id: 'brd_hgp', name: 'HGP', category: 'Insurance', logoText: 'HG', color: '#a16207', minRedeem: 500, logoUrl: hgpLogo },
+  { id: 'brd_ldc', name: 'LDC', category: 'Insurance', logoText: 'LD', color: '#155e75', minRedeem: 500, logoUrl: ldcLogo },
+  { id: 'brd_lexautolease', name: 'Lex Autolease', category: 'Insurance', logoText: 'LA', color: '#374151', minRedeem: 500, logoUrl: lexAutoleaseLogo },
+  { id: 'brd_lloydswealth', name: 'Lloyds Wealth', category: 'Banking', logoText: 'LW', color: '#006a4d', minRedeem: 500, logoUrl: lloydsWealthLogo },
+  { id: 'brd_lloydsliving', name: 'Lloyds Living', category: 'Insurance', logoText: 'LL', color: '#045a42', minRedeem: 500, logoUrl: lloydsLivingLogo },
+  { id: 'brd_scottishwidows', name: 'Scottish Widows', category: 'Insurance', logoText: 'SW', color: '#701a75', minRedeem: 500, logoUrl: scottishWidowsLogo },
+  { id: 'brd_mbna', name: 'MBNA', category: 'Banking', logoText: 'MB', color: '#1d4ed8', minRedeem: 500, logoUrl: mbnaLogo },
 ]
 
 export const DEMO_POINTS_BY_BRAND: PointsProvider[] = [
@@ -67,6 +99,22 @@ export const DEMO_POINTS_BY_BRAND: PointsProvider[] = [
   { brandId: 'brd_nandos', brandName: "Nando's", category: 'Dining', points: 4750, color: '#dc2626', logoText: 'N' },
   { brandId: 'brd_boots', brandName: 'Boots', category: 'Health', points: 5250, color: '#0e7490', logoText: 'BO' },
   { brandId: 'brd_cineworld', brandName: 'Cineworld', category: 'Entertainment', points: 4400, color: '#7c3aed', logoText: 'CW' },
+  { brandId: 'brd_alphamedicol', brandName: 'AlphaMedicol', category: 'Health', points: 2100, color: '#0e7490', logoText: 'AM', logoUrl: alphaMedicolLogo },
+  { brandId: 'brd_rinkoff', brandName: 'Rinkoff Bakery', category: 'Dining', points: 1750, color: '#b45309', logoText: 'RB', logoUrl: rinkoffBakeryLogo },
+  { brandId: 'brd_broadway', brandName: 'Broadway Market', category: 'Shopping', points: 1300, color: '#4d7c0f', logoText: 'BM', logoUrl: broadwayMarketLogo },
+  { brandId: 'brd_bankofscotland', brandName: 'Bank of Scotland', category: 'Banking', points: 2600, color: '#1e40af', logoText: 'BS', logoUrl: bankOfScotlandLogo },
+  { brandId: 'brd_amc', brandName: 'AMC', category: 'Banking', points: 1450, color: '#0369a1', logoText: 'AM', logoUrl: amcLogo },
+  { brandId: 'brd_blackhorse', brandName: 'Black Horse', category: 'Banking', points: 1900, color: '#065f46', logoText: 'BH', logoUrl: blackHorseLogo },
+  { brandId: 'brd_birmingham', brandName: 'Birmingham', category: 'Banking', points: 900, color: '#7c2d12', logoText: 'BI', logoUrl: birminghamLogo },
+  { brandId: 'brd_cavendish', brandName: 'Cavendish Online', category: 'Banking', points: 1150, color: '#4338ca', logoText: 'CO', logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5174' },
+  { brandId: 'brd_embark', brandName: 'Embark', category: 'Insurance', points: 1600, color: '#9d174d', logoText: 'EM', logoUrl: embarkLogo },
+  { brandId: 'brd_hgp', brandName: 'HGP', category: 'Insurance', points: 750, color: '#a16207', logoText: 'HG', logoUrl: hgpLogo },
+  { brandId: 'brd_ldc', brandName: 'LDC', category: 'Insurance', points: 2200, color: '#155e75', logoText: 'LD', logoUrl: ldcLogo },
+  { brandId: 'brd_lexautolease', brandName: 'Lex Autolease', category: 'Insurance', points: 2800, color: '#374151', logoText: 'LA', logoUrl: lexAutoleaseLogo },
+  { brandId: 'brd_lloydswealth', brandName: 'Lloyds Wealth', category: 'Banking', points: 2400, color: '#006a4d', logoText: 'LW', logoUrl: lloydsWealthLogo },
+  { brandId: 'brd_lloydsliving', brandName: 'Lloyds Living', category: 'Insurance', points: 1350, color: '#045a42', logoText: 'LL', logoUrl: lloydsLivingLogo },
+  { brandId: 'brd_scottishwidows', brandName: 'Scottish Widows', category: 'Insurance', points: 3100, color: '#701a75', logoText: 'SW', logoUrl: scottishWidowsLogo },
+  { brandId: 'brd_mbna', brandName: 'MBNA', category: 'Banking', points: 2050, color: '#1d4ed8', logoText: 'MB', logoUrl: mbnaLogo },
 ]
 
 function daysAgo(days: number, hour = 12): string {

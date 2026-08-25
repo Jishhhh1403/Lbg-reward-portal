@@ -39,12 +39,20 @@ export default function BrandDropdown({ label, placeholder, options, selectedId,
       >
         {selected ? (
           <>
-            <span
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white"
-              style={{ backgroundColor: selected.color }}
-            >
-              {selected.logoText}
-            </span>
+            {selected.logoUrl ? (
+              <img
+                src={selected.logoUrl}
+                alt={selected.name}
+                className="h-8 w-8 shrink-0 rounded-lg border border-slate-200 bg-white object-contain p-0.5"
+              />
+            ) : (
+              <span
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white"
+                style={{ backgroundColor: selected.color }}
+              >
+                {selected.logoText}
+              </span>
+            )}
             <span className="flex-1">
               <span className="block text-sm font-semibold text-slate-900">{selected.name}</span>
               <span className="block text-xs text-slate-500">{selected.category}</span>
@@ -80,12 +88,20 @@ export default function BrandDropdown({ label, placeholder, options, selectedId,
                   }}
                   className="flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left transition hover:bg-brand-50"
                 >
-                  <span
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-[10px] font-bold text-white"
-                    style={{ backgroundColor: option.color }}
-                  >
-                    {option.logoText}
-                  </span>
+                  {option.logoUrl ? (
+                    <img
+                      src={option.logoUrl}
+                      alt={option.name}
+                      className="h-7 w-7 shrink-0 rounded-md border border-slate-200 bg-white object-contain p-0.5"
+                    />
+                  ) : (
+                    <span
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-[10px] font-bold text-white"
+                      style={{ backgroundColor: option.color }}
+                    >
+                      {option.logoText}
+                    </span>
+                  )}
                   <span className="flex-1">
                     <span className="block text-sm font-medium text-slate-900">{option.name}</span>
                     <span className="block text-xs text-slate-500">{option.category}</span>
