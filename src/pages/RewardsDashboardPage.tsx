@@ -265,7 +265,7 @@ export default function RewardsDashboardPage({
               '&:hover': { bgcolor: 'rgba(255,255,255,0.10)' },
             }}
           >
-            <ArrowLeft size={17} />
+            <ArrowLeft size={17} /> <span>Home</span> 
           </ButtonBase>
           <Typography
             sx={{
@@ -277,7 +277,7 @@ export default function RewardsDashboardPage({
               letterSpacing: '0.02em',
             }}
           >
-            Welcome to LBG Reward Coins
+            Rewards
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '2px', flexShrink: 0 }}>
             <MotionButton

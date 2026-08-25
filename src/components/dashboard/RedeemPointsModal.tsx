@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowRight, Coins, ExternalLink, Search, X } from 'lucide-react'
+import { Coins, ExternalLink, Search, X } from 'lucide-react'
 import type { PointsProvider } from '../../types/rewards'
 import BottomSheetModal from '../ui/BottomSheetModal'
 
@@ -20,6 +20,7 @@ interface CatalogItem {
   color: string
   yourPoints: number
   logoUrl?: string
+  redirectUrl?: string
 }
 
 export default function RedeemPointsModal({
@@ -43,6 +44,7 @@ export default function RedeemPointsModal({
         color: p.color,
         yourPoints: p.points,
         logoUrl: p.logoUrl,
+        redirectUrl: p.redirectUrl,
       })),
     [pointsData],
   )
@@ -90,12 +92,12 @@ export default function RedeemPointsModal({
       </div>
 
       {/* Category filters */}
-      <div className="no-scrollbar -mx-5 mt-3 flex gap-2 overflow-x-auto px-5">
+      <div className="mt-3 flex flex-wrap gap-2">
         {categories.map((c) => (
           <button
             key={c}
             onClick={() => setCategory(c)}
-            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
+            className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
               category === c
                 ? 'border-brand-600 bg-brand-600 text-white'
                 : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400'
@@ -106,7 +108,7 @@ export default function RedeemPointsModal({
         ))}
       </div>
 
-      {/* Brand list */}
+      {/* Brand tiles */}
       <AnimatePresence mode="popLayout">
         {filtered.length === 0 ? (
           <motion.p
@@ -117,48 +119,43 @@ export default function RedeemPointsModal({
             No brands match &ldquo;{query}&rdquo;.
           </motion.p>
         ) : (
-          <ul className="mt-3 space-y-2.5">
+          <div className="mt-3 grid grid-cols-4 gap-2.5">
             {filtered.map((item, i) => (
-              <motion.li
+              <motion.button
                 key={item.id}
                 layout
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ delay: Math.min(i * 0.03, 0.25) }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ delay: Math.min(i * 0.02, 0.3) }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setRedirectTarget(item)}
+                className="flex flex-col items-center gap-1.5 rounded-xl bg-white p-2.5 text-center transition hover:bg-slate-50"
               >
-                <motion.button
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setRedirectTarget(item)}
-                  className="flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 text-left shadow-card transition hover:border-brand-300"
-                >
-                  {item.logoUrl ? (
-                    <img
-                      src={item.logoUrl}
-                      alt={item.name}
-                      className="h-11 w-11 shrink-0 rounded-xl border border-slate-200 bg-white object-contain p-1"
-                    />
-                  ) : (
-                    <span
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white"
-                      style={{ backgroundColor: item.color }}
-                    >
-                      {item.logoText}
-                    </span>
-                  )}
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-semibold text-slate-900">{item.name}</span>
-                    <span className="mt-0.5 flex items-center gap-1 text-xs text-slate-500">
-                      <Coins size={12} className="text-gold-500" />
-                      {item.yourPoints.toLocaleString('en-GB')} pts available · min redeem{' '}
-                      {(item.yourPoints >= 500 ? 500 : item.yourPoints).toLocaleString('en-GB')}
-                    </span>
+                {item.logoUrl ? (
+                  <img
+                    src={item.logoUrl}
+                    alt={item.name}
+                    className="h-12 w-12 rounded-lg border border-slate-200 bg-white object-contain p-0.5"
+                  />
+                ) : (
+                  <span
+                    className="flex h-12 w-12 items-center justify-center rounded-lg text-sm font-bold text-white"
+                    style={{ backgroundColor: item.color }}
+                  >
+                    {item.logoText}
                   </span>
-                  <ArrowRight size={16} className="shrink-0 text-slate-300" />
-                </motion.button>
-              </motion.li>
+                )}
+                <span className="line-clamp-2 text-[10px] font-medium leading-tight text-slate-700">
+                  {item.name}
+                </span>
+                <span className="flex items-center gap-0.5 text-[9px] text-slate-400">
+                  <Coins size={9} className="text-gold-500" />
+                  {item.yourPoints.toLocaleString('en-GB')}
+                </span>
+              </motion.button>
             ))}
-          </ul>
+          </div>
         )}
       </AnimatePresence>
 
@@ -193,7 +190,10 @@ export default function RedeemPointsModal({
                 <motion.button
                   whileTap={{ scale: 0.98 }}
                   onClick={() =>
-                    window.location.assign(`https://www.${redirectTarget.name.toLowerCase().replace(/[^a-z]/g, '')}.com`)
+                    window.location.assign(
+                      redirectTarget.redirectUrl ??
+                        `https://www.${redirectTarget.name.toLowerCase().replace(/[^a-z]/g, '')}.com`,
+                    )
                   }
                   className="w-full rounded-xl bg-brand-600 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
                 >

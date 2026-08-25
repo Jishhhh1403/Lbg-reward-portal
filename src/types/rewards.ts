@@ -11,6 +11,8 @@ export interface BrandOption {
   minRedeem?: number
   /** Optional brand logo image; falls back to the colored logoText tile */
   logoUrl?: string
+  /** Optional explicit redirect URL; overrides the auto-generated brand URL */
+  redirectUrl?: string
 }
 
 export interface PointsProvider {
@@ -22,6 +24,8 @@ export interface PointsProvider {
   logoText: string
   /** Optional brand logo image; falls back to the colored logoText tile */
   logoUrl?: string
+  /** Optional explicit redirect URL; overrides the auto-generated brand URL */
+  redirectUrl?: string
 }
 
 export interface CustomerSummary {
