@@ -1,0 +1,154 @@
+/* Global resets + shared animation utilities */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, system-ui,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- entrance animations ---- */
+@keyframes am-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.am-rise {
+  animation: am-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.am-rise-1 {
+  animation-delay: 0.07s;
+}
+.am-rise-2 {
+  animation-delay: 0.15s;
+}
+.am-rise-3 {
+  animation-delay: 0.23s;
+}
+.am-rise-4 {
+  animation-delay: 0.31s;
+}
+
+@keyframes am-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  70% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.am-pop {
+  animation: am-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ---- success check draw-on ---- */
+.success-ring {
+  stroke-dasharray: 158;
+  stroke-dashoffset: 158;
+  animation: am-draw-ring 0.7s ease-out forwards;
+}
+.success-check {
+  stroke-dasharray: 42;
+  stroke-dashoffset: 42;
+  animation: am-draw-check 0.45s ease-out 0.6s forwards;
+}
+
+@keyframes am-draw-ring {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes am-draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---- transfer overlay ---- */
+@keyframes am-pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.am-pulse-ring {
+  animation: am-pulse-ring 1.4s ease-out infinite;
+}
+.am-pulse-ring-delay {
+  animation-delay: 0.45s;
+}
+
+@keyframes am-float-up {
+  0% {
+    transform: translateY(26px) scale(0.8);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-34px) scale(1.05);
+    opacity: 0;
+  }
+}
+
+.am-float-up {
+  animation: am-float-up 1.6s ease-in-out infinite;
+}
+
+@keyframes am-progress-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+.am-progress-sweep {
+  animation: am-progress-sweep 1.15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .am-rise,
+  .am-pop,
+  .success-ring,
+  .success-check,
+  .am-pulse-ring,
+  .am-float-up,
+  .am-progress-sweep {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
