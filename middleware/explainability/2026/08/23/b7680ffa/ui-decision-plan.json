@@ -1,0 +1,463 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-b7680ffa",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Instant Gratification pure-play composition tailored for Alex Rivera, leading with mandatory anchored balance, instant reward celebration, flash deal banner, quick redeem options, tangible cash translation, and supporting brand discovery.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-reward-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Fresh Bonus Earned!",
+            "subtitle": "Your recent coffee run unlocked an instant reward.",
+            "points": 350,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "points": 350
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-reward-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Flash Hour: Artisan Coffee & Pastry Duo",
+            "subtitle": "Lightning-fast treat discount for Gold members",
+            "originalPoints": 450,
+            "discountedPoints": 300,
+            "timer": "01:45:20",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_FLASH_REWARD",
+              "payload": {
+                "rewardId": "flash-coffee-pastry-01"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-card",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "One-Tap Instant Treats",
+            "description": "Ready to claim instantly with your 4,250 coin balance.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Fast Food Combo Meal",
+                "points": 500,
+                "icon": "utensils"
+              },
+              {
+                "name": "Cinema Premier Ticket",
+                "points": 1000,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value-card",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Wallet's Real-World Worth",
+            "cashValue": "\u00a342.50",
+            "pointsEquivalent": 4250,
+            "breakdown": [
+              {
+                "label": "Available Vouchers",
+                "value": "\u00a330.00"
+              },
+              {
+                "label": "Instant Food Perks",
+                "value": "\u00a312.50"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Curated For Your Fast-Paced Lifestyle",
+            "rewards": [
+              {
+                "name": "Express Car Wash Pass",
+                "points": 800,
+                "category": "Services",
+                "limited": false
+              },
+              {
+                "name": "Streaming Service 1-Month Pass",
+                "points": 1200,
+                "category": "Entertainment",
+                "limited": true
+              },
+              {
+                "name": "Gourmet Snack Box Delivery",
+                "points": 1500,
+                "category": "Dining",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "BROWSE_CATALOGUE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Explore Instant Earn & Burn Partners",
+            "actionLabel": "Explore All 3 Connected Brands",
+            "categories": [
+              {
+                "label": "Coffee & Dining",
+                "count": 12,
+                "icon": "coffee"
+              },
+              {
+                "label": "Entertainment & Film",
+                "count": 8,
+                "icon": "film"
+              },
+              {
+                "label": "Shopping & Retail",
+                "count": 15,
+                "icon": "shopping-bag"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_BRAND_EXPLORER",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "IMMEDIATE_VALUE_INTENT",
+        "HIGH_REDEMPTION_RATE"
+      ]
+    },
+    "strategy": "Instant Gratification pure-play composition tailored for Alex Rivera, leading with mandatory anchored balance, instant reward celebration, flash deal banner, quick redeem options, tangible cash translation, and supporting brand discovery.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Instant Gratification pure-play composition tailored for Alex Rivera, leading with mandatory anchored balance, instant reward celebration, flash deal banner, quick redeem options, tangible cash translation, and supporting brand discovery.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 4250,
+          "tier": "Gold",
+          "name": "Alex Rivera",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_BALANCE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-instant-reward-popup",
+        "type": "INSTANT_REWARD_POPUP",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Fresh Bonus Earned!",
+          "subtitle": "Your recent coffee run unlocked an instant reward.",
+          "points": 350,
+          "expiresIn": "2 hours",
+          "celebration": true,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_INSTANT_REWARD",
+            "payload": {
+              "points": 350
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-flash-reward-banner",
+        "type": "FLASH_REWARD_BANNER",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Flash Hour: Artisan Coffee & Pastry Duo",
+          "subtitle": "Lightning-fast treat discount for Gold members",
+          "originalPoints": 450,
+          "discountedPoints": 300,
+          "timer": "01:45:20",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_FLASH_REWARD",
+            "payload": {
+              "rewardId": "flash-coffee-pastry-01"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-redeem-card",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "One-Tap Instant Treats",
+          "description": "Ready to claim instantly with your 4,250 coin balance.",
+          "rewards": [
+            {
+              "name": "Artisan Coffee Voucher",
+              "points": 200,
+              "icon": "coffee"
+            },
+            {
+              "name": "Fast Food Combo Meal",
+              "points": 500,
+              "icon": "utensils"
+            },
+            {
+              "name": "Cinema Premier Ticket",
+              "points": 1000,
+              "icon": "film"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_QUICK_REDEEMS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value-card",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Your Wallet's Real-World Worth",
+          "cashValue": "\u00a342.50",
+          "pointsEquivalent": 4250,
+          "breakdown": [
+            {
+              "label": "Available Vouchers",
+              "value": "\u00a330.00"
+            },
+            {
+              "label": "Instant Food Perks",
+              "value": "\u00a312.50"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-carousel",
+        "type": "REWARD_CAROUSEL",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Curated For Your Fast-Paced Lifestyle",
+          "rewards": [
+            {
+              "name": "Express Car Wash Pass",
+              "points": 800,
+              "category": "Services",
+              "limited": false
+            },
+            {
+              "name": "Streaming Service 1-Month Pass",
+              "points": 1200,
+              "category": "Entertainment",
+              "limited": true
+            },
+            {
+              "name": "Gourmet Snack Box Delivery",
+              "points": 1500,
+              "category": "Dining",
+              "limited": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "BROWSE_CATALOGUE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-brand-explorer",
+        "type": "BRAND_EXPLORER_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Explore Instant Earn & Burn Partners",
+          "actionLabel": "Explore All 3 Connected Brands",
+          "categories": [
+            {
+              "label": "Coffee & Dining",
+              "count": 12,
+              "icon": "coffee"
+            },
+            {
+              "label": "Entertainment & Film",
+              "count": 8,
+              "icon": "film"
+            },
+            {
+              "label": "Shopping & Retail",
+              "count": 15,
+              "icon": "shopping-bag"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_BRAND_EXPLORER",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "IMMEDIATE_VALUE_INTENT",
+      "HIGH_REDEMPTION_RATE"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ]
+      }
+    ],
+    "methodology": "Behavioral telemetry and session intent evaluation",
+    "temporaryInterpretation": true
+  }
+}

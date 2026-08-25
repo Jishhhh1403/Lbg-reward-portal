@@ -1,0 +1,100 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "low redemption frequency",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "interest in investment\u2011like rewards",
+        "source": "signals",
+        "confidence": 0.9,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "David Park (customer_003) is a Diamond tier member with a long\u2011term planning persona. He holds 28,400 points, primarily allocated to a Retirement Fund goal (28% progress). He also tracks Children Education (41% progress) and Dream Home (15% progress) goals. His behavior shows low redemption frequency, long average redemption latency, and a strong interest in investment\u2011like, future\u2011projection content. He engages with educational material and values future reward projections.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Customer has Diamond tier and 28,400 points",
+        "source": "Intelligence Layer - customerProfile",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "Three long\u2011term goals defined with current progress values",
+        "source": "Intelligence Layer - goals",
+        "confidence": 0.96
+      },
+      {
+        "factId": "f3",
+        "statement": "Behavior shows low redemption frequency and long average redemption time (2160\u202fh)",
+        "source": "Intelligence Layer - behaviors",
+        "confidence": 0.92
+      },
+      {
+        "factId": "f4",
+        "statement": "Customer reads educational content and values future projections",
+        "source": "Intelligence Layer - signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "f5",
+        "statement": "Current journey intent: review overall rewards portfolio and plan future redemptions",
+        "source": "Session Context - journeyAnalysis",
+        "confidence": 0.85
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "f4",
+          "f5"
+        ],
+        "inferenceMethod": "direct mapping from Intelligence Layer motivation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p2",
+        "attribute": "preferredRewardHorizon",
+        "value": "LONG_TERM",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "f3",
+          "f4"
+        ],
+        "inferenceMethod": "behavioral signal aggregation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p3",
+        "attribute": "engagementLevel",
+        "value": "MEDIUM",
+        "confidence": 0.78,
+        "evidenceRefs": [
+          "f1",
+          "f5"
+        ],
+        "inferenceMethod": "derived from tier, points balance and intent confidence",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

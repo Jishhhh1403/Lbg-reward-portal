@@ -1,0 +1,74 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes challenges regularly",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard daily",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "longest active streak in program",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Marcus Johnson is a highly engaged, gamification-motivated Gold tier member with 8,750 LBG coins, a 34-day active streak, and frequent challenge participation.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins-001",
+        "statement": "Customer holds 8,750 LBG coins in wallet balance.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behavior-001",
+        "statement": "Customer completes challenges regularly and checks the leaderboard daily.",
+        "source": "intelligenceLayer.signals",
+        "confidence": 0.93
+      },
+      {
+        "factId": "fact-streak-001",
+        "statement": "Customer maintains the longest active streak in the program at 34 days.",
+        "source": "intelligenceLayer.customerProfile",
+        "confidence": 0.93
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-motivation-001",
+        "attribute": "engagementMotivation",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "completes challenges regularly",
+          "checks leaderboard daily",
+          "longest active streak in program",
+          "participates in community events"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

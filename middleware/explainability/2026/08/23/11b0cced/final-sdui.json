@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "11b0cced",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-11-03T00:00:00Z",
+  "customerRef": "customer_007",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 24500,
+        "tier": "Diamond",
+        "name": "Elena Vasquez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiry Notice",
+        "expiringPoints": 2400,
+        "daysLeft": 9,
+        "message": "You have 2,400 LBG Coins expiring in 9 days. Allocate them toward your long-term goals to preserve their compounding value.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ALLOCATE_EXPIRING_POINTS",
+          "payload": {
+            "points": 2400
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Portfolio Growth Projection",
+        "currentValue": 24500,
+        "projectedValue": 45000,
+        "timeframe": "5 Years",
+        "growthRate": "7.5% APY equivalent",
+        "message": "Continuing your disciplined accumulation strategy secures long-term growth across your savings milestones.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-retirement",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 24500,
+        "target": 100000,
+        "percentage": 25,
+        "estimatedCompletion": "2038",
+        "message": "Your foundation is set. Regular contributions accelerate your path to retirement freedom.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-education",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 18500,
+        "target": 50000,
+        "percentage": 37,
+        "estimatedCompletion": "2031",
+        "message": "Strong progress made toward securing educational milestones for your children.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-home",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 9000,
+        "target": 75000,
+        "percentage": 12,
+        "estimatedCompletion": "2034",
+        "message": "Building your future property deposit steadily through disciplined reward allocation.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Define a new long-horizon savings target for your portfolio",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "The Power of Compounding Rewards",
+        "insight": "Maintaining consistent contributions during market shifts historically multiplies long-term portfolio returns by up to 1.8x over a decade.",
+        "source": "LBG Wealth Advisory Research",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_EDUCATIONAL_INSIGHT",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Long-Term Wealth Trajectory",
+        "growthLabel": "Projected Growth (Compound Tier Rewards)",
+        "data": [
+          {
+            "year": "2026",
+            "value": 24500
+          },
+          {
+            "year": "2028",
+            "value": 33000
+          },
+          {
+            "year": "2030",
+            "value": 45000
+          },
+          {
+            "year": "2032",
+            "value": 62000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_PROJECTIONS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

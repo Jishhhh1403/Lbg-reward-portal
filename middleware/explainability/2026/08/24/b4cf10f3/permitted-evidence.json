@@ -1,0 +1,92 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams is a self-directed, education-focused customer (EDUCATIONAL_COMPETENCE persona) currently tracking progress toward her 'First Home Savings Knowledge' goal (63% complete). She demonstrates strong engagement with financial literacy modules and quizzes without timed or competitive pressures.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_tracking",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_tracking",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f3",
+        "statement": "Spends longest session time on educational content",
+        "source": "session_analytics",
+        "confidence": 0.9
+      },
+      {
+        "factId": "f4",
+        "statement": "Actively tracks First Home Savings Knowledge goal at 63% progress",
+        "source": "goal_tracking",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "ip1",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "f3"
+        ],
+        "inferenceMethod": "intelligence_layer_classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "ip2",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "f3"
+        ],
+        "inferenceMethod": "behavioral_affinity_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

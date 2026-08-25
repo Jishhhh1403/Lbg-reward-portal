@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import type { AppStep } from '../types/rewards'
+import type { PersonaOption } from '../types/sdui'
 import MobileStep from '../components/auth/MobileStep'
 import OtpStep from '../components/auth/OtpStep'
 import PasswordStep from '../components/auth/PasswordStep'
@@ -28,6 +29,7 @@ interface AuthPageProps {
   onBackToMobile: () => void
   onSignupFieldChange: (field: 'name' | 'email' | 'phone' | 'password', value: string) => void
   onSubmitSignup: () => void
+  onPersonaLogin: (persona: PersonaOption) => void
 }
 
 const variants = {
@@ -83,6 +85,7 @@ export default function AuthPage(props: AuthPageProps) {
                 onSignInWithPassword={props.onSignInWithPassword}
                 onOpenPasswordStep={props.onOpenPasswordStep}
                 onOpenSignup={props.onOpenSignup}
+                onPersonaLogin={props.onPersonaLogin}
               />
             )}
             {step === 'otp' && (

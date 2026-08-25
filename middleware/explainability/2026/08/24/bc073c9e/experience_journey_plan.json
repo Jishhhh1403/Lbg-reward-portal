@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review First Home Savings Knowledge progress and engage with targeted educational insights to bridge the remaining 37% gap.",
+  "entryPoint": "Mobile rewards overview dashboard",
+  "completionDefinition": "Customer views goal progress and completes the associated educational insight or quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How close am I to mastering my First Home Savings Knowledge goal?",
+      "entryCondition": "Customer opens the rewards app",
+      "requiredInformation": [
+        "Goal progress (63%)",
+        "LBG Coins balance (3,900)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-05"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational steps can help me bridge the remaining 37% gap?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "Learning module status",
+        "Educational insight topics"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-03"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I verify my understanding and apply it toward my goal?",
+      "entryCondition": "Educational insight reviewed",
+      "requiredInformation": [
+        "Quiz availability",
+        "Goal-linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary context on LBG Coins valuation and connected brands.",
+      "contentNotes": [
+        "3 connected brands",
+        "3,900 LBG Coins equivalent value"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

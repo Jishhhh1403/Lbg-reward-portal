@@ -1,0 +1,62 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-1",
+      "storyTitle": "Inspect Balance & Apply Statement Credit",
+      "oneSentenceStory": "Review current LBG coin balance and apply cash-equivalent value directly as a statement credit toward bills.",
+      "customerSituation": "Customer is visiting the rewards overview on mobile with 7,300 LBG coins available.",
+      "storyTension": "Translating accumulated points into clear, predictable financial relief without friction.",
+      "customerResolution": "View point balance, review cash-equivalent value, and initiate a direct statement credit redemption.",
+      "primaryOutcome": "Initiate or configure statement credit redemption.",
+      "secondaryOutcome": null,
+      "narrativeMode": "RESOLVE_ACTION",
+      "evidenceRefs": [
+        "fact-exclusive-statement-credits"
+      ],
+      "confidence": 0.92,
+      "prohibitedDetours": [
+        "Suggesting lifestyle vouchers",
+        "Partner brand experiential rewards",
+        "Leaderboards or gamified streaks"
+      ],
+      "completionSignals": [
+        "Customer views point balance and corresponding cash equivalent value",
+        "Customer initiates statement credit redemption"
+      ],
+      "expiryAt": "2026-09-20T00:00:00Z"
+    },
+    {
+      "storyId": "story-2",
+      "storyTitle": "Track Holiday Savings Goal Progress",
+      "oneSentenceStory": "Monitor progress toward the active holiday spending money goal and allocate points to reach the target.",
+      "customerSituation": "Active holiday savings goal is at 53% progress (640 out of 1200 target).",
+      "storyTension": "Aligning available earned rewards with specific personal financial milestones.",
+      "customerResolution": "Review goal progress card and link available reward allocation to accelerate goal completion.",
+      "primaryOutcome": "Customer reviews progress on active holiday savings goal.",
+      "secondaryOutcome": null,
+      "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+      "evidenceRefs": [
+        "fact-holiday-goal"
+      ],
+      "confidence": 0.88,
+      "prohibitedDetours": [
+        "Gamified rankings",
+        "Unrelated product cross-sell"
+      ],
+      "completionSignals": [
+        "Customer reviews progress on active holiday savings goal"
+      ],
+      "expiryAt": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "recommendedStoryId": "story-1",
+  "rejectedStoryReasons": {
+    "story-2": "Story-1 directly addresses the primary transactional intent of checking statement credit value and initiating bill relief, which aligns highest with the payment-utility motivation."
+  },
+  "qualityGate": {
+    "passed": true,
+    "violations": [
+      "story-1: stripped unpermitted evidenceRefs ['fact-wallet-coins']"
+    ]
+  }
+}

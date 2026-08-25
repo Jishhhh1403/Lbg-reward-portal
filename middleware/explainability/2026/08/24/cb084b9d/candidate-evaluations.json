@@ -1,0 +1,557 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich competence-focused rewards overview screen comprising 15 components: HEADER, NAVIGATION_BAR, POINTS_BALANCE, GOAL_PROGRESS_CARD, ADD_GOAL_CARD, EDUCATIONAL_INSIGHT_CARD, QUIZ_CARD, MILESTONE_CARD, GOAL_LINKED_REWARD, COMPETENCE_SUMMARY_CARD, LEARNING_PATHWAY_CARD, MASTERY_ACHIEVEMENT_CARD, RESOURCE_LIBRARY_CARD, FEEDBACK_CARD, and FOOTER. Completely avoids timed challenges, public rankings, and manipulative urgency, honoring the customer's learning mastery motivation.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses the customer's goal of mastering financial concepts for long-term home savings without pressure."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Offers deep educational value, progress tracking, and self-paced milestone achievements across 15 well-structured components."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly aligns with LEARNING_MASTERY motivation and educational reward preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 10,
+          "explanation": "Clean, unhurried, self-paced layout optimized for thorough comprehension and cognitive ease."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong behavioral evidence of 100% module completion and quiz retakes."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains professional, calm, educational brand tone."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces insightful learning pathways tailored to home savings milestones."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "All components are fully supported and conform strictly to the UI Constitution and latency budgets."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative moderate educational dashboard containing 12 components: HEADER, POINTS_BALANCE, GOAL_PROGRESS_CARD, ADD_GOAL_CARD, EDUCATIONAL_INSIGHT_CARD, QUIZ_CARD, MILESTONE_CARD, GOAL_LINKED_REWARD, STUDY_TIMER_CARD, DAILY_GOAL_CARD, SUMMARY_CARD, and FOOTER. Includes a study timer which mildly touches upon time management, though non-competitive.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Good goal alignment, but the study timer introduces mild time-oriented pressure."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Solid utility across 12 components, but timer feature conflicts slightly with avoidance of timed mechanics."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Mostly aligned with learning mastery, but timer element slightly deviates from unhurried preference."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clear layout, but timer adds minor unnecessary cognitive load."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Based on observed learning behaviors."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with platform design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 6,
+          "explanation": "Standard educational layout."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Feasible, though study timer component requires minor validation."
+        }
+      },
+      "weightedTotal": 7.45,
+      "hardGatesPass": true,
+      "objections": [
+        "Study timer component borders on timed mechanics, which contradicts the customer's observed avoidance of timed challenges."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Competence-focused mastery screen for Sophie Williams, strictly adhering to the mandatory ordered stack, incorporating educational missions, quizzes, and long-term home savings progress without any timed challenges or public leaderboards.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are making steady progress toward mastering your first home savings journey at your own pace.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Mortgage Deposit Strategy & Compounding",
+            "description": "Deepen your understanding of interest rates, deposit structures, and long-term financial planning with zero time pressure.",
+            "modulesDone": 6,
+            "modulesTotal": 10,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "Which factor most reliably reduces total interest paid on a long-term mortgage over 25 years?",
+            "options": [
+              "Making regular overpayments when feasible",
+              "Switching providers every 6 months",
+              "Relying solely on introductory cashback offers",
+              "Minimizing initial deposit amounts"
+            ],
+            "reward": "150 LBG Coins",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Quiz Review",
+            "question": "How do fixed-rate savings pots protect your home deposit goal?",
+            "yourAnswer": "They lock in the interest rate so returns are predictable.",
+            "correctAnswer": "They lock in the interest rate so returns are predictable.",
+            "feedback": "Spot on! Predictability allows you to forecast your exact milestone completion date without market volatility.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Topic Confidence Meter",
+            "topic": "Property Deposit Mechanics",
+            "confidencePercent": 88,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Mastering Shared Ownership Structures",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Self-Paced Mastery Insight",
+            "insight": "Taking your time to thoroughly review each financial literacy module leads to a 40% higher retention rate in long-term wealth planning.",
+            "source": "Financial Education Research Guild",
+            "actionLabel": "Review Module Notes",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another self-paced educational or savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 5 Financial Literacy Modules",
+                "achieved": true
+              },
+              {
+                "label": "Achieved 100% Quiz Accuracy on First Attempt",
+                "achieved": true
+              },
+              {
+                "label": "Reached 1,250 Points on First Home Savings Knowledge",
+                "achieved": true
+              },
+              {
+                "label": "Complete Advanced Mortgage Workshop",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Rewards That Accelerate Your Home Knowledge",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "First-Time Buyer Masterclass Guide",
+                "points": 250,
+                "goalLinked": true
+              },
+              {
+                "name": "Conveyancing Fees Breakdown Workshop",
+                "points": 400,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-path",
+          "type": "LEARNING_PATH_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "courseName": "Rewards Academy",
+            "currentLesson": 7,
+            "totalLessons": 10,
+            "lessonPoints": 50,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-myth-or-fact",
+          "type": "MYTH_OR_FACT_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "statements": [
+              {
+                "myth": "Higher savings interest rates always require locking your funds away for at least five years.",
+                "fact": "Many competitive notice accounts and fixed pots offer flexible terms starting from 30 days.",
+                "rewardPoints": 100
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.98,
+      "reasonCodes": [
+        "MANDATORY_STACK_COMPLIANCE",
+        "EDUCATIONAL_COMPETENCE_ALIGNMENT",
+        "NO_TIMED_OR_RANKING_MECHANICS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative competence dashboard emphasizing structured financial literacy modules, knowledge reinforcement, and conceptual clarity for Sophie Williams without any competitive or time-sensitive elements.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "Building your knowledge base brick by brick for your future home.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission-2",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Homebuyer Financial Blueprint",
+            "description": "Thorough analytical exploration of property market fundamentals and mortgage structuring.",
+            "modulesDone": 6,
+            "modulesTotal": 10,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-quiz-2",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the primary purpose of a property survey before finalizing a mortgage offer?",
+            "options": [
+              "To identify structural defects and valuation accuracy",
+              "To determine interior paint color preferences",
+              "To calculate monthly utility bills",
+              "To negotiate estate agent commission"
+            ],
+            "reward": "150 LBG Coins",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-comprehension-feedback-2",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Comprehension Check",
+            "question": "Why examine survey valuation reports thoroughly?",
+            "yourAnswer": "To ensure the property value matches the agreed purchase price.",
+            "correctAnswer": "To ensure the property value matches the agreed purchase price.",
+            "feedback": "Exactly right. This protects you against overpaying and highlights any necessary repairs.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress-2",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Confidence Meter",
+            "topic": "Property Valuation & Surveys",
+            "confidencePercent": 82,
+            "levelLabel": "Solid competence",
+            "nextMilestone": "Legal Conveyancing Mastery",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Mastery Principle",
+            "insight": "True financial competence comes from understanding the 'why' behind every financial instrument, not just the numbers.",
+            "source": "Institute of Financial Literacy",
+            "actionLabel": "Explore Concepts",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new learning or savings target.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-coach-tip",
+          "type": "COACH_TIP_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "coachName": "Ava from Rewards Coaching",
+            "headline": "Pacing Your Learning Journey",
+            "body": "Sophie, your dedication to retaking quizzes until concepts are fully mastered is building an exceptional foundation for your home deposit strategy.",
+            "relatedBrand": "LBG Academy",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward-2",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Accelerate Your Home Knowledge",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Advanced Budgeting & Mortgage Readiness",
+                "points": 350,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-academy-badge",
+          "type": "POINTS_ACADEMY_BADGE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "level": "Silver Scholar",
+            "nextLevel": "Gold Master",
+            "lessonsToNext": 3,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-savings-calc",
+          "type": "SAVINGS_CALCULATOR_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Home Deposit Simulation",
+            "presets": [
+              {
+                "monthly": 200,
+                "yearEnd": 2400,
+                "bonusPoints": 500
+              },
+              {
+                "monthly": 350,
+                "yearEnd": 4200,
+                "bonusPoints": 900
+              }
+            ],
+            "note": "Projections include standard partner earn rates and academy completion bonuses.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "MANDATORY_STACK_COMPLIANCE",
+        "LEARNING_MASTERY_FOCUS"
+      ]
+    }
+  ]
+}

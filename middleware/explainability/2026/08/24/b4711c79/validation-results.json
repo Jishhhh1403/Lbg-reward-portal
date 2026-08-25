@@ -1,0 +1,37 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "COHERENCE",
+        "severity": "HIGH",
+        "statement": "postCompileCoherence check failed: compiled order diverges from approved narrative sequence (first mismatch at position 2: approved=['comp-milestone'], compiled=['comp-learning-mission'])."
+      }
+    ],
+    "unresolvedCritical": 1,
+    "unresolvedHigh": 1,
+    "releaseReasons": [
+      "The compiled screen's component order diverges from the approved narrative sequence and violates coherence constraints."
+    ],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "Stage R validation failed due to coherence divergence between the compiled components and the approved narrative sequence."
+      }
+    ]
+  },
+  "fallbackTriggered": true,
+  "reasonCodes": [
+    "U.STORY.DEGRADED",
+    "U.STORY.DEGRADED",
+    "R.CONTINUITY.UNAVAILABLE",
+    "R.COHERENCE.HOLD"
+  ]
+}

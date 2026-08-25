@@ -1,0 +1,135 @@
+{
+  "planId": "plan-a8019ac6",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Display prominent GBP cash equivalent (\u00a356.00 value for 5,600 coins), side-by-side partner conversion rates, and a clean customer choice panel without any urgency framing or point abstraction, tailored to VALUE_CERTAINTY_SEEKER.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 5600,
+          "tier": "Gold",
+          "name": "Maya Thompson",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Your Exact Cash Worth",
+          "cashValue": "\u00a356.00",
+          "pointsEquivalent": 5600,
+          "breakdown": {
+            "Standard Rate": "100 coins = \u00a31.00",
+            "Direct Redemption": "Fully Available"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reward-choice",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Redemption Options",
+          "subtitle": "Choose how you would like to apply your \u00a356.00 value",
+          "options": {
+            "id": "opt-direct-cash",
+            "label": "Direct Statement Credit",
+            "description": "Transfer \u00a356.00 directly to your account balance with zero fees",
+            "points": 5600
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_REWARD_OPTION",
+            "payload": {
+              "optionId": "opt-direct-cash"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-partner-comparison",
+        "type": "PARTNER_VALUE_COMPARISON",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Partner Conversion Comparison",
+          "subtitle": "Compare how your 5,600 coins convert across our trusted merchant partners",
+          "partners": {
+            "name": "Supermarket Partner",
+            "points": 5600,
+            "value": "\u00a358.80",
+            "perk": "5% bonus value when converted to grocery vouchers"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Transparent Valuation Guarantee",
+          "intro": "We show exact monetary equivalents because clarity matters when you decide how to use your rewards.",
+          "reasons": {
+            "label": "Zero Point Abstraction",
+            "detail": "Every coin value is shown in clear pounds and pence with no hidden conversion math."
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Valuation Insights",
+          "topBrandName": "Supermarket Partner",
+          "topBrandPoints": 5600,
+          "growthTip": "Converting to partner vouchers offers the highest monetary return at \u00a358.80.",
+          "expiringPoints": 0,
+          "expiryDate": "31 Dec",
+          "ctaText": "Explore Partner Rates",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "VALUE_CERTAINTY_ALIGNMENT"
+    ]
+  },
+  "strategy": "Display prominent GBP cash equivalent (\u00a356.00 value for 5,600 coins), side-by-side partner conversion rates, and a clean customer choice panel without any urgency framing or point abstraction, tailored to VALUE_CERTAINTY_SEEKER.",
+  "confidence": 0.95
+}

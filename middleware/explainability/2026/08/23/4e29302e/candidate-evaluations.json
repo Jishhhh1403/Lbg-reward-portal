@@ -1,0 +1,428 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 7-component rich screen specifically built for the Churn Risk persona (Jessica Martinez). Features: POINTS_BALANCE, EXPIRING_POINTS_ALERT, REENGAGEMENT_BANNER, QUICK_WIN_CARD, PERSONALIZED_OFFER_CARD, ACTIVITY_SUMMARY, and SUPPORT_FAQ_CARD. Focuses on effortless value retrieval and clarity without deceptive countdown clocks or manipulative urgency.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly targets the core re-engagement objective and addresses the 1,850 expiring points."
+        },
+        "expectedCustomerUtility": {
+          "score": 8,
+          "explanation": "7 rich components give clear, actionable options for an inactive user to regain value easily."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Aligns perfectly with the RE_ENGAGEMENT motivation profile and churn mitigation charter."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High contrast, clear hierarchy, simple language suitable for low engagement users."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by concrete telemetry: 45 days inactivity, 1850 expiring points."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres strictly to UI design system guidelines."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Surfaces unused retail discount and quick win clearly without feeling overwhelming."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "All components are available in the UI component library."
+        }
+      },
+      "weightedTotal": 8.85,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimal 4-component screen featuring only POINTS_BALANCE, EXPIRING_POINTS_ALERT, REENGAGEMENT_BANNER, and QUICK_WIN_CARD.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Misses optimal component count for rich engagement."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Fewer than 5 components; fails to provide adequate surrounding context or support for a disengaged user."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Touches on re-engagement but lacks depth."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple layout, but underutilizes screen real estate."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Uses standard telemetry facts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with design system."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Very basic approach with no added utility."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 6.7,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 5 components, reducing expected customer utility and goal relevance."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 7-component rich screen tailored for the Churn Risk persona (Jessica Martinez). Features POINTS_BALANCE, EXPIRING_POINTS_ALERT, REENGAGEMENT_BANNER, QUICK_WIN_CARD, PERSONALIZED_OFFER_CARD, TANGIBLE_VALUE_CARD, and SYNC_STATUS_CARD. Focuses on effortless value retrieval, clear transparency around the 1,850 expiring points in 12 days, and gentle re-engagement without deceptive countdown clocks.",
+      "components": [
+        {
+          "id": "comp-pts-bal-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-exp-alert-002",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "You have 1,850 points expiring in 12 days. Claim a quick reward before they expire!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengage-banner-003",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Welcome back, Jessica!",
+            "message": "We missed you over the last 45 days. Let's make the most of your Silver tier balance today.",
+            "ctaText": "Explore My Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-004",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Claim instantly with zero friction",
+            "rewards": [
+              {
+                "name": "Retail Discount Voucher",
+                "points": 300
+              },
+              {
+                "name": "Coffee Treat",
+                "points": 150
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Retail Discount Voucher"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-pers-offer-005",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Tailored For You",
+            "subtitle": "Silver Member Perk",
+            "offer": "Double points on your next linked brand purchase",
+            "validUntil": "12 days",
+            "message": "Reactivate your account activity to lock in this special perk.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACTIVATE_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-val-006",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Rewards Cash Value",
+            "cashValue": "\u00a318.50",
+            "pointsEquivalent": 1850,
+            "breakdown": [
+              {
+                "label": "Available Points Worth",
+                "value": "\u00a318.50"
+              },
+              {
+                "label": "Linked Brands Value",
+                "value": "\u00a35.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_BREAKDOWN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status-007",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Status",
+            "lastSyncedAt": "2026-08-23T06:44:19.364Z",
+            "message": "All 3 linked brands are fully synchronized.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "CHURN_RISK_PROFILE",
+        "EXPIRING_POINTS_MANDATORY",
+        "REENGAGEMENT_INTENT"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "An alternative 6-component re-engagement candidate focusing on quick redemption and tangible worth for Jessica Martinez. Combines POINTS_BALANCE, EXPIRING_POINTS_ALERT, REENGAGEMENT_BANNER, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD, and REWARDS_INSIGHT_CARD to guide the user back seamlessly.",
+      "components": [
+        {
+          "id": "comp-pts-bal-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-exp-alert-002",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiry Notice",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "1,850 points are scheduled to expire in 12 days. Redeem them now to retain their full value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengage-banner-003",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Welcome Back, Jessica",
+            "message": "We're glad to see you return after 45 days. Explore your active rewards below.",
+            "ctaText": "Get Started",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-004",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Quick Redeem Rewards",
+            "description": "Instant low-point redemptions available for your Silver account",
+            "rewards": [
+              {
+                "name": "Retail Discount",
+                "points": 300,
+                "icon": "shopping-bag"
+              },
+              {
+                "name": "Coffee Voucher",
+                "points": 150,
+                "icon": "coffee"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_REWARDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-val-005",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Real Cash Worth",
+            "cashValue": "\u00a318.50",
+            "pointsEquivalent": 1850,
+            "breakdown": [
+              {
+                "label": "Total Balance",
+                "value": "1,850 pts"
+              },
+              {
+                "label": "Estimated Value",
+                "value": "\u00a318.50"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_BREAKDOWN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-rewards-insight-006",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Account Insights",
+            "topBrandName": "Linked Partners",
+            "topBrandPoints": 1850,
+            "growthTip": "Reactivate your account to keep earning brand points.",
+            "expiringPoints": 1850,
+            "expiryDate": "04 Sep",
+            "ctaText": "View Insights",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHTS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "CHURN_RISK_ALTERNATIVE",
+        "QUICK_REDEEM_FOCUS"
+      ]
+    }
+  ]
+}

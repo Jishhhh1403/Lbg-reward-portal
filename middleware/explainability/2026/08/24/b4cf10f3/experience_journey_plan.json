@@ -1,0 +1,84 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review savings knowledge progress and smoothly transition into the next self-paced educational module.",
+  "entryPoint": "Customer opens rewards overview to check First Home Savings Knowledge goal.",
+  "completionDefinition": "Customer views goal progress, checks points balance, and engages with an educational insight or quiz card.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand on my First Home Savings Knowledge goal?",
+      "entryCondition": "App launch / overview load",
+      "requiredInformation": [
+        "Points balance",
+        "Goal progress percentage (63%)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "f4"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my rewards and financial literacy milestones align?",
+      "entryCondition": "Viewed goal progress card",
+      "requiredInformation": [
+        "Rewards insight data",
+        "Educational course progress"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "f1",
+        "f3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is the next educational step or quiz I can explore at my own pace?",
+      "entryCondition": "Reviewed educational insights",
+      "requiredInformation": [
+        "Next learning module details",
+        "Self-paced quiz data"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION"
+      ],
+      "requiredActionType": "INTERACT",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "f2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary context on how points translate into tangible educational value.",
+      "contentNotes": [
+        "Tangible value breakdown for educational rewards."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

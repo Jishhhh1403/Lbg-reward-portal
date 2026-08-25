@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "7b24ca5f",
+  "createdAt": "2026-03-31T00:00:00Z",
+  "expiresAt": "2026-04-07T00:00:00Z",
+  "customerRef": "customer_007",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 24500,
+        "tier": "Diamond",
+        "name": "Elena Vasquez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Expiring Points Notice",
+        "expiringPoints": 2400,
+        "daysLeft": 9,
+        "message": "You have 2,400 points scheduled to expire in 9 days. Allocate them to your goals to preserve their long-term value.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING_POINTS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Long-Term Projected Value",
+        "currentValue": 24500,
+        "projectedValue": 45000,
+        "timeframe": "5 Years",
+        "growthRate": "6.5% AER equivalent",
+        "message": "Consistent accumulation helps secure your future milestones with compound point growth.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTIONS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-retirement",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 24500,
+        "target": 100000,
+        "percentage": 25,
+        "estimatedCompletion": "2034",
+        "message": "Strong foundation established. Consistent contributions keep your retirement vision on track.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-education",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 18500,
+        "target": 50000,
+        "percentage": 37,
+        "estimatedCompletion": "2030",
+        "message": "Great progress at 37%. Steady additions are building a reliable educational foundation.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-home",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 9000,
+        "target": 75000,
+        "percentage": 12,
+        "estimatedCompletion": "2033",
+        "message": "Early stages of your home deposit journey. Every point brings you closer to your dream property.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new long-horizon milestone to direct your accumulation strategy.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Multi-Year Accumulation Projection",
+        "growthLabel": "Projected Growth Trajectory",
+        "data": [
+          {
+            "year": "2026",
+            "value": 24500
+          },
+          {
+            "year": "2028",
+            "value": 34000
+          },
+          {
+            "year": "2030",
+            "value": 48000
+          },
+          {
+            "year": "2032",
+            "value": 65000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_PROJECTIONS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "The Power of Compounding Points",
+        "insight": "Maintaining active contributions and avoiding idle balance erosion allows your points to compound significantly over multi-year horizons.",
+        "source": "LBG Wealth Academy",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_EDUCATIONAL_GUIDE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "label": "Lifetime Accumulated Points",
+        "value": "84,200",
+        "unit": "points",
+        "tone": "brand",
+        "infoText": "Total points accumulated across your membership history.",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_METRIC_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "label": "Connected Programmes",
+        "value": "3",
+        "unit": "active",
+        "tone": "white",
+        "infoText": "Partner accounts linked to your unified wallet.",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CONNECTED_PROGRAMMES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "label": "Goal Completion Rate",
+        "value": "64%",
+        "unit": "historical",
+        "tone": "white",
+        "infoText": "Your proven track record of reaching financial targets.",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_HISTORY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "status": "synced",
+        "title": "Wallet Synchronisation",
+        "lastSyncedAt": "2026-08-24 09:53",
+        "message": "All connected brand balances and goal progress are up to date.",
+        "ctaText": "Refresh Sync",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

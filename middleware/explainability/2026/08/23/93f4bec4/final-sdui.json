@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "93f4bec4",
+  "createdAt": "2025-02-15T00:00:00Z",
+  "expiresAt": "2025-02-15T23:59:59Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-reward",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Bonus Instant Reward",
+        "subtitle": "Earned from your recent partner merchant visit",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "points": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Flash Coffee & Pastry Special",
+        "subtitle": "Limited-time redemption discount for Gold members",
+        "originalPoints": 400,
+        "discountedPoints": 300,
+        "timer": "01:45:20",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH_OFFER",
+          "payload": {
+            "offerId": "flash-coffee-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Quick One-Tap Rewards",
+        "description": "Instantly redeemable treats ready for your next outing",
+        "rewards": [
+          {
+            "name": "Artisan Coffee",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Lunch Meal Deal",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Ticket",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REWARDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Reward Cash Value",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available Balance",
+            "value": "4,250 points"
+          },
+          {
+            "label": "Conversion Rate",
+            "value": "100 pts = \u00a31.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CASH_CONVERSION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Instant Win Rewards",
+        "subtitle": "Claim with a single tap using your Gold status",
+        "rewards": [
+          {
+            "name": "Free Snack Pass",
+            "points": 150
+          },
+          {
+            "name": "Express Delivery Voucher",
+            "points": 250
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-personalized-offer",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Tailored For You",
+        "subtitle": "Based on your frequent immediate redemptions",
+        "offer": "Double points on dining and coffee today",
+        "validUntil": "2026-09-20",
+        "message": "Activate this offer to fast-track your next instant reward.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ACTIVATE_PERSONALIZED_OFFER",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

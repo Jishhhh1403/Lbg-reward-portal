@@ -1,0 +1,382 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-4e29302e",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 7-component rich screen tailored for the Churn Risk persona (Jessica Martinez). Features POINTS_BALANCE, EXPIRING_POINTS_ALERT, REENGAGEMENT_BANNER, QUICK_WIN_CARD, PERSONALIZED_OFFER_CARD, TANGIBLE_VALUE_CARD, and SYNC_STATUS_CARD. Focuses on effortless value retrieval, clear transparency around the 1,850 expiring points in 12 days, and gentle re-engagement without deceptive countdown clocks.",
+      "components": [
+        {
+          "id": "comp-pts-bal-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-exp-alert-002",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "You have 1,850 points expiring in 12 days. Claim a quick reward before they expire!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengage-banner-003",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Welcome back, Jessica!",
+            "message": "We missed you over the last 45 days. Let's make the most of your Silver tier balance today.",
+            "ctaText": "Explore My Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-004",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Claim instantly with zero friction",
+            "rewards": [
+              {
+                "name": "Retail Discount Voucher",
+                "points": 300
+              },
+              {
+                "name": "Coffee Treat",
+                "points": 150
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Retail Discount Voucher"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-pers-offer-005",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Tailored For You",
+            "subtitle": "Silver Member Perk",
+            "offer": "Double points on your next linked brand purchase",
+            "validUntil": "12 days",
+            "message": "Reactivate your account activity to lock in this special perk.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACTIVATE_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-val-006",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Rewards Cash Value",
+            "cashValue": "\u00a318.50",
+            "pointsEquivalent": 1850,
+            "breakdown": [
+              {
+                "label": "Available Points Worth",
+                "value": "\u00a318.50"
+              },
+              {
+                "label": "Linked Brands Value",
+                "value": "\u00a35.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_BREAKDOWN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status-007",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Status",
+            "lastSyncedAt": "2026-08-23T06:44:19.364Z",
+            "message": "All 3 linked brands are fully synchronized.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "CHURN_RISK_PROFILE",
+        "EXPIRING_POINTS_MANDATORY",
+        "REENGAGEMENT_INTENT"
+      ]
+    },
+    "strategy": "A comprehensive 7-component rich screen tailored for the Churn Risk persona (Jessica Martinez). Features POINTS_BALANCE, EXPIRING_POINTS_ALERT, REENGAGEMENT_BANNER, QUICK_WIN_CARD, PERSONALIZED_OFFER_CARD, TANGIBLE_VALUE_CARD, and SYNC_STATUS_CARD. Focuses on effortless value retrieval, clear transparency around the 1,850 expiring points in 12 days, and gentle re-engagement without deceptive countdown clocks.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A comprehensive 7-component rich screen tailored for the Churn Risk persona (Jessica Martinez). Features POINTS_BALANCE, EXPIRING_POINTS_ALERT, REENGAGEMENT_BANNER, QUICK_WIN_CARD, PERSONALIZED_OFFER_CARD, TANGIBLE_VALUE_CARD, and SYNC_STATUS_CARD. Focuses on effortless value retrieval, clear transparency around the 1,850 expiring points in 12 days, and gentle re-engagement without deceptive countdown clocks.",
+    "components": [
+      {
+        "id": "comp-pts-bal-001",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 1850,
+          "tier": "Silver",
+          "name": "Jessica Martinez",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-exp-alert-002",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Expiring Points Notice",
+          "expiringPoints": 1850,
+          "daysLeft": 12,
+          "message": "You have 1,850 points expiring in 12 days. Claim a quick reward before they expire!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_EXPIRING_POINTS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reengage-banner-003",
+        "type": "REENGAGEMENT_BANNER",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Welcome back, Jessica!",
+          "message": "We missed you over the last 45 days. Let's make the most of your Silver tier balance today.",
+          "ctaText": "Explore My Rewards",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "DISMISS_BANNER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-win-004",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Effortless Quick Wins",
+          "subtitle": "Claim instantly with zero friction",
+          "rewards": [
+            {
+              "name": "Retail Discount Voucher",
+              "points": 300
+            },
+            {
+              "name": "Coffee Treat",
+              "points": 150
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_QUICK_WIN",
+            "payload": {
+              "rewardName": "Retail Discount Voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-pers-offer-005",
+        "type": "PERSONALIZED_OFFER_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Tailored For You",
+          "subtitle": "Silver Member Perk",
+          "offer": "Double points on your next linked brand purchase",
+          "validUntil": "12 days",
+          "message": "Reactivate your account activity to lock in this special perk.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ACTIVATE_OFFER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-val-006",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Your Rewards Cash Value",
+          "cashValue": "\u00a318.50",
+          "pointsEquivalent": 1850,
+          "breakdown": [
+            {
+              "label": "Available Points Worth",
+              "value": "\u00a318.50"
+            },
+            {
+              "label": "Linked Brands Value",
+              "value": "\u00a35.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CASH_BREAKDOWN",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-sync-status-007",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "status": "synced",
+          "title": "Wallet Status",
+          "lastSyncedAt": "2026-08-23T06:44:19.364Z",
+          "message": "All 3 linked brands are fully synchronized.",
+          "ctaText": "Refresh",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "CHURN_RISK_PROFILE",
+      "EXPIRING_POINTS_MANDATORY",
+      "REENGAGEMENT_INTENT"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "RE_ENGAGEMENT",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "declining engagement over 60 days",
+          "unused expiring points",
+          "stopped opening notifications",
+          "has not logged in for 45 days",
+          "multiple unused rewards",
+          "points expiring soon"
+        ]
+      }
+    ],
+    "methodology": "Behavioral pattern analysis matching churn risk indicators and re-engagement intent signals.",
+    "temporaryInterpretation": true
+  }
+}

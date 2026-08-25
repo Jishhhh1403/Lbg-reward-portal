@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "View accumulated rewards and track progress toward statement credits with clear, predictable cash-equivalent value.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer views exact points balance, inspects active goal progress, and initiates statement credit application.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and its cash value?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tangibleValue"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "s1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How are my automatic payment rewards allocated and how is my Holiday Spending Money goal progressing?",
+      "entryCondition": "Balance and cash equivalent understood",
+      "requiredInformation": [
+        "goalProgress",
+        "paymentReward",
+        "allocation"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "s2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do points work and how can I apply my statement credit?",
+      "entryCondition": "Goal and allocation reviewed",
+      "requiredInformation": [
+        "howPointsWork",
+        "statementCreditConfirmation"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "REFERENCE"
+      ],
+      "requiredActionType": "APPLY_STATEMENT_CREDIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "s3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide educational context on how LBG Coins convert directly into bill reductions.",
+      "contentNotes": [
+        "No promotional clutter",
+        "Strict adherence to cash-equivalent terms"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

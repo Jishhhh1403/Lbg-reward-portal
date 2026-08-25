@@ -30,22 +30,22 @@ export default function QuickRedeemCard({
     <div className="rounded-2xl border border-brand-100 bg-white p-4 shadow-card">
       <h3 className="mb-0.5 text-sm font-semibold text-slate-900">{title}</h3>
       <p className="mb-3 text-[11px] text-slate-400">{description}</p>
-      <div className="flex gap-2">
+      <div className="grid grid-cols-3 gap-2">
         {rewards.map((reward, i) => {
           const Icon = iconMap[reward.icon] ?? Coffee
           const tints = ['text-gold-600', 'text-amber-600', 'text-violet-600']
           return (
             <motion.div
               key={i}
-              className="flex-1 cursor-pointer rounded-xl bg-slate-50 p-2.5 text-center transition-colors hover:bg-brand-50"
+              className="min-w-0 cursor-pointer rounded-xl bg-slate-50 p-2 text-center transition-colors hover:bg-brand-50"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="mx-auto mb-1.5 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-slate-100">
-                <Icon size={16} className={tints[i % tints.length]} />
+              <span className="mx-auto mb-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-slate-100">
+                <Icon size={15} className={tints[i % tints.length]} />
               </span>
-              <p className="truncate text-[10px] font-medium text-slate-700">{reward.name}</p>
-              <p className="mt-0.5 text-[10px] font-bold text-brand-700">{reward.points.toLocaleString()} pts</p>
+              <p className="truncate text-[10px] font-medium text-slate-700" title={reward.name}>{reward.name}</p>
+              <p className="mt-0.5 truncate text-[10px] font-bold text-brand-700">{reward.points.toLocaleString()} pts</p>
             </motion.div>
           )
         })}

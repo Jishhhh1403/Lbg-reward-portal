@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Enable Sophie to review her 63% First Home Savings progress, access educational modules at her own pace, and view competence-linked milestones without pressure.",
+  "entryPoint": "Rewards Overview Dashboard",
+  "completionDefinition": "Customer successfully reviews milestone progress and opens or engages with a self-paced educational module or quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my balance and savings goal?",
+      "entryCondition": "Session initialized with active wallet and First Home Savings goal.",
+      "requiredInformation": [
+        "Points balance (3,900 LBG coins)",
+        "First Home Savings Knowledge goal progress (63%)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-first-home",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I continue my financial mastery and verify my understanding at my own pace?",
+      "entryCondition": "Milestone and balance overview acknowledged.",
+      "requiredInformation": [
+        "Learning mission status",
+        "Financial literacy quiz options",
+        "Comprehension feedback and confidence tracking"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-sig-modules",
+        "fact-sig-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational insights and goal-linked rewards support my long-term journey?",
+      "entryCondition": "Educational module or quiz reviewed.",
+      "requiredInformation": [
+        "Educational insights",
+        "Goal-linked rewards and cash value transparency"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-first-home"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-provenance",
+      "purpose": "Provide clear provenance and cash-value transparency for accumulated LBG coins.",
+      "contentNotes": [
+        "Shows exact cash equivalent of 3,900 LBG coins (\u00a339.00 value transparency)"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "Goal progress at 63% for First Home Savings Knowledge",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams (customer_011) engages primarily with educational content, financial literacy modules, and tracking goal progress for her First Home Savings Knowledge goal (currently at 63%). She shows strong preference for mastery and value clarity over competitive gamification.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Goal progress is at 63% for First Home Savings Knowledge",
+        "source": "wallet_and_journey",
+        "confidence": 0.94
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Holds 3900 LBG coins across 3 connected brands",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "intelligence_layer_classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "54064026",
+  "createdAt": "2023-10-25T10:00:00Z",
+  "expiresAt": "2023-10-25T12:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {
+            "source": "header_anchor"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-reward",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Bonus Reward Unlocked!",
+        "subtitle": "Your recent activity earned you a surprise bonus.",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "bonusPoints": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Flash Hour: Premium Coffee & Snack Pass",
+        "subtitle": "Exclusive limited-time redemption discount for Gold members.",
+        "originalPoints": 600,
+        "discountedPoints": 350,
+        "timer": "01:45:20",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH_REWARD",
+          "payload": {
+            "rewardId": "flash-coffee-snack-pass",
+            "cost": 350
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "One-Tap Instant Redemptions",
+        "description": "Redeem instantly with your 4,250 available coins.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Lunch Delivery Voucher",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Evening Ticket",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEMS",
+          "payload": {
+            "category": "instant"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Wallet's Real-World Value",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available Coin Balance",
+            "value": "4,250 coins"
+          },
+          {
+            "label": "Instant Redemption Power",
+            "value": "High Velocity"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CASH_CONVERSION",
+          "payload": {
+            "currency": "GBP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Curated For Your Instant Taste",
+        "rewards": [
+          {
+            "name": "Express Ride Credit",
+            "points": 400,
+            "category": "Travel",
+            "limited": false
+          },
+          {
+            "name": "Streaming Pass 1-Month",
+            "points": 800,
+            "category": "Entertainment",
+            "limited": true
+          },
+          {
+            "name": "Instant Retail Voucher",
+            "points": 1500,
+            "category": "Shopping",
+            "limited": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "BROWSE_CAROUSEL",
+          "payload": {
+            "filter": "instant"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win-1",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Effortless Quick Wins",
+        "subtitle": "Claim instantly with zero delay",
+        "rewards": [
+          {
+            "name": "Digital Magazine Issue",
+            "points": 150
+          },
+          {
+            "name": "Gourmet Snack Treat",
+            "points": 250
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "rewardId": "quick-win-snack"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "label": "Avg Redemption Speed",
+        "value": "2.3",
+        "unit": "hours",
+        "tone": "brand",
+        "infoText": "Your lightning-fast redemption average",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_METRIC_DETAILS",
+          "payload": {
+            "metric": "redemption_speed"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams (customer_011) is an educational competence-driven learner focused on mastering financial concepts and tracking progress toward long-term savings and knowledge goals without pressure or public rankings.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Has 3900 LBG coins and 3 connected brands",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-05",
+        "statement": "Active goal 'First Home Savings Knowledge' at 63% progress (1250/2000)",
+        "source": "session-context",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "motivated by mastering topics rather than winning them"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "persona",
+        "value": "EDUCATIONAL_COMPETENCE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "spends longest session time on educational content",
+          "avoids timed challenges and public rankings"
+        ],
+        "inferenceMethod": "persona-classifier",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

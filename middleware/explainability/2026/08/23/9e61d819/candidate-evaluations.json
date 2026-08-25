@@ -1,0 +1,305 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich multi-goal strategy for David Park (LONG_TERM_PLANNER) featuring 7 components: POINTS_BALANCE, RETIREMENT_FUND_CARD (Goal 1), CHILDREN_EDUCATION_FUND_CARD (Goal 2), DREAM_HOME_DEPOSIT_CARD (Goal 3), ADD_GOAL_CARD, PROJECTION_CHART, and EDUCATIONAL_INSIGHT_CARD. Strictly aligns with long-term accumulation and future security without urgency.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Perfect alignment: features a distinct card for each of the 3 active goals plus an ADD_GOAL_CARD, directly addressing the multi-goal context."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides deep utility through projections, rich goal tracking, and educational content fitting the long-term planner persona."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Directly targets FUTURE_SECURITY and long-term accumulation patterns."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear layout, structured financial cards, and calm visual hierarchy supporting cognitive load management."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong intelligence layer signals and behavioral history."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Follows design system guidelines for wealth and reward management."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces projection modeling and curated educational insights matching user reading habits."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "All components are fully supported in the current SDUI schema."
+        }
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Simplified single-goal overview displaying 4 components: POINTS_BALANCE, GOAL_PROGRESS_CARD (aggregate view), FUTURE_VALUE_CARD, and PROJECTION_CHART.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to represent multiple individual goals separately as required for multi-goal customers and misses the rich component count."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Too sparse; lacks comprehensive view of all 3 active goals and educational insights."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Touches on future value but aggregates individual goals, reducing personal resonance."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple, but underutilizes the available screen real estate for a Diamond tier long-term planner."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Uses general intelligence data without leveraging specific goal breakouts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with base templates."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Very standard layout with little tailored novelty."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 6.75,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Violates the multi-goal card rule by aggregating goals instead of showing one card per goal plus an ADD_GOAL_CARD, and provides fewer than 5 components."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich multi-goal strategy for David Park (LONG_TERM_PLANNER) featuring components for all 3 active goals, plus projections, future value, and educational content.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "remaining": 71600,
+            "motivationalMessage": "Steady accumulation brings long-term security closer.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "remaining": 29500,
+            "motivationalMessage": "Solid progress toward future educational milestones.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "remaining": 63750,
+            "motivationalMessage": "Every point added builds the foundation for your dream home.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new long-term milestone to track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Projected Growth Portfolio",
+            "currentValue": 28400,
+            "projectedValue": 45000,
+            "timeframe": "3 Years",
+            "growthRate": "6.5% APY equivalent",
+            "message": "Consistent long-term holding maximizes your compound reward potential.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Multi-Year Reward Growth Projection",
+            "growthLabel": "Estimated Portfolio Value (Coins)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2028",
+                "value": 38000
+              },
+              {
+                "year": "2030",
+                "value": 52000
+              },
+              {
+                "year": "2032",
+                "value": 71000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CUSTOMIZE_PROJECTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Maximizing Compound Reward Value",
+            "insight": "Holding points in long-term accumulation tiers yields up to 40% higher bonus multipliers over a 5-year horizon.",
+            "source": "LBG Wealth Insights",
+            "actionLabel": "Read Full Article",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_ARTICLE",
+              "payload": {
+                "articleId": "compound-rewards-guide"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "MULTI_GOAL_SUPPORT",
+        "FUTURE_SECURITY_FOCUS"
+      ]
+    }
+  ]
+}

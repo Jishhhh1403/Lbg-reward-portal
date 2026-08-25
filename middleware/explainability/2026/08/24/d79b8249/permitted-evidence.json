@@ -1,0 +1,72 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent redemptions of instant rewards",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "expiring points urgency",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Ryan Okafor (Gold tier) has been inactive for 41 days following a period of daily engagement. There are 3,600 total points in the wallet, with 1,500 points expiring within 7 days. Historically, the customer demonstrates a high immediate redemption rate for instant rewards and flash offers.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer has 3,600 total LBG coins in the wallet.",
+        "source": "Session Context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "1,500 points are expiring within 7 days.",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Days since last activity is 41 days.",
+        "source": "Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Immediate redemption rate is 0.85 for instant rewards.",
+        "source": "Intelligence Layer",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "preferredRewardType",
+        "value": "INSTANT",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "historically redeemed points within hours of earning",
+          "responds strongly to flash offers and instant vouchers"
+        ],
+        "inferenceMethod": "BEHAVIORAL_PATTERN_ANALYSIS",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -27,3 +27,59 @@ export { default as FutureMilestoneCard } from './FutureMilestoneCard'
 export { default as RewardCarousel } from './RewardCarousel'
 export { default as QuickRedeemCard } from './QuickRedeemCard'
 export { default as TangibleValueCard } from './TangibleValueCard'
+// Educational & financial literacy
+export { default as LearningPathCard } from './LearningPathCard'
+export { default as DailyMoneyTipCard } from './DailyMoneyTipCard'
+export { default as PointsAcademyBadgeCard } from './PointsAcademyBadgeCard'
+export { default as MythOrFactCard } from './MythOrFactCard'
+export { default as SavingsCalculatorCard } from './SavingsCalculatorCard'
+export { default as CoachTipCard } from './CoachTipCard'
+export { default as HowPointsWorkCard } from './HowPointsWorkCard'
+// Goal-related rewards & automation
+export { default as GoalTemplateGallery } from './GoalTemplateGallery'
+export { default as MilestoneRewardLadder } from './MilestoneRewardLadder'
+export { default as GoalStreakCard } from './GoalStreakCard'
+export { default as GoalMatchBoostCard } from './GoalMatchBoostCard'
+export { default as SharedGoalCard } from './SharedGoalCard'
+export { default as GoalAtRiskCard } from './GoalAtRiskCard'
+export { default as AutoRulesCard } from './AutoRulesCard'
+export { default as GoalCompleteCelebration } from './GoalCompleteCelebration'
+// Money-smart
+export { default as BestValueRedeemCard } from './BestValueRedeemCard'
+export { default as SavingsTransferCard } from './SavingsTransferCard'
+export { default as TravelFundCard } from './TravelFundCard'
+// Analytics
+export { default as EarnBreakdownCard } from './EarnBreakdownCard'
+export { default as MonthOverMonthCard } from './MonthOverMonthCard'
+export { default as PointsHealthScoreCard } from './PointsHealthScoreCard'
+// Social proof & community
+export { default as PeerInsightCard } from './PeerInsightCard'
+export { default as CommunityChallengeCard } from './CommunityChallengeCard'
+// Lifecycle & milestones
+export { default as MilestoneAnniversaryCard } from './MilestoneAnniversaryCard'
+export { default as BirthdayRewardCard } from './BirthdayRewardCard'
+// Discovery
+export { default as NewBrandSpotlightCard } from './NewBrandSpotlightCard'
+export { default as LocalDealsCard } from './LocalDealsCard'
+// Control & giving
+export { default as PreferencesCard } from './PreferencesCard'
+export { default as GiftDonateCard } from './GiftDonateCard'
+export { default as ReferralCard } from './ReferralCard'
+
+// Value certainty & transparency
+export { default as RewardChoicePanel } from './RewardChoicePanel'
+export { default as PartnerValueComparison } from './PartnerValueComparison'
+export { default as WhyThisUiCard } from './WhyThisUiCard'
+// Payment utility
+export { default as PaymentRewardCard } from './PaymentRewardCard'
+export { default as RewardAllocationControl } from './RewardAllocationControl'
+export { default as PaymentRewardConfirmation } from './PaymentRewardConfirmation'
+// Educational competence
+export { default as LearningMissionCard } from './LearningMissionCard'
+export { default as ComprehensionFeedbackCard } from './ComprehensionFeedbackCard'
+export { default as ConfidenceProgressCard } from './ConfidenceProgressCard'
+// Interoperability & portability
+export { default as ConsolidatedRewardWallet } from './ConsolidatedRewardWallet'
+export { default as PartnerTransferCard } from './PartnerTransferCard'
+export { default as RewardProvenanceCard } from './RewardProvenanceCard'
+export { default as ProgrammeConnectionCard } from './ProgrammeConnectionCard'

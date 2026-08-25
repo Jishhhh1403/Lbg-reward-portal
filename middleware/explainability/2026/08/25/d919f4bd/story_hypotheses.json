@@ -1,0 +1,68 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-1",
+      "storyTitle": "Direct Statement Credit Review",
+      "oneSentenceStory": "Review current rewards balance and apply accumulated value directly toward statement credits without distraction.",
+      "customerSituation": "Customer is visiting the rewards overview with 7300 LBG coins and an active holiday savings goal.",
+      "storyTension": "Desire to easily check accumulated cash-equivalent value and allocate rewards toward bills efficiently.",
+      "customerResolution": "View verified points balance, check holiday goal progress, and initiate a direct statement credit application.",
+      "primaryOutcome": "Seamless visibility and application of cash-equivalent reward value to statement credits.",
+      "secondaryOutcome": null,
+      "narrativeMode": "RESOLVE_ACTION",
+      "evidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "confidence": 0.9,
+      "prohibitedDetours": [
+        "Leaderboards",
+        "Public rankings",
+        "Streaks",
+        "Non-cash vouchers and partner experiences"
+      ],
+      "completionSignals": [
+        "Points balance viewed",
+        "Goal progress reviewed",
+        "Statement credit option accessed"
+      ],
+      "expiryAt": "2026-09-20T00:00:00Z"
+    },
+    {
+      "storyId": "story-2",
+      "storyTitle": "Holiday Goal Progress Tracking",
+      "oneSentenceStory": "Monitor progress toward the holiday spending money goal and align automatic payment rewards accordingly.",
+      "customerSituation": "Customer has an ongoing holiday savings goal at 53% completion and checks cashback earned regularly.",
+      "storyTension": "Need for clear tracking of goal progression without complex gamification layers.",
+      "customerResolution": "Clear visualization of current savings progress and direct link to goal-aligned statement credits.",
+      "primaryOutcome": "Clear confirmation of goal progress and tangible value accumulation.",
+      "secondaryOutcome": null,
+      "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+      "evidenceRefs": [
+        "fact-02"
+      ],
+      "confidence": 0.78,
+      "prohibitedDetours": [
+        "Leaderboards",
+        "Public rankings",
+        "Streaks",
+        "Non-cash vouchers and partner experiences"
+      ],
+      "completionSignals": [
+        "Goal progress card viewed"
+      ],
+      "expiryAt": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "recommendedStoryId": "story-1",
+  "rejectedStoryReasons": {
+    "story-2": "Story-1 more directly addresses the primary objective of reviewing statement credits and initiating cash-equivalent redemption options during this visit."
+  },
+  "qualityGate": {
+    "passed": true,
+    "violations": [
+      "story-1: stripped unpermitted evidenceRefs ['fact-03']",
+      "story-2: stripped unpermitted evidenceRefs ['fact-03']"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "high curiosity and progress orientation",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) is an education-focused rewards user motivated by learning mastery and financial literacy, with high engagement in module completion and goal tracking (First Home Savings Knowledge at 63%). She avoids timed challenges and public rankings.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "learningEngagement",
+        "value": "high",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "behavioral_aggregation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

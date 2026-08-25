@@ -1,0 +1,90 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich mobile screen composed of 8 components: POINTS_BALANCE at top, a horizontal scroll of three LONG_TERM_GOAL_CARDs (one per goal with name, target, current, progress bar), a FUTURE_VALUE_CARD under each goal showing projected point value in 12 months based on accumulation rate, a PROJECTED_REDEMPTION_CARD summarizing estimated points needed to reach each goal, an EDUCATIONAL_TIP_CARD offering a short article on long\u2011term reward investing, an ENGAGEMENT_SCORE_CARD, and an ADD_GOAL_CARD allowing David to create a new long\u2011term goal. All components respect the 'rewards\u2011personalization' consent, use only allowed data fields, and follow UI Constitution accessibility guidelines (high contrast, scalable text, screen\u2011reader labels).",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses David's three long\u2011term goals and adds a card to create new goals, matching his motivation for future security."
+        },
+        "expectedCustomerUtility": {
+          "score": 8,
+          "explanation": "Provides clear progress, projections, and actionable next steps, increasing planning utility."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Uses long\u2011term reward type and future value projections aligned with his reward profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Meets WCAG AA, includes concise visuals, optional audio descriptions, and avoids cognitive overload."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Relies on high\u2011confidence facts (tier, points, goal data) and inferred motivations with >0.9 confidence."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Uses brand colors, typography, and component library consistent with existing mobile rewards UI."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Future value projection is a novel but safe feature for Diamond members."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All required components exist, projection engine is already in scope, latency within 5\u202fs."
+        }
+      },
+      "weightedTotal": 8.35,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A compact screen with 5 components: POINTS_BALANCE, a single aggregated GOAL_PROGRESS_CARD summarizing all three goals in a stacked bar, a single FUTURE_VALUE_CARD showing total projected points across goals, a RECOMMENDED_LONG_TERM_REWARD_CARD suggesting a high\u2011value investment\u2011style reward, and an ADD_GOAL_CARD. The layout is simple, uses only allowed data, and includes accessibility labels.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Shows goal information but collapses individual goals, reducing granularity for David's specific planning."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Less actionable detail; David cannot see per\u2011goal projections needed for precise planning."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Matches long\u2011term reward type but offers only one generic recommendation."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Meets accessibility minimums; simpler layout may aid cognition."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Uses high\u2011confidence core facts; however, aggregated data reduces specificity."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Follows existing design system."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Aggregation is common; limited novelty."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fewer components, lower processing load, well within latency budget."
+        }
+      },
+      "weightedTotal": 6.85,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": []
+}

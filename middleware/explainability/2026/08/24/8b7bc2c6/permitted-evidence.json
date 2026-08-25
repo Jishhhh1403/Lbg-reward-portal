@@ -1,0 +1,72 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "always previews a reward before committing points",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "gravitates to offers labelled guaranteed or fixed value",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Amelia Carter is a Gold-tier customer with 6,450 LBG Coins who seeks complete transparency and guaranteed certainty before redeeming rewards. She consistently previews rewards, reviews full terms, and avoids ambiguous redemption flows.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins-balance",
+        "statement": "Customer holds 6,450 LBG Coins.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier-status",
+        "statement": "Customer is at Gold tier.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-preview-behavior",
+        "statement": "Always previews a reward before committing points.",
+        "source": "Intelligence Layer signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-flow-abandonment",
+        "statement": "Abandons flows that hide the final value until after selection.",
+        "source": "Intelligence Layer signals",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "GUARANTEED_CERTAINTY",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "persona: PREVIEW_GUARANTEED_VALUE",
+          "motivation: GUARANTEED_CERTAINTY"
+        ],
+        "inferenceMethod": "Intelligence Layer behavioral analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

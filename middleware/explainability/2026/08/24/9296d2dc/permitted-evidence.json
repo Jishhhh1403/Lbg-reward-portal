@@ -1,0 +1,82 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "holds reward balances across three partner programmes",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "frequently asks about moving points between programmes",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer holds reward balances across three partner programmes, frequently inquires about moving points between programmes, and seeks a consolidated view with plain-English transfer explanations while avoiding technical jargon.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Holds reward balances across three partner programmes",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Frequently asks about moving points between programmes",
+        "source": "Intelligence Layer",
+        "confidence": 0.91
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Wants one combined view of all earned rewards",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.91
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Prefers simple plain-English explanations of transfers and is put off by technical jargon",
+        "source": "Intelligence Layer",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "communicationPreference",
+        "value": "PLAIN_ENGLISH_NO_JARGON",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-04"
+        ],
+        "inferenceMethod": "BEHAVIORAL_SIGNAL_ANALYSIS",
+        "expiresAt": "2027-02-24T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "interoperabilityFocus",
+        "value": "HIGH",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "PERSONA_MATCHING",
+        "expiresAt": "2027-02-24T00:00:00Z"
+      }
+    ]
+  }
+}

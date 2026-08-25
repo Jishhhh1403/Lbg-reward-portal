@@ -1,0 +1,72 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-003",
+        "classification": "OBSERVED",
+        "value": "checks progress regularly",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sarah Chen is a Platinum-tier customer characterized as a GOAL_ORIENTED_SAVER with a high engagement score (0.91). She consistently accumulates points monthly, actively tracks progress toward multiple defined savings goals (Japan Vacation, New Phone, Emergency Fund), and demonstrates strong goal completion behavior.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer holds 6,820 LBG Coins and 0 total points.",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Customer has 3 active savings goals: Japan Vacation (67% progress), New Phone (74% progress), and Emergency Fund (45% progress).",
+        "source": "customerProfile.goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Observed behavioral signals include frequent goal-linked redemptions, consistent monthly accumulation, and checking progress regularly.",
+        "source": "journeyAnalysis.supportingEvidence",
+        "confidence": 0.91
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "savingsOrientation",
+        "value": "LONG_TERM_SAVER",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-002",
+          "fact-003"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

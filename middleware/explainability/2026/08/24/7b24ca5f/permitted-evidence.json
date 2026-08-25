@@ -1,0 +1,89 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "strong long-term accumulation history now stalled",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "significant points expiring while saving toward long-horizon goals",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-03",
+        "classification": "OBSERVED",
+        "value": "historically responded well to projected-value and educational content",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Elena Vasquez is a disciplined long-term saver (Diamond tier, PLANNER_AT_RISK_MIX persona) whose savings journey has recently stalled. She holds a large idle balance of 24,500 LBG coins with 2,400 points expiring in 9 days. Engagement has dropped with 34 days since last activity, but she historically responds well to projected-value and educational content focused on long-horizon goals.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-balance",
+        "statement": "Customer holds 24,500 LBG coins in wallet",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-expiring-points",
+        "statement": "2,400 points are expiring in 9 days",
+        "source": "intelligenceLayer.risk",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-engagement-drop",
+        "statement": "Days since last activity is 34 with declining login frequency",
+        "source": "intelligenceLayer.customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goals-count",
+        "statement": "Customer maintains 3 active long-term goals (Retirement Fund, Children Education Fund, Dream Home Deposit)",
+        "source": "intelligenceLayer.customerProfile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-persona",
+        "attribute": "persona",
+        "value": "PLANNER_AT_RISK_MIX",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "fact-engagement-drop",
+          "fact-goals-count"
+        ],
+        "inferenceMethod": "intelligence_layer_classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-engagement-risk",
+        "attribute": "engagementRisk",
+        "value": "HIGH",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-engagement-drop"
+        ],
+        "inferenceMethod": "behavioral_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

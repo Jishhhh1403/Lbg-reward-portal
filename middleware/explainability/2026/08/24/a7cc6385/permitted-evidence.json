@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) exhibits strong educational and competence-driven engagement patterns, consistently completing financial literacy modules to 100%, reviewing educational content, and actively tracking progress toward a First Home Savings goal without engaging in timed or competitive features.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_telemetry",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_telemetry",
+        "confidence": 0.94
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Holds 3900 LBG coins and 0 reward points with 3 connected brands",
+        "source": "wallet_sync",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-04",
+        "statement": "First Home Savings Knowledge goal is at 63% progress (1250 of 2000 target)",
+        "source": "goal_tracking",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferred_tone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.86,
+        "evidenceRefs": [
+          "fact-01"
+        ],
+        "inferenceMethod": "component_affinity_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

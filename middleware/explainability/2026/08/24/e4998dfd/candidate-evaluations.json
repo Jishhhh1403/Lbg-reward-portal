@@ -1,0 +1,783 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich, 13-component mobile screen meticulously tailored for the 'INSTANT_AT_RISK_MIX' persona (Ryan Okafor). It features an explicit Re-engagement Banner, Points Balance card, a prominent Expiring Points Alert highlighting the 1,500 points expiring in 7 days, a Flash Reward Banner, Quick Redeem Card, Tangible Value Card, Quick Win Card, plus supportive browsing components (Category Carousel, Recent Activity History, FAQ/Help Drawer, Tier Status Bar, Instant Vouchers Grid, and Support Footer) to ensure full screen richness without resorting to dark patterns or artificial scarcity.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses the 1,500 expiring points and provides rapid, instant-value redemption paths matching historical preferences."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 13 fully rendered components delivering immediate clarity on wallet balance and instant rewards, scoring high on utility."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly aligns with IMMEDIATE_VALUE motivation and instant small-value reward preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear typographic hierarchy, high contrast warnings for expiring points, and simple touch targets suitable for a mobile context."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Grounded firmly in strong historical telemetry (rapid redemption within hours, responsiveness to flash offers)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres to Gold tier visual guidelines and LBG mobile design system standards."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces a streamlined instant-redemption module tailored for returning inactive users."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully compatible with existing wallet and voucher API endpoints within the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 9.0,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimalist 8-component mobile strategy focusing solely on the expiring points banner and quick redeem buttons.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Addresses the core goal but offers limited contextual support."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Fails the richness threshold (under 11 components), reducing overall customer utility."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Matches immediate value motivation."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 7,
+          "explanation": "Acceptable contrast but sparse layout lacks supplementary navigation."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Uses standard telemetry signals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with brand guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with no innovative UI enhancements."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible."
+        }
+      },
+      "weightedTotal": 6.85,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 11 components (only 8), violating the richness rule and scoring lower on expectedCustomerUtility and customerGoalRelevance."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Meticulously crafted for the INSTANT_AT_RISK_MIX persona (Ryan Okafor), combining a warm re-engagement welcome with an urgent factual expiring points notice (1,500 points in 7 days) and immediate one-tap redemption paths (Flash Reward, Quick Redeem, Quick Win, Instant Reward Popup, Tangible Value). Enriched with brand discovery, metrics, and sync status to reach a fully compliant 13-component layout.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement-banner",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Welcome back, Ryan!",
+            "message": "We missed you over the past 41 days. Your Gold tier perks and 3,600 LBG coins are safe and waiting for you.",
+            "ctaText": "Explore My Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Action Recommended: Expiring Points",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "1,500 of your points are scheduled to expire in 7 days. Redeem them quickly to retain their full value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_EXPIRING",
+              "payload": {
+                "points": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Points Expiry Countdown",
+            "days": 7,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Time remaining before 1,500 LBG coins expire from your wallet.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRY_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-reward",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Flash Reward: Artisan Coffee & Pastry Bundle",
+            "subtitle": "Exclusive limited-time discount for returning Gold members",
+            "originalPoints": 600,
+            "discountedPoints": 350,
+            "timer": "23:59:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardId": "flash-coffee-pastry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Welcome Back Bonus!",
+            "subtitle": "Claim your instant reactivation reward right now",
+            "points": 250,
+            "expiresIn": "24 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "bonusPoints": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Instant One-Tap Redemptions",
+            "description": "Redeem your LBG coins instantly with zero friction",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Pass",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              },
+              {
+                "name": "Digital Cinema Ticket",
+                "points": 500,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEM",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Quick Wins For You",
+            "subtitle": "Effortless small rewards ready for instant claim",
+            "rewards": [
+              {
+                "name": "Streaming Service 1-Day Pass",
+                "points": 150
+              },
+              {
+                "name": "Audiobook Single Credit",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "points": 150
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Wallet's Real Cash Worth",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "3,600 points"
+              },
+              {
+                "label": "Expiring Soon",
+                "value": "1,500 points (\u00a315.00)"
+              },
+              {
+                "label": "Gold Tier Conversion Rate",
+                "value": "100 pts = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metrics",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "active partners",
+            "tone": "brand",
+            "infoText": "Brands linked to your rewards account",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Discover Brand Partners",
+            "actionLabel": "Browse All",
+            "categories": [
+              {
+                "label": "Dining & Coffee",
+                "count": 14,
+                "icon": "coffee"
+              },
+              {
+                "label": "Retail Shopping",
+                "count": 22,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Entertainment & Film",
+                "count": 8,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_CATEGORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronised",
+            "lastSyncedAt": "Just now",
+            "message": "All partner balances and coin transactions are fully up to date.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Curated Instant Rewards For You",
+            "rewards": [
+              {
+                "name": "Gourmet Coffee Set",
+                "points": 400,
+                "category": "Dining",
+                "limited": false
+              },
+              {
+                "name": "Weekend Cinema Pass",
+                "points": 500,
+                "category": "Entertainment",
+                "limited": true
+              },
+              {
+                "name": "E-Book Bestseller Voucher",
+                "points": 300,
+                "category": "Retail",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CATALOG",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "HIGH_URGENCY_EXPIRY",
+        "INSTANT_REDEMPTION_PREFERENCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative variation focusing heavily on flash rewards and tangible cash equivalence with streamlined navigation for rapid returning-user conversion.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement-banner-2",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Welcome back, Ryan",
+            "message": "We have secured your 3,600 LBG coins. Check your expiring balance below.",
+            "ctaText": "View Balance",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert-2",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "1,500 points expire in 7 days. Redeem them today to secure \u00a315.00 in value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_EXPIRING",
+              "payload": {
+                "points": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-2",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Instant Small Rewards",
+            "subtitle": "One-tap redemption for returning members",
+            "rewards": [
+              {
+                "name": "Express Coffee Voucher",
+                "points": 200
+              },
+              {
+                "name": "Snack Box Voucher",
+                "points": 350
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "points": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-reward-2",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Flash Deal: Weekend Dining Voucher",
+            "subtitle": "Special 40% point discount for Gold tier members",
+            "originalPoints": 750,
+            "discountedPoints": 450,
+            "timer": "12:30:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardId": "flash-dining"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-2",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Quick Redemptions",
+            "description": "Spend your coins instantly on everyday treats",
+            "rewards": [
+              {
+                "name": "Coffee & Pastry",
+                "points": 250,
+                "icon": "coffee"
+              },
+              {
+                "name": "Lunch Delivery Pass",
+                "points": 400,
+                "icon": "utensils"
+              },
+              {
+                "name": "Movie Streaming Voucher",
+                "points": 300,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEM",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value-2",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Cash Equivalent Overview",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Total Balance",
+                "value": "3,600 LBG coins"
+              },
+              {
+                "label": "Expiring Soon",
+                "value": "1,500 coins"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup-2",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Instant Reactivation Perk",
+            "subtitle": "Bonus points added to welcome you back",
+            "points": 100,
+            "expiresIn": "12 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "points": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel-2",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Top Picks For Gold Members",
+            "rewards": [
+              {
+                "name": "Retail Gift Card \u00a310",
+                "points": 1000,
+                "category": "Retail",
+                "limited": false
+              },
+              {
+                "name": "Supermarket Voucher \u00a320",
+                "points": 2000,
+                "category": "Grocery",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CATALOG",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status-2",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Status Up-To-Date",
+            "lastSyncedAt": "Today at 10:34 AM",
+            "message": "All connected partner accounts are fully synchronised.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer-2",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Partner Brand Categories",
+            "actionLabel": "View Partners",
+            "categories": [
+              {
+                "label": "Coffee & Dining",
+                "count": 14,
+                "icon": "coffee"
+              },
+              {
+                "label": "Shopping",
+                "count": 22,
+                "icon": "shopping-bag"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metrics-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "label": "Wallet Balance",
+            "value": "3,600",
+            "unit": "coins",
+            "tone": "brand",
+            "infoText": "Total available rewards balance",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.88,
+      "reasonCodes": [
+        "ALTERNATIVE_LAYOUT",
+        "FAST_REDEMPTION_FOCUS"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Streamlined statement credit focus highlighting cashback accumulation alongside automatic bill reduction allocation and clear progress tracking toward payment goals.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broad rewards overview incorporating partner voucher discovery alongside statement credit options and general tier benefits.",
+      "scores": {
+        "customerGoalRelevance": 5,
+        "expectedCustomerUtility": 4,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 6,
+        "accessibilityAndCognitiveFit": 7,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 4,
+        "evidenceConfidence": 7,
+        "usefulNovelty": 4,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 5.75,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-review-statement-credit",
+    "storyTitle": "Review Bill Reduction Progress",
+    "oneSentenceStory": "Customer checks accumulated cashback and tracks progress toward automatic statement credit allocation.",
+    "customerSituation": "Customer visits the rewards overview to inspect current cashback earnings alongside card balances.",
+    "storyTension": "Ensuring the exact cash-equivalent value and statement credit redemption status are transparent and easily applicable.",
+    "customerResolution": "Customer views clear cashback balances and confirms automated statement credit allocation for upcoming bills.",
+    "primaryOutcome": "Effortless visibility of cash-equivalent rewards and statement credit status supporting payment utility goals.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-redeems-statement-credits",
+      "fact-checks-cashback"
+    ],
+    "confidence": 0.94,
+    "prohibitedDetours": [
+      "Display leaderboards",
+      "Promote lifestyle vouchers",
+      "Introduce gamified streaks"
+    ],
+    "completionSignals": [
+      "Customer views POINTS_BALANCE",
+      "Customer views CASHBACK_SUMMARY",
+      "Customer reviews STATEMENT_CREDIT_OPTIONS"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-review-statement-credit",
+      "journeyObjective": "Provide frictionless visibility into cashback earnings, points balance, statement credit redemption options, and payment-linked goal progress.",
+      "completionDefinition": "Customer views points balance, cashback summary, and reviews statement credit options without encountering irrelevant voucher prompts.",
+      "episodeSketches": [
+        "Display prominent Points Balance and Cashback Summary alongside current card balance.",
+        "Present transparent Statement Credit Options and active bill reduction allocation status.",
+        "Show progress toward 'Holiday Spending Money' goal in clean, numeric format."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.5,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 94,
+    "actionOutcomeContinuity": 96,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "PersonalizationSynthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly matches Daniel Brooks's payment utility preference, focusing exclusively on statement credits and bill reduction."
+    },
+    {
+      "fromAgent": "RiskGuardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero manipulation, dark pattern, or gamification risk. All prohibited lifestyle voucher and leaderboard elements successfully filtered out."
+    },
+    {
+      "fromAgent": "AccessibilityAgent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and accessibility score. Numeric cash equivalents and straightforward layout align with customer autonomy."
+    },
+    {
+      "fromAgent": "CustomerStoryArchitect",
+      "messageType": "APPROVAL",
+      "summary": "Story 'story-review-statement-credit' selected from Stage U hypotheses with 100% adherence to evidence and customer intent."
+    },
+    {
+      "fromAgent": "JourneyComposer",
+      "messageType": "APPROVAL",
+      "summary": "Primary journey 'journey-candidate-1' directly serves the approved story with seamless episode flow and ONE_DOMINANT action policy."
+    },
+    {
+      "fromAgent": "CoherenceGuardian",
+      "messageType": "VOTE",
+      "summary": "Coherence assessment passed with exceptional scores across all metrics. No orphan components or conflicting narratives."
+    }
+  ]
+}

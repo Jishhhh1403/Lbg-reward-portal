@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "86c4f344",
+  "createdAt": "2026-08-24T08:15:00Z",
+  "expiresAt": "2026-08-24T09:15:00Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "comp-pts-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-consolidated-wallet",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Your Combined Reward Wallet",
+        "subtitle": "All your partner programme balances in one simple view",
+        "programmes": [
+          {
+            "name": "LBG Coins",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Partner Air",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Retail Club",
+            "points": 2800,
+            "value": "\u00a328.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3185.00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "status": "synced",
+        "title": "All Partner Balances Up to Date",
+        "lastSyncedAt": "24 Aug 2026, 08:03",
+        "message": "Your balances across all three connected programmes are fully synchronized.",
+        "ctaText": "Sync Now",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "SYNC_PARTNERS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-partner-value-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Partner Value Comparison",
+        "subtitle": "See what your points are worth across each partner in plain British Pounds",
+        "partners": [
+          {
+            "name": "LBG Coins",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "perk": "Standard 1:1 redemption"
+          },
+          {
+            "name": "Partner Air",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "perk": "Flight seat bonus included"
+          },
+          {
+            "name": "Retail Club",
+            "points": 2800,
+            "value": "\u00a328.00",
+            "perk": "Voucher conversion ready"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "COMPARE_VALUES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-partner-transfer",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Move Points Simply",
+        "fromProgramme": "LBG Coins",
+        "toPartner": "Partner Air",
+        "points": 1000,
+        "estimatedValue": "\u00a310.00",
+        "status": "Ready to transfer instantly",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "INITIATE_TRANSFER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Where Your Points Came From",
+        "subtitle": "A clear history of your recent reward earnings",
+        "history": [
+          {
+            "source": "Partner Transfer Bonus",
+            "date": "21 Aug 2026",
+            "points": 1000
+          },
+          {
+            "source": "Family Holiday Fund Contribution",
+            "date": "18 Aug 2026",
+            "points": 750
+          },
+          {
+            "source": "Monthly Partner Sync",
+            "date": "10 Aug 2026",
+            "points": 500
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_FULL_HISTORY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750.0,
+        "target": 3000.0,
+        "percentage": 58.0,
+        "remaining": 1250.0,
+        "motivationalMessage": "You are over halfway to your Family Holiday Fund! Keep moving points easily.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goal": "Family Holiday Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-programme-connection",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Connected Partner Programmes",
+        "subtitle": "Manage which programmes link into your unified reward wallet",
+        "programmes": [
+          {
+            "name": "LBG Coins",
+            "status": "Active and synced",
+            "connected": true
+          },
+          {
+            "name": "Partner Air",
+            "status": "Active and synced",
+            "connected": true
+          },
+          {
+            "name": "Retail Club",
+            "status": "Active and synced",
+            "connected": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "MANAGE_PROGRAMMES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750.0,
+        "target": 3000.0,
+        "percentage": 58.0,
+        "estimatedCompletion": "Q2 2027",
+        "message": "Steady progress towards your dream family holiday using combined partner rewards.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_LONG_TERM_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Create an additional savings or reward goal alongside your Family Holiday Fund",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "milestones": [
+          {
+            "label": "Connected 3 partner programmes",
+            "achieved": true
+          },
+          {
+            "label": "Reached 50% of Family Holiday Fund",
+            "achieved": true
+          },
+          {
+            "label": "Completed first partner point transfer",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Rewards Accelerating Your Goal",
+        "goalName": "Family Holiday Fund",
+        "rewards": [
+          {
+            "name": "Partner Air Transfer Boost",
+            "points": 500,
+            "goalLinked": true
+          },
+          {
+            "name": "Retail Club Holiday Voucher",
+            "points": 1000,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_GOAL_REWARD",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "f1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "f2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "f3",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "f4",
+        "classification": "OBSERVED",
+        "value": "motivated by mastering topics rather than winning them",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "f5",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer demonstrates a strong mastery-oriented profile focused on financial education, specifically tracking First Home Savings knowledge progress, completing educational modules to 100%, and engaging with transparency and goal progression without competitive pressure.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.94
+      },
+      {
+        "factId": "f3",
+        "statement": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.93
+      },
+      {
+        "factId": "f4",
+        "statement": "motivated by mastering topics rather than winning them",
+        "source": "behavior",
+        "confidence": 0.93
+      },
+      {
+        "factId": "f5",
+        "statement": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.92
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-1",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "f3",
+          "f4"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-2",
+        "attribute": "curiosity_response",
+        "value": "high",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "f1",
+          "f3"
+        ],
+        "inferenceMethod": "intelligence_layer_motive_scoring",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-3",
+        "attribute": "progress_orientation",
+        "value": "high",
+        "confidence": 0.82,
+        "evidenceRefs": [
+          "f1"
+        ],
+        "inferenceMethod": "intelligence_layer_motive_scoring",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,419 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 6-component screen designed for Ryan Okafor (Gold tier, dormant for 41 days, 1,500 points expiring in 7 days). Focuses on instant gratification and low-friction redemptions. Components: REENGAGEMENT_BANNER, EXPIRING_POINTS_ALERT, POINTS_BALANCE, QUICK_REDEEM_CARD, INSTANT_REWARD_POPUP, TANGIBLE_VALUE_CARD.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses expiring points and desire for quick, tangible instant gratification based on behavioral profile."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility by surfacing instant coffee/snack vouchers matching his 85% immediate redemption habit, preventing point loss."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Perfect alignment with IMMEDIATE_VALUE motivation and flash-offer responsiveness."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean, uncluttered layout with high-contrast warning elements and clear tap targets for mobile."
+        },
+        "evidenceConfidence": {
+          "score": 10,
+          "explanation": "Backed by robust behavioral metrics (avg redemption time 6h, 1,500 points expiring in 7 days)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Follows LBG design guidelines and maintains gold tier brand standards without altering mandatory text."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces a streamlined quick-win redemption flow tailored to his past coffee and snack preferences."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses standard mobile components fully supported within the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 9.05,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 5-component screen focusing purely on account recovery and point balance display, featuring POINTS_BALANCE, EXPIRING_POINTS_ALERT, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD, REENGAGEMENT_BANNER (omitting the instant reward popup).",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Addresses expiring points but misses the high-impact instant reward popup that drives his specific redemption style."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Useful for balance overview, but less compelling for immediate re-engagement without the instant pop-up trigger."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Aligns with immediate value but underutilizes his proven responsiveness to flash offers."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Simple and clean layout with good contrast."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Solid evidence base but leaves out key recommendation levers."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully compliant with LBG design system."
+        },
+        "usefulNovelty": {
+          "score": 6,
+          "explanation": "Standard layout with little tailored novelty."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully feasible within latency limits."
+        }
+      },
+      "weightedTotal": 7.6,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "note": "Omitting the INSTANT_REWARD_POPUP reduces engagement potential for a customer with an 85% immediate redemption rate."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "INSTANT_AT_RISK_MIX strategy: Leading with genuine expiring points alert for Ryan Okafor (1,500 points expiring in 7 days), followed by instant reward celebration, quick redemption vouchers, and tangible cash equivalent value to drive immediate re-engagement after 41 inactive days.",
+      "components": [
+        {
+          "id": "points-balance-header",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "expiring-points-alert-1",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "You have 1,500 points set to expire in 7 days. Redeem them now to lock in your value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_EXPIRING",
+              "payload": {
+                "points": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "instant-reward-popup-1",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Welcome Back Bonus!",
+            "subtitle": "Exclusive instant treat for returning to your Gold tier rewards.",
+            "points": 250,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "rewardId": "welcome-back-250"
+              }
+            }
+          ]
+        },
+        {
+          "id": "quick-redeem-card-1",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Instant One-Tap Vouchers",
+            "description": "Redeem your balance instantly with zero hassle. Perfect for your favorite treats.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Flash Deal Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              },
+              {
+                "name": "Cinema Ticket Pass",
+                "points": 500,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "tangible-value-card-1",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Wallet Cash Worth",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "3,600 coins (\u00a336.00)"
+              },
+              {
+                "label": "Expiring Soon",
+                "value": "1,500 points (\u00a315.00 value)"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "reengagement-banner-1",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Great to see you again, Ryan!",
+            "message": "It's been a little while. Your Gold tier perks are waiting\u2014pick up where you left off.",
+            "ctaText": "Explore Instant Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_OR_EXPLORE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.94,
+      "reasonCodes": [
+        "INSTANT_AT_RISK_MIX",
+        "EXPIRING_POINTS_URGENCY",
+        "HIGH_IMMEDIATE_REDEMPTION_AFFINITY"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative Instant Gratification & Flash Offer Mix: Emphasizes flash deals and quick win rewards paired with expiry protection and tangible value conversion for Ryan Okafor.",
+      "components": [
+        {
+          "id": "points-balance-header-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "expiring-points-alert-2",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiry Warning",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "Don't lose your 1,500 points. Use them on quick instant rewards today.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_EXPIRING",
+              "payload": {
+                "points": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "flash-reward-banner-1",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Gold Tier Flash Deal",
+            "subtitle": "Limited-time 50% points discount on premium instant vouchers.",
+            "originalPoints": 600,
+            "discountedPoints": 300,
+            "timer": "06:45:12",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardId": "flash-deal-300"
+              }
+            }
+          ]
+        },
+        {
+          "id": "quick-win-card-1",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Tap once to claim your instant rewards instantly.",
+            "rewards": [
+              {
+                "name": "Morning Espresso",
+                "points": 150
+              },
+              {
+                "name": "Gourmet Snack Pack",
+                "points": 250
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "tangible-value-card-2",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Total Wallet Value",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available Balance",
+                "value": "3,600 Coins"
+              },
+              {
+                "label": "Cash Equivalent",
+                "value": "\u00a336.00 GBP"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "reengagement-banner-2",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Welcome back to your rewards",
+            "message": "We've saved your Gold tier perks and balance while you were away.",
+            "ctaText": "Start Redeeming",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_OR_EXPLORE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "FLASH_OFFER_RESPONSIVENESS",
+        "QUICK_WIN_ENGAGEMENT",
+        "EXPIRING_POINTS_PROTECTION"
+      ]
+    }
+  ]
+}

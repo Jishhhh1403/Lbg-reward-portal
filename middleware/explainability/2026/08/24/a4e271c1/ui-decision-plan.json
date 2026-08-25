@@ -1,0 +1,505 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-a4e271c1",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver transparent educational goal progress tracking for First Home Savings, featuring self-paced quiz modules and transparent milestone insights without timers or rankings, adhering strictly to Sophie's LEARNING_MASTERY profile.",
+      "components": [
+        {
+          "id": "points-balance-component",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "goal-progress-card-1",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You're 63% through building your first home savings knowledge. Keep mastering at your own pace!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "learning-mission-card-1",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "First Home Savings Masterclass",
+            "missionName": "Mortgage & Deposit Literacy",
+            "description": "Master the fundamentals of building a robust house deposit and understanding mortgage mechanics.",
+            "modulesDone": 5,
+            "modulesTotal": 8,
+            "pointsOnCompletion": 250,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "learning_mission"
+              }
+            }
+          ]
+        },
+        {
+          "id": "quiz-card-1",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "Which factor most reliably reduces your overall mortgage interest over time?",
+            "options": [
+              "Making consistent overpayments when possible",
+              "Switching providers every month",
+              "Avoiding fixed-rate terms entirely"
+            ],
+            "reward": "+50 LBG Coins upon comprehension",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT",
+              "payload": {
+                "answer": "Making consistent overpayments when possible"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comprehension-feedback-card-1",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Mastery Review",
+            "question": "Compound growth vs simple interest in savings pots",
+            "yourAnswer": "Interest calculated on initial principal and accumulated interest",
+            "correctAnswer": "Interest calculated on initial principal and accumulated interest",
+            "feedback": "Spot on! Understanding compounding is foundational to reaching your \u00a32,000 savings knowledge target.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "confidence-progress-card-1",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Confidence Meter",
+            "topic": "First Home Financing",
+            "confidencePercent": 84,
+            "levelLabel": "Advanced Competence",
+            "nextMilestone": "Mastery Expert Badge",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "educational-insight-card-1",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Why Knowledge Matters for Your First Home",
+            "insight": "Savers who complete financial literacy modules retain 40% more capital over a 3-year house deposit timeline due to optimized product choices.",
+            "source": "LBG Financial Education Research",
+            "actionLabel": "Explore Reading Material",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "educational_insight_detail"
+              }
+            }
+          ]
+        },
+        {
+          "id": "milestone-card-1",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed Basic Budgeting Module",
+                "achieved": true
+              },
+              {
+                "label": "Reached 50% First Home Knowledge Goal",
+                "achieved": true
+              },
+              {
+                "label": "Master Advanced Deposit Strategies",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "tangible-value-card-1",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your LBG Coins Value Equivalent",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "3,900 coins"
+              },
+              {
+                "label": "Educational Conversion Rate",
+                "value": "100 coins = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "how-points-work-card-1",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "steps": [
+              {
+                "title": "1. Learn & Complete",
+                "description": "Engage with educational modules and quizzes at your own pace."
+              },
+              {
+                "title": "2. Earn LBG Coins",
+                "description": "Gain coins as you achieve complete module comprehension."
+              },
+              {
+                "title": "3. Apply to Goals",
+                "description": "Put your financial competence toward your First Home Savings milestone."
+              }
+            ],
+            "ctaLabel": "View Learning Guidelines",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "learning_guidelines"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "MANDATORY_ORDERED_STACK",
+        "CARD_RULE_ENGINE_COMPLIANT"
+      ]
+    },
+    "strategy": "Deliver transparent educational goal progress tracking for First Home Savings, featuring self-paced quiz modules and transparent milestone insights without timers or rankings, adhering strictly to Sophie's LEARNING_MASTERY profile.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Deliver transparent educational goal progress tracking for First Home Savings, featuring self-paced quiz modules and transparent milestone insights without timers or rankings, adhering strictly to Sophie's LEARNING_MASTERY profile.",
+    "components": [
+      {
+        "id": "points-balance-component",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-card-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You're 63% through building your first home savings knowledge. Keep mastering at your own pace!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "learning-mission-card-1",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "First Home Savings Masterclass",
+          "missionName": "Mortgage & Deposit Literacy",
+          "description": "Master the fundamentals of building a robust house deposit and understanding mortgage mechanics.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "learning_mission"
+            }
+          }
+        ]
+      },
+      {
+        "id": "quiz-card-1",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which factor most reliably reduces your overall mortgage interest over time?",
+          "options": [
+            "Making consistent overpayments when possible",
+            "Switching providers every month",
+            "Avoiding fixed-rate terms entirely"
+          ],
+          "reward": "+50 LBG Coins upon comprehension",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT",
+            "payload": {
+              "answer": "Making consistent overpayments when possible"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comprehension-feedback-card-1",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Mastery Review",
+          "question": "Compound growth vs simple interest in savings pots",
+          "yourAnswer": "Interest calculated on initial principal and accumulated interest",
+          "correctAnswer": "Interest calculated on initial principal and accumulated interest",
+          "feedback": "Spot on! Understanding compounding is foundational to reaching your \u00a32,000 savings knowledge target.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "confidence-progress-card-1",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Confidence Meter",
+          "topic": "First Home Financing",
+          "confidencePercent": 84,
+          "levelLabel": "Advanced Competence",
+          "nextMilestone": "Mastery Expert Badge",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "educational-insight-card-1",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Why Knowledge Matters for Your First Home",
+          "insight": "Savers who complete financial literacy modules retain 40% more capital over a 3-year house deposit timeline due to optimized product choices.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Explore Reading Material",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "educational_insight_detail"
+            }
+          }
+        ]
+      },
+      {
+        "id": "milestone-card-1",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "milestones": [
+            {
+              "label": "Completed Basic Budgeting Module",
+              "achieved": true
+            },
+            {
+              "label": "Reached 50% First Home Knowledge Goal",
+              "achieved": true
+            },
+            {
+              "label": "Master Advanced Deposit Strategies",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-card-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Your LBG Coins Value Equivalent",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": [
+            {
+              "label": "Available LBG Coins",
+              "value": "3,900 coins"
+            },
+            {
+              "label": "Educational Conversion Rate",
+              "value": "100 coins = \u00a31.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-card-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "steps": [
+            {
+              "title": "1. Learn & Complete",
+              "description": "Engage with educational modules and quizzes at your own pace."
+            },
+            {
+              "title": "2. Earn LBG Coins",
+              "description": "Gain coins as you achieve complete module comprehension."
+            },
+            {
+              "title": "3. Apply to Goals",
+              "description": "Put your financial competence toward your First Home Savings milestone."
+            }
+          ],
+          "ctaLabel": "View Learning Guidelines",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "learning_guidelines"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK",
+      "CARD_RULE_ENGINE_COMPLIANT"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "spends longest session time on educational content",
+          "motivated by mastering topics rather than winning them",
+          "avoids timed challenges and public rankings"
+        ]
+      }
+    ],
+    "methodology": "Verified persona analysis combined with behavioral interaction metrics regarding module completion and quiz persistence.",
+    "temporaryInterpretation": true
+  }
+}

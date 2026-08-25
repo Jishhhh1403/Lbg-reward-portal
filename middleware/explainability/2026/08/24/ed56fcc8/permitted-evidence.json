@@ -1,0 +1,62 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "frequent statement credit redemptions",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_010 is a PAYMENT_UTILITY_FOCUSED reward user who consistently seeks tangible financial value, checking cashback and redeeming almost exclusively as statement credits on linked cards.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Redeems almost exclusively as statement credits on linked card",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Checks cashback earned alongside balance every visit",
+        "source": "behavior",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Sets allocation of earned points to automatic payment rewards",
+        "source": "behavior",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Holds 7300 LBG coins with 3 connected brands",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "preferredRewardCategory",
+        "value": "STATEMENT_CREDIT",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-003"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

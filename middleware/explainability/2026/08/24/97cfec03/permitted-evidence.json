@@ -1,0 +1,76 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "always previews a reward before committing points",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "gravitates to offers labelled guaranteed or fixed value",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Amelia Carter is a Gold-tier rewards member with 6,450 LBG coins, exhibiting a clear preference for value certainty, guaranteed conversion rates, and upfront reward previews before making point commitments.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins",
+        "statement": "Customer has 6,450 LBG coins.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer tier is Gold.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behavior-preview",
+        "statement": "Customer always previews a reward before committing points.",
+        "source": "Intelligence Layer availableEvidence / signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-behavior-abandon",
+        "statement": "Customer abandons flows that hide the final value until after selection.",
+        "source": "Intelligence Layer availableEvidence / signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-behavior-fixed",
+        "statement": "Customer gravitates to offers labelled guaranteed or fixed value.",
+        "source": "Intelligence Layer availableEvidence / signals",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "GUARANTEED_CERTAINTY",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-behavior-preview",
+          "fact-behavior-fixed"
+        ],
+        "inferenceMethod": "Intelligence layer persona and motivation analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

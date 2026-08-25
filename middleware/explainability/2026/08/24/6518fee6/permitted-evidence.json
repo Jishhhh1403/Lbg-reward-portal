@@ -1,0 +1,76 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "frequently asks about moving points between programmes",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "wants one combined view of all earned rewards",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_012 (Leo Morgan) is an Interoperability Seeker holding reward balances across three partner programmes with 11,200 LBG coins. They exhibit a strong preference for portability, consolidated views, and plain-English explanations without technical jargon, actively tracking their Family Holiday Fund goal.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Holds reward balances across three partner programmes",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Total LBG coins in wallet is 11,200",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Active goal 'Family Holiday Fund' with target 3000 and current value 1750 (58% progress)",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "communicationPreference",
+        "value": "plain-English, no technical jargon",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "prefers simple plain-English explanations of transfers",
+          "put off by technical jargon and complex terms"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "coreIntent",
+        "value": "PORTABILITY",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequently asks about moving points between programmes",
+          "wants one combined view of all earned rewards"
+        ],
+        "inferenceMethod": "journey-intent-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

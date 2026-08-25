@@ -1,0 +1,73 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "short time between earning and redeeming",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Alex Rivera has 4,250 LBG Coins, Gold tier status, and demonstrates a behavioral pattern of fast gratification with an immediate redemption rate of 0.89 and an average redemption time of 2.3 hours.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 4250 LBG coins in wallet.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer is at Gold tier.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-redemption-speed",
+        "statement": "Customer has an average redemption time of 2.3 hours.",
+        "source": "customerProfile.behaviors",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-immediate-rate",
+        "statement": "Customer has an immediate redemption rate of 0.89.",
+        "source": "customerProfile.behaviors",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis and session intent scoring",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

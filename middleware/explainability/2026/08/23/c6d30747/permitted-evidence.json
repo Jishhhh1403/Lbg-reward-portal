@@ -1,0 +1,84 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "rarely redeems for small rewards",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_003 (David Park) is a Diamond tier member who exhibits a long-term accumulation pattern, rarely redeems for small rewards, and focuses on major life goals such as retirement, education, and home deposits.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "LBG coins balance is 28,400",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer tier is Diamond",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goals-count",
+        "statement": "Customer has 3 active long-term goals: Retirement Fund, Children Education Fund, Dream Home Deposit",
+        "source": "Intelligence Layer goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behavior-redemption",
+        "statement": "Immediate redemption rate is 0.03 with a low redemption frequency",
+        "source": "Intelligence Layer customerProfile.behaviors",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-persona",
+        "attribute": "persona",
+        "value": "LONG_TERM_PLANNER",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "rarely redeems for small rewards",
+          "interested in investment-like rewards"
+        ],
+        "inferenceMethod": "Intelligence Layer Persona Classifier",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "values future projections",
+          "reads educational content",
+          "goal_completion_rate: 0.92"
+        ],
+        "inferenceMethod": "Behavioral pattern and journey intent analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,628 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich screen layout (13 components) featuring POINTS_BALANCE, GOAL_PROGRESS_CARD (First Home Savings Knowledge), MILESTONE_CARD, EDUCATIONAL_INSIGHT_CARD, QUIZ_CARD, GOAL_LINKED_REWARD, COURSE_RECOMMENDATION_CARD, MASTERY_TRACKER_CARD, SKILL_BADGE_SHOWCASE, FINANCIAL_TIP_CARD, PEER_LESSON_SUMMARY_CARD (collaborative, non-competitive), RESOURCE_LIBRARY_LINK, and SUPPORT_FAQ_CARD. Tailored entirely to Sophie's learning mastery style with zero timers, leaderboards, or competitive pressure.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly targets financial mastery and first home milestones as requested."
+        },
+        "expectedCustomerUtility": {
+          "score": 10,
+          "explanation": "Provides 13 rich components focused on thorough learning, satisfying the 11-17 component rule."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns 100% with LEARNING_MASTERY motivation and educational reward preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear, low-stress layout with robust cognitive pacing and screen reader support."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on high-confidence behavioral signals (100% module completion, quiz retries)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with Gold tier branding and LBG design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces collaborative milestone tracking without competitive elements."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported within the 5000ms latency budget and standard component library."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined screen layout (8 components) featuring POINTS_BALANCE, GOAL_PROGRESS_CARD, QUIZ_CARD, MILESTONE_CARD, GOAL_LINKED_REWARD, EDUCATIONAL_INSIGHT_CARD, COURSE_RECOMMENDATION_CARD, and RESOURCE_LIBRARY_LINK. Focused on clean minimalism.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 8,
+          "explanation": "Relevant to goals but under-indexes on rich discovery depth."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fails the component richness rule (only 8 components instead of 12-17)."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Good alignment but lacks depth for a thorough mastery persona."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Very clean and uncluttered."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Solid evidence backing."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Matches design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Too basic, offers nothing novel."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Highly feasible and fast."
+        }
+      },
+      "weightedTotal": 7.6,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 11 components (only 8), lowering expectedCustomerUtility and customerGoalRelevance."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 13-component educational discovery layout tailored to Sophie's LEARNING_MASTERY profile. Strictly adheres to mandatory ordered stack rules, avoiding any competitive or timed pressure while emphasizing financial mastery and first home milestones.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You're making steady progress toward your first home knowledge milestone!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Mortgage Readiness & Deposit Strategies",
+            "description": "Master the fundamentals of building a robust house deposit safely.",
+            "modulesDone": 3,
+            "modulesTotal": 5,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "Which factor most reliably lowers your long-term mortgage interest rate?",
+            "options": [
+              "Larger deposit size",
+              "Frequent credit checks",
+              "Closing savings accounts early"
+            ],
+            "reward": "150 Learning Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Quiz Reflection",
+            "question": "What is compound growth in savings?",
+            "yourAnswer": "Earning returns on both initial savings and accumulated interest",
+            "correctAnswer": "Earning returns on both initial savings and accumulated interest",
+            "feedback": "Spot on! Understanding how interest builds upon itself is key to long-term planning.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Knowledge Confidence",
+            "topic": "Property Purchasing & Mortgages",
+            "confidencePercent": 82,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Complete final mortgage structure module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Mastery Tip",
+            "insight": "Consistent small contributions to your savings pot yield better long-term predictability than sporadic large deposits.",
+            "source": "LBG Financial Education Team",
+            "actionLabel": "Explore Module",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 5 Foundation Modules",
+                "achieved": true
+              },
+              {
+                "label": "Achieved 80%+ on All Quizzes",
+                "achieved": true
+              },
+              {
+                "label": "First Home Savings Plan Established",
+                "achieved": true
+              },
+              {
+                "label": "Advanced Deposit Strategy Mastery",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Rewards Accelerating Your Goal",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Conveyancing Fee Discount Voucher",
+                "points": 500,
+                "goalLinked": true
+              },
+              {
+                "name": "First-Time Buyer Masterclass Access",
+                "points": 300,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-path",
+          "type": "LEARNING_PATH_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "courseName": "Home Buyer Academy",
+            "currentLesson": 4,
+            "totalLessons": 6,
+            "lessonPoints": 100,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-badge",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Your Knowledge Badges",
+            "badges": [
+              {
+                "name": "Budgeting Basics",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Deposit Navigator",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Mortgage Scholar",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Mastery Expert",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-daily-money-tip",
+          "type": "DAILY_MONEY_TIP_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "tipTitle": "Understanding LTV Ratios",
+            "tipBody": "Loan-to-Value (LTV) compares the amount you borrow to the total value of the property. Lower LTV tiers often unlock more competitive interest rates.",
+            "category": "Mortgages",
+            "readTimeMin": 2,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set another learning or savings milestone to track",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_MATCH",
+        "MANDATORY_ORDERED_STACK_COMPLIANCE",
+        "RICH_LAYOUT_13_COMPONENTS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative educational focus layout featuring core mastery elements, structured learning paths, and robust milestone tracking with zero competitive pressure.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "Solid progress! Keep building your financial knowledge step by step.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission-2",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Financial Academy",
+            "missionName": "Advanced Home Buying Principles",
+            "description": "Deepen your expertise on property acquisition and legal milestones.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 250,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-quiz-2",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the primary benefit of a Lifetime ISA when saving for a first home?",
+            "options": [
+              "A 25% government bonus on your savings",
+              "Guaranteed lottery rewards",
+              "Instant stock market returns"
+            ],
+            "reward": "100 Learning Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-comprehension-feedback-2",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Concept Check Review",
+            "question": "How do credit scores impact mortgage applications?",
+            "yourAnswer": "Lenders use scores to assess reliability and set interest offers",
+            "correctAnswer": "Lenders use scores to assess reliability and set interest offers",
+            "feedback": "Excellent reasoning. A strong credit history demonstrates reliable borrowing habits.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress-2",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Mastery Competence",
+            "topic": "Savings & Government Schemes",
+            "confidencePercent": 88,
+            "levelLabel": "Proficient",
+            "nextMilestone": "Complete property survey module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Learning Insight",
+            "insight": "Taking time to review module summaries after quizzes permanently improves financial concept retention.",
+            "source": "LBG Educational Research",
+            "actionLabel": "Read Summary",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone-2",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "milestones": [
+              {
+                "label": "Property Market Basics Mastered",
+                "achieved": true
+              },
+              {
+                "label": "Deposit Planning Completed",
+                "achieved": true
+              },
+              {
+                "label": "Mortgage Product Literacy Unlocked",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward-2",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Rewards Supporting Your Journey",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Expert Home Buying Guide Book",
+                "points": 200,
+                "goalLinked": true
+              },
+              {
+                "name": "Mortgage Consultation Voucher",
+                "points": 400,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-path-2",
+          "type": "LEARNING_PATH_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "courseName": "Property Financial Planning",
+            "currentLesson": 2,
+            "totalLessons": 4,
+            "lessonPoints": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-badge-2",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Achievement Badges",
+            "badges": [
+              {
+                "name": "Quick Learner",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Quiz Master",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Goal Getter",
+                "icon": "star",
+                "earned": true
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-daily-money-tip-2",
+          "type": "DAILY_MONEY_TIP_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "tipTitle": "Budgeting for Additional Costs",
+            "tipBody": "Remember to factor in survey fees, legal costs, and stamp duty when planning your total house purchase budget.",
+            "category": "Home Buying",
+            "readTimeMin": 3,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another milestone to guide your financial learning",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.94,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_ALTERNATIVE",
+        "MANDATORY_ORDERED_STACK_COMPLIANCE",
+        "BALANCED_MASTERY_LAYOUT"
+      ]
+    }
+  ]
+}

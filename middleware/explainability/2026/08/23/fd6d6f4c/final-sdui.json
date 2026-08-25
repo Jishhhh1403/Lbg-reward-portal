@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "fd6d6f4c",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-11-03T00:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "points-balance-header",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "expiring-points-alert-1",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Expiring Points Notice",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "You have 1,500 points set to expire in 7 days. Redeem them now to lock in your value.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_EXPIRING",
+          "payload": {
+            "points": 1500
+          }
+        }
+      ]
+    },
+    {
+      "id": "instant-reward-popup-1",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Welcome Back Bonus!",
+        "subtitle": "Exclusive instant treat for returning to your Gold tier rewards.",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "rewardId": "welcome-back-250"
+          }
+        }
+      ]
+    },
+    {
+      "id": "quick-redeem-card-1",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant One-Tap Vouchers",
+        "description": "Redeem your balance instantly with zero hassle. Perfect for your favorite treats.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Flash Deal Snack Box",
+            "points": 350,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Ticket Pass",
+            "points": 500,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEMS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "tangible-value-card-1",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Wallet Cash Worth",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": [
+          {
+            "label": "Available LBG Coins",
+            "value": "3,600 coins (\u00a336.00)"
+          },
+          {
+            "label": "Expiring Soon",
+            "value": "1,500 points (\u00a315.00 value)"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "reengagement-banner-1",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Great to see you again, Ryan!",
+        "message": "It's been a little while. Your Gold tier perks are waiting\u2014pick up where you left off.",
+        "ctaText": "Explore Instant Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_OR_EXPLORE",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Component, useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   Activity,
@@ -24,12 +24,17 @@ import type {
   CustomerSummary,
   DashboardTab,
   PointsProvider,
+  TierName,
   WalletTransactionItem,
 } from '../types/rewards'
+import type { SduiGenerateResponse } from '../types/sdui'
 import { fetchWalletTransactions } from '../services/rewardsApi'
+import { generateExperience } from '../services/experienceApi'
+import coinLogo from '../assets/coin-logo.png'
 import LocatePointsModal from '../components/dashboard/LocatePointsModal'
 import RedeemPointsModal from '../components/dashboard/RedeemPointsModal'
 import MetricTile from '../components/dashboard/MetricTile'
+import SDUIRenderer from '../renderer/SDUIRenderer'
 import {
   SyncStatusCard,
   FlashRewardBanner,
@@ -84,19 +89,131 @@ interface RewardsDashboardPageProps {
 
 const TIERS = [
   { name: 'Silver', min: 0, icon: Medal },
-  { name: 'Gold', min: 5000, icon: Crown },
-  { name: 'Platinum', min: 15000, icon: Gem },
+  { name: 'Gold', min: 2500, icon: Crown },
+  { name: 'Platinum', min: 6000, icon: Gem },
+  { name: 'Diamond', min: 12000, icon: Gem },
 ] as const
 
-function useTier(totalPoints: number) {
+/**
+ * The member's programme tier (customer.tier) is authoritative for the badge;
+ * the balance only drives progress toward the next tier, so the bar always
+ * matches the displayed tier.
+ */
+function useTier(totalPoints: number, declaredTier?: string) {
   return useMemo(() => {
-    const current = [...TIERS].reverse().find((t) => totalPoints >= t.min) ?? TIERS[0]
+    const byPoints = [...TIERS].reverse().find((t) => totalPoints >= t.min) ?? TIERS[0]
+    const current = TIERS.find((t) => t.name === declaredTier) ?? byPoints
     const idx = TIERS.indexOf(current)
     const next = TIERS[idx + 1] ?? null
-    const span = next ? next.min - current.min : 1
-    const progress = next ? Math.min(100, Math.round(((totalPoints - current.min) / span) * 100)) : 100
-    return { current, next, progress }
-  }, [totalPoints])
+    if (!next) return { current, next: null, progress: 100, pointsToNext: 0 }
+    const span = next.min - current.min
+    const raw = ((totalPoints - current.min) / span) * 100
+    return {
+      current,
+      next,
+      progress: Math.max(3, Math.min(100, Math.round(raw))),
+      pointsToNext: Math.max(0, next.min - totalPoints),
+    }
+  }, [totalPoints, declaredTier])
+}
+
+/**
+ * Tier-themed metal card styling — each tier gets its own brushed-metal
+ * gradient with engraved (dark-on-metal) typography so the hero feels like a
+ * real debit/credit card issued at that tier.
+ */
+interface TierCardTheme {
+  card: string
+  coinIcon: string
+  tierPill: string
+  labelText: string
+  nameText: string
+  metaText: string
+  metaIcon: string
+  tickIdle: string
+  tickActive: string
+  track: string
+  barFill: string
+  noteText: string
+}
+
+const ENGRAVE = '[text-shadow:0_1px_0_rgba(255,255,255,0.55),0_-1px_1px_rgba(15,23,42,0.35)]'
+
+const TIER_CARD_THEMES: Record<TierName, TierCardTheme> = {
+  Silver: {
+    card:
+      'border-white/60 bg-[linear-gradient(130deg,#4b5563_0%,#84909c_14%,#dbe2e8_32%,#f4f7fa_45%,#ccd4db_58%,#8b97a3_80%,#3f4854_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.75),inset_0_-18px_30px_rgba(15,23,42,0.28),0_22px_45px_-22px_rgba(15,23,42,0.7)]',
+    coinIcon: 'text-slate-600',
+    tierPill: 'bg-slate-900/10 text-slate-800 ring-1 ring-slate-600/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]',
+    labelText: 'text-slate-700/85',
+    nameText: `text-slate-800 ${ENGRAVE}`,
+    metaText: 'text-slate-700/80',
+    metaIcon: 'text-emerald-700',
+    tickIdle: 'text-slate-700/55',
+    tickActive: 'text-slate-900 font-bold [text-shadow:0_1px_0_rgba(255,255,255,0.5)]',
+    track: 'bg-slate-900/20',
+    barFill: 'from-slate-500 via-slate-300 to-slate-100',
+    noteText: 'text-slate-700/85',
+  },
+  Gold: {
+    card:
+      'border-yellow-100/60 bg-[linear-gradient(130deg,#6b4e12_0%,#b08a26_14%,#e8c96a_32%,#f7e7a8_45%,#e3c163_58%,#a67f1f_80%,#59400c_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.65),inset_0_-18px_30px_rgba(88,58,4,0.35),0_22px_45px_-22px_rgba(88,58,4,0.75)]',
+    coinIcon: 'text-amber-900',
+    tierPill: 'bg-amber-950/10 text-amber-950 ring-1 ring-amber-800/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]',
+    labelText: 'text-amber-950/80',
+    nameText: `text-amber-950 ${ENGRAVE}`,
+    metaText: 'text-amber-950/80',
+    metaIcon: 'text-emerald-800',
+    tickIdle: 'text-amber-950/55',
+    tickActive: 'text-amber-950 font-bold [text-shadow:0_1px_0_rgba(255,247,214,0.6)]',
+    track: 'bg-amber-950/20',
+    barFill: 'from-amber-600 via-amber-300 to-yellow-100',
+    noteText: 'text-amber-950/85',
+  },
+  Platinum: {
+    card:
+      'border-white/70 bg-[linear-gradient(130deg,#7c8693_0%,#b9c3cd_14%,#eef2f6_32%,#ffffff_46%,#e6ecf1_58%,#aeb9c4_80%,#6b7683_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.9),inset_0_-18px_30px_rgba(51,60,72,0.25),0_22px_45px_-22px_rgba(51,60,72,0.65)]',
+    coinIcon: 'text-slate-600',
+    tierPill: 'bg-slate-700/10 text-slate-700 ring-1 ring-slate-500/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]',
+    labelText: 'text-slate-600/85',
+    nameText: `text-slate-800 ${ENGRAVE}`,
+    metaText: 'text-slate-700/80',
+    metaIcon: 'text-emerald-700',
+    tickIdle: 'text-slate-600/55',
+    tickActive: 'text-slate-800 font-bold [text-shadow:0_1px_0_rgba(255,255,255,0.6)]',
+    track: 'bg-slate-700/15',
+    barFill: 'from-slate-400 via-sky-200 to-white',
+    noteText: 'text-slate-700/85',
+  },
+  Diamond: {
+    card:
+      'border-sky-100/70 bg-[linear-gradient(130deg,#27406b_0%,#5f87bd_14%,#b7d9f7_32%,#e9f6ff_45%,#c3e2f9_58%,#6d9bd3_80%,#20345a_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.8),inset_0_-18px_30px_rgba(19,38,71,0.35),0_22px_45px_-22px_rgba(19,38,71,0.75)]',
+    coinIcon: 'text-sky-800',
+    tierPill: 'bg-sky-950/10 text-sky-950 ring-1 ring-sky-800/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]',
+    labelText: 'text-sky-950/75',
+    nameText: `text-sky-950 ${ENGRAVE}`,
+    metaText: 'text-sky-950/80',
+    metaIcon: 'text-emerald-800',
+    tickIdle: 'text-sky-950/55',
+    tickActive: 'text-sky-950 font-bold [text-shadow:0_1px_0_rgba(233,246,255,0.7)]',
+    track: 'bg-sky-950/20',
+    barFill: 'from-sky-600 via-sky-300 to-cyan-100',
+    noteText: 'text-sky-950/85',
+  },
+}
+
+/* ------------------------------------------------------------------ */
+/* Error Boundary — catches crashes in personalized SDUI rendering     */
+/* ------------------------------------------------------------------ */
+
+interface EBProps { fallback: React.ReactNode; children: React.ReactNode }
+interface EBState { hasError: boolean }
+
+class SDUIErrorBoundary extends Component<EBProps, EBState> {
+  state: EBState = { hasError: false }
+  static getDerivedStateFromError(): EBState { return { hasError: true } }
+  componentDidCatch(err: Error) { console.warn('[SDUIErrorBoundary] personalized render crashed, falling back:', err) }
+  render() { return this.state.hasError ? this.props.fallback : this.props.children }
 }
 
 /* ------------------------------------------------------------------ */
@@ -120,7 +237,50 @@ export default function RewardsDashboardPage({
   const [txLoading, setTxLoading] = useState(false)
   const [txError, setTxError] = useState('')
 
-  const tier = useTier(customer.totalLbgCoins + customer.totalBrandPoints / 2)
+  /* ---------------- personalized experience (QUEST-UI middleware) -------- */
+  const [experience, setExperience] = useState<SduiGenerateResponse | null>(null)
+  const [experienceStatus, setExperienceStatus] = useState<'loading' | 'personalized' | 'fallback'>('loading')
+  const [experienceNonce, setExperienceNonce] = useState(0)
+
+  useEffect(() => {
+    let cancelled = false
+    setExperienceStatus('loading')
+    const topBrands = [...pointsByBrand]
+      .sort((a, b) => b.points - a.points)
+      .slice(0, 5)
+      .map((p) => ({ name: p.brandName, points: p.points }))
+    generateExperience(customer.customerId, {
+      totalPoints: customer.totalBrandPoints,
+      lbgCoins: customer.totalLbgCoins,
+      brandsConnected: customer.brandsConnected,
+      topBrands,
+      lastSyncedAt: customer.lastSyncedAt,
+    })
+      .then((res) => {
+        if (cancelled) return
+        setExperience(res)
+        const hasComponents =
+          res.status === 'PERSONALIZED' && Array.isArray(res.sdui?.components) && res.sdui.components.length > 0
+        setExperienceStatus((prev) => {
+          if (hasComponents) return 'personalized'
+          if (prev === 'personalized') return 'personalized'
+          return 'fallback'
+        })
+      })
+      .catch((error) => {
+        if (cancelled) return
+        console.warn('[RewardsDashboard] Personalization unavailable, using static layout:', error)
+        setExperience(null)
+        setExperienceStatus('fallback')
+      })
+    return () => {
+      cancelled = true
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [customer.customerId, experienceNonce])
+
+  const tier = useTier(customer.totalLbgCoins + customer.totalBrandPoints / 2, customer.tier)
+  const cardTheme = TIER_CARD_THEMES[tier.current.name]
 
   useEffect(() => {
     let cancelled = false
@@ -198,6 +358,7 @@ export default function RewardsDashboardPage({
     setRefreshing(true)
     try {
       await onRefresh()
+      setExperienceNonce((n) => n + 1)
     } finally {
       setRefreshing(false)
     }
@@ -233,62 +394,88 @@ export default function RewardsDashboardPage({
         <AnimatePresence mode="wait">
           {activeTab !== 'activity' && (
             <motion.div key="hero" exit={{ opacity: 0, y: -8 }} className="pb-4">
-              {/* Coins hero */}
+              {/* Coins hero — embossed membership card, themed by tier */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
-                className="mt-3 rounded-3xl bg-white/12 p-5 backdrop-blur-sm"
+                className={`relative mt-3 overflow-hidden rounded-3xl border p-5 ${cardTheme.card}`}
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-brand-100">
-                    <Coins size={15} className="text-gold-300" /> LBG Coins
-                  </div>
-                  <span className="rounded-full bg-gold-400/90 px-2.5 py-0.5 text-[11px] font-bold text-brand-900">
-                    {tier.current.name.toUpperCase()}
-                  </span>
-                </div>
-                <motion.p
-                  key={customer.totalLbgCoins}
-                  initial={{ scale: 0.94, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                  className="mt-2 text-4xl font-black tracking-tight"
-                >
-                  {formatPoints(customer.totalLbgCoins)}
-                </motion.p>
-                <p className="mt-1 flex items-center gap-1 text-xs text-brand-100">
-                  <TrendingUp size={13} className="text-emerald-300" /> +850 this month ·{' '}
-                  {formatLastSyncedAt(customer.lastSyncedAt)}
-                </p>
+                {/* gloss + sheen */}
+                <div className="pointer-events-none absolute -right-20 -top-28 h-60 w-80 rotate-12 bg-gradient-to-b from-white/25 via-white/8 to-transparent blur-xl" />
+                <div className="pointer-events-none absolute -bottom-24 -left-12 h-48 w-72 -rotate-6 bg-gradient-to-t from-black/20 to-transparent blur-lg" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+                {tier.current.name === 'Diamond' && (
+                  <div className="pointer-events-none absolute inset-0 bg-[conic-gradient(from_210deg_at_72%_18%,rgba(255,255,255,0.16),rgba(196,181,253,0.14),rgba(165,243,252,0.16),transparent_62%)]" />
+                )}
 
-                {/* Tier progress */}
-                <div className="mt-4">
-                  <div className="mb-1.5 flex justify-between text-[11px] font-medium text-brand-100">
-                    {TIERS.map((t) => (
-                      <span
-                        key={t.name}
-                        className={`flex items-center gap-1 ${
-                          tier.current.name === t.name ? 'text-gold-300' : ''
-                        }`}
-                      >
-                        <t.icon size={11} /> {t.name}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="relative h-2 overflow-hidden rounded-full bg-white/20">
-                    <motion.div
-                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-brand-300 to-gold-400"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${tier.progress}%` }}
-                      transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
+                <div className="relative">
+                  <div className="flex items-center justify-between">
+                    <div className={`flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] ${cardTheme.labelText}`}>
+                      <Coins size={15} className={cardTheme.coinIcon} /> LBG Coins
+                    </div>
+                    {/* Coin logo — sits exactly where the tier badge used to be */}
+                    <img
+                      src={coinLogo}
+                      alt="LBG coin"
+                      className="h-10 w-10 object-contain drop-shadow-[0_3px_5px_rgba(0,0,0,0.5)]"
                     />
+                    
                   </div>
-                  <p className="mt-1.5 text-[11px] text-brand-100">
-                    {tier.next
-                      ? `${formatPoints(Math.max(0, tier.next.min - (customer.totalLbgCoins + Math.floor(totalPoints / 2))))} pts to ${tier.next.name}`
-                      : 'Top tier reached — enjoy your Platinum perks'}
+                  {/* Tier + balance on one line */}
+                  <div className="mt-2 flex items-center gap-3">
+                    <motion.p
+                      key={customer.totalLbgCoins}
+                      initial={{ scale: 0.94, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                      className={`text-4xl font-black tracking-tight text-slate-900 ${ENGRAVE}`}
+                    >
+                      {formatPoints(customer.totalLbgCoins)}
+                    </motion.p>
+                    <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ${cardTheme.tierPill}`}>
+                      {tier.current.name}
+                    </span>
+                  </div>
+                  {/* Cardholder name — embossed like a real debit card */}
+                  <p className={`mt-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] ${cardTheme.nameText}`}>
+                    {customer.userName}
                   </p>
+                  <p className={`mt-1 flex items-center gap-1 text-xs ${cardTheme.metaText}`}>
+                    <TrendingUp size={13} className={cardTheme.metaIcon} /> +850 this month ·{' '}
+                    {formatLastSyncedAt(customer.lastSyncedAt)}
+                  </p>
+
+                  {/* Tier progress */}
+                  <div className="mt-4">
+                    <div className="mb-1.5 flex justify-between text-[11px] font-medium">
+                      {TIERS.map((t) => (
+                        <span
+                          key={t.name}
+                          className={`flex items-center gap-1 ${
+                            tier.current.name === t.name ? cardTheme.tickActive : cardTheme.tickIdle
+                          }`}
+                        >
+                          <t.icon size={11} /> {t.name}
+                        </span>
+                      ))}
+                    </div>
+                    <div className={`relative h-2 overflow-hidden rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)] ${cardTheme.track}`}>
+                      <motion.div
+                        className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] ${cardTheme.barFill}`}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${tier.progress}%` }}
+                        transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
+                      />
+                    </div>
+                    <p className={`mt-1.5 text-[11px] ${cardTheme.noteText}`}>
+                      {tier.next
+                        ? tier.pointsToNext > 0
+                          ? `${formatPoints(tier.pointsToNext)} pts to ${tier.next.name}`
+                          : `${tier.next.name} status unlocks on your next conversion`
+                        : `Top tier reached — enjoy your ${tier.current.name} perks`}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -326,6 +513,66 @@ export default function RewardsDashboardPage({
               transition={{ duration: 0.22 }}
               className="space-y-6 p-5 pb-24"
             >
+              {experienceStatus === 'loading' && (
+                <div aria-busy="true" aria-label="Personalizing your rewards">
+                  <div className="grid grid-cols-3 gap-2.5">
+                    {[0, 1, 2].map((i) => (
+                      <div key={i} className="h-20 animate-pulse rounded-2xl bg-white/70" />
+                    ))}
+                  </div>
+                  {[0, 1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className="mt-3 h-28 animate-pulse rounded-2xl bg-white/70"
+                      style={{ animationDelay: `${i * 120}ms` }}
+                    />
+                  ))}
+                  <p className="mt-4 text-center text-xs text-slate-400">Personalizing your rewards…</p>
+                </div>
+              )}
+
+              {experienceStatus === 'personalized' && experience && (
+                <SDUIErrorBoundary
+                  fallback={
+                    <p className="rounded-xl border border-gold-200 bg-gold-50 px-3 py-2 text-xs text-gold-700">
+                      Personalized rendering hit an unexpected issue — showing the standard rewards layout.
+                    </p>
+                  }
+                >
+                  <div className="flex items-center justify-between rounded-full bg-white px-3.5 py-2 shadow-card">
+                    <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-700">
+                      <Sparkles size={13} /> Personalized for you
+                    </span>
+                    {(() => {
+                      const persona = experience.intelligence?.persona ?? experience.sdui?.persona ?? ''
+                      return persona ? (
+                        <span className="text-[11px] uppercase tracking-wide text-slate-400">
+                          {persona.replace(/_/g, ' ').toLowerCase()}
+                        </span>
+                      ) : null
+                    })()}
+                  </div>
+                  <SDUIRenderer
+                    components={experience.sdui?.components ?? []}
+                    narrative={experience.sdui?.narrative}
+                    onLocatePoints={() => setLocateOpen(true)}
+                    onRedeemPoints={() => setRedeemOpen(true)}
+                  />
+                </SDUIErrorBoundary>
+              )}
+
+              {experienceStatus === 'fallback' && (
+                <>
+                  {experience === null ? (
+                    <p className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-500">
+                      Personalization service unreachable — showing the standard rewards layout.
+                    </p>
+                  ) : (
+                    <p className="rounded-xl border border-gold-200 bg-gold-50 px-3 py-2 text-xs text-gold-700">
+                      Personalization is temporarily unavailable — showing the standard rewards layout.
+                    </p>
+                  )}
+
               {/* Metrics */}
               <section className="grid grid-cols-3 gap-2.5">
                 <MetricTile
@@ -401,11 +648,11 @@ export default function RewardsDashboardPage({
 
                 <div className="grid grid-cols-2 items-stretch gap-3 [&>*]:h-full">
                   <GoalProgressCard
-                    goalName={`${tier.next ? tier.next.name : 'Platinum'} tier status`}
+                    goalName={`${tier.next ? tier.next.name : tier.current.name} tier status`}
                     current={walletValue}
-                    target={tier.next?.min ?? 15000}
+                    target={tier.next?.min ?? TIERS[3].min}
                     percentage={tier.progress}
-                    remaining={Math.max(0, (tier.next?.min ?? 15000) - walletValue)}
+                    remaining={Math.max(0, (tier.next?.min ?? TIERS[3].min) - walletValue)}
                     motivationalMessage={
                       tier.next
                         ? `${formatPoints(Math.max(0, tier.next.min - walletValue))} more points unlocks premium conversion rates.`
@@ -504,7 +751,8 @@ export default function RewardsDashboardPage({
                   milestones={[
                     { label: 'Account opened & verified', reached: true },
                     { label: 'Gold tier unlocked', reached: walletValue >= TIERS[1].min },
-                    { label: '15k combined balance', reached: walletValue >= TIERS[2].min },
+                    { label: '6k combined balance — Platinum', reached: walletValue >= TIERS[2].min },
+                    { label: '12k combined balance — Diamond', reached: walletValue >= TIERS[3].min },
                   ]}
                 />
 
@@ -525,9 +773,9 @@ export default function RewardsDashboardPage({
                     message="Regular conversions protect you from point devaluation."
                   />
                   <LongTermGoalCard
-                    goalName="Platinum Status"
+                    goalName="Diamond Status"
                     current={walletValue}
-                    target={TIERS[2].min}
+                    target={TIERS[3].min}
                     percentage={tier.progress}
                     estimatedCompletion="2028"
                   />
@@ -615,7 +863,7 @@ export default function RewardsDashboardPage({
                   growthTip={
                     tier.next
                       ? `${formatPoints(Math.max(0, tier.next.min - walletValue))} points to ${tier.next.name} — converting your largest idle balance gets you there fastest.`
-                      : 'You are at the top tier. Enjoy your Platinum perks.'
+                      : `You are at the top tier. Enjoy your ${tier.current.name} perks.`
                   }
                   expiringPoints={1250}
                   expiryDate="12 Sep"
@@ -623,6 +871,8 @@ export default function RewardsDashboardPage({
                   onCta={() => setRedeemOpen(true)}
                 />
               </section>
+                </>
+              )}
             </motion.div>
           )}
 
@@ -785,6 +1035,7 @@ export default function RewardsDashboardPage({
         onVerified={() => {
           /* hook for backend linking call */
         }}
+        customer={{ name: customer.userName, customerId: customer.customerId, phone: customer.phone }}
       />
       <RedeemPointsModal
         isOpen={redeemOpen}

@@ -1,0 +1,37 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "Component overload",
+        "severity": "HIGH",
+        "statement": "The candidate payload includes 7 separate interactive components (points balance, re-engagement banner, expiring points alert, quick win card, flash reward banner, quick redeem catalogue, and tangible value card). This constitutes severe component overload and choice fatigue on a single screen view."
+      },
+      {
+        "category": "Appropriate urgency or dark patterns",
+        "severity": "MEDIUM",
+        "statement": "The combination of an expiring points alert (7 days), a live countdown timer on a flash reward banner (23:45:12), and multiple immediate redemption hooks creates a high-pressure environment that verges on aggressive conversion tactics."
+      }
+    ],
+    "unresolvedCritical": 0,
+    "unresolvedHigh": 1,
+    "releaseReasons": [
+      "Component overload exceeds UI Constitution limits for simultaneous cards, risking severe cognitive load for the user."
+    ],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "Holding release due to component overload (7 active components) causing potential user fatigue and cognitive overload."
+      }
+    ]
+  },
+  "fallbackTriggered": false,
+  "reasonCodes": []
+}

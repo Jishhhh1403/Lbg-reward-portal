@@ -1,0 +1,223 @@
+{
+  "primaryActionComponentRef": "comp-reward-choice",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "TENSION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-payment-reward",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [
+        "comp-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-allocation-control",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-payment-reward"
+      ],
+      "resolves": [
+        "comp-payment-reward"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-payment-confirmation",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-allocation-control"
+      ],
+      "resolves": [
+        "comp-allocation-control"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [
+        "comp-tangible-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-rewards-insight"
+      ],
+      "resolves": [
+        "comp-rewards-insight"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-choice",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [
+        "comp-how-points-work"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-milestone",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-reward-choice"
+      ],
+      "resolves": [
+        "comp-reward-choice"
+      ],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "balance-to-cash-translation",
+      "bridgeIntent": "Translating your coin balance into real monetary value.",
+      "bridgeCopy": "Your 7,300 LBG Coins translate directly into tangible bill savings."
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "value-to-goal-progress",
+      "bridgeIntent": "Showing how your funds contribute to your active goal.",
+      "bridgeCopy": "See your progress toward Holiday Spending Money."
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-payment-reward",
+      "relationship": "goal-to-payment-utility",
+      "bridgeIntent": "Connecting your goal to automatic payment methods.",
+      "bridgeCopy": "Your linked card accumulates credits automatically."
+    },
+    {
+      "fromComponentRef": "comp-payment-reward",
+      "toComponentRef": "comp-allocation-control",
+      "relationship": "utility-to-control",
+      "bridgeIntent": "Giving you full autonomy over how your rewards are allocated.",
+      "bridgeCopy": "Adjust your automatic allocation preferences."
+    },
+    {
+      "fromComponentRef": "comp-allocation-control",
+      "toComponentRef": "comp-payment-confirmation",
+      "relationship": "control-to-confirmation",
+      "bridgeIntent": "Reviewing your most recent statement credit application.",
+      "bridgeCopy": "Verify your latest statement credit history."
+    },
+    {
+      "fromComponentRef": "comp-payment-confirmation",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "confirmation-to-insight",
+      "bridgeIntent": "Providing analytical insight into your statement credit efficiency.",
+      "bridgeCopy": "Review your statement credit summary."
+    },
+    {
+      "fromComponentRef": "comp-rewards-insight",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "insight-to-education",
+      "bridgeIntent": "Explaining the mechanics behind your guaranteed reward rate.",
+      "bridgeCopy": "Understand how LBG Coins work for bill reduction."
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-reward-choice",
+      "relationship": "education-to-choice",
+      "bridgeIntent": "Enabling your choice of redemption path with complete transparency.",
+      "bridgeCopy": "Choose how you want to apply your available LBG Coins."
+    },
+    {
+      "fromComponentRef": "comp-reward-choice",
+      "toComponentRef": "comp-milestone",
+      "relationship": "choice-to-milestone",
+      "bridgeIntent": "Celebrating your milestones in payment utility and saving.",
+      "bridgeCopy": "Review your lifetime reward milestones."
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "comp-leaderboard",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed due to low-gamification response and suppression hints.",
+      "reasonCode": "DEFER_SUPPRESSED",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "comp-streak",
+      "componentType": "STREAK_CARD",
+      "reason": "Suppressed due to low-gamification response and suppression hints.",
+      "reasonCode": "DEFER_SUPPRESSED",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "comp-instant-reward",
+      "componentType": "INSTANT_REWARD_POPUP",
+      "reason": "Banned by card rule engine directives.",
+      "reasonCode": "DEFER_BANNED",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

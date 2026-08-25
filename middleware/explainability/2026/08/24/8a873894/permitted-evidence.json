@@ -1,0 +1,66 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "active streak combined with steady goal contributions",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard and goal progress in same sessions",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Priya Sharma is a highly engaged Platinum-tier user (engagement score 0.88) who balances gamified short-term engagement (21-day streak, 9 completed challenges, 11 badges) with steady long-term financial goal accumulation across multiple active horizons (Bali Trip, New Laptop, Retirement Fund, Home Deposit).",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer maintains 4 active financial goals across multiple time horizons with proven progress.",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Customer has an active 21-day streak and 9 completed challenges.",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Customer checks leaderboard and goal progress within the same sessions.",
+        "source": "intelligence-layer",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "engagementStyle",
+        "value": "MIXED_SHORT_AND_LONG_TERM",
+        "confidence": 0.87,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-002"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

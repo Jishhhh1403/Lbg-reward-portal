@@ -18,8 +18,20 @@ interface CatalogItem {
   category: string
   logoText: string
   color: string
-  yourPoints: number
+  yourPoints: number | null
 }
+
+/** Brands always available to redeem into, even when no balance is held there yet. */
+const DEFAULT_REDEEM_BRANDS: Array<Omit<CatalogItem, 'yourPoints'>> = [
+  { id: 'rc_avios', name: 'Avios', category: 'Travel', logoText: 'AV', color: '#cc0000' },
+  { id: 'rc_ba', name: 'British Airways', category: 'Travel', logoText: 'BA', color: '#1d4ed8' },
+  { id: 'rc_tesco', name: 'Tesco Clubcard', category: 'Groceries', logoText: 'TC', color: '#00539f' },
+  { id: 'rc_nandos', name: "Nando's", category: 'Dining', logoText: 'N', color: '#dc2626' },
+  { id: 'rc_costa', name: 'Costa Coffee', category: 'Dining', logoText: 'CC', color: '#8b1d1d' },
+  { id: 'rc_amazon', name: 'Amazon', category: 'Shopping', logoText: 'AZ', color: '#ff9900' },
+  { id: 'rc_cineworld', name: 'Cineworld', category: 'Entertainment', logoText: 'CW', color: '#7c3aed' },
+  { id: 'rc_cavendish', name: 'Cavendish Online', category: 'Finance', logoText: 'CO', color: '#1e3a8a' },
+]
 
 export default function RedeemPointsModal({
   isOpen,
@@ -32,18 +44,22 @@ export default function RedeemPointsModal({
   const [category, setCategory] = useState('All')
   const [redirectTarget, setRedirectTarget] = useState<CatalogItem | null>(null)
 
-  const catalog = useMemo<CatalogItem[]>(
-    () =>
-      pointsData.map((p) => ({
-        id: p.brandId,
-        name: p.brandName,
-        category: p.category,
-        logoText: p.logoText,
-        color: p.color,
-        yourPoints: p.points,
-      })),
-    [pointsData],
-  )
+  const catalog = useMemo<CatalogItem[]>(() => {
+    const linked = pointsData.map((p) => ({
+      id: p.brandId,
+      name: p.brandName,
+      category: p.category,
+      logoText: p.logoText,
+      color: p.color,
+      yourPoints: p.points as number | null,
+    }))
+    const linkedNames = new Set(linked.map((l) => l.name.toLowerCase()))
+    const extras = DEFAULT_REDEEM_BRANDS.filter((b) => !linkedNames.has(b.name.toLowerCase())).map((b) => ({
+      ...b,
+      yourPoints: null,
+    }))
+    return [...linked, ...extras]
+  }, [pointsData])
 
   const categories = useMemo(
     () => ['All', ...Array.from(new Set(catalog.map((c) => c.category)))],
@@ -140,8 +156,11 @@ export default function RedeemPointsModal({
                     <span className="block truncate text-sm font-semibold text-slate-900">{item.name}</span>
                     <span className="mt-0.5 flex items-center gap-1 text-xs text-slate-500">
                       <Coins size={12} className="text-gold-500" />
-                      {item.yourPoints.toLocaleString('en-GB')} pts available · min redeem{' '}
-                      {(item.yourPoints >= 500 ? 500 : item.yourPoints).toLocaleString('en-GB')}
+                      {item.yourPoints != null
+                        ? `${item.yourPoints.toLocaleString('en-GB')} pts available · min redeem ${(
+                            item.yourPoints >= 500 ? 500 : item.yourPoints
+                          ).toLocaleString('en-GB')}`
+                        : 'Partner redemption · min redeem 500 pts'}
                     </span>
                   </span>
                   <ArrowRight size={16} className="shrink-0 text-slate-300" />

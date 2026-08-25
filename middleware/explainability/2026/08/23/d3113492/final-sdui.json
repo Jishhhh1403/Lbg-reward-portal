@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "d3113492",
+  "createdAt": "2026-03-30T10:00:00Z",
+  "expiresAt": "2026-03-30T12:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-reward",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Fresh Flash Bonus Earned!",
+        "subtitle": "Your recent partner scan unlocked an instant reward bonus.",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "points": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Limited-Time Weekend Coffee & Treat Pass",
+        "subtitle": "Flash discount exclusively for Gold tier members.",
+        "originalPoints": 400,
+        "discountedPoints": 250,
+        "timer": "01:45:30",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH_REWARD",
+          "payload": {
+            "rewardName": "Weekend Coffee & Treat Pass",
+            "cost": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant One-Tap Rewards",
+        "description": "Ready to claim right now with your 4,250 balance.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Fast Food Combo Meal",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cineworld Cinema Ticket",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEM",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Wallet Cash Equivalent",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Coffee & Dining Vouchers",
+            "value": "\u00a318.00"
+          },
+          {
+            "label": "Retail Gift Cards",
+            "value": "\u00a324.50"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CASH_BREAKDOWN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Curated For Your Instant Style",
+        "rewards": [
+          {
+            "name": "Express Car Wash Pass",
+            "points": 600,
+            "category": "Services",
+            "limited": false
+          },
+          {
+            "name": "Digital Music Streaming 1-Month",
+            "points": 800,
+            "category": "Entertainment",
+            "limited": true
+          },
+          {
+            "name": "Gourmet Snack Box Delivery",
+            "points": 1200,
+            "category": "Food",
+            "limited": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "BROWSE_REWARD_CATALOGUE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Zero-Effort Quick Wins",
+        "subtitle": "Tap to instantly claim small perks without waiting.",
+        "rewards": [
+          {
+            "name": "Bonus 50 Coins Check-In",
+            "points": 50
+          },
+          {
+            "name": "Instant Partner Perk Voucher",
+            "points": 150
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "label": "Connected Brands",
+        "value": "3",
+        "unit": "active",
+        "tone": "brand",
+        "infoText": "Earning instantly across dining, retail, and travel.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CONNECTED_BRANDS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,528 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Gamification-focused rich dashboard featuring 7 integrated components tailored for Marcus Johnson (GAMIFICATION_MOTIVATED persona). Includes POINTS_BALANCE, STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, MILESTONE_CARD, and a COMMUNITY_FEED component to match his progress and community motivation.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly maps to the customer's high engagement, streaks, challenges, and leaderboard ranking."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Rich 7-component layout provides immediate access to all his primary gamified engagement vectors."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Strong alignment with PROGRESS_AND_COMMUNITY motivation profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear visual hierarchy with high contrast gamification badges and accessible streak trackers."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "High confidence based on robust behavioral data (28 active days, 34-day streak)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains strict adherence to design guidelines without altering coin or brand logos."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces engaging community milestone comparisons without manipulative dark patterns."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 7 components are fully registered and supported within the mobile rewards-overview journey."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined gamification dashboard featuring 5 mandatory components: POINTS_BALANCE, STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, and BADGE_CARD, focusing purely on daily streak maintenance and active challenges.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers core mandatory components but misses community-specific engagement vectors."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Good utility, though slightly sparser than the rich 7-component alternative."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with challenge and streak preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean and simple layout with excellent readability."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Supported by strong telemetry data."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully compliant with brand standards."
+        },
+        "usefulNovelty": {
+          "score": 6,
+          "explanation": "Standard layout with little experiential innovation."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "High operational feasibility and rapid rendering."
+        }
+      },
+      "weightedTotal": 7.7,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Gamification-pure composition centered on Marcus Johnson's competitive energy, featuring active streaks, active challenges, leaderboard standing, and badge collection.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-card",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Incredible momentum! You are maintaining the program's longest active streak.",
+            "nextReward": "500 LBG Coins at 40 Days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 LBG Coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 LBG Coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 LBG Coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 LBG Coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-card",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Community Champion Sprint",
+            "description": "Engage in 3 community events and check in daily to secure your bonus.",
+            "progress": 80,
+            "reward": "1,000 LBG Coins",
+            "daysLeft": 4,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE",
+              "payload": {
+                "challengeId": "community-champion-sprint"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 9400,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David Chen",
+                "points": 9100,
+                "avatar": "DC",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Emma Watson",
+                "points": 8200,
+                "avatar": "EW",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-card",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Achievement Badges",
+            "totalEarned": 15,
+            "totalAvailable": 20,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Leaderboard Elite",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Community Star",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Quiz Whiz",
+                "icon": "brain",
+                "earned": false
+              },
+              {
+                "name": "Challenge King",
+                "icon": "crown",
+                "earned": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-card",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "Which community activity yields the highest engagement bonus this week?",
+            "options": [
+              "Daily Streak Check-in",
+              "Community Event Hosting",
+              "Challenge Sharing"
+            ],
+            "reward": "150 LBG Coins",
+            "timeLimit": 30,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "START_QUIZ",
+              "payload": {
+                "quizId": "weekly-trivia-05"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "GAMIFICATION_MOTIVATED",
+        "HIGH_STREAK_ENGAGEMENT",
+        "COMMUNITY_PARTICIPATION"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Balanced gamification and community milestones composition combining Marcus's leaderboard standing with interactive trivia and milestone achievements.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-2",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "period": "monthly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 9400,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David Chen",
+                "points": 9100,
+                "avatar": "DC",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-card-2",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "streakDays": 34,
+            "message": "34 days strong! Keep your daily activity going.",
+            "nextReward": "500 LBG Coins at 40 Days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 LBG Coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 LBG Coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 LBG Coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 LBG Coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-card-2",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 10 Challenges (Completed 12)",
+                "achieved": true
+              },
+              {
+                "label": "Earn 15 Badges (Completed 15)",
+                "achieved": true
+              },
+              {
+                "label": "Maintain 30-Day Streak (Completed 34)",
+                "achieved": true
+              },
+              {
+                "label": "Reach Top 3 Leaderboard Rank (Achieved #3)",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-card-2",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Community Engagement Sprint",
+            "description": "Participate in community discussions and share your milestone achievements.",
+            "progress": 80,
+            "reward": "1,000 LBG Coins",
+            "daysLeft": 4,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE",
+              "payload": {
+                "challengeId": "community-engagement-sprint"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-card-2",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Badge Vault",
+            "totalEarned": 15,
+            "totalAvailable": 20,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Leaderboard Elite",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Community Star",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Challenge King",
+                "icon": "crown",
+                "earned": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "BALANCED_GAMIFICATION",
+        "MILESTONE_TRACKING"
+      ]
+    }
+  ]
+}

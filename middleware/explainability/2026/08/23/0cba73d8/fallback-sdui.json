@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "fallback-id",
+  "correlationId": "0cba73d8",
+  "createdAt": "2023-10-25T12:00:00Z",
+  "expiresAt": "2023-11-06T12:00:00Z",
+  "customerRef": "customer_004",
+  "components": [
+    {
+      "id": "comp-fallback-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 1850,
+        "tier": "Silver",
+        "name": "Valued Customer",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component screen tailored for long-term planner David Park: POINTS_BALANCE, RETIREMENT_FUND_CARD, CHILDREN_EDUCATION_CARD, DREAM_HOME_CARD, ADD_GOAL_CARD, PROJECTION_CHART, and EDUCATIONAL_INSIGHT_CARD.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses all 3 active long-term goals with dedicated cards plus an add goal card, perfectly matching multi-goal customer requirements."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides high utility via future projections and educational insights rather than fleeting instant rewards."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns completely with FUTURE_SECURITY motivation and long-term accumulation pattern."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear visual hierarchy, structured goal cards, and readable projection charts with strong contrast."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "High confidence based on Diamond tier status and verified goal tracking history."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres strictly to LBG mobile design system and layout standards."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces compound growth projections and long-term milestone tracking suited to tier status."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 7 components are fully supported in the component library and API."
+        }
+      },
+      "weightedTotal": 9.2,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Minimal 4-component screen featuring POINTS_BALANCE, a combined LONG_TERM_GOAL_CARD, PROJECTION_CHART, and QUICK_REDEEM_BANNER.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Fails the multi-goal requirement by combining goals into a single card and violates rules against pushing instant low-value redemptions."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Includes a quick redeem banner which is contrary to the customer's low redemption frequency and accumulation behavior."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Pushing quick redemptions contradicts the FUTURE_SECURITY motivation."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean layout, but misses individual goal tracking."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Uses standard metrics but ignores behavioral preference for long-term holding."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Offers standard generic redemption widgets rather than tailored insights."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Highly feasible but conceptually flawed for this persona."
+        }
+      },
+      "weightedTotal": 6.55,
+      "hardGatesPass": false,
+      "objections": [
+        "Violates multi-goal rule (multi-goal customers must see one card per goal plus an ADD_GOAL_CARD)",
+        "Violates prohibited use: pushing instant low-value redemptions via QUICK_REDEEM_BANNER"
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Long-Term Planner strategy tailored for David Park (Diamond tier): leads with anchored POINTS_BALANCE, followed by one LONG_TERM_GOAL_CARD for each of his 3 active goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, a FUTURE_VALUE_CARD, a PROJECTION_CHART, and an EDUCATIONAL_INSIGHT_CARD.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {
+                "customerId": "customer_003"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-long-term-goal-1",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2032",
+            "message": "Strong accumulation pace. You are well on your way to securing your future retirement.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-long-term-goal-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2029",
+            "message": "Excellent progress! 41% achieved toward your children's educational milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-long-term-goal-3",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "estimatedCompletion": "2034",
+            "message": "Steady growth. Consistent contributions will accelerate your home deposit goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new long-term milestone or investment target",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Projected Wealth Growth",
+            "currentValue": 28400,
+            "projectedValue": 65000,
+            "timeframe": "5 Years",
+            "growthRate": "7.5% APY equivalent",
+            "message": "Your disciplined accumulation strategy significantly amplifies your long-term purchasing power.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Multi-Year Accumulation Projection",
+            "growthLabel": "Estimated Portfolio Value",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2028",
+                "value": 41000
+              },
+              {
+                "year": "2030",
+                "value": 53000
+              },
+              {
+                "year": "2032",
+                "value": 65000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPAND_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Mastering Compound Rewards",
+            "insight": "Diamond tier members who maintain long-term holdings benefit from tier multiplier bonuses and exclusive high-yield partner allocations.",
+            "source": "LBG Wealth Intelligence",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_ARTICLE",
+              "payload": {
+                "articleId": "compound-rewards-mastery"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "LONG_TERM_PLANNER_PERSONA",
+        "MULTI_GOAL_COMPLIANCE",
+        "FUTURE_SECURITY_MOTIVATION"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Goal-Centric Educational Mastery Strategy: Focuses on the active 'First Home Savings Knowledge' goal (63% progress), integrates the Points Balance, Goal Progress Card, Goal-Linked Reward, and Educational Insight Card. Completely omits leaderboards and challenge cards.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly targets Sophie's active First Home Savings Knowledge goal and mastery motivation."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility via transparent value explanations and educational milestones."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 10,
+          "explanation": "Seamlessly unifies savings progression with educational enrichment."
+        },
+        "journeyAndActionContinuity": {
+          "score": 9,
+          "explanation": "Clear flow from goal status review to educational insights and quiz engagement."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm, self-paced, educational tone with zero manipulative urgency."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant with LBG reward and privacy guidelines."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly matches LEARNING_MASTERY motivation and educational preference."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong behavioral signals (100% module completion, quiz retries)."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces tailored educational insights connected to home savings milestones."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses standard permitted components (POINTS_BALANCE, GOAL_PROGRESS_CARD, etc.)."
+        }
+      },
+      "weightedTotal": 9.4,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broad General Rewards Exploration: Highlights points balance and general partner conversion offers without tying directly to the active home savings goal or specific educational quizzes.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Ignores the specific First Home Savings goal context."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Less relevant to a customer who prefers deep mastery over broad partner offers."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 7,
+          "explanation": "Coherence is weaker because partner offers clash with educational focus."
+        },
+        "journeyAndActionContinuity": {
+          "score": 6,
+          "explanation": "Fragmented journey from balance to unrelated partner discovery."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "No dark patterns, but less cognitively aligned."
+        },
+        "brandAndLegalConsistency": {
+          "score": 9,
+          "explanation": "Compliant, but less effective."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Fails to prioritize educational mastery or goal progress."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Based on general account data rather than specific mastery affinity."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard partner catalog presentation."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Feasible, but suboptimal for customer profile."
+        }
+      },
+      "weightedTotal": 7.0,
+      "hardGatesPass": true,
+      "objections": [
+        "Lower alignment with Sophie's documented learning mastery motivation."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Goal-Centric Educational Mastery Strategy: Focuses on the active 'First Home Savings Knowledge' goal (63% progress), integrates mandatory ordered stack components (POINTS_BALANCE, GOAL_PROGRESS_CARD, LEARNING_MISSION_CARD, QUIZ_CARD, COMPREHENSION_FEEDBACK_CARD, CONFIDENCE_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD), and completely omits leaderboards and challenge cards.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You're 63% toward your First Home Savings Knowledge goal! Keep exploring educational modules to deepen your mastery.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new savings or learning milestone",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "First Home Mortgage Mastery",
+            "description": "Master the fundamentals of mortgage structuring and deposit preparation at your own pace.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "first-home-mortgage-mastery"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "What is the primary benefit of maintaining a dedicated lifetime ISA for first-time home buyers?",
+            "options": [
+              "Government bonus added to your savings",
+              "Guaranteed lottery winnings",
+              "Instant cash back on grocery purchases"
+            ],
+            "reward": "50 LBG coins",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Quiz Reflection",
+            "question": "How do fixed vs variable mortgage rates impact long-term budgeting?",
+            "yourAnswer": "Fixed rates provide predictable monthly payments.",
+            "correctAnswer": "Fixed rates provide predictable monthly payments.",
+            "feedback": "Spot on! Fixed rates offer certainty for your monthly budgeting during your savings journey.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Financial Confidence",
+            "topic": "Mortgage & Property Planning",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced Learner",
+            "nextMilestone": "Complete Module 5: Conveyancing Basics",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Mastery Tip: Compounding Knowledge",
+            "insight": "Consistent review of financial literacy modules increases retention by 40% over unstructured reading.",
+            "source": "LBG Educational Research",
+            "actionLabel": "Explore Reading Notes",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your LBG Coins Value",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Rewards Academy Modules",
+                "value": "\u00a315.00"
+              },
+              {
+                "label": "Savings Goal Milestones",
+                "value": "\u00a324.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "steps": [
+              {
+                "title": "Learn",
+                "description": "Complete financial literacy modules and quizzes at your own pace."
+              },
+              {
+                "title": "Convert",
+                "description": "Earn LBG coins as you master key financial concepts."
+              },
+              {
+                "title": "Redeem",
+                "description": "Apply your coin value directly toward your financial goals."
+              }
+            ],
+            "ctaLabel": "View Academy Curriculum",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CURRICULUM",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "MANDATORY_STACK"
+      ]
+    }
+  ]
+}

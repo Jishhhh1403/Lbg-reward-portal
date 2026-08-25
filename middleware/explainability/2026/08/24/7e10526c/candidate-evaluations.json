@@ -1,0 +1,860 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 14-component gamified rewards overview screen tailored for Marcus Johnson (GAMIFICATION_MOTIVATED persona). Includes POINTS_BALANCE, STREAK_CARD (highlighting his 34-day streak), CHALLENGE_CARD (active daily/weekly challenges), LEADERBOARD (showing rank 3), BADGE_CARD (15 earned badges), plus 9 supporting modular widgets (QUIZ, MILESTONE, COMMUNITY_FEED, RECENT_ACTIVITY, REWARD_WALLET, SOCIAL_SHARE, DAILY_BONUS, TIER_PROGRESS, SUPPORT_WIDGET) providing a fully immersive, rich UI without manipulative urgency or dark patterns.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly targets gamification, streak maintenance, and leaderboard comparison with high fidelity."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "14 rich components provide deep engagement matching his 0.95 engagement score and high activity patterns."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Aligns perfectly with PROGRESS_AND_COMMUNITY motivation and behavioral signals."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean modular design ensuring high contrast, screen reader compatibility, and logical tab order."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on solid observed facts (8750 coins, 34-day streak, rank 3) and 0.93 confidence inference."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Strict adherence to LBG brand guidelines, preserving coin and tier logos without modification."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces engaging community and milestone widgets appropriate for a Gold tier engaged user."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Utilizes standard component library and meets the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined 10-component gamified rewards screen focusing strictly on core mandatory elements (POINTS_BALANCE, STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD) plus 5 basic supporting components.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers core goals but falls short of the 12-17 component rich screen requirement."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fewer than 11 components reduces overall utility for a highly active user."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Good alignment with gamification motivation."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Good accessibility standards met."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Solid evidence base."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully brand compliant."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with little novelty."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible."
+        }
+      },
+      "weightedTotal": 7.35,
+      "hardGatesPass": true,
+      "objections": [
+        "Fails to meet the rich screen requirement of 12-17 components, resulting in lower expectedCustomerUtility and customerGoalRelevance scores."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Immersive gamification-first experience tailored for Marcus Johnson (GAMIFICATION_MOTIVATED persona). Highlights his 34-day streak, rank 3 leaderboard standing, 15 earned badges, active challenges, and community engagement with zero dark patterns.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Amazing consistency, Marcus! You're on a 34-day active streak.",
+            "nextReward": "Gold Streak Bonus (500 pts)",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "Bronze Badge",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "Silver Multiplier",
+                "achieved": true
+              },
+              {
+                "days": 50,
+                "reward": "Gold Vault Access",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah T.",
+                "points": 10400,
+                "avatar": "ST",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David K.",
+                "points": 9120,
+                "avatar": "DK",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena R.",
+                "points": 8100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Community Champion Sprint",
+            "description": "Complete 3 peer reward shares and maintain your daily streak to claim the weekly champion badge.",
+            "progress": 75,
+            "reward": "1,000 Bonus Coins",
+            "daysLeft": 3,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badges",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Badge Collection (15/25)",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Challenge Elite",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Community Star",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Quiz Master",
+                "icon": "brain",
+                "earned": false
+              },
+              {
+                "name": "Tier Legend",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "Which partner brand offers double reward points during weekend challenge sprints?",
+            "options": [
+              "Coffee Club",
+              "Travel Express",
+              "All Participating Partners",
+              "Local Grocers"
+            ],
+            "reward": "150 Coins",
+            "timeLimit": 45,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "START_QUIZ",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 12 challenges successfully",
+                "achieved": true
+              },
+              {
+                "label": "Earned 15 badges across categories",
+                "achieved": true
+              },
+              {
+                "label": "Reached Top 3 on weekly leaderboard",
+                "achieved": true
+              },
+              {
+                "label": "Unlocked Diamond Tier challenger status",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-community-challenge",
+          "type": "COMMUNITY_CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Global Community Green Goal",
+            "communityTotal": 450000,
+            "target": 500000,
+            "myContribution": 2450,
+            "endsOn": "15 Sep 2026",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_COMMUNITY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metrics",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "label": "Challenges Done",
+            "value": "12",
+            "unit": "completed",
+            "tone": "brand",
+            "infoText": "Your total completed challenges"
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metrics-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "Badges Earned",
+            "value": "15",
+            "unit": "badges",
+            "tone": "white",
+            "infoText": "Unlocked achievement badges"
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metrics-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "label": "Active Streak",
+            "value": "34",
+            "unit": "days",
+            "tone": "white",
+            "infoText": "Consecutive active days"
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-recommended",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Boost Your Rank",
+            "actions": [
+              {
+                "label": "Share your 34-day streak with community",
+                "points": 100,
+                "icon": "users"
+              },
+              {
+                "label": "Explore brand rewards catalog",
+                "points": 50,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Complete today's challenge sprint",
+                "points": 250,
+                "icon": "target"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXECUTE_ACTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Exclusive Gold Tier Rewards",
+            "rewards": [
+              {
+                "name": "Premium Coffee Experience",
+                "points": 1200,
+                "category": "Dining",
+                "limited": false
+              },
+              {
+                "name": "Weekend Film Pass",
+                "points": 1500,
+                "category": "Entertainment",
+                "limited": true
+              },
+              {
+                "name": "Partner Dining Voucher",
+                "points": 2500,
+                "category": "Dining",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronised",
+            "lastSyncedAt": "24 Aug 2026, 10:05 AM",
+            "message": "All challenge achievements and coin balances are up to date.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SYNC_WALLET",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "GAMIFICATION_MOTIVATED",
+        "HIGH_ENGAGEMENT_STREAK"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Balanced gamification and rewards overview for Marcus Johnson, blending challenge performance with quick tangible redemption and peer insights.",
+      "components": [
+        {
+          "id": "comp-2-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-streak",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Marcus, your 34-day streak puts you in the top 5% of active members!",
+            "nextReward": "Gold Tier Streak Bonus",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "Bronze Badge",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "Silver Multiplier",
+                "achieved": true
+              },
+              {
+                "days": 60,
+                "reward": "Diamond Milestone",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-challenge",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Daily Challenge Sprint",
+            "description": "Complete today's community challenge to earn bonus coin multipliers.",
+            "progress": 75,
+            "reward": "500 Coins",
+            "daysLeft": 2,
+            "participants": 1250,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-leaderboard",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah T.",
+                "points": 10400,
+                "avatar": "ST",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David K.",
+                "points": 9120,
+                "avatar": "DK",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant Rewards",
+            "description": "Redeem your coins instantly for everyday treats.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee",
+                "points": 500,
+                "icon": "coffee"
+              },
+              {
+                "name": "Dining Voucher",
+                "points": 1500,
+                "icon": "utensils"
+              },
+              {
+                "name": "Cinema Ticket",
+                "points": 1200,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_QUICK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-badges",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Badges Earned",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Challenge Elite",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Top Contributor",
+                "icon": "star",
+                "earned": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-peer",
+          "type": "PEER_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "cohortLabel": "Gold members like you",
+            "metrics": [
+              {
+                "label": "Challenges completed",
+                "you": 12,
+                "peers": 9,
+                "unit": "/month"
+              },
+              {
+                "label": "Active streak days",
+                "you": 34,
+                "peers": 14,
+                "unit": "days"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PEER_STATS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-tangible",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Your Coin Value",
+            "cashValue": "\u00a387.50",
+            "pointsEquivalent": 8750,
+            "breakdown": [
+              {
+                "label": "Available Coin Balance",
+                "value": "8,750 coins"
+              },
+              {
+                "label": "Estimated GBP Worth",
+                "value": "\u00a387.50"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-metrics",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "label": "Challenges",
+            "value": "12",
+            "unit": "done",
+            "tone": "brand",
+            "infoText": "Total challenges completed"
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-2-metrics-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "Badges",
+            "value": "15",
+            "unit": "won",
+            "tone": "white",
+            "infoText": "Total badges earned"
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-2-metrics-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "label": "Rank",
+            "value": "3",
+            "unit": "place",
+            "tone": "white",
+            "infoText": "Leaderboard position"
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-2-recommended",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Next Steps",
+            "actions": [
+              {
+                "label": "Check today's active challenge",
+                "points": 200,
+                "icon": "target"
+              },
+              {
+                "label": "Redeem coffee reward",
+                "points": 500,
+                "icon": "shopping-bag"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXECUTE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-sync",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Status",
+            "lastSyncedAt": "24 Aug 2026, 10:05 AM",
+            "message": "All data synced successfully.",
+            "ctaText": "Sync",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.9,
+      "reasonCodes": [
+        "BALANCED_GAMIFICATION",
+        "PEER_INSIGHTS"
+      ]
+    }
+  ]
+}

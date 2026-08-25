@@ -1,0 +1,599 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A balanced rich rewards overview featuring 9 distinct components: POINTS_BALANCE, STREAK_CARD, LEADERBOARD, CHALLENGE_CARD, GOAL_PROGRESS_CARD (Bali Trip), GOAL_PROGRESS_CARD (New Laptop), GOAL_PROGRESS_CARD (Home Deposit), LONG_TERM_GOAL_CARD (Retirement Fund), and ADD_GOAL_CARD. This strategy fully adheres to the multi-goal rule by presenting each of Priya's 4 active goals plus an add-goal card, alongside gamification and projection cards.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses all 4 active goals across horizons plus core gamification preferences."
+        },
+        "expectedCustomerUtility": {
+          "score": 10,
+          "explanation": "Provides a comprehensive, rich screen (9 components) that matches Priya's mixed profile of saving and community engagement."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with PROGRESS_AND_COMMUNITY motivation and Platinum tier status."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Well-structured card layout prevents cognitive overload while providing complete transparency."
+        },
+        "evidenceConfidence": {
+          "score": 10,
+          "explanation": "All components backed by high-confidence intelligence layer data and explicit customer context."
+        },
+        "brandAndDesignConsistency": {
+          "score": 10,
+          "explanation": "Adheres strictly to design system rules and maintains standard bank branding."
+        },
+        "usefulNovelty": {
+          "score": 9,
+          "explanation": "Seamlessly integrates short-term gamified rewards with long-term milestone progression."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "All required components are fully available within the design system and schema."
+        }
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A gamification-first rewards overview containing 6 components: POINTS_BALANCE, STREAK_CARD, LEADERBOARD, CHALLENGE_CARD, GOAL_PROGRESS_CARD (Bali Trip), and PROJECTION_CHART. This strategy focuses primarily on the top short-term goal and engagement mechanics, omitting individual cards for the other three savings goals.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to represent multiple active financial goals, violating the multi-goal presentation rule for users with multiple goals."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Falls short of the rich screen standard by omitting secondary and long-term goals."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Leans heavily into gamification but underrepresents the long-term saving component of her profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simpler layout, but leaves out critical customer context regarding her diverse savings goals."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Ignores verified intelligence layer data concerning her multi-horizon savings goals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Compliant with design rules."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard gamified dashboard approach without multi-goal synergy."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Feasible to build."
+        }
+      },
+      "weightedTotal": 6.85,
+      "hardGatesPass": true,
+      "objections": [
+        "Violates the multi-goal rule by failing to display all active goals plus an ADD_GOAL_CARD for a customer with multiple financial goals.",
+        "Scores lower on customerGoalRelevance and expectedCustomerUtility due to incomplete coverage of the customer's observed financial life."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A balanced rich rewards overview featuring 9 distinct components: POINTS_BALANCE, STREAK_CARD, LEADERBOARD, CHALLENGE_CARD, GOAL_PROGRESS_CARD (Bali Trip), GOAL_PROGRESS_CARD (New Laptop), GOAL_PROGRESS_CARD (Home Deposit), LONG_TERM_GOAL_CARD (Retirement Fund), and ADD_GOAL_CARD. This strategy fully adheres to the multi-goal rule by presenting each of Priya's 4 active goals plus an add-goal card, alongside gamification and projection cards.",
+      "components": [
+        {
+          "id": "comp-pts-bal-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 15400,
+            "tier": "Platinum",
+            "name": "Priya Sharma",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-01",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 21,
+            "message": "Amazing consistency, Priya! You're on a 21-day streak.",
+            "nextReward": "500 Bonus Points at 30 Days",
+            "milestones": [
+              {
+                "days": 7,
+                "reward": "100 pts",
+                "achieved": true
+              },
+              {
+                "days": 14,
+                "reward": "250 pts",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "500 pts",
+                "achieved": false
+              },
+              {
+                "days": 50,
+                "reward": "1000 pts",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-01",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Alex M.",
+                "points": 24500,
+                "avatar": "AM",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "Sarah K.",
+                "points": 21200,
+                "avatar": "SK",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 6,
+                "name": "David L.",
+                "points": 16000,
+                "avatar": "DL",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 7,
+                "name": "Priya Sharma",
+                "points": 15400,
+                "avatar": "PS",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 8,
+                "name": "Jordan P.",
+                "points": 14900,
+                "avatar": "JP",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-01",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Community Saver & Explorer Challenge",
+            "description": "Complete 3 partner transactions and maintain your daily streak to claim your reward.",
+            "progress": 66,
+            "reward": "1,500 LBG Coins",
+            "daysLeft": 4,
+            "participants": 1240,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-bali",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Bali Trip",
+            "current": 2900,
+            "target": 4000,
+            "percentage": 72,
+            "remaining": 1100,
+            "motivationalMessage": "You're almost at the beach! Just \u00a31,100 left to reach your Bali getaway.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Bali Trip"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-laptop",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "New Laptop",
+            "current": 1500,
+            "target": 2500,
+            "percentage": 60,
+            "remaining": 1000,
+            "motivationalMessage": "Great momentum! Over halfway to your productivity upgrade.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "New Laptop"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "goalName": "Home Deposit",
+            "current": 11000,
+            "target": 50000,
+            "percentage": 22,
+            "remaining": 39000,
+            "motivationalMessage": "Every milestone counts toward your future front door.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 15400,
+            "target": 80000,
+            "percentage": 19,
+            "estimatedCompletion": "2038",
+            "message": "Long-horizon compounding working for your future security.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LONG_TERM_GOAL",
+              "payload": {
+                "goal": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-01",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new savings target or milestone to track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.97,
+      "reasonCodes": [
+        "MIXED_PROFILE_MATCH",
+        "MULTI_GOAL_COMPLIANCE",
+        "GAMIFICATION_INTEGRATION"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A goal-centric savings and growth overview highlighting long-term horizon tracking, projected milestone growth, and structured goal contributions alongside community challenges.",
+      "components": [
+        {
+          "id": "comp-pts-bal-02",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 15400,
+            "tier": "Platinum",
+            "name": "Priya Sharma",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-bali-alt",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Bali Trip",
+            "current": 2900,
+            "target": 4000,
+            "percentage": 72,
+            "remaining": 1100,
+            "motivationalMessage": "Only \u00a31,100 remaining for your dream vacation!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Bali Trip"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-laptop-alt",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "New Laptop",
+            "current": 1500,
+            "target": 2500,
+            "percentage": 60,
+            "remaining": 1000,
+            "motivationalMessage": "Steady progress toward your tech upgrade.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "New Laptop"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home-alt",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Home Deposit",
+            "current": 11000,
+            "target": 50000,
+            "percentage": 22,
+            "remaining": 39000,
+            "motivationalMessage": "Building your foundation brick by brick.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement-alt",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 15400,
+            "target": 80000,
+            "percentage": 19,
+            "estimatedCompletion": "2038",
+            "message": "Long-term security compounding reliably.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LONG_TERM_GOAL",
+              "payload": {
+                "goal": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-alt",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create an additional savings objective.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-val-01",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Projected Rewards Growth",
+            "currentValue": 15400,
+            "projectedValue": 22500,
+            "timeframe": "2 Years",
+            "growthRate": "8.5% p.a.",
+            "message": "Your balanced saving and challenge bonuses accelerate your future value.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-alt",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "streakDays": 21,
+            "message": "21-day engagement streak maintaining your bonus multiplier.",
+            "nextReward": "500 Bonus Points at 30 Days",
+            "milestones": [
+              {
+                "days": 7,
+                "reward": "100 pts",
+                "achieved": true
+              },
+              {
+                "days": 14,
+                "reward": "250 pts",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "500 pts",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-alt",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Community Saver Challenge",
+            "description": "Keep your streak alive and complete partner milestones.",
+            "progress": 66,
+            "reward": "1,500 LBG Coins",
+            "daysLeft": 4,
+            "participants": 1240,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE_DETAILS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "GOAL_CENTRIC_STRATEGY",
+        "MULTI_GOAL_COMPLIANCE",
+        "FUTURE_VALUE_FOCUS"
+      ]
+    }
+  ]
+}

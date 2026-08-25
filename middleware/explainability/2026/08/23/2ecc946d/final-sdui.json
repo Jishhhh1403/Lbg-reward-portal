@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "2ecc946d",
+  "createdAt": "2023-10-27T10:00:00Z",
+  "expiresAt": "2023-11-27T10:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reengagement-banner",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Welcome back, Ryan!",
+        "message": "It's been 41 days since your last visit. We've saved your Gold status and 3,600 coins while you were away.",
+        "ctaText": "Explore Quick Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_BANNER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Points Expiry Notice",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "You have 1,500 points set to expire in 7 days. Redeem them now to enjoy your rewards before they lapse.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-popup",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Flash Reward Bonus!",
+        "subtitle": "Special welcome-back instant treat",
+        "points": 200,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "reward": "Coffee Voucher",
+            "points": 200
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Instant 1-Tap Redemption",
+        "description": "Redeem your balance instantly with zero hassle.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Flash Deal Snack Box",
+            "points": 350,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cineworld Movie Pass",
+            "points": 500,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_QUICK",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Rewards Cash Value",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": [
+          {
+            "label": "Available Coin Balance",
+            "value": "3,600 coins"
+          },
+          {
+            "label": "Estimated Retail Worth",
+            "value": "\u00a336.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Effortless Quick Wins",
+        "subtitle": "Low-point rewards ready right now",
+        "rewards": [
+          {
+            "name": "Digital Magazine Subscription",
+            "points": 150
+          },
+          {
+            "name": "Express Car Wash Voucher",
+            "points": 300
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

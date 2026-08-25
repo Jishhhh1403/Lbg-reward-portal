@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "5bbac771",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_002",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 6820,
+        "tier": "Platinum",
+        "name": "Sarah Chen",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-japan",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Japan Vacation",
+        "current": 1680,
+        "target": 2500,
+        "percentage": 67,
+        "remaining": 820,
+        "motivationalMessage": "You're over two-thirds of the way to Tokyo! Keep building your points.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Japan Vacation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-phone",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "goalName": "New Phone",
+        "current": 890,
+        "target": 1200,
+        "percentage": 74,
+        "remaining": 310,
+        "motivationalMessage": "Almost there! Just 310 more points to unlock your upgrade.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "New Phone"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-emergency",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Emergency Fund",
+        "current": 1350,
+        "target": 3000,
+        "percentage": 45,
+        "remaining": 1650,
+        "motivationalMessage": "Solid progress on your financial safety net. Every point counts!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Emergency Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new savings target and allocate your Platinum tier rewards.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Rewards Accelerating Your Goals",
+        "goalName": "Japan Vacation",
+        "rewards": [
+          {
+            "name": "Flight Discount Voucher",
+            "points": 5000,
+            "goalLinked": true
+          },
+          {
+            "name": "Hotel Stay Credit",
+            "points": 3000,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_GOAL_REWARD",
+          "payload": {
+            "rewardName": "Flight Discount Voucher"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "milestones": [
+          {
+            "label": "Reached 50% on Japan Vacation goal",
+            "achieved": true
+          },
+          {
+            "label": "Maintained Platinum tier status for 12 months",
+            "achieved": true
+          },
+          {
+            "label": "Completed 3 consecutive months of accumulation",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_MILESTONES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metrics",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "label": "Monthly Accumulation",
+        "value": "850",
+        "unit": "pts/mo",
+        "tone": "brand",
+        "infoText": "Average points earned per month based on your Platinum tier activity.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EARNING_HISTORY",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

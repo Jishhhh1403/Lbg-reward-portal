@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "1850 points expiring in 12 days",
+        "source": "wallet and intelligence layer",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "45 days since last login",
+        "source": "customer profile behavior",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_004 (Jessica Martinez) is classified as a high churn-risk user with 1850 expiring points in 12 days and 45 days of inactivity, exhibiting low engagement and a need for frictionless re-engagement.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "LBG coin balance is 1850 with 12 days until expiry",
+        "source": "wallet session context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Days since last activity is 45 days",
+        "source": "customer profile behavior data",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Notification open rate is 0.05",
+        "source": "customer profile behavior data",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Connected brands count is 3",
+        "source": "wallet session context",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "churnRisk",
+        "value": "HIGH",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "declining engagement over 60 days",
+          "has not logged in for 45 days",
+          "stopped opening notifications"
+        ],
+        "inferenceMethod": "intelligence layer persona detection",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "redemptionPropensity",
+        "value": "VERY_LOW",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "multiple unused rewards",
+          "redemption_frequency: VERY_LOW"
+        ],
+        "inferenceMethod": "behavioral history analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

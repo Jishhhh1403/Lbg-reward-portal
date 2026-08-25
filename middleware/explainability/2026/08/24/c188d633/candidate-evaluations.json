@@ -1,0 +1,780 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich educational mastery layout featuring 14 components: POINTS_BALANCE, GOAL_PROGRESS_CARD (First Home Savings Knowledge), QUIZ_CARD, EDUCATIONAL_INSIGHT_CARD, MILESTONE_CARD, LONG_TERM_GROWTH_SUMMARY, FINANCIAL_LITERACY_MODULE_LIST, SAVINGS_STRATEGY_DEEP_DIVE, KNOWLEDGE_BADGE_SHOWCASE, VALUE_EXPLAINER_PANEL, MODULE_COMPLETION_HISTORY, RECOMMENDED_READING_CARD, SKILL_MASTERY_TRACKER, and ADD_GOAL_CARD. Strictly avoids timed challenges, public leaderboards, and social pressure.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly aligns with Sophie's educational mastery motivation, financial literacy focus, and structured savings goal tracking."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 14 rich components tailored specifically to her high curiosity, progress orientation, and need for clear educational insights."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect match for LEARNING_MASTERY, emphasizing competence and knowledge acquisition over gamified pressure."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 10,
+          "explanation": "Structured, calm, educational tone with zero manipulative urgency, cognitive overload, or dark patterns."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by robust behavioral metrics: 100% module completion rates, quiz retakes, and explicit avoidance of timed/social features."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains a clean, professional financial education aesthetic consistent with premium advisory standards."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces tailored knowledge milestone trackers and skill mastery insights that enhance her ongoing learning journey."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported by existing component architecture and within the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Moderate layout featuring 8 components: POINTS_BALANCE, GOAL_PROGRESS_CARD, QUIZ_CARD, EDUCATIONAL_INSIGHT_CARD, MILESTONE_CARD, VALUE_EXPLAINER_PANEL, RECOMMENDED_READING_CARD, and ADD_GOAL_CARD. Focuses purely on basic learning modules.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Addresses core goals but lacks the depth required for an advanced educational mastery persona."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fewer than 11 components; does not fully leverage Sophie's high engagement score and session duration."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with learning motives but underutilizes her advanced curiosity and progress orientation scores."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean and accessible layout with no dark patterns."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Good behavioral backing, though overly conservative in component richness."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Too basic; offers little new value beyond standard module listings."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Highly feasible and fast to render."
+        }
+      },
+      "weightedTotal": 7.45,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Component count is below the recommended rich screen threshold (12-17 components), resulting in lower expected customer utility for a highly engaged learner."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Clarity-first educational mastery composition designed for Sophie Williams. Opens with tangible financial snapshot and value clarity, moves through structured learning pathways and goal progress, and anchors on trust, transparency, and competence without timed or social pressure.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Rewards Value Breakdown",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Academy Module Earnings",
+                "value": "3,000 points (\u00a330.00)"
+              },
+              {
+                "label": "Connected Brand Bonus",
+                "value": "900 points (\u00a39.00)"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "steps": [
+              {
+                "title": "Learn & Master",
+                "description": "Complete financial literacy modules to earn valuable LBG Coins."
+              },
+              {
+                "title": "Convert with Clarity",
+                "description": "Understand the exact cash value of every point you earn."
+              },
+              {
+                "title": "Apply to Your Goals",
+                "description": "Direct your accumulated rewards toward structured savings milestones."
+              }
+            ],
+            "ctaLabel": "Explore Learning Hub",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE_LEARNING",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are 63% toward your First Home Savings Knowledge goal. Steady progress builds lasting financial security.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Property Deposit Strategies",
+            "description": "Master advanced wealth-building concepts at your own pace with zero time pressure.",
+            "modulesDone": 8,
+            "modulesTotal": 10,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "property-deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "What is compound growth in the context of long-term savings?",
+            "options": [
+              "Earning returns on both initial principal and accumulated interest over time",
+              "A fixed monthly payment without interest",
+              "A promotional discount on retail purchases"
+            ],
+            "reward": "100 LBG Coins",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Recent Concept Review",
+            "question": "How do fixed-rate savings accounts protect against market volatility?",
+            "yourAnswer": "They lock in a guaranteed interest rate for a set term.",
+            "correctAnswer": "They lock in a guaranteed interest rate for a set term.",
+            "feedback": "Spot on! Locking in a guaranteed rate shields your savings from short-term fluctuations.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REVIEW_FEEDBACK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Financial Literacy Confidence",
+            "topic": "Property & Mortgage Fundamentals",
+            "confidencePercent": 88,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Complete final module to achieve Mastery badge",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CONFIDENCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Mastery Insight",
+            "insight": "Consistent savers who review their financial literacy modules monthly increase their long-term goal completion rate by 45%.",
+            "source": "LBG Financial Education Research",
+            "actionLabel": "Explore Deep Dive",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 8 Academy Modules",
+                "achieved": true
+              },
+              {
+                "label": "Achieved 9 Earned Badges",
+                "achieved": true
+              },
+              {
+                "label": "Maintained 8-Day Learning Streak",
+                "achieved": true
+              },
+              {
+                "label": "Reached 63% on First Home Savings Knowledge Goal",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Knowledge Badges",
+            "badges": [
+              {
+                "name": "Financial Literacy Scholar",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Savings Strategist",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Compound Growth Expert",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Mortgage Master",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Account & Progress Sync",
+            "lastSyncedAt": "2026-08-24 12:00",
+            "message": "All learning modules, quiz results, and savings goals are fully up to date across your 3 connected accounts.",
+            "ctaText": "Verify Sync",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new structured savings or learning goal to track your financial growth.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "EDUCATIONAL_MASTERY_PERSONA",
+        "MANDATORY_STACK_COMPLIANCE",
+        "CLARITY_FIRST_ARCHETYPE",
+        "ZERO_SUPPRESSED_ELEMENTS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative clarity-focused composition emphasizing deep value transparency, modular financial literacy growth, and structured milestone tracking for Sophie Williams.",
+      "components": [
+        {
+          "id": "comp-2-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Rewards Value Summary",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Academy Module Rewards",
+                "value": "3,000 points (\u00a330.00)"
+              },
+              {
+                "label": "Connected Partners",
+                "value": "900 points (\u00a39.00)"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "steps": [
+              {
+                "title": "Engage with Content",
+                "description": "Complete educational modules at your own pace."
+              },
+              {
+                "title": "Verify Understanding",
+                "description": "Retake quizzes as needed until concepts are fully mastered."
+              },
+              {
+                "title": "Apply Value",
+                "description": "Translate your earned points directly into structured savings goals."
+              }
+            ],
+            "ctaLabel": "View Learning Path",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE_LEARNING",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You have achieved 63% of your First Home Savings Knowledge target. Keep building your financial foundation.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-2-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Advanced Budgeting & Asset Building",
+            "description": "Self-paced study designed for thorough comprehension and long-term competence.",
+            "modulesDone": 8,
+            "modulesTotal": 10,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "advanced-budgeting"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-2-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "What is the primary advantage of diversification in a savings portfolio?",
+            "options": [
+              "Spreading risk across multiple asset classes to protect overall capital",
+              "Maximizing short-term speculative gains",
+              "Eliminating all transaction fees"
+            ],
+            "reward": "100 LBG Coins",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Comprehension Check",
+            "question": "Why is emergency fund liquidity essential before long-term investing?",
+            "yourAnswer": "It prevents liquidating investments prematurely during unexpected expenses.",
+            "correctAnswer": "It prevents liquidating investments prematurely during unexpected expenses.",
+            "feedback": "Correct! Maintaining accessible cash reserves safeguards your long-term investment strategy.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REVIEW_FEEDBACK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Financial Competence Meter",
+            "topic": "Risk Management & Asset Allocation",
+            "confidencePercent": 85,
+            "levelLabel": "Proficient comprehension",
+            "nextMilestone": "Complete risk assessment module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CONFIDENCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Structured Learning Note",
+            "insight": "Taking time to review quiz explanations thoroughly improves financial decision retention by over 50%.",
+            "source": "LBG Educational Standards",
+            "actionLabel": "Read Full Article",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "milestones": [
+              {
+                "label": "Mastered 8 Learning Modules",
+                "achieved": true
+              },
+              {
+                "label": "Connected 3 Partner Accounts",
+                "achieved": true
+              },
+              {
+                "label": "Reached 63% on First Home Savings Knowledge",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-rewards-insight",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Savings & Rewards Health",
+            "topBrandName": "LBG Academy Partner Network",
+            "topBrandPoints": 3900,
+            "growthTip": "Allocate completed module rewards directly into your structured savings goals to accelerate milestone achievement.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "Review Allocation",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_REWARDS_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Sync Status",
+            "lastSyncedAt": "2026-08-24 12:00",
+            "message": "Connected partner programs and learning progress records are fully synchronized.",
+            "ctaText": "Check Status",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create an additional savings or mastery goal to further structure your journey.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.93,
+      "reasonCodes": [
+        "EDUCATIONAL_MASTERY_PERSONA",
+        "ALTERNATIVE_STRUCTURE",
+        "CLARITY_FIRST_ARCHETYPE",
+        "ZERO_SUPPRESSED_ELEMENTS"
+      ]
+    }
+  ]
+}

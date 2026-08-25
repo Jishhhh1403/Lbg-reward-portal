@@ -53,6 +53,7 @@ export const DEMO_BRANDS: BrandOption[] = [
   { id: 'brd_amazon', name: 'Amazon', category: 'Shopping', logoText: 'AZ', color: '#ff9900', minRedeem: 1500 },
   { id: 'brd_asos', name: 'ASOS', category: 'Shopping', logoText: 'AS', color: '#111827', minRedeem: 1200 },
   { id: 'brd_boots', name: 'Boots', category: 'Health', logoText: 'BO', color: '#0e7490', minRedeem: 600 },
+  { id: 'brd_alphamedical', name: 'AlphaMedical', category: 'Health', logoText: 'AM', color: '#0f766e', minRedeem: 650 },
   { id: 'brd_holland', name: 'Holland & Barrett', category: 'Health', logoText: 'HB', color: '#15803d', minRedeem: 800 },
   { id: 'brd_cineworld', name: 'Cineworld', category: 'Entertainment', logoText: 'CW', color: '#7c3aed', minRedeem: 900 },
   { id: 'brd_spotify', name: 'Spotify', category: 'Entertainment', logoText: 'SP', color: '#16a34a', minRedeem: 700 },

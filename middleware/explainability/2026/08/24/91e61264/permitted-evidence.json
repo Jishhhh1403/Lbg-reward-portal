@@ -1,0 +1,71 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes financial literacy modules to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams exhibits an educational competence profile focused on financial literacy, tracking toward the First Home Savings Knowledge goal with high engagement in educational modules and quizzes.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "session_context_and_intelligence_layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "session_context_and_intelligence_layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "session_context_and_intelligence_layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3900 LBG coins with Gold tier status",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "preferredEngagementStyle",
+        "value": "SELF_PACED_MASTERY",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "avoids timed challenges and public rankings"
+        ],
+        "inferenceMethod": "BEHAVIORAL_PATTERN_ANALYSIS",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

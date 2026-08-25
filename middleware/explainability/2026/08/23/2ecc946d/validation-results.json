@@ -1,0 +1,35 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "Component overload",
+        "severity": "HIGH",
+        "statement": "The candidate layout loads 7 distinct promotional and transactional components simultaneously (Points Balance, Reengagement Banner, Expiring Points Alert, Flash Reward Popup, Quick Redeem Card, Tangible Value Card, and Quick Win Card). This creates severe cognitive overload and decision fatigue for the user upon return."
+      },
+      {
+        "category": "Inappropriate urgency or dark patterns",
+        "severity": "MEDIUM",
+        "statement": "Combining an expiring points notice, a 2-hour expiring flash reward popup, a quick redemption banner, and multiple quick-win cards creates artificial pressure and clutter immediately upon re-entry."
+      }
+    ],
+    "unresolvedCritical": 0,
+    "unresolvedHigh": 1,
+    "releaseReasons": [],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "Holding release due to component overload. Stacking 7 dense interactive components (including popups, banners, and multiple redemption grids) violates simplicity principles and causes cognitive overload for a returning customer."
+      }
+    ]
+  },
+  "fallbackTriggered": false,
+  "reasonCodes": []
+}

@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "bcb194e5",
+  "createdAt": "2025-02-15T12:00:00Z",
+  "expiresAt": "2025-02-15T13:00:00Z",
+  "customerRef": "customer_002",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 6820,
+        "tier": "Platinum",
+        "name": "Sarah Chen",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-japan",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Japan Vacation",
+        "current": 1680,
+        "target": 2500,
+        "percentage": 67,
+        "remaining": 820,
+        "motivationalMessage": "You're 67% there! Only 820 points left to unlock your Tokyo getaway.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Japan Vacation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-phone",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "goalName": "New Phone",
+        "current": 890,
+        "target": 1200,
+        "percentage": 74,
+        "remaining": 310,
+        "motivationalMessage": "Almost at the finish line! Just 310 points to your new phone upgrade.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "New Phone"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-emergency",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Emergency Fund",
+        "current": 1350,
+        "target": 3000,
+        "percentage": 45,
+        "remaining": 1650,
+        "motivationalMessage": "Solid progress! 45% secured for your financial peace of mind.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Emergency Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new savings target and start accumulating points faster.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-milestones",
+      "type": "GOAL_MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Japan Vacation",
+        "milestones": [
+          {
+            "label": "25% - Flight Deposit Saved",
+            "reached": true
+          },
+          {
+            "label": "50% - Hotel Voucher Secured",
+            "reached": true
+          },
+          {
+            "label": "75% - Shinkansen Pass Unlocked",
+            "reached": false
+          },
+          {
+            "label": "100% - Fully Funded Trip",
+            "reached": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONES",
+          "payload": {
+            "goalName": "Japan Vacation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Accelerate Your Japan Vacation",
+        "goalName": "Japan Vacation",
+        "rewards": [
+          {
+            "name": "Partner Airline Double Points",
+            "points": 500,
+            "goalLinked": true
+          },
+          {
+            "name": "Travel Booking Bonus",
+            "points": 300,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_REWARD",
+          "payload": {
+            "rewardName": "Partner Airline Double Points"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-recommended-actions",
+      "type": "RECOMMENDED_ACTIONS",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Boost Your Point Balance",
+        "actions": [
+          {
+            "label": "Link another partner brand",
+            "points": 250,
+            "icon": "shopping-bag"
+          },
+          {
+            "label": "Refer a friend to LBG Rewards",
+            "points": 500,
+            "icon": "users"
+          },
+          {
+            "label": "Complete monthly savings check-in",
+            "points": 150,
+            "icon": "target"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXECUTE_ACTION",
+          "payload": {
+            "actionLabel": "Link another partner brand"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "milestones": [
+          {
+            "label": "Platinum Tier Member Status Maintained",
+            "achieved": true
+          },
+          {
+            "label": "Consistent Monthly Accumulator (20 active days)",
+            "achieved": true
+          },
+          {
+            "label": "High Goal Completion Rate (78%)",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ACHIEVEMENTS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

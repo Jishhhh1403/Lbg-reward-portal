@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review home savings progress and explore connected educational insights to support financial mastery.",
+  "entryPoint": "Dashboard overview of savings and learning milestones",
+  "completionDefinition": "Customer views the First Home Savings Knowledge progress card and interacts with the recommended educational insight card.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my savings and rewards currently stand?",
+      "entryCondition": "Customer opens the rewards overview.",
+      "requiredInformation": [
+        "points balance",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-01"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my learning milestones and rewards connect to my home savings goal?",
+      "entryCondition": "Customer reviews current progress.",
+      "requiredInformation": [
+        "milestones",
+        "goal-linked rewards",
+        "learning modules"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational insights can deepen my financial mastery next?",
+      "entryCondition": "Customer examines mastery checkpoints.",
+      "requiredInformation": [
+        "educational insights",
+        "quiz completion"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "CLICK",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-03"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary context on how points translate into tangible educational milestones.",
+      "contentNotes": [
+        "Tangible value translation for academy milestones"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "1500 points expiring within a week",
+        "source": "session_context",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "responds strongly to flash offers and instant vouchers",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "inactive for 41 days",
+        "source": "behavior",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Ryan Okafor (Gold tier) has 3,600 total points/coins, with 1,500 points expiring within 7 days. The customer has been inactive for 41 days after previously visiting daily, and shows a strong historical preference for instant rewards, flash offers, and quick redemptions.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "1,500 points expiring within a week",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Inactive for over a month after months of daily visits (41 days since last activity)",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Historically redeemed points within hours of earning (average redemption time 6 hours)",
+        "source": "Intelligence Layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Responds strongly to flash offers and instant vouchers",
+        "source": "Intelligence Layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-005",
+        "statement": "Total lbgCoins balance is 3,600",
+        "source": "Session Context",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "redemptionSensitivity",
+        "value": "HIGH_INSTANT",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-003",
+          "fact-004"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "churnRisk",
+        "value": "HIGH",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-002"
+        ],
+        "inferenceMethod": "recency_frequency_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

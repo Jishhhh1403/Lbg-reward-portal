@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "fallback-candidate",
+  "correlationId": "cf28e7d1",
+  "createdAt": "2026-08-24T10:00:00Z",
+  "expiresAt": "2026-08-24T23:59:59Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "comp-points-balance-fallback",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan"
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {
+            "customer": "Leo Morgan"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

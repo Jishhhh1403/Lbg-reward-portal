@@ -1,0 +1,110 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams is an education-focused customer (EDUCATIONAL_COMPETENCE persona) currently engaged in learning and progress tracking on mobile. She has 3,900 LBG Coins, no active points balance, 3 connected brands, and is actively tracking her 'First Home Savings Knowledge' goal at 63% progress.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_analytics",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_analytics",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "session_analytics",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3,900 LBG Coins with 3 connected brands",
+        "source": "wallet_sync",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-05",
+        "statement": "Tracks 'First Home Savings Knowledge' goal currently at 63% progress (1250/2000)",
+        "source": "goal_tracker",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-03"
+        ],
+        "inferenceMethod": "behavioral_affinity_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-03",
+        "attribute": "engagementStyle",
+        "value": "COMPETENCE_DRIVEN",
+        "confidence": 0.88,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "task_charter_alignment",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

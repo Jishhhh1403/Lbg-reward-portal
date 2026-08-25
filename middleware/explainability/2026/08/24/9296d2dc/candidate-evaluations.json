@@ -1,0 +1,678 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich screen (14 components) designed for the Interoperability Seeker persona. Features a consolidated multi-partner balance overview, Family Holiday Fund goal card with plain-English transfer guides, simple transfer calculator without technical jargon, and a clear Add Goal card for multi-goal flexibility.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses multi-partner reward consolidation and Family Holiday Fund progression."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 14 rich components offering clear, jargon-free portability insights and combined views."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Strongly aligns with PORTABILITY motivation and interoperability focus."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Strict adherence to plain-English explanations with high contrast and readable typography."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong behavioral signals (0.9+ confidence) regarding multi-program balances and transfer interest."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains bank design system standards without altering protected logos."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces intuitive plain-English cross-programme transfer explanations."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported by existing mobile component availability and within latency budget."
+        }
+      },
+      "weightedTotal": 9.15,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Minimalist screen (8 components) focusing solely on balance totals and a basic transfer button, omitting rich goal milestone cards and plain-English guides.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to provide the comprehensive view and transfer context requested by the customer."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Under 11 components; provides insufficient depth for goal tracking and transfer explanations."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Misses the rich portability breakdown expected by an Interoperability Seeker."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 7,
+          "explanation": "Simple, but lacks the detailed plain-English guidance needed to avoid confusion."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Utilizes available facts but under-delivers on scope."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with design system."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Offers nothing beyond standard baseline views."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible due to minimal component count."
+        }
+      },
+      "weightedTotal": 6.35,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Component count (8) falls below the rich screen threshold of 11-17 components required for optimal customer utility."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Interoperability Seeker strategy focusing on consolidated multi-partner reward visibility, plain-English transfer guidance, and structured goal progression for the Family Holiday Fund.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 11200,
+            "tier": "Platinum",
+            "name": "Leo Morgan",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-consolidated-wallet",
+          "type": "CONSOLIDATED_REWARD_WALLET",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Combined Reward Wallet",
+            "subtitle": "All your partner balances in one place, clear and simple.",
+            "programmes": [
+              {
+                "name": "Main Rewards Programme",
+                "points": 11200,
+                "value": "\u00a3112.00",
+                "status": "Active"
+              },
+              {
+                "name": "Airlines Partner",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "status": "Connected"
+              },
+              {
+                "name": "Hotel Partner",
+                "points": 3200,
+                "value": "\u00a332.00",
+                "status": "Connected"
+              }
+            ],
+            "totalValue": "\u00a3189.00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "status": "synced",
+            "title": "Partner Balances Up to Date",
+            "lastSyncedAt": "Today at 09:23 AM",
+            "message": "All connected partner balances are fully synchronised.",
+            "ctaText": "Refresh balances",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-partner-value-comparison",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Compare Partner Values",
+            "subtitle": "See what your points are worth across each partner in plain pounds.",
+            "partners": [
+              {
+                "name": "Airlines Partner",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "perk": "Best for flights and travel extras"
+              },
+              {
+                "name": "Hotel Partner",
+                "points": 3200,
+                "value": "\u00a332.00",
+                "perk": "Best for weekend hotel stays"
+              },
+              {
+                "name": "Main Rewards Programme",
+                "points": 11200,
+                "value": "\u00a3112.00",
+                "perk": "Flexible cash or vouchers"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-partner-transfer",
+          "type": "PARTNER_TRANSFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Move Points Easily",
+            "fromProgramme": "Main Rewards Programme",
+            "toPartner": "Airlines Partner",
+            "points": 1000,
+            "estimatedValue": "\u00a310.00",
+            "status": "Ready to transfer instantly",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-reward-provenance",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Where Your Points Came From",
+            "subtitle": "A simple history of your recent reward earnings.",
+            "history": [
+              {
+                "source": "Partner Transfer Bonus",
+                "date": "20 Aug 2026",
+                "points": 1000
+              },
+              {
+                "source": "Monthly Partner Sync",
+                "date": "15 Aug 2026",
+                "points": 500
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress-1",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "goalName": "Family Holiday Fund",
+            "current": 1750,
+            "target": 3000,
+            "percentage": 58,
+            "remaining": 1250,
+            "motivationalMessage": "You are more than halfway to your Family Holiday Fund!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set up a new savings milestone whenever you are ready.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-programme-connection",
+          "type": "PROGRAMME_CONNECTION_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Connected Programmes",
+            "subtitle": "Manage your linked accounts to keep your wallet up to date.",
+            "programmes": [
+              {
+                "name": "Airlines Partner",
+                "status": "Active and synced",
+                "connected": true
+              },
+              {
+                "name": "Hotel Partner",
+                "status": "Active and synced",
+                "connected": true
+              },
+              {
+                "name": "Retail Partner",
+                "status": "Not connected",
+                "connected": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-milestone",
+          "type": "GOAL_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "goalName": "Family Holiday Fund",
+            "milestones": [
+              {
+                "label": "25% - First milestone reached",
+                "reached": true
+              },
+              {
+                "label": "50% - Halfway point reached",
+                "reached": true
+              },
+              {
+                "label": "75% - Almost there",
+                "reached": false
+              },
+              {
+                "label": "100% - Goal completed",
+                "reached": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Rewards Boosting Your Goal",
+            "goalName": "Family Holiday Fund",
+            "rewards": [
+              {
+                "name": "Partner Transfer Bonus",
+                "points": 1000,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone-card",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "milestones": [
+              {
+                "label": "Linked 3 partner programmes",
+                "achieved": true
+              },
+              {
+                "label": "Completed first plain-English transfer",
+                "achieved": true
+              },
+              {
+                "label": "Reached 50% on Family Holiday Fund",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-why-this-ui",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Why this view?",
+            "intro": "Designed specially for Leo Morgan based on your preference for clear multi-partner views and plain-English transfers.",
+            "reasons": [
+              {
+                "label": "Consolidated Wallet",
+                "detail": "Brings all three partner programmes into one combined view."
+              },
+              {
+                "label": "Plain-English Transfers",
+                "detail": "Explains point movements simply without confusing financial jargon."
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INTEROPERABILITY_FOCUS",
+        "PLAIN_ENGLISH_PREFERENCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative Interoperability Seeker layout emphasizing partner value comparison and direct transfer actions with a slightly more compact component structure.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 11200,
+            "tier": "Platinum",
+            "name": "Leo Morgan",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-consolidated-wallet-2",
+          "type": "CONSOLIDATED_REWARD_WALLET",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Combined Reward Wallet",
+            "subtitle": "Overview of your connected balances.",
+            "programmes": [
+              {
+                "name": "Main Rewards Programme",
+                "points": 11200,
+                "value": "\u00a3112.00",
+                "status": "Active"
+              },
+              {
+                "name": "Airlines Partner",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "status": "Connected"
+              },
+              {
+                "name": "Hotel Partner",
+                "points": 3200,
+                "value": "\u00a332.00",
+                "status": "Connected"
+              }
+            ],
+            "totalValue": "\u00a3189.00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-sync-status-2",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "status": "synced",
+            "title": "Sync Status",
+            "lastSyncedAt": "Today at 09:23 AM",
+            "message": "All balances are up to date.",
+            "ctaText": "Check for updates",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-partner-value-comparison-2",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Partner Value Comparison",
+            "subtitle": "Plain English breakdown of your partner points value.",
+            "partners": [
+              {
+                "name": "Airlines Partner",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "perk": "Flight rewards"
+              },
+              {
+                "name": "Hotel Partner",
+                "points": 3200,
+                "value": "\u00a332.00",
+                "perk": "Hotel stays"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-partner-transfer-2",
+          "type": "PARTNER_TRANSFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Transfer Points",
+            "fromProgramme": "Main Rewards Programme",
+            "toPartner": "Hotel Partner",
+            "points": 1000,
+            "estimatedValue": "\u00a310.00",
+            "status": "Ready",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-reward-provenance-2",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Points History",
+            "subtitle": "Clear earnings breakdown.",
+            "history": [
+              {
+                "source": "Partner Transfer Bonus",
+                "date": "20 Aug 2026",
+                "points": 1000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "goalName": "Family Holiday Fund",
+            "current": 1750,
+            "target": 3000,
+            "percentage": 58,
+            "remaining": 1250,
+            "motivationalMessage": "Making steady progress toward your holiday.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-programme-connection-2",
+          "type": "PROGRAMME_CONNECTION_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Programme Connections",
+            "subtitle": "Manage your links.",
+            "programmes": [
+              {
+                "name": "Airlines Partner",
+                "status": "Connected",
+                "connected": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-milestone-2",
+          "type": "GOAL_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "goalName": "Family Holiday Fund",
+            "milestones": [
+              {
+                "label": "50% reached",
+                "reached": true
+              },
+              {
+                "label": "100% target",
+                "reached": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward-2",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Goal Linked Rewards",
+            "goalName": "Family Holiday Fund",
+            "rewards": [
+              {
+                "name": "Partner Transfer Bonus",
+                "points": 1000,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone-card-2",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "milestones": [
+              {
+                "label": "Connected partner programmes",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.88,
+      "reasonCodes": [
+        "ALTERNATE_LAYOUT",
+        "INTEROPERABILITY_FOCUS"
+      ]
+    }
+  ]
+}

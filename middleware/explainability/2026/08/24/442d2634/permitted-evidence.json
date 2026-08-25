@@ -1,0 +1,84 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "rapid redemption habits",
+        "source": "historical redemption data",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "1500 points expiring in 7 days",
+        "source": "wallet sync",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Ryan Okafor is currently at high risk of churn or point loss, with 1,500 points expiring within 7 days following 41 days of inactivity. Historically, the customer exhibits rapid redemption behavior (avg redemption time 6 hours, 85% immediate redemption rate) and responds strongly to flash offers and instant vouchers.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "1,500 points expiring within 7 days",
+        "source": "session_context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "41 days of inactivity following historical rapid redemption habits",
+        "source": "journey_analysis",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Historically redeemed points within hours of earning",
+        "source": "intelligence_layer",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Responds strongly to flash offers and instant vouchers",
+        "source": "intelligence_layer",
+        "confidence": 0.92
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "engagementRisk",
+        "value": "HIGH",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-002",
+          "fact-001"
+        ],
+        "inferenceMethod": "behavioral_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "preferredRewardFormat",
+        "value": "INSTANT_LOW_COST_VOUCHERS",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-004",
+          "fact-003"
+        ],
+        "inferenceMethod": "historical_preference_matching",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

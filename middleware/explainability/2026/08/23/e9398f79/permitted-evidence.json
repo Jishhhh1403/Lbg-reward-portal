@@ -1,0 +1,64 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "responds to flash offers",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Alex Rivera has 4,250 LBG coins, Gold tier status, and demonstrates strong behavioral patterns toward immediate, high-tangible-value redemptions with short dwell times and high notification engagement.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer holds 4,250 LBG coins with 3 connected brands.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Immediate redemption rate is 89% with an average redemption time of 2.3 hours.",
+        "source": "Customer Profile behaviors",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Customer responds to flash offers and maintains a notification open rate of 45%.",
+        "source": "Task Charter availableEvidence",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "redemptionPreference",
+        "value": "INSTANT",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming"
+        ],
+        "inferenceMethod": "behavioral_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

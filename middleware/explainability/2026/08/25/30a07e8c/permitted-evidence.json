@@ -1,0 +1,74 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "redeems almost exclusively as statement credits on linked card",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "checks cashback earned alongside balance every visit",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-03",
+        "classification": "OBSERVED",
+        "value": "active holiday savings goal with 53% progress",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Daniel Brooks focuses on payment utility, checking cashback earnings alongside balances and redeeming almost exclusively as statement credits. He maintains an active holiday savings goal with 53% progress.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Redeems almost exclusively as statement credits on linked card",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Checks cashback earned alongside balance every visit",
+        "source": "behavior",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Maintains active holiday savings goal at 640 of 1200 target value (53%)",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "PAYMENT_UTILITY",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "intelligence-layer-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

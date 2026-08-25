@@ -1,0 +1,793 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-4fe07fee",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Tailored strictly for Sophie Williams (EDUCATIONAL_COMPETENCE persona, LEARNING_MASTERY motivation). Emphasizes structured financial literacy, calm and pressure-free module progression, and steady advancement toward her First Home Savings Knowledge goal without any public rankings, timed challenges, or dark patterns. Follows the mandatory ordered stack and uses 14 components.",
+      "components": [
+        {
+          "id": "points-balance-1",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "wallet-overview"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-1",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "Steady progress through dedicated module mastery.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "learning-mission-1",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Mastering Property Acquisition",
+            "missionName": "Homeownership Fundamentals",
+            "description": "Deepen your understanding of mortgage structures and property deposits at your own pace.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "homeownership-fundamentals"
+              }
+            }
+          ]
+        },
+        {
+          "id": "quiz-card-1",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the primary benefit of a fixed-rate mortgage when planning long-term?",
+            "options": [
+              "Guaranteed stable monthly payments regardless of market rate fluctuations",
+              "Automatically lower interest rates every six months",
+              "Zero deposit requirements for all lenders"
+            ],
+            "reward": "150 Learning Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "quizId": "mortgage-basics-01"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comprehension-feedback-1",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Concept Reflection",
+            "question": "How do compound returns affect long-term savings?",
+            "yourAnswer": "Interest is earned on both initial principal and accumulated interest over time.",
+            "correctAnswer": "Interest is earned on both initial principal and accumulated interest over time.",
+            "feedback": "Excellent grasp of the core compounding principle. Your thoroughness in reviewing module definitions has paid off.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACKNOWLEDGE_FEEDBACK",
+              "payload": {
+                "topic": "compound-returns"
+              }
+            }
+          ]
+        },
+        {
+          "id": "confidence-progress-card-1",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Literacy Confidence",
+            "topic": "Deposit Planning & Mortgages",
+            "confidencePercent": 88,
+            "levelLabel": "Building strong competence",
+            "nextMilestone": "Complete final mortgage assessment module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_TOPIC_DETAILS",
+              "payload": {
+                "topic": "deposit-planning"
+              }
+            }
+          ]
+        },
+        {
+          "id": "educational-insight-card-1",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Understanding LTV Ratios",
+            "insight": "Loan-to-Value (LTV) ratios determine lender risk bands. A larger deposit lowers the LTV percentage, unlocking more favorable interest tiers.",
+            "source": "LBG Educational Research Desk",
+            "actionLabel": "Explore Module",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_MODULE",
+              "payload": {
+                "moduleId": "ltv-ratios"
+              }
+            }
+          ]
+        },
+        {
+          "id": "add-goal-card-1",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Add a New Knowledge Goal",
+            "subtitle": "Set a new learning milestone or savings objective",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {
+                "type": "knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-milestone-card-1",
+          "type": "GOAL_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "milestones": [
+              {
+                "label": "Basic Deposit Terminology",
+                "reached": true
+              },
+              {
+                "label": "Mortgage Structure Mastery",
+                "reached": true
+              },
+              {
+                "label": "Conveyancing & Legal Fees Breakdown",
+                "reached": false
+              },
+              {
+                "label": "Final Knowledge Assessment 100%",
+                "reached": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-linked-reward-1",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Accelerate Your Savings Knowledge",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Advanced Property Tax Guide",
+                "points": 200,
+                "goalLinked": true
+              },
+              {
+                "name": "First-Time Buyer Masterclass",
+                "points": 350,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_REWARD",
+              "payload": {
+                "rewardName": "Advanced Property Tax Guide"
+              }
+            }
+          ]
+        },
+        {
+          "id": "badge-card-1",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Knowledge Badges & Achievements",
+            "badges": [
+              {
+                "name": "Financial Scholar",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Consistent Learner",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Mastery Expert",
+                "icon": "trophy",
+                "earned": true
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {
+                "section": "knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "metric-tile-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "label": "LBG Coins",
+            "value": "3,900",
+            "unit": "coins",
+            "tone": "brand",
+            "infoText": "Earned through dedicated module completion",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_METRIC_DETAILS",
+              "payload": {
+                "metric": "lbg-coins"
+              }
+            }
+          ]
+        },
+        {
+          "id": "metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "brands",
+            "tone": "white",
+            "infoText": "Integrated partner programmes",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_METRIC_DETAILS",
+              "payload": {
+                "metric": "connected-brands"
+              }
+            }
+          ]
+        },
+        {
+          "id": "metric-tile-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "label": "Completed Modules",
+            "value": "100%",
+            "unit": "completion",
+            "tone": "white",
+            "infoText": "Consistently retaken for full understanding",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_METRIC_DETAILS",
+              "payload": {
+                "metric": "modules"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "EDUCATIONAL_COMPETENCE",
+        "LEARNING_MASTERY"
+      ]
+    },
+    "strategy": "Tailored strictly for Sophie Williams (EDUCATIONAL_COMPETENCE persona, LEARNING_MASTERY motivation). Emphasizes structured financial literacy, calm and pressure-free module progression, and steady advancement toward her First Home Savings Knowledge goal without any public rankings, timed challenges, or dark patterns. Follows the mandatory ordered stack and uses 14 components.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Tailored strictly for Sophie Williams (EDUCATIONAL_COMPETENCE persona, LEARNING_MASTERY motivation). Emphasizes structured financial literacy, calm and pressure-free module progression, and steady advancement toward her First Home Savings Knowledge goal without any public rankings, timed challenges, or dark patterns. Follows the mandatory ordered stack and uses 14 components.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "wallet-overview"
+            }
+          }
+        ]
+      },
+      {
+        "id": "goal-progress-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "Steady progress through dedicated module mastery.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "learning-mission-1",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Mastering Property Acquisition",
+          "missionName": "Homeownership Fundamentals",
+          "description": "Deepen your understanding of mortgage structures and property deposits at your own pace.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_MISSION",
+            "payload": {
+              "missionId": "homeownership-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "quiz-card-1",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of a fixed-rate mortgage when planning long-term?",
+          "options": [
+            "Guaranteed stable monthly payments regardless of market rate fluctuations",
+            "Automatically lower interest rates every six months",
+            "Zero deposit requirements for all lenders"
+          ],
+          "reward": "150 Learning Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "quizId": "mortgage-basics-01"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comprehension-feedback-1",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Recent Concept Reflection",
+          "question": "How do compound returns affect long-term savings?",
+          "yourAnswer": "Interest is earned on both initial principal and accumulated interest over time.",
+          "correctAnswer": "Interest is earned on both initial principal and accumulated interest over time.",
+          "feedback": "Excellent grasp of the core compounding principle. Your thoroughness in reviewing module definitions has paid off.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ACKNOWLEDGE_FEEDBACK",
+            "payload": {
+              "topic": "compound-returns"
+            }
+          }
+        ]
+      },
+      {
+        "id": "confidence-progress-card-1",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Literacy Confidence",
+          "topic": "Deposit Planning & Mortgages",
+          "confidencePercent": 88,
+          "levelLabel": "Building strong competence",
+          "nextMilestone": "Complete final mortgage assessment module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_TOPIC_DETAILS",
+            "payload": {
+              "topic": "deposit-planning"
+            }
+          }
+        ]
+      },
+      {
+        "id": "educational-insight-card-1",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Understanding LTV Ratios",
+          "insight": "Loan-to-Value (LTV) ratios determine lender risk bands. A larger deposit lowers the LTV percentage, unlocking more favorable interest tiers.",
+          "source": "LBG Educational Research Desk",
+          "actionLabel": "Explore Module",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_EDUCATIONAL_MODULE",
+            "payload": {
+              "moduleId": "ltv-ratios"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-goal-card-1",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Add a New Knowledge Goal",
+          "subtitle": "Set a new learning milestone or savings objective",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {
+              "type": "knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "goal-milestone-card-1",
+        "type": "GOAL_MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "milestones": [
+            {
+              "label": "Basic Deposit Terminology",
+              "reached": true
+            },
+            {
+              "label": "Mortgage Structure Mastery",
+              "reached": true
+            },
+            {
+              "label": "Conveyancing & Legal Fees Breakdown",
+              "reached": false
+            },
+            {
+              "label": "Final Knowledge Assessment 100%",
+              "reached": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONE",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "goal-linked-reward-1",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Accelerate Your Savings Knowledge",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": [
+            {
+              "name": "Advanced Property Tax Guide",
+              "points": 200,
+              "goalLinked": true
+            },
+            {
+              "name": "First-Time Buyer Masterclass",
+              "points": 350,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardName": "Advanced Property Tax Guide"
+            }
+          }
+        ]
+      },
+      {
+        "id": "badge-card-1",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Knowledge Badges & Achievements",
+          "badges": [
+            {
+              "name": "Financial Scholar",
+              "icon": "brain",
+              "earned": true
+            },
+            {
+              "name": "Consistent Learner",
+              "icon": "star",
+              "earned": true
+            },
+            {
+              "name": "Mastery Expert",
+              "icon": "trophy",
+              "earned": true
+            }
+          ],
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BADGES",
+            "payload": {
+              "section": "knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "metric-tile-1",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "label": "LBG Coins",
+          "value": "3,900",
+          "unit": "coins",
+          "tone": "brand",
+          "infoText": "Earned through dedicated module completion",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_METRIC_DETAILS",
+            "payload": {
+              "metric": "lbg-coins"
+            }
+          }
+        ]
+      },
+      {
+        "id": "metric-tile-2",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "label": "Connected Brands",
+          "value": "3",
+          "unit": "brands",
+          "tone": "white",
+          "infoText": "Integrated partner programmes",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_METRIC_DETAILS",
+            "payload": {
+              "metric": "connected-brands"
+            }
+          }
+        ]
+      },
+      {
+        "id": "metric-tile-3",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "label": "Completed Modules",
+          "value": "100%",
+          "unit": "completion",
+          "tone": "white",
+          "infoText": "Consistently retaken for full understanding",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_METRIC_DETAILS",
+            "payload": {
+              "metric": "modules"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "EDUCATIONAL_COMPETENCE",
+      "LEARNING_MASTERY"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "motivated by mastering topics rather than winning them"
+        ]
+      }
+    ],
+    "methodology": "behavioral-and-competence-analysis",
+    "temporaryInterpretation": true
+  }
+}

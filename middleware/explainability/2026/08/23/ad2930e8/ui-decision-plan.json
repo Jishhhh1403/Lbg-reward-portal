@@ -1,0 +1,407 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-ad2930e8",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Tailored for the INSTANT_AT_RISK_MIX persona: leads with a warm re-engagement banner and a factual expiring points alert for Ryan Okafor (1,500 points in 7 days), followed by instant flash rewards, quick redeem items, and a tangible cash-value breakdown to motivate immediate redemption.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Welcome back, Ryan!",
+            "message": "We've missed seeing you. Jump straight into your rewards and grab a treat today.",
+            "ctaText": "Explore Instant Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Points Expiring Soon",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "You have 1,500 points expiring in 7 days. Redeem them now on your favorite instant treats!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Instant Coffee Treat",
+            "subtitle": "Claim in one tap with your balance",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Artisan Coffee Voucher",
+                "points": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Flash Deal Snack Box",
+            "subtitle": "Limited-time instant reward discount",
+            "originalPoints": 500,
+            "discountedPoints": 350,
+            "timer": "06:24:12",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardName": "Flash Deal Snack Box",
+                "points": 350
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "One-Tap Instant Rewards",
+            "description": "Redeem instantly using your available balance.",
+            "rewards": [
+              {
+                "name": "Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Flash Deal Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              },
+              {
+                "name": "Movie Rental Pass",
+                "points": 400,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Your Rewards Value",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available Points Balance",
+                "value": "\u00a336.00"
+              },
+              {
+                "label": "Expiring Value (7 Days)",
+                "value": "\u00a315.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.94,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INSTANT_AT_RISK_MIX",
+        "EXPIRING_POINTS_COVERAGE"
+      ]
+    },
+    "strategy": "Tailored for the INSTANT_AT_RISK_MIX persona: leads with a warm re-engagement banner and a factual expiring points alert for Ryan Okafor (1,500 points in 7 days), followed by instant flash rewards, quick redeem items, and a tangible cash-value breakdown to motivate immediate redemption.",
+    "confidence": 0.94
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Tailored for the INSTANT_AT_RISK_MIX persona: leads with a warm re-engagement banner and a factual expiring points alert for Ryan Okafor (1,500 points in 7 days), followed by instant flash rewards, quick redeem items, and a tangible cash-value breakdown to motivate immediate redemption.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3600,
+          "tier": "Gold",
+          "name": "Ryan Okafor",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reengagement",
+        "type": "REENGAGEMENT_BANNER",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Welcome back, Ryan!",
+          "message": "We've missed seeing you. Jump straight into your rewards and grab a treat today.",
+          "ctaText": "Explore Instant Rewards",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "DISMISS_BANNER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Points Expiring Soon",
+          "expiringPoints": 1500,
+          "daysLeft": 7,
+          "message": "You have 1,500 points expiring in 7 days. Redeem them now on your favorite instant treats!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_EXPIRING_POINTS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Instant Coffee Treat",
+          "subtitle": "Claim in one tap with your balance",
+          "rewards": [
+            {
+              "name": "Artisan Coffee Voucher",
+              "points": 200
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_QUICK_WIN",
+            "payload": {
+              "rewardName": "Artisan Coffee Voucher",
+              "points": 200
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-flash-banner",
+        "type": "FLASH_REWARD_BANNER",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Flash Deal Snack Box",
+          "subtitle": "Limited-time instant reward discount",
+          "originalPoints": 500,
+          "discountedPoints": 350,
+          "timer": "06:24:12",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_FLASH_REWARD",
+            "payload": {
+              "rewardName": "Flash Deal Snack Box",
+              "points": 350
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-redeem",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "One-Tap Instant Rewards",
+          "description": "Redeem instantly using your available balance.",
+          "rewards": [
+            {
+              "name": "Coffee Voucher",
+              "points": 200,
+              "icon": "coffee"
+            },
+            {
+              "name": "Flash Deal Snack Box",
+              "points": 350,
+              "icon": "utensils"
+            },
+            {
+              "name": "Movie Rental Pass",
+              "points": 400,
+              "icon": "film"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_QUICK_REDEEMS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Your Rewards Value",
+          "cashValue": "\u00a336.00",
+          "pointsEquivalent": 3600,
+          "breakdown": [
+            {
+              "label": "Available Points Balance",
+              "value": "\u00a336.00"
+            },
+            {
+              "label": "Expiring Value (7 Days)",
+              "value": "\u00a315.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_DETAILS",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.94,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "INSTANT_AT_RISK_MIX",
+      "EXPIRING_POINTS_COVERAGE"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "historically redeemed points within hours of earning",
+          "responds strongly to flash offers and instant vouchers",
+          "small instant rewards drove past engagement spikes"
+        ]
+      }
+    ],
+    "methodology": "Pattern analysis of historical redemption speed and responsiveness to immediate flash offers versus deferred rewards.",
+    "temporaryInterpretation": true
+  }
+}

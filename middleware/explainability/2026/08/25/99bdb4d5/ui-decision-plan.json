@@ -1,0 +1,267 @@
+{
+  "planId": "plan-99bdb4d5",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Goal-centered learning mastery journey highlighting 'First Home Savings Knowledge' progress (63%) paired with educational quiz reinforcement and transparent milestone tracking, strictly avoiding timed challenges or rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your first home knowledge milestone at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Knowledge & Savings Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Milestone Equivalency",
+            "value": "1% progress = \u00a30.62 value equivalent"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Financial Literacy Academy",
+          "missionName": "First Home Mortgage Mechanics",
+          "description": "Deepen your understanding of mortgage structures and deposit strategies with zero time pressure.",
+          "modulesDone": 6,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "learning_mission_detail"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary benefit of maintaining a dedicated first home savings account?",
+          "options": "A) Building structured deposit habits, B) Unlocking random prize draws, C) Meeting strict daily login minimums",
+          "reward": "50 educational bonus points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "selectedOption": "A"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Mastery Check",
+          "question": "Why does consistent saving improve mortgage readiness?",
+          "yourAnswer": "It demonstrates reliable financial habits to lenders.",
+          "correctAnswer": "It demonstrates reliable financial habits and builds a stable deposit foundation.",
+          "feedback": "Spot on! Consistent habits are the core pillar of successful home ownership preparation.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Topic Confidence Index",
+          "topic": "Deposit Planning & Affordability",
+          "confidencePercent": 88,
+          "levelLabel": "Building strong mastery",
+          "nextMilestone": "Complete final mortgage module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Self-Paced Learning Insight",
+          "insight": "Learners who review concepts at their own cadence retain 40% more long-term financial knowledge than those under time limits.",
+          "source": "LBG Educational Research Group",
+          "actionLabel": "Explore Study Resources",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "study_resources"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "milestones": [
+            {
+              "label": "Completed 5 Literacy Modules",
+              "achieved": true
+            },
+            {
+              "label": "Reached 50% First Home Savings Goal",
+              "achieved": true
+            },
+            {
+              "label": "Achieved 80%+ Quiz Mastery Average",
+              "achieved": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Rewards Tied to Your Home Goal",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": [
+            {
+              "name": "Conveyancing Fee Discount Voucher",
+              "points": 1500,
+              "goalLinked": true
+            },
+            {
+              "name": "Home Buyer Financial Guidebook",
+              "points": 500,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM",
+            "payload": {
+              "rewardName": "Home Buyer Financial Guidebook"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "steps": [
+            {
+              "title": "Learn & Master",
+              "description": "Complete educational modules and quizzes at your own preferred pace."
+            },
+            {
+              "title": "Track Progress",
+              "description": "Watch your savings knowledge goal advance transparently."
+            },
+            {
+              "title": "Unlock Value",
+              "description": "Redeem points for practical home-buying milestones and partner benefits."
+            }
+          ],
+          "ctaLabel": "View Programme Terms",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "terms"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK"
+    ]
+  },
+  "strategy": "Goal-centered learning mastery journey highlighting 'First Home Savings Knowledge' progress (63%) paired with educational quiz reinforcement and transparent milestone tracking, strictly avoiding timed challenges or rankings.",
+  "confidence": 0.98
+}

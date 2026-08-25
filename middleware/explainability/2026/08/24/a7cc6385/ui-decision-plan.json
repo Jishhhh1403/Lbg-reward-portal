@@ -1,0 +1,506 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-a7cc6385",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver an education-first rewards overview focusing on the First Home Savings goal (63% progress), featuring structured mastery quizzes, progress milestone tracking, and tangible value explainers without timed pressure or leaderboards.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are making steady progress toward your First Home Savings milestone. Keep building your financial knowledge!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "First Home Deposit Strategy",
+            "description": "Master structured savings techniques and interest compounding principles.",
+            "modulesDone": 3,
+            "modulesTotal": 5,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the primary benefit of consistent monthly contributions in a structured savings plan?",
+            "options": [
+              "Compound growth and steady progress toward your target",
+              "Unpredictable market gains",
+              "Temporary bonus points only"
+            ],
+            "reward": "50 Points & Mastery Badge",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Concept Review",
+            "question": "Compound growth mechanics",
+            "yourAnswer": "Compound growth and steady progress toward your target",
+            "correctAnswer": "Compound growth and steady progress toward your target",
+            "feedback": "Correct! Consistent contributions allow your savings to benefit from compounding without rushing.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Confidence",
+            "topic": "Home Deposit Strategy",
+            "confidencePercent": 85,
+            "levelLabel": "Proficient Learner",
+            "nextMilestone": "Advanced Mortgage Literacy",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Understanding Savings Velocity",
+            "insight": "Allocating your earned rewards toward dedicated savings pots accelerates your timeline by an average of 4 months.",
+            "source": "LBG Financial Research",
+            "actionLabel": "Explore Insight",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Your Coin & Point Value",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "LBG Coins Value",
+                "value": "\u00a339.00 equivalent"
+              },
+              {
+                "label": "Connected Brands",
+                "value": "3 active programmes"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "steps": [
+              {
+                "title": "Earn through learning",
+                "description": "Complete academy modules and quizzes to build financial competence."
+              },
+              {
+                "title": "Convert securely",
+                "description": "Translate coins and points into tangible savings contributions."
+              },
+              {
+                "title": "Redeem with confidence",
+                "description": "Apply your balance directly toward your First Home Savings goal."
+              }
+            ],
+            "ctaLabel": "View Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 3 Academy Modules",
+                "achieved": true
+              },
+              {
+                "label": "Reach 50% Savings Goal",
+                "achieved": true
+              },
+              {
+                "label": "Complete Advanced Quiz",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Goal-Accelerating Rewards",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Deposit Mastery Bonus",
+                "points": 200,
+                "goalLinked": true
+              },
+              {
+                "name": "Academy Completion Grant",
+                "points": 300,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "MANDATORY_STACK"
+      ]
+    },
+    "strategy": "Deliver an education-first rewards overview focusing on the First Home Savings goal (63% progress), featuring structured mastery quizzes, progress milestone tracking, and tangible value explainers without timed pressure or leaderboards.",
+    "confidence": 0.96
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Deliver an education-first rewards overview focusing on the First Home Savings goal (63% progress), featuring structured mastery quizzes, progress milestone tracking, and tangible value explainers without timed pressure or leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your First Home Savings milestone. Keep building your financial knowledge!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Rewards Academy",
+          "missionName": "First Home Deposit Strategy",
+          "description": "Master structured savings techniques and interest compounding principles.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of consistent monthly contributions in a structured savings plan?",
+          "options": [
+            "Compound growth and steady progress toward your target",
+            "Unpredictable market gains",
+            "Temporary bonus points only"
+          ],
+          "reward": "50 Points & Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Review",
+          "question": "Compound growth mechanics",
+          "yourAnswer": "Compound growth and steady progress toward your target",
+          "correctAnswer": "Compound growth and steady progress toward your target",
+          "feedback": "Correct! Consistent contributions allow your savings to benefit from compounding without rushing.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Confidence",
+          "topic": "Home Deposit Strategy",
+          "confidencePercent": 85,
+          "levelLabel": "Proficient Learner",
+          "nextMilestone": "Advanced Mortgage Literacy",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Understanding Savings Velocity",
+          "insight": "Allocating your earned rewards toward dedicated savings pots accelerates your timeline by an average of 4 months.",
+          "source": "LBG Financial Research",
+          "actionLabel": "Explore Insight",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Coin & Point Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": [
+            {
+              "label": "LBG Coins Value",
+              "value": "\u00a339.00 equivalent"
+            },
+            {
+              "label": "Connected Brands",
+              "value": "3 active programmes"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": [
+            {
+              "title": "Earn through learning",
+              "description": "Complete academy modules and quizzes to build financial competence."
+            },
+            {
+              "title": "Convert securely",
+              "description": "Translate coins and points into tangible savings contributions."
+            },
+            {
+              "title": "Redeem with confidence",
+              "description": "Apply your balance directly toward your First Home Savings goal."
+            }
+          ],
+          "ctaLabel": "View Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": [
+            {
+              "label": "Complete 3 Academy Modules",
+              "achieved": true
+            },
+            {
+              "label": "Reach 50% Savings Goal",
+              "achieved": true
+            },
+            {
+              "label": "Complete Advanced Quiz",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Goal-Accelerating Rewards",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": [
+            {
+              "name": "Deposit Mastery Bonus",
+              "points": 200,
+              "goalLinked": true
+            },
+            {
+              "name": "Academy Completion Grant",
+              "points": 300,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ]
+      }
+    ],
+    "methodology": "behavioral pattern and competence motivation scoring",
+    "temporaryInterpretation": true
+  }
+}

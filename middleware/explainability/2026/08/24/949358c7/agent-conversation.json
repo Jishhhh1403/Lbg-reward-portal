@@ -1,0 +1,189 @@
+{
+  "totalMessages": 5,
+  "messages": [
+    {
+      "messageId": "msg-8a42825a5b96",
+      "sequence": 1,
+      "timestamp": "2026-08-24T17:29:10.797332+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "orchestrator",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Task charter initialized for educational competence persona. Enforcing strict avoidance of timed challenges and leaderboards.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-a4777043c3e3",
+      "sequence": 2,
+      "timestamp": "2026-08-24T17:29:10.797398+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "consent-guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Consent valid for rewards-personalization. No sensitive attribute inference detected.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-1139ee92c073",
+      "sequence": 3,
+      "timestamp": "2026-08-24T17:29:10.797415+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "journey-intent-agent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Selected mandatory components POINTS_BALANCE, QUIZ_CARD, GOAL_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD, and MILESTONE_CARD to match mastery motivation.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-76ac77dd69b5",
+      "sequence": 4,
+      "timestamp": "2026-08-24T17:29:15.841638+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Context Analyst",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "OBSERVATION",
+      "summary": "Customer profile verified as EDUCATIONAL_COMPETENCE with strong preference for self-paced learning and milestone tracking.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-a553d1f01578",
+      "sequence": 5,
+      "timestamp": "2026-08-24T17:29:15.841685+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Consent Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Proceed with rewards-personalization strictly limited to educational modules and milestone tracking.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    }
+  ],
+  "agentParticipation": {
+    "orchestrator": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "consent-guardian": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "journey-intent-agent": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "Context Analyst": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "OBSERVATION"
+      ]
+    },
+    "Consent Guardian": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    }
+  },
+  "stageTimeline": [
+    {
+      "sequence": 1,
+      "stage": "Q",
+      "agent": "orchestrator",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T17:29:10.797332+00:00"
+    },
+    {
+      "sequence": 2,
+      "stage": "Q",
+      "agent": "consent-guardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T17:29:10.797398+00:00"
+    },
+    {
+      "sequence": 3,
+      "stage": "Q",
+      "agent": "journey-intent-agent",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-24T17:29:10.797415+00:00"
+    },
+    {
+      "sequence": 4,
+      "stage": "U",
+      "agent": "Context Analyst",
+      "messageType": "OBSERVATION",
+      "timestamp": "2026-08-24T17:29:15.841638+00:00"
+    },
+    {
+      "sequence": 5,
+      "stage": "U",
+      "agent": "Consent Guardian",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-24T17:29:15.841685+00:00"
+    }
+  ]
+}

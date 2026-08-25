@@ -1,0 +1,226 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "1226dba3",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-10-25T23:59:59Z",
+  "customerRef": "customer_005",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 8750,
+        "tier": "Gold",
+        "name": "Marcus Johnson",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-streak-card",
+      "type": "STREAK_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "streakDays": 34,
+        "message": "Incredible momentum! You are maintaining the program's longest active streak.",
+        "nextReward": "500 LBG Coins at 40 Days",
+        "milestones": [
+          {
+            "days": 10,
+            "reward": "100 LBG Coins",
+            "achieved": true
+          },
+          {
+            "days": 20,
+            "reward": "250 LBG Coins",
+            "achieved": true
+          },
+          {
+            "days": 30,
+            "reward": "400 LBG Coins",
+            "achieved": true
+          },
+          {
+            "days": 40,
+            "reward": "500 LBG Coins",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_STREAK_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-challenge-card",
+      "type": "CHALLENGE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Community Champion Sprint",
+        "description": "Engage in 3 community events and check in daily to secure your bonus.",
+        "progress": 80,
+        "reward": "1,000 LBG Coins",
+        "daysLeft": 4,
+        "participants": 1420,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CHALLENGE",
+          "payload": {
+            "challengeId": "community-champion-sprint"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-leaderboard",
+      "type": "LEADERBOARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "period": "weekly",
+        "entries": [
+          {
+            "rank": 1,
+            "name": "Sarah Jenkins",
+            "points": 9400,
+            "avatar": "SJ",
+            "isCurrentUser": false
+          },
+          {
+            "rank": 2,
+            "name": "David Chen",
+            "points": 9100,
+            "avatar": "DC",
+            "isCurrentUser": false
+          },
+          {
+            "rank": 3,
+            "name": "Marcus Johnson",
+            "points": 8750,
+            "avatar": "MJ",
+            "isCurrentUser": true
+          },
+          {
+            "rank": 4,
+            "name": "Emma Watson",
+            "points": 8200,
+            "avatar": "EW",
+            "isCurrentUser": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_FULL_LEADERBOARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-badge-card",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Achievement Badges",
+        "totalEarned": 15,
+        "totalAvailable": 20,
+        "badges": [
+          {
+            "name": "Streak Master",
+            "icon": "flame",
+            "earned": true
+          },
+          {
+            "name": "Leaderboard Elite",
+            "icon": "trophy",
+            "earned": true
+          },
+          {
+            "name": "Community Star",
+            "icon": "star",
+            "earned": true
+          },
+          {
+            "name": "Quiz Whiz",
+            "icon": "brain",
+            "earned": false
+          },
+          {
+            "name": "Challenge King",
+            "icon": "crown",
+            "earned": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_BADGES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quiz-card",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "question": "Which community activity yields the highest engagement bonus this week?",
+        "options": [
+          "Daily Streak Check-in",
+          "Community Event Hosting",
+          "Challenge Sharing"
+        ],
+        "reward": "150 LBG Coins",
+        "timeLimit": 30,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "START_QUIZ",
+          "payload": {
+            "quizId": "weekly-trivia-05"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

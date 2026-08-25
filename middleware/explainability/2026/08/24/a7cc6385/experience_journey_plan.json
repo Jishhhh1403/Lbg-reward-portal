@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Engage with educational insights and quizzes to deepen financial mastery while monitoring First Home Savings progress.",
+  "entryPoint": "Dashboard load for customer_011 (Sophie Williams)",
+  "completionDefinition": "Customer views goal progress, reviews educational insight, and completes a mastery quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my First Home Savings goal?",
+      "entryCondition": "App launch",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "First Home Savings Knowledge goal progress 63%"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-04"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational concepts help me reach my next milestone?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "educational insights",
+        "learning mission status"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I test my mastery without timed pressure?",
+      "entryCondition": "Educational insight reviewed",
+      "requiredInformation": [
+        "quiz questions",
+        "confidence score"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "QUIZ_SUBMIT",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": "",
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide additional context on tangible point worth and how points work in the educational academy.",
+      "contentNotes": [
+        "How points work explainer",
+        "Tangible value breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

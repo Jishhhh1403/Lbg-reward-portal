@@ -1,0 +1,547 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component gamification dashboard tailored for Marcus Johnson (Gold tier, rank 3, 34-day streak). Components include: 1. POINTS_BALANCE (Gold status display), 2. STREAK_CARD (highlighting the 34-day active streak), 3. CHALLENGE_CARD (active community challenge), 4. LEADERBOARD (showing rank #3 with quick jump to top 2), 5. BADGE_CARD (showcasing recent badge collection), 6. QUIZ_CARD (interactive daily trivia for extra points), 7. MILESTONE_PROGRESS (tracking progress toward Platinum tier). Built with clean layout, high contrast, and accessible touch targets.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly maps to Marcus's high engagement, streak maintenance, and leaderboard tracking."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Delivers rich, rewarding interactive elements (7 distinct components) matching his persona."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Strongly aligns with PROGRESS_AND_COMMUNITY motivation."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "High contrast gamification elements with clear labels and screen reader support."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by robust behavioral signals and direct profile data."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres strictly to design guidelines without altering protected brand elements."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces engaging quiz and milestone cards fitting his active behavior."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Uses standard, production-ready reward components."
+        }
+      },
+      "weightedTotal": 8.75,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined 5-component gamification view focusing strictly on mandatory elements: POINTS_BALANCE, STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, and BADGE_CARD. Minimalist layout emphasizing core metrics without auxiliary quiz or milestone elements.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers basics but misses opportunity for enhanced progress tracking (quiz/milestone)."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fewer components than optimal for a highly engaged power user."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with progress goals, though less immersive."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Very clean, uncluttered layout."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Fully supported by profile facts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with design standards."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Provides nothing beyond standard baseline features."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 7.55,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Underutilizes user engagement capacity by omitting richer interactive elements like quizzes and milestones."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component gamification dashboard tailored for Marcus Johnson (Gold tier, rank 3, 34-day streak), emphasizing challenges, leaderboards, and interactive community elements.",
+      "components": [
+        {
+          "id": "comp-pts-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-001",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Amazing consistency, Marcus! You're on fire.",
+            "nextReward": "500 bonus points at 40 days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 pts",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 pts",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 pts",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 pts",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-001",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Community Champion Quest",
+            "description": "Participate in 3 community reward sharing events this week to claim your bonus.",
+            "progress": 66,
+            "reward": "1,000 Points",
+            "daysLeft": 4,
+            "participants": 1250,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "JOIN_CHALLENGE",
+              "payload": {
+                "challengeId": "community-champion-quest"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-001",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 10200,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David Chen",
+                "points": 9400,
+                "avatar": "DC",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena Rostova",
+                "points": 8100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-001",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Achievement Badges",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Community Leader",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Gold Elite",
+                "icon": "crown",
+                "earned": true
+              },
+              {
+                "name": "Quiz Whiz",
+                "icon": "brain",
+                "earned": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-001",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "Which reward tier unlocks exclusive community event priority access?",
+            "options": [
+              "Silver Tier",
+              "Gold Tier",
+              "Platinum Tier",
+              "Bronze Tier"
+            ],
+            "reward": "150 Points",
+            "timeLimit": 30,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": "Gold Tier"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-001",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 10 Challenges (12/10)",
+                "achieved": true
+              },
+              {
+                "label": "Earn 15 Badges (15/15)",
+                "achieved": true
+              },
+              {
+                "label": "Reach Diamond Tier Status",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE_ROADMAP",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "HIGH_ENGAGEMENT_GAMIFICATION"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Compact 6-component gamification view combining core competitive metrics with quick interactive challenges and milestone tracking for Marcus Johnson.",
+      "components": [
+        {
+          "id": "comp-pts-002",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-002",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "34 days strong! Keep your streak alive today.",
+            "nextReward": "500 bonus points at 40 days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 pts",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 pts",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 pts",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 pts",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-002",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Daily Community Sprint",
+            "description": "Check in and share your progress on the community feed.",
+            "progress": 80,
+            "reward": "500 Points",
+            "daysLeft": 2,
+            "participants": 840,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "JOIN_CHALLENGE",
+              "payload": {
+                "challengeId": "daily-community-sprint"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-002",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 2,
+                "name": "David Chen",
+                "points": 9400,
+                "avatar": "DC",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena Rostova",
+                "points": 8100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-002",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Badge Showcase",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Community Leader",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Top Contributor",
+                "icon": "star",
+                "earned": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-002",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "What is Marcus's current active streak length?",
+            "options": [
+              "14 Days",
+              "24 Days",
+              "34 Days",
+              "44 Days"
+            ],
+            "reward": "100 Points",
+            "timeLimit": 20,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": "34 Days"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.9,
+      "reasonCodes": [
+        "STREAMLINED_GAMIFICATION",
+        "HIGH_ENGAGEMENT"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "primaryActionComponentRef": "quiz-card-1",
+  "components": [
+    {
+      "componentRef": "points-balance-component",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-card-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-component"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "learning-mission-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "quiz-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 4,
+      "dependsOn": [
+        "learning-mission-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comprehension-feedback-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "quiz-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "confidence-progress-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comprehension-feedback-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "confidence-progress-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "milestone-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "educational-insight-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-card-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "REFERENCE",
+      "sequence": 9,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-card-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "REFERENCE",
+      "sequence": 10,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-component",
+      "toComponentRef": "goal-progress-card-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect your current balance and tier to your active savings goal.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-card-1",
+      "toComponentRef": "learning-mission-card-1",
+      "relationship": "meaning-to-action",
+      "bridgeIntent": "Translate goal progress into active learning missions.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "learning-mission-card-1",
+      "toComponentRef": "quiz-card-1",
+      "relationship": "action-to-feedback",
+      "bridgeIntent": "Test your competence with a self-paced quiz.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "quiz-card-1",
+      "toComponentRef": "comprehension-feedback-card-1",
+      "relationship": "action-to-feedback",
+      "bridgeIntent": "Review feedback on your quiz submission.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comprehension-feedback-card-1",
+      "toComponentRef": "confidence-progress-card-1",
+      "relationship": "evidence-to-meaning",
+      "bridgeIntent": "See how your confidence grows with each completed module.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "confidence-progress-card-1",
+      "toComponentRef": "educational-insight-card-1",
+      "relationship": "meaning-to-evidence",
+      "bridgeIntent": "Explore research supporting your savings knowledge.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "educational-insight-card-1",
+      "toComponentRef": "milestone-card-1",
+      "relationship": "evidence-to-milestone",
+      "bridgeIntent": "Inspect your milestone achievement checklist.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

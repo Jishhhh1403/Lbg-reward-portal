@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "1850 expiring points in 12 days",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "45 days inactive",
+        "source": "behavior",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_004 (Jessica Martinez) is at high churn risk with 45 days of inactivity, declining engagement over 60 days, and 1,850 points expiring in 12 days.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "1850 points expiring in 12 days",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "45 days since last login",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Unused retail discount reward",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Low notification open rate of 5%",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "churnRisk",
+        "value": "HIGH",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-002"
+        ],
+        "inferenceMethod": "behavioral-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "engagementLevel",
+        "value": "DORMANT",
+        "confidence": 0.95,
+        "evidenceRefs": [
+          "fact-002"
+        ],
+        "inferenceMethod": "activity-tracking",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

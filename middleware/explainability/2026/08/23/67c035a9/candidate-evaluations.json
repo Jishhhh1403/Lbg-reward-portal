@@ -1,0 +1,497 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 7-component rich screen tailored for persona 'INSTANT_AT_RISK_MIX'. Features mandatory and recommended components: POINTS_BALANCE, EXPIRING_POINTS_ALERT, FLASH_REWARD_BANNER, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD, QUICK_WIN_CARD, and REENGAGEMENT_WELCOMEBACK_CARD. Designed to transparently highlight expiring points without manipulative scarcity, offering frictionless 1-tap instant redemption options suited to Ryan's historical behavior.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses point expiry and immediate-value recovery matching the customer's historical 6-hour redemption preference."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 7 rich components that give immediate actionable utility, removing friction to redeem expiring points."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Perfectly aligns with IMMEDIATE_VALUE motivation and INSTANT_AND_FLASH preference."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear hierarchy, high-contrast alerts, and straightforward card layouts support accessible cognitive processing."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on robust historical metrics (0.85 immediate redemption rate, 1,500 expiring points in 7 days)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Strict adherence to LBG design tokens, brand tone, and mandated component availability."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces a tailored quick-win re-engagement card combining welcome back sentiment with instant utility."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported by current schema, component library, and latency limits."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 5-component screen featuring POINTS_BALANCE, EXPIRING_POINTS_ALERT, FLASH_REWARD_BANNER, QUICK_REDEEM_CARD, and TANGIBLE_VALUE_CARD. Focuses strictly on core mandatory elements to drive immediate redemption.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 8,
+          "explanation": "Covers essential recovery goals but misses deeper re-engagement framing."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Meets the minimum threshold for rich screens but offers fewer avenues for immediate action than candidate-1."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns well with instant rewards but lacks supplementary re-engagement components."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean and accessible layout with minimal cognitive load."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Solid backing from wallet and session facts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains design system integrity."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Relies entirely on standard components without novel re-engagement framing."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible and lightweight."
+        }
+      },
+      "weightedTotal": 7.95,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "INSTANT_AT_RISK_MIX strategy tailored for Ryan Okafor: leading with a factual EXPIRING_POINTS_ALERT (1,500 points in 7 days), followed by high-velocity instant redemption options (FLASH_REWARD_BANNER, QUICK_REDEEM_CARD, QUICK_WIN_CARD, INSTANT_REWARD_POPUP, TANGIBLE_VALUE_CARD, and REENGAGEMENT_BANNER). All components are fully populated with real customer data.",
+      "components": [
+        {
+          "id": "comp-pts-bal-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE_WALLET",
+              "payload": {
+                "destination": "wallet_overview"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-exp-alert-002",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiry Notice",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "1,500 of your 3,600 lbgCoins are scheduled to expire in 7 days. Redeem them now to enjoy your rewards.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_REWARDS",
+              "payload": {
+                "filter": "expiring"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-003",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Instant Welcome Back Win",
+            "subtitle": "Claim these effortless low-point rewards instantly with 1-tap.",
+            "rewards": [
+              {
+                "name": "Artesian Coffee Voucher",
+                "points": 200
+              },
+              {
+                "name": "Digital Snack Box",
+                "points": 350
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardId": "coffee-voucher-200"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner-004",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Flash Deal: Gourmet Dining Voucher",
+            "subtitle": "Limited-time discount tailored for your instant redemption preference.",
+            "originalPoints": 800,
+            "discountedPoints": 550,
+            "timer": "168:00:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardId": "flash-dining-550"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-005",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Quick Redeem Rewards",
+            "description": "Redeem instantly using your Gold tier lbgCoins balance.",
+            "rewards": [
+              {
+                "name": "Cinema Ticket Pass",
+                "points": 450,
+                "icon": "film"
+              },
+              {
+                "name": "Caf\u00e9 Latte & Pastry",
+                "points": 250,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Food Delivery",
+                "points": 600,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {
+                "category": "instant"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup-006",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Welcome Back Bonus!",
+            "subtitle": "We missed you Ryan! Here is a celebratory bonus reward for returning.",
+            "points": 300,
+            "expiresIn": "48 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_BONUS",
+              "payload": {
+                "bonusId": "welcome-back-300"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value-007",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Your Total Balance Worth",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available lbgCoins",
+                "value": "3,600 coins"
+              },
+              {
+                "label": "Expiring Soon",
+                "value": "1,500 coins"
+              },
+              {
+                "label": "Estimated Cash Value",
+                "value": "\u00a336.00 GBP"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_CONVERSION",
+              "payload": {
+                "currency": "GBP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-reengage-banner-008",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Great to see you again, Ryan!",
+            "message": "It's been 41 days since your last visit. Pick up right where you left off with instant rewards and flash offers.",
+            "ctaText": "Explore Instant Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_REENGAGEMENT",
+              "payload": {
+                "action": "explore"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INSTANT_AT_RISK_MIX",
+        "HIGH_EXPIRING_POINTS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined Instant Recovery variant focusing directly on urgent expiring points and immediate 1-tap redemptions without reengagement framing.",
+      "components": [
+        {
+          "id": "comp-pts-bal-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE_WALLET",
+              "payload": {
+                "destination": "wallet_overview"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-exp-alert-002",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Urgent: Points Expiring",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "You have 1,500 lbgCoins expiring in 7 days. Use them on quick instant rewards before they lapse.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_REWARDS",
+              "payload": {
+                "filter": "expiring"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown-003",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Expiry Countdown",
+            "days": 7,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Time remaining before 1,500 lbgCoins expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_TIMER_DETAILS",
+              "payload": {
+                "target": "expiry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner-004",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Flash Voucher Deal",
+            "subtitle": "Instant 30% discount on coffee and snacks.",
+            "originalPoints": 500,
+            "discountedPoints": 350,
+            "timer": "168:00:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardId": "flash-snack-350"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-005",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant 1-Tap Rewards",
+            "description": "Redeem instantly with zero friction.",
+            "rewards": [
+              {
+                "name": "Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Film Rental",
+                "points": 300,
+                "icon": "film"
+              },
+              {
+                "name": "Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {
+                "category": "instant"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value-006",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Wallet Worth",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Total lbgCoins",
+                "value": "3,600"
+              },
+              {
+                "label": "Cash Equivalency",
+                "value": "\u00a336.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_CONVERSION",
+              "payload": {
+                "currency": "GBP"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.88,
+      "reasonCodes": [
+        "STREAMLINED_RECOVERY",
+        "EXPIRING_FOCUS"
+      ]
+    }
+  ]
+}

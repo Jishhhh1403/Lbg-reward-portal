@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "07d28b14",
+  "createdAt": "2026-08-23T07:30:00Z",
+  "expiresAt": "2026-09-23T07:30:00Z",
+  "customerRef": "customer_004",
+  "components": [
+    {
+      "id": "comp-pts-bal-001",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 1850,
+        "tier": "Silver",
+        "name": "Jessica Martinez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-exp-alert-001",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiring Soon",
+        "expiringPoints": 1850,
+        "daysLeft": 12,
+        "message": "You have 1,850 points expiring in 12 days. Claim a quick reward to keep your balance active.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING_POINTS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reengage-banner-001",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Welcome back, Jessica",
+        "message": "We've missed you! Your 1,850 points are waiting to be enjoyed with zero friction.",
+        "ctaText": "Explore Quick Wins",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_BANNER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win-001",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "One-Tap Quick Wins",
+        "subtitle": "Effortless rewards you can claim instantly",
+        "rewards": [
+          {
+            "name": "Retail Voucher \u00a310",
+            "points": 1000
+          },
+          {
+            "name": "Coffee & Pastry Treat",
+            "points": 500
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "rewardId": "retail-voucher-10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-pers-offer-001",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Tailored For You",
+        "subtitle": "Silver Tier Special",
+        "offer": "Double points on your next 3 connected brand purchases",
+        "validUntil": "12 days remaining",
+        "message": "Reclaim value effortlessly across your 3 linked brands.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ACTIVATE_OFFER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value-001",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Points Cash Value",
+        "cashValue": "\u00a318.50",
+        "pointsEquivalent": 1850,
+        "breakdown": [
+          {
+            "label": "Available Balance",
+            "value": "1,850 pts"
+          },
+          {
+            "label": "Estimated Redemption Rate",
+            "value": "1p per point"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-status-001",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "status": "synced",
+        "title": "Wallet Synchronised",
+        "lastSyncedAt": "2026-08-23T07:28:00.129Z",
+        "message": "All 3 connected brands are up to date.",
+        "ctaText": "Refresh",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "planId": "plan-6ebb61c4",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Self-paced mastery journey featuring transparent rewards balance, First Home Savings Knowledge goal progress, mandatory ordered educational stack (Learning Mission, Quiz, Comprehension Feedback, Confidence Progress, Educational Insight), and cash value transparency without pressure.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward your First Home Savings Knowledge goal. Keep building your mastery at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Rewards Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Earned via Academy Modules",
+            "value": "\u00a33.00 (300 pts)"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Structured Learning Path",
+          "missionName": "Rewards Academy: Advanced Property Savings",
+          "description": "Continue your structured learning modules at your own comfortable pace.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE_LEARNING",
+            "payload": {
+              "missionId": "advanced-property-savings"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "Which compound growth principle best describes steady, self-paced milestone contributions?",
+          "options": "A) Consistent incremental allocation over time, B) High-risk speculative trading, C) Temporary burst funding",
+          "reward": "50 Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "A"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Check Review",
+          "question": "What is the primary benefit of structured learning modules?",
+          "yourAnswer": "Deepening subject mastery without rushing",
+          "correctAnswer": "Building thorough understanding at your own pace",
+          "feedback": "Spot on! Taking your time to master each concept ensures durable financial literacy.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Mastery Confidence Tracker",
+          "topic": "First Home Savings Strategies",
+          "confidencePercent": 92,
+          "levelLabel": "High mastery established",
+          "nextMilestone": "Module 5: Mortgage Structure Basics",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Educational Insight",
+          "insight": "Savers who complete structured literacy modules build 40% higher long-term goal completion confidence.",
+          "source": "Rewards Academy Research",
+          "actionLabel": "Explore Reading Materials",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_INSIGHT",
+            "payload": {
+              "insightId": "literacy-confidence"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Complete Modules",
+            "description": "Engage with educational content and quizzes at your own comfortable pace to earn points."
+          },
+          "ctaLabel": "View All Learning Guides",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GUIDES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Goal-Linked Learning Milestone",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Academy Completion Bonus",
+            "points": 300,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardName": "Academy Completion Bonus"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE",
+      "EDUCATIONAL_TONE"
+    ]
+  },
+  "strategy": "Self-paced mastery journey featuring transparent rewards balance, First Home Savings Knowledge goal progress, mandatory ordered educational stack (Learning Mission, Quiz, Comprehension Feedback, Confidence Progress, Educational Insight), and cash value transparency without pressure.",
+  "confidence": 0.98
+}

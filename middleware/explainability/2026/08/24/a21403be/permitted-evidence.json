@@ -1,0 +1,84 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-rewards-history",
+        "classification": "OBSERVED",
+        "value": "strong long-term accumulation history",
+        "source": "rewardsHistory",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-expiring-points",
+        "classification": "OBSERVED",
+        "value": "2400 points expiring in 9 days",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Elena Vasquez is a Diamond tier member with 24,500 LBG coins and 2,400 points expiring in 9 days. She exhibits characteristics of a disciplined long-term saver (Planner at Risk mix persona) whose accumulation has recently stalled, with 34 days since last activity and low engagement scores.",
+    "observedFacts": [
+      {
+        "factId": "fact-lbg-coins",
+        "statement": "Customer holds 24,500 LBG coins.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-expiring-points",
+        "statement": "2,400 points are expiring in 9 days.",
+        "source": "Session Context journeyAnalysis",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-engagement-score",
+        "statement": "Engagement score is 0.28 with 34 days since last activity.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goals-count",
+        "statement": "Customer has 3 active long-term savings goals (Retirement, Education, Home Deposit).",
+        "source": "Intelligence Layer goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-motivation",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "strong long-term accumulation history now stalled",
+          "retirement fund contributions untouched for over a month"
+        ],
+        "inferenceMethod": "Intelligence Layer Behavioral Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-persona",
+        "attribute": "persona",
+        "value": "PLANNER_AT_RISK_MIX",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "significant points expiring while saving toward long-horizon goals",
+          "declining logins threaten an otherwise disciplined savings journey"
+        ],
+        "inferenceMethod": "Intelligence Layer Persona Classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

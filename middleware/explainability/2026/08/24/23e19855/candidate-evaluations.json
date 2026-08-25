@@ -1,0 +1,552 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 15-component mobile layout tailored for Daniel Brooks (Payment Utility Focused). Includes mandatory and contextual components: APP_BAR, POINTS_BALANCE, TANGIBLE_VALUE_CARD, GOAL_PROGRESS_CARD (Holiday Spending Money at 53%), GOAL_LINKED_REWARD, MILESTONE_CARD, STATEMENT_CREDIT_SHORTCUT, QUICK_REDEEM_BUTTON, CASHBACK_TREND_CHART, REWARD_HISTORY_LIST, AUTO_PAYMENT_SETUP, SAVINGS_CALCULATOR_WIDGET, FAQ_PAYMENT_UTILITY, SUPPORT_LINK, and ADD_GOAL_CARD.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Perfectly aligns with payment-utility motivation and holiday savings goal tracking."
+        },
+        "expectedCustomerUtility": {
+          "score": 10,
+          "explanation": "15 rich components delivering exact statement credit shortcuts and cash valuation without clutter."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Strictly adheres to payment-linked preferences with zero lifestyle or travel distractions."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High contrast monetary values, clear typographic hierarchy, screen reader friendly."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Grounded directly in behavioral signals (statement credit redemptions, savings progress)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Seamlessly integrates into standard mobile banking design system."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces automated statement credit setup and savings calculator widgets tailored to cash utility."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Uses standard components supported within the mobile channel latency budget."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Moderate 10-component layout focusing on basic points balance and redemption shortcuts, plus holiday savings progress.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers core goals but lacks depth in auxiliary payment utility widgets."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fails the richness threshold (under 11 components), reducing utility for a multi-faceted goal tracker."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Avoids vouchers, but under-delivers on cashback trend insights."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean, accessible layout."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Adequately grounded."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Too basic, offers no novel utility."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible."
+        }
+      },
+      "weightedTotal": 7.15,
+      "hardGatesPass": false,
+      "objections": [
+        "Strategy proposes fewer than 11 components (only 10), leading to a penalty on expectedCustomerUtility and customerGoalRelevance per constitutional rules."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Payment utility focused layout tailored for Daniel Brooks, featuring exact statement credit options, holiday savings goal tracking at 53%, automatic rewards allocation, and tangible monetary valuation.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 7300,
+            "tier": "Platinum",
+            "name": "Daniel Brooks",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Holiday Spending Money",
+            "current": 640,
+            "target": 1200,
+            "percentage": 53,
+            "remaining": 560,
+            "motivationalMessage": "You're over halfway to your holiday fund goal with predictable automated contributions.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-payment-reward",
+          "type": "PAYMENT_REWARD_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Linked Card Statement Credit Earn Rate",
+            "paymentMethod": "Platinum Rewards Mastercard (*4821)",
+            "rewardRate": "1.0% back in statement credits",
+            "monthlyCap": "No monthly cap",
+            "description": "Your everyday spending automatically accrues statement credit value with guaranteed predictability.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-reward-allocation",
+          "type": "REWARD_ALLOCATION_CONTROL",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Automatic Points Allocation",
+            "subtitle": "Direct your monthly earnings toward your priority destinations",
+            "allocation": [
+              {
+                "label": "Statement Credit Cashback",
+                "percent": 70
+              },
+              {
+                "label": "Holiday Savings Pot",
+                "percent": 30
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-payment-confirmation",
+          "type": "PAYMENT_REWARD_CONFIRMATION",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Statement Credit Applied",
+            "message": "Successfully credited to your linked card statement balance.",
+            "amount": "\u00a325.00",
+            "reference": "REF-SC-98214",
+            "date": "24 August 2026",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Total Statement Credit Value",
+            "cashValue": "\u00a373.00",
+            "pointsEquivalent": 7300,
+            "breakdown": [
+              {
+                "label": "Available Cashback Balance",
+                "value": "\u00a373.00"
+              },
+              {
+                "label": "Conversion Rate",
+                "value": "100 points = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-rewards-insight",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Cashback Accumulation Summary",
+            "topBrandName": "Linked Card Spending",
+            "topBrandPoints": 7300,
+            "growthTip": "Your steady monthly statement credit redemptions keep your effective card costs minimized.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "Apply to Statement Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Accelerators for Holiday Spending",
+            "goalName": "Holiday Spending Money",
+            "rewards": [
+              {
+                "name": "Direct Bill Offset Cashback",
+                "points": 1000,
+                "goalLinked": true
+              },
+              {
+                "name": "Automated Statement Top-Up",
+                "points": 2500,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone-card",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "First \u00a350 Statement Credit Redemptions",
+                "achieved": true
+              },
+              {
+                "label": "Holiday Savings Goal 50% Milestone Reached",
+                "achieved": true
+              },
+              {
+                "label": "Platinum Tier Cashback Rate Unlocked",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set up another predictable statement credit or bill offset target",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "label": "Cashback Earn Rate",
+            "value": "1.0%",
+            "unit": "per spend",
+            "tone": "brand",
+            "infoText": "Guaranteed flat rate statement credit return",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Wallet & Card Ledger Synced",
+            "lastSyncedAt": "24 August 2026, 09:20",
+            "message": "All statement credits and cashback earnings are up to date.",
+            "ctaText": "Refresh Balance",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PAYMENT_UTILITY_MATCH",
+        "MANDATORY_ORDERED_STACK_COMPLIANCE",
+        "STRICT_MONETARY_FOCUS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative utility-focused layout emphasizing automated statement savings and clear monetary valuation with milestone progression.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 7300,
+            "tier": "Platinum",
+            "name": "Daniel Brooks",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Holiday Spending Money",
+            "current": 640,
+            "target": 1200,
+            "percentage": 53,
+            "remaining": 560,
+            "motivationalMessage": "Steady progress: \u00a3560 remaining to hit your holiday fund target.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-payment-reward-2",
+          "type": "PAYMENT_REWARD_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Platinum Cashback Protection",
+            "paymentMethod": "Linked Mastercard (*4821)",
+            "rewardRate": "1.0% guaranteed cashback",
+            "monthlyCap": "Unlimited",
+            "description": "Predictable statement credits applied directly to your card balance.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-reward-allocation-2",
+          "type": "REWARD_ALLOCATION_CONTROL",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Redemption Automation",
+            "subtitle": "Choose how your monthly rewards are paid out",
+            "allocation": [
+              {
+                "label": "Statement Credit",
+                "percent": 100
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-payment-confirmation-2",
+          "type": "PAYMENT_REWARD_CONFIRMATION",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Last Statement Credit",
+            "message": "Applied successfully to your card ledger.",
+            "amount": "\u00a318.00",
+            "reference": "REF-SC-77102",
+            "date": "10 August 2026",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-tangible-value-2",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Cash Equivalent Value",
+            "cashValue": "\u00a373.00",
+            "pointsEquivalent": 7300,
+            "breakdown": [
+              {
+                "label": "Direct Statement Credit Value",
+                "value": "\u00a373.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-rewards-insight-2",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Utility Performance Note",
+            "topBrandName": "Card Transactions",
+            "topBrandPoints": 7300,
+            "growthTip": "Your consistent statement credit strategy ensures zero point devaluation.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "Redeem to Card",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward-2",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Holiday Fund Accelerators",
+            "goalName": "Holiday Spending Money",
+            "rewards": [
+              {
+                "name": "Direct Statement Offset",
+                "points": 1500,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone-card-2",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "Holiday Goal 50% Milestone",
+                "achieved": true
+              },
+              {
+                "label": "Automatic Statement Payout Active",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another savings milestone for bill offsets",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-sync-status-2",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "status": "synced",
+            "title": "Account Balance Synced",
+            "lastSyncedAt": "24 August 2026, 09:20",
+            "message": "All statement credit rules are fully active.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "PAYMENT_UTILITY_ALTERNATIVE",
+        "MANDATORY_ORDERED_STACK_COMPLIANCE"
+      ]
+    }
+  ]
+}

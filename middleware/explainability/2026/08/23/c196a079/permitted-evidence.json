@@ -1,0 +1,77 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "high balance with low redemption frequency",
+        "source": "wallet_analytics",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "active long-term goals",
+        "source": "goal_structure",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Elena Vasquez is a Planner persona with high long-term accumulation history (24,500 LBG coins) currently showing signs of disengagement (34 days since last activity). 2,400 points are set to expire in 9 days, while active long-term goals like the Retirement Fund remain untouched for over a month.",
+    "observedFacts": [
+      {
+        "factId": "fact_01",
+        "statement": "Customer has 2,400 points expiring in 9 days.",
+        "source": "Session Context / Wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_02",
+        "statement": "Total LBG coin balance is 24,500 with historically low redemption frequency.",
+        "source": "Wallet Data",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_03",
+        "statement": "Customer maintains three active long-term savings goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "Intelligence Layer Goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop_01",
+        "attribute": "engagement_trend",
+        "value": "DECLINING",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "stopped opening notifications after years of steady saving",
+          "declining logins threaten an otherwise disciplined savings journey"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop_02",
+        "attribute": "content_preference",
+        "value": "EDUCATIONAL_AND_PROJECTED_VALUE",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "historically responded well to projected-value and educational content"
+        ],
+        "inferenceMethod": "historical_engagement_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

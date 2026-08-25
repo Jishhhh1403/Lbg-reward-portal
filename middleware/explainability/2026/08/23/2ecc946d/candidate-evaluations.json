@@ -1,0 +1,445 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component screen layout tailored for Ryan Okafor (INSTANT_AT_RISK_MIX persona). Features REENGAGEMENT_BANNER (welcome back / we missed you), POINTS_BALANCE, EXPIRING_POINTS_ALERT (1,500 points expiring in 7 days with clear transparent countdown), INSTANT_REWARD_POPUP (pre-selected coffee/snack flash voucher), QUICK_REDEEM_CARD (1-tap redemption), TANGIBLE_VALUE_CARD (showing exact cash/retail equivalent), and QUICK_WIN_CARD. Emphasizes frictionless, transparent redemption without manipulative countdown timers or artificial scarcity.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly targets the urgent expiring points and aligns perfectly with historical instant redemption preference."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "7 distinct components provide immediate value and 1-tap redemption paths for the at-risk customer."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Matches IMMEDIATE_VALUE motivation through instant flash vouchers and clear tangible dollar equivalents."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High-contrast alerts, large tap targets for quick redemption, and simple uncluttered layout fitting low attention spans."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Strong factual backing from 41-day inactivity, 1,500 expiring points, and 6-hour average past redemption behavior."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres strictly to LBG brand guidelines, preserving coin/point logos and tone of voice."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Combines re-engagement welcome with instant flash redemption for a frictionless comeback experience."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Uses standard mandated components fully supported within existing schema and 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined 5-component layout focusing solely on financial points preservation: REENGAGEMENT_BANNER, POINTS_BALANCE, EXPIRING_POINTS_ALERT, QUICK_REDEEM_CARD, and TANGIBLE_VALUE_CARD. Excludes instant flash rewards to test sober financial utility.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Addresses expiration but misses the proven flash/instant reward hook that drives Ryan's engagement."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Fewer components reduce interaction friction, but omit the instant gratification path."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Focuses on value, but lacks the immediate gratification format preferred by the user."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean layout, but less engaging for a user who abandoned the app for 41 days."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Well-backed by expiration data, though ignores flash voucher preference data."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains brand consistency."
+        },
+        "usefulNovelty": {
+          "score": 6,
+          "explanation": "Standard transactional expiration warning layout."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 7.45,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Omitting INSTANT_REWARD_POPUP and QUICK_WIN_CARD undershoots the rich component requirement (7-9 recommended) and ignores high-confidence behavioural preference for flash rewards."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component screen layout tailored for Ryan Okafor (INSTANT_AT_RISK_MIX persona). Features REENGAGEMENT_BANNER (welcome back / we missed you), POINTS_BALANCE, EXPIRING_POINTS_ALERT (1,500 points expiring in 7 days with clear transparent countdown), INSTANT_REWARD_POPUP (pre-selected coffee/snack flash voucher), QUICK_REDEEM_CARD (1-tap redemption), TANGIBLE_VALUE_CARD (showing exact cash/retail equivalent), and QUICK_WIN_CARD. Emphasizes frictionless, transparent redemption.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement-banner",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Welcome back, Ryan!",
+            "message": "It's been 41 days since your last visit. We've saved your Gold status and 3,600 coins while you were away.",
+            "ctaText": "Explore Quick Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Points Expiry Notice",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "You have 1,500 points set to expire in 7 days. Redeem them now to enjoy your rewards before they lapse.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Flash Reward Bonus!",
+            "subtitle": "Special welcome-back instant treat",
+            "points": 200,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "reward": "Coffee Voucher",
+                "points": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant 1-Tap Redemption",
+            "description": "Redeem your balance instantly with zero hassle.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Flash Deal Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              },
+              {
+                "name": "Cineworld Movie Pass",
+                "points": 500,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_QUICK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Rewards Cash Value",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available Coin Balance",
+                "value": "3,600 coins"
+              },
+              {
+                "label": "Estimated Retail Worth",
+                "value": "\u00a336.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Low-point rewards ready right now",
+            "rewards": [
+              {
+                "name": "Digital Magazine Subscription",
+                "points": 150
+              },
+              {
+                "name": "Express Car Wash Voucher",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.92,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INSTANT_AT_RISK_MIX",
+        "INTELLIGENCE_SIGNALS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined 6-component layout focusing on urgent expiring points preservation and lightning-fast flash redemptions for Ryan Okafor.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert-2",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Warning",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "1,500 of your points expire in 7 days. Act now to secure your rewards.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "7-Day Flash Reward Special",
+            "subtitle": "Exclusive discount for Gold members",
+            "originalPoints": 600,
+            "discountedPoints": 400,
+            "timer": "168:00:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-2",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Quick Rewards",
+            "description": "Fast redemption items under 400 points.",
+            "rewards": [
+              {
+                "name": "Coffee & Pastry",
+                "points": 250,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Lunchbox",
+                "points": 350,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_QUICK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-2",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant Perks",
+            "subtitle": "Zero friction claim items",
+            "rewards": [
+              {
+                "name": "Audiobook Voucher",
+                "points": 200
+              },
+              {
+                "name": "Streaming Pass",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronised",
+            "lastSyncedAt": "2026-08-23T07:30:04.755Z",
+            "message": "All points and coin balances are up to date.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_WALLET",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.88,
+      "reasonCodes": [
+        "ALTERNATIVE_CANDIDATE",
+        "INSTANT_AT_RISK_MIX"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,526 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 8-component instant-gratification rewards screen featuring mandatory and personalized components: POINTS_BALANCE, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD, FLASH_REWARD_BANNER, TIER_STATUS_CARD, INSTANT_CATALOG_CAROUSEL, RECENT_ACTIVITY_FEED, and HELP_SUPPORT_CARD. Tailored strictly to Alex Rivera's Gold tier and instant-redemption preference without dark patterns or artificial scarcity.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly targets immediate reward redemption aligned with the customer's observed instant-gratification behavior."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 8 rich components that immediately surface redeemable instant items matching 4,250 LBG coins balance."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly matches the IMMEDIATE_VALUE motivation and Gold tier reward profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear layout with high contrast, WCAG 2.1 AA compliance, and well-structured card groupings."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by high-confidence telemetry (0.89 immediate redemption rate, 2.3h average redemption time)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains bank design system standards and preserves all anchored components and legal text."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Features dynamic flash offers and quick-redeem shortcuts tailored to recent redemption history."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 8 components are fully supported in the component library within the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 9.0,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Minimalist 5-component rewards screen featuring POINTS_BALANCE, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD, FLASH_REWARD_BANNER, and TIER_STATUS_CARD. Focuses strictly on core required elements with fewer browsing options.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Meets basic requirements but provides fewer options for immediate browsing."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "At the minimum threshold of 5 components, limiting deep exploration for an engaged user."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with immediate value but lacks breadth in instant catalog options."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean and simple layout with excellent readability."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Solid telemetry backing."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully compliant with bank guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with little differentiation or discovery support."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Extremely lightweight and fast to render."
+        }
+      },
+      "weightedTotal": 7.55,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Component count (5) is at the lower bound, reducing expected customer utility compared to the richer 8-component layout."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Instant-gratification persona pure composition leading with points balance, instant reward celebration, flash discount, quick redeem items, and tangible cash value translation.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-reward",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Fresh Bonus Earned!",
+            "subtitle": "From your recent brand activity sync",
+            "points": 250,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "points": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Flash Reward: Weekend Cinema Pass",
+            "subtitle": "Exclusive Gold Tier limited-time reduction",
+            "originalPoints": 1200,
+            "discountedPoints": 850,
+            "timer": "01:45:20",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_FLASH_REWARD",
+              "payload": {
+                "rewardName": "Weekend Cinema Pass",
+                "cost": 850
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Ready to Use Now",
+            "description": "Instant vouchers you can redeem with your 4,250 LBG coins balance",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Lunch Delivery",
+                "points": 500,
+                "icon": "utensils"
+              },
+              {
+                "name": "Streaming Movie Rental",
+                "points": 400,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Wallet's Real-World Worth",
+            "cashValue": "\u00a342.50",
+            "pointsEquivalent": 4250,
+            "breakdown": [
+              {
+                "label": "Available Vouchers",
+                "value": "\u00a335.00"
+              },
+              {
+                "label": "Bonus Credit Value",
+                "value": "\u00a37.50"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_BREAKDOWN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Curated For Your Gold Tier Taste",
+            "rewards": [
+              {
+                "name": "Premium Lounge Access",
+                "points": 1500,
+                "category": "Travel",
+                "limited": true
+              },
+              {
+                "name": "Dining Experience Pass",
+                "points": 2000,
+                "category": "Food",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "BROWSE_CATALOGUE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Effortless One-Tap Wins",
+            "subtitle": "Claim instantly with zero friction",
+            "rewards": [
+              {
+                "name": "Digital Magazine Subscription",
+                "points": 150
+              },
+              {
+                "name": "Audiobook Credit",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "label": "Linked Brands",
+            "value": "3",
+            "unit": "active",
+            "tone": "brand",
+            "infoText": "Connected partners boosting earn rate",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "MANAGE_LINKED_BRANDS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INSTANT_GRATIFICATION_PURA"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Blended instant-gratification and discovery strategy combining instant redeemables with brand exploration and personalized tier offers.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner-2",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Flash Reward: Express Coffee Pack",
+            "subtitle": "Special 30-minute Gold tier discount",
+            "originalPoints": 400,
+            "discountedPoints": 250,
+            "timer": "00:28:45",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_FLASH_REWARD",
+              "payload": {
+                "rewardName": "Express Coffee Pack",
+                "cost": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-2",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Instant Redeem Catalog",
+            "description": "Tap to claim instantly using your Gold tier balance",
+            "rewards": [
+              {
+                "name": "Bakery Treat",
+                "points": 180,
+                "icon": "coffee"
+              },
+              {
+                "name": "Rideshare Credit",
+                "points": 750,
+                "icon": "car"
+              },
+              {
+                "name": "Cinema Snack Combo",
+                "points": 450,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Gold Tier Perk",
+            "subtitle": "Tailored for your frequent instant redemption style",
+            "offer": "Double points on your next food and drink redemption",
+            "validUntil": "2026-09-10",
+            "message": "Activated automatically on your next quick claim",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACTIVATE_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-2",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant Micro-Rewards",
+            "subtitle": "Zero wait time redemptions",
+            "rewards": [
+              {
+                "name": "Music Streaming Pass",
+                "points": 350
+              },
+              {
+                "name": "E-Book Voucher",
+                "points": 250
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Explore Instant Earn Categories",
+            "actionLabel": "Browse All Partners",
+            "categories": [
+              {
+                "label": "Dining & Coffee",
+                "count": 14,
+                "icon": "coffee"
+              },
+              {
+                "label": "Entertainment",
+                "count": 8,
+                "icon": "film"
+              },
+              {
+                "label": "Travel & Transit",
+                "count": 6,
+                "icon": "car"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_BRAND_EXPLORER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "status": "synced",
+            "title": "Rewards Balance Synced",
+            "lastSyncedAt": "2026-08-23 07:40",
+            "message": "All 4,250 LBG coins and 3 connected brands are up to date.",
+            "ctaText": "Refresh Sync",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "BLENDED_DISCOVERY"
+      ]
+    }
+  ]
+}

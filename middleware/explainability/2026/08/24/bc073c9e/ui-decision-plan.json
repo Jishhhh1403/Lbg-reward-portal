@@ -1,0 +1,567 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-bc073c9e",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Goal-aligned educational journey focusing on First Home Savings Knowledge progress tracking (63% complete), paired with mandatory educational components, insights, and competence quizzes without timed challenges or public leaderboards.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are 63% toward mastering your first home savings knowledge! Keep building your financial competence.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set another learning or savings milestone to track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "First Home Purchase Mastery",
+            "missionName": "Mortgage Readiness & Deposit Strategies",
+            "description": "Master the core principles of building a robust house deposit and understanding mortgage mechanics.",
+            "modulesDone": 5,
+            "modulesTotal": 8,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionName": "Mortgage Readiness & Deposit Strategies"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "What is the recommended minimum deposit percentage typically advised for a first home mortgage to secure favorable interest rates?",
+            "options": [
+              "5%",
+              "10%",
+              "15%",
+              "20%"
+            ],
+            "reward": "50 LBG Coins & Mastery Badge",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": "10%"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Understanding Deposit Tiers",
+            "question": "Why do larger deposit tiers generally offer more favorable mortgage interest rates?",
+            "yourAnswer": "Reduces lender risk and lowers loan-to-value (LTV) ratio.",
+            "correctAnswer": "Reduces lender risk and lowers loan-to-value (LTV) ratio.",
+            "feedback": "Spot on! A lower LTV ratio means less financial exposure for the lender, which translates to better interest rates for you.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Financial Confidence Tracker",
+            "topic": "Home Financing & Deposit Planning",
+            "confidencePercent": 84,
+            "levelLabel": "Advanced Competence",
+            "nextMilestone": "Complete Mortgage Structure Module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Maximizing Your Home Savings Efficiency",
+            "insight": "Consistent monthly contributions combined with targeted literacy modules accelerate your readiness for property acquisition by up to 25%.",
+            "source": "LBG Financial Education Research",
+            "actionLabel": "Explore Module",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_INSIGHT",
+              "payload": {
+                "topic": "Home Savings Efficiency"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your LBG Coins Value Breakdown",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Connected Brand Rewards",
+                "value": "\u00a325.00"
+              },
+              {
+                "label": "Academy Completion Bonuses",
+                "value": "\u00a314.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "steps": [
+              {
+                "title": "1. Earn via Learning",
+                "description": "Complete educational modules and quizzes to earn LBG Coins."
+              },
+              {
+                "title": "2. Convert & Track",
+                "description": "Monitor your progress transparently against personal savings goals."
+              },
+              {
+                "title": "3. Redeem with Confidence",
+                "description": "Use your accumulated coins for tangible financial benefits and rewards."
+              }
+            ],
+            "ctaLabel": "View All Learning Paths",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LEARNING_PATHS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Accelerate First Home Savings Knowledge",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "First-Time Buyer Legal Fee Discount",
+                "points": 1500,
+                "goalLinked": true
+              },
+              {
+                "name": "Advanced Mortgage Advisory Session",
+                "points": 2500,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_REWARD_DETAILS",
+              "payload": {
+                "rewardName": "First-Time Buyer Legal Fee Discount"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "MANDATORY_ORDERED_STACK"
+      ]
+    },
+    "strategy": "Goal-aligned educational journey focusing on First Home Savings Knowledge progress tracking (63% complete), paired with mandatory educational components, insights, and competence quizzes without timed challenges or public leaderboards.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Goal-aligned educational journey focusing on First Home Savings Knowledge progress tracking (63% complete), paired with mandatory educational components, insights, and competence quizzes without timed challenges or public leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward mastering your first home savings knowledge! Keep building your financial competence.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set another learning or savings milestone to track.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "First Home Purchase Mastery",
+          "missionName": "Mortgage Readiness & Deposit Strategies",
+          "description": "Master the core principles of building a robust house deposit and understanding mortgage mechanics.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_MISSION",
+            "payload": {
+              "missionName": "Mortgage Readiness & Deposit Strategies"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the recommended minimum deposit percentage typically advised for a first home mortgage to secure favorable interest rates?",
+          "options": [
+            "5%",
+            "10%",
+            "15%",
+            "20%"
+          ],
+          "reward": "50 LBG Coins & Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "10%"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Understanding Deposit Tiers",
+          "question": "Why do larger deposit tiers generally offer more favorable mortgage interest rates?",
+          "yourAnswer": "Reduces lender risk and lowers loan-to-value (LTV) ratio.",
+          "correctAnswer": "Reduces lender risk and lowers loan-to-value (LTV) ratio.",
+          "feedback": "Spot on! A lower LTV ratio means less financial exposure for the lender, which translates to better interest rates for you.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Confidence Tracker",
+          "topic": "Home Financing & Deposit Planning",
+          "confidencePercent": 84,
+          "levelLabel": "Advanced Competence",
+          "nextMilestone": "Complete Mortgage Structure Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Maximizing Your Home Savings Efficiency",
+          "insight": "Consistent monthly contributions combined with targeted literacy modules accelerate your readiness for property acquisition by up to 25%.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Explore Module",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXPLORE_INSIGHT",
+            "payload": {
+              "topic": "Home Savings Efficiency"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Your LBG Coins Value Breakdown",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": [
+            {
+              "label": "Connected Brand Rewards",
+              "value": "\u00a325.00"
+            },
+            {
+              "label": "Academy Completion Bonuses",
+              "value": "\u00a314.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "steps": [
+            {
+              "title": "1. Earn via Learning",
+              "description": "Complete educational modules and quizzes to earn LBG Coins."
+            },
+            {
+              "title": "2. Convert & Track",
+              "description": "Monitor your progress transparently against personal savings goals."
+            },
+            {
+              "title": "3. Redeem with Confidence",
+              "description": "Use your accumulated coins for tangible financial benefits and rewards."
+            }
+          ],
+          "ctaLabel": "View All Learning Paths",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_LEARNING_PATHS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Accelerate First Home Savings Knowledge",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": [
+            {
+              "name": "First-Time Buyer Legal Fee Discount",
+              "points": 1500,
+              "goalLinked": true
+            },
+            {
+              "name": "Advanced Mortgage Advisory Session",
+              "points": 2500,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_REWARD_DETAILS",
+            "payload": {
+              "rewardName": "First-Time Buyer Legal Fee Discount"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "spends longest session time on educational content",
+          "motivated by mastering topics rather than winning them",
+          "avoids timed challenges and public rankings"
+        ]
+      }
+    ],
+    "methodology": "behavioral signal clustering and intelligence layer classification",
+    "temporaryInterpretation": true
+  }
+}

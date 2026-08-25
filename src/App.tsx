@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type { AppStep, BrandOption, CustomerSummary, PointsProvider } from './types/rewards'
+import type { PersonaOption } from './types/sdui'
 import AuthPage from './pages/AuthPage'
 import BankHomePage from './pages/BankHomePage'
 import RewardsDashboardPage from './pages/RewardsDashboardPage'
@@ -164,6 +165,40 @@ export default function App() {
     }
   }
 
+  /**
+   * Persona quick-login: signs in as an intelligence-layer customer. The
+   * wallet summary is derived from the persona profile; the rewards dashboard
+   * then personalizes around it via the QUEST-UI middleware.
+   */
+  const handlePersonaLogin = async (persona: PersonaOption) => {
+    setIsLoading(true)
+    setLoginError('')
+    try {
+      const summary: CustomerSummary = {
+        customerId: persona.id,
+        userName: persona.name,
+        phone: '',
+        totalLbgCoins: persona.points,
+        totalBrandPoints: 0,
+        brandsConnected: 3,
+        tier: persona.tier as CustomerSummary['tier'],
+        lastSyncedAt: new Date().toISOString(),
+      }
+      const brandOptions = await fetchBrandOptions()
+      setCustomerId(persona.id)
+      setUserName(persona.name)
+      setMobile('')
+      setPassword('')
+      setCustomer(summary)
+      setPointsByBrand([])
+      setBrands(brandOptions)
+      setEarnedRewardMap({})
+      setStep('home')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const handleSignOut = useCallback(() => {
     setCustomerId(null)
     setUserName('')
@@ -183,6 +218,13 @@ export default function App() {
   const loadDashboardData = async (id?: string) => {
     const targetId = id ?? customerId
     if (!targetId) return
+    if (targetId.startsWith('customer_')) {
+      // Intelligence-layer persona session: the persona-derived summary is the
+      // source of truth, so only refresh the brand catalogue.
+      const brandOptions = await fetchBrandOptions()
+      setBrands(brandOptions)
+      return
+    }
     try {
       const [summary, brandOptions, earned] = await Promise.all([
         fetchCustomerDashboardById(targetId),
@@ -241,6 +283,7 @@ export default function App() {
                     onBackToMobile={handleBackToMobile}
                     onSignupFieldChange={handleSignupFieldChange}
                     onSubmitSignup={handleSubmitSignup}
+                    onPersonaLogin={handlePersonaLogin}
                   />
                 </div>
               </div>

@@ -1,0 +1,66 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "Intelligence Layer",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "reads educational content",
+        "source": "Intelligence Layer",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_003 (David Park) is a Diamond tier member exhibiting a long-term accumulation pattern, rarely redeeming for small rewards, and heavily focused on future security and major financial goals such as retirement, education, and home deposit funds.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Total points balance is 12,000 with 28,400 LBG coins and 2 connected brands.",
+        "source": "Session Context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f2",
+        "statement": "Engages with long-term accumulation pattern and rarely redeems for small rewards.",
+        "source": "Intelligence Layer",
+        "confidence": 0.89
+      },
+      {
+        "factId": "f3",
+        "statement": "Active financial goals include Retirement Fund (28% progress), Children Education Fund (41% progress), and Dream Home Deposit (15% progress).",
+        "source": "Intelligence Layer",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "planningHorizon",
+        "value": "LONG_TERM",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "values future projections"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

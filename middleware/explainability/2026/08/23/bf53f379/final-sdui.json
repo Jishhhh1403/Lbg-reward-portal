@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "bf53f379",
+  "createdAt": "2023-10-27T10:00:00Z",
+  "expiresAt": "2023-10-27T11:00:00Z",
+  "customerRef": "customer_002",
+  "components": [
+    {
+      "id": "points-balance-1",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 6820,
+        "tier": "Platinum",
+        "name": "Sarah Chen",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_POINTS_BREAKDOWN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "metric-tiles-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "label": "LBG Coins Available",
+        "value": "6,820",
+        "unit": "Coins",
+        "tone": "brand",
+        "infoText": "Ready for your savings goals",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "metric-tiles-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "label": "Active Savings Goals",
+        "value": "3",
+        "unit": "Goals",
+        "tone": "white",
+        "infoText": "Japan, Phone & Emergency",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "metric-tiles-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "label": "Connected Brands",
+        "value": "3",
+        "unit": "Brands",
+        "tone": "white",
+        "infoText": "Actively earning for you",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "goal-progress-japan",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Japan Vacation",
+        "current": 1680,
+        "target": 2500,
+        "percentage": 67,
+        "remaining": 820,
+        "motivationalMessage": "You're 67% there! Just 820 more points to your dream trip.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Japan Vacation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "goal-progress-phone",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "New Phone",
+        "current": 890,
+        "target": 1200,
+        "percentage": 74,
+        "remaining": 310,
+        "motivationalMessage": "Almost in your hands! Only 310 points to go.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "New Phone"
+          }
+        }
+      ]
+    },
+    {
+      "id": "goal-progress-emergency",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "goalName": "Emergency Fund",
+        "current": 1350,
+        "target": 3000,
+        "percentage": 45,
+        "remaining": 1650,
+        "motivationalMessage": "Solid progress! Building your financial safety net step by step.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Emergency Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "add-goal-card-1",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new target and watch your points accumulate faster.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "goal-linked-reward-1",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Boost Your Japan Vacation Goal",
+        "goalName": "Japan Vacation",
+        "rewards": [
+          {
+            "name": "Flight Discount Voucher",
+            "points": 5000,
+            "goalLinked": true
+          },
+          {
+            "name": "Hotel Partner Credit",
+            "points": 3000,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_GOAL_REWARD",
+          "payload": {
+            "rewardName": "Flight Discount Voucher"
+          }
+        }
+      ]
+    },
+    {
+      "id": "milestone-card-1",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "milestones": [
+          {
+            "label": "Reached Platinum Tier Status",
+            "achieved": true
+          },
+          {
+            "label": "Connected 3 partner brands",
+            "achieved": true
+          },
+          {
+            "label": "Completed 5 savings milestones",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

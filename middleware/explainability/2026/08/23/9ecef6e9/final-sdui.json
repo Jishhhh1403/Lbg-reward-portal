@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "9ecef6e9",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-11-01T00:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "comp-pts-bal-01",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reengage-02",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Welcome back, Ryan!",
+        "message": "We've missed you over the last 41 days. Jump right back in and redeem your points instantly before they expire.",
+        "ctaText": "Explore Instant Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_REENGAGEMENT",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-03",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Expiring Points Notice",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "You have 1,500 points expiring in 7 days. Redeem them now to avoid losing your earned value.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING_POINTS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-04",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Your Wallet's Cash Value",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": [
+          {
+            "label": "Available LBG Coins",
+            "value": "\u00a336.00"
+          },
+          {
+            "label": "Expiring Soon",
+            "value": "\u00a315.00"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem-05",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Instant Redeemable Rewards",
+        "description": "Claim these low-point treats instantly with a single tap.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Flash Deal Snack Box",
+            "points": 350,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Ticket Pass",
+            "points": 500,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_INSTANT_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner-06",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "7-Day Flash Deal",
+        "subtitle": "Special discounted reward to welcome you back",
+        "originalPoints": 400,
+        "discountedPoints": 250,
+        "timer": "168:00:00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_FLASH_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win-07",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Effortless Quick Wins",
+        "subtitle": "Zero-friction redemptions for your Gold tier status",
+        "rewards": [
+          {
+            "name": "Instant Digital Voucher",
+            "points": 150
+          },
+          {
+            "name": "Express Snack Credit",
+            "points": 200
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

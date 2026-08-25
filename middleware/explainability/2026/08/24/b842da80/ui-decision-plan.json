@@ -1,0 +1,691 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-b842da80",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Comprehensive Mastery & Educational Rewards Overview tailored for Sophie Williams (EDUCATIONAL_COMPETENCE persona). Features anchored points balance, mandatory ordered educational/goal stack, and self-paced mastery components free of timed pressures or public rankings.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are making steady, confident progress toward your home savings goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new learning or savings milestone",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Advanced Mortgage Mechanics",
+            "description": "Deepen your understanding of interest structures and deposit requirements at your own pace.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 250,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "mortgage-mechanics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-card",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "What is the primary benefit of a fixed-rate savings arrangement during economic shifts?",
+            "options": [
+              "Guaranteed interest return regardless of market fluctuations",
+              "Immediate cash liquidity with zero penalty",
+              "Automatic transfer to equity investments"
+            ],
+            "reward": "150 Learning Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Recent Quiz Review",
+            "question": "How do compound interest intervals affect long-term deposit growth?",
+            "yourAnswer": "More frequent compounding yields higher overall growth.",
+            "correctAnswer": "More frequent compounding yields higher overall growth.",
+            "feedback": "Spot on! Frequent compounding accelerates your savings potential over time.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REVIEW_FEEDBACK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Topic Confidence Meter",
+            "topic": "Mortgage & Property Planning",
+            "confidencePercent": 85,
+            "levelLabel": "Proficient & Steady",
+            "nextMilestone": "Complete final module to achieve Advanced Mastery badge",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CONFIDENCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Mastery Insight",
+            "insight": "Consistent self-paced study sessions of 15-20 minutes yield 40% better long-term retention of complex financial concepts.",
+            "source": "LBG Financial Research",
+            "actionLabel": "Explore Study Notes",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 5 Literacy Modules",
+                "achieved": true
+              },
+              {
+                "label": "Achieve 80% on Property Quiz Series",
+                "achieved": true
+              },
+              {
+                "label": "Reach 60% on First Home Savings Knowledge Goal",
+                "achieved": true
+              },
+              {
+                "label": "Master Advanced Investment Principles",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Knowledge Accelerators",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Property Market Analysis Masterclass",
+                "points": 300,
+                "goalLinked": true
+              },
+              {
+                "name": "First-Time Buyer Legal Guide",
+                "points": 250,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-recommended-actions",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Recommended Learning Actions",
+            "actions": [
+              {
+                "label": "Review saved quiz bookmarks",
+                "points": 50,
+                "icon": "target"
+              },
+              {
+                "label": "Complete practice module on deposit tax wrappers",
+                "points": 100,
+                "icon": "shopping-bag"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "PERFORM_ACTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-card",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Learning & Achievement Badges",
+            "badges": [
+              {
+                "name": "Financial Scholar",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Goal Setter",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Knowledge Master",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Expert Analyst",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_PERSONA",
+        "MANDATORY_STACK_COMPLIANCE",
+        "NO_TIMED_PRESSURE"
+      ]
+    },
+    "strategy": "Comprehensive Mastery & Educational Rewards Overview tailored for Sophie Williams (EDUCATIONAL_COMPETENCE persona). Features anchored points balance, mandatory ordered educational/goal stack, and self-paced mastery components free of timed pressures or public rankings.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Comprehensive Mastery & Educational Rewards Overview tailored for Sophie Williams (EDUCATIONAL_COMPETENCE persona). Features anchored points balance, mandatory ordered educational/goal stack, and self-paced mastery components free of timed pressures or public rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady, confident progress toward your home savings goal.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new learning or savings milestone",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Rewards Academy",
+          "missionName": "Advanced Mortgage Mechanics",
+          "description": "Deepen your understanding of interest structures and deposit requirements at your own pace.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_MISSION",
+            "payload": {
+              "missionId": "mortgage-mechanics"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz-card",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary benefit of a fixed-rate savings arrangement during economic shifts?",
+          "options": [
+            "Guaranteed interest return regardless of market fluctuations",
+            "Immediate cash liquidity with zero penalty",
+            "Automatic transfer to equity investments"
+          ],
+          "reward": "150 Learning Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Recent Quiz Review",
+          "question": "How do compound interest intervals affect long-term deposit growth?",
+          "yourAnswer": "More frequent compounding yields higher overall growth.",
+          "correctAnswer": "More frequent compounding yields higher overall growth.",
+          "feedback": "Spot on! Frequent compounding accelerates your savings potential over time.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "REVIEW_FEEDBACK",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Topic Confidence Meter",
+          "topic": "Mortgage & Property Planning",
+          "confidencePercent": 85,
+          "levelLabel": "Proficient & Steady",
+          "nextMilestone": "Complete final module to achieve Advanced Mastery badge",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CONFIDENCE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Consistent self-paced study sessions of 15-20 minutes yield 40% better long-term retention of complex financial concepts.",
+          "source": "LBG Financial Research",
+          "actionLabel": "Explore Study Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_INSIGHT",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "milestones": [
+            {
+              "label": "Complete 5 Literacy Modules",
+              "achieved": true
+            },
+            {
+              "label": "Achieve 80% on Property Quiz Series",
+              "achieved": true
+            },
+            {
+              "label": "Reach 60% on First Home Savings Knowledge Goal",
+              "achieved": true
+            },
+            {
+              "label": "Master Advanced Investment Principles",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Knowledge Accelerators",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": [
+            {
+              "name": "Property Market Analysis Masterclass",
+              "points": 300,
+              "goalLinked": true
+            },
+            {
+              "name": "First-Time Buyer Legal Guide",
+              "points": 250,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-recommended-actions",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Recommended Learning Actions",
+          "actions": [
+            {
+              "label": "Review saved quiz bookmarks",
+              "points": 50,
+              "icon": "target"
+            },
+            {
+              "label": "Complete practice module on deposit tax wrappers",
+              "points": 100,
+              "icon": "shopping-bag"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "PERFORM_ACTION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge-card",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Learning & Achievement Badges",
+          "badges": [
+            {
+              "name": "Financial Scholar",
+              "icon": "brain",
+              "earned": true
+            },
+            {
+              "name": "Goal Setter",
+              "icon": "star",
+              "earned": true
+            },
+            {
+              "name": "Knowledge Master",
+              "icon": "trophy",
+              "earned": true
+            },
+            {
+              "name": "Expert Analyst",
+              "icon": "crown",
+              "earned": false
+            }
+          ],
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BADGES",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "EDUCATIONAL_COMPETENCE_PERSONA",
+      "MANDATORY_STACK_COMPLIANCE",
+      "NO_TIMED_PRESSURE"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "Persona is EDUCATIONAL_COMPETENCE with LEARNING_MASTERY motivation",
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "motivated by mastering topics rather than winning them"
+        ]
+      },
+      {
+        "attribute": "preferredRewardType",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "preferred_reward_type: EDUCATIONAL",
+          "spends longest session time on educational content"
+        ]
+      }
+    ],
+    "methodology": "Intelligence layer motive scores and behavioral signal cross-reference",
+    "temporaryInterpretation": true
+  }
+}

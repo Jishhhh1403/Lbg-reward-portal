@@ -1,0 +1,85 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "High competence motivation score (0.93)",
+        "source": "motiveScores",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "Preference for educational rewards (0.86)",
+        "source": "motiveScores",
+        "confidence": 0.86,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) exhibits an educational competence motivation profile, prioritizing mastery of financial literacy concepts, structured learning progress toward homeownership knowledge, and zero exposure to public rankings or timed pressure.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%.",
+        "source": "intelligence-layer-behavioral-signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood.",
+        "source": "intelligence-layer-behavioral-signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content with an average session duration of 16 minutes.",
+        "source": "intelligence-layer-customer-profile",
+        "confidence": 0.94
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3900 LBG coins and 0 standard points with Gold tier status.",
+        "source": "session-context-wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "primaryMotivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence-layer-persona-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "avoidancePreference",
+        "value": "NO_PUBLIC_RANKINGS_OR_TIMED_CHALLENGES",
+        "confidence": 0.95,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "behavioral-avoidance-signal-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

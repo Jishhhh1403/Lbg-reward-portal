@@ -1,0 +1,70 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "balances instant fun with long-term saving",
+        "source": "Intelligence Layer Signals",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard and goal progress in same sessions",
+        "source": "Intelligence Layer Signals",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Priya Sharma holds a Platinum tier status with 15,400 LBG coins and exhibits balanced engagement across short-term gamification and long-term multi-horizon savings goals.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins",
+        "statement": "Customer has 15400 LBG coins in wallet.",
+        "source": "Wallet Session Context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer tier is Platinum.",
+        "source": "Intelligence Layer Customer Profile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goals",
+        "statement": "Customer maintains 4 active goals: Bali Trip, New Laptop, Retirement Fund, and Home Deposit.",
+        "source": "Intelligence Layer Goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-streak",
+        "statement": "Customer maintains an active streak of 21 days.",
+        "source": "Intelligence Layer Customer Profile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-motivation",
+        "attribute": "motivation",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.87,
+        "evidenceRefs": [
+          "balances instant fun with long-term saving",
+          "checks leaderboard and goal progress in same sessions"
+        ],
+        "inferenceMethod": "Intelligence Layer Behavioral Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

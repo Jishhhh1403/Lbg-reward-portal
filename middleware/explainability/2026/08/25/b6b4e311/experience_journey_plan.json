@@ -1,0 +1,70 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review savings growth and master financial knowledge milestones through self-paced learning.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews the active savings goal progress and successfully initiates or completes a self-paced educational quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "Points balance",
+        "Goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I build my financial knowledge and confidence at my own pace?",
+      "entryCondition": "User views goal progress",
+      "requiredInformation": [
+        "Learning mission status",
+        "Quiz options",
+        "Educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-milestones",
+      "purpose": "Showcase competence milestones and structured learning progress without time pressure.",
+      "contentNotes": [
+        "Milestone tracking",
+        "Educational insights"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,513 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-8f83d192",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Goal-focused educational progression emphasizing First Home Savings Knowledge progress (63%), structured financial literacy modules, tangible value clarity, and clear educational rewards without any competitive pressure or timed challenges.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are 63% toward mastering your First Home Savings Knowledge target. Keep building your competence!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Financial Competence Track",
+            "missionName": "Mortgage & Savings Mastery",
+            "description": "Master the core principles of compound growth and home deposit structuring at your own pace.",
+            "modulesDone": 5,
+            "modulesTotal": 8,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionName": "Mortgage & Savings Mastery"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "Which factor most reliably protects a deposit fund against short-term market volatility?",
+            "options": [
+              "Diversified holding across interest-bearing savings pots",
+              "Chasing high-yield speculative assets",
+              "Leaving cash unallocated in current accounts"
+            ],
+            "reward": "50 Bonus Mastery Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Mastery Insight",
+            "question": "Why structured savings pots matter",
+            "yourAnswer": "Diversified holding across interest-bearing savings pots",
+            "correctAnswer": "Diversified holding across interest-bearing savings pots",
+            "feedback": "Correct! Stability and predictable yield safeguard your deposit milestone against market swings.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Competence Meter",
+            "topic": "Home Deposit Structuring",
+            "confidencePercent": 84,
+            "levelLabel": "Advanced Competence",
+            "nextMilestone": "Mastering Tax-Advantaged Accounts",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Understanding Your Points Value",
+            "insight": "Your 3,900 LBG coins represent \u00a339.00 in direct tangible value, perfectly positioned to support your learning milestones without rush or expiry.",
+            "source": "LBG Financial Education Group",
+            "actionLabel": "Explore Value Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_EXPLAINER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Your Rewards Breakdown",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Academy Module Bonus",
+                "value": "\u00a33.00"
+              },
+              {
+                "label": "First Home Savings Fund",
+                "value": "\u00a336.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "steps": [
+              {
+                "title": "Earn via Learning",
+                "description": "Complete financial literacy modules and quizzes to build verified knowledge."
+              },
+              {
+                "title": "Convert to Value",
+                "description": "Translate your earned competence into tangible savings and financial products."
+              },
+              {
+                "title": "Redeem Transparently",
+                "description": "Use your accumulated balance securely toward your long-term goals."
+              }
+            ],
+            "ctaLabel": "Read Full Methodology",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Learning-Accelerated Rewards",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Advanced Mortgage Masterclass Voucher",
+                "points": 500,
+                "goalLinked": true
+              },
+              {
+                "name": "Deposit Savings Boost Match",
+                "points": 1000,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "INSPECT_REWARD",
+              "payload": {
+                "rewardName": "Deposit Savings Boost Match"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.94,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "LEARNING_MASTERY_FOCUS"
+      ]
+    },
+    "strategy": "Goal-focused educational progression emphasizing First Home Savings Knowledge progress (63%), structured financial literacy modules, tangible value clarity, and clear educational rewards without any competitive pressure or timed challenges.",
+    "confidence": 0.94
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Goal-focused educational progression emphasizing First Home Savings Knowledge progress (63%), structured financial literacy modules, tangible value clarity, and clear educational rewards without any competitive pressure or timed challenges.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward mastering your First Home Savings Knowledge target. Keep building your competence!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Financial Competence Track",
+          "missionName": "Mortgage & Savings Mastery",
+          "description": "Master the core principles of compound growth and home deposit structuring at your own pace.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_MISSION",
+            "payload": {
+              "missionName": "Mortgage & Savings Mastery"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which factor most reliably protects a deposit fund against short-term market volatility?",
+          "options": [
+            "Diversified holding across interest-bearing savings pots",
+            "Chasing high-yield speculative assets",
+            "Leaving cash unallocated in current accounts"
+          ],
+          "reward": "50 Bonus Mastery Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Mastery Insight",
+          "question": "Why structured savings pots matter",
+          "yourAnswer": "Diversified holding across interest-bearing savings pots",
+          "correctAnswer": "Diversified holding across interest-bearing savings pots",
+          "feedback": "Correct! Stability and predictable yield safeguard your deposit milestone against market swings.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Competence Meter",
+          "topic": "Home Deposit Structuring",
+          "confidencePercent": 84,
+          "levelLabel": "Advanced Competence",
+          "nextMilestone": "Mastering Tax-Advantaged Accounts",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Understanding Your Points Value",
+          "insight": "Your 3,900 LBG coins represent \u00a339.00 in direct tangible value, perfectly positioned to support your learning milestones without rush or expiry.",
+          "source": "LBG Financial Education Group",
+          "actionLabel": "Explore Value Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_EXPLAINER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Rewards Breakdown",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": [
+            {
+              "label": "Academy Module Bonus",
+              "value": "\u00a33.00"
+            },
+            {
+              "label": "First Home Savings Fund",
+              "value": "\u00a336.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": [
+            {
+              "title": "Earn via Learning",
+              "description": "Complete financial literacy modules and quizzes to build verified knowledge."
+            },
+            {
+              "title": "Convert to Value",
+              "description": "Translate your earned competence into tangible savings and financial products."
+            },
+            {
+              "title": "Redeem Transparently",
+              "description": "Use your accumulated balance securely toward your long-term goals."
+            }
+          ],
+          "ctaLabel": "Read Full Methodology",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Learning-Accelerated Rewards",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": [
+            {
+              "name": "Advanced Mortgage Masterclass Voucher",
+              "points": 500,
+              "goalLinked": true
+            },
+            {
+              "name": "Deposit Savings Boost Match",
+              "points": 1000,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "INSPECT_REWARD",
+            "payload": {
+              "rewardName": "Deposit Savings Boost Match"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.94,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "LEARNING_MASTERY_FOCUS"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "spends longest session time on educational content",
+          "motivated by mastering topics rather than winning them",
+          "avoids timed challenges and public rankings"
+        ]
+      }
+    ],
+    "methodology": "behavioral-signal-analysis",
+    "temporaryInterpretation": true
+  }
+}

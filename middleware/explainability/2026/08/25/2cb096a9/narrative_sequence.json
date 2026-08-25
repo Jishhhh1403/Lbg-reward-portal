@@ -1,0 +1,176 @@
+{
+  "primaryActionComponentRef": "payment-reward-card-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-card-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "TENSION",
+      "sequence": 3,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-allocation-control-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "payment-reward-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-confirmation-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 5,
+      "dependsOn": [
+        "payment-reward-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "payment-reward-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "rewards-insight-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 7,
+      "dependsOn": [
+        "tangible-value-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-choice-panel-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 9,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "add-goal-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 10,
+      "dependsOn": [
+        "goal-progress-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 11,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "sync-status-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "goal-progress-card-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect total rewards balance to active payment goal progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-card-1",
+      "toComponentRef": "payment-reward-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Transition from goal tracking to automated statement credit configuration.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "payment-reward-card-1",
+      "toComponentRef": "reward-allocation-control-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide control over automatic allocation percentages.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "reward-allocation-control-1",
+      "toComponentRef": "payment-reward-confirmation-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Confirm scheduled bill reduction details.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "payment-reward-confirmation-1",
+      "toComponentRef": "tangible-value-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Quantify exact cash value of accumulated points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "tangible-value-card-1",
+      "toComponentRef": "rewards-insight-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Deliver monthly cashback insight summary.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

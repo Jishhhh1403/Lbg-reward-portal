@@ -1,0 +1,878 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich, transparent rewards-overview screen featuring 14 components tailored for a VALUE_CERTAINTY_SEEKER. It leads with a prominent POINTS_BALANCE and a TANGIBLE_VALUE_CARD showing exact GBP conversions (\u00a356.00 equivalent). Includes clear redemption partner cards, GOAL_PROGRESS_CARD, MILESTONE_CARD, fee breakdowns, and educational value explanations without any countdown timers, artificial scarcity, or urgency framing.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses the need for exact monetary clarity and GBP equivalents."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 14 rich components eliminating point abstraction confusion and lowering abandonment."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with VALUE_CLARITY motivation and zero urgency framing."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High cognitive fit with transparent financial layouts and clear text hierarchies."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Grounded solidly in behavioral redemption history and explicit preferences."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains clean brand styling aligned with professional financial clarity."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces clear side-by-side GBP comparison tables for redemption options."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Uses standard components with existing currency conversion modules."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A simplified 8-component screen focusing primarily on points balance and a basic redemption button, omitting detailed tangible value breakdowns and partner rate comparisons.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Fails to provide the depth of monetary clarity required."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Under 11 components; provides insufficient utility for a value certainty seeker."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Avoids urgency but lacks proactive GBP transparency."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 7,
+          "explanation": "Simple, but leaves too many unanswered questions about point value."
+        },
+        "evidenceConfidence": {
+          "score": 6,
+          "explanation": "Ignores strong behavioral signals regarding detailed value checks."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with basic UI guidelines."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "Offers nothing new or helpful."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Very easy to build, but fails user goals."
+        }
+      },
+      "weightedTotal": 5.9,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Strategy proposes fewer than 11 components, resulting in low expectedCustomerUtility and customerGoalRelevance scores."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 14-component transparent valuation screen tailored for Maya Thompson as a VALUE_CERTAINTY_SEEKER. It strictly obeys all binding card rules: it features POINTS_BALANCE first, followed by the mandatory ordered stack (TANGIBLE_VALUE_CARD, REWARD_CHOICE_PANEL, PARTNER_VALUE_COMPARISON, WHY_THIS_UI_CARD, REWARDS_INSIGHT_CARD). It incorporates monetary transparency, clear partner rate comparisons, goal tracking, milestone achievements, metric tiles, brand explorer, personalized offers, and educational financial tips. All suppressions and bans (countdown timers, urgency framing, leaderboards, streaks) are rigorously respected.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 5600,
+            "tier": "Gold",
+            "name": "Maya Thompson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Points in Real Cash Value",
+            "cashValue": "\u00a356.00",
+            "pointsEquivalent": 5600,
+            "breakdown": [
+              {
+                "label": "Standard Redemption Rate",
+                "value": "100 points = \u00a31.00"
+              },
+              {
+                "label": "Gold Tier Bonus Value",
+                "value": "Included in balance"
+              },
+              {
+                "label": "Available for Immediate Use",
+                "value": "\u00a356.00 exact"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-choice-panel",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Transparent Redemption Options",
+            "subtitle": "Choose how you would like to utilize your \u00a356.00 equivalent value with zero pressure or hidden fees.",
+            "options": [
+              {
+                "id": "opt-1",
+                "label": "Direct Statement Credit",
+                "description": "Convert your 5,600 points directly to cash statement credit at standard value.",
+                "points": 5600
+              },
+              {
+                "id": "opt-2",
+                "label": "Partner Retailer Voucher",
+                "description": "Redeem for enhanced value vouchers across verified retail partners.",
+                "points": 5000
+              },
+              {
+                "id": "opt-3",
+                "label": "Continue Collecting",
+                "description": "Keep your points safely in your wallet while you evaluate future options.",
+                "points": 0
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_REWARD_OPTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-partner-value-comparison",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Partner Rate Comparison",
+            "subtitle": "Side-by-side breakdown of your points' exact purchasing power across our trusted partners.",
+            "partners": [
+              {
+                "name": "Supermarket Partner",
+                "points": 5600,
+                "value": "\u00a356.00",
+                "perk": "Standard 1:1 conversion rate"
+              },
+              {
+                "name": "Travel Partner",
+                "points": 5000,
+                "value": "\u00a360.00",
+                "perk": "Enhanced partner valuation"
+              },
+              {
+                "name": "Digital Retailer",
+                "points": 5600,
+                "value": "\u00a356.00",
+                "perk": "Instant digital code delivery"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "COMPARE_PARTNERS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-why-this-ui",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Why This Screen Is Designed For You",
+            "intro": "We tailor your rewards experience to ensure total financial clarity and confidence.",
+            "reasons": [
+              {
+                "label": "Monetary Transparency",
+                "detail": "Every point balance is immediately displayed alongside its exact GBP equivalent."
+              },
+              {
+                "label": "No Artificial Urgency",
+                "detail": "We never use countdown timers or pressure tactics, giving you complete freedom to decide."
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PREFERENCES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-rewards-insight",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Rewards Health & Insights",
+            "topBrandName": "Supermarket Partner",
+            "topBrandPoints": 1500,
+            "growthTip": "Reviewing partner comparison rates before redeeming ensures maximum monetary value.",
+            "expiringPoints": 0,
+            "expiryDate": "No expiry",
+            "ctaText": "Review Full History",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "label": "Total Points",
+            "value": "5,600",
+            "unit": "pts",
+            "tone": "brand",
+            "infoText": "Your current accumulated Gold balance",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLICK_METRIC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "label": "Cash Equivalent",
+            "value": "\u00a356.00",
+            "unit": "GBP",
+            "tone": "white",
+            "infoText": "Exact monetary worth at standard rate",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLICK_METRIC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "label": "Membership Tier",
+            "value": "Gold",
+            "unit": "Status",
+            "tone": "white",
+            "infoText": "Active tier with full partner access",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLICK_METRIC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Tailored Offer for Maya",
+            "subtitle": "Value-verified supermarket partner voucher",
+            "offer": "1,500 points for \u00a315.00 cash voucher",
+            "validUntil": "31 December 2026",
+            "message": "This offer maintains a transparent 1:1 GBP valuation with no hidden fees.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-best-value-redeem",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "options": [
+              {
+                "name": "Supermarket Voucher",
+                "points": 1500,
+                "cashValue": "\u00a315.00",
+                "valuePerPoint": 1.0,
+                "best": true
+              },
+              {
+                "name": "Travel Partner Credit",
+                "points": 5000,
+                "value": "\u00a360.00",
+                "valuePerPoint": 1.2,
+                "best": false
+              }
+            ],
+            "note": "Ranked by pounds-per-point value to help you make an informed choice.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BEST_VALUE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Explore Partner Categories",
+            "actionLabel": "Browse Categories",
+            "categories": [
+              {
+                "label": "Supermarkets",
+                "count": 12,
+                "icon": "basket"
+              },
+              {
+                "label": "Travel",
+                "count": 8,
+                "icon": "plane"
+              },
+              {
+                "label": "Dining",
+                "count": 15,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Understanding Reward Valuations",
+            "insight": "Comparing redemption partner rates before committing ensures you always receive the highest possible tangible worth for your points.",
+            "source": "Rewards Transparency Board",
+            "actionLabel": "Read Guide",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "milestones": [
+              {
+                "label": "Achieved Gold Tier Status",
+                "achieved": true
+              },
+              {
+                "label": "Accumulated 5,000+ points milestone",
+                "achieved": true
+              },
+              {
+                "label": "Completed first verified GBP value redemption",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "VALUE_CERTAINTY_SEEKER",
+        "VALUE_CLARITY_MOTIVATION",
+        "MANDATORY_STACK_COMPLIANCE",
+        "STRICT_CARD_RULE_ENGINE_COMPLIANCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "An alternative transparent valuation layout for Maya Thompson featuring 13 components. It adheres strictly to the mandatory ordered stack and card rule engine directives while emphasizing savings calculation, partner transfers, and detailed reward provenance alongside tangible GBP breakdowns.",
+      "components": [
+        {
+          "id": "comp-2-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 5600,
+            "tier": "Gold",
+            "name": "Maya Thompson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Points in Real Cash Value",
+            "cashValue": "\u00a356.00",
+            "pointsEquivalent": 5600,
+            "breakdown": [
+              {
+                "label": "Gold Tier Valuation Rate",
+                "value": "100 points = \u00a31.00"
+              },
+              {
+                "label": "Total Cash Equivalent",
+                "value": "\u00a356.00 available"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-reward-choice-panel",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Transparent Redemption Options",
+            "subtitle": "Clear choices with exact GBP figures and no pressure.",
+            "options": [
+              {
+                "id": "opt-2-1",
+                "label": "Direct Cash Credit",
+                "description": "Redeem your 5,600 points for \u00a356.00 statement credit.",
+                "points": 5600
+              },
+              {
+                "id": "opt-2-2",
+                "label": "Retriever Voucher",
+                "description": "Exchange 1,500 points for a \u00a315.00 supermarket voucher.",
+                "points": 1500
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_REWARD_OPTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-partner-value-comparison",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Partner Value Comparison",
+            "subtitle": "Evaluate your exchange options across partner networks in plain GBP terms.",
+            "partners": [
+              {
+                "name": "Supermarket Partner",
+                "points": 5600,
+                "value": "\u00a356.00",
+                "perk": "1:1 Standard Rate"
+              },
+              {
+                "name": "Travel Partner",
+                "points": 5000,
+                "value": "\u00a360.00",
+                "perk": "Enhanced Partner Value"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "COMPARE_PARTNERS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-why-this-ui",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Design Transparency Guarantee",
+            "intro": "Why this layout was composed for you:",
+            "reasons": [
+              {
+                "label": "Exact Valuations",
+                "detail": "Eliminates point ambiguity by showing upfront monetary conversions."
+              },
+              {
+                "label": "Zero Urgency",
+                "detail": "No artificial deadlines or pressure mechanisms."
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INFO",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-rewards-insight",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Rewards Insight Summary",
+            "topBrandName": "Supermarket Partner",
+            "topBrandPoints": 1500,
+            "growthTip": "Checking partner rates before redeeming helps maximize your total savings.",
+            "expiringPoints": 0,
+            "expiryDate": "No expiry",
+            "ctaText": "View History",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-savings-calculator",
+          "type": "SAVINGS_CALCULATOR_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Savings Potential Simulator",
+            "presets": [
+              {
+                "monthly": 50,
+                "yearEnd": 650,
+                "bonusPoints": 500
+              },
+              {
+                "monthly": 100,
+                "yearEnd": 1300,
+                "bonusPoints": 1200
+              }
+            ],
+            "note": "Simulate your future rewards growth with clear GBP equivalents.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SIMULATE_SAVINGS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-reward-provenance",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Points Provenance History",
+            "subtitle": "Clear history of where your points were earned in plain English.",
+            "history": [
+              {
+                "source": "Supermarket Partner",
+                "date": "15 May 2026",
+                "points": 1500
+              },
+              {
+                "source": "Gold Tier Bonus",
+                "date": "01 May 2026",
+                "points": 4100
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROVENANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-best-value",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "options": [
+              {
+                "name": "Supermarket Voucher",
+                "points": 1500,
+                "cashValue": "\u00a315.00",
+                "valuePerPoint": 1.0,
+                "best": true
+              }
+            ],
+            "note": "Optimized for maximum pounds-per-point return.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BEST_DEAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-partner-transfer",
+          "type": "PARTNER_TRANSFER_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Partner Transfer Interface",
+            "fromProgramme": "Main Gold Programme",
+            "toPartner": "Supermarket Partner",
+            "points": 1500,
+            "estimatedValue": "\u00a315.00",
+            "status": "Ready to transfer",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "TRANSFER_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Verified Partner Categories",
+            "actionLabel": "View All",
+            "categories": [
+              {
+                "label": "Groceries",
+                "count": 10,
+                "icon": "basket"
+              },
+              {
+                "label": "Travel & Leisure",
+                "count": 6,
+                "icon": "plane"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Gold Member Offer",
+            "subtitle": "Verified partner reward",
+            "offer": "Redeem 1,500 points for \u00a315.00",
+            "validUntil": "31 Dec 2026",
+            "message": "No artificial urgency applied; claim whenever you are ready.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "milestones": [
+              {
+                "label": "Gold tier status maintained",
+                "achieved": true
+              },
+              {
+                "label": "Transparent redemption history established",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.92,
+      "reasonCodes": [
+        "VALUE_CERTAINTY_SEEKER",
+        "SAVINGS_SIMULATOR_INTEGRATION",
+        "MANDATORY_STACK_COMPLIANCE",
+        "STRICT_CARD_RULE_ENGINE_COMPLIANCE"
+      ]
+    }
+  ]
+}

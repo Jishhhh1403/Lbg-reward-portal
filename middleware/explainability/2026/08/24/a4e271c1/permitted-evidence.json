@@ -1,0 +1,91 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.98,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-03",
+        "classification": "OBSERVED",
+        "value": "First Home Savings Knowledge goal at 63% progress",
+        "source": "goal_tracking",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams (customer_011) engages deeply with educational financial content, prioritizing mastery and competence over timed or social gamification. She is tracking toward her First Home Savings Knowledge goal at 63% completion and holds 3,900 LBG Coins.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_history",
+        "confidence": 0.99
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_history",
+        "confidence": 0.98
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Holds 3,900 LBG Coins and 0 points in base wallet",
+        "source": "session_wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-04",
+        "statement": "First Home Savings Knowledge goal is at 63% progress (1,250 of 2,000 target)",
+        "source": "goal_tracking",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-01"
+        ],
+        "inferenceMethod": "personalization_signals",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

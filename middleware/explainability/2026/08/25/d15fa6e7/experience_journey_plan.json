@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "story-continue-learning",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Provide a seamless, pressure-free interface for Sophie to review her First Home Savings progress and engage with advanced educational modules.",
+  "entryPoint": "Customer opens rewards and learning overview",
+  "completionDefinition": "Customer initiates an advanced learning module or interacts with the First Home Savings milestone tracker.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot-trust",
+      "order": 1,
+      "customerQuestion": "Where do I stand and what are my coins actually worth?",
+      "entryCondition": "App opened",
+      "requiredInformation": [
+        "points: 3900",
+        "tier: Gold",
+        "cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 2,
+      "customerQuestion": "What advanced learning modules and knowledge milestones await me?",
+      "entryCondition": "Snapshot and value comprehension established",
+      "requiredInformation": [
+        "First Home Savings progress: 63%",
+        "Advanced learning modules"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-savings-goal",
+        "fact-completes-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 3,
+      "customerQuestion": "How do my learning milestones and goals connect to tangible rewards?",
+      "entryCondition": "Learning module or goal reviewed",
+      "requiredInformation": [
+        "Milestone progress",
+        "Goal-linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-savings-goal"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-faq",
+      "purpose": "Provide supplementary detail on how LBG coin valuation is calculated.",
+      "contentNotes": [
+        "100 coins = \u00a31.00 transparent valuation breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

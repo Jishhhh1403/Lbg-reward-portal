@@ -1,0 +1,82 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "high historical immediate redemption rate",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "1,500 points expiring in 7 days",
+        "source": "wallet-audit",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Ryan Okafor (Gold tier, 3,600 coins, 0 points) has been inactive for 41 days after previously high engagement. 1,500 points are expiring in 7 days. Historically exhibits rapid redemption behavior for instant, low-effort rewards and responds well to flash offers.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer has 3,600 LBG coins and 0 loyalty points.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "1,500 points are expiring within 7 days.",
+        "source": "Task Charter availableEvidence",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Customer has been inactive for 41 days.",
+        "source": "Journey Analysis supportingEvidence",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Historically redeemed points within hours of earning (average 6 hours).",
+        "source": "Intelligence Layer customerProfile behaviors",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-001",
+        "attribute": "churnRisk",
+        "value": "HIGH",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-003",
+          "stopped opening notifications"
+        ],
+        "inferenceMethod": "behavioral-trend-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-002",
+        "attribute": "preferredRewardFormat",
+        "value": "INSTANT_FLASH_VOUCHER",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "responds strongly to flash offers and instant vouchers",
+          "small instant rewards drove past engagement spikes"
+        ],
+        "inferenceMethod": "historical-preference-matching",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

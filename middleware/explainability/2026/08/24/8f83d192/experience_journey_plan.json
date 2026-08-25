@@ -1,0 +1,95 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Guide customer through First Home Savings Knowledge progress review and targeted educational quiz completion.",
+  "entryPoint": "Customer opens rewards overview focusing on active First Home Savings Knowledge goal and educational mastery.",
+  "completionDefinition": "Customer reviews goal progress card, engages with the educational quiz card, and inspects learning-linked rewards without encountering competitive elements.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand on my First Home Savings Knowledge goal?",
+      "entryCondition": "Customer views active savings knowledge goal progress.",
+      "requiredInformation": [
+        "goalName",
+        "current",
+        "target",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-1",
+        "fact-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial competence and test my understanding?",
+      "entryCondition": "Customer reviews learning modules and educational insights.",
+      "requiredInformation": [
+        "courseName",
+        "currentLesson",
+        "totalLessons",
+        "question",
+        "options"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-1",
+        "fact-2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What rewards support my continued learning and goal progression?",
+      "entryCondition": "Customer inspects learning-linked rewards and tangible value breakdown.",
+      "requiredInformation": [
+        "title",
+        "goalName",
+        "rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": "",
+      "requiredEvidenceRefs": [
+        "fact-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-resources",
+      "purpose": "Provide supplementary reading materials and savings calculation presets for deeper financial mastery.",
+      "contentNotes": [
+        "Savings calculator presets",
+        "Daily financial tips"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

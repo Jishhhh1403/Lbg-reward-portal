@@ -1,0 +1,517 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive multi-goal rewards overview tailored for a long-term planner persona. Includes POINTS_BALANCE, three distinct GOAL_PROGRESS_CARD elements for Retirement Fund, Children Education Fund, and Dream Home Deposit, plus an ADD_GOAL_CARD, FUTURE_VALUE_CARD, PROJECTION_CHART, LONG_TERM_GOAL_CARD, and EDUCATIONAL_INSIGHT_CARD.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly maps to all three active customer goals and honors the multi-goal requirement with individual goal cards and an ADD_GOAL_CARD."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides rich, highly relevant utility for a long-term planner by focusing on projections, future value, and structured financial accumulation."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with LONG_TERM reward profile preferences and future security motivations."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear layout with well-structured cards, supporting cognitive accessibility for data-heavy financial tracking."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "High confidence based on robust behavioural history and verified goal data."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully adheres to design guidelines and required component availability."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces thoughtful projection charts and educational insights tailored to wealth accumulation."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully feasible within standard mobile latency budgets and existing schema capabilities."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A simplified single-focus retirement dashboard displaying POINTS_BALANCE, a single GOAL_PROGRESS_CARD (Retirement), FUTURE_VALUE_CARD, PROJECTION_CHART, and EDUCATIONAL_INSIGHT_CARD, omitting the other active goals to reduce visual clutter.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Violates the multi-goal requirement by omitting Education and Home Deposit goals and failing to include an ADD_GOAL_CARD."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Useful for retirement tracking, but misses utility for the customer's other two active financial milestones."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with long-term goals generally, but ignores the breadth of David Park's portfolio."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean and uncluttered, but under-delivers on comprehensive data representation."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Solid evidence base, but unnecessarily narrows the scope."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Complies with core UI standards, though misses mandatory multi-goal rendering patterns."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Presents standard retirement tracking without innovative multi-goal synthesis."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible."
+        }
+      },
+      "weightedTotal": 7.15,
+      "hardGatesPass": true,
+      "objections": [
+        "Fails rule requiring multi-goal customers to see one card per goal plus an ADD_GOAL_CARD."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Long-term planner comprehensive multi-goal composition featuring all three active goals (Retirement Fund, Children Education Fund, Dream Home Deposit) rendered as half-span cards plus an ADD_GOAL_CARD, anchored by future value projections, multi-year projection chart, long-term horizon card, and educational insight.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-1",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "remaining": 71600,
+            "motivationalMessage": "Steady accumulation puts your retirement milestone firmly on track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "remaining": 29500,
+            "motivationalMessage": "Great progress! 41% achieved toward higher education security.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-3",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "remaining": 63750,
+            "motivationalMessage": "Building your foundation brick by brick.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Establish a new long-horizon financial milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Compound Growth Projection",
+            "currentValue": 28400,
+            "projectedValue": 52000,
+            "timeframe": "3 Years",
+            "growthRate": "6.5% APY equivalent",
+            "message": "Continuing your disciplined accumulation strategy maximizes your future purchasing power.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Long-Term Wealth Horizon",
+            "growthLabel": "Projected Value (Points)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2028",
+                "value": 41500
+              },
+              {
+                "year": "2030",
+                "value": 63000
+              },
+              {
+                "year": "2032",
+                "value": 95000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPAND_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-long-term-goal",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "goalName": "Retirement Security Horizon",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2034",
+            "message": "On track for long-term independence based on your current 15 active monthly days cadence.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LONG_TERM_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "The Power of Compounding Rewards",
+            "insight": "Holding balances across linked partner brands allows coin multipliers to compound significantly faster than frequent micro-redemptions.",
+            "source": "Wealth & Rewards Research Desk",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATIONAL_ARTICLE",
+              "payload": {
+                "articleId": "compounding-rewards-101"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "MULTI_GOAL_COMPLIANCE",
+        "LONG_TERM_STRATEGY"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative long-term planner focus emphasizing metrics and structured milestone tracking alongside multi-goal security.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "label": "Total LBG Coins",
+            "value": "28,400",
+            "unit": "Coins",
+            "tone": "brand",
+            "infoText": "Accumulated across all connected accounts",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_SUMMARY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-alt-1",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "remaining": 71600,
+            "motivationalMessage": "Your primary retirement milestone is progressing steadily.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-alt-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "remaining": 29500,
+            "motivationalMessage": "Solid 41% milestone reached for education.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-alt-3",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "remaining": 63750,
+            "motivationalMessage": "Property deposit savings continuing at a steady rate.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-alt",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set up an additional financial objective.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value-alt",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Wealth Projection Outlook",
+            "currentValue": 28400,
+            "projectedValue": 60000,
+            "timeframe": "5 Years",
+            "growthRate": "7.0% APY equivalent",
+            "message": "Long-term holding strategy optimizes your tier benefits.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight-alt",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Maximizing Diamond Tier Security",
+            "insight": "As a Diamond tier member, your accumulated coins unlock exclusive long-horizon multiplier bonuses.",
+            "source": "LBG Wealth Intelligence",
+            "actionLabel": "Explore Tier Benefits",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_TIER_BENEFITS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.9,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "MULTI_GOAL_COMPLIANCE",
+        "METRIC_FOCUSED_STRATEGY"
+      ]
+    }
+  ]
+}

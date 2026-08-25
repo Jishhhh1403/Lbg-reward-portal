@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "e9398f79",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T01:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-pts-bal-01",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE_WALLET",
+          "payload": {
+            "destination": "wallet_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-inst-pop-01",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Quick Earn Bonus Unlocked!",
+        "subtitle": "Bonus points credited from your recent partner checkout",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_REWARD",
+          "payload": {
+            "rewardId": "bonus-250",
+            "points": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-ban-01",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Flash Hour: Premium Dining Pass",
+        "subtitle": "Exclusive limited-time discount for Gold tier members",
+        "originalPoints": 1200,
+        "discountedPoints": 850,
+        "timer": "01:45:30",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH",
+          "payload": {
+            "rewardName": "Premium Dining Pass",
+            "cost": 850
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-red-01",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant One-Tap Treats",
+        "description": "Ready to redeem instantly with your 4,250 balance",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Gourmet Lunch Voucher",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Screening Pass",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEMS",
+          "payload": {
+            "filter": "instant"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-tang-val-01",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Coin Purchasing Power",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available LBG Coins",
+            "value": "4,250 coins"
+          },
+          {
+            "label": "Standard Exchange Rate",
+            "value": "100 coins = \u00a31.00"
+          },
+          {
+            "label": "Gold Tier Boost",
+            "value": "Active"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUATION_DETAILS",
+          "payload": {
+            "currency": "GBP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-rew-car-01",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Curated For Your Instant Preference",
+        "rewards": [
+          {
+            "name": "Express Delivery Pass",
+            "points": 350,
+            "category": "Shopping",
+            "limited": false
+          },
+          {
+            "name": "Audio Streaming 1-Month",
+            "points": 800,
+            "category": "Entertainment",
+            "limited": true
+          },
+          {
+            "name": "Ride-Share Credit \u00a310",
+            "points": 1000,
+            "category": "Transport",
+            "limited": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "BROWSE_CATALOGUE",
+          "payload": {
+            "category": "all"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-q-win-01",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Effortless Micro-Rewards",
+        "subtitle": "Redeem in under 60 seconds",
+        "rewards": [
+          {
+            "name": "Digital Magazine Issue",
+            "points": 150
+          },
+          {
+            "name": "Snack Bar Voucher",
+            "points": 250
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_MICRO_REWARD",
+          "payload": {
+            "source": "quick_win"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

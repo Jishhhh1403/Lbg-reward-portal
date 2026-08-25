@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "9296d2dc",
+  "createdAt": "2026-03-29T00:00:00Z",
+  "expiresAt": "2026-03-29T23:59:59Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-consolidated-wallet",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Your Combined Reward Wallet",
+        "subtitle": "All your partner balances in one place, clear and simple.",
+        "programmes": [
+          {
+            "name": "Main Rewards Programme",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "status": "Active"
+          },
+          {
+            "name": "Airlines Partner",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Hotel Partner",
+            "points": 3200,
+            "value": "\u00a332.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3189.00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "status": "synced",
+        "title": "Partner Balances Up to Date",
+        "lastSyncedAt": "Today at 09:23 AM",
+        "message": "All connected partner balances are fully synchronised.",
+        "ctaText": "Refresh balances",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-partner-value-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Compare Partner Values",
+        "subtitle": "See what your points are worth across each partner in plain pounds.",
+        "partners": [
+          {
+            "name": "Airlines Partner",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "perk": "Best for flights and travel extras"
+          },
+          {
+            "name": "Hotel Partner",
+            "points": 3200,
+            "value": "\u00a332.00",
+            "perk": "Best for weekend hotel stays"
+          },
+          {
+            "name": "Main Rewards Programme",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "perk": "Flexible cash or vouchers"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-partner-transfer",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Move Points Easily",
+        "fromProgramme": "Main Rewards Programme",
+        "toPartner": "Airlines Partner",
+        "points": 1000,
+        "estimatedValue": "\u00a310.00",
+        "status": "Ready to transfer instantly",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-reward-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Where Your Points Came From",
+        "subtitle": "A simple history of your recent reward earnings.",
+        "history": [
+          {
+            "source": "Partner Transfer Bonus",
+            "date": "20 Aug 2026",
+            "points": 1000
+          },
+          {
+            "source": "Monthly Partner Sync",
+            "date": "15 Aug 2026",
+            "points": 500
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-goal-progress-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "remaining": 1250,
+        "motivationalMessage": "You are more than halfway to your Family Holiday Fund!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-programme-connection",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Connected Programmes",
+        "subtitle": "Manage your linked accounts to keep your wallet up to date.",
+        "programmes": [
+          {
+            "name": "Airlines Partner",
+            "status": "Active and synced",
+            "connected": true
+          },
+          {
+            "name": "Hotel Partner",
+            "status": "Active and synced",
+            "connected": true
+          },
+          {
+            "name": "Retail Partner",
+            "status": "Not connected",
+            "connected": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set up a new savings milestone whenever you are ready.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-goal-milestone",
+      "type": "GOAL_MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "milestones": [
+          {
+            "label": "25% - First milestone reached",
+            "reached": true
+          },
+          {
+            "label": "50% - Halfway point reached",
+            "reached": true
+          },
+          {
+            "label": "75% - Almost there",
+            "reached": false
+          },
+          {
+            "label": "100% - Goal completed",
+            "reached": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Rewards Boosting Your Goal",
+        "goalName": "Family Holiday Fund",
+        "rewards": [
+          {
+            "name": "Partner Transfer Bonus",
+            "points": 1000,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-milestone-card",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "milestones": [
+          {
+            "label": "Linked 3 partner programmes",
+            "achieved": true
+          },
+          {
+            "label": "Completed first plain-English transfer",
+            "achieved": true
+          },
+          {
+            "label": "Reached 50% on Family Holiday Fund",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-why-this-ui",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Why this view?",
+        "intro": "Designed specially for Leo Morgan based on your preference for clear multi-partner views and plain-English transfers.",
+        "reasons": [
+          {
+            "label": "Consolidated Wallet",
+            "detail": "Brings all three partner programmes into one combined view."
+          },
+          {
+            "label": "Plain-English Transfers",
+            "detail": "Explains point movements simply without confusing financial jargon."
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

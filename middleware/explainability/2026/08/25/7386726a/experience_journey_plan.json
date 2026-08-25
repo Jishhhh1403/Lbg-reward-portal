@@ -1,0 +1,94 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-home-savings",
+  "journeyObjective": "Deliver a seamless, untimed educational journey highlighting First Home Savings Knowledge goal progress, modular quizzes, and clear tangible value breakdowns.",
+  "entryPoint": "User opens rewards and financial academy overview",
+  "completionDefinition": "Customer reviews active goal progress and engages with a self-paced educational module or mastery quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and First Home Savings Knowledge stand right now?",
+      "entryCondition": "App opened in educational overview mode",
+      "requiredInformation": [
+        "Points balance: 3,900 LBG Coins",
+        "Goal: First Home Savings Knowledge at 63% (1,250 / 2,000 target)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-home",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational module and mastery quiz can I explore next at my own pace?",
+      "entryCondition": "User has reviewed balance and active savings goal",
+      "requiredInformation": [
+        "Next uncompleted module",
+        "Untimed mastery quiz",
+        "Tangible cash value transparency"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How does my learning progress advance my long-term savings knowledge without timed pressure?",
+      "entryCondition": "User completes or engages with educational modules and quizzes",
+      "requiredInformation": [
+        "Confidence progress",
+        "Educational insights",
+        "Tangible value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-4",
+        "fact-signal-5"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide clear definitions of financial academy terms and reward points provenance.",
+      "contentNotes": [
+        "LBG Coin valuation",
+        "Module completion criteria"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "responds to flash offers",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Alex Rivera has 4,250 LBG coins, demonstrates frequent immediate redemptions with a high immediate redemption rate of 89%, and responds strongly to flash offers and notifications.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 4,250 LBG coins.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-redemption-rate",
+        "statement": "Immediate redemption rate is 0.89 with an average redemption time of 2.3 hours.",
+        "source": "Customer Profile behaviors",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-notification-engagement",
+        "statement": "Customer exhibits high notification engagement and responds to flash offers.",
+        "source": "Journey Analysis and Intelligence Layer",
+        "confidence": 0.94
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-motivation",
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis via Intelligence Layer",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

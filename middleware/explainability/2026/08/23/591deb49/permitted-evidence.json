@@ -1,0 +1,66 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "active streak combined with steady goal contributions",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard and goal progress in same sessions",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Priya Sharma exhibits a mixed engagement profile balancing instant gamification elements (streaks, challenges, leaderboards) with steady, long-term multi-goal tracking across time horizons.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Maintains 4 active savings goals: Bali Trip, New Laptop, Retirement Fund, Home Deposit.",
+        "source": "intelligence-layer-goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Holds 15,400 LBG coins and active streak of 21 days.",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Checks leaderboard and goal progress in the same sessions.",
+        "source": "intelligence-layer-signals",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "engagementStyle",
+        "value": "MIXED_PROFILE",
+        "confidence": 0.87,
+        "evidenceRefs": [
+          "balances instant fun with long-term saving",
+          "maintains multiple active goals across time horizons"
+        ],
+        "inferenceMethod": "behavioral-cluster-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

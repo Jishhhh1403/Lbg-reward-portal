@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "ed56fcc8",
+  "createdAt": "2026-08-24T00:00:00Z",
+  "expiresAt": "2026-08-31T23:59:59Z",
+  "customerRef": "customer_010",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 7300,
+        "tier": "Platinum",
+        "name": "Daniel Brooks",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Holiday Spending Money",
+        "current": 640.0,
+        "target": 1200.0,
+        "percentage": 53.0,
+        "remaining": 560.0,
+        "motivationalMessage": "You are making steady progress toward your holiday trip.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Holiday Spending Money"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-payment-reward",
+      "type": "PAYMENT_REWARD_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Statement Credit Cashback Rate",
+        "paymentMethod": "Linked Platinum Card ending in 4092",
+        "rewardRate": "1.0% back in statement credits",
+        "monthlyCap": "No monthly cap",
+        "description": "Your points automatically convert to statement credits against your bills.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "MANAGE_PAYMENT_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-allocation",
+      "type": "REWARD_ALLOCATION_CONTROL",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Automatic Points Allocation",
+        "subtitle": "Choose how your newly earned rewards are distributed",
+        "allocation": [
+          {
+            "label": "Statement Credit",
+            "percent": 80
+          },
+          {
+            "label": "Holiday Spending Money Goal",
+            "percent": 20
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "UPDATE_ALLOCATION",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-payment-confirmation",
+      "type": "PAYMENT_REWARD_CONFIRMATION",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Recent Statement Credit Applied",
+        "message": "Successfully credited to your linked card statement.",
+        "amount": "\u00a325.00",
+        "reference": "CR-7300-DB",
+        "date": "24 August 2026",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CREDIT_HISTORY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Points Cash Value",
+        "cashValue": "\u00a373.00",
+        "pointsEquivalent": 7300,
+        "breakdown": [
+          {
+            "label": "Available Statement Credit",
+            "value": "\u00a373.00"
+          },
+          {
+            "label": "Conversion Rate",
+            "value": "100 points = \u00a31.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_STATEMENT_CREDIT",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-rewards-insight",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Utility & Cashback Summary",
+        "topBrandName": "Linked Card Spending",
+        "topBrandPoints": 7300,
+        "growthTip": "Your consistent statement credit redemptions keep your card balance optimized.",
+        "expiringPoints": 0,
+        "expiryDate": "N/A",
+        "ctaText": "View Statement History",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_INSIGHTS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set aside rewards for your next financial objective",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Accelerate Holiday Spending Money",
+        "goalName": "Holiday Spending Money",
+        "rewards": [
+          {
+            "name": "Eligible Partner Cashback Top-up",
+            "points": 500,
+            "goalLinked": true
+          },
+          {
+            "name": "Linked Card Automated Multiplier",
+            "points": 250,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_LINKED_REWARDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "milestones": [
+          {
+            "label": "First Statement Credit Redeemed",
+            "achieved": true
+          },
+          {
+            "label": "5,000 Points Milestone Reached",
+            "achieved": true
+          },
+          {
+            "label": "Holiday Goal Past 50% Mark",
+            "achieved": true
+          },
+          {
+            "label": "10,000 Lifetime Statement Credits",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "label": "LBG Coins",
+        "value": "7,300",
+        "unit": "coins",
+        "tone": "white",
+        "infoText": "Ready for statement credit conversion"
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "label": "Connected Brands",
+        "value": "3",
+        "unit": "brands",
+        "tone": "brand",
+        "infoText": "Actively earning cashback"
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "label": "Goal Progress",
+        "value": "53%",
+        "unit": "completed",
+        "tone": "white",
+        "infoText": "Holiday Spending Money"
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-auto-rules",
+      "type": "AUTO_RULES_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "rules": [
+          {
+            "trigger": "Every statement closing date",
+            "action": "Convert points >= 1000 to Statement Credit",
+            "enabled": true
+          },
+          {
+            "trigger": "Linked card grocery spend",
+            "action": "Allocate 20% to Holiday Goal",
+            "enabled": true
+          }
+        ],
+        "toggleLabel": "Manage Automation Rules",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CONFIGURE_RULES",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

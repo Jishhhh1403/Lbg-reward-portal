@@ -1,0 +1,405 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "cf28e7d1",
+  "createdAt": "2026-08-24T10:00:00Z",
+  "expiresAt": "2026-08-24T23:59:59Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan"
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {
+            "customer": "Leo Morgan"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-consolidated-wallet",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "title": "Your Combined Reward Wallet",
+        "subtitle": "All your partner rewards viewed together in plain terms",
+        "programmes": [
+          {
+            "name": "LBG Coins",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "status": "Active"
+          },
+          {
+            "name": "Partner SkyPoints",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Global Dining Club",
+            "points": 2800,
+            "value": "\u00a328.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3185.00"
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "status": "synced",
+        "title": "Partner Balances Up to Date",
+        "lastSyncedAt": "24 Aug 2026, 09:23",
+        "message": "All 3 connected partner programmes are synchronised smoothly.",
+        "ctaText": "Refresh Balances"
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-partner-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "layout": {
+          "span": "half"
+        },
+        "title": "Compare Partner Value",
+        "subtitle": "See what your points are worth across programmes",
+        "partners": [
+          {
+            "name": "LBG Coins",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "perk": "1 coin = 1p standard value"
+          },
+          {
+            "name": "Partner SkyPoints",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "perk": "1 point = 1p toward flights"
+          },
+          {
+            "name": "Global Dining Club",
+            "points": 2800,
+            "value": "\u00a328.00",
+            "perk": "1 point = 1p toward dining"
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "VIEW_COMPARISON",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-partner-transfer",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "title": "Simple Point Transfer",
+        "fromProgramme": "LBG Coins",
+        "toPartner": "Partner SkyPoints",
+        "points": 1000,
+        "estimatedValue": "\u00a310.00",
+        "status": "Ready to transfer instantly in plain English"
+      },
+      "actions": [
+        {
+          "type": "EXECUTE_TRANSFER",
+          "payload": {
+            "from": "LBG Coins",
+            "to": "Partner SkyPoints",
+            "points": 1000
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "layout": {
+          "span": "half"
+        },
+        "title": "Where Your Points Came From",
+        "subtitle": "Plain English history of your recent reward earnings",
+        "history": [
+          {
+            "source": "Partner Transfer Bonus",
+            "date": "22 Aug 2026",
+            "points": 1000
+          },
+          {
+            "source": "LBG Coins Monthly Accrual",
+            "date": "15 Aug 2026",
+            "points": 2200
+          },
+          {
+            "source": "Global Dining Club Partner Sync",
+            "date": "10 Aug 2026",
+            "points": 800
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "VIEW_FULL_HISTORY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "layout": {
+          "span": "half"
+        },
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "remaining": 1250,
+        "motivationalMessage": "You are over halfway to your Family Holiday Fund! Keep moving forward."
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goal": "Family Holiday Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-programme-connection",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "title": "Connected Partner Programmes",
+        "subtitle": "Manage your linked external balances in one place",
+        "programmes": [
+          {
+            "name": "Partner SkyPoints",
+            "status": "Active and Synced",
+            "connected": true
+          },
+          {
+            "name": "Global Dining Club",
+            "status": "Active and Synced",
+            "connected": true
+          },
+          {
+            "name": "Retail Rewards Hub",
+            "status": "Available to connect",
+            "connected": false
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "MANAGE_CONNECTIONS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-milestone",
+      "type": "GOAL_MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "goalName": "Family Holiday Fund",
+        "milestones": [
+          {
+            "label": "25% - Booking Deposit Unlocked",
+            "reached": true
+          },
+          {
+            "label": "50% - Flight Upgrade Perk Unlocked",
+            "reached": true
+          },
+          {
+            "label": "75% - Hotel Stay Credit",
+            "reached": false
+          },
+          {
+            "label": "100% - Family Holiday Goal Reached",
+            "reached": false
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "title": "Rewards That Accelerate Your Holiday Fund",
+        "goalName": "Family Holiday Fund",
+        "rewards": [
+          {
+            "name": "Travel Partner Bonus Points",
+            "points": 500,
+            "goalLinked": true
+          },
+          {
+            "name": "Flight Booking Cashback",
+            "points": 750,
+            "goalLinked": true
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "VIEW_LINKED_REWARDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone-card",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "milestones": [
+          {
+            "label": "Connected 3 partner programmes",
+            "achieved": true
+          },
+          {
+            "label": "Completed first partner transfer",
+            "achieved": true
+          },
+          {
+            "label": "Reached 50% on Family Holiday Fund",
+            "achieved": true
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "VIEW_ACHIEVEMENTS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "layout": {
+          "span": "third"
+        },
+        "label": "Total Combined Balance",
+        "value": "18,500",
+        "unit": "points",
+        "tone": "brand",
+        "infoText": "Across all 3 connected partner accounts"
+      },
+      "actions": [
+        {
+          "type": "VIEW_METRIC",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "layout": {
+          "span": "full"
+        },
+        "title": "Understanding Point Transfers",
+        "insight": "Moving points between partner programmes is simple and secure. 1,000 LBG Coins converts smoothly to \u00a310.00 equivalent value with zero hidden fees.",
+        "source": "Rewards Guide",
+        "actionLabel": "Learn More"
+      },
+      "actions": [
+        {
+          "type": "READ_GUIDE",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

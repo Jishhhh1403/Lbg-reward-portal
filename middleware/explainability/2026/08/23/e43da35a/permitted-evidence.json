@@ -1,0 +1,70 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer customer_002 (Sarah Chen) is a Platinum-tier member with 6,820 LBG coins and 3 connected brands. She exhibits goal-oriented savings behavior with consistent monthly accumulation, regular progress checks, and a high goal completion rate (0.78). She currently tracks three active savings goals: Japan Vacation (67% complete), New Phone (74% complete), and Emergency Fund (45% complete).",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 6,820 LBG coins.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-connected-brands",
+        "statement": "Customer has 3 connected brands.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behavior-signals",
+        "statement": "Customer exhibits frequent goal-linked redemptions, consistent monthly accumulation, high goal completion behavior, checks progress regularly, and saves points for larger rewards.",
+        "source": "intelligenceLayer.signals",
+        "confidence": 0.91
+      },
+      {
+        "factId": "fact-active-goals",
+        "statement": "Customer has three active goals: Japan Vacation (67%), New Phone (74%), and Emergency Fund (45%).",
+        "source": "intelligenceLayer.goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-persona",
+        "attribute": "persona",
+        "value": "GOAL_ORIENTED_SAVER",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "fact-behavior-signals",
+          "fact-active-goals"
+        ],
+        "inferenceMethod": "Intelligence Layer behavioral analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

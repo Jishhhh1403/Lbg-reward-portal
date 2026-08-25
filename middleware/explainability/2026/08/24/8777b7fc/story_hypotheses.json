@@ -1,0 +1,62 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-1",
+      "storyTitle": "Track Savings Growth and Knowledge Progress",
+      "oneSentenceStory": "Review current First Home Savings Knowledge goal progress and explore educational insights to advance mastery.",
+      "customerSituation": "Customer is actively tracking savings knowledge progress currently standing at 63% completion.",
+      "storyTension": "Desire to understand next steps and educational milestones needed to bridge the gap to full goal completion.",
+      "customerResolution": "View clear progress metrics and complete targeted educational insights during this visit.",
+      "primaryOutcome": "Mastery and progress clarity for financial goals",
+      "secondaryOutcome": null,
+      "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+      "evidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "confidence": 0.92,
+      "prohibitedDetours": [
+        "timed challenges",
+        "public leaderboards",
+        "manipulative urgency"
+      ],
+      "completionSignals": [
+        "Customer views goal progress and educational insights"
+      ],
+      "expiryAt": null
+    },
+    {
+      "storyId": "story-2",
+      "storyTitle": "Educational Milestone Review",
+      "oneSentenceStory": "Examine recently achieved milestones and access value clarity explanations for accumulated LBG coins.",
+      "customerSituation": "Customer holds 3,900 LBG coins and has a strong engagement history with learning modules.",
+      "storyTension": "Need for transparent value breakdown of rewards linked to educational accomplishments.",
+      "customerResolution": "Inspect milestone summaries and educational reward mechanics without pressure.",
+      "primaryOutcome": "Mastery and progress clarity for financial goals",
+      "secondaryOutcome": null,
+      "narrativeMode": "UNDERSTAND_VALUE",
+      "evidenceRefs": [
+        "fact-01"
+      ],
+      "confidence": 0.78,
+      "prohibitedDetours": [
+        "timed challenges",
+        "public leaderboards"
+      ],
+      "completionSignals": [
+        "Customer reviews milestone card and educational insight card"
+      ],
+      "expiryAt": null
+    }
+  ],
+  "recommendedStoryId": "story-1",
+  "rejectedStoryReasons": {
+    "story-2": "Story-1 more directly addresses the active goal progress and primary customer objective specified in the task charter."
+  },
+  "qualityGate": {
+    "passed": true,
+    "violations": [
+      "story-2: stripped unpermitted evidenceRefs ['fact-03']"
+    ]
+  }
+}

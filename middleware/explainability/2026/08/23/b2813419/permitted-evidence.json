@@ -1,0 +1,86 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "rarely redeems for small rewards",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "values future projections",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer David Park (LONG_TERM_PLANNER persona) exhibits strong long-term savings behavior, high goal completion rates (0.92), and a very low immediate redemption rate (0.03). Focuses on future security, tracking milestone goals such as Retirement Fund, Children Education Fund, and Dream Home Deposit without engaging in impulsive redemptions.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Holds 28,400 lbgCoins and 0 standard points.",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f2",
+        "statement": "Maintains 3 active savings goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "intelligence-layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f3",
+        "statement": "Demonstrates a low immediate redemption rate of 0.03 and high goal completion rate of 0.92.",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "preferredEngagementStyle",
+        "value": "LONG_TERM_VALUE",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "rarely redeems for small rewards",
+          "values future projections"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p2",
+        "attribute": "contentPreference",
+        "value": "EDUCATIONAL_AND_PROJECTION",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "reads educational content",
+          "values future projections",
+          "interested in investment-like rewards"
+        ],
+        "inferenceMethod": "Interaction history analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

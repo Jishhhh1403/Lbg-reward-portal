@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Enable Sophie to review her First Home Savings knowledge progress and explore self-paced educational insights without timed pressure.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer views the goal progress card and engages with the educational insight and self-paced quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my First Home Savings knowledge?",
+      "entryCondition": "App launch / overview load",
+      "requiredInformation": [
+        "points balance",
+        "goal progress value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-05"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational insights and learning milestones support my progress?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "learning module progress",
+        "savings knowledge milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-03"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I test and reinforce my mastery at my own pace?",
+      "entryCondition": "Educational insights reviewed",
+      "requiredInformation": [
+        "self-paced quiz options",
+        "comprehension feedback"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide clear definitions of reward values and financial literacy terms.",
+      "contentNotes": [
+        "Plain English point conversion",
+        "Savings milestone glossary"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

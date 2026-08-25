@@ -1,0 +1,63 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig_01",
+        "classification": "OBSERVED",
+        "value": "high educational module completion",
+        "source": "session_analytics",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) exhibits a strong educational competence profile, characterized by a preference for learning mastery, consistent financial literacy module completion, and goal-driven savings tracking for a first home without public rankings or timed pressures.",
+    "observedFacts": [
+      {
+        "factId": "fact_01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_analytics",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact_02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_analytics",
+        "confidence": 0.94
+      },
+      {
+        "factId": "fact_03",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavioral_analytics",
+        "confidence": 0.93
+      },
+      {
+        "factId": "fact_04",
+        "statement": "Holds 3900 LBG coins and 3 connected brands",
+        "source": "wallet_sync",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop_01",
+        "attribute": "engagement_style",
+        "value": "methodical_and_self_paced",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact_01",
+          "fact_02",
+          "fact_03"
+        ],
+        "inferenceMethod": "behavioral_clustering",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

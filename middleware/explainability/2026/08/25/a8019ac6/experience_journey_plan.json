@@ -1,0 +1,67 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Provide absolute clarity on exact GBP cash equivalents and transparent partner conversion rates for Maya's 5,600 coins.",
+  "entryPoint": "Customer opens rewards overview to evaluate coin worth in pounds.",
+  "completionDefinition": "Customer reviews the GBP cash equivalent (\u00a356.00) and compares partner rates with zero urgency pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How many pounds are my LBG coins actually worth?",
+      "entryCondition": "Wallet loaded with 5,600 LBG coins.",
+      "requiredInformation": [
+        "lbgCoins",
+        "gbpCashEquivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-balance",
+        "fact-signal-prefers-monetary"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do partner conversion rates compare in monetary value?",
+      "entryCondition": "Customer understands baseline cash value (\u00a356.00).",
+      "requiredInformation": [
+        "partnerRates",
+        "redemptionOptions"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-partner-comparisons",
+        "fact-signal-asks-worth"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational context on how coin valuation is calculated.",
+      "contentNotes": [
+        "100 coins = \u00a31.00 standard conversion rate rule transparency."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

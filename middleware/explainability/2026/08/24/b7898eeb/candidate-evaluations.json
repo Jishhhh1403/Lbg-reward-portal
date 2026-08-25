@@ -1,0 +1,747 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 15-component educational mastery and goal tracking screen built around Sophie Williams' methodical learning profile. Features 3 anchored components, points balance, educational insight card, goal progress card for First Home Savings Knowledge, milestone card, quiz card, goal-linked reward card, module breakdown list, concept mastery tracker, knowledge streak counter, study session summary, tip of the day, recommended reading list, and feedback/reflection prompt.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly maps to the First Home Savings Knowledge goal and learning mastery motivation."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 15 rich, relevant components that match methodical self-paced learning preferences without time pressure."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with learning mastery, avoiding all timed challenges or public leaderboards."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean, calm layout optimized for cognitive focus and self-paced educational navigation."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by robust behavioral signals of consistent 100% module completion and quiz retakes."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres strictly to design system guidelines and preserves bank/coin branding."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces insightful concept mastery tracking tailored to competence building."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported by existing component library and schema definitions."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Minimalist 8-component screen focusing only on points and a basic quiz module, omitting the full goal progress and milestone cards required for rich engagement.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Misses key goal progress and milestone components."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Fails the 11-17 component rich screen requirement, scoring low on utility."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Aligns with learning but lacks depth in milestone tracking."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean but sparse."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Adequate evidence but underutilized."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with design system."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "Too minimalist to offer new utility."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Feasible."
+        }
+      },
+      "weightedTotal": 6.1,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 11 components, resulting in low customer utility and goal relevance scores."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Educational competence mastery composition tailored for Sophie Williams, featuring the mandatory ordered stack (GOAL_PROGRESS_CARD, LEARNING_MISSION_CARD, QUIZ_CARD, COMPREHENSION_FEEDBACK_CARD, CONFIDENCE_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD) followed by supporting competence and reward components with strict adherence to rule engine directives.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "target": "wallet_overview"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "Great progress on your first home knowledge journey! 750 points remaining to reach your target.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another learning or savings milestone",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Mortgage & Deposit Mastery",
+            "description": "Master the fundamentals of building a robust deposit fund with self-paced learning modules.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "mission": "Mortgage & Deposit Mastery"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "Which factor most significantly influences mortgage affordability calculations?",
+            "options": [
+              "Only your current savings balance",
+              "Consistent disposable income and recurring expenditure patterns",
+              "The brand of bank account you hold",
+              "The number of rewards points redeemed"
+            ],
+            "reward": "50 Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {
+                "answer": "Consistent disposable income and recurring expenditure patterns"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Concept Reflection",
+            "question": "Understanding Interest Rate Impact on Savings",
+            "yourAnswer": "Higher AER compounds growth faster over multi-year horizons.",
+            "correctAnswer": "Higher AER compounds growth faster over multi-year horizons.",
+            "feedback": "Spot on! Compound growth accelerates your savings milestones significantly over time. Take your time exploring how different rates affect your deposit timeline.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACKNOWLEDGE_FEEDBACK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Financial Confidence Tracker",
+            "topic": "Deposit Planning & Mortgages",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Complete final module on property survey costs",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_TOPIC_DETAILS",
+              "payload": {
+                "topic": "Deposit Planning & Mortgages"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Mastery Tip",
+            "insight": "Consistently reviewing core financial concepts builds long-term resilience and ensures confident decision-making when purchasing property.",
+            "source": "Rewards Academy Editorial Team",
+            "actionLabel": "Explore Module Library",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_LIBRARY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 5 Academy modules",
+                "achieved": true
+              },
+              {
+                "label": "Achieved 63% on First Home Savings Knowledge goal",
+                "achieved": true
+              },
+              {
+                "label": "Mastered quiz concepts on first-time buyer grants",
+                "achieved": true
+              },
+              {
+                "label": "Connected 3 partner brands for maximized learning rewards",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Rewards Accelerating Your Goal",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Academy Module Bonus",
+                "points": 300,
+                "goalLinked": true
+              },
+              {
+                "name": "Financial Literacy Completion Perk",
+                "points": 150,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_REWARD",
+              "payload": {
+                "rewardName": "Academy Module Bonus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-badge",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Learning Badges Earned",
+            "badges": [
+              {
+                "name": "Scholar",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Milestone Achiever",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Consistency Star",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "First Home Pathfinder",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-recommended-actions",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Suggested Learning Paths",
+            "actions": [
+              {
+                "label": "Review compound interest simulation",
+                "points": 100,
+                "icon": "target"
+              },
+              {
+                "label": "Complete property conveyancing module",
+                "points": 150,
+                "icon": "shopping-bag"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "START_ACTION",
+              "payload": {
+                "action": "Review compound interest simulation"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.94,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_MATCH",
+        "MANDATORY_STACK_COMPLIANCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative educational depth composition for Sophie Williams, emphasizing foundational literacy tracking, goal milestones, and quiet self-paced progression without timed or competitive elements.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "target": "wallet_overview"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "Steady progress! You are 63% toward your knowledge target for your first home.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new learning objective",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission-2",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Property Finance Foundations",
+            "description": "Deep dive into conveyancing, mortgages, and budgeting with self-paced modules.",
+            "modulesDone": 5,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "mission": "Property Finance Foundations"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-2",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "What is the primary benefit of a fixed-rate mortgage product?",
+            "options": [
+              "Predictable monthly repayments regardless of market interest rate shifts",
+              "Immediate cash rewards upon application",
+              "Zero legal fees guaranteed",
+              "Automatic property upgrade options"
+            ],
+            "reward": "50 Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {
+                "answer": "Predictable monthly repayments regardless of market interest rate shifts"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback-2",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Concept Reflection",
+            "question": "Mortgage Term Lengths",
+            "yourAnswer": "Longer terms lower monthly payments but increase total interest paid.",
+            "correctAnswer": "Longer terms lower monthly payments but increase total interest paid.",
+            "feedback": "Excellent reasoning! Balancing monthly affordability with lifetime interest is a core principle of sound property planning.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACKNOWLEDGE_FEEDBACK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-confidence-progress-2",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Financial Confidence Tracker",
+            "topic": "Mortgage Product Mechanics",
+            "confidencePercent": 90,
+            "levelLabel": "Proficient",
+            "nextMilestone": "Complete module on government schemes",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_TOPIC_DETAILS",
+              "payload": {
+                "topic": "Mortgage Product Mechanics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Learning Insight",
+            "insight": "Taking time to review module summaries reinforces knowledge retention by over 40% compared to single-pass reading.",
+            "source": "Educational Research Digest",
+            "actionLabel": "Review Summaries",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_SUMMARIES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-2",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 5 Academy modules",
+                "achieved": true
+              },
+              {
+                "label": "Maintained 100% quiz accuracy across modules",
+                "achieved": true
+              },
+              {
+                "label": "Connected 3 banking brands",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-reward-2",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Goal-Linked Learning Boosters",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Academy Module Bonus",
+                "points": 300,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_REWARD",
+              "payload": {
+                "rewardName": "Academy Module Bonus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-2",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Achievements",
+            "badges": [
+              {
+                "name": "Master Learner",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Goal Keeper",
+                "icon": "trophy",
+                "earned": true
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-recommended-actions-2",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Next Steps",
+            "actions": [
+              {
+                "label": "Explore advanced mortgage calculators",
+                "points": 100,
+                "icon": "target"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "START_ACTION",
+              "payload": {
+                "action": "Explore advanced mortgage calculators"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_ALTERNATIVE",
+        "MANDATORY_STACK_COMPLIANCE"
+      ]
+    }
+  ]
+}

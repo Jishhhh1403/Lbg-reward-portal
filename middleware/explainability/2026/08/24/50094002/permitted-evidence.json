@@ -1,0 +1,76 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent statement credit redemptions",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "cashback balance checks on every visit",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_010 (Daniel Brooks) is a payment-utility focused rewards member who exclusively redeems points and cashback as statement credits or bill reductions. They maintain predictable financial savings habits with an active savings goal.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Redeems almost exclusively as statement credits on linked card",
+        "source": "rewardsHistory / behavioral signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Checks cashback earned alongside balance on every visit",
+        "source": "journeyAnalysis / session context",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Holds 7,300 LBG Coins with 3 connected brands and Platinum tier status",
+        "source": "wallet / customerProfile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "preferredRedemptionMethod",
+        "value": "STATEMENT_CREDIT",
+        "confidence": 0.95,
+        "evidenceRefs": [
+          "fact-001"
+        ],
+        "inferenceMethod": "behavioral_frequency_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "valueOrientation",
+        "value": "PREDICTABLE_FINANCIAL_SAVINGS",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-002"
+        ],
+        "inferenceMethod": "intent_and_signal_correlation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

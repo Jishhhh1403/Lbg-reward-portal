@@ -6,11 +6,18 @@ import BottomSheetModal from '../ui/BottomSheetModal'
 import BrandDropdown from '../forms/BrandDropdown'
 import OtpInputGroup from '../forms/OtpInputGroup'
 
+interface LocatePointsCustomer {
+  name?: string
+  customerId?: string
+  phone?: string
+}
+
 interface LocatePointsModalProps {
   isOpen: boolean
   brandOptions: BrandOption[]
   onClose: () => void
   onVerified: (brand: BrandOption) => void
+  customer?: LocatePointsCustomer
 }
 
 type Step = 'form' | 'otp' | 'done'
@@ -19,7 +26,13 @@ type ContactMethod = 'email' | 'phone'
 const inputClass =
   'w-full rounded-xl border border-slate-300 bg-white px-3.5 py-3 text-sm shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/25'
 
-export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVerified }: LocatePointsModalProps) {
+export default function LocatePointsModal({
+  isOpen,
+  brandOptions,
+  onClose,
+  onVerified,
+  customer,
+}: LocatePointsModalProps) {
   const [step, setStep] = useState<Step>('form')
   const [group, setGroup] = useState<string>('All')
   const [selectedBrandId, setSelectedBrandId] = useState<string | null>(null)
@@ -261,7 +274,20 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
             <div className="space-y-2">
               <motion.button
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.location.assign(`https://www.${selectedBrand.name.toLowerCase().replace(/[^a-z]/g, '')}.com`)}
+                onClick={() => {
+                  if (selectedBrand.name.toLowerCase() === 'alphamedical') {
+                    const params = new URLSearchParams({
+                      customerName: customer?.name ?? 'Alex Morgan',
+                      customerEmail: `${(customer?.customerId ?? 'guest').toLowerCase().replace(/[^a-z0-9]/g, '')}@unified.lbg.co.uk`,
+                    })
+                    if (customer?.phone) params.set('customerPhone', customer.phone)
+                    window.location.assign(`http://localhost:5174/?${params.toString()}`)
+                  } else {
+                    window.location.assign(
+                      `https://www.${selectedBrand.name.toLowerCase().replace(/[^a-z]/g, '')}.com`,
+                    )
+                  }
+                }}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
               >
                 <ExternalLink size={15} /> Continue to partner app

@@ -1,0 +1,84 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions of coffee and snack vouchers",
+        "source": "rewardsHistory",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "1500 points expiring in 7 days",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Gold tier customer Ryan Okafor holds 3,600 LBG coins with 1,500 points expiring in 7 days. Inactive for 41 days following a period of daily visits, showing high preference for instant gratification and fast redemptions.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "1,500 points expiring within 7 days",
+        "source": "Session Context / Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "41 days since last activity",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Holds 3,600 LBG coins total in wallet",
+        "source": "Session Context / Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Immediate redemption rate is 85% with an average redemption time of 6 hours",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "riskLevel",
+        "value": "HIGH",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "1,500 points expiring within 7 days",
+          "41 days since last activity"
+        ],
+        "inferenceMethod": "behavioral-risk-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "preferredEngagementStyle",
+        "value": "INSTANT_GRATIFICATION",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "historically redeemed points within hours of earning",
+          "responds strongly to flash offers and instant vouchers"
+        ],
+        "inferenceMethod": "redemption-history-pattern",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

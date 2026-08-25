@@ -1,0 +1,757 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-abb527ca",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A 14-component payment-utility focused composition for Daniel Brooks, adhering strictly to the mandatory ordered stack (GOAL_PROGRESS_CARD, PAYMENT_REWARD_CARD, REWARD_ALLOCATION_CONTROL, PAYMENT_REWARD_CONFIRMATION, TANGIBLE_VALUE_CARD, REWARDS_INSIGHT_CARD) and incorporating transparent statement credit options, monetary cash equivalent value (\u00a373.00), automatic payment allocation, and holiday savings goal tracking (53% complete) with zero lifestyle vouchers or dark patterns.",
+      "components": [
+        {
+          "id": "points-balance-header",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 7300,
+            "tier": "Platinum",
+            "name": "Daniel Brooks",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-holiday",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Holiday Spending Money",
+            "current": 640.0,
+            "target": 1200.0,
+            "percentage": 53.0,
+            "remaining": 560.0,
+            "motivationalMessage": "You're over halfway to your holiday fund with automatic statement credit allocations!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Holiday Spending Money"
+              }
+            }
+          ]
+        },
+        {
+          "id": "payment-reward-setup",
+          "type": "PAYMENT_REWARD_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Everyday Statement Credit Rewards",
+            "paymentMethod": "LBG Platinum Debit Card ending in \u20224892",
+            "rewardRate": "1.0% back in LBG coins",
+            "monthlyCap": "\u00a350.00 / month",
+            "description": "Automatically earn coins on everyday card spending and apply them directly as statement credits.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "MANAGE_PAYMENT_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "reward-allocation-ctrl",
+          "type": "REWARD_ALLOCATION_CONTROL",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Automatic Coin Allocation",
+            "subtitle": "Choose how your earned LBG coins are split between savings and bill reduction.",
+            "allocation": [
+              {
+                "label": "Statement Credit / Bill Reduction",
+                "percent": 70
+              },
+              {
+                "label": "Holiday Savings Goal",
+                "percent": 30
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "UPDATE_ALLOCATION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "payment-reward-conf",
+          "type": "PAYMENT_REWARD_CONFIRMATION",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Statement Credit Applied",
+            "message": "Your coins were successfully converted and applied to your card balance.",
+            "amount": "\u00a325.00",
+            "reference": "SC-2026-0824",
+            "date": "24 Aug 2026",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STATEMENT_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "tangible-value-summary",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Wallet Cash Value",
+            "cashValue": "\u00a373.00",
+            "pointsEquivalent": 7300,
+            "breakdown": [
+              {
+                "label": "Statement Credit Value",
+                "value": "\u00a373.00"
+              },
+              {
+                "label": "Conversion Rate",
+                "value": "100 LBG Coins = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_CASH",
+              "payload": {
+                "amount": "\u00a373.00"
+              }
+            }
+          ]
+        },
+        {
+          "id": "rewards-insight-summary",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Statement Credit Optimization",
+            "topBrandName": "LBG Everyday Banking",
+            "topBrandPoints": 7300,
+            "growthTip": "Keep automatic statement credits enabled to reliably reduce your monthly statement.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "Review Statement Settings",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "goal-linked-rewards",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Accelerate Holiday Spending",
+            "goalName": "Holiday Spending Money",
+            "rewards": [
+              {
+                "name": "Travel Booking Statement Credit",
+                "points": 1500,
+                "goalLinked": true
+              },
+              {
+                "name": "Airport Parking Cashback",
+                "points": 800,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LINKED_REWARDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "milestone-achievement",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "Reached Platinum Tier Status",
+                "achieved": true
+              },
+              {
+                "label": "Completed 5 Statement Credit Redemptions",
+                "achieved": true
+              },
+              {
+                "label": "Reached 50% Holiday Savings Goal",
+                "achieved": true
+              },
+              {
+                "label": "Full Holiday Savings Goal (\u00a31,200)",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "metric-tile-wallet",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "LBG Coins Balance",
+            "value": "7,300",
+            "unit": "coins",
+            "tone": "brand",
+            "infoText": "Equivalent to \u00a373.00 in statement credits",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_METRIC_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "metric-tile-brands",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "label": "Connected Accounts",
+            "value": "3",
+            "unit": "active",
+            "tone": "white",
+            "infoText": "Linked for automated cashback tracking",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CONNECTED_ACCOUNTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "recommended-actions-utility",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Maximize Statement Credits",
+            "actions": [
+              {
+                "label": "Redeem 2,500 coins as \u00a325 statement credit",
+                "points": 2500,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Top up Holiday Fund with current cashback",
+                "points": 1000,
+                "icon": "target"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXECUTE_ACTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "sync-status-secure",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "status": "synced",
+            "title": "Wallet & Card Synchronisation",
+            "lastSyncedAt": "24 Aug 2026, 10:29 AM",
+            "message": "All statement credits and account balances are up to date.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "add-goal-card-extra",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "title": "Add a New Savings Goal",
+            "subtitle": "Set up another cash or statement credit savings target.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "PAYMENT_UTILITY_OPTIMIZATION",
+        "MANDATORY_STACK_COMPLIANCE",
+        "STRICT_CARD_RULE_ENGINE"
+      ]
+    },
+    "strategy": "A 14-component payment-utility focused composition for Daniel Brooks, adhering strictly to the mandatory ordered stack (GOAL_PROGRESS_CARD, PAYMENT_REWARD_CARD, REWARD_ALLOCATION_CONTROL, PAYMENT_REWARD_CONFIRMATION, TANGIBLE_VALUE_CARD, REWARDS_INSIGHT_CARD) and incorporating transparent statement credit options, monetary cash equivalent value (\u00a373.00), automatic payment allocation, and holiday savings goal tracking (53% complete) with zero lifestyle vouchers or dark patterns.",
+    "confidence": 0.96
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A 14-component payment-utility focused composition for Daniel Brooks, adhering strictly to the mandatory ordered stack (GOAL_PROGRESS_CARD, PAYMENT_REWARD_CARD, REWARD_ALLOCATION_CONTROL, PAYMENT_REWARD_CONFIRMATION, TANGIBLE_VALUE_CARD, REWARDS_INSIGHT_CARD) and incorporating transparent statement credit options, monetary cash equivalent value (\u00a373.00), automatic payment allocation, and holiday savings goal tracking (53% complete) with zero lifestyle vouchers or dark patterns.",
+    "components": [
+      {
+        "id": "points-balance-header",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 7300,
+          "tier": "Platinum",
+          "name": "Daniel Brooks",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_BALANCE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "goal-progress-holiday",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Holiday Spending Money",
+          "current": 640.0,
+          "target": 1200.0,
+          "percentage": 53.0,
+          "remaining": 560.0,
+          "motivationalMessage": "You're over halfway to your holiday fund with automatic statement credit allocations!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Holiday Spending Money"
+            }
+          }
+        ]
+      },
+      {
+        "id": "payment-reward-setup",
+        "type": "PAYMENT_REWARD_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Everyday Statement Credit Rewards",
+          "paymentMethod": "LBG Platinum Debit Card ending in \u20224892",
+          "rewardRate": "1.0% back in LBG coins",
+          "monthlyCap": "\u00a350.00 / month",
+          "description": "Automatically earn coins on everyday card spending and apply them directly as statement credits.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "MANAGE_PAYMENT_REWARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "reward-allocation-ctrl",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Automatic Coin Allocation",
+          "subtitle": "Choose how your earned LBG coins are split between savings and bill reduction.",
+          "allocation": [
+            {
+              "label": "Statement Credit / Bill Reduction",
+              "percent": 70
+            },
+            {
+              "label": "Holiday Savings Goal",
+              "percent": 30
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "UPDATE_ALLOCATION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "payment-reward-conf",
+        "type": "PAYMENT_REWARD_CONFIRMATION",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Recent Statement Credit Applied",
+          "message": "Your coins were successfully converted and applied to your card balance.",
+          "amount": "\u00a325.00",
+          "reference": "SC-2026-0824",
+          "date": "24 Aug 2026",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_STATEMENT_HISTORY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "tangible-value-summary",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Your Wallet Cash Value",
+          "cashValue": "\u00a373.00",
+          "pointsEquivalent": 7300,
+          "breakdown": [
+            {
+              "label": "Statement Credit Value",
+              "value": "\u00a373.00"
+            },
+            {
+              "label": "Conversion Rate",
+              "value": "100 LBG Coins = \u00a31.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_CASH",
+            "payload": {
+              "amount": "\u00a373.00"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rewards-insight-summary",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Statement Credit Optimization",
+          "topBrandName": "LBG Everyday Banking",
+          "topBrandPoints": 7300,
+          "growthTip": "Keep automatic statement credits enabled to reliably reduce your monthly statement.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "Review Statement Settings",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_INSIGHTS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "goal-linked-rewards",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Accelerate Holiday Spending",
+          "goalName": "Holiday Spending Money",
+          "rewards": [
+            {
+              "name": "Travel Booking Statement Credit",
+              "points": 1500,
+              "goalLinked": true
+            },
+            {
+              "name": "Airport Parking Cashback",
+              "points": 800,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_LINKED_REWARDS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "milestone-achievement",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "milestones": [
+            {
+              "label": "Reached Platinum Tier Status",
+              "achieved": true
+            },
+            {
+              "label": "Completed 5 Statement Credit Redemptions",
+              "achieved": true
+            },
+            {
+              "label": "Reached 50% Holiday Savings Goal",
+              "achieved": true
+            },
+            {
+              "label": "Full Holiday Savings Goal (\u00a31,200)",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "metric-tile-wallet",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "label": "LBG Coins Balance",
+          "value": "7,300",
+          "unit": "coins",
+          "tone": "brand",
+          "infoText": "Equivalent to \u00a373.00 in statement credits",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_METRIC_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "metric-tile-brands",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "label": "Connected Accounts",
+          "value": "3",
+          "unit": "active",
+          "tone": "white",
+          "infoText": "Linked for automated cashback tracking",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CONNECTED_ACCOUNTS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "recommended-actions-utility",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Maximize Statement Credits",
+          "actions": [
+            {
+              "label": "Redeem 2,500 coins as \u00a325 statement credit",
+              "points": 2500,
+              "icon": "shopping-bag"
+            },
+            {
+              "label": "Top up Holiday Fund with current cashback",
+              "points": 1000,
+              "icon": "target"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXECUTE_ACTION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "sync-status-secure",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "status": "synced",
+          "title": "Wallet & Card Synchronisation",
+          "lastSyncedAt": "24 Aug 2026, 10:29 AM",
+          "message": "All statement credits and account balances are up to date.",
+          "ctaText": "Sync Now",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "add-goal-card-extra",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "title": "Add a New Savings Goal",
+          "subtitle": "Set up another cash or statement credit savings target.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "PAYMENT_UTILITY_OPTIMIZATION",
+      "MANDATORY_STACK_COMPLIANCE",
+      "STRICT_CARD_RULE_ENGINE"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "PAYMENT_UTILITY",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "redeems almost exclusively as statement credits on linked card",
+          "checks cashback earned alongside balance every visit",
+          "uninterested in vouchers or experiences, wants money off bills"
+        ]
+      }
+    ],
+    "methodology": "behavioral analysis of redemption history and session intent",
+    "temporaryInterpretation": true
+  }
+}

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  intelligence-layer:
+    build: ./intelligence-layer
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./intelligence-layer:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  middleware:
+    build: ./middleware
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./middleware:/app
+      - ./middleware/explainability:/app/explainability
+    depends_on:
+      - intelligence-layer
+    environment:
+      - INTELLIGENCE_SERVICE_URL=http://intelligence-layer:8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL:-openai/gpt-oss-120b}
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Frontend runs natively with `npm run dev` (Vite on 5173).

@@ -1,0 +1,845 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A transparent, 13-component rich screen structured for Amelia Carter (PREVIEW_GUARANTEED_VALUE persona). It highlights exact cash values upfront, full terms & conditions drawers, and zero hidden conversion rates. Components include: POINTS_BALANCE, TANGIBLE_VALUE_CARD, PERSONALIZED_OFFER_CARD, QUICK_WIN_CARD, GOAL_PROGRESS_CARD, PREVIEW_MODAL_TRIGGER, UPFRONT_CALCULATOR, TERMS_SUMMARY_SHEET, GUARANTEED_RATE_BADGE, RECENT_PREVIEWS_CAROUSEL, TRANSPARENCY_FAQ_ACCORDION, TRUST_METRICS_BANNER, and FEEDBACK_WIDGET.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly targets guaranteed certainty and upfront preview behavior."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides all necessary transparency elements across 13 rich components, preventing flow abandonment."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with guaranteed fixed-value offers and zero hidden conversion rates."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear layout, readable typography, high contrast terms disclosure, excellent cognitive fit for analytical users."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Strong behavioral evidence (0.9 confidence) backing preview preference."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains strict adherence to brand guidelines and banking design system."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Delivers a uniquely friction-free preview mechanism without gimmicks."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 13 components are fully supported within the mobile component library and latency budget."
+        }
+      },
+      "weightedTotal": 9.15,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 9-component dashboard focusing on quick reward selection with secondary expandable preview drawers. Components include: POINTS_BALANCE, TANGIBLE_VALUE_CARD, PERSONALIZED_OFFER_CARD, QUICK_WIN_CARD, GOAL_PROGRESS_CARD, SEARCH_FILTER, OFFER_GRID, QUICK_REDEEM_BUTTON, and HELP_LINK.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Misses the richness required by guidelines (fewer than 11 components)."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Too sparse; forces the customer to dig for terms and value previews, risking abandonment."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Offers quick redeem features which run counter to the customer's cautious preview habit."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean but lacks comprehensive upfront disclosures."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Aligns with basic profile data but ignores deep preview signals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with standard banking UI patterns."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with no special accommodation for certainty."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "High feasibility but poor strategic fit."
+        }
+      },
+      "weightedTotal": 7.2,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 11 components, resulting in lower expectedCustomerUtility and customerGoalRelevance scores."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A transparent, 13-component rich screen structured for Amelia Carter (PREVIEW_GUARANTEED_VALUE persona). It highlights exact cash values upfront, full terms & conditions drawers, and zero hidden conversion rates, strictly following all mandatory order rules and card rule engine directives.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 6450,
+            "tier": "Gold",
+            "name": "Amelia Carter",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Guaranteed 1:1 Value Conversion Offer",
+            "subtitle": "Preview terms and fixed payout before confirmation",
+            "offer": "\u00a364.50 Guaranteed Cash Voucher",
+            "validUntil": "2026-09-30",
+            "message": "Guaranteed fixed rate with zero hidden deductions or variable conversion fees. Preview full terms anytime.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "PREVIEW_OFFER_TERMS",
+              "payload": {
+                "offerId": "guaranteed-offer-013"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-best-value-redeem",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "options": [
+              {
+                "name": "Direct Bank Deposit",
+                "points": 6450,
+                "cashValue": "\u00a364.50",
+                "valuePerPoint": 1.0,
+                "best": true
+              },
+              {
+                "name": "Supermarket Voucher",
+                "points": 5000,
+                "cashValue": "\u00a350.00",
+                "valuePerPoint": 1.0,
+                "best": false
+              }
+            ],
+            "note": "Ranked by exact pounds-per-point value with guaranteed conversion rates and zero hidden fees.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_OPTION",
+              "payload": {
+                "optionName": "Direct Bank Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Your Total Balance Worth",
+            "cashValue": "\u00a364.50",
+            "pointsEquivalent": 6450,
+            "breakdown": [
+              {
+                "label": "Guaranteed Fixed Rate",
+                "value": "100 LBG Coins = \u00a31.00"
+              },
+              {
+                "label": "Hidden Fees",
+                "value": "\u00a30.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUATION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant Guaranteed Redemptions",
+            "subtitle": "Fixed-rate options available right now",
+            "rewards": [
+              {
+                "name": "\u00a310 Digital Gift Card",
+                "points": 1000
+              },
+              {
+                "name": "\u00a325 Fuel Voucher",
+                "points": 2500
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "PREVIEW_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-why-this-ui",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Transparent Layout Guarantee",
+            "intro": "Designed specifically for your preference for upfront certainty and full terms visibility.",
+            "reasons": [
+              {
+                "label": "Zero Hidden Terms",
+                "detail": "All conversion rates and rules are fully previewable prior to points commitment."
+              },
+              {
+                "label": "Guaranteed Fixed Value",
+                "detail": "No fluctuating exchange rates or surprise deductions."
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_EXPLAINER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-partner-comparison",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Partner Conversion Comparison",
+            "subtitle": "Compare exact GBP equivalents across our verified partners",
+            "partners": [
+              {
+                "name": "Retail Partner A",
+                "points": 6450,
+                "value": "\u00a364.50",
+                "perk": "Guaranteed 1:1 rate"
+              },
+              {
+                "name": "Travel Partner B",
+                "points": 6450,
+                "value": "\u00a364.50",
+                "perk": "Fixed conversion guarantee"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "COMPARE_PARTNERS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-provenance",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Points Provenance & History",
+            "subtitle": "Clear breakdown of how your 6,450 LBG Coins were earned",
+            "history": [
+              {
+                "source": "Gold Tier Anniversary Bonus",
+                "date": "2026-08-01",
+                "points": 2500
+              },
+              {
+                "source": "Verified Partner Transaction",
+                "date": "2026-08-15",
+                "points": 3950
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-choice",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Redemption Choices",
+            "subtitle": "No pressure framing \u2014 choose when and how to redeem",
+            "options": [
+              {
+                "id": "opt-1",
+                "label": "Redeem Now with Preview",
+                "description": "Review complete terms before confirming your \u00a364.50 value.",
+                "points": 6450
+              },
+              {
+                "id": "opt-2",
+                "label": "Keep Collecting",
+                "description": "Keep your balance safe in your account with zero expiration pressure.",
+                "points": 0
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_CHOICE",
+              "payload": {
+                "choiceId": "opt-1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Verified Fixed-Value Catalog",
+            "rewards": [
+              {
+                "name": "Guaranteed Cash Voucher",
+                "points": 2000,
+                "category": "Cash",
+                "limited": false
+              },
+              {
+                "name": "Fixed-Rate Shopping Pass",
+                "points": 4000,
+                "category": "Retail",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "BROWSE_CATALOG",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronised",
+            "lastSyncedAt": "2026-08-24T09:28:15.199Z",
+            "message": "Your 6,450 LBG Coins and connected brand balances are fully up to date.",
+            "ctaText": "Refresh Balance",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "steps": [
+              {
+                "title": "1. Earn Securely",
+                "description": "Collect LBG Coins through everyday verified banking activity."
+              },
+              {
+                "title": "2. Preview Terms",
+                "description": "Examine exact cash equivalents and full conditions before commitment."
+              },
+              {
+                "title": "3. Redeem with Confidence",
+                "description": "Enjoy guaranteed fixed-rate conversion with zero hidden fees."
+              }
+            ],
+            "ctaLabel": "Read Full Terms & Conditions",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_TERMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-insights",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Amelia's Transparency Report",
+            "topBrandName": "Verified Banking Partner",
+            "topBrandPoints": 3950,
+            "growthTip": "Your preview habit ensures you always secure 100% of your listed reward value.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "Review Safeguards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHTS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PREVIEW_GUARANTEED_VALUE_PERSONA",
+        "UPFRONT_CERTAINTY_COMPLIANT",
+        "CARD_RULE_ENGINE_MET"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "An alternative high-transparency composition featuring unified wallet metrics and partner transfers, prioritizing Amelia Carter's need for absolute certainty and pre-redemption verification.",
+      "components": [
+        {
+          "id": "comp-2-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 6450,
+            "tier": "Gold",
+            "name": "Amelia Carter",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Fixed-Rate Gold Tier Reward",
+            "subtitle": "Inspect full terms prior to redemption",
+            "offer": "\u00a364.50 Fixed Cash Conversion",
+            "validUntil": "2026-09-30",
+            "message": "Guaranteed value with complete visibility of terms and conditions.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "PREVIEW_OFFER_TERMS",
+              "payload": {
+                "offerId": "guaranteed-offer-013"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-2-best-value-redeem",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "options": [
+              {
+                "name": "Direct Bank Deposit",
+                "points": 6450,
+                "cashValue": "\u00a364.50",
+                "valuePerPoint": 1.0,
+                "best": true
+              }
+            ],
+            "note": "Guaranteed optimal value per point with zero hidden deductions.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_OPTION",
+              "payload": {
+                "optionName": "Direct Bank Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-2-consolidated-wallet",
+          "type": "CONSOLIDATED_REWARD_WALLET",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Unified Reward Wallet",
+            "subtitle": "All connected programmes and fixed cash value",
+            "programmes": [
+              {
+                "name": "LBG Coins",
+                "points": 6450,
+                "value": "\u00a364.50",
+                "status": "Verified & Synced"
+              }
+            ],
+            "totalValue": "\u00a364.50",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Tangible Cash Equivalent",
+            "cashValue": "\u00a364.50",
+            "pointsEquivalent": 6450,
+            "breakdown": [
+              {
+                "label": "Guaranteed Rate",
+                "value": "1.0p per coin"
+              },
+              {
+                "label": "Expiration Risk",
+                "value": "None"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BREAKDOWN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Fixed-Rate Instant Redemptions",
+            "subtitle": "Inspect terms before instant payout",
+            "rewards": [
+              {
+                "name": "\u00a325 Cash Voucher",
+                "points": 2500
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "PREVIEW_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-partner-transfer",
+          "type": "PARTNER_TRANSFER_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Guaranteed Partner Transfer",
+            "fromProgramme": "LBG Coins",
+            "toPartner": "Verified Bank Transfer",
+            "points": 6450,
+            "estimatedValue": "\u00a364.50",
+            "status": "Ready for Preview",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "INITIATE_TRANSFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-provenance",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Complete Points History",
+            "subtitle": "Audit trail of your Gold tier earnings",
+            "history": [
+              {
+                "source": "Anniversary Reward",
+                "date": "2026-08-01",
+                "points": 2500
+              },
+              {
+                "source": "Partner Spend",
+                "date": "2026-08-15",
+                "points": 3950
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-why-this-ui",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Certainty Safeguard",
+            "intro": "Why this screen matches your exact preferences:",
+            "reasons": [
+              {
+                "label": "Upfront Previews",
+                "detail": "Every redemption option displays its full terms and final value before any point commitment."
+              },
+              {
+                "label": "No Hidden Conversion Fees",
+                "detail": "Guaranteed 1:1 fixed rates across all featured options."
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_EXPLAINER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-programme-connection",
+          "type": "PROGRAMME_CONNECTION_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Connected Programmes",
+            "subtitle": "Manage your 3 linked partner accounts securely",
+            "programmes": [
+              {
+                "name": "Primary Bank Account",
+                "status": "Active & Verified",
+                "connected": true
+              },
+              {
+                "name": "Verified Retail Partner",
+                "status": "Active",
+                "connected": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "MANAGE_CONNECTIONS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "status": "synced",
+            "title": "Secure Sync Active",
+            "lastSyncedAt": "2026-08-24T09:28:15.199Z",
+            "message": "All balances and terms agreements are up to date.",
+            "ctaText": "Verify Status",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2-reward-choice",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Redemption Decision Panel",
+            "subtitle": "Zero pressure \u2014 choose your preferred path",
+            "options": [
+              {
+                "id": "choice-a",
+                "label": "Proceed with Preview",
+                "description": "Examine terms and redeem \u00a364.50 instantly.",
+                "points": 6450
+              },
+              {
+                "id": "choice-b",
+                "label": "Hold Balance",
+                "description": "Keep your LBG Coins safe with zero expiry risk.",
+                "points": 0
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_CHOICE",
+              "payload": {
+                "choiceId": "choice-a"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-2-insights",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Certainty Summary",
+            "topBrandName": "Verified Banking Partner",
+            "topBrandPoints": 3950,
+            "growthTip": "Reviewing full terms before redeeming protects your total balance value.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "View Terms",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHTS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.92,
+      "reasonCodes": [
+        "ALTERNATIVE_TRANSPARENCY_STRATEGY",
+        "UPFRONT_CERTAINTY_COMPLIANT",
+        "CARD_RULE_ENGINE_MET"
+      ]
+    }
+  ]
+}

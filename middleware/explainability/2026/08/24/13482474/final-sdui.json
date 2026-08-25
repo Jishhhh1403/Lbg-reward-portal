@@ -1,0 +1,495 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "13482474",
+  "createdAt": "2026-08-24T12:30:00Z",
+  "expiresAt": "2026-08-24T13:30:00Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "SNAPSHOT",
+          "relevanceScore": 0.4,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "You're making steady progress toward mastering your first home savings milestone.",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "SNAPSHOT",
+          "relevanceScore": 1.1,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "First Home Savings Knowledge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-learning-mission",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Rewards Academy Masterclass",
+        "missionName": "Compound Growth & Interest Fundamentals",
+        "description": "Explore how compounding works over multi-year timelines with clear mathematical breakdowns.",
+        "modulesDone": 3,
+        "modulesTotal": 5,
+        "pointsOnCompletion": 300,
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "CONTINUE_MISSION",
+          "payload": {
+            "missionName": "Compound Growth & Interest Fundamentals"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quiz",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "question": "Which factor has the most significant long-term impact on compound interest accumulation?",
+        "options": [
+          "Starting time horizon",
+          "Monthly contribution amount",
+          "Nominal interest rate alone"
+        ],
+        "reward": "150 Learning Points",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 0.55,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ_ANSWER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-comprehension-feedback",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Recent Concept Review",
+        "question": "How does inflation impact purchasing power over a 10-year horizon?",
+        "yourAnswer": "It gradually reduces the basket of goods a fixed amount can buy.",
+        "correctAnswer": "It gradually reduces the basket of goods a fixed amount can buy.",
+        "feedback": "Spot on! Understanding inflation ensures your savings targets account for real-world purchasing power.",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "MOMENTUM",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_FEEDBACK_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-confidence-progress",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Confidence Meter",
+        "topic": "Tax-Efficient Savings Vehicles",
+        "confidencePercent": 85,
+        "levelLabel": "Advanced understanding",
+        "nextMilestone": "Master multi-account allocation strategies",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "MOMENTUM",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CONFIDENCE_TOPIC",
+          "payload": {
+            "topic": "Tax-Efficient Savings Vehicles"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Mastery Tip: Transparent Value Conversion",
+        "insight": "Every 1,000 LBG coins translates directly into \u00a310.00 of tangible purchasing value across our verified partner network.",
+        "source": "LBG Educational Research Team",
+        "actionLabel": "Explore Value Breakdowns",
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "TRUST",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_EDUCATIONAL_INSIGHT",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Your Wallet Worth",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": [
+          {
+            "label": "LBG Coins Balance",
+            "value": "3,900 coins"
+          },
+          {
+            "label": "Verified Cash Equivalent",
+            "value": "\u00a339.00 GBP"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "SNAPSHOT",
+          "relevanceScore": 1.218,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "status": "synced",
+        "title": "Wallet & Progress Sync",
+        "lastSyncedAt": "2026-08-24 12:15",
+        "message": "All learning milestones and coin balances are fully up to date.",
+        "ctaText": "Refresh Sync",
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "TRUST",
+          "relevanceScore": 0.55,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new financial literacy or savings target to track your mastery.",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 1.1,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "steps": [
+          {
+            "title": "Earn through Learning",
+            "description": "Complete educational modules and quizzes to build your coin balance."
+          },
+          {
+            "title": "Convert Transparently",
+            "description": "View exact GBP equivalents with zero hidden fees or complex exchange rates."
+          },
+          {
+            "title": "Redeem with Purpose",
+            "description": "Apply your balance toward your savings goals and partner rewards."
+          }
+        ],
+        "ctaLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 1.068,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "OPEN_GUIDE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "milestones": [
+          {
+            "label": "Completed 5 Financial Literacy Modules",
+            "achieved": true
+          },
+          {
+            "label": "Achieved 85% Quiz Accuracy Across All Topics",
+            "achieved": true
+          },
+          {
+            "label": "Reached 63% Progress on First Home Savings Knowledge",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "MOMENTUM",
+          "relevanceScore": 0.75,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONE_HISTORY",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "EDUCATIONAL",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight",
+          "comp-sync-status"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-learning-mission",
+          "comp-quiz",
+          "comp-add-goal",
+          "comp-how-points-work"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-comprehension-feedback",
+          "comp-confidence-progress",
+          "comp-milestone"
+        ]
+      }
+    ],
+    "relevanceScores": {
+      "GOAL_COMPLETE_CELEBRATION": 0.4,
+      "INSTANT_REWARD_POPUP": 0.4,
+      "MILESTONE_ANNIVERSARY_CARD": 0.4,
+      "REWARD_CHOICE_PANEL": 0.5,
+      "QUIZ_CARD": 0.55,
+      "DAILY_MONEY_TIP_CARD": 0.918,
+      "GOAL_AT_RISK_CARD": 0.86,
+      "GOAL_TEMPLATE_GALLERY": 0.9,
+      "TRAVEL_FUND_CARD": 0.9,
+      "MONTH_OVER_MONTH_CARD": 0.4,
+      "ADD_GOAL_CARD": 1.1,
+      "GOAL_STREAK_CARD": 0.86,
+      "MYTH_OR_FACT_CARD": 0.918,
+      "AUTO_RULES_CARD": 0.55,
+      "TANGIBLE_VALUE_CARD": 1.218,
+      "PAYMENT_REWARD_CARD": 0.4,
+      "HOW_POINTS_WORK_CARD": 1.068,
+      "GOAL_PROGRESS_CARD": 1.1,
+      "CONSOLIDATED_REWARD_WALLET": 0.4,
+      "GOAL_MILESTONE_CARD": 1.1,
+      "EXPIRING_POINTS_ALERT": 0.4,
+      "PREFERENCES_CARD": 0.5,
+      "REWARD_CAROUSEL": 0.75,
+      "SHARED_GOAL_CARD": 0.86,
+      "PROGRAMME_CONNECTION_CARD": 0.4,
+      "STREAK_CARD": 0.55,
+      "LOCAL_DEALS_CARD": 0.4,
+      "GOAL_MATCH_BOOST_CARD": 0.86,
+      "MILESTONE_REWARD_LADDER": 0.9,
+      "BIRTHDAY_REWARD_CARD": 0.4,
+      "QUICK_WIN_CARD": 0.55,
+      "NEW_BRAND_SPOTLIGHT_CARD": 0.4,
+      "MILESTONE_CARD": 0.75,
+      "GOAL_LINKED_REWARD": 1.1,
+      "PROJECTION_CHART": 1.02,
+      "EARN_BREAKDOWN_CARD": 0.4,
+      "SAVINGS_TRANSFER_CARD": 0.9,
+      "LEARNING_PATH_CARD": 0.918,
+      "PAYMENT_REWARD_CONFIRMATION": 0.4,
+      "COACH_TIP_CARD": 0.918,
+      "BEST_VALUE_REDEEM_CARD": 0.4,
+      "REFERRAL_CARD": 0.51,
+      "REWARD_PROVENANCE_CARD": 0.4,
+      "COMPREHENSION_FEEDBACK_CARD": 0.918,
+      "COUNTDOWN_CARD": 0.4,
+      "COMMUNITY_CHALLENGE_CARD": 0.51,
+      "BADGE_CARD": 0.55,
+      "CONFIDENCE_PROGRESS_CARD": 0.918,
+      "RECOMMENDED_ACTIONS": 0.75,
+      "FUTURE_MILESTONE_CARD": 1.02,
+      "POINTS_ACADEMY_BADGE_CARD": 0.918,
+      "POINTS_HEALTH_SCORE": 0.4,
+      "LONG_TERM_GOAL_CARD": 1.02,
+      "FUTURE_VALUE_CARD": 1.02,
+      "LEADERBOARD": 0.51,
+      "SYNC_STATUS_CARD": 0.55,
+      "CHALLENGE_CARD": 0.51,
+      "GIFT_DONATE_CARD": 0.5,
+      "WHY_THIS_UI_CARD": 0.4,
+      "FLASH_REWARD_BANNER": 0.4,
+      "BRAND_EXPLORER_CARD": 0.55,
+      "METRIC_TILE": 0.75,
+      "PARTNER_VALUE_COMPARISON": 0.4,
+      "REWARD_ALLOCATION_CONTROL": 0.5,
+      "REENGAGEMENT_BANNER": 0.4,
+      "PARTNER_TRANSFER_CARD": 0.4,
+      "POINTS_BALANCE": 0.4,
+      "QUICK_REDEEM_CARD": 0.4,
+      "SAVINGS_CALCULATOR_CARD": 1.02,
+      "REWARDS_INSIGHT_CARD": 0.55,
+      "LEARNING_MISSION_CARD": 0.918,
+      "PERSONALIZED_OFFER_CARD": 0.55,
+      "EDUCATIONAL_INSIGHT_CARD": 0.918
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "saves points for larger rewards",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_002 (Sarah Chen, Platinum tier) exhibits high engagement (0.91) and a GOAL_ORIENTED_SAVER persona. She consistently accumulates points and saves them for structured, goal-linked redemptions across three active savings goals (Japan Vacation, New Phone, and Emergency Fund).",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Customer has 6,820 LBG coins / points available in wallet.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Customer has three active savings goals: Japan Vacation, New Phone, and Emergency Fund.",
+        "source": "intelligenceLayer.goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Customer demonstrates frequent goal-linked redemptions and consistent monthly accumulation.",
+        "source": "intelligenceLayer.signals",
+        "confidence": 0.91
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "persona",
+        "value": "GOAL_ORIENTED_SAVER",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligenceLayer.personaAnalysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

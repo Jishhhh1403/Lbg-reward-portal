@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "26ea8d25",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_002",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 6820,
+        "tier": "Platinum",
+        "name": "Sarah Chen",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE_WALLET",
+          "payload": {
+            "destination": "wallet_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "label": "Connected Brands",
+        "value": "3",
+        "unit": "brands",
+        "tone": "brand",
+        "infoText": "Earning points across 3 active partner brands",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BRANDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "label": "Badges Earned",
+        "value": "5",
+        "unit": "badges",
+        "tone": "white",
+        "infoText": "Milestones unlocked on your savings journey",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BADGES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "label": "Engagement Score",
+        "value": "91",
+        "unit": "%",
+        "tone": "white",
+        "infoText": "Top tier consistency and monthly accumulation",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_STATS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-japan",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Japan Vacation",
+        "current": 1680,
+        "target": 2500,
+        "percentage": 67,
+        "remaining": 820,
+        "motivationalMessage": "You're 67% there! Just 820 more points to book your dream trip.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "MANAGE_GOAL",
+          "payload": {
+            "goalName": "Japan Vacation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-phone",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "New Phone",
+        "current": 890,
+        "target": 1200,
+        "percentage": 74,
+        "remaining": 310,
+        "motivationalMessage": "Almost in reach! Only 310 points needed for your upgrade.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "MANAGE_GOAL",
+          "payload": {
+            "goalName": "New Phone"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-emergency",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "goalName": "Emergency Fund",
+        "current": 1350,
+        "target": 3000,
+        "percentage": 45,
+        "remaining": 1650,
+        "motivationalMessage": "Solid progress! Keep building your financial security buffer.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "MANAGE_GOAL",
+          "payload": {
+            "goalName": "Emergency Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new savings milestone and start allocating points.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Accelerate Your Savings",
+        "goalName": "Japan Vacation",
+        "rewards": [
+          {
+            "name": "Partner Airline Bonus (500 pts)",
+            "points": 500,
+            "goalLinked": true
+          },
+          {
+            "name": "Hotel Booking Cashback (300 pts)",
+            "points": 300,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_REWARD",
+          "payload": {
+            "rewardId": "goal-linked-packages"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "milestones": [
+          {
+            "label": "Reached Platinum Tier Status",
+            "achieved": true
+          },
+          {
+            "label": "Completed 5 Savings Goals Historically",
+            "achieved": true
+          },
+          {
+            "label": "Maintain 6,000+ Balance for 6 Months",
+            "achieved": true
+          },
+          {
+            "label": "Reach 10,000 LBG Coins Milestone",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONES",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

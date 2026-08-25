@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "41c50243",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-11-03T00:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reengagement",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Welcome back, Ryan!",
+        "message": "We've missed you over the last few weeks. Your Gold tier perks and 3,600 points are waiting for you.",
+        "ctaText": "Explore Quick Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_BANNER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Points Expiring Soon",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "1,500 of your points are scheduled to expire in 7 days. Redeem them now to enjoy your rewards!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Effortless Instant Wins",
+        "subtitle": "Claim instantly with zero friction",
+        "rewards": [
+          {
+            "name": "Express Coffee Voucher",
+            "points": 200
+          },
+          {
+            "name": "Snack Box Flash Pass",
+            "points": 350
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "rewardId": "express-coffee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Gold Tier Flash Deal",
+        "subtitle": "Limited-time voucher for Ryan",
+        "originalPoints": 800,
+        "discountedPoints": 500,
+        "timer": "23:45:12",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_FLASH_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Quick Redeem Catalogue",
+        "description": "Tap any instant reward to claim within seconds using your balance.",
+        "rewards": [
+          {
+            "name": "Artisanal Coffee & Pastry",
+            "points": 300,
+            "icon": "coffee"
+          },
+          {
+            "name": "Instant Cinema Pass",
+            "points": 450,
+            "icon": "film"
+          },
+          {
+            "name": "Lunch Delivery Voucher",
+            "points": 600,
+            "icon": "utensils"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_QUICK_ITEM",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Your Points Value",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": [
+          {
+            "label": "Expiring Value (1,500 pts)",
+            "value": "\u00a315.00"
+          },
+          {
+            "label": "Active Balance (2,100 pts)",
+            "value": "\u00a321.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

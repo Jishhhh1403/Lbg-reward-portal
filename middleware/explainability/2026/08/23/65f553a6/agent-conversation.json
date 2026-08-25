@@ -1,0 +1,489 @@
+{
+  "totalMessages": 14,
+  "messages": [
+    {
+      "messageId": "msg-ea586ce19b25",
+      "sequence": 1,
+      "timestamp": "2026-08-23T09:56:53.846814+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "ConsentGuardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Consent is valid for scope ['rewards-personalization']. No protected or sensitive attribute inference detected. Proceeding within allowed boundaries.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-bd600c56c08f",
+      "sequence": 2,
+      "timestamp": "2026-08-23T09:56:53.846830+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "JourneyIntentAgent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "OBSERVATION",
+      "summary": "Customer persona identified as GOAL_ORIENTED_SAVER with high confidence (0.91). Intent focuses on goal achievement, tracking progress for Japan Vacation and New Phone goals.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-9b05d87c448e",
+      "sequence": 3,
+      "timestamp": "2026-08-23T09:56:53.846838+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "Orchestrator",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Assembling Stage Q charter. Mandating POINTS_BALANCE, GOAL_PROGRESS_CARD, GOAL_MILESTONE_CARD, and GOAL_LINKED_REWARD components in accordance with persona recommendations.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-b0a5a8e83de2",
+      "sequence": 4,
+      "timestamp": "2026-08-23T09:56:58.045272+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Context Analyst",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "OBSERVATION",
+      "summary": "Customer context verified with 3 active savings goals and Platinum tier status.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-b2951cc140c0",
+      "sequence": 5,
+      "timestamp": "2026-08-23T09:56:58.045312+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Consent Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "OBSERVATION",
+      "summary": "Consent scope validated for rewards-personalization.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-5423295a28f3",
+      "sequence": 6,
+      "timestamp": "2026-08-23T09:56:58.045319+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Accessibility",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Cognitive load score is 55 (below threshold 70) with 4 cards required for 3 goals plus ADD_GOAL_CARD.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-9f3d90ea2c4b",
+      "sequence": 7,
+      "timestamp": "2026-08-23T09:57:02.244478+00:00",
+      "stage": "E",
+      "round": "committee",
+      "fromAgent": "Personalization Synthesiser",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 successfully implements the required multi-goal card layout, displaying all three active savings goals plus an ADD_GOAL_CARD and appropriate milestone/reward components.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-cf6270379769",
+      "sequence": 8,
+      "timestamp": "2026-08-23T09:57:02.244504+00:00",
+      "stage": "E",
+      "round": "committee",
+      "fromAgent": "Risk Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns, manipulative urgency, or artificial scarcity detected in Candidate-1. Fully respects customer consent scope.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-89efa7491f64",
+      "sequence": 9,
+      "timestamp": "2026-08-23T09:57:02.244514+00:00",
+      "stage": "E",
+      "round": "committee",
+      "fromAgent": "Accessibility Agent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 provides excellent cognitive fit with structured progress indicators and high scannability across 7 well-organized components.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-abd31a8fa0d0",
+      "sequence": 10,
+      "timestamp": "2026-08-23T09:57:10.892132+00:00",
+      "stage": "S",
+      "round": "committee",
+      "fromAgent": "Personalization Synthesiser",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 successfully implements the required multi-goal card layout, displaying all three active savings goals plus an ADD_GOAL_CARD and appropriate milestone/reward components.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-41a530c57fc8",
+      "sequence": 11,
+      "timestamp": "2026-08-23T09:57:10.892150+00:00",
+      "stage": "S",
+      "round": "committee",
+      "fromAgent": "Risk Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns, manipulative urgency, or artificial scarcity detected in Candidate-1. Fully respects customer consent scope.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-860749195c78",
+      "sequence": 12,
+      "timestamp": "2026-08-23T09:57:10.892158+00:00",
+      "stage": "S",
+      "round": "committee",
+      "fromAgent": "Accessibility Agent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 provides excellent cognitive fit with structured progress indicators and high scannability across 7 well-organized components.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-8b92950b9c33",
+      "sequence": 13,
+      "timestamp": "2026-08-23T09:57:15.564538+00:00",
+      "stage": "T",
+      "round": "committee",
+      "fromAgent": "sdui-compiler",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Compiled 7 components",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-fddbcba5351c",
+      "sequence": 14,
+      "timestamp": "2026-08-23T09:57:16.999886+00:00",
+      "stage": "R",
+      "round": "committee",
+      "fromAgent": "red-team",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "All validation checks passed successfully. Candidate-1 approved for release.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    }
+  ],
+  "agentParticipation": {
+    "ConsentGuardian": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "JourneyIntentAgent": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "OBSERVATION"
+      ]
+    },
+    "Orchestrator": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "Context Analyst": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "OBSERVATION"
+      ]
+    },
+    "Consent Guardian": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "OBSERVATION"
+      ]
+    },
+    "Accessibility": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "Personalization Synthesiser": {
+      "messageCount": 2,
+      "stages": [
+        "S",
+        "E"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "Risk Guardian": {
+      "messageCount": 2,
+      "stages": [
+        "S",
+        "E"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "Accessibility Agent": {
+      "messageCount": 2,
+      "stages": [
+        "S",
+        "E"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "sdui-compiler": {
+      "messageCount": 1,
+      "stages": [
+        "T"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "red-team": {
+      "messageCount": 1,
+      "stages": [
+        "R"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    }
+  },
+  "stageTimeline": [
+    {
+      "sequence": 1,
+      "stage": "Q",
+      "agent": "ConsentGuardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:56:53.846814+00:00"
+    },
+    {
+      "sequence": 2,
+      "stage": "Q",
+      "agent": "JourneyIntentAgent",
+      "messageType": "OBSERVATION",
+      "timestamp": "2026-08-23T09:56:53.846830+00:00"
+    },
+    {
+      "sequence": 3,
+      "stage": "Q",
+      "agent": "Orchestrator",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-23T09:56:53.846838+00:00"
+    },
+    {
+      "sequence": 4,
+      "stage": "U",
+      "agent": "Context Analyst",
+      "messageType": "OBSERVATION",
+      "timestamp": "2026-08-23T09:56:58.045272+00:00"
+    },
+    {
+      "sequence": 5,
+      "stage": "U",
+      "agent": "Consent Guardian",
+      "messageType": "OBSERVATION",
+      "timestamp": "2026-08-23T09:56:58.045312+00:00"
+    },
+    {
+      "sequence": 6,
+      "stage": "U",
+      "agent": "Accessibility",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-23T09:56:58.045319+00:00"
+    },
+    {
+      "sequence": 7,
+      "stage": "E",
+      "agent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:57:02.244478+00:00"
+    },
+    {
+      "sequence": 8,
+      "stage": "E",
+      "agent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:57:02.244504+00:00"
+    },
+    {
+      "sequence": 9,
+      "stage": "E",
+      "agent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:57:02.244514+00:00"
+    },
+    {
+      "sequence": 10,
+      "stage": "S",
+      "agent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:57:10.892132+00:00"
+    },
+    {
+      "sequence": 11,
+      "stage": "S",
+      "agent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:57:10.892150+00:00"
+    },
+    {
+      "sequence": 12,
+      "stage": "S",
+      "agent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:57:10.892158+00:00"
+    },
+    {
+      "sequence": 13,
+      "stage": "T",
+      "agent": "sdui-compiler",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-23T09:57:15.564538+00:00"
+    },
+    {
+      "sequence": 14,
+      "stage": "R",
+      "agent": "red-team",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-23T09:57:16.999886+00:00"
+    }
+  ]
+}

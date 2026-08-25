@@ -1,0 +1,75 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-mastery-progress",
+  "journeyObjective": "Enable self-paced review of financial literacy progress and exploration of the next home savings milestone module.",
+  "entryPoint": "Dashboard load with active lbgCoins balance and First Home Savings Knowledge goal status.",
+  "completionDefinition": "Customer views milestone progress and engages with the recommended financial literacy quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my lbgCoins and home savings knowledge?",
+      "entryCondition": "App opened in continuing mastery mode.",
+      "requiredInformation": [
+        "lbgCoins balance",
+        "First Home Savings Knowledge goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What is my next educational and savings milestone to master?",
+      "entryCondition": "Completed review of balance and current goal progress.",
+      "requiredInformation": [
+        "Learning mission status",
+        "Quiz module",
+        "Comprehension feedback",
+        "Confidence progress",
+        "Educational insights",
+        "Tangible value translation"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear educational terms and point-to-value transparency without timed pressure.",
+      "contentNotes": [
+        "All modules self-paced",
+        "No leaderboard rankings"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

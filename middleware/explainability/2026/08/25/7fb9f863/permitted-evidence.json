@@ -1,0 +1,91 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 1.0,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 1.0,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-04",
+        "classification": "OBSERVED",
+        "value": "First Home Savings Knowledge goal progress 63%",
+        "source": "wallet/goals",
+        "confidence": 1.0,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams (customer_011) engages with rewards-overview on mobile with a focus on financial literacy, mastering educational modules to 100%, tracking First Home Savings progress (63% complete), and avoiding timed challenges or public leaderboards.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "Task Charter availableEvidence",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "Task Charter availableEvidence",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Holds 3900 lbgCoins with 3 connected brands",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-04",
+        "statement": "First Home Savings Knowledge goal is at 63% progress (1250 of 2000 target value)",
+        "source": "Intelligence Layer goal",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "Intelligence Layer persona and motive analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-01"
+        ],
+        "inferenceMethod": "Personalization signals tone analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

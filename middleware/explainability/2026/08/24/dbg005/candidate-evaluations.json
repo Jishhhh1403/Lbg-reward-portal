@@ -1,0 +1,251 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich rewards\u2011overview screen (mobile) composed of 7 components: POINTS_BALANCE at top, a scrollable GOAL_PROGRESS_CARD for each of the three long\u2011term goals (Retirement Fund, Children Education Fund, Dream Home Deposit), a PROJECTION_CHART showing projected points growth for each goal over the next 5\u201110 years, a LONG_TERM_GOAL_CARD highlighting a curated \"Investment\u2011style\" reward option (e.g., high\u2011yield points\u2011bond), an EDUCATIONAL_INSIGHT_CARD with future\u2011value projection narrative, and an ADD_GOAL_CARD to let David create additional long\u2011term goals. All components respect consent, use only allowed signals, and follow UI Constitution (no hidden choices, no urgency).",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses all three declared goals and the long\u2011term planning persona."
+        },
+        "expectedCustomerUtility": {
+          "score": 8,
+          "explanation": "Provides actionable projections, progress visibility, and educational insight which match David's interests."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Aligns with FUTURE_SECURITY motivation and LONG_TERM reward horizon."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Uses large fonts, high contrast, screen\u2011reader labels, and progressive disclosure for cognitive ease."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Built on high\u2011confidence facts (\u22650.9) about goals, points, and motivations."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Uses brand colors, typography, and retains mandatory components."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Projection chart and investment\u2011style reward card are novel yet familiar."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All components are available in the component library; projection calculations fit within latency budget."
+        }
+      },
+      "weightedTotal": 8.35,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A compact overview with 5 components: POINTS_BALANCE, a combined GOAL_PROGRESS_CARD that lists all three goals in a table, a single PROJECTION_CHART summarising total portfolio growth, an EDUCATIONAL_TIP_CARD with a short future\u2011value paragraph, and an ADD_GOAL_CARD. The design omits individual LONG_TERM_GOAL_CARD per goal to reduce screen clutter.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers goals but merges them, reducing per\u2011goal relevance."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Less granular insight; David may need separate projections per goal."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Still aligns with long\u2011term motivation but lacks tailored reward options."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simpler layout aids cognition, meets WCAG standards."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Uses same high\u2011confidence data; no extra risk."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully compliant with brand guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Less novel; mainly aggregates existing components."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fewer components, minimal computation, well within latency."
+        }
+      },
+      "weightedTotal": 7.05,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "LONG_TERM_PLANNER \u2013 emphasizes future growth, projections and education with a curated mix of future\u2011value, projection chart, long\u2011term goal cards and a quick add\u2011goal CTA.",
+      "components": [
+        {
+          "id": "comp-1",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-2",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Future Value",
+            "currentValue": 60150,
+            "projectedValue": 200000,
+            "timeframe": "10 years",
+            "growthRate": "\u22483%\u202fannual",
+            "message": "Stay on track for financial security",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-3",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Projected Growth",
+            "growthLabel": "Points",
+            "data": [
+              {
+                "year": "2027",
+                "value": 65000
+              },
+              {
+                "year": "2028",
+                "value": 70000
+              },
+              {
+                "year": "2029",
+                "value": 75000
+              },
+              {
+                "year": "2030",
+                "value": 80000
+              },
+              {
+                "year": "2031",
+                "value": 86000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-4",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2035",
+            "message": "Keep contributing regularly",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-5",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2032",
+            "message": "Education savings growing",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-6",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Plan another future milestone",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.89,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INTELLIGENCE_SIGNALS"
+      ]
+    }
+  ]
+}

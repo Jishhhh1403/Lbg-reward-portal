@@ -1,0 +1,367 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Emphasize tangible cash-equivalent balance, holiday goal progress (53%), and one-tap statement credit redemption without gamification or partner distractions.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses Daniel's payment utility motive and active holiday goal."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility via frictionless statement credit redemption and clear cash value."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 10,
+          "explanation": "Flawlessly maps to story-1 with zero prohibited detours or gamification elements."
+        },
+        "journeyAndActionContinuity": {
+          "score": 9,
+          "explanation": "Mini-journey episodes flow logically from balance check to goal progress to credit action."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear typographic hierarchy, high contrast cash values, no cognitive clutter."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant with financial clarity standards and suppression hints."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Matches PAYMENT_UTILITY motive and preference for statement credits."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by 0.95 behavioral confidence on statement credits."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Streamlined utility focus rather than novel gimmicks."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses mandatory components (POINTS_BALANCE, GOAL_PROGRESS_CARD, TANGIBLE_VALUE_CARD, GOAL_LINKED_REWARD)."
+        }
+      },
+      "weightedTotal": 9.2,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Offer a broader rewards overview including partner conversion discovery alongside standard statement credits.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Partner discovery contradicts Daniel's established preference against experiential vouchers."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Introduces friction and irrelevant options."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 5,
+          "explanation": "Dilutes the focused statement credit narrative."
+        },
+        "journeyAndActionContinuity": {
+          "score": 6,
+          "explanation": "Secondary actions distract from the primary payment utility goal."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 7,
+          "explanation": "More cognitive load due to mixed categories."
+        },
+        "brandAndLegalConsistency": {
+          "score": 8,
+          "explanation": "Compliant but less relevant to user signals."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Ignores explicit payment utility focus."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Low affinity for partner discovery in profile."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Unwanted exploration options."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Feasible but suboptimal."
+        }
+      },
+      "weightedTotal": 6.55,
+      "hardGatesPass": true,
+      "objections": [
+        "Violates user preference by introducing partner conversion discovery when user is exclusively payment utility focused."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Emphasize tangible cash-equivalent balance, holiday goal progress (53%), payment utility rules, and one-tap statement credit redemption without gamification or partner distractions.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 7300,
+            "tier": "Platinum",
+            "name": "Daniel Brooks",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Holiday Spending Money",
+            "current": 640.0,
+            "target": 1200.0,
+            "percentage": 53.0,
+            "remaining": 560.0,
+            "motivationalMessage": "You're over halfway to your holiday fund! Consistent payment contributions are keeping you on track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "goal-details"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-payment-reward",
+          "type": "PAYMENT_REWARD_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Everyday Card Cashback",
+            "paymentMethod": "Platinum Debit Card ending in \u20224821",
+            "rewardRate": "1.0% back in LBG coins on everyday spending",
+            "monthlyCap": "No monthly cap",
+            "description": "Your card automatically accrues guaranteed cash-equivalent points on every purchase.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW",
+              "payload": {
+                "tab": "payment-rules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-allocation-control",
+          "type": "REWARD_ALLOCATION_CONTROL",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Automatic Reward Allocation",
+            "subtitle": "Choose how your newly earned points are distributed between your holiday fund and bill credits.",
+            "allocation": [
+              {
+                "label": "Holiday Savings Goal",
+                "percent": 60
+              },
+              {
+                "label": "Available Statement Credit",
+                "percent": 40
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "UPDATE",
+              "payload": {
+                "action": "save-allocation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-payment-confirmation",
+          "type": "PAYMENT_REWARD_CONFIRMATION",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Statement Credit Applied",
+            "message": "Your recent points conversion was successfully credited to your linked card statement.",
+            "amount": "\u00a325.00",
+            "reference": "SC-9823-LX",
+            "date": "24 Aug 2026",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW",
+              "payload": {
+                "screen": "statement-history"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Guaranteed Cash Value",
+            "cashValue": "\u00a373.00",
+            "pointsEquivalent": 7300,
+            "breakdown": [
+              {
+                "label": "Available for Statement Credit",
+                "value": "\u00a348.00 (4,800 coins)"
+              },
+              {
+                "label": "Allocated to Holiday Goal",
+                "value": "\u00a325.00 (2,500 coins)"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM",
+              "payload": {
+                "method": "statement-credit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-rewards-insight",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Payment Utility Summary",
+            "topBrandName": "Linked Card Spending",
+            "topBrandPoints": 7300,
+            "growthTip": "Your consistent statement credit redemptions ensure 100% of your earnings translate directly to bill reduction.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "Review Statement Credit Options",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "redemption-options"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "steps": [
+              {
+                "title": "Earn on Every Spend",
+                "description": "Collect LBG coins automatically whenever you use your linked payment card."
+              },
+              {
+                "title": "Transparent Conversion",
+                "description": "100 coins always equal exactly \u00a31.00 in guaranteed cash value."
+              },
+              {
+                "title": "Apply Directly",
+                "description": "Convert balance to statement credits with a single tap, reducing your monthly bill."
+              }
+            ],
+            "ctaLabel": "View Terms",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW",
+              "payload": {
+                "modal": "terms"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-choice",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Choose Your Redemption Route",
+            "subtitle": "Select how you would like to utilize your available point balance today.",
+            "options": [
+              {
+                "id": "opt-statement-credit",
+                "label": "Apply as Statement Credit",
+                "description": "Deduct directly from your card balance with zero fees.",
+                "points": 4800
+              },
+              {
+                "id": "opt-holiday-pot",
+                "label": "Top Up Holiday Fund",
+                "description": "Allocate remaining coins directly toward your active savings goal.",
+                "points": 2500
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT",
+              "payload": {
+                "action": "execute-redemption"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "MANDATORY_ORDERED_STACK",
+        "APPROVED_STORY",
+        "PAYMENT_UTILITY_ALIGNMENT"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "interested in investment-like rewards",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer David Park (Tier: Diamond) demonstrates a long-term accumulation pattern, rarely redeems for small rewards, shows interest in investment-like rewards, reads educational content, and values future projections. Currently tracking three active financial goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "LBG Coins balance is 28,400.",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Three active goals configured: Retirement Fund (28% progress), Children Education Fund (41% progress), and Dream Home Deposit (15% progress).",
+        "source": "intelligence_layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Demonstrates low immediate redemption rate (0.03) and high goal completion rate (0.92).",
+        "source": "intelligence_layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Exhibits interest in investment-like rewards and reads educational content.",
+        "source": "behavior",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "planningHorizon",
+        "value": "LONG_TERM",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "values future projections"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

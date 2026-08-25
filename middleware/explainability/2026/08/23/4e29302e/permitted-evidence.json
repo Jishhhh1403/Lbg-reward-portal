@@ -1,0 +1,65 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "1850 points expiring in 12 days",
+        "source": "wallet_sync",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "45 days since last activity",
+        "source": "customer_profile",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_004 (Jessica Martinez) is in a high churn risk state with 1,850 points expiring in 12 days, exhibiting 45 days of inactivity and very low engagement.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "1850 points expiring in 12 days",
+        "source": "session_context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "45 days since last login activity",
+        "source": "customer_profile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Engagement score is 0.23 with notification open rate at 0.05",
+        "source": "customer_profile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "churnRisk",
+        "value": "HIGH",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-002",
+          "fact-003"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

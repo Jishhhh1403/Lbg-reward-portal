@@ -1,0 +1,515 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-afc868d7",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Pure GAMIFICATION_MOTIVATED persona strategy leveraging Marcus's 34-day streak, 3rd leaderboard rank, 12 completed challenges, and 15 badges. Features STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, MILESTONE_CARD, and METRIC_TILE group for ultimate engagement.",
+      "components": [
+        {
+          "id": "comp-pts-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-01",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Incredible dedication! You are on a 34-day active streak.",
+            "nextReward": "500 LBG Coins at 40 days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 Coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 Coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 Coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 Coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-01",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "label": "Challenges Done",
+            "value": "12",
+            "unit": "completed",
+            "tone": "brand",
+            "infoText": "Total challenges conquered in your career",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-01",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Community Champion Sprint",
+            "description": "Participate in 3 community discussions and share 2 rewards achievements this week.",
+            "progress": 75,
+            "reward": "1,000 LBG Coins",
+            "daysLeft": 3,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE_DETAILS",
+              "payload": {
+                "challengeId": "community-champion-sprint"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-01",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 9600,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "Alex Rivers",
+                "points": 9120,
+                "avatar": "AR",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena Rostova",
+                "points": 8300,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-01",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Achievement Trophy Room",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "30-Day Streak",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Top 3 Leaderboard",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Challenge Master",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Community Icon",
+                "icon": "crown",
+                "earned": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-01",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 10 Challenges",
+                "achieved": true
+              },
+              {
+                "label": "Earn 15 Badges",
+                "achieved": true
+              },
+              {
+                "label": "Reach Top 3 Leaderboard Spot",
+                "achieved": true
+              },
+              {
+                "label": "Maintain 50-Day Streak",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE_DETAILS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "GAMIFICATION_MOTIVATED_PERSONA",
+        "HIGH_ENGAGEMENT_SCORE",
+        "STREAK_AND_LEADERBOARD_ALIGNMENT"
+      ]
+    },
+    "strategy": "Pure GAMIFICATION_MOTIVATED persona strategy leveraging Marcus's 34-day streak, 3rd leaderboard rank, 12 completed challenges, and 15 badges. Features STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, MILESTONE_CARD, and METRIC_TILE group for ultimate engagement.",
+    "confidence": 0.96
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Pure GAMIFICATION_MOTIVATED persona strategy leveraging Marcus's 34-day streak, 3rd leaderboard rank, 12 completed challenges, and 15 badges. Features STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, MILESTONE_CARD, and METRIC_TILE group for ultimate engagement.",
+    "components": [
+      {
+        "id": "comp-pts-01",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 8750,
+          "tier": "Gold",
+          "name": "Marcus Johnson",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-streak-01",
+        "type": "STREAK_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "streakDays": 34,
+          "message": "Incredible dedication! You are on a 34-day active streak.",
+          "nextReward": "500 LBG Coins at 40 days",
+          "milestones": [
+            {
+              "days": 10,
+              "reward": "100 Coins",
+              "achieved": true
+            },
+            {
+              "days": 20,
+              "reward": "250 Coins",
+              "achieved": true
+            },
+            {
+              "days": 30,
+              "reward": "400 Coins",
+              "achieved": true
+            },
+            {
+              "days": 40,
+              "reward": "500 Coins",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_STREAK_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-01",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "label": "Challenges Done",
+          "value": "12",
+          "unit": "completed",
+          "tone": "brand",
+          "infoText": "Total challenges conquered in your career",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CHALLENGES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-challenge-01",
+        "type": "CHALLENGE_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Community Champion Sprint",
+          "description": "Participate in 3 community discussions and share 2 rewards achievements this week.",
+          "progress": 75,
+          "reward": "1,000 LBG Coins",
+          "daysLeft": 3,
+          "participants": 1420,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CHALLENGE_DETAILS",
+            "payload": {
+              "challengeId": "community-champion-sprint"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-leaderboard-01",
+        "type": "LEADERBOARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "period": "weekly",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Sarah Jenkins",
+              "points": 9600,
+              "avatar": "SJ",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 2,
+              "name": "Alex Rivers",
+              "points": 9120,
+              "avatar": "AR",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 3,
+              "name": "Marcus Johnson",
+              "points": 8750,
+              "avatar": "MJ",
+              "isCurrentUser": true
+            },
+            {
+              "rank": 4,
+              "name": "Elena Rostova",
+              "points": 8300,
+              "avatar": "ER",
+              "isCurrentUser": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_FULL_LEADERBOARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge-01",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Achievement Trophy Room",
+          "totalEarned": 15,
+          "totalAvailable": 25,
+          "badges": [
+            {
+              "name": "30-Day Streak",
+              "icon": "flame",
+              "earned": true
+            },
+            {
+              "name": "Top 3 Leaderboard",
+              "icon": "trophy",
+              "earned": true
+            },
+            {
+              "name": "Challenge Master",
+              "icon": "star",
+              "earned": true
+            },
+            {
+              "name": "Community Icon",
+              "icon": "crown",
+              "earned": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_BADGES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-01",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "milestones": [
+            {
+              "label": "Complete 10 Challenges",
+              "achieved": true
+            },
+            {
+              "label": "Earn 15 Badges",
+              "achieved": true
+            },
+            {
+              "label": "Reach Top 3 Leaderboard Spot",
+              "achieved": true
+            },
+            {
+              "label": "Maintain 50-Day Streak",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONE_DETAILS",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "GAMIFICATION_MOTIVATED_PERSONA",
+      "HIGH_ENGAGEMENT_SCORE",
+      "STREAK_AND_LEADERBOARD_ALIGNMENT"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "fact-02",
+          "fact-03",
+          "fact-04"
+        ]
+      }
+    ],
+    "methodology": "Pattern analysis of user engagement with gamified elements, streaks, leaderboards, and challenges.",
+    "temporaryInterpretation": true
+  }
+}

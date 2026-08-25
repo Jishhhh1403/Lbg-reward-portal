@@ -1,0 +1,90 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review savings growth mechanics and track progress toward First Home Savings Knowledge goal through clear educational insights.",
+  "entryPoint": "Customer opens the rewards and savings overview dashboard.",
+  "completionDefinition": "Customer reviews goal progress (63%) and engages with recommended educational quiz or milestone insight.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now on my savings and knowledge goals?",
+      "entryCondition": "Dashboard load",
+      "requiredInformation": [
+        "Points balance",
+        "Goal progress percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational steps and knowledge milestones help me reach my target?",
+      "entryCondition": "Customer reviews current progress overview",
+      "requiredInformation": [
+        "Learning modules",
+        "Quiz options",
+        "Confidence milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do my accumulated coins translate into tangible future value?",
+      "entryCondition": "Customer explores educational insights and value breakdowns",
+      "requiredInformation": [
+        "Coin balance",
+        "Tangible cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-03"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-learning-history",
+      "purpose": "Detailed breakdown of completed financial literacy modules.",
+      "contentNotes": [
+        "100% completion record across modules",
+        "Historical quiz scores"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

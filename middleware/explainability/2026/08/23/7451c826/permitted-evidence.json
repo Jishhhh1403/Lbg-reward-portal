@@ -1,0 +1,93 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "interested in investment-like rewards",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "values future projections",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer David Park demonstrates a long-term accumulation pattern, prioritizing future security, goal tracking, and investment-like rewards across multiple financial milestones (Retirement, Education, Home Deposit).",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-lbg-coins",
+        "statement": "Customer holds 28,400 lbgCoins in their wallet.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-brands-connected",
+        "statement": "Customer has 3 brands connected.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behavior-accumulation",
+        "statement": "Customer exhibits a long-term accumulation pattern and rarely redeems for small rewards.",
+        "source": "Intelligence layer signals",
+        "confidence": 0.89
+      },
+      {
+        "factId": "fact-behavior-goals",
+        "statement": "Customer has three active goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "Intelligence layer goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-persona-long-term-planner",
+        "attribute": "persona",
+        "value": "LONG_TERM_PLANNER",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "rarely redeems for small rewards",
+          "interested in investment-like rewards"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-motivation-future-security",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "values future projections",
+          "reads educational content"
+        ],
+        "inferenceMethod": "intent-and-content-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

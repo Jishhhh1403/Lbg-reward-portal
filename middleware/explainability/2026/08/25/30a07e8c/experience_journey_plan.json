@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review cash reward earnings, track holiday savings progress, and apply statement credits frictionlessly.",
+  "entryPoint": "Customer opens rewards overview showing 7,300 LBG coins and active holiday savings goal.",
+  "completionDefinition": "Customer views transparent cash balance and executes or schedules a statement credit / goal allocation.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is the exact cash value of my rewards?",
+      "entryCondition": "Customer views balance header",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Guaranteed cash equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my payment utility and goal progress tracking?",
+      "entryCondition": "Customer reviews savings goal and payment allocation settings",
+      "requiredInformation": [
+        "Holiday Spending Money at 53%",
+        "Payment reward rules"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-03"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do I apply statement credits right now?",
+      "entryCondition": "Customer reviews redemption choices and statement credit confirmation",
+      "requiredInformation": [
+        "Statement credit action",
+        "Tangible cash breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": "",
+      "requiredEvidenceRefs": [
+        "fact-01"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear legal terms for statement credit conversion rates",
+      "contentNotes": [
+        "100 LBG coins = \u00a31.00 statement credit"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

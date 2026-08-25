@@ -1,0 +1,630 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 14-component screen centered around 'First Home Savings Knowledge' mastery. Excludes any leaderboards or timed elements. Includes: 1) HEADER_NAV, 2) POINTS_BALANCE, 3) GOAL_PROGRESS_CARD (First Home Savings Knowledge at 63%), 4) ADD_GOAL_CARD, 5) QUIZ_CARD (self-paced financial literacy), 6) MILESTONE_CARD, 7) GOAL_LINKED_REWARD, 8) EDUCATIONAL_MODULE_LIST, 9) SKILL_MASTERY_TRACKER, 10) LEARNING_INSIGHTS_SUMMARY, 11) CONCEPT_REFRESHER_WIDGET, 12) KNOWLEDGE_BADGE_SHOWCASE, 13) PEER_COLLABORATION_NOTE (non-competitive), 14) FOOTER_NAV.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly targets First Home Savings Knowledge with structured progress tracking and mastery modules."
+        },
+        "expectedCustomerUtility": {
+          "score": 10,
+          "explanation": "Provides a comprehensive 14-component rich screen tailored exactly to self-paced learning without pressure."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns perfectly with LEARNING_MASTERY motivation and avoids all competitive/timed triggers."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean, unhurried layout supporting cognitive processing and self-paced review."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on robust behavioral metrics (100% module completion, retaking quizzes)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains professional educational design language."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces insightful mastery trackers and concept refreshers."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported by existing components and API payloads."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A simpler 8-component screen focusing on quiz modules and goal status: HEADER_NAV, POINTS_BALANCE, GOAL_PROGRESS_CARD, QUIZ_CARD, MILESTONE_CARD, GOAL_LINKED_REWARD, RECENT_ACTIVITY, FOOTER_NAV.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers the primary goal but lacks deep learning tracking richness."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fails the rich screen guideline of 12-17 components, offering only 8 components."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Avoids leaderboards, but underutilizes mastery-oriented widgets."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple layout, but misses depth for an engaged power learner."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Adequate, but suboptimal depth."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with base templates."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Too basic; introduces no novel insights."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Very easy to implement."
+        }
+      },
+      "weightedTotal": 7.15,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 11 components (only 8), violating the rich screen requirement for expectedCustomerUtility and customerGoalRelevance."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A competence-focused 13-component composition centered on Sophie Williams's First Home Savings Knowledge goal, self-paced learning modules, and mastery tracking without any timed elements or leaderboards.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You're 63% through mastering your first home savings fundamentals at your own steady pace.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Mastering Deposit Strategy",
+            "missionName": "First Home Foundations",
+            "description": "Uncover how mortgage structures and deposit tiers impact your long-term property journey.",
+            "modulesDone": 3,
+            "modulesTotal": 5,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the primary benefit of a dedicated lifetime ISA bonus when purchasing a first home?",
+            "options": [
+              "A 25% government bonus added to your savings",
+              "Immediate cash back on monthly grocery bills",
+              "Automatic stock market trading access",
+              "Waived utility setup fees"
+            ],
+            "reward": "50 Mastery Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Quiz Reflection",
+            "question": "Understanding Compound Growth",
+            "yourAnswer": "Reinvesting earned interest generates growth on growth",
+            "correctAnswer": "Reinvesting earned interest generates growth on growth",
+            "feedback": "Spot on! By keeping your savings invested over time, returns compound steadily without rushing.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Confidence Tracker",
+            "topic": "Property Deposit Planning",
+            "confidencePercent": 85,
+            "levelLabel": "Building strong competence",
+            "nextMilestone": "Complete mortgage structuring module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Mastery Insight",
+            "insight": "Taking time to review module explanations deeply increases long-term financial retention by 40%.",
+            "source": "LBG Academy Research",
+            "actionLabel": "Explore Next Module",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-milestone",
+          "type": "GOAL_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "milestones": [
+              {
+                "label": "25% - Basics of Saving",
+                "reached": true
+              },
+              {
+                "label": "50% - Understanding Interest & Growth",
+                "reached": true
+              },
+              {
+                "label": "75% - Mortgage Readiness",
+                "reached": false
+              },
+              {
+                "label": "100% - Complete Mastery",
+                "reached": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Accelerators for Your Goal",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Conveyancing Fee Guide",
+                "points": 100,
+                "goalLinked": true
+              },
+              {
+                "name": "First-Time Buyer Masterclass",
+                "points": 250,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-path",
+          "type": "LEARNING_PATH_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "courseName": "Rewards Academy Property Path",
+            "currentLesson": 3,
+            "totalLessons": 6,
+            "lessonPoints": 75,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "label": "LBG Coins",
+            "value": "3,900",
+            "unit": "Coins",
+            "tone": "brand",
+            "infoText": "Your balanced reward pool",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "Partners",
+            "tone": "white",
+            "infoText": "Synced for seamless insights",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "label": "Badges Earned",
+            "value": "9",
+            "unit": "Badges",
+            "tone": "white",
+            "infoText": "Recognising your mastery",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_ALIGNMENT",
+        "MANDATORY_STACK_COMPLIANCE",
+        "STRICT_SUPPRESSION_ADHERENCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "An alternative competence-centered composition for Sophie Williams highlighting financial academy badges, structured goal progression, and self-paced financial reflection.",
+      "components": [
+        {
+          "id": "alt-comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "Steady progress: you are building robust competence toward your deposit goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Property Finance Fundamentals",
+            "missionName": "Deposit Mastery",
+            "description": "Examine savings vehicles and structured milestones at your own ideal pace.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 200,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "Which factor most reliably protects long-term savings against inflation?",
+            "options": [
+              "Diversified growth assets and compound returns",
+              "Keeping all cash in a standard non-interest wallet",
+              "Frequent short-term trading",
+              "Impulse purchasing rewards"
+            ],
+            "reward": "50 Mastery Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Module Reflection",
+            "question": "Evaluating Risk vs. Horizon",
+            "yourAnswer": "Longer timelines allow balanced exposure to growth assets",
+            "correctAnswer": "Longer timelines allow balanced exposure to growth assets",
+            "feedback": "Excellent reasoning. Aligning investment horizon with asset type supports sustainable growth.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Confidence Tracker",
+            "topic": "Savings Strategy & Budgeting",
+            "confidencePercent": 90,
+            "levelLabel": "Advanced Competence",
+            "nextMilestone": "Master final property acquisition module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Self-Paced Insight",
+            "insight": "Learners who revisit complex concepts achieve higher long-term financial resilience.",
+            "source": "LBG Educational Framework",
+            "actionLabel": "Review Concepts",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-badge-card",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Knowledge Badges",
+            "badges": [
+              {
+                "name": "Budget Builder",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Compound Scholar",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Deposit Specialist",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Market Analyst",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "totalEarned": 9,
+            "totalAvailable": 12,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Goal-Supporting Modules",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Tax-Efficient Saving Guide",
+                "points": 120,
+                "goalLinked": true
+              },
+              {
+                "name": "Property Survey Checklist",
+                "points": 90,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-points-academy",
+          "type": "POINTS_ACADEMY_BADGE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "level": "Gold Scholar",
+            "nextLevel": "Master Scholar",
+            "lessonsToNext": 2,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-daily-tip",
+          "type": "DAILY_MONEY_TIP_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "tipTitle": "Understanding Fixed vs Variable Rates",
+            "tipBody": "Taking time to model interest rate scenarios ensures greater confidence when securing a mortgage.",
+            "category": "Property",
+            "readTimeMin": 3,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-metric-tile-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "label": "LBG Coins",
+            "value": "3,900",
+            "unit": "Coins",
+            "tone": "brand",
+            "infoText": "Available rewards balance",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "Partners",
+            "tone": "white",
+            "infoText": "Integrated programs",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "alt-comp-metric-tile-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "label": "Streak Days",
+            "value": "8",
+            "unit": "Days",
+            "tone": "white",
+            "infoText": "Consistent learning habit",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.93,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_ALTERNATIVE",
+        "MANDATORY_STACK_COMPLIANCE",
+        "STRICT_SUPPRESSION_ADHERENCE"
+      ]
+    }
+  ]
+}

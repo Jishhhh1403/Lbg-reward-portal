@@ -1,0 +1,332 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-36467557",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Structured Mastery & Progress Continuity Strategy: Displays Points Balance, Goal Progress Card (First Home Savings at 63%), Learning Mission Card, Quiz Card, Comprehension Feedback Card, Confidence Progress Card, and Educational Insight Card, strictly avoiding all timed challenges, public leaderboards, and pressure mechanics.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are making steady progress toward your First Home Savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Home Deposit Fundamentals",
+            "description": "Understand how structured savings and reward points accelerate your deposit timeline.",
+            "modulesDone": 3,
+            "modulesTotal": 5,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "home-deposit-fundamentals"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-card",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the primary benefit of compounding interest in a dedicated savings pot?",
+            "options": [
+              "It generates earnings on both your initial principal and accumulated interest over time.",
+              "It locks your funds indefinitely with no access.",
+              "It guarantees a fixed prize draw entry every week."
+            ],
+            "reward": "50 Points & Mastery Badge",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {
+                "selectedOption": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Concept Check Feedback",
+            "question": "What is the primary benefit of compounding interest in a dedicated savings pot?",
+            "yourAnswer": "It generates earnings on both your initial principal and accumulated interest over time.",
+            "correctAnswer": "It generates earnings on both your initial principal and accumulated interest over time.",
+            "feedback": "Correct! Compounding accelerates growth by earning returns on previously accumulated returns.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Confidence Meter",
+            "topic": "Savings Mechanics & Compounding",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Explore Mortgage Affordability Modules",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Maximizing Your Home Savings Pot",
+            "insight": "Consistent monthly contributions paired with connected brand rewards can shorten your deposit timeline by up to 4 months.",
+            "source": "LBG Financial Education Team",
+            "actionLabel": "Explore Module",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_INSIGHT",
+              "payload": {
+                "insightId": "home-savings-pot"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "MANDATORY_STACK_COMPLIANCE"
+      ]
+    },
+    "strategy": "Structured Mastery & Progress Continuity Strategy: Displays Points Balance, Goal Progress Card (First Home Savings at 63%), Learning Mission Card, Quiz Card, Comprehension Feedback Card, Confidence Progress Card, and Educational Insight Card, strictly avoiding all timed challenges, public leaderboards, and pressure mechanics.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Structured Mastery & Progress Continuity Strategy: Displays Points Balance, Goal Progress Card (First Home Savings at 63%), Learning Mission Card, Quiz Card, Comprehension Feedback Card, Confidence Progress Card, and Educational Insight Card, strictly avoiding all timed challenges, public leaderboards, and pressure mechanics.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your First Home Savings milestone.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Rewards Academy",
+          "missionName": "Home Deposit Fundamentals",
+          "description": "Understand how structured savings and reward points accelerate your deposit timeline.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_MISSION",
+            "payload": {
+              "missionId": "home-deposit-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz-card",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of compounding interest in a dedicated savings pot?",
+          "options": [
+            "It generates earnings on both your initial principal and accumulated interest over time.",
+            "It locks your funds indefinitely with no access.",
+            "It guarantees a fixed prize draw entry every week."
+          ],
+          "reward": "50 Points & Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "selectedOption": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Check Feedback",
+          "question": "What is the primary benefit of compounding interest in a dedicated savings pot?",
+          "yourAnswer": "It generates earnings on both your initial principal and accumulated interest over time.",
+          "correctAnswer": "It generates earnings on both your initial principal and accumulated interest over time.",
+          "feedback": "Correct! Compounding accelerates growth by earning returns on previously accumulated returns.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Confidence Meter",
+          "topic": "Savings Mechanics & Compounding",
+          "confidencePercent": 85,
+          "levelLabel": "Advanced understanding",
+          "nextMilestone": "Explore Mortgage Affordability Modules",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Maximizing Your Home Savings Pot",
+          "insight": "Consistent monthly contributions paired with connected brand rewards can shorten your deposit timeline by up to 4 months.",
+          "source": "LBG Financial Education Team",
+          "actionLabel": "Explore Module",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_INSIGHT",
+            "payload": {
+              "insightId": "home-savings-pot"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "motivated by mastering topics rather than winning them",
+          "avoids timed challenges and public rankings"
+        ]
+      }
+    ],
+    "methodology": "Behavioral telemetry analysis of module completion rates, session duration, and expressed preference for mastery over competitive mechanics.",
+    "temporaryInterpretation": true
+  }
+}

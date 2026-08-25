@@ -1,0 +1,94 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "prefers exact monetary equivalents over point abstractions",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "abandons redemptions when value is unclear",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_009 (Maya Thompson) is a Gold tier rewards member with 5,600 points who prioritizes exact monetary clarity and tangible cash equivalents before redeeming. They have a history of abandoning redemptions when the conversion value is unclear and respond poorly to urgency or countdown framing.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Repeatedly asks what points are worth in pounds before redeeming",
+        "source": "intelligence_layer_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "Abandons redemptions when value is unclear",
+        "source": "intelligence_layer_signals",
+        "confidence": 0.93
+      },
+      {
+        "factId": "f3",
+        "statement": "Compares partner rates across visits before committing",
+        "source": "intelligence_layer_signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "f4",
+        "statement": "Prefers exact monetary equivalents over point abstractions",
+        "source": "intelligence_layer_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f5",
+        "statement": "Responds poorly to countdown or urgency framing",
+        "source": "intelligence_layer_signals",
+        "confidence": 0.92
+      },
+      {
+        "factId": "f6",
+        "statement": "Current point balance is 5,600 points at Gold tier",
+        "source": "customer_profile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "valueCertaintyRequirement",
+        "value": "HIGH",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "f4"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p2",
+        "attribute": "urgencySensitivity",
+        "value": "AVERSION",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "f5"
+        ],
+        "inferenceMethod": "engagement_response_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}
