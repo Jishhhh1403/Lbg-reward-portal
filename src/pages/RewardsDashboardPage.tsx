@@ -315,7 +315,7 @@ export default function RewardsDashboardPage({
       </div>
 
       {/* Scrollable body */}
-      <div className="no-scrollbar relative -mt-3 flex-1 overflow-y-auto rounded-t-3xl bg-slate-100">
+      <div className="no-scrollbar relative -mt-3 flex-1 overflow-y-auto rounded-t-3xl bg-slate-100" style={{border: '1px solid red'}}>
         <AnimatePresence mode="wait">
           {activeTab === 'home' && (
             <motion.div

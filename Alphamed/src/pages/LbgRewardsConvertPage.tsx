@@ -181,8 +181,8 @@ export default function LbgRewardsConvertPage() {
   if (status === 'loading') {
     return (
       <Box sx={{ pt: '52vh', textAlign: 'center', px: 3 }}>
-        <CircularProgress size={34} />
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5 }}>
+        <CircularProgress size={36} thickness={4} />
+        <Typography variant="body2" fontWeight={600} color="text.secondary" sx={{ mt: 2 }}>
           Preparing your rewards…
         </Typography>
       </Box>
@@ -191,12 +191,21 @@ export default function LbgRewardsConvertPage() {
 
   if (status === 'error') {
     return (
-      <Box sx={{ p: 3, pt: 5 }}>
+      <Box sx={{ px: 2.5, pt: 5 }}>
         <RewardsHeader title="Rewards" />
-        <Alert severity="error" variant="outlined" sx={{ mt: 4, borderRadius: 3 }}>
+        <Alert
+          severity="error"
+          variant="outlined"
+          sx={{ mt: 4, borderRadius: 3, fontSize: 13 }}
+        >
           {errorMessage}
         </Alert>
-        <Button fullWidth variant="text" sx={{ mt: 2 }} onClick={() => navigate(-1)}>
+        <Button
+          fullWidth
+          variant="outlined"
+          sx={{ mt: 2.5, py: 1.25, fontWeight: 700, borderRadius: 3, borderColor: '#dce8f6' }}
+          onClick={() => navigate(-1)}
+        >
           Go back
         </Button>
       </Box>
@@ -204,10 +213,10 @@ export default function LbgRewardsConvertPage() {
   }
 
   return (
-    <Box sx={{ minHeight: '100%', pb: 6 }}>
+    <Box sx={{ minHeight: '100%', pb: 8 }}>
       <RewardsHeader title="Rewards" />
 
-      <Box sx={{ px: 2.25, pt: 1.5 }}>
+      <Box sx={{ px: 2.5, pt: 1.5 }}>
         <Chip
           className="am-rise"
           icon={<VerifiedUserOutlinedIcon />}
@@ -230,82 +239,136 @@ export default function LbgRewardsConvertPage() {
       <Box
         className="hero-banner am-rise am-rise-1"
         sx={{
-          mx: 2.25,
+          mx: 2.5,
           mt: 1.75,
           borderRadius: 5,
-          p: 2.5,
+          p: 3,
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
         <div
           className="hero-blob"
           style={{
-            width: 110,
-            height: 110,
-            right: -30,
-            top: -40,
+            width: 130,
+            height: 130,
+            right: -35,
+            top: -45,
             background: 'rgba(255,255,255,.14)',
           }}
         />
-        <Typography fontSize={11} fontWeight={700} letterSpacing=".08em" color="rgba(255,255,255,.8)">
+        <div
+          className="hero-blob"
+          style={{
+            width: 60,
+            height: 60,
+            right: 60,
+            bottom: -24,
+            background: 'rgba(255,255,255,.1)',
+          }}
+        />
+        <Typography
+          fontSize={11}
+          fontWeight={700}
+          letterSpacing=".08em"
+          color="rgba(255,255,255,.75)"
+        >
           ALPHA MEDICOL POINTS
         </Typography>
-        <Typography variant="h4" fontWeight={800} color="#fff" lineHeight={1.15}>
-          {page.maxPoints.toLocaleString()}{' '}
-          <span style={{ fontSize: 14, fontWeight: 600 }}>pts</span>
+        <Typography
+          variant="h3"
+          fontWeight={800}
+          color="#fff"
+          lineHeight={1.15}
+          sx={{ mt: 0.5 }}
+        >
+          {page.maxPoints.toLocaleString()}
         </Typography>
         <Typography
-          fontSize={11.5}
+          fontSize={12}
+          fontWeight={600}
           color="rgba(255,255,255,.85)"
-          sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mt: 0.5 }}
+          sx={{ mt: 0.25 }}
         >
-          <PaymentsOutlinedIcon sx={{ fontSize: 13 }} />1 point = {ALPHAMEDICOL_TO_LBG_RATE} LBG Coins
+          points available
         </Typography>
+        <Box
+          sx={{
+            mt: 2,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0.75,
+            bgcolor: 'rgba(255,255,255,.12)',
+            borderRadius: 2.5,
+            px: 1.75,
+            py: 1,
+            width: 'fit-content',
+          }}
+        >
+          <PaymentsOutlinedIcon sx={{ fontSize: 16, color: 'rgba(255,255,255,.9)' }} />
+          <Typography fontSize={12} fontWeight={700} color="rgba(255,255,255,.95)">
+            1 point = {ALPHAMEDICOL_TO_LBG_RATE} LBG Coins
+          </Typography>
+        </Box>
       </Box>
 
       {/* Convert card */}
       <Box
         className="am-rise am-rise-2"
         sx={{
-          mx: 2.25,
-          mt: 2.25,
+          mx: 2.5,
+          mt: 2.5,
           bgcolor: '#fff',
           borderRadius: 5,
-          p: 2.75,
-          boxShadow: '0 18px 45px -24px rgba(13,40,80,.4)',
+          p: 3,
+          boxShadow: '0 12px 40px -16px rgba(13,40,80,.25)',
         }}
       >
         <Typography variant="h6" fontWeight={800}>
           Convert Points
         </Typography>
-        <Typography fontSize={12.5} color="text.secondary" mt={0.5}>
-          Conversion rate: 1 AlphaMedicol Point = {ALPHAMEDICOL_TO_LBG_RATE} LBG Coins
+        <Typography fontSize={12.5} color="text.secondary" sx={{ mt: 0.5 }}>
+          Choose how many AlphaMedicol points to convert to LBG Coins.
         </Typography>
 
+        {/* Points display */}
         <Box
           sx={{
-            mt: 2.25,
-            p: 1.75,
-            borderRadius: 3.5,
+            mt: 2.5,
+            p: 2,
+            borderRadius: 4,
             bgcolor: '#f2f7fd',
             border: '1px solid #dce8f6',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
           }}
         >
-          <Box>
-            <Typography fontSize={10.5} fontWeight={700} letterSpacing=".06em" color="text.secondary">
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+            <Typography
+              fontSize={10.5}
+              fontWeight={700}
+              letterSpacing=".06em"
+              color="text.secondary"
+            >
               POINTS TO CONVERT
             </Typography>
-            <Typography variant="h5" fontWeight={800}>
-              {points.toLocaleString()} pts
+            <Typography fontSize={11} fontWeight={600} color="text.secondary">
+              Max {page.maxPoints.toLocaleString()} pts
             </Typography>
           </Box>
-          <Typography fontSize={11} color="text.secondary">
-            Max {page.maxPoints} pts
+          <Typography variant="h4" fontWeight={800} sx={{ mt: 0.75 }}>
+            {points.toLocaleString()}
+            <Typography
+              component="span"
+              fontSize={14}
+              fontWeight={600}
+              color="text.secondary"
+              sx={{ ml: 0.5 }}
+            >
+              pts
+            </Typography>
           </Typography>
         </Box>
 
+        {/* Slider */}
         <Slider
           value={points}
           min={0}
@@ -313,29 +376,55 @@ export default function LbgRewardsConvertPage() {
           step={1}
           marks={sliderMarks}
           valueLabelDisplay="on"
-          valueLabelFormat={(value) => `${value} pts`}
+          valueLabelFormat={(value) => `${value.toLocaleString()} pts`}
           onChange={(_, value) => setPoints(value as number)}
           disabled={transferring}
-          sx={{ mt: 2.5, mx: 'auto', width: 'calc(100% - 14px)' }}
+          sx={{
+            mt: 3,
+            mx: 'auto',
+            width: 'calc(100% - 14px)',
+            color: 'primary.main',
+            '& .MuiSlider-thumb': {
+              width: 20,
+              height: 20,
+              boxShadow: '0 3px 10px -2px rgba(21,101,192,.5)',
+            },
+            '& .MuiSlider-track': { border: 'none' },
+          }}
         />
 
-        <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 2 }}>
+        {/* Quick select buttons */}
+        <Stack direction="row" spacing={1} sx={{ mt: 1, mb: 2.5 }}>
           {[25, 50, 100].map((percent) => (
             <Button
               key={percent}
               size="small"
               variant="outlined"
+              fullWidth
               disabled={transferring}
               onClick={() =>
                 setPoints(Math.round((page.maxPoints * percent) / 100))
               }
-              sx={{ minWidth: 56, py: 0.15, fontSize: 12, borderColor: '#dce8f6', color: 'primary.dark' }}
+              sx={{
+                py: 0.75,
+                fontSize: 12.5,
+                fontWeight: 700,
+                borderRadius: 2.5,
+                borderColor: '#dce8f6',
+                color: 'primary.dark',
+                '&:hover': {
+                  borderColor: 'primary.main',
+                  bgcolor: 'primary.main',
+                  color: '#fff',
+                },
+              }}
             >
               {percent === 100 ? 'Max' : `${percent}%`}
             </Button>
           ))}
         </Stack>
 
+        {/* Conversion summary */}
         <Box
           sx={{
             display: 'flex',
@@ -343,13 +432,18 @@ export default function LbgRewardsConvertPage() {
             justifyContent: 'center',
             gap: 1,
             p: 1.5,
-            borderRadius: 3,
+            borderRadius: 3.5,
             bgcolor: '#e8f5e9',
+            border: '1px solid #c8e6c9',
           }}
         >
-          <CurrencyExchangeIcon fontSize="small" sx={{ color: '#1b5e20' }} />
-          <Typography fontSize={14.5} fontWeight={800} color="#1b5e20">
-            You will receive {lbgCoins.toLocaleString()} LBG Coins
+          <CurrencyExchangeIcon fontSize="small" sx={{ color: '#2e7d32' }} />
+          <Typography fontSize={14} fontWeight={800} color="#1b5e20">
+            You'll receive{' '}
+            <span style={{ textDecoration: 'underline' }}>
+              {lbgCoins.toLocaleString()}
+            </span>{' '}
+            LBG Coins
           </Typography>
         </Box>
 
@@ -359,19 +453,28 @@ export default function LbgRewardsConvertPage() {
             variant="body2"
             fontWeight={600}
             color="error"
-            sx={{ mt: 1.75, textAlign: 'center' }}
+            sx={{ mt: 2, textAlign: 'center' }}
           >
             {errorMessage}
           </Typography>
         ) : null}
 
-        <Stack direction="row" spacing={1.5} sx={{ mt: 2.25 }}>
+        {/* Action buttons */}
+        <Stack direction="row" spacing={1.5} sx={{ mt: 2.5 }}>
           <Button
             fullWidth
             variant="outlined"
             disabled={transferring}
             onClick={() => navigate('/dashboard')}
-            sx={{ borderColor: '#dce8f6', color: 'text.primary' }}
+            sx={{
+              py: 1.25,
+              fontSize: 14,
+              fontWeight: 700,
+              borderRadius: 3,
+              borderColor: '#dce8f6',
+              color: 'text.primary',
+              '&:hover': { borderColor: '#b0c4de', bgcolor: '#f8fafc' },
+            }}
           >
             Cancel
           </Button>
@@ -382,11 +485,17 @@ export default function LbgRewardsConvertPage() {
             onClick={() => void handleConvert()}
             startIcon={
               transferring ? (
-                <CircularProgress size={16} sx={{ color: 'inherit' }} />
+                <CircularProgress size={18} sx={{ color: 'inherit' }} />
               ) : undefined
             }
+            sx={{
+              py: 1.25,
+              fontSize: 14,
+              fontWeight: 700,
+              borderRadius: 3,
+            }}
           >
-            {transferring ? 'Converting…' : 'Convert'}
+            {transferring ? 'Converting…' : 'Convert Now'}
           </Button>
         </Stack>
       </Box>

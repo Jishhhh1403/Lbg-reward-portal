@@ -190,16 +190,18 @@ export default function DashboardPage() {
           zIndex: 20,
           bgcolor: 'rgba(244,247,251,.94)',
           backdropFilter: 'blur(8px)',
-          px: 1.5,
-          py: 1.25,
+          px: 2.5,
+          py: 1.5,
           display: 'flex',
           alignItems: 'center',
+          paddingTop: '48px',
         }}
       >
         <IconButton
           aria-label="Open menu"
           onClick={() => setDrawerOpen(true)}
           sx={{
+            mr: 2,
             bgcolor: '#fff',
             boxShadow: '0 4px 14px -6px rgba(13,40,80,.35)',
             '&:hover': { bgcolor: '#fff' },
@@ -214,7 +216,7 @@ export default function DashboardPage() {
             alignItems: 'center',
             justifyContent: 'center',
             gap: 1,
-            mr: 5,
+            mr: 6,
           }}
         >
           <BrandMark size={26} />
@@ -384,7 +386,7 @@ export default function DashboardPage() {
           },
         }}
       >
-        <Box sx={{ p: 2.5, pb: 1.5, display: 'flex', alignItems: 'center', gap: 1.25 }}>
+        <Box sx={{ p: 2.5, pb: 1.5, display: 'flex', alignItems: 'center', gap: 1.25 , marginTop: '28px'}}>
           <BrandMark />
           <Box>
             <Typography fontWeight={800}>AlphaMedicol</Typography>
@@ -462,6 +464,8 @@ export default function DashboardPage() {
             sm: `repeat(5, minmax(0, 120px))`,
           },
           justifyContent: 'center',
+          
+          marginBottom: '8px'
         }}
       >
         {NAV_ITEMS.map((item) => (
@@ -500,15 +504,25 @@ function AppointmentCard({ appointment }: { appointment: AppointmentItem }) {
       sx={{
         bgcolor: '#fff',
         borderRadius: 4,
-        p: 1.75,
+        px: 2.5,
+        py: 1.75,
         display: 'flex',
-        gap: 1.5,
+        gap: 1.75,
         alignItems: 'center',
         boxShadow: '0 8px 20px -16px rgba(13,40,80,.45)',
       }}
     >
       <Avatar
-        sx={{ bgcolor: 'primary.light', color: 'primary.dark', fontWeight: 700, fontSize: 14 }}
+        sx={{
+          width: 42,
+          height: 42,
+          flexShrink: 0,
+          ml: 0.25,
+          bgcolor: 'primary.light',
+          color: 'primary.dark',
+          fontWeight: 700,
+          fontSize: 14,
+        }}
       >
         {initials}
       </Avatar>
@@ -529,6 +543,8 @@ function AppointmentCard({ appointment }: { appointment: AppointmentItem }) {
         label={appointment.status}
         sx={{
           height: 24,
+          flexShrink: 0,
+          ml: 0.5,
           fontSize: 10.5,
           fontWeight: 700,
           bgcolor: appointment.status === 'Confirmed' ? '#e8f5e9' : '#f1f5f9',

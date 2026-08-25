@@ -17,17 +17,19 @@ export default function RewardsHeader({ title }: { title: string }) {
         zIndex: 20,
         bgcolor: 'rgba(244,247,251,.94)',
         backdropFilter: 'blur(8px)',
-        px: 1,
-        py: 1,
+        px: 2.5,
+        py: 1.5,
         display: 'flex',
         alignItems: 'center',
         gap: 1,
+        paddingTop: '50px',
       }}
     >
       <IconButton
         aria-label="Back"
         onClick={() => navigate('/dashboard')}
         sx={{
+          mr: 2,
           bgcolor: '#fff',
           boxShadow: '0 4px 14px -6px rgba(13,40,80,.3)',
           '&:hover': { bgcolor: '#fff' },
