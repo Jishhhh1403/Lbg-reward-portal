@@ -111,6 +111,10 @@ export default function AuthPage(props: AuthPageProps) {
                   </button>
                 </form>
 
+                {props.loginError && (
+                  <p className="text-sm text-red-400 text-center">{props.loginError}</p>
+                )}
+
                 <div className="pt-2 text-center text-sm text-slate-300" style={{fontSize: '1rem'}}>I've forgotten my logon details</div>
 
                 <div className="h-6 sm:h-8" />

@@ -11,6 +11,7 @@ import {
   fetchCustomerDashboardById,
   fetchEarnedRewardMapByBrand,
   loginWithPassword,
+  setAuthToken,
   signupCustomer,
 } from './services/rewardsApi'
 
@@ -40,7 +41,7 @@ export default function App() {
   /* ---------------- auth handlers ---------------- */
 
   const handleMobileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMobile(event.target.value.replace(/\D/g, '').slice(0, 10))
+    setMobile(event.target.value.replace(/\D/g, '').slice(0, 11))
     setLoginError('')
   }
 
@@ -124,7 +125,7 @@ export default function App() {
     setLoginError('')
     if (field === 'name') setSignupName(value)
     else if (field === 'email') setSignupEmail(value)
-    else if (field === 'phone') setSignupPhone(value.replace(/\D/g, '').slice(0, 10))
+    else if (field === 'phone') setSignupPhone(value.replace(/\D/g, '').slice(0, 11))
     else setPassword(value)
   }
 
@@ -208,6 +209,7 @@ export default function App() {
   }, [step])
 
   const handleSignOut = useCallback(() => {
+    setAuthToken(null)
     setCustomerId(null)
     setUserName('')
     setCustomer(null)
