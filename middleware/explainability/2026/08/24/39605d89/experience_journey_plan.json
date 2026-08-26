@@ -1,0 +1,95 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Deliver transparent savings progress and self-paced financial literacy insights aligned with competence motivation.",
+  "entryPoint": "Dashboard overview of first home savings and educational milestones",
+  "completionDefinition": "Customer reviews first home savings goal progress, checks earned milestones, and engages with a self-paced quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How close am I to my First Home Savings goal and what is my current balance?",
+      "entryCondition": "App launch / overview screen load",
+      "requiredInformation": [
+        "points balance",
+        "tier",
+        "name",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-03",
+        "fact-04"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What structured learning steps and milestones support my housing fund strategy?",
+      "entryCondition": "Goal progress viewed",
+      "requiredInformation": [
+        "learning mission status",
+        "milestones",
+        "educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I verify my understanding and continue my mastery at my own pace?",
+      "entryCondition": "Milestones and insights reviewed",
+      "requiredInformation": [
+        "quiz prompt",
+        "comprehension feedback",
+        "confidence score"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational tips and tangible value breakdown for savings",
+      "contentNotes": [
+        "TANGIBLE_VALUE_CARD showing cash equivalent",
+        "HOW_POINTS_WORK_CARD explaining point accrual"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig_001",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig_002",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig_003",
+        "classification": "OBSERVED",
+        "value": "high goal completion behavior",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sarah Chen is a Platinum tier user with 6,820 LBG coins and 3 connected brands. She exhibits strong goal-oriented savings behavior, evidenced by consistent monthly accumulation, regular progress checking, and high goal completion rates across structured savings goals (Japan Vacation, New Phone, Emergency Fund).",
+    "observedFacts": [
+      {
+        "factId": "fact_lbg_coins",
+        "statement": "Customer holds 6,820 LBG coins.",
+        "source": "Session Context / Wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_tier",
+        "statement": "Customer is in the Platinum tier.",
+        "source": "Intelligence Layer Customer Profile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_goals_count",
+        "statement": "Customer has 3 active savings goals: Japan Vacation, New Phone, Emergency Fund.",
+        "source": "Intelligence Layer Goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_behavior_signals",
+        "statement": "Customer demonstrates frequent goal-linked redemptions, consistent monthly accumulation, and high goal completion behavior.",
+        "source": "Intelligence Layer Signals",
+        "confidence": 0.91
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop_motivation",
+        "attribute": "motivation",
+        "value": "GOAL_ACHIEVEMENT",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "consistent monthly accumulation",
+          "high goal completion behavior",
+          "saves points for larger rewards"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis and goal progress tracking",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop_persona",
+        "attribute": "persona",
+        "value": "GOAL_ORIENTED_SAVER",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "checks progress regularly",
+          "saves points for larger rewards"
+        ],
+        "inferenceMethod": "Persona classification via intelligence layer",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) is highly engaged in financial literacy, prioritizing mastery and competence over timed or competitive rewards. Displays strong curiosity, progress orientation, and consistent completion of educational modules with zero engagement in timed challenges or leaderboards.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.99
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.99
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.99
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3900 LBG coins and 0 loyalty points",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "High competence motivation score (0.93)",
+          "Strong preference for educational content and curiosity response (0.94)",
+          "Active engagement in financial literacy modules"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "Spends longest session time on educational content",
+          "Preferred reward type EDUCATIONAL"
+        ],
+        "inferenceMethod": "behavioral_affinity_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

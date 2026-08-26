@@ -1,0 +1,50 @@
+{
+  "postCompileCoherence": {
+    "passed": false,
+    "errors": [
+      "compiled order diverges from approved narrative sequence (first mismatch at position 2: approved=['comp-add-goal'], compiled=['comp-learning-mission'])"
+    ],
+    "decision": "HOLD",
+    "reasonCode": "R.COHERENCE.HOLD"
+  },
+  "continuityValidation": {
+    "passed": true,
+    "repeatedCelebrations": [],
+    "staleActions": [],
+    "dismissedRepeats": [],
+    "decision": "UNAVAILABLE",
+    "reasonCode": "R.CONTINUITY.UNAVAILABLE"
+  },
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 93,
+    "miniJourneyCompleteness": 94,
+    "transitionStrength": 91,
+    "actionOutcomeContinuity": 94,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS",
+    "reasonCode": null,
+    "structuralErrors": [],
+    "resolvedDecision": "PASS"
+  },
+  "deferredComponents": [
+    {
+      "componentRef": "leaderboard",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed due to hard suppression rules and mastery preference.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "countdown",
+      "componentType": "COUNTDOWN_CARD",
+      "reason": "Suppressed due to hard suppression rules prohibiting timed pressure.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    }
+  ]
+}

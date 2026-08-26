@@ -1,0 +1,87 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-mastery-progress",
+  "journeyObjective": "Review progress metrics and complete a targeted quiz to advance understanding toward the First Home Savings target.",
+  "entryPoint": "Dashboard overview focusing on active First Home Savings goal and points balance.",
+  "completionDefinition": "Customer views goal progress, engages with educational insights, and completes a knowledge quiz at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my First Home Savings goal and points balance?",
+      "entryCondition": "Customer session start on mobile rewards overview.",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings goal progress (63%)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my learning milestones connect to my long-term financial growth?",
+      "entryCondition": "Customer has reviewed current goal progress.",
+      "requiredInformation": [
+        "learning module progress",
+        "financial literacy insights"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "sig-learning-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Can I test my understanding with a self-paced quiz without competitive pressure?",
+      "entryCondition": "Customer has explored educational insights and milestone status.",
+      "requiredInformation": [
+        "quiz question",
+        "unlimited retry options"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "SUBMIT_QUIZ",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "sig-quiz-preference"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-milestones",
+      "purpose": "Provide supplementary milestone tracking without pressure.",
+      "contentNotes": [
+        "Milestone checklist for financial literacy progression."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

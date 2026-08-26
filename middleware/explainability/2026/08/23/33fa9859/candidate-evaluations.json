@@ -1,0 +1,500 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component layout centered on Alex Rivera's 'INSTANT_GRATIFICATION' persona: POINTS_BALANCE, INSTANT_REWARD_POPUP, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD, FLASH_OFFER_BANNER, ONE_CLICK_REDEEM, RECENT_ACTIVITY_FEED. Focuses entirely on fast point-to-value turnaround without artificial urgency or dark patterns.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly targets immediate redemption habits with rich instant gratification pathways."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "7 robust components provide high utility and frictionless redemption for an instant-value persona."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with verified IMMEDIATE_VALUE motivation and 89% immediate redemption rate."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean, high-contrast mobile components with clear touch targets and standard font scaling."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong behavioral signals (short earn-to-redeem time, flash offer responsiveness)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully adheres to design guidelines and preserves all mandatory bank branding."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces seamless one-click redemption loops tailored to historical preferences."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "All 7 components are approved, standard elements within the mobile channel framework."
+        }
+      },
+      "weightedTotal": 9.1,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Minimal 4-component layout: POINTS_BALANCE, INSTANT_REWARD_POPUP, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD. Lacks rich contextual expansion and fails the UI rule requiring 6-9 components for deep customer engagement.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Meets basic requirements but misses richer instant-redemption opportunities."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Sub-5 component count results in lower overall utility compared to rich screen layouts."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Aligns with basic instant redemption but underutilizes behavioral insights."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple layout, but sparse information density."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Uses standard evidence but deploys it minimally."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Complies with design system rules."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "No novel features or enhanced quick-earn loops."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Highly feasible due to simplicity."
+        }
+      },
+      "weightedTotal": 6.55,
+      "hardGatesPass": true,
+      "objections": [
+        "Candidate proposes fewer than 5 components, reducing expected customer utility and customer goal relevance under QUEST-UI standards."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Instant Gratification pure-play composition tailored to Alex Rivera, emphasizing 1-tap reward redemption, immediate cash equivalence, and flash offers using real balance data (4,250 coins).",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Fresh Bonus Credited!",
+            "subtitle": "Your recent partner checkout earned you instant rewards.",
+            "points": 250,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "points": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Flash Weekend Coffee & Pastry Pass",
+            "subtitle": "Exclusive Gold Tier flash discount available right now.",
+            "originalPoints": 600,
+            "discountedPoints": 350,
+            "timer": "02:14:55",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_FLASH_OFFER",
+              "payload": {
+                "offerId": "flash-coffee-01",
+                "cost": 350
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Instant One-Tap Rewards",
+            "description": "Redeem instantly using your available 4,250 LBG coins.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Bundle",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Dining Voucher \u00a310",
+                "points": 800,
+                "icon": "utensils"
+              },
+              {
+                "name": "Weekend Cinema Pass",
+                "points": 1000,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Wallet's Real-World Worth",
+            "cashValue": "\u00a342.50",
+            "pointsEquivalent": 4250,
+            "breakdown": [
+              {
+                "label": "Available Coin Value",
+                "value": "\u00a342.50"
+              },
+              {
+                "label": "Gold Tier Bonus Multiplier",
+                "value": "1.5x active"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Effortless Micro-Rewards",
+            "subtitle": "Tap to claim minor treats instantly.",
+            "rewards": [
+              {
+                "name": "Digital Magazine Pass",
+                "points": 150
+              },
+              {
+                "name": "Express Car Wash Voucher",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Curated For Your Instant Taste",
+            "rewards": [
+              {
+                "name": "Gourmet Meal Delivery Voucher",
+                "points": 1200,
+                "category": "Dining",
+                "limited": true
+              },
+              {
+                "name": "Streaming Service 1-Month Pass",
+                "points": 900,
+                "category": "Entertainment",
+                "limited": false
+              },
+              {
+                "name": "Airport Lounge Access",
+                "points": 2500,
+                "category": "Travel",
+                "limited": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_REWARD_CATALOGUE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "PERSONA_MATCH_INSTANT_GRATIFICATION",
+        "HIGH_IMMEDIATE_REDEMPTION_RATE",
+        "BALANCE_ALIGNED_REWARDS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Blended Instant Gratification and Metric Exploration layout for Alex Rivera, pairing immediate redemption items with wallet insights and brand discovery.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_BALANCE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Instant Bonus Available!",
+            "subtitle": "You earned quick-turnaround coins from your last session.",
+            "points": 150,
+            "expiresIn": "90 minutes",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "points": 150
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Quick Redemptions Under 500 Coins",
+            "description": "Fast tap-to-claim rewards ready for immediate use.",
+            "rewards": [
+              {
+                "name": "Morning Coffee",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Snack Box",
+                "points": 250,
+                "icon": "utensils"
+              },
+              {
+                "name": "Rental Movie",
+                "points": 400,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "label": "Total Coins",
+            "value": "4,250",
+            "unit": "LBG",
+            "tone": "brand",
+            "infoText": "Available to spend instantly",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_COIN_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "label": "Brands Connected",
+            "value": "3",
+            "unit": "active",
+            "tone": "white",
+            "infoText": "Earning bonus coins daily",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "MANAGE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Explore Instant Partner Categories",
+            "actionLabel": "Browse All",
+            "categories": [
+              {
+                "label": "Coffee & Cafes",
+                "count": 12,
+                "icon": "coffee"
+              },
+              {
+                "label": "Dining & Takeaway",
+                "count": 24,
+                "icon": "utensils"
+              },
+              {
+                "label": "Entertainment & Film",
+                "count": 8,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronized",
+            "lastSyncedAt": "2026-08-23 07:55 AM",
+            "message": "All instant reward balances and partner feeds are up to date.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "BLENDED_INSTANT_AND_METRICS",
+        "HIGH_ENGAGEMENT_DISCOVERY"
+      ]
+    }
+  ]
+}

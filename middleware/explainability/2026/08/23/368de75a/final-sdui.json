@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "368de75a",
+  "createdAt": "2023-10-27T10:00:00Z",
+  "expiresAt": "2023-10-27T12:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-reward",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Fresh Earn Bonus!",
+        "subtitle": "You've earned bonus points from your recent brand shopping session.",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "points": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Flash Weekend Special",
+        "subtitle": "Limited-time discount on premium coffee bundles",
+        "originalPoints": 400,
+        "discountedPoints": 250,
+        "timer": "02:45:10",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH_REWARD",
+          "payload": {
+            "rewardId": "flash-coffee-bundle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant 1-Tap Rewards",
+        "description": "Redeem instantly with your 4,250 point balance",
+        "rewards": [
+          {
+            "name": "Artisan Coffee",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Gourmet Lunch Deal",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Ticket",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEMS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Wallet's Real Cash Value",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available Reward Power",
+            "value": "\u00a342.50"
+          },
+          {
+            "label": "Connected Brands Value",
+            "value": "3 Active"
+          },
+          {
+            "label": "Average Redemption Speed",
+            "value": "2.3 hours"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CASH_BREAKDOWN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Curated For Your Instant Taste",
+        "rewards": [
+          {
+            "name": "Express Delivery Pass",
+            "points": 350,
+            "category": "Shopping",
+            "limited": true
+          },
+          {
+            "name": "Audio Streaming 1-Month",
+            "points": 800,
+            "category": "Entertainment",
+            "limited": false
+          },
+          {
+            "name": "Ride-Share Credit \u00a35",
+            "points": 500,
+            "category": "Travel",
+            "limited": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "BROWSE_REWARD_CATALOGUE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Effortless Quick Wins",
+        "subtitle": "Low-friction redemptions ready right now",
+        "rewards": [
+          {
+            "name": "Snack Voucher",
+            "points": 150
+          },
+          {
+            "name": "Digital Magazine",
+            "points": 200
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "reward": "Snack Voucher"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-brand-explorer",
+      "type": "BRAND_EXPLORER_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Explore Your 3 Connected Brands",
+        "actionLabel": "Manage Brands",
+        "categories": [
+          {
+            "label": "Coffee & Dining",
+            "count": 12,
+            "icon": "coffee"
+          },
+          {
+            "label": "Shopping & Retail",
+            "count": 24,
+            "icon": "shopping-bag"
+          },
+          {
+            "label": "Entertainment",
+            "count": 8,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_BRANDS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

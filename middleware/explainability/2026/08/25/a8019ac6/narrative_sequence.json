@@ -1,0 +1,136 @@
+{
+  "primaryActionComponentRef": "comp-reward-choice",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-choice",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [
+        "comp-tangible-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-comparison",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-reward-choice"
+      ],
+      "resolves": [
+        "comp-reward-choice"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-why-this-ui",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-partner-comparison"
+      ],
+      "resolves": [
+        "comp-partner-comparison"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-why-this-ui"
+      ],
+      "resolves": [
+        "comp-why-this-ui"
+      ],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Translate coin balance directly into exact GBP cash equivalent.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-reward-choice",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide clear redemption choices based on verified monetary worth.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reward-choice",
+      "toComponentRef": "comp-partner-comparison",
+      "relationship": "sequential",
+      "bridgeIntent": "Show side-by-side partner conversion rates to support informed decisions.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-partner-comparison",
+      "toComponentRef": "comp-why-this-ui",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain the transparency model behind our exact valuation disclosures.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-why-this-ui",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Summarize top-performing partner yields for complete decision clarity.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "comp-countdown",
+      "componentType": "COUNTDOWN_CARD",
+      "reason": "Customer responds poorly to urgency framing; countdown timers are strictly prohibited.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "comp-leaderboard",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed due to LOW_GAMIFICATION_RESPONSE policy and VALUE_CERTAINTY_SEEKER profile.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,493 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich multi-goal re-engagement screen tailored for a planner-at-risk-mix persona. Features 7 distinct components adhering to the multi-goal rule: POINTS_BALANCE, EXPIRING_POINTS_ALERT (calm, informative 9-day notice), LONG_TERM_GOAL_CARD (Retirement Fund), SECOND_GOAL_CARD (Children Education Fund), THIRD_GOAL_CARD (Dream Home Deposit), ADD_GOAL_CARD, PROJECTED_VALUE_CARD, and EDUCATIONAL_INSIGHT_CARD. Focuses strictly on projected-value and educational content with zero manipulative urgency.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses all three active long-term goals plus expiring points in a calm, structured manner."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides high utility for a planner persona by showing long-term projections and educational insights rather than pushy transactional nudges."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with FUTURE_SECURITY motivation and long-term accumulation preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Structured component layout with clear visual hierarchy, avoiding cognitive overload or dark patterns."
+        },
+        "evidenceConfidence": {
+          "score": 10,
+          "explanation": "Built directly on verified intelligence layer outputs and strict behavioral history."
+        },
+        "brandAndDesignConsistency": {
+          "score": 10,
+          "explanation": "Follows all UI Constitution guidelines and maintains brand tone without altering protected visual assets."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Integrates projected future value visualization tailored to stalled savings habits."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully supported by available schema and component libraries within standard latency budgets."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined single-goal focus screen featuring 5 components: POINTS_BALANCE, EXPIRING_POINTS_ALERT, LONG_TERM_GOAL_CARD (Retirement Fund only), PROJECTED_VALUE_CARD, and EDUCATIONAL_INSIGHT_CARD. Omits secondary goals to simplify initial rendering.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to display all active goals for a multi-goal customer; violates multi-goal component rule."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Good educational content, but missing education and home deposit goals reduces relevance."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligned with retirement accumulation but ignores broader long-term portfolio."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean and readable, but lacks comprehensive portfolio view."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Uses verified signals but ignores available multi-goal data."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains design standards."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard single-goal layout."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Highly feasible."
+        }
+      },
+      "weightedTotal": 7.3,
+      "hardGatesPass": false,
+      "objections": [
+        "Multi-goal customer rule violation: Customer holds three active long-term goals but candidate-2 only displays one goal card without an ADD_GOAL_CARD."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich multi-goal re-engagement screen tailored for a planner-at-risk-mix persona. Features 7 distinct components adhering to the multi-goal rule: POINTS_BALANCE, EXPIRING_POINTS_ALERT (calm, informative 9-day notice), three LONG_TERM_GOAL_CARDS (Retirement Fund, Children Education Fund, Dream Home Deposit), ADD_GOAL_CARD, FUTURE_VALUE_CARD, and EDUCATIONAL_INSIGHT_CARD. Focuses strictly on projected-value and educational content with zero manipulative urgency.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Protect Your Accumulated Value",
+            "expiringPoints": 2400,
+            "daysLeft": 9,
+            "message": "2,400 of your points are scheduled to expire in 9 days. Allocate them toward your long-term goals to secure your financial future.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ALLOCATE_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Long-Term Portfolio Projection",
+            "currentValue": 24500,
+            "projectedValue": 68200,
+            "timeframe": "5 Years",
+            "growthRate": "7.5% APY Equivalent",
+            "message": "Continuing your steady accumulation pattern ensures robust growth across your entire portfolio.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-lt-goal-1",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2038",
+            "message": "Your foundational pillar for lifelong independence.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-lt-goal-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2032",
+            "message": "Steady compounding toward higher education milestones.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-lt-goal-3",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2035",
+            "message": "Long-horizon foundation for your family's permanent residence.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Establish a new long-horizon financial objective",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "The Power of Compound Accumulation",
+            "insight": "Consistent, long-horizon allocation of reward points into high-yield milestones generates up to 3x more terminal value over a decade compared to sporadic redemption.",
+            "source": "LBG Wealth & Rewards Advisory",
+            "actionLabel": "Read Full Insight",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATIONAL_ARTICLE",
+              "payload": {
+                "articleId": "compound-accumulation-01"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "MULTI_GOAL_COMPLIANCE",
+        "EDUCATIONAL_PREFERENCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined planner-at-risk strategy focusing on projected growth and foundational asset security. Combines expiring points protection with projection charts and full multi-goal portfolio view.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert-2",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiry Notice",
+            "expiringPoints": 2400,
+            "daysLeft": 9,
+            "message": "You have 2,400 points expiring in 9 days. Secure your accumulated balance by directing them to your active portfolios.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ALLOCATE_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Multi-Year Rewards Growth Projection",
+            "growthLabel": "Projected Portfolio Value (GBP Equivalent)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 24500
+              },
+              {
+                "year": "2028",
+                "value": 42000
+              },
+              {
+                "year": "2030",
+                "value": 68200
+              },
+              {
+                "year": "2032",
+                "value": 98500
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_DETAILED_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-lt-goal-alt-1",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2038",
+            "message": "Your cornerstone wealth accumulation goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-lt-goal-alt-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2032",
+            "message": "Securing educational milestones ahead of schedule.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-lt-goal-alt-3",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2035",
+            "message": "Building toward your long-horizon residential goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-alt",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set up a new savings milestone",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Structuring Your Long-Term Portfolio",
+            "insight": "Balancing contributions across retirement and education funds maximizes tax-free reward synergies within Diamond tier membership.",
+            "source": "LBG Financial Planning",
+            "actionLabel": "Explore Strategies",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATIONAL_ARTICLE",
+              "payload": {
+                "articleId": "portfolio-structuring-02"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "PROJECTION_CHART_FOCUS",
+        "MULTI_GOAL_COMPLIANCE",
+        "AT_RISK_REASSURANCE"
+      ]
+    }
+  ]
+}

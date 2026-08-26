@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Phone } from 'lucide-react'
 import type { AppStep } from '../types/rewards'
+import type { PersonaOption } from '../types/sdui'
 import OtpStep from '../components/auth/OtpStep'
 import PasswordStep from '../components/auth/PasswordStep'
 import SignupStep from '../components/auth/SignupStep'
@@ -28,6 +29,7 @@ interface AuthPageProps {
   onBackToMobile: () => void
   onSignupFieldChange: (field: 'name' | 'email' | 'phone' | 'password', value: string) => void
   onSubmitSignup: () => void
+  onPersonaLogin: (persona: PersonaOption) => void
 }
 
 const variants = {
@@ -109,6 +111,10 @@ export default function AuthPage(props: AuthPageProps) {
                   </button>
                 </form>
 
+                {props.loginError && (
+                  <p className="text-sm text-red-400 text-center">{props.loginError}</p>
+                )}
+
                 <div className="pt-2 text-center text-sm text-slate-300" style={{fontSize: '1rem'}}>I've forgotten my logon details</div>
 
                 <div className="h-6 sm:h-8" />
@@ -125,6 +131,27 @@ export default function AuthPage(props: AuthPageProps) {
                     >
                       Create logon details
                     </button>
+                  </div>
+                </div>
+
+                <div className="mt-8 border-t border-slate-500 pt-6 text-center text-slate-300 space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-slate-400">Quick demo</p>
+                  <p className="text-[11px] text-slate-500">Tap a persona to explore the rewards dashboard instantly.</p>
+                  <div className="flex flex-wrap justify-center gap-2 pt-1">
+                    {([
+                      { id: 'p_high', name: 'High Earner', points: 28500, tier: 'Platinum' },
+                      { id: 'p_mid', name: 'Active Saver', points: 9800, tier: 'Gold' },
+                      { id: 'p_low', name: 'New Member', points: 1200, tier: 'Silver' },
+                    ] as const).map((p) => (
+                      <button
+                        key={p.id}
+                        type="button"
+                        onClick={() => props.onPersonaLogin(p)}
+                        className="rounded-lg border border-slate-600 bg-slate-800/60 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700/60"
+                      >
+                        {p.name}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>

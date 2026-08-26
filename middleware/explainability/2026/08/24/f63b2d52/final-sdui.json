@@ -1,0 +1,514 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "f63b2d52",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "SNAPSHOT",
+          "relevanceScore": 0.4,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "You are making steady progress toward mastering your home savings strategy.",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "SNAPSHOT",
+          "relevanceScore": 1.1,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goal": "First Home Savings Knowledge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-learning-mission",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Rewards Academy Masterclass",
+        "missionName": "Mortgage Readiness & Deposit Strategies",
+        "description": "Deepen your understanding of home financing options with self-paced educational modules.",
+        "modulesDone": 5,
+        "modulesTotal": 8,
+        "pointsOnCompletion": 300,
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "CONTINUE_MISSION",
+          "payload": {
+            "mission": "Mortgage Readiness & Deposit Strategies"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quiz",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "question": "Which factor most significantly influences compound growth in long-term savings?",
+        "options": [
+          "Regular consistent contributions over time",
+          "Making frequent withdrawals",
+          "Timing market fluctuations"
+        ],
+        "reward": "150 points upon mastery",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 0.55,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-comprehension-feedback",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Recent Concept Review",
+        "question": "How do interest rate tiers affect savings accumulation?",
+        "yourAnswer": "Higher tiers yield compounding benefits on stable balances.",
+        "correctAnswer": "Higher tiers yield compounding benefits on stable balances.",
+        "feedback": "Spot on! Your attention to detail ensures thorough mastery of tiered savings mechanisms.",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "MOMENTUM",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "REVIEW_NOTES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-confidence-progress",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Financial Literacy Confidence",
+        "topic": "Home Financing & Budgeting",
+        "confidencePercent": 88,
+        "levelLabel": "Advanced understanding",
+        "nextMilestone": "Complete final module to achieve certification",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "MOMENTUM",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_TOPIC_DETAILS",
+          "payload": {
+            "topic": "Home Financing"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Mastery Insight",
+        "insight": "Learners who review concept summaries retain 40% more long-term financial strategy knowledge.",
+        "source": "Rewards Educational Institute",
+        "actionLabel": "Explore Summary",
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "TRUST",
+          "relevanceScore": 0.918,
+          "pinned": true
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_INSIGHT",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Your Rewards Value Breakdown",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": [
+          {
+            "label": "Educational Modules Completed",
+            "value": "\u00a325.00"
+          },
+          {
+            "label": "Quiz Mastery Bonuses",
+            "value": "\u00a310.00"
+          },
+          {
+            "label": "Streak & Consistency Reward",
+            "value": "\u00a34.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "SNAPSHOT",
+          "relevanceScore": 1.218,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Accelerate Your Home Savings",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": [
+          {
+            "name": "Advanced Mortgage Calculator Masterclass",
+            "points": 250,
+            "goalLinked": true
+          },
+          {
+            "name": "First-Time Buyer Advisory Session",
+            "points": 500,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 1.1,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_GOAL_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set another learning or financial milestone to track at your own pace.",
+        "layout": {
+          "span": "half"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 1.1,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "steps": [
+          {
+            "title": "Learn & Engage",
+            "description": "Complete educational modules and knowledge checks at your own pace."
+          },
+          {
+            "title": "Convert Value",
+            "description": "Translate your accumulated knowledge points into tangible financial milestones."
+          },
+          {
+            "title": "Redeem Optimally",
+            "description": "Apply your rewards directly toward your First Home Savings goal."
+          }
+        ],
+        "ctaLabel": "View Detailed Guide",
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "PATHWAYS",
+          "relevanceScore": 1.068,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_POINTS_GUIDE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-badge-card",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Learning Badges & Achievements",
+        "badges": [
+          {
+            "name": "Savings Scholar",
+            "icon": "brain",
+            "earned": true
+          },
+          {
+            "name": "Quiz Master",
+            "icon": "star",
+            "earned": true
+          },
+          {
+            "name": "Milestone Achiever",
+            "icon": "trophy",
+            "earned": true
+          }
+        ],
+        "totalEarned": 9,
+        "totalAvailable": 12,
+        "layout": {
+          "span": "full"
+        },
+        "narrative": {
+          "actId": "MOMENTUM",
+          "relevanceScore": 0.55,
+          "pinned": false
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BADGES",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "EDUCATIONAL",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-learning-mission",
+          "comp-quiz",
+          "comp-goal-linked-reward",
+          "comp-add-goal",
+          "comp-how-points-work"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-comprehension-feedback",
+          "comp-confidence-progress",
+          "comp-badge-card"
+        ]
+      }
+    ],
+    "relevanceScores": {
+      "GIFT_DONATE_CARD": 0.5,
+      "SAVINGS_TRANSFER_CARD": 0.9,
+      "LEADERBOARD": 0.51,
+      "GOAL_AT_RISK_CARD": 0.86,
+      "CONSOLIDATED_REWARD_WALLET": 0.4,
+      "MONTH_OVER_MONTH_CARD": 0.4,
+      "POINTS_ACADEMY_BADGE_CARD": 0.918,
+      "TANGIBLE_VALUE_CARD": 1.218,
+      "MILESTONE_CARD": 0.75,
+      "FUTURE_MILESTONE_CARD": 1.02,
+      "SYNC_STATUS_CARD": 0.55,
+      "MYTH_OR_FACT_CARD": 0.918,
+      "STREAK_CARD": 0.55,
+      "PREFERENCES_CARD": 0.5,
+      "REWARD_PROVENANCE_CARD": 0.4,
+      "TRAVEL_FUND_CARD": 0.9,
+      "MILESTONE_REWARD_LADDER": 0.9,
+      "REWARD_CAROUSEL": 0.75,
+      "EARN_BREAKDOWN_CARD": 0.4,
+      "METRIC_TILE": 0.75,
+      "REWARD_CHOICE_PANEL": 0.5,
+      "POINTS_HEALTH_SCORE": 0.4,
+      "LEARNING_PATH_CARD": 0.918,
+      "COMMUNITY_CHALLENGE_CARD": 0.51,
+      "MILESTONE_ANNIVERSARY_CARD": 0.4,
+      "COUNTDOWN_CARD": 0.4,
+      "PERSONALIZED_OFFER_CARD": 0.55,
+      "GOAL_TEMPLATE_GALLERY": 0.9,
+      "COACH_TIP_CARD": 0.918,
+      "NEW_BRAND_SPOTLIGHT_CARD": 0.4,
+      "GOAL_MATCH_BOOST_CARD": 0.86,
+      "LEARNING_MISSION_CARD": 0.918,
+      "INSTANT_REWARD_POPUP": 0.4,
+      "PARTNER_TRANSFER_CARD": 0.4,
+      "FLASH_REWARD_BANNER": 0.4,
+      "PROGRAMME_CONNECTION_CARD": 0.4,
+      "FUTURE_VALUE_CARD": 1.02,
+      "BIRTHDAY_REWARD_CARD": 0.4,
+      "LONG_TERM_GOAL_CARD": 1.02,
+      "REWARDS_INSIGHT_CARD": 0.55,
+      "ADD_GOAL_CARD": 1.1,
+      "PAYMENT_REWARD_CONFIRMATION": 0.4,
+      "EXPIRING_POINTS_ALERT": 0.4,
+      "SAVINGS_CALCULATOR_CARD": 1.02,
+      "DAILY_MONEY_TIP_CARD": 0.918,
+      "RECOMMENDED_ACTIONS": 0.75,
+      "QUICK_WIN_CARD": 0.55,
+      "REWARD_ALLOCATION_CONTROL": 0.5,
+      "COMPREHENSION_FEEDBACK_CARD": 0.918,
+      "GOAL_LINKED_REWARD": 1.1,
+      "BRAND_EXPLORER_CARD": 0.55,
+      "GOAL_COMPLETE_CELEBRATION": 0.4,
+      "HOW_POINTS_WORK_CARD": 1.068,
+      "CHALLENGE_CARD": 0.51,
+      "LOCAL_DEALS_CARD": 0.4,
+      "GOAL_STREAK_CARD": 0.86,
+      "POINTS_BALANCE": 0.4,
+      "REFERRAL_CARD": 0.51,
+      "BEST_VALUE_REDEEM_CARD": 0.4,
+      "PROJECTION_CHART": 1.02,
+      "QUIZ_CARD": 0.55,
+      "BADGE_CARD": 0.55,
+      "EDUCATIONAL_INSIGHT_CARD": 0.918,
+      "QUICK_REDEEM_CARD": 0.4,
+      "REENGAGEMENT_BANNER": 0.4,
+      "GOAL_PROGRESS_CARD": 1.1,
+      "WHY_THIS_UI_CARD": 0.4,
+      "CONFIDENCE_PROGRESS_CARD": 0.918,
+      "PARTNER_VALUE_COMPARISON": 0.4,
+      "GOAL_MILESTONE_CARD": 1.1,
+      "SHARED_GOAL_CARD": 0.86,
+      "AUTO_RULES_CARD": 0.55,
+      "PAYMENT_REWARD_CARD": 0.4
+    }
+  }
+}

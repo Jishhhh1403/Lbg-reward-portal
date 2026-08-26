@@ -1,0 +1,105 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-3",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-4",
+        "classification": "OBSERVED",
+        "value": "motivated by mastering topics rather than winning them",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-5",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 demonstrates a strong preference for educational competence, mastering financial concepts, and tracking long-term savings knowledge without competitive pressure.",
+    "observedFacts": [
+      {
+        "factId": "fact-1",
+        "statement": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-2",
+        "statement": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-3",
+        "statement": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-4",
+        "statement": "motivated by mastering topics rather than winning them",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-5",
+        "statement": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-1",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-1",
+          "fact-2",
+          "fact-3",
+          "fact-4",
+          "fact-5"
+        ],
+        "inferenceMethod": "intelligence-layer-persona-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "rarely redeems for small rewards",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer David Park exhibits long-term planning behavior, demonstrating steady point accumulation toward specific financial milestones with a low immediate redemption rate and high goal completion rate.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer has 28,400 points and Diamond tier status.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Customer maintains active financial goals including Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Customer has a low immediate redemption rate of 0.03 and high goal completion rate of 0.92.",
+        "source": "customerProfile",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "persona",
+        "value": "LONG_TERM_PLANNER",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-002",
+          "fact-003"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

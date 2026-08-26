@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review learning progress, check First Home Savings Knowledge status, and engage with the next educational module without timed pressure.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer inspects goal progress and accesses the unhurried quiz/educational module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my learning goals and points balance?",
+      "entryCondition": "App launch / overview load",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings Knowledge progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "s3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real-world cash value and educational competence?",
+      "entryCondition": "After reviewing overview and goal progress",
+      "requiredInformation": [
+        "cash equivalence",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "s1",
+        "s2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is my next unhurried learning module and competence milestone?",
+      "entryCondition": "After understanding cash value and mechanics",
+      "requiredInformation": [
+        "learning mission",
+        "quiz",
+        "confidence progress",
+        "milestone"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "s1",
+        "s2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide clear explanations of financial literacy terms and point conversions.",
+      "contentNotes": [
+        "Glossary of terms",
+        "Points-to-GBP conversion table"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

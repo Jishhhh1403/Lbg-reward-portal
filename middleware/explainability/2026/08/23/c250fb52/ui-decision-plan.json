@@ -1,0 +1,451 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-c250fb52",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive rich screen tailored to David Park (Long-Term Planner) featuring Points Balance, individual Long-Term Goal cards for all three financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an Add Goal card, Future Value Projection Chart, Future Value Card, and Educational Insight Card.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-long-term-goal-1",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2034",
+            "message": "Steady accumulation is on track for your long-term horizon.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-long-term-goal-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2030",
+            "message": "Strong progress outpacing your initial accumulation timeline.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-long-term-goal-3",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "estimatedCompletion": "2033",
+            "message": "Building a solid foundation for your future property investment.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new long-term financial milestone to track with your accumulated points.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Projected Portfolio Growth",
+            "currentValue": 28400,
+            "projectedValue": 45000,
+            "timeframe": "5 Years",
+            "growthRate": "7.5% APY equivalent",
+            "message": "Continuing your patient accumulation strategy maximizes compound rewards over time.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Multi-Year Growth Trajectory",
+            "growthLabel": "Estimated Portfolio Value (Coins)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2028",
+                "value": 34500
+              },
+              {
+                "year": "2030",
+                "value": 41200
+              },
+              {
+                "year": "2032",
+                "value": 49000
+              },
+              {
+                "year": "2034",
+                "value": 58000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPAND_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Maximizing Long-Term Value",
+            "insight": "Holding points for major milestone redemptions yields up to 35% higher real-world purchasing equivalence than frequent small redemptions.",
+            "source": "LBG Financial Research & Advisory",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_GUIDE",
+              "payload": {
+                "guideId": "long-term-value-strategy"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INTELLIGENCE_SIGNALS",
+        "MULTI_GOAL_COMPLIANCE"
+      ]
+    },
+    "strategy": "A comprehensive rich screen tailored to David Park (Long-Term Planner) featuring Points Balance, individual Long-Term Goal cards for all three financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an Add Goal card, Future Value Projection Chart, Future Value Card, and Educational Insight Card.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A comprehensive rich screen tailored to David Park (Long-Term Planner) featuring Points Balance, individual Long-Term Goal cards for all three financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an Add Goal card, Future Value Projection Chart, Future Value Card, and Educational Insight Card.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 28400,
+          "tier": "Diamond",
+          "name": "David Park",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-long-term-goal-1",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 28400,
+          "target": 100000,
+          "percentage": 28,
+          "estimatedCompletion": "2034",
+          "message": "Steady accumulation is on track for your long-term horizon.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Retirement Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-long-term-goal-2",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 20500,
+          "target": 50000,
+          "percentage": 41,
+          "estimatedCompletion": "2030",
+          "message": "Strong progress outpacing your initial accumulation timeline.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Children Education Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-long-term-goal-3",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 11250,
+          "target": 75000,
+          "percentage": 15,
+          "estimatedCompletion": "2033",
+          "message": "Building a solid foundation for your future property investment.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Dream Home Deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new long-term financial milestone to track with your accumulated points.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_NEW_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-future-value",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Projected Portfolio Growth",
+          "currentValue": 28400,
+          "projectedValue": 45000,
+          "timeframe": "5 Years",
+          "growthRate": "7.5% APY equivalent",
+          "message": "Continuing your patient accumulation strategy maximizes compound rewards over time.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PROJECTION_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-projection-chart",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Multi-Year Growth Trajectory",
+          "growthLabel": "Estimated Portfolio Value (Coins)",
+          "data": [
+            {
+              "year": "2026",
+              "value": 28400
+            },
+            {
+              "year": "2028",
+              "value": 34500
+            },
+            {
+              "year": "2030",
+              "value": 41200
+            },
+            {
+              "year": "2032",
+              "value": 49000
+            },
+            {
+              "year": "2034",
+              "value": 58000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXPAND_CHART",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Maximizing Long-Term Value",
+          "insight": "Holding points for major milestone redemptions yields up to 35% higher real-world purchasing equivalence than frequent small redemptions.",
+          "source": "LBG Financial Research & Advisory",
+          "actionLabel": "Read Full Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_EDUCATIONAL_GUIDE",
+            "payload": {
+              "guideId": "long-term-value-strategy"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "INTELLIGENCE_SIGNALS",
+      "MULTI_GOAL_COMPLIANCE"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "rarely redeems for small rewards",
+          "interested in investment-like rewards",
+          "reads educational content",
+          "values future projections"
+        ]
+      }
+    ],
+    "methodology": "behavioral intelligence analysis and session intent mapping",
+    "temporaryInterpretation": true
+  }
+}

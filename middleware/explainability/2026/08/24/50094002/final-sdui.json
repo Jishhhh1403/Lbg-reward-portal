@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "50094002",
+  "createdAt": "2026-08-24T10:30:00Z",
+  "expiresAt": "2026-08-24T11:30:00Z",
+  "customerRef": "customer_010",
+  "components": [
+    {
+      "id": "comp-pts-bal-01",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 7300,
+        "tier": "Platinum",
+        "name": "Daniel Brooks",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-prog-02",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Holiday Spending Money",
+        "current": 640.0,
+        "target": 1200.0,
+        "percentage": 53.0,
+        "remaining": 560.0,
+        "motivationalMessage": "You are making steady progress toward your holiday savings goal.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Holiday Spending Money"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-pay-rew-03",
+      "type": "PAYMENT_REWARD_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Everyday Cashback & Bill Reduction",
+        "paymentMethod": "Platinum Card ending in \u2022\u2022\u2022\u2022 4092",
+        "rewardRate": "1.2% back in statement credits",
+        "monthlyCap": "No monthly cap",
+        "description": "Earn guaranteed value directly applied to your statement every billing cycle.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CONFIGURE_PAYMENT_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-rew-alloc-04",
+      "type": "REWARD_ALLOCATION_CONTROL",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Automated Reward Allocation",
+        "subtitle": "Choose how your earned points and cashback are distributed.",
+        "allocation": [
+          {
+            "label": "Statement Credits",
+            "percent": 80
+          },
+          {
+            "label": "Holiday Spending Money Goal",
+            "percent": 20
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "UPDATE_ALLOCATION",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-pay-conf-05",
+      "type": "PAYMENT_REWARD_CONFIRMATION",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Recent Statement Credit Applied",
+        "message": "Your latest redemption was successfully credited to your card statement.",
+        "amount": "\u00a325.00",
+        "reference": "STMT-CR-89241",
+        "date": "24 August 2026",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CREDIT_HISTORY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tang-val-06",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Rewards Cash Value",
+        "cashValue": "\u00a373.00",
+        "pointsEquivalent": 7300,
+        "breakdown": [
+          {
+            "label": "LBG Coins Balance",
+            "value": "7,300 coins"
+          },
+          {
+            "label": "Guaranteed Redemption Rate",
+            "value": "100 coins = \u00a31.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_AS_STATEMENT_CREDIT",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-rew-ins-07",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Predictable Savings Insight",
+        "topBrandName": "Linked Connected Partners",
+        "topBrandPoints": 7300,
+        "growthTip": "Your consistent statement credit redemptions ensure 100% of earned value offsets your monthly bills.",
+        "expiringPoints": 0,
+        "expiryDate": "N/A",
+        "ctaText": "View Statement Credit History",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_INSIGHT_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal-08",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set up another predictable financial savings target.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-prog-chart-09",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Projected Annual Statement Savings",
+        "growthLabel": "Based on current earning rate",
+        "data": [
+          {
+            "year": "2026",
+            "value": 350
+          },
+          {
+            "year": "2027",
+            "value": 420
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-prog-conn-10",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Connected Partner Programmes",
+        "subtitle": "Currently linked to 3 active partner accounts",
+        "programmes": [
+          {
+            "name": "Everyday Retail Partner",
+            "status": "Active & Syncing",
+            "connected": true
+          },
+          {
+            "name": "Travel Partner Co",
+            "status": "Active & Syncing",
+            "connected": true
+          },
+          {
+            "name": "Grocery Rewards",
+            "status": "Active & Syncing",
+            "connected": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "MANAGE_PROGRAMMES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-auto-rules-11",
+      "type": "AUTO_RULES_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "rules": [
+          {
+            "trigger": "Every statement credit accumulation",
+            "action": "Automatically apply toward card balance",
+            "enabled": true
+          }
+        ],
+        "toggleLabel": "Active Automation Rules",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "MANAGE_AUTO_RULES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-stat-12",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "status": "synced",
+        "title": "Rewards Balance Synced",
+        "lastSyncedAt": "2026-08-24 10:29",
+        "message": "All connected partner balances and statement credits are fully up to date.",
+        "ctaText": "Refresh Sync",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "primaryActionComponentRef": "educational-insight-01",
+  "components": [
+    {
+      "componentRef": "points-balance-01",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-01",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "add-goal-01",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "learning-mission-01",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "TENSION",
+      "sequence": 4,
+      "dependsOn": [
+        "goal-progress-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "quiz-card-01",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 5,
+      "dependsOn": [
+        "learning-mission-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comprehension-feedback-01",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 6,
+      "dependsOn": [
+        "quiz-card-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "confidence-progress-01",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "comprehension-feedback-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-01",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 8,
+      "dependsOn": [
+        "confidence-progress-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "milestone-card-01",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "educational-insight-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-linked-reward-01",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "milestone-card-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-01",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 11,
+      "dependsOn": [
+        "goal-linked-reward-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "tangible-value-card-01",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [
+        "how-points-work-01"
+      ],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-01",
+      "toComponentRef": "goal-progress-01",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect total balance directly to the active home savings milestone.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-01",
+      "toComponentRef": "learning-mission-01",
+      "relationship": "progress-to-action",
+      "bridgeIntent": "Bridge savings progression into active educational missions.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "learning-mission-01",
+      "toComponentRef": "quiz-card-01",
+      "relationship": "mission-to-practice",
+      "bridgeIntent": "Test concept understanding through interactive quizzes.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "quiz-card-01",
+      "toComponentRef": "comprehension-feedback-01",
+      "relationship": "action-to-feedback",
+      "bridgeIntent": "Provide constructive feedback on quiz answers.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comprehension-feedback-01",
+      "toComponentRef": "confidence-progress-01",
+      "relationship": "feedback-to-confidence",
+      "bridgeIntent": "Reflect comprehension gains onto the mastery confidence meter.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "confidence-progress-01",
+      "toComponentRef": "educational-insight-01",
+      "relationship": "confidence-to-insight",
+      "bridgeIntent": "Extend mastery into deep-dive educational insights.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "educational-insight-01",
+      "toComponentRef": "milestone-card-01",
+      "relationship": "insight-to-milestone",
+      "bridgeIntent": "Review achieved knowledge milestones.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "milestone-card-01",
+      "toComponentRef": "goal-linked-reward-01",
+      "relationship": "milestone-to-reward",
+      "bridgeIntent": "Show how educational achievements accelerate the home savings goal.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "leaderboard",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed due to hard suppression rules prohibiting public leaderboards and competitive mechanics.",
+      "reasonCode": "DEFER_SUPPRESSED_MECHANIC",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "countdown",
+      "componentType": "COUNTDOWN_CARD",
+      "reason": "Suppressed due to hard suppression rules prohibiting timed pressure and artificial urgency.",
+      "reasonCode": "DEFER_SUPPRESSED_MECHANIC",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

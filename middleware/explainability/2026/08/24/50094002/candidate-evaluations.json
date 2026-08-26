@@ -1,0 +1,711 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A structured 12-component rich rewards screen optimized for a payment-utility customer, featuring mandatory elements (POINTS_BALANCE, TANGIBLE_VALUE_CARD, GOAL_PROGRESS_CARD, QUICK_REDEEM_CARD) plus supplementary utility modules: STATEMENT_CREDIT_SUMMARY, CASHBACK_TRACKER, BILL_REDUCTION_ESTIMATOR, SAVINGS_MILESTONE_CARD, REWARD_HISTORY_FEED, AUTOMATED_RULES_WIDGET, SECURITY_BADGE_CARD, and ADD_GOAL_CARD. Designed cleanly for predictable financial savings without vouchers or experiences.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly targets statement credits, bill reductions, and savings goals."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Rich 12-component layout cleanly covers all payment-utility needs without clutter."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect match for PAYMENT_UTILITY motivation and statement credit preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High readability, transparent monetary calculations, zero cognitive load from irrelevant vouchers."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Built strictly on 0.95+ confidence behavioral facts regarding statement credit redemption."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains exact bank terminology and brand visual guidelines."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Familiar financial dashboard pattern enhanced with automated bill reduction insights."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully supported by existing mobile component library and telemetry."
+        }
+      },
+      "weightedTotal": 9.2,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A lighter 8-component rewards overview focusing strictly on points balance, quick redeem statement credit, goal progress, and cashback tracking.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers basics but misses advanced bill reduction tracking."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fails the rich screen threshold of 11-17 components, reducing overall expected utility."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with payment utility but lacks depth."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple layout, but underutilizes screen space for comprehensive financial tracking."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Based on solid evidence."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Too basic, offers nothing new."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Very easy to implement."
+        }
+      },
+      "weightedTotal": 7.35,
+      "hardGatesPass": false,
+      "objections": [
+        "Strategy proposes fewer than 11 components (only 8), violating the rich screen rule for complex multi-goal/utility customer contexts."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A fully compliant, 12-component structured rewards composition for payment-utility customer Daniel Brooks. Strictly implements mandatory ordered stack: POINTS_BALANCE, GOAL_PROGRESS_CARD, PAYMENT_REWARD_CARD, REWARD_ALLOCATION_CONTROL, PAYMENT_REWARD_CONFIRMATION, TANGIBLE_VALUE_CARD, REWARDS_INSIGHT_CARD, followed by ADD_GOAL_CARD and financial utility modules, respecting all hard suppressions and banned component types.",
+      "components": [
+        {
+          "id": "comp-pts-bal-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 7300,
+            "tier": "Platinum",
+            "name": "Daniel Brooks",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-prog-02",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Holiday Spending Money",
+            "current": 640.0,
+            "target": 1200.0,
+            "percentage": 53.0,
+            "remaining": 560.0,
+            "motivationalMessage": "You are making steady progress toward your holiday savings goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Holiday Spending Money"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-pay-rew-03",
+          "type": "PAYMENT_REWARD_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Everyday Cashback & Bill Reduction",
+            "paymentMethod": "Platinum Card ending in \u2022\u2022\u2022\u2022 4092",
+            "rewardRate": "1.2% back in statement credits",
+            "monthlyCap": "No monthly cap",
+            "description": "Earn guaranteed value directly applied to your statement every billing cycle.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONFIGURE_PAYMENT_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-rew-alloc-04",
+          "type": "REWARD_ALLOCATION_CONTROL",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Automated Reward Allocation",
+            "subtitle": "Choose how your earned points and cashback are distributed.",
+            "allocation": [
+              {
+                "label": "Statement Credits",
+                "percent": 80
+              },
+              {
+                "label": "Holiday Spending Money Goal",
+                "percent": 20
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "UPDATE_ALLOCATION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-pay-conf-05",
+          "type": "PAYMENT_REWARD_CONFIRMATION",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Statement Credit Applied",
+            "message": "Your latest redemption was successfully credited to your card statement.",
+            "amount": "\u00a325.00",
+            "reference": "STMT-CR-89241",
+            "date": "24 August 2026",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CREDIT_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tang-val-06",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Rewards Cash Value",
+            "cashValue": "\u00a373.00",
+            "pointsEquivalent": 7300,
+            "breakdown": [
+              {
+                "label": "LBG Coins Balance",
+                "value": "7,300 coins"
+              },
+              {
+                "label": "Guaranteed Redemption Rate",
+                "value": "100 coins = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_AS_STATEMENT_CREDIT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-rew-ins-07",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Predictable Savings Insight",
+            "topBrandName": "Linked Connected Partners",
+            "topBrandPoints": 7300,
+            "growthTip": "Your consistent statement credit redemptions ensure 100% of earned value offsets your monthly bills.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "View Statement Credit History",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHT_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-08",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set up another predictable financial savings target.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-prog-chart-09",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Projected Annual Statement Savings",
+            "growthLabel": "Based on current earning rate",
+            "data": [
+              {
+                "year": "2026",
+                "value": 350
+              },
+              {
+                "year": "2027",
+                "value": 420
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-prog-conn-10",
+          "type": "PROGRAMME_CONNECTION_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Connected Partner Programmes",
+            "subtitle": "Currently linked to 3 active partner accounts",
+            "programmes": [
+              {
+                "name": "Everyday Retail Partner",
+                "status": "Active & Syncing",
+                "connected": true
+              },
+              {
+                "name": "Travel Partner Co",
+                "status": "Active & Syncing",
+                "connected": true
+              },
+              {
+                "name": "Grocery Rewards",
+                "status": "Active & Syncing",
+                "connected": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "MANAGE_PROGRAMMES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-auto-rules-11",
+          "type": "AUTO_RULES_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "rules": [
+              {
+                "trigger": "Every statement credit accumulation",
+                "action": "Automatically apply toward card balance",
+                "enabled": true
+              }
+            ],
+            "toggleLabel": "Active Automation Rules",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "MANAGE_AUTO_RULES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-stat-12",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Rewards Balance Synced",
+            "lastSyncedAt": "2026-08-24 10:29",
+            "message": "All connected partner balances and statement credits are fully up to date.",
+            "ctaText": "Refresh Sync",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.98,
+      "reasonCodes": [
+        "PAYMENT_UTILITY_OPTIMIZED",
+        "MANDATORY_STACK_COMPLIANT",
+        "NO_SUPPRESSED_COMPONENTS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "An alternative 12-component composition emphasizing financial calculation, savings projections, and transparent redemption tracking for Daniel Brooks, strictly following the mandatory ordered stack and rule engine directives.",
+      "components": [
+        {
+          "id": "comp-pts-bal-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 7300,
+            "tier": "Platinum",
+            "name": "Daniel Brooks",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-prog-02",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Holiday Spending Money",
+            "current": 640.0,
+            "target": 1200.0,
+            "percentage": 53.0,
+            "remaining": 560.0,
+            "motivationalMessage": "Your savings goal is progressing on schedule.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Holiday Spending Money"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-pay-rew-03",
+          "type": "PAYMENT_REWARD_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Statement Credit Cashback Rate",
+            "paymentMethod": "Platinum Card ending in \u2022\u2022\u2022\u2022 4092",
+            "rewardRate": "1.2% back in statement credits",
+            "monthlyCap": "No monthly cap",
+            "description": "Consistent guaranteed return on all qualifying transactions.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONFIGURE_PAYMENT_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-rew-alloc-04",
+          "type": "REWARD_ALLOCATION_CONTROL",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Reward Allocation Settings",
+            "subtitle": "Manage automatic distribution of your rewards.",
+            "allocation": [
+              {
+                "label": "Statement Credit",
+                "percent": 100
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "UPDATE_ALLOCATION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-pay-conf-05",
+          "type": "PAYMENT_REWARD_CONFIRMATION",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Statement Credit Applied",
+            "message": "Previous reward successfully posted to your card account.",
+            "amount": "\u00a318.00",
+            "reference": "STMT-CR-77312",
+            "date": "10 August 2026",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CREDIT_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tang-val-06",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Total Cash Value Summary",
+            "cashValue": "\u00a373.00",
+            "pointsEquivalent": 7300,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "7,300"
+              },
+              {
+                "label": "Conversion Rate",
+                "value": "100:1 GBP"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_AS_STATEMENT_CREDIT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-rew-ins-07",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Utility & Value Insight",
+            "topBrandName": "Linked Card Partners",
+            "topBrandPoints": 7300,
+            "growthTip": "Continuing your current statement credit preference ensures optimal bill reduction.",
+            "expiringPoints": 0,
+            "expiryDate": "N/A",
+            "ctaText": "Review Redemptions",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHT_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-08",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-fut-val-09",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Projected Rewards Value",
+            "currentValue": 73.0,
+            "projectedValue": 145.0,
+            "timeframe": "12 months",
+            "growthRate": "4.5% AER",
+            "message": "Projected growth based on your consistent monthly savings and spending patterns.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-cons-wallet-10",
+          "type": "CONSOLIDATED_REWARD_WALLET",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Consolidated Rewards Wallet",
+            "subtitle": "All connected programmes in one view",
+            "programmes": [
+              {
+                "name": "LBG Coins",
+                "points": 7300,
+                "value": "\u00a373.00",
+                "status": "Active"
+              }
+            ],
+            "totalValue": "\u00a373.00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-prov-11",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Points Provenance & History",
+            "subtitle": "Clear breakdown of recently earned points",
+            "history": [
+              {
+                "source": "Platinum Card Spend",
+                "date": "22 Aug 2026",
+                "points": 450
+              },
+              {
+                "source": "Connected Partner Bonus",
+                "date": "15 Aug 2026",
+                "points": 1200
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-stat-12",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronised",
+            "lastSyncedAt": "2026-08-24 10:29",
+            "message": "Your rewards and statement credits are fully synchronised.",
+            "ctaText": "Check Status",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "ALTERNATIVE_UTILITY_MIX",
+        "MANDATORY_STACK_COMPLIANT",
+        "NO_SUPPRESSED_COMPONENTS"
+      ]
+    }
+  ]
+}

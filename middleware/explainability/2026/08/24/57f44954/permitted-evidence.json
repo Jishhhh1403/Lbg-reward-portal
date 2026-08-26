@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent statement credit redemptions",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_010 (Daniel Brooks) is a highly engaged Platinum tier member demonstrating a strong, consistent preference for tangible financial utility. Specifically, they redeem almost exclusively as statement credits on linked cards, track cashback alongside balances on every visit, and allocate earned points to automatic payment rewards. They show no interest in vouchers or lifestyle experiences, prioritizing predictable and guaranteed reward rates. They currently maintain an active holiday savings goal.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Redeems almost exclusively as statement credits on linked card",
+        "source": "intelligence-layer",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Checks cashback earned alongside balance every visit",
+        "source": "intelligence-layer",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Sets allocation of earned points to automatic payment rewards",
+        "source": "intelligence-layer",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Uninterested in vouchers or experiences, wants money off bills",
+        "source": "intelligence-layer",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-05",
+        "statement": "Values predictable, guaranteed reward rates",
+        "source": "intelligence-layer",
+        "confidence": 0.92
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "PAYMENT_UTILITY",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-03",
+          "fact-04"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredRedemptionType",
+        "value": "STATEMENT_CREDIT",
+        "confidence": 0.95,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-04"
+        ],
+        "inferenceMethod": "historical-redemption-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

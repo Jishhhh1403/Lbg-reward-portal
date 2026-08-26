@@ -1,0 +1,459 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 14-component mobile re-engagement layout designed for churn risk Jessica Martinez. It features a welcoming top app bar, clear points balance, a transparent and non-manipulative expiring points alert (1,850 points in 12 days), a friendly re-engagement banner highlighting her Silver tier status, a 1-click quick-win card for her unclaimed 300-point retail discount, a personalized offer card based on past retail preferences, an educational breakdown of how points work, a reward history summary, a tier benefits refresher, a savings calculator, a customer support access card, a feedback prompt, a FAQ accordions card, and a bottom navigation bar. No dark patterns or artificial scarcity are used.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses the re-engagement goal and expiring points without manipulative pressure."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Rich 14-component screen provides immediate low-friction value (unclaimed retail discount) and clear guidance."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Perfectly aligns with RE_ENGAGEMENT motivation and unused points profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean typography, high contrast, clear grouping, and screen-reader friendly."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Grounded completely in verified session facts and intelligence layer signals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Strictly adheres to banking and design system guidelines without altering secure logos."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces a helpful savings calculator and easy quick-win redemption path."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully compliant with latency budget and existing component schemas."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimalist 8-component layout focusing solely on the expiring points alert, points balance, and a direct redemption button, omitting broader re-engagement support and secondary cards.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to meet rich component guidelines (fewer than 11 components), reducing utility for a churn risk."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Too sparse; does not provide enough context or secondary quick wins to inspire confidence."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Addresses expiring points but misses broader re-engagement context."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean layout, but lacks comprehensive support cards."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Uses verified facts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with design system."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Very standard layout with no added utility features."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible."
+        }
+      },
+      "weightedTotal": 6.95,
+      "hardGatesPass": false,
+      "objections": [
+        "Fails UI Constitution requirement for rich screens (contains only 8 components, failing the 11-component minimum for optimal customer utility and goal relevance)."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 14-component mobile re-engagement layout designed for churn risk Jessica Martinez, blending CHURN_RISK persona requirements (expiring points alert, re-engagement banner, quick win) with supportive secondary value and educational guidance.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiring Soon",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "You have 1,850 points that will expire in 12 days. Redeem them now to retain their full value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Instant Quick Win",
+            "subtitle": "Claim your unclaimed Retail Discount instantly.",
+            "rewards": [
+              {
+                "name": "Retail Discount",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Retail Discount",
+                "points": 300
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement-banner",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Welcome back, Jessica!",
+            "message": "We've missed you. Your Silver tier benefits are waiting\u2014explore your account and redeem your rewards today.",
+            "ctaText": "Explore My Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Tailored Retail Offer",
+            "subtitle": "Curated specially for your shopping habits",
+            "offer": "20% off partner retail brands",
+            "validUntil": "12 days remaining",
+            "message": "Based on your past preferences, enjoy this exclusive discount on us.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {
+                "offer": "20% off partner retail brands"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Expiry Countdown",
+            "days": 12,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Time remaining before your 1,850 points expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_TIMER_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Your Rewards Cash Value",
+            "cashValue": "\u00a318.50",
+            "pointsEquivalent": 1850,
+            "breakdown": [
+              {
+                "label": "Available Points Worth",
+                "value": "\u00a318.50"
+              },
+              {
+                "label": "Unclaimed Retail Discount",
+                "value": "\u00a33.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_BREAKDOWN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "brands",
+            "tone": "brand",
+            "infoText": "Active loyalty integrations",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "label": "Silver Tier",
+            "value": "Active",
+            "unit": "status",
+            "tone": "white",
+            "infoText": "Your current membership level",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_TIER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "Badges Earned",
+            "value": "2",
+            "unit": "badges",
+            "tone": "brand",
+            "infoText": "Achievements unlocked",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Recommended Rewards for You",
+            "rewards": [
+              {
+                "name": "Retail Discount",
+                "points": 300,
+                "category": "Shopping",
+                "limited": true
+              },
+              {
+                "name": "Coffee Voucher",
+                "points": 150,
+                "category": "Dining",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "steps": [
+              {
+                "title": "Earn Points",
+                "description": "Collect points automatically through everyday purchases and connected partner brands."
+              },
+              {
+                "title": "Convert Value",
+                "description": "See your points instantly translated into real GBP cash equivalents."
+              },
+              {
+                "title": "Redeem Easily",
+                "description": "Spend points on discounts, vouchers, or direct savings with one tap."
+              }
+            ],
+            "ctaLabel": "Learn More",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GUIDE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "status": "synced",
+            "title": "Account Synchronised",
+            "lastSyncedAt": "2026-08-24T10:06:45.716Z",
+            "message": "All connected brands and point balances are fully up to date.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-card",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "title": "Your Achievement Badges",
+            "badges": [
+              {
+                "name": "First Redirection",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Brand Connector",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Savings Master",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "totalEarned": 2,
+            "totalAvailable": 3,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGE_DETAILS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "CHURN_RISK_STRATEGY",
+        "RICH_COMPONENT_COUNT"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "large points balance sitting idle above 20k",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "significant points expiring while saving toward long-horizon goals",
+        "source": "customerProfile",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Elena Vasquez is a Diamond tier customer with a PLANNER_AT_RISK_MIX persona and a FUTURE_SECURITY motivation. She maintains a high idle points balance (24,500 LBG Coins) with 2,400 points expiring in 9 days. Her long-term savings journey has recently stalled, with retirement fund contributions untouched for over a month and declining logins, though she has historically responded well to projected-value and educational content.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer holds 24,500 LBG coins with 2,400 points expiring in 9 days.",
+        "source": "wallet / intelligence_layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Retirement fund contributions have been untouched for over a month, and overall login engagement has declined.",
+        "source": "customerProfile.behaviors",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Customer historically responds well to projected-value and educational content.",
+        "source": "availableEvidence",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Customer manages three active long-term goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "customerProfile.goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-001",
+        "attribute": "savingsTrajectory",
+        "value": "Stalled",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "strong long-term accumulation history now stalled",
+          "retirement fund contributions untouched for over a month"
+        ],
+        "inferenceMethod": "behavioral_trajectory_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-002",
+        "attribute": "contentPreference",
+        "value": "ProjectedValueAndEducational",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "historically responded well to projected-value and educational content"
+        ],
+        "inferenceMethod": "historical_engagement_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "completes challenges regularly",
+        "source": "customerProfile.signals",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard daily",
+        "source": "customerProfile.signals",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-03",
+        "classification": "OBSERVED",
+        "value": "longest active streak in program",
+        "source": "customerProfile.signals",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Marcus Johnson is a highly engaged mobile rewards user characterized by a GAMIFICATION_MOTIVATED persona with a 0.95 engagement score. He actively maintains a 34-day streak, ranks 3rd on the leaderboard, has completed 12 challenges, and earned 15 badges.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Holds 8,750 LBG Coins.",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Maintains a 34-day streak and 3rd rank on the leaderboard.",
+        "source": "journeyAnalysis",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Completed 12 challenges and earned 15 badges.",
+        "source": "journeyAnalysis",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Behaviors include regular challenge completion, daily leaderboard checks, community event participation, badge earnings, and social sharing.",
+        "source": "customerProfile.behaviors",
+        "confidence": 0.93
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "persona",
+        "value": "GAMIFICATION_MOTIVATED",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "fact-02",
+          "fact-03",
+          "fact-04"
+        ],
+        "inferenceMethod": "Intelligence Layer Behavioral Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

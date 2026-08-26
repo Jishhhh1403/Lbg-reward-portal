@@ -1,0 +1,404 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "1b8bdfe4",
+  "createdAt": "2026-08-24T00:00:00Z",
+  "expiresAt": "2026-09-05T00:00:00Z",
+  "customerRef": "customer_004",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 1850,
+        "tier": "Silver",
+        "name": "Jessica Martinez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "wallet"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiring Soon",
+        "expiringPoints": 1850,
+        "daysLeft": 12,
+        "message": "You have 1,850 points expiring in 12 days. Claim a quick reward or gift them to keep your balance active.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_POINTS",
+          "payload": {
+            "points": 1850
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-countdown",
+      "type": "COUNTDOWN_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Expiry Countdown",
+        "days": 12,
+        "hours": 8,
+        "minutes": 30,
+        "message": "Time remaining before your 1,850 Silver points expire.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_DETAILS",
+          "payload": {
+            "section": "expiry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-reengagement",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Welcome back, Jessica!",
+        "message": "We've missed you over the last 45 days. Let's make your balance work for you today with zero friction.",
+        "ctaText": "Explore Quick Wins",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_BANNER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Effortless Quick Wins",
+        "subtitle": "Claim instantly with one tap \u2014 no complicated steps.",
+        "rewards": [
+          {
+            "name": "Retail Discount",
+            "points": 300
+          },
+          {
+            "name": "Digital Coffee Voucher",
+            "points": 200
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM",
+          "payload": {
+            "rewardName": "Retail Discount",
+            "points": 300
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-personalized-offer",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Tailored For You",
+        "subtitle": "Unused retail discount waiting in your account",
+        "offer": "300 Points Retail Voucher",
+        "validUntil": "12 Days",
+        "message": "Reclaim your unclaimed retail discount before your points cycle resets.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_OFFER",
+          "payload": {
+            "offerId": "retail-discount-300"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "One-Tap Rewards",
+        "description": "Redeem instantly using your current balance.",
+        "rewards": [
+          {
+            "name": "Coffee Voucher",
+            "points": 250,
+            "icon": "coffee"
+          },
+          {
+            "name": "Dining Voucher",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Film Rental",
+            "points": 350,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_REWARDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Your Rewards in Real Cash Value",
+        "cashValue": "\u00a318.50",
+        "pointsEquivalent": 1850,
+        "breakdown": [
+          {
+            "label": "Expiring Balance",
+            "value": "\u00a318.50"
+          },
+          {
+            "label": "Pending Vouchers",
+            "value": "\u00a33.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Curated For Your Silver Tier",
+        "rewards": [
+          {
+            "name": "Supermarket Voucher \u00a310",
+            "points": 1000,
+            "category": "Shopping",
+            "limited": false
+          },
+          {
+            "name": "Streaming Pass 1 Month",
+            "points": 800,
+            "category": "Entertainment",
+            "limited": true
+          },
+          {
+            "name": "Eco Coffee Cup",
+            "points": 600,
+            "category": "Lifestyle",
+            "limited": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "SELECT_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "status": "synced",
+        "title": "Wallet Synchronised",
+        "lastSyncedAt": "24 August 2026",
+        "message": "All 3 connected brand accounts are fully up to date.",
+        "ctaText": "Refresh Sync",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-insights",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Re-engagement Insight",
+        "topBrandName": "Retail Partner",
+        "topBrandPoints": 300,
+        "growthTip": "Claim your unused retail discount to retain full point value.",
+        "expiringPoints": 1850,
+        "expiryDate": "12 Sep",
+        "ctaText": "Protect Points",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_INSIGHT",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-brand-explorer",
+      "type": "BRAND_EXPLORER_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Explore Connected Brands",
+        "actionLabel": "View All Brands",
+        "categories": [
+          {
+            "label": "Shopping",
+            "count": 2,
+            "icon": "shopping-bag"
+          },
+          {
+            "label": "Dining",
+            "count": 1,
+            "icon": "utensils"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_CATEGORIES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tiles",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "label": "Brands Connected",
+        "value": "3",
+        "unit": "active",
+        "tone": "brand",
+        "infoText": "Your active retail partners",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLICK_METRIC",
+          "payload": {
+            "metric": "brands"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-badge",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "title": "Your Badges",
+        "badges": [
+          {
+            "name": "Active Saver",
+            "icon": "star",
+            "earned": true
+          },
+          {
+            "name": "First Redeem",
+            "icon": "trophy",
+            "earned": true
+          },
+          {
+            "name": "Streak Master",
+            "icon": "flame",
+            "earned": false
+          }
+        ],
+        "totalEarned": 2,
+        "totalAvailable": 5,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BADGES",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

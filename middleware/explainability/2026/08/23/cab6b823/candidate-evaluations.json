@@ -1,0 +1,539 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component layout tailored for the INSTANT_GRATIFICATION persona. Components include: POINTS_BALANCE, QUICK_REDEEM_CARD, TANGIBLE_VALUE_CARD, FLASH_REWARD_BANNER, RECENT_REDEMPTIONS_SUMMARY, INSTANT_DEAL_CAROUSEL, and ONE_CLICK_CLAIM_BAR. Aligned strictly with historical redemption velocity and zero manipulative countdowns.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly matches high-frequency immediate redemption habits with quick-action cards."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Rich 7-component structure provides high utility and frictionless 1-tap redemption pathways."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Perfectly aligns with the INSTANT_VALUE motivation and instantaneous reward preference."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean hierarchy, high contrast badges, clear typography, fully accessible for fast mobile interactions."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by 0.94 confidence historical redemption data and verified short redemption windows."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains LBG design system guidelines with pristine component availability and no logo modifications."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces a streamlined one-click claim bar that reduces friction for fast redemptions."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Utilizes standard available widgets well within the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimal 4-component layout featuring POINTS_BALANCE, QUICK_REDEEM_CARD, FLASH_REWARD_BANNER, and TANGIBLE_VALUE_CARD. Designed for speed but falls short of the rich screen requirement (6-9 components), limiting utility and goal coverage.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Covers basics but misses opportunity to surface history and carousel options for an engaged user."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Fewer than 5 components penalizes expected utility and depth for a high-frequency redeemer."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with instant rewards but lacks structural depth."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple layout, easy to navigate."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Solid historical backing."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Complies with design system."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "Too basic, offers nothing novel over standard screens."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Extremely lightweight and fast."
+        }
+      },
+      "weightedTotal": 6.85,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 5 components, reducing expectedCustomerUtility and customerGoalRelevance scores."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Instant Gratification persona-pure composition leveraging 7 rich components anchored by mandatory POINTS_BALANCE, featuring immediate rewards, flash offers, tangible cash equivalents, and quick-win claim pathways tailored for Alex Rivera's high-frequency redemption habits.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-reward",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Flash Bonus Unlocked!",
+            "subtitle": "Your recent brand activity earned you an instant reward.",
+            "points": 250,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "points": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Weekend Cinema Pass Flash Deal",
+            "subtitle": "Redeem now at an exclusive reduced point cost.",
+            "originalPoints": 1000,
+            "discountedPoints": 750,
+            "timer": "02:14:35",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_FLASH_OFFER",
+              "payload": {
+                "offerId": "cinema-pass-750"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "One-Tap Quick Rewards",
+            "description": "Instantly exchange your LBG Coins for immediate treats.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Dining Out Voucher",
+                "points": 500,
+                "icon": "utensils"
+              },
+              {
+                "name": "Streaming Rental",
+                "points": 400,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Wallet's Real-World Worth",
+            "cashValue": "\u00a342.50",
+            "pointsEquivalent": 4250,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "4,250 Coins"
+              },
+              {
+                "label": "Connected Brands Value",
+                "value": "3 Active Partners"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_CONVERSION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Curated Instant Rewards",
+            "rewards": [
+              {
+                "name": "Express Delivery Pass",
+                "points": 350,
+                "category": "Shopping",
+                "limited": false
+              },
+              {
+                "name": "Gourmet Snack Box",
+                "points": 600,
+                "category": "Food",
+                "limited": true
+              },
+              {
+                "name": "Audiobook Credit",
+                "points": 800,
+                "category": "Entertainment",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "BROWSE_REWARDS_CATALOGUE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Effortless Instant Perks",
+            "subtitle": "Claim within seconds using your current balance.",
+            "rewards": [
+              {
+                "name": "Digital Magazine Issue",
+                "points": 150
+              },
+              {
+                "name": "Music Streaming Pass",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "Partners",
+            "tone": "brand",
+            "infoText": "Active brands linked to your LBG rewards profile.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "MANAGE_CONNECTED_BRANDS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "INSTANT_VALUE_PRIORITY",
+        "HIGH_FREQUENCY_REDEEMER"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Blended instant gratification and brand discovery strategy combining immediate redemptions with brand explorer insights and personalized offers to maintain high velocity engagement.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner-2",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Gold Tier Flash Voucher",
+            "subtitle": "Exclusive 24-hour rate for top-tier members.",
+            "originalPoints": 1200,
+            "discountedPoints": 900,
+            "timer": "04:12:10",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_FLASH_OFFER",
+              "payload": {
+                "offerId": "gold-tier-900"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-2",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Instant Coffee & Dining Perks",
+            "description": "Ready to redeem in 1 tap.",
+            "rewards": [
+              {
+                "name": "Morning Coffee Perk",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Lunch Special Discount",
+                "points": 450,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Tailored for Your Habits",
+            "subtitle": "Based on your recent rapid redemptions",
+            "offer": "Double LBG Coins on your next 3 partner transactions",
+            "validUntil": "2026-09-15",
+            "message": "Activate now to accelerate your next instant reward.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACTIVATE_OFFER",
+              "payload": {
+                "offerId": "double-coins-sept"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-card",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Achievement Badges",
+            "badges": [
+              {
+                "name": "Speed Redeemer",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Flash Master",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Gold Elite",
+                "icon": "crown",
+                "earned": true
+              },
+              {
+                "name": "Brand Pioneer",
+                "icon": "star",
+                "earned": false
+              }
+            ],
+            "totalEarned": 3,
+            "totalAvailable": 4,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Explore Eligible Partner Brands",
+            "actionLabel": "Browse Categories",
+            "categories": [
+              {
+                "label": "Coffee & Dining",
+                "count": 12,
+                "icon": "coffee"
+              },
+              {
+                "label": "Retail & Shopping",
+                "count": 25,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Entertainment",
+                "count": 8,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronized",
+            "lastSyncedAt": "2026-08-23T07:15:01.109Z",
+            "message": "All connected brand points and LBG coins are fully up to date.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_WALLET",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.9,
+      "reasonCodes": [
+        "BLENDED_STRATEGY",
+        "BRAND_DISCOVERY",
+        "GAMIFICATION_ELEMENTS"
+      ]
+    }
+  ]
+}

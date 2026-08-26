@@ -1,0 +1,35 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "Component overload",
+        "severity": "HIGH",
+        "statement": "The payload includes 8 distinct interactive components (Points Balance, Expiring Points Alert, Quick Win Card, Flash Reward Banner, Quick Redeem Card, Instant Reward Popup, Tangible Value Card, and Reengagement Banner). This constitutes severe component overload and cognitive fatigue for the user on a single screen."
+      },
+      {
+        "category": "Inappropriate urgency or dark patterns",
+        "severity": "MEDIUM",
+        "statement": "Combining an expiring points warning, a flash deal timer, a welcome back popup, and a re-engagement banner creates aggressive multi-layered pressure to redeem immediately."
+      }
+    ],
+    "unresolvedCritical": 0,
+    "unresolvedHigh": 1,
+    "releaseReasons": [],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "HOLD triggered due to severe component overload (8 distinct promotional/alert cards presented simultaneously), leading to cognitive fatigue."
+      }
+    ]
+  },
+  "fallbackTriggered": false,
+  "reasonCodes": []
+}

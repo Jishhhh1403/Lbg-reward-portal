@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "36d33e31",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-11-03T00:00:00Z",
+  "customerRef": "customer_007",
+  "components": [
+    {
+      "id": "points-balance-header",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 24500,
+        "tier": "Diamond",
+        "name": "Elena Vasquez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "wallet-overview"
+          }
+        }
+      ]
+    },
+    {
+      "id": "expiring-points-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Protect Your Accumulated Value",
+        "expiringPoints": 2400,
+        "daysLeft": 9,
+        "message": "You have 2,400 points expiring soon. Secure them by allocating them to your active long-term savings goals.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ALLOCATE_POINTS",
+          "payload": {
+            "points": 2400
+          }
+        }
+      ]
+    },
+    {
+      "id": "future-value-projection",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Long-Term Growth Projection",
+        "currentValue": 24500,
+        "projectedValue": 38200,
+        "timeframe": "5 Years",
+        "growthRate": "7.5% APY Equivalent",
+        "message": "Continuing your steady accumulation safeguards your future security milestones.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "goal-retirement",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 24500,
+        "target": 100000,
+        "percentage": 25,
+        "estimatedCompletion": "2038",
+        "message": "Your foundation is set. Consistent contributions keep you firmly on track.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "goal-education",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 18500,
+        "target": 50000,
+        "percentage": 37,
+        "estimatedCompletion": "2032",
+        "message": "Well ahead of schedule with 37% achieved toward your family's future.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "goal-home",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 9000,
+        "target": 75000,
+        "percentage": 12,
+        "estimatedCompletion": "2035",
+        "message": "Building steadily toward your long-term property investment.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "add-new-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set up another long-horizon milestone to protect and grow your wealth.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "The Power of Compounding Rewards",
+        "insight": "Allocating bonus points directly into long-term funds multiplies their enduring value over multi-year horizons.",
+        "source": "Wealth Advisory Insights",
+        "actionLabel": "Read Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_INSIGHT",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

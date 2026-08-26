@@ -1,0 +1,817 @@
+QUEST-UI Middleware
+Full Agent Extension Implementation Specification
+Experience Narrative, Journey Coherence and Session Continuity
+
+Architecture
+QUEST+R
+
+Audience
+Coding assistant
+
+Status
+Implementation-ready v1.0
+
+Prepared for implementation against the existing 12-agent middleware described in EXPLANATION.md
+
+24 August 2026
+
+1. Executive summary
+
+This specification defines the full five-agent extension required to turn individually relevant reward cards into a coherent, hyperpersonalised customer experience. It is written as a hand-off to a coding assistant and covers agent contracts, QUEST+R integration, state and schema changes, prompt requirements, orchestration, deterministic validations, reason codes, audit outputs, tests and phased implementation.
+
+Core design principle
+
+Personalisation determines what is relevant. Narrative orchestration determines what belongs together now, in what order, for which customer outcome, and how the experience continues after the customer acts.
+
+The existing middleware remains the governance and compilation foundation. The extension preserves the current Consent Guardian, Risk Guardian, UI Constitution Guardian, Accessibility Agent, Component Planner, SDUI Compiler, Red-Team Challenger, deterministic Card Rule Engine and fallback behaviour. The new agents add explicit ownership of story, journey episodes, sequencing, coherence assurance and cross-session continuity.
+
+New agent	Primary ownership	Stages	Authority
+Customer Story Architect	One screen-level customer story, tension, resolution and intended outcome	U, E	Proposal; no veto
+Journey and Mini-Journey Composer	Primary journey, episodes, entry/exit states and completion definition	E, S	Proposal; no veto
+Narrative Sequence and Transition Agent	Card roles, order, dependencies, bridge logic and deferrals	S	Proposal; no veto
+Experience Coherence Guardian	Coherence hard gate before selection and after compilation	E, S, R	VETO in E/S; HOLD in R
+Session Continuity Agent	Resume, recap, resolve, branch, retire and stale-story handling	U, S, R	Challenge/HOLD recommendation
+1.1 Definition of done
+Five new agent modules are registered and visible in the health roster.
+QUEST+R stage rosters and prompts invoke each agent in the specified stages.
+QuestUIState carries typed story, journey, sequence, coherence and continuity artefacts.
+Stage S maps components to an approved journey skeleton before final ordering.
+The SDUI payload carries optional, backwards-compatible narrative metadata.
+Deterministic post-processing cannot silently break the approved sequence; a post-compile coherence check runs in R.
+Fallback and reason-code behaviour covers coherence failures.
+Explainability records persist every new artefact and verdict.
+Unit, graph, contract, regression and golden-scenario tests pass.
+2. Current architecture and precise gap
+
+The existing service fetches intelligence, applies deterministic card rules, builds shared state, executes Q→U→E→S→T→R, reconciles compiled components, validates the result and writes an explainability bundle. Stage S currently has a richness requirement of 12–17 components, persona breadth requirements, category coverage and deterministic mandatory stacks. These rules create breadth, but they do not require a single story or complete mini-journeys.
+
+Gap statement
+
+No current agent owns the end-to-end question:
+
+“What coherent customer story should this screen tell, and how does every displayed component advance, explain, resolve or support that story?”
+
+Existing role	What it does	What it does not own
+Journey & Intent Agent	Classifies current journey, intent and phase	Does not author a screen-level story or episode structure
+Personalisation Synthesiser	Scores candidate strategies	Does not score explicit narrative continuity today
+Component Planner	Selects and configures registered cards	Does not own causal sequencing or journey closure
+UI Constitution Guardian	Protects anchors, brand, tokens and legal surface	Does not validate semantic coherence
+SDUI Compiler	Translates an approved plan mechanically	Must not make narrative decisions
+Red-Team Challenger	Reviews broad failure and harm patterns	Does not provide a dedicated coherence contract
+2.1 Target operating model
+
+Customer intelligence + permitted evidence
+→ current situation and intent
+→ one approved customer story
+→ one primary journey with 2–4 mini-journeys
+→ registered components mapped to narrative roles
+→ causal sequence and explicit transitions
+→ governance + coherence gates
+→ deterministic reconciliation
+→ post-compile coherence assurance
+→ session-aware continuation
+
+3. Extended QUEST+R architecture
+Stage	Existing roster	Additions	New state outputs
+Q: Question	orchestrator, consent-guardian, journey-intent	No new agent. Extend charter.	primaryCustomerOutcome, experienceMode, maxConcurrentJourneys
+U: Understand	context-analyst, journey-intent, reward-psychology, accessibility, consent-guardian	customer-story-architect, session-continuity	storyHypotheses, continuityState, activeUnresolvedJourney
+E: Evaluate	personalization-synth, risk-guardian, accessibility	customer-story-architect, journey-composer, coherence-guardian	approvedCustomerStory, journeyCandidates, approvedJourney, coherenceAssessment
+S: Structure	component-planner, constitution-guardian, accessibility	journey-composer, narrative-sequencer, coherence-guardian, session-continuity	journeyPlan, narrativeSequence, deferredComponents, continuityPlan
+T: Translate	sdui-compiler	None	final/fallback SDUI with narrative metadata
+R: Refine	red-team, orchestrator	coherence-guardian, session-continuity	postCompileCoherence, continuityValidation, RELEASE/HOLD
+3.1 Required execution order inside Stage S
+Journey and Mini-Journey Composer produces the episode skeleton.
+Component Planner maps only registered components to each episode and proposes alternatives.
+Narrative Sequence and Transition Agent assigns roles, causal order, dependencies, transitions and deferrals.
+Session Continuity Agent adjusts opening treatment and state-dependent content.
+Accessibility Agent validates cognitive load and hierarchy.
+UI Constitution Guardian validates anchors, registry constraints and brand/legal rules.
+Experience Coherence Guardian validates the complete candidate and may veto.
+Implementation warning
+
+Do not ask the Component Planner to generate 12–17 cards first and retrofit a story afterwards. The journey skeleton must constrain component selection, not merely annotate it after selection.
+
+4. Agent specification: Customer Story Architect
+Field	Specification
+Canonical id	customer-story-architect
+Suggested file	agents/customer_story_architect.py
+Stages	U and E
+Message types	PROPOSAL, OBSERVATION
+Veto authority	None
+Primary output	storyHypotheses in U; approvedCustomerStory recommendation in E
+4.1 Mission
+
+Convert permitted customer context, current intent, goals, recent progress, reward state and continuity context into one screen-level story with a clearly bounded customer situation, genuine tension or opportunity, primary outcome and resolution. The story is a design contract, not marketing copy and not a psychological label.
+
+4.2 Inputs
+task_charter
+journey_analysis
+customer_context
+permitted_evidence and permitted_signals
+reward_interaction_profile
+accessibility_analysis
+intelligence_data
+continuity_state
+card_rules_summary
+4.3 Output schema
+class CustomerStory(BaseModel):
+    storyId: str
+    storyTitle: str
+    oneSentenceStory: str
+    customerSituation: str
+    storyTension: str
+    customerResolution: str
+    primaryOutcome: str
+    secondaryOutcome: str | None = None
+    narrativeMode: Literal[
+        "START_NEW_JOURNEY",
+        "CONTINUE_ACTIVE_GOAL",
+        "RESOLVE_ACTION",
+        "PROTECT_VALUE",
+        "MAKE_CHOICE",
+        "UNDERSTAND_VALUE"
+    ]
+    evidenceRefs: list[str]
+    confidence: float = Field(ge=0, le=1)
+    prohibitedDetours: list[str]
+    completionSignals: list[str]
+    expiryAt: datetime | None = None
+
+
+class StoryHypotheses(BaseModel):
+    hypotheses: list[CustomerStory] = Field(min_length=2, max_length=3)
+    recommendedStoryId: str
+    rejectedStoryReasons: dict[str, str]
+    qualityGate: GateResult
+4.4 Prompt contract
+Objective
+
+You are the Customer Story Architect in a governed banking rewards UI committee.
+
+Create 2–3 evidence-grounded screen stories, then recommend one. Each story must define one primary customer outcome and an achievable, meaningfully advanceable resolution for this visit.
+
+MUST
+Use permitted evidence only and cite evidenceRefs.
+Keep one primary outcome.
+Express the story in one sentence.
+Identify detours that would fragment the experience.
+MUST NOT
+Invent customer facts, goals or urgency.
+Reinterpret the reward profile as personality.
+Create campaign copy or regulated advice.
+Use sensitive/protected attributes.
+Lose sensitive/protected attributes.
+
+Strict JSON matching StoryHypotheses.
+
+4.5 Deterministic quality checks
+Exactly 2–3 hypotheses.
+Each evidenceRef resolves to permitted evidence.
+Exactly one primaryOutcome per hypothesis.
+oneSentenceStory is non-empty and below the configured length cap.
+confidence is within 0–1.
+completionSignals is non-empty.
+No prohibited signal or protected attribute appears.
+recommendedStoryId belongs to hypotheses.
+5. Agent specification: Journey and Mini-Journey Composer
+Field	Specification
+Canonical id	journey-composer
+Suggested file	agents/journey_composer.py
+Stages	E and S
+Message types	PROPOSAL, OBSERVATION
+Veto authority	None
+Primary output	journeyCandidates in E; experienceJourneyPlan in S
+5.1 Mission
+
+Translate the approved story into one primary journey and two to four mini-journeys. Each mini-journey is a complete episode with an entry condition, customer question, purpose, required information, action or resolution, exit state and transition target. A heading is not a mini-journey.
+
+5.2 Output schema
+class MiniJourney(BaseModel):
+    order: int
+    customerQuestion: str
+    entryCondition: str
+    requiredInformation: list[str]
+    allowedNarrativeRoles: list[NarrativeRole]
+    requiredActionType: str | None = None
+    resolutionType: Literal[
+        "ACTION",
+        "UNDERSTANDING",
+        "CHOICE",
+        "FEEDBACK",
+        "CONTINUATION"
+    ]
+    transitionsTo: str | None
+    requiredEvidenceRefs: list[str]
+    optional: bool = False
+
+
+class ExperienceJourneyPlan(BaseModel):
+    primaryJourneyId: str
+    storyId: str
+    journeyObjective: str
+    entryPoint: str
+    completionDefinition: str
+    primaryActionPolicy: Literal[
+        "ONE_DOMINANT",
+        "ONE_PLUS_ALTERNATIVE"
+    ]
+    miniJourneys: list[MiniJourney] = Field(min_length=2, max_length=4)
+    supportingSurfaces: list[SupportingSurface]
+    qualityGate: GateResult
+5.3 Prompt contract
+
+Design a journey skeleton for the approved story before components are selected.
+
+Every mini-journey must answer a distinct customer question and must end in an observable state.
+
+Use 2–4 mini-journeys. Preserve one primary journey and one primary action at a time.
+
+Move useful but non-essential information to supporting surfaces.
+
+Do not name or invent component types. Do not convert generic content categories into episodes.
+
+Return strict JSON matching ExperienceJourneyPlan.
+
+5.4 Episode quality gate
+Check	Requirement
+Relevance	Episode directly advances the approved story
+Completeness	Entry, development and exit are present
+Continuity	Episode connects to preceding or next episode, unless explicitly optional
+Necessity	Removing the episode would reduce utility or comprehension
+Actionability	Requested action has a represented consequence
+Scope	Episode does not introduce an unrelated primary journey
+Evidence	Required information is supported by permitted evidence
+6. Agent specification: Narrative Sequence and Transition Agent
+Field	Specification
+Stage	S
+Message types	PROPOSAL
+Veto authority	None
+Primary output	narrativeSequence and deferredComponents
+6.1 Mission
+
+Order candidate components by causal and semantic relationship, assign each component a narrative role, define dependencies and bridge logic, and defer components that interrupt the approved journey. The agent may re-order or defer proposed components but may not invent unregistered components, customer facts or legal copy.
+
+6.2 Narrative role enumeration
+Role	Meaning
+ORIENTATION	Establish current situation
+MEANING	Explain why the situation matters
+TENSION	Identify genuine gap, choice or opportunity
+EVIDENCE	Provide relevant support
+OPTION	Offer legitimate choice
+ACTION	Enable the next step
+FEEDBACK	Show the effect of a completed action
+PAYOFF	Make immediate or future value visible
+CELEBRATION	Show a genuinely triggered achievement
+CONTINUATION	Preview the next episode
+REFERENCE	Provide optional detail without interrupting the main path
+6.3 Output schema
+class SequencedComponent(BaseModel):
+    miniJourneyId: str
+    narrativeRole: NarrativeRole
+    sequence: int
+    dependsOn: list[str] = []
+    resolves: list[str] = []
+    optional: bool = False
+
+
+class NarrativeTransition(BaseModel):
+    fromComponentRef: str
+    toComponentRef: str
+    relationship: Literal[
+        "situation-to-meaning",
+        "progress-to-gap",
+        "choice-to-action",
+        "action-to-feedback",
+        ...
+    ]
+    bridgeIntent: str
+    bridgeCopy: str | None = None
+
+
+class NarrativeSequence(BaseModel):
+    primaryActionComponentRef: str
+    components: list[SequencedComponent]
+    transitions: list[NarrativeTransition]
+    deferredComponents: list[DeferredComponent]
+    qualityGate: GateResult
+6.4 Sequencing rules
+POINTS_BALANCE remains the constitutionally anchored first component, but the first non-anchored card must establish the active story.
+Every non-reference component must belong to exactly one mini-journey.
+Every adjacent pair must have an explicit relationship or an episode boundary.
+Only one component is designated as the dominant primary action.
+An ACTION must be followed by FEEDBACK, PAYOFF or CONTINUATION in the same sequence or in the declared next state.
+Generic educational or programme-mechanics cards become REFERENCE or supporting-surface content unless central to the approved story.
+Untriggered celebration, stale actions and semantically orphaned cards are deferred.
+7. Agent specification: Experience Coherence Guardian
+Field	Specification
+Canonical id	coherence-guardian
+Suggested file	agents/coherence_guardian.py
+Stages	E, S and R
+Message types	APPROVAL, VETO, CHALLENGE
+Authority	VETO in E/S; HOLD recommendation in R
+Primary output	coherenceAssessment and postCompileCoherence
+7.1 Mission
+
+Protect the semantic integrity of the customer experience. The guardian votes that:
+
+the journey is complete,
+transitions are intelligible,
+one dominant story is identifiable,
+one primary action dominates,
+each action has a consequence,
+deterministic compilation has not broken the approved narrative,
+intended outcomes remain connected,
+and no mandatory component has fragmented the experience.
+7.2 Assessment schema
+class CoherenceAssessment(BaseModel):
+    storyClarity: int = Field(ge=0, le=100)
+    journeyContinuity: int = Field(ge=0, le=100)
+    miniJourneyCompleteness: int = Field(ge=0, le=100)
+    transitionStrength: int = Field(ge=0, le=100)
+    actionOutcomeContinuity: int = Field(ge=0, le=100)
+    contentDistractionRisk: Literal["Low", "High"]
+    primaryActionClarity: Literal["PASS", "FAIL"]
+    orphanComponents: list[str]
+    conflictingNarratives: list[str]
+    violations: list[CoherenceViolation]
+    decision: Literal["PASS", "VETO", "HOLD"]
+    reasonCode: str | None = None
+7.3 Hard-gate conditions
+No single story can be inferred from the approved artefacts or compiled screen.
+More than one journey competes for primary attention.
+The primary action is unrelated to the opening story context.
+The action consequence is absent from the current or declared next state.
+A mandatory component inserted after compilation breaks the main sequence.
+One or more non-reference components are semantically orphaned.
+Headings claim continuity that card relationships do not support.
+A mini-journey begins but has no action, resolution or deliberate continuation.
+The compiled SDUI materially differs from the approved narrative sequence.
+The dominant action is visually or logically ambiguous.
+7.4 Recommended thresholds
+Configurable policy
+
+The following values are implementation recommendations and should live in configuration rather than prompts.
+
+PASS requires:
+
+story clarity ≥ 75
+journey continuity ≥ 70
+mini-journey completeness ≥ 75
+transition strength ≥ 65
+action-outcome continuity ≥ 75
+no HIGH distraction risk
+no orphan component
+primary-action clarity = PASS
+8. Agent specification: Session Continuity Agent
+Field	Specification
+Canonical id	session-continuity
+Suggested file	agents/session_continuity.py
+Stages	U, S and R
+Message types	OBSERVATION, PROPOSAL, CHALLENGE
+Authority	No direct veto; may recommend HOLD
+Primary output	continuityState, continuityPlan, continuation
+8.1 Mission
+
+Maintain a purpose-bound experience state across visits and customer actions. The agent determines whether the customer should START, RESUME, RECAP, RESOLVE, BRANCH, RETIRE or RESTART a journey. It prevents repeated celebrations, stale actions, ignored dismissal signals and generic resets.
+
+8.2 Schemas
+class ContinuityState(BaseModel):
+    available: bool
+    previousJourneyId: str | None
+    previousStoryId: str | None
+    lastMeaningfulAction: str | None
+    lastResolvedMiniJourneyId: str | None
+    activeMiniJourneyId: str | None
+    completedComponentRefs: list[str]
+    dismissedComponentRefs: list[str]
+    deferredChoices: list[str]
+    stateChanges: list[StateChange]
+    observedAt: datetime | None
+    expiresAt: datetime | None
+
+
+class ContinuityPlan(BaseModel):
+    openingTreatment: str
+    permitted: bool
+    stateChangeSummary: str | None
+    retiredComponents: list[str]
+    suppressionRules: list[str]
+8.3 Privacy and retention guardrails
+Use only session and event information approved by the Consent Guardian.
+Do not build an unbounded behavioural history.
+Every continuity attribute must have source, observedAt and expiry.
+Dismissal is not a permanent negative preference unless explicitly declared.
+Missing history means continuity unavailable, not “customer has no prior interest”.
+Do not infer emotion, vulnerability or personality from abandonment or dwell time.
+Retire stale stories when evidence, goal state or permission changes.
+9. Shared-state and schema changes
+9.1 QuestUIState additions
+
+schemas/state.py
+
+storyHypotheses: dict | None
+approvedCustomerStory: dict | None
+continuityState: dict | None
+journeyCandidates: List[dict]
+approvedJourney: dict | None
+experienceJourneyPlan: dict | None
+narrativeSequence: dict | None
+deferredComponents: List[dict]
+continuityPlan: dict | None
+coherenceAssessment: dict | None
+postCompileCoherence: dict | None
+continuityValidation: dict | None
+Reducer guidance
+Journey candidates and deferred components: append only if a stage can emit multiple batches.
+All approved artefacts and verdicts: overwrite, because only one current decision is valid.
+9.2 Task Charter additions
+primaryCustomerOutcome: str
+
+experienceMode: Literal[
+    "NEW",
+    "CONTINUING",
+    "RESOLVING",
+    "UNKNOWN"
+]
+
+maxConcurrentPrimaryJourneys: int = 1
+
+primaryActionPolicy: Literal[
+    "ONE DOMINANT",
+    "ONE_PLUS_ALTERNATIVE"
+]
+
+programmeEducationInterruptionPolicy: Literal[
+    "ONLY_IF_CENTRAL",
+    "REFERENCE_ONLY",
+    "DISALLOWED"
+]
+
+continuityPermitted: bool
+
+coherenceThresholdProfile: str = "default-v1"
+9.3 SDUI additions
+
+Use optional fields to preserve backward compatibility with the existing renderer. Unknown fields must not cause a render failure.
+
+class SDUINarrativeMetadata(BaseModel):
+    storyId: str
+    primaryOutcome: str
+    primaryJourneyId: str
+    currentMiniJourneyId: str | None
+    entryMode: str
+    primaryActionComponentId: str | None
+
+
+class ComponentNarrativeMetadata(BaseModel):
+    journeyId: str
+    miniJourneyId: str
+    role: NarrativeRole
+    dependsOn: list[str] = ()
+    resolves: list[str] = ()
+    optional: bool = False
+
+experienceNarrative: SDUINarrativeMetadata
+
+Optional component field:
+
+narrative: ComponentNarrativeMetadata | None = None
+
+9.4 New reason codes
+Reason code	Stage	Meaning
+U.STORY.GROUNDING.FAILED	U	No valid evidence-grounded story hypothesis
+E.STORY_SELECTION.FAILED	E	No story can pass evaluation
+E.COHERENCE.VETO	E	Strategy lacks a coherent story or journey
+S.JOURNEY_PLAN.INVALID	S	Mini-journey structure fails schema or quality gate
+S.SEQUENCE.INVALID	S	Ordering/dependency/transition contract is invalid
+S.COHERENCE.VETO	S	Composed candidate is semantically fragmented
+R.COHERENCE.HOLD	R	Compiled screen diverges from approved narrative
+R.CONTINUITY.HOLD	R	Retained state repeats, regresses or conflicts with continuity
+R.CONTINUITY.UNAVAILABLE	R	Permitted continuity data is absent; continue safely without it
+10. Evaluation and governance changes
+10.1 Revised Stage E weighted scorecard
+Criterion	Weight	Notes
+Customer goal relevance	20%	Retains strongest customer-goal emphasis
+Expected customer utility	15%	Measures practical value
+Screen-level story coherence	15%	New explicit criterion
+Journey and action continuity	10%	New explicit criterion
+Access and cognitive fit	10%	Retains accessibility emphasis
+Brand and legal consistency	10%	Constitution remains a hard gate
+[Remaining scorecard criteria]	[unclear from scan]	Small differentiators / implementation scoring
+Governance invariant
+
+A high weighted score can never override consent, privacy, accessibility, conduct, UI Constitution, schema or coherence hard gates.
+
+10.2 AgentMessages
+
+Register the new agents as valid senders and preserve the existing structured blackboard pattern. All messages remain addressed to the orchestrator.
+
+Recommended message use:
+
+Customer Story Architect — PROPOSAL for story hypotheses; OBSERVATION for story evidence gaps.
+Journey Composer — PROPOSAL for journey candidates and final journey plan.
+Narrative Sequencer — PROPOSAL for sequence transitions and deferrals.
+Coherence Guardian — APPROVAL or VETO in E/S; CHALLENGE and HOLD recommendation in R.
+Session Continuity — OBSERVATION in U; PROPOSAL in S; CHALLENGE in R.
+11. Codebase change map
+File	Change
+agents/customer_story_architect.py	New BaseAgent subclass, prompt, Pydantic models and messages
+agents/journey_composer.py	New E/S agent
+agents/narrative_sequencer.py	New S agent
+agents/coherence_guardian.py	New E/S/R agent
+agents/session_continuity.py	New U/S/R agent
+agents/__init__.py	Export agent
+schemas/narrative.py	New Pydantic models and enums
+schemas/state.py	Add state and reducer choices
+schemas/sdui.py	Add optional screen/component narrative metadata
+orchestrator/...	Add stage routing, execution and reconciliation
+explainability_writer.py	Write new narrative and continuity artefacts
+app/main.py	Health roster now includes 17 agents
+11.1 Agent construction pattern
+parsed = self._llm.parse_with_retry(...)
+model = StoryHypotheses.model_validate(parsed)
+
+message = self._create_message(
+    round="story-framing",
+    ...
+)
+
+return (
+    "story hypotheses: {model.model_dump()}",
+    {"a.messages": [message]}
+)
+12. Workflow integration pseudocode
+[
+    "orchestrator",
+    "consent-guardian",
+    "journey-intent",
+    "session-continuity",
+    "coherence-guardian"
+]
+12.1 Stage routing logic
+grounded Story
+        ↓
+STORY.GROUNDING.FAILED → fallback
+
+evaluate at least two story/journey strategies
+        ↓
+coherence gate
+        ↓
+E.COHERENCE.VETO → fallback
+
+select approved story and primary Journey
+        ↓
+compare journey skeleton
+        ↓
+Journey Composer
+        ↓
+Narrative Sequence and Transition
+        ↓
+run Accessibility + Constitution + Coherence gates
+        ↓
+if any gate vetoes → fallback
+        ↓
+mechanically compile approved plan and narrative metadata
+        ↓
+apply existing reconciliation and card-rule enforcement
+        ↓
+post-compile coherence
+        ↓
+if critical divergence → R.COHERENCE.HOLD → fallback
+otherwise → RELEASE
+12.2 Important interaction with Card Rule Engine
+
+The current deterministic engine can insert mandatory stacks after POINTS_BALANCE during post-processing. This remains binding.
+
+To avoid silent fragmentation:
+
+Expose mandatory stack directives to the Journey Composer and Narrative Sequencer before Stage S.
+Assign every mandatory component a narrative role and mini-journey placement where possible.
+When a mandatory component cannot belong to the primary journey, mark it REFERENCE and place it in the least disruptive permitted location.
+After Stage T enforcement, run a deterministic narrative reconciliation that updates references and then let the Coherence Guardian review the actual compiled order.
+Never remove a conduct-mandated component merely to improve storytelling.
+13. Deterministic coherence validator
+
+LLM review is not sufficient for structural invariants. Add:
+
+validators/coherence_validator.py
+
+and run it before the guardian in S and again on compiled SDUI in R.
+
+assert_unique(ids, errors)
+assert_component_refs_resolve(dependencies, errors)
+assert_no_orphans(screen, errors)
+assert_anchor_preserved(screen, "POINTS_BALANCE", errors)
+
+return ValidationResult(
+    passed=not errors,
+    errors=errors
+)
+13.1 Structural invariants
+Components and priorities remain unique.
+All story, journey, mini-journey and component references resolve.
+Mini-journey orders are continuous and within the configured cap.
+Dependencies point backwards in the rendered sequence unless explicitly asynchronous.
+Exactly one primary action ID is present unless the charter explicitly allows none.
+Every primary ACTION has a FEEDBACK, PAYOFF or CONTINUATION contract.
+REFERENCE contents are optional and cannot become the dominant action.
+Deferred components are absent from the main component list.
+POINTS_BALANCE remains first as required by the existing constitution.
+14. Explainability and audit changes
+
+Extend the existing explainability bundle while preserving current files.
+
+Add the following records:
+
+Record	Contents
+story_hypotheses.json	All proposed stories, evidence references and rejection reasons
+approved_customer_story.json	Selected story and quality gate
+journey_candidates.json	Alternative journey states and episode plans
+experience_journey_plan.json	Approved primary journey and mini-journeys
+narrative_sequence.json	Component roles, ordering, dependencies, bridge and deferral
+continuity_state.json	Permitted explainable input state
+continuity_plan.json	START/RESUME/RECAP/RESOLVE/BRANCH/RETIRE/RESTART decision
+coherence_assessment.json	Gate metrics and violations
+post_compile_coherence.json	Assessment against actual compiled SDUI
+validation_result.json	Deterministic variant checks
+14.1 Audit questions that must be answerable
+Why was this customer story selected over alternatives?
+Which permitted evidence supports the story?
+What is the primary customer outcome?
+Which mini-journey does each card serve?
+Why does card B follow card A?
+Which components were deferred and why?
+What changed because of session continuity?
+Did deterministic card-rule enforcement alter the approved sequence?
+Why did the Coherence Guardian pass, veto or hold the experience?
+15. Test strategy and acceptance criteria
+15.1 Unit tests by agent
+Agent	Test requirement
+Customer Story Architect	Rejects unsupported evidence; enforces one outcome; produces 2–3 hypotheses
+Journey Composer	Produces 2–4 complete episodes; rejects headings-only plans; enforces completion definition and one main journey
+Narrative Sequencer	Assigns roles; detects unresolved references; defers unrelated cards; enforces one primary action
+Coherence Guardian	Rejects orphaned/competing narratives; detects violations; prevents structurally broken journeys
+Session Continuity Agent	Resumes unfinished episode; retires completed action; prevents repeated celebration; safely continues when story absent
+15.2 Integration and graph tests
+Happy path goes Q→U→E→S→T→R and returns PERSONALIZED.
+E coherence veto routes directly to fallback with E.COHERENCE.VETO.
+S invalid sequence routes to fallback with S.SEQUENCE.INVALID.
+Post-T mandatory insertion triggers R review and either passes with updated placement or returns R.COHERENCE.HOLD.
+Consent veto remains higher priority than narrative processing.
+Risk and Constitution veto behaviour remains unchanged.
+LLM parse failure uses existing retry/fallback semantics.
+Old clients can render SDUI while ignoring optional narrative metadata.
+15.3 Golden scenarios
+Active-first-home earning goal
+
+Orient on goal, identify next gap, recommend one action, show points/goal payoff; defer generic programme content.
+
+Customer completed action
+
+RESOLVE CAP: opening shows feedback and newly unlocked next milestone; suppress recommended mode completed action card.
+
+Customer dismissed a card
+
+Do not repeat immediately; offer an alternate without inferring a permanent recommendation decline.
+
+No continuity data
+
+START mode; no negative inference; build only from current permitted content.
+
+Select one primary story
+
+Only one story should be selected even if multiple strategies are selectable; no competing mainlines.
+
+Accessibility component cap
+
+Reduce episode count/components while preserving orientation, action, consequence and comprehension.
+
+Narrative sequence integrity
+
+Never allow MEANING/REFERENCE to interrupt an active action path; route to the appropriate reference/supporting surface.
+
+15.4 Release acceptance checklist
+Health endpoint lists 17 agents with canonical IDs.
+Every new state model serialises and validates.
+No existing fallback or governance test regresses.
+Golden scenarios produce one identifiable story and one dominant action.
+No mainline component is orphaned.
+Compiled priorities and narrative sequence agree.
+Explainability Bundle contains all new artefacts.
+Renderer without narrative support still displays the screen safely.
+Configuration controls caps and thresholds; prompts do not contain hidden magic numbers.
+Logs and audit artefacts exclude raw identifiers beyond existing policy.
+16. Recommended implementation sequence
+Step	Implementation	Exit criteria
+1	Add narrative.py models, state fields and reason codes	Schema tests pass
+2	Implement deterministic coherence_validator to run at both points	Structural tests pass
+3	Implement Customer Story Architect and Journey Composer	Contract tests pass
+4	Implement Narrative Sequencer	Sequence tests pass
+5	Implement Coherence Guardian and routing veto/hold	Gate tests pass
+6	Implement Session Continuity Agent and bounded state	Continuity tests pass
+7	Extend Stage S orchestration and Component Planner inputs	Journey-first composition verified
+8	Extend SDUI optional metadata and compile/post-compile checks	Renderer validation passes
+9	Backward compatibility test	Old clients render safely
+10	Extend explainability writer, health roster and regression suite	Audit completeness passes
+11	Run regression and golden-scenario suite	Release criteria pass
+Recommended delivery discipline
+
+Implement schemas and deterministic validation before prompts. This gives the coding assistant stable contracts, allows tests to be written early and prevents prompt output from becoming the de facto schema.
+
+17. End-to-end worked example
+17.1 Approved story
+{
+  "storyTension": "The next milestone remains incomplete.",
+  "narrativeMode": "CONTINUE_ACTIVE_GOAL"
+}
+17.2 Journey plan
+#	Mini-journey	Customer question	Outcome
+1	Recognise progress	How far have I come?	Customer sees meaningful progress
+2	Understand next gap	What remains and why does it matter?	Customer understands remaining gap
+3	Take next step	What should I do now?	Customer begins one relevant action
+4	See future payoff	What will unlock if I continue?	Customer sees goal/progression payoff
+17.3 Mainline sequence
+POINTS BALANCE [anchored]
+
+GOAL_PROGRESS_CARD [ORIENTATION]
+
+NEXT_MILESTONE treatment [TENSION]
+
+RELEVANT_ACTION_CARD [ACTION]
+
+REWARD/GOAL preview [PAYOFF]
+
+NEXT_EPISODE_PREVIEW [CONTINUATION]
+
+POINTS MORE, Full milestone history, modules-completed analytics
+17.4 R-stage release logic
+Confirm the first non-anchor establishes the approved story.
+Confirm the recommended activity follows the represented gap.
+Confirm the payoff names both points and goal progression where data permits.
+Confirm generic support content did not interrupt the mainline.
+Confirm any mandatory card-rule insertions have a declared narrative placement.
+Confirm compiled component order matches the audited narrative sequence.
+18. Engineering risks and mitigations
+Risk	Mitigation
+Reuse stage-level committee voting	Stage agency rises with veto lower response or more provider
+Validators cache stale continuity context	Enforce bounded, stable continuity context
+Prompt overlap between agents	Enforce “owns / must not own” boundaries
+Too many relevant but unnecessary cards	Make journey requirements superior to breadth
+Coherence engine changes order	Re-expose directives, reconcile metadata and run post-compile coherence
+Continuity becomes surveillance	Purpose-bound, explainable, consented state and no sensitive inference; bounded history
+Marketing copy becomes story	Keep separately rendered copy only
+Variable educational value	Trigger only when it adds comprehension
+Repeated experiences	Combine deterministic variant with configured thresholds and explicit violation codes
+Backward incompatibility	Make narrative fields optional and preserve existing renderer behaviour
+19. Coding-assistant hand-off instructions
+
+The following block can be pasted into a coding assistant together with this document and the current repository:
+
+Implement the Five-agent narrative extension described in this specification against the existing QUEST-UI architecture.
+
+Work in this order:
+
+Implement validators, orchestration service and explainability writer.
+Implement the five agents using the existing BaseAgent conventions and preserve existing accessibility or constitution gates.
+Shape Stage S journey-first: Journey Composer → Component Planner → Sequencer → Accessibility → Constitution → Coherence.
+Do not invent new component types unless separately approved and registered.
+Preserve POINTS_BALANCE anchoring.
+Never let weighted scores override hard gates.
+Never use unconsented continuity history.
+Never silently drop mandatory card-rule components.
+
+For each code change, return tests, change summary, validation results and schema migration impact.
+
+Appendix A. Ownership matrix
+Responsibility	Owner	Guardian / challenger
+Current journey and intent	Journey & Intent Agent	Customer Story Architect
+Permitted evidence	Consent Guardian	All agents
+Screen-level story	Customer Story Architect	Coherence Guardian
+Journey phases	Journey Composer	Coherence Guardian
+Approved component mapping	Component Planner	Constitution + Accessibility
+Narrative order and transitions	Narrative Sequencer	Coherence Guardian
+Cross-session state	Session Continuity Agent	Content + Coherence
+Mechanical SDUI creation	SDUI Compiler	Deterministic validators
+Render/component constitution	UI Constitution Guardian	Red Team
+Final release	Orchestrator	Red Team + Coherence Guardian
+Appendix B. Source basis and design status
+
+Source basis: the existing architecture, agent roster, QUEST+R stages, schemas, deterministic card-rule enforcement, fallback design and explainability structure are taken from the attached EXPLANATION.md. The five new agents, schemas, thresholds, weights, reason codes, file names, test cases and implementation sequence are proposed extensions in this specification. They should be validated against the actual repository before merge.
+
+Appendix C. Compact checklist for pull-request review
+Contracts are typed and versioned.
+Prompts match contracts exactly.
+All evidence references are permitted and resolvable.
+One story and one primary outcome.
+Two to four complete mini-journeys.
+One dominant action.
+Every mainline card has a narrative role.
+Every transition is explainable.
+No non-reference orphan cards.
+Action has represented outcome.
+Continuity is bounded and expirably.
+Existing guardians retain precedence.
+Card-rule insertions are revalidated.
+Fallback remains valid.
+Audit bundle is complete.
+Backward compatibility is tested.

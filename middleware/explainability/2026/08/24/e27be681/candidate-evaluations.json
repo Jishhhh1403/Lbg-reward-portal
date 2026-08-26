@@ -1,0 +1,629 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Comprehensive multi-goal re-engagement screen utilizing 11 rich components tailored for a Diamond-tier long-term planner. It strictly honors the customer's three active goals (Retirement Fund, Children Education Fund, Dream Home Deposit) by dedicating one distinct goal card per goal plus an ADD_GOAL_CARD, accompanied by mandatory anchor components (POINTS_BALANCE, EXPIRING_POINTS_ALERT), future value and educational insights, and quick-win allocations to rescue expiring points without manipulative urgency.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly maps to all three active savings goals with dedicated cards plus ADD_GOAL_CARD, fully reflecting the customer's multi-goal structure."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 11 rich components delivering high educational and projected-value utility, perfectly matching her preference for long-term planning."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns with FUTURE_SECURITY motivation and DIAMOND tier status, addressing the stalled journey with educational rather than transactional nudges."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear structural hierarchy, high-contrast alerts for expiring points without panic-inducing tactics, and screen-reader friendly design."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Built directly on verified facts regarding her 24,500 points, 2,400 expiring coins, and 34-day inactivity period."
+        },
+        "brandAndDesignConsistency": {
+          "score": 10,
+          "explanation": "Strictly preserves bank logos, coin terminology, and mandatory components without alteration."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces projected-value simulations that connect expiring points directly to long-horizon goal milestones."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully compatible with existing mobile component schemas and the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined 8-component screen focusing primarily on the expiring points alert and the single largest goal (Retirement Fund), utilizing a high-velocity redemption recommendation engine.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to represent all three active savings goals and omits the required ADD_GOAL_CARD for multi-goal customers."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "At 8 components, it falls below the rich screen requirement (9-14 components) and pushes immediate transactional redemption which contradicts her historical preferences."
+        },
+        "rewardProfileAlignment": {
+          "score": 5,
+          "explanation": "Pushes quick transactional redemption rather than future security and educational insights."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean layout, but misses holistic multi-goal tracking."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Uses core points data but ignores behavioral preference for educational content."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains brand guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard transactional redemption UI with little innovation."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Very easy to render quickly."
+        }
+      },
+      "weightedTotal": 6.55,
+      "hardGatesPass": false,
+      "objections": [
+        "Fails component count minimum (proposes 8 components instead of 9-14).",
+        "Fails multi-goal requirement (omits cards for Children Education Fund and Dream Home Deposit, as well as ADD_GOAL_CARD).",
+        "Violates behavioral preference by emphasizing immediate transactional redemption over educational/projected-value content."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "PLANNER_AT_RISK_MIX composition for Elena Vasquez (Diamond tier). Leads with a calm EXPIRING_POINTS_ALERT (2,400 points in 9 days) and FUTURE_VALUE_CARD, tracks all three long-term goals (Retirement Fund, Children Education Fund, Dream Home Deposit) with dedicated half-span cards plus an ADD_GOAL_CARD, incorporates projected value and educational insights, and adds a quick win to gently re-engage her stalled savings journey without pressure tactics.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE_WALLET",
+              "payload": {
+                "tab": "balance"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Protect Your Accumulated Value",
+            "expiringPoints": 2400,
+            "daysLeft": 9,
+            "message": "You have 2,400 LBG Coins expiring in 9 days. Allocate them to one of your active savings goals to keep your long-term progress secure.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ALLOCATE_POINTS",
+              "payload": {
+                "points": 2400
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Long-Term Wealth Projection",
+            "currentValue": 24500,
+            "projectedValue": 38500,
+            "timeframe": "3 Years",
+            "growthRate": "6.5% AER equivalent",
+            "message": "Consistent compounding on your 24,500 LBG Coins builds substantial foundational security for your future milestones.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2034",
+            "message": "Your cornerstone fund is 25% achieved. Steady contributions keep your retirement vision on track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2031",
+            "message": "You are making excellent steady progress toward educational security.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2033",
+            "message": "Laying the groundwork for your future family home.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new horizon target to guide your long-term rewards accumulation.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Multi-Year Growth Trajectory",
+            "growthLabel": "Projected Growth Portfolio",
+            "data": [
+              {
+                "year": "2026",
+                "value": 24500
+              },
+              {
+                "year": "2028",
+                "value": 31000
+              },
+              {
+                "year": "2030",
+                "value": 42000
+              },
+              {
+                "year": "2032",
+                "value": 58000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "The Power of Compounding Rewards",
+            "insight": "Allocating bonus points directly into long-term savings pots accelerates your timeline by up to 14 months without requiring extra spend.",
+            "source": "LBG Wealth Intelligence",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_ARTICLE",
+              "payload": {
+                "articleId": "compounding-rewards-101"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Gentle Saver Boost",
+            "subtitle": "Secure 200 bonus coins instantly to protect your streak.",
+            "rewards": [
+              {
+                "name": "Savings Pot Top-Up",
+                "points": 200
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "points": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "label": "Brands Linked",
+            "value": "3",
+            "unit": "Active",
+            "tone": "white",
+            "infoText": "Your connected partner accounts are automatically contributing to your accumulation goals.",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LINKED_BRANDS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.94,
+      "reasonCodes": [
+        "PLANNER_AT_RISK_MIX",
+        "EDUCATIONAL_AND_PROJECTED_VALUE",
+        "MULTI_GOAL_ALIGNMENT"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Balanced Wealth Protection screen for Elena Vasquez blending risk mitigation, goal tracking, and peer insights. Highlights expiring points with projected value safeguards and includes structured savings calculations.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE_WALLET",
+              "payload": {
+                "tab": "balance"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert-2",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Coins Notice",
+            "expiringPoints": 2400,
+            "daysLeft": 9,
+            "message": "2,400 LBG Coins are scheduled to expire in 9 days. Direct them toward your Retirement Fund to preserve your lifetime earnings.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ALLOCATE_POINTS",
+              "payload": {
+                "points": 2400
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Points Expiry Window",
+            "days": 9,
+            "hours": 14,
+            "minutes": 22,
+            "message": "Time remaining before your 2,400 coins expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRY_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2034",
+            "message": "Your primary retirement accumulation is progressing steadily.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2031",
+            "message": "Solid momentum toward your children's educational future.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2033",
+            "message": "Building equity for your dream home milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create an additional long-term savings objective.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value-2",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Portfolio Value Projection",
+            "currentValue": 24500,
+            "projectedValue": 39000,
+            "timeframe": "3 Years",
+            "growthRate": "7.0% AER equivalent",
+            "message": "Your 24,500 coins are positioned for steady long-term growth.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-savings-calculator",
+          "type": "SAVINGS_CALCULATOR_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Savings Pot Simulator",
+            "presets": [
+              {
+                "monthly": 500,
+                "yearEnd": 6400,
+                "bonusPoints": 1200
+              },
+              {
+                "monthly": 1000,
+                "yearEnd": 13100,
+                "bonusPoints": 2500
+              }
+            ],
+            "note": "Simulated growth based on Diamond-tier multiplier benefits.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "RUN_SIMULATOR",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-rewards-insight",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Wealth & Rewards Summary",
+            "topBrandName": "LBG Premier Partner",
+            "topBrandPoints": 12500,
+            "growthTip": "Redirect expiring points to maintain your 100% accumulation record.",
+            "expiringPoints": 2400,
+            "expiryDate": "15 Sep",
+            "ctaText": "Review Portfolio",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHTS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "PLANNER_AT_RISK_MIX",
+        "SAVINGS_CALCULATOR",
+        "FUTURE_SECURITY"
+      ]
+    }
+  ]
+}

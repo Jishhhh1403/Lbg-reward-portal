@@ -1,0 +1,455 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-2ce66717",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Instant Gratification persona-pure composition emphasizing rapid redemptions, flash offers, and tangible cash value within 6-9 rich components.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "2-Hour Flash Deal: Gourmet Dinner for Two",
+            "subtitle": "Exclusive limited-time discount for Gold tier members",
+            "originalPoints": 2000,
+            "discountedPoints": 1500,
+            "timer": "01:45:30",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardId": "flash-gourmet-dinner",
+                "cost": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "One-Tap Instant Rewards",
+            "description": "Ready to claim instantly with your 4,250 points balance",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Pass",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Bistro Dining Voucher",
+                "points": 500,
+                "icon": "utensils"
+              },
+              {
+                "name": "VIP Cinema Ticket",
+                "points": 1000,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Your Points Real Cash Worth",
+            "cashValue": "\u00a342.50",
+            "pointsEquivalent": 4250,
+            "breakdown": [
+              {
+                "label": "Available Spendable Value",
+                "value": "\u00a342.50"
+              },
+              {
+                "label": "Average Redemption Speed",
+                "value": "2.3 hours"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_CONVERSION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Recent Velocity Bonus Unlocked!",
+            "subtitle": "Bonus points credited for fast redemption habit",
+            "points": 250,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_BONUS_POINTS",
+              "payload": {
+                "bonusPoints": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Low-cost perks you can claim right now",
+            "rewards": [
+              {
+                "name": "Digital Magazine Subscription",
+                "points": 150
+              },
+              {
+                "name": "Streaming Pass 24h",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Digital Magazine Subscription"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Explore Instant Earn & Burn Partners",
+            "actionLabel": "Browse All Partners",
+            "categories": [
+              {
+                "label": "Dining & Coffee",
+                "count": 42,
+                "icon": "coffee"
+              },
+              {
+                "label": "Retail Shopping",
+                "count": 88,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Entertainment",
+                "count": 19,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_BRAND_CATEGORY",
+              "payload": {
+                "category": "Dining & Coffee"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH_INSTANT_GRATIFICATION",
+        "HIGH_VELOCITY_REDEMPTION_ALIGNMENT",
+        "RICH_COMPONENT_COUNT_7"
+      ]
+    },
+    "strategy": "Instant Gratification persona-pure composition emphasizing rapid redemptions, flash offers, and tangible cash value within 6-9 rich components.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Instant Gratification persona-pure composition emphasizing rapid redemptions, flash offers, and tangible cash value within 6-9 rich components.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 4250,
+          "tier": "Gold",
+          "name": "Alex Rivera",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-flash-banner",
+        "type": "FLASH_REWARD_BANNER",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "2-Hour Flash Deal: Gourmet Dinner for Two",
+          "subtitle": "Exclusive limited-time discount for Gold tier members",
+          "originalPoints": 2000,
+          "discountedPoints": 1500,
+          "timer": "01:45:30",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_FLASH_REWARD",
+            "payload": {
+              "rewardId": "flash-gourmet-dinner",
+              "cost": 1500
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-redeem",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "One-Tap Instant Rewards",
+          "description": "Ready to claim instantly with your 4,250 points balance",
+          "rewards": [
+            {
+              "name": "Artisan Coffee Pass",
+              "points": 200,
+              "icon": "coffee"
+            },
+            {
+              "name": "Bistro Dining Voucher",
+              "points": 500,
+              "icon": "utensils"
+            },
+            {
+              "name": "VIP Cinema Ticket",
+              "points": 1000,
+              "icon": "film"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_QUICK_REDEEMS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Your Points Real Cash Worth",
+          "cashValue": "\u00a342.50",
+          "pointsEquivalent": 4250,
+          "breakdown": [
+            {
+              "label": "Available Spendable Value",
+              "value": "\u00a342.50"
+            },
+            {
+              "label": "Average Redemption Speed",
+              "value": "2.3 hours"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CASH_CONVERSION_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-instant-popup",
+        "type": "INSTANT_REWARD_POPUP",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Recent Velocity Bonus Unlocked!",
+          "subtitle": "Bonus points credited for fast redemption habit",
+          "points": 250,
+          "expiresIn": "2 hours",
+          "celebration": true,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_BONUS_POINTS",
+            "payload": {
+              "bonusPoints": 250
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Effortless Quick Wins",
+          "subtitle": "Low-cost perks you can claim right now",
+          "rewards": [
+            {
+              "name": "Digital Magazine Subscription",
+              "points": 150
+            },
+            {
+              "name": "Streaming Pass 24h",
+              "points": 300
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_QUICK_WIN",
+            "payload": {
+              "rewardName": "Digital Magazine Subscription"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-brand-explorer",
+        "type": "BRAND_EXPLORER_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Explore Instant Earn & Burn Partners",
+          "actionLabel": "Browse All Partners",
+          "categories": [
+            {
+              "label": "Dining & Coffee",
+              "count": 42,
+              "icon": "coffee"
+            },
+            {
+              "label": "Retail Shopping",
+              "count": 88,
+              "icon": "shopping-bag"
+            },
+            {
+              "label": "Entertainment",
+              "count": 19,
+              "icon": "film"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_BRAND_CATEGORY",
+            "payload": {
+              "category": "Dining & Coffee"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH_INSTANT_GRATIFICATION",
+      "HIGH_VELOCITY_REDEMPTION_ALIGNMENT",
+      "RICH_COMPONENT_COUNT_7"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ]
+      }
+    ],
+    "methodology": "Grounding in verified behavioral signals, rapid redemption history, and intelligence layer persona classification.",
+    "temporaryInterpretation": true
+  }
+}

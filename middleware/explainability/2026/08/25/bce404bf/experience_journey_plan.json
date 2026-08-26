@@ -1,0 +1,75 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-mastery-progress",
+  "journeyObjective": "Deliver a calm, mastery-oriented rewards and educational experience focused on first home savings progress and unhurried quizzes.",
+  "entryPoint": "Dashboard overview with points balance and active savings goal.",
+  "completionDefinition": "Customer views goal progress and engages with an educational module or quiz at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my balance and savings goals?",
+      "entryCondition": "Session starts",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial competence and test my understanding?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "learning modules",
+        "mastery quiz",
+        "comprehension feedback",
+        "confidence progress",
+        "educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-educ-mod-100",
+        "fact-retakes-quizzes",
+        "fact-mastery-motivation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational context and cash value transparency without pressure.",
+      "contentNotes": [
+        "Tangible value breakdown for lbgCoins",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

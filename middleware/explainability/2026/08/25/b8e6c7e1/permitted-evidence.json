@@ -1,0 +1,72 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-exclusive-statement-credits",
+        "classification": "OBSERVED",
+        "value": "redeems almost exclusively as statement credits on linked card",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-holiday-goal",
+        "classification": "OBSERVED",
+        "value": "Active savings goal for holiday spending money at 53 percent progress",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Daniel Brooks is a Platinum tier customer with 7,300 LBG Coins, demonstrating a strong payment-utility focus by redeeming almost exclusively as statement credits and prioritizing bill relief over vouchers or lifestyle experiences.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 7,300 LBG coins.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-connected-brands",
+        "statement": "Customer has 3 brands connected.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-exclusive-statement-credits",
+        "statement": "Redeems almost exclusively as statement credits on linked card.",
+        "source": "Intelligence Layer signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-holiday-goal",
+        "statement": "Active savings goal for holiday spending money at 53 percent progress (640 of 1200 target).",
+        "source": "Session Context journeyAnalysis & Intelligence Layer",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-payment-utility-motivation",
+        "attribute": "motivation",
+        "value": "PAYMENT_UTILITY",
+        "confidence": 0.95,
+        "evidenceRefs": [
+          "fact-exclusive-statement-credits",
+          "fact-holiday-goal"
+        ],
+        "inferenceMethod": "behavioral-signal-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

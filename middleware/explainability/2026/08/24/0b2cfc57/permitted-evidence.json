@@ -1,0 +1,79 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "balances instant fun with long-term saving",
+        "source": "intelligence-layer",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "maintains multiple active goals across time horizons",
+        "source": "intelligence-layer",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard and goal progress in same sessions",
+        "source": "intelligence-layer",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Priya Sharma is a highly engaged Platinum tier customer with a MIXED_PROFILE persona, balancing short-term gamification (challenges, streaks, leaderboards) with long-term financial goal accumulation across multiple time horizons.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Customer maintains 4 active financial goals: Bali Trip, New Laptop, Retirement Fund, and Home Deposit.",
+        "source": "intelligence-layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f2",
+        "statement": "Active streak of 21 days with 9 completed challenges and 11 badges earned.",
+        "source": "intelligence-layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f3",
+        "statement": "Wallet holds 15,400 lbgCoins and 0 standard points.",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f4",
+        "statement": "Leaderboard rank is 7 with engagement score of 0.88.",
+        "source": "intelligence-layer",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "engagementStyle",
+        "value": "Balanced gamification and long-term saving",
+        "confidence": 0.87,
+        "evidenceRefs": [
+          "balances instant fun with long-term saving",
+          "maintains multiple active goals across time horizons",
+          "checks leaderboard and goal progress in same sessions"
+        ],
+        "inferenceMethod": "behavioral-cluster-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

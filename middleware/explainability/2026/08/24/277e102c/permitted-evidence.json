@@ -1,0 +1,70 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "completes financial literacy modules to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) is an engaged Gold tier member in the discovery phase of the rewards-overview journey, focusing on financial mastery, educational rewards, and tracking knowledge milestones toward buying a first home without competitive pressure.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavioral_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3900 LBG Coins and 3 connected brands",
+        "source": "wallet_session",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-01",
+        "attribute": "learningEngagementStyle",
+        "value": "thorough_mastery",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "pattern_matching",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

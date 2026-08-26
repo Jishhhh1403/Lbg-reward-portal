@@ -1,0 +1,81 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "multi-programme reward balances",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "portability inquiry frequency",
+        "source": "journeyAnalysis",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer holds balances across three partner programmes, frequently inquires about moving points between them, and prefers simple, plain-English explanations without technical jargon. Currently tracking the Family Holiday Fund goal with 11,200 LBG coins.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Holds reward balances across three partner programmes",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Frequently asks about moving points between programmes",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.91
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Prefers simple plain-English explanations of transfers",
+        "source": "Task Charter availableEvidence",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Total LBG coins balance is 11,200",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-01",
+        "attribute": "jargonSensitivity",
+        "value": "high",
+        "confidence": 0.85,
+        "evidenceRefs": [
+          "put off by technical jargon and complex terms"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis",
+        "expiresAt": "2027-02-24T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-02",
+        "attribute": "transferPreference",
+        "value": "simplified_plain_english",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "prefers simple plain-English explanations of transfers",
+          "frequently asks about moving points between programmes"
+        ],
+        "inferenceMethod": "Direct preference extraction from task charter and intelligence signals",
+        "expiresAt": "2027-02-24T00:00:00Z"
+      }
+    ]
+  }
+}

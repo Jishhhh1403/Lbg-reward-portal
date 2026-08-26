@@ -1,0 +1,124 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Prominent statement credit redemption focus with instant coin-to-cash equivalent display and seamless card bill application, supplemented by Holiday Spending Money progress tracking.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Dual-focus hybrid approach featuring partner brand voucher catalogs alongside standard bill credits, with gamified milestone celebrations for goal pacing.",
+      "scores": {
+        "customerGoalRelevance": 5,
+        "expectedCustomerUtility": 4,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 6,
+        "accessibilityAndCognitiveFit": 6,
+        "brandAndLegalConsistency": 7,
+        "rewardProfileAlignment": 4,
+        "evidenceConfidence": 6,
+        "usefulNovelty": 4,
+        "operationalFeasibility": 8
+      },
+      "weightedTotal": 5.45,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-statement-credit",
+    "storyTitle": "Apply Rewards Directly to Bill",
+    "oneSentenceStory": "The customer views their accumulated LBG coins and applies them effortlessly as a statement credit to their card bill.",
+    "customerSituation": "Customer visits the rewards overview to check their 7,300 LBG coins and evaluate recent cashback earnings.",
+    "storyTension": "Ensuring the coin-to-cash equivalent value is crystal clear without navigating confusing partner catalogs.",
+    "customerResolution": "Prominent statement credit redemption action is selected, converting points directly to bill reduction.",
+    "primaryOutcome": "Effortless visibility and application of payment-linked rewards and bill credits.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-redemption-habit",
+      "fact-uninterested-vouchers"
+    ],
+    "confidence": 0.94,
+    "prohibitedDetours": [
+      "Do not suggest gamified challenges, leaderboards, or streaks",
+      "Do not push partner vouchers, travel miles, or experiences"
+    ],
+    "completionSignals": [
+      "statement_credit_applied",
+      "balance_reviewed"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-statement-credit",
+      "journeyObjective": "Enable effortless review of coin balance, tangible cash equivalent value, and direct one-click statement credit application toward upcoming card bills.",
+      "completionDefinition": "Customer successfully views coin balance, checks holiday goal progress, and initiates or completes statement credit redemption.",
+      "episodeSketches": [
+        "Episode 1: Clear display of 7,300 LBG coins with explicit cash equivalent value and active Holiday Spending Money goal progress (53%).",
+        "Episode 2: One-touch statement credit redemption action panel allowing direct bill application without partner catalog distractions."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.4,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 94,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 completely avoids dark patterns, manipulative urgency, and prohibited partner vouchers, fully respecting user preferences."
+    },
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Verified alignment with Daniel Brooks' payment-utility motivation and declared habit of redeeming exclusively as statement credits."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit; clear cash equivalents and straightforward bill credit controls without clutter."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-statement-credit and journey-candidate-1 exhibit flawless narrative continuity and exact alignment with mandatory components."
+    }
+  ]
+}

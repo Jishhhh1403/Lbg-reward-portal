@@ -1,0 +1,394 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "9cec6502",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-10-25T23:59:59Z",
+  "customerRef": "customer_005",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 8750,
+        "tier": "Gold",
+        "name": "Marcus Johnson",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "wallet-overview"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-streak",
+      "type": "STREAK_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "streakDays": 34,
+        "message": "Incredible consistency! You are maintaining the program's longest active streak.",
+        "nextReward": "500 LBG coins at 40 days",
+        "milestones": [
+          {
+            "days": 10,
+            "reward": "150 coins",
+            "achieved": true
+          },
+          {
+            "days": 20,
+            "reward": "300 coins",
+            "achieved": true
+          },
+          {
+            "days": 30,
+            "reward": "450 coins",
+            "achieved": true
+          },
+          {
+            "days": 40,
+            "reward": "500 coins",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_STREAK_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-challenge",
+      "type": "CHALLENGE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Community Champion Quest",
+        "description": "Participate in 3 community events and share your weekly milestone to complete this challenge.",
+        "progress": 75,
+        "reward": "1,000 LBG coins",
+        "daysLeft": 4,
+        "participants": 1240,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CHALLENGE",
+          "payload": {
+            "challengeId": "comm-champ-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-leaderboard",
+      "type": "LEADERBOARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "period": "weekly",
+        "entries": [
+          {
+            "rank": 1,
+            "name": "Sarah Jenkins",
+            "points": 11200,
+            "avatar": "SJ",
+            "isCurrentUser": false
+          },
+          {
+            "rank": 2,
+            "name": "David Chen",
+            "points": 9850,
+            "avatar": "DC",
+            "isCurrentUser": false
+          },
+          {
+            "rank": 3,
+            "name": "Marcus Johnson",
+            "points": 8750,
+            "avatar": "MJ",
+            "isCurrentUser": true
+          },
+          {
+            "rank": 4,
+            "name": "Elena Rostova",
+            "points": 8100,
+            "avatar": "ER",
+            "isCurrentUser": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_LEADERBOARD",
+          "payload": {
+            "period": "weekly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-badge",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Badge Showcase",
+        "totalEarned": 15,
+        "totalAvailable": 25,
+        "badges": [
+          {
+            "name": "Streak Master",
+            "icon": "flame",
+            "earned": true
+          },
+          {
+            "name": "Top Contributor",
+            "icon": "trophy",
+            "earned": true
+          },
+          {
+            "name": "Gold Elite",
+            "icon": "crown",
+            "earned": true
+          },
+          {
+            "name": "Trivia Genius",
+            "icon": "brain",
+            "earned": true
+          },
+          {
+            "name": "Community Star",
+            "icon": "star",
+            "earned": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_BADGES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quiz",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "question": "Which community milestone unlocked the Gold Elite badge?",
+        "options": [
+          "Completing 10 challenges",
+          "Maintaining a 30-day streak",
+          "Reaching 5,000 coins",
+          "Sharing 5 achievements"
+        ],
+        "reward": "100 LBG coins",
+        "timeLimit": 45,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ_ANSWER",
+          "payload": {
+            "questionId": "quiz-05"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "label": "Challenges Completed",
+        "value": "12",
+        "unit": "total",
+        "tone": "brand",
+        "infoText": "Completed across all seasons",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "label": "Leaderboard Rank",
+        "value": "#3",
+        "unit": "Gold tier",
+        "tone": "white",
+        "infoText": "Top 1% of active members",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "label": "Badges Earned",
+        "value": "15",
+        "unit": "trophies",
+        "tone": "white",
+        "infoText": "10 available to unlock",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-recommended",
+      "type": "RECOMMENDED_ACTIONS",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Power-Up Actions",
+        "actions": [
+          {
+            "label": "Invite a friend to join your challenge squad",
+            "points": 250,
+            "icon": "users"
+          },
+          {
+            "label": "Explore brand rewards catalog",
+            "points": 100,
+            "icon": "shopping-bag"
+          },
+          {
+            "label": "Set a new personal challenge target",
+            "points": 150,
+            "icon": "target"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "TRIGGER_ACTION",
+          "payload": {
+            "actionId": "rec-1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "milestones": [
+          {
+            "label": "Complete 10 Challenges",
+            "achieved": true
+          },
+          {
+            "label": "Maintain 30-Day Streak",
+            "achieved": true
+          },
+          {
+            "label": "Reach Top 5 Leaderboard",
+            "achieved": true
+          },
+          {
+            "label": "Earn 20 Badges",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-referral",
+      "type": "REFERRAL_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "referralCode": "MARCUS-34ST",
+        "friendBonus": 500,
+        "myBonus": 500,
+        "invitesAccepted": 4,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SHARE_REFERRAL",
+          "payload": {
+            "code": "MARCUS-34ST"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-community-challenge",
+      "type": "COMMUNITY_CHALLENGE_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Global Summer Community Sprint",
+        "communityTotal": 450000,
+        "target": 500000,
+        "myContribution": 3750,
+        "endsOn": "15 Sep 2026",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_COMMUNITY",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

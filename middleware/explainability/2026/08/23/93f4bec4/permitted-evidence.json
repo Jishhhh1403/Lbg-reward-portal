@@ -1,0 +1,72 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "intelligence_layer",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "responds to flash offers",
+        "source": "intelligence_layer",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Alex Rivera exhibits high engagement with immediate rewards, frequently redeeming points quickly after earning them and responding well to flash offers.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "LBG coin balance is 4250",
+        "source": "session_context.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Connected brands count is 3",
+        "source": "session_context.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Immediate redemption rate is 0.89",
+        "source": "intelligence_layer.customerProfile.behaviors",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Average redemption time is 2.3 hours",
+        "source": "intelligence_layer.customerProfile.behaviors",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "preferredRewardType",
+        "value": "INSTANT",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

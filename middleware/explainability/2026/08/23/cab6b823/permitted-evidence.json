@@ -1,0 +1,85 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "responds to flash offers",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Alex Rivera is a Gold tier customer with 4,250 LBG Coins, demonstrating a high-frequency, short-duration redemption pattern characterized by quick redemptions shortly after earning points and strong responsiveness to flash offers.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 4250 LBG Coins and 0 total points.",
+        "source": "Session Context / Wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-brands-connected",
+        "statement": "Customer has 3 connected brands.",
+        "source": "Session Context / Wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-redemption-behavior",
+        "statement": "Customer exhibits frequent immediate redemptions with an average redemption time of 2.3 hours and an immediate redemption rate of 89%.",
+        "source": "Intelligence Layer / Customer Profile",
+        "confidence": 0.94
+      },
+      {
+        "factId": "fact-notification-engagement",
+        "statement": "Customer shows high notification engagement and responds to flash offers.",
+        "source": "Intelligence Layer / Signals",
+        "confidence": 0.94
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-preferred-reward",
+        "attribute": "preferred_reward_type",
+        "value": "INSTANT",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "preferred_reward_type",
+          "immediate_redemption_rate"
+        ],
+        "inferenceMethod": "historical_redemption_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

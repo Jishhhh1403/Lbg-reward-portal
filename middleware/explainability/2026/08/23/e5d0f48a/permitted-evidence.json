@@ -1,0 +1,108 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "rarely redeems for small rewards",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "interested in investment-like rewards",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s4",
+        "classification": "OBSERVED",
+        "value": "reads educational content",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s5",
+        "classification": "OBSERVED",
+        "value": "values future projections",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer David Park (customer_003) is a Diamond tier member with 28,400 LBG coins, identified as a Long-Term Planner with a Future Security motivation. He exhibits a long-term accumulation pattern, rarely redeems for small rewards, and focuses on significant milestones such as retirement, education, and home deposit goals.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Total LBG coins balance is 28,400.",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Connected to 3 brands with Diamond tier status.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Maintains three active long-term goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Low immediate redemption rate (0.03) and high goal completion rate (0.92).",
+        "source": "customerProfile",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "Customer persona is LONG_TERM_PLANNER with FUTURE_SECURITY motivation",
+          "long-term accumulation pattern"
+        ],
+        "inferenceMethod": "Intelligence Layer Behavioral Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "preferred_reward_type",
+        "value": "LONG_TERM",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "rarely redeems for small rewards",
+          "interested in investment-like rewards"
+        ],
+        "inferenceMethod": "Historical redemption pattern analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

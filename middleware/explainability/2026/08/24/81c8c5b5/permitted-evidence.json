@@ -1,0 +1,73 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "unused expiring points",
+        "source": "behavior",
+        "confidence": 0.96,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "declining engagement over 60 days",
+        "source": "behavior",
+        "confidence": 0.96,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Jessica Martinez is a churn risk with 1,850 points expiring in 12 days, having been inactive for 45 days with an engagement score of 0.23.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "45 days since last activity",
+        "source": "sessionContext",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-02",
+        "statement": "1,850 points expiring in 12 days",
+        "source": "sessionContext",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Low engagement score of 0.23",
+        "source": "intelligenceLayer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Multiple unused rewards including a Retail Discount of 300 points that was never claimed",
+        "source": "intelligenceLayer",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-01",
+        "attribute": "engagementRisk",
+        "value": "HIGH",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent redemptions",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "expiring points within 7 days",
+        "source": "wallet telemetry",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Ryan Okafor is currently at-risk after 41 days of inactivity following a prior period of high engagement. There are 1,500 points expiring in 7 days. Historical behavior indicates a strong preference for immediate, low-friction value redemptions within hours of earning.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Inactive for 41 days following high past engagement.",
+        "source": "sessionContext.journeyAnalysis.supportingEvidence",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-002",
+        "statement": "1,500 points expiring in 7 days.",
+        "source": "sessionContext.journeyAnalysis.supportingEvidence",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Historically redeemed points within hours of earning.",
+        "source": "Task Charter availableEvidence",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Total LBG coins wallet balance is 3,600.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-003",
+          "Intelligence layer persona analysis"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "churn_risk",
+        "value": "HIGH",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-002"
+        ],
+        "inferenceMethod": "recency-frequency-scoring",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

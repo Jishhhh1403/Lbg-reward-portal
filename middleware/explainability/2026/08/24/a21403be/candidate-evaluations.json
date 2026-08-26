@@ -1,0 +1,350 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 10-component rich mobile screen tailored for Elena (PLANNER_AT_RISK_MIX, FUTURE_SECURITY motivation). Features mandatory components (POINTS_BALANCE, EXPIRING_POINTS_ALERT with calm 9-day notice, PROJECTION_CHART showing long-term compounding, EDUCATIONAL_INSIGHT_CARD on point preservation) plus individual goal cards for all 3 active savings goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, a REWARD_ACTIVITY_SUMMARY, and a SAFE_REDEMPTION_OPTIONS card, fully adhering to rich screen structure (10 components) and avoiding dark patterns or manipulative urgency.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses her 3 active long-term savings goals and 2,400 expiring points with calm, future-focused alignment."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides rich 10-component utility featuring projections, educational insights, and clear tracking without pressure."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Strongly aligns with FUTURE_SECURITY and long-term accumulation preferences using projected-value content."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm tone, high-contrast alerts, and structured card layout designed to reduce anxiety for a lapsed planner."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Grounded entirely in verified customer context: 24,500 coins, 2,400 expiring points, 3 goals, and historical behavior."
+        },
+        "brandAndDesignConsistency": {
+          "score": 10,
+          "explanation": "Maintains banking design standards, proper coin/logo usage, and clean mobile component schema."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Combines expiring points management smoothly with long-term compound growth projections."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Uses standard available UI components and fully respects latency budgets and fallback conditions."
+        }
+      },
+      "weightedTotal": 9.0,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimal 6-component mobile screen featuring POINTS_BALANCE, EXPIRING_POINTS_ALERT, a single aggregated LONG_TERM_GOAL_CARD, PROJECTION_CHART, EDUCATIONAL_INSIGHT_CARD, and REWARD_ACTIVITY_SUMMARY.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to display individual goal cards for all 3 active goals (Retirement, Education, Home Deposit), violating multi-goal customer rules."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Only 6 components provided, falling short of the 10-14 rich screen component requirement for rich multi-goal personalization."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Touches upon future security but omits granular goal tracking."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean and readable, but lacks comprehensive context."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Uses valid data sources."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard minimalist layout with low novelty."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Easily implementable."
+        }
+      },
+      "weightedTotal": 6.85,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 9 components (only 6), violating the rich screen requirement for multi-goal customers."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "PLANNER_AT_RISK_MIX strategy for Elena Vasquez: pairs a gentle expiring points alert (2,400 points in 9 days) with long-horizon growth projections and her three active savings goals (Retirement Fund, Children Education Fund, Dream Home Deposit), followed by an ADD_GOAL_CARD, educational insights, and quick preservation wins.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiry Notice",
+            "expiringPoints": 2400,
+            "daysLeft": 9,
+            "message": "You have 2,400 points expiring in 9 days. Allocate them to your long-term goals to preserve your hard-earned value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ALLOCATE_POINTS",
+              "payload": {
+                "points": 2400
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Protect Your Balance",
+            "subtitle": "Quick actions to secure expiring rewards",
+            "rewards": [
+              {
+                "name": "Retirement Pot Top-Up",
+                "points": 2400
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Retirement Pot Top-Up"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2038",
+            "message": "Steady accumulation is key to long-term compounding success.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2032",
+            "message": "Consistent contributions build a strong foundation for education.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2035",
+            "message": "Every milestone brings your future home closer to reality.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Establish a new horizon for your long-term savings",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Portfolio Growth Projection",
+            "currentValue": 24500,
+            "projectedValue": 45000,
+            "timeframe": "5 Years",
+            "growthRate": "6.5% AER",
+            "message": "Your disciplined holding strategy maximizes compound returns over time.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Long-Term Value Trajectory",
+            "growthLabel": "Compounded Reward Growth",
+            "data": [
+              {
+                "year": "2026",
+                "value": 24500
+              },
+              {
+                "year": "2028",
+                "value": 31000
+              },
+              {
+                "year": "2030",
+                "value": 38500
+              },
+              {
+                "year": "2032",
+                "value": 45000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "The Advantage of Patience",
+            "insight": "Diamond tier members who maintain long-horizon allocations enjoy an average 18% higher return on accumulated rewards over 3 years.",
+            "source": "LBG Wealth Insights",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_GUIDE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PLANNER_AT_RISK_MIX",
+        "FUTURE_SECURITY_MOTIVATION",
+        "MULTI_GOAL_COVERAGE"
+      ]
+    }
+  ]
+}

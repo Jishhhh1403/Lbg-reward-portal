@@ -1,0 +1,323 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver an unhurried, knowledge-centric reward overview featuring the First Home Savings Knowledge goal progress card (63%), a tailored educational quiz module, milestone tracking, and points balance visibility, entirely free of timed challenges or public leaderboards.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly targets First Home Savings Knowledge and learning mastery."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility via relevant educational modules and clear progress tracking."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 9,
+          "explanation": "Components map cleanly to active goal progression and unhurried learning."
+        },
+        "journeyAndActionContinuity": {
+          "score": 9,
+          "explanation": "Logical flow from points balance to goal progress and quiz checkpoint."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm, educational tone with no manipulative urgency or cognitive overload."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant with banking standards and customer behavioral profile."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Matches learning mastery motive and educational preference perfectly."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by consistent behavioral completion data and high confidence signals."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Tailored educational recommendations provide relevant guidance without noise."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses standard available components (POINTS_BALANCE, GOAL_PROGRESS_CARD, QUIZ_CARD, MILESTONE_CARD)."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Highlight general partner discovery discounts and quick transactional redemptions alongside a gamified milestone card.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Ignores the specific First Home Savings Knowledge goal."
+        },
+        "expectedCustomerUtility": {
+          "score": 4,
+          "explanation": "Low utility for a customer motivated by learning mastery rather than partner deals."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 5,
+          "explanation": "Mixed messaging between partner offers and educational progress."
+        },
+        "journeyAndActionContinuity": {
+          "score": 5,
+          "explanation": "Abrupt shift from educational intent to commercial partner discovery."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 6,
+          "explanation": "Less aligned with calm educational preference."
+        },
+        "brandAndLegalConsistency": {
+          "score": 8,
+          "explanation": "Compliant but misaligned with customer persona."
+        },
+        "rewardProfileAlignment": {
+          "score": 4,
+          "explanation": "Conflicts with learning mastery motive (prefers educational rewards over partner conversion)."
+        },
+        "evidenceConfidence": {
+          "score": 6,
+          "explanation": "Contradicts strong behavioral evidence for educational focus."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Generic partner promotions lack personalized educational value."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Technically feasible but conceptually flawed for this customer."
+        }
+      },
+      "weightedTotal": 5.65,
+      "hardGatesPass": true,
+      "objections": [
+        "Misaligns with customer learning mastery motive and declared behavioral preferences.",
+        "Ignores active First Home Savings Knowledge goal."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver an unhurried, knowledge-centric reward overview featuring the First Home Savings Knowledge goal progress card (63%), cash value transparency, how points work, educational missions, interactive quizzes, comprehension feedback, confidence progress, and educational insights, strictly avoiding timed challenges, public leaderboards, and artificial urgency.",
+      "components": [
+        {
+          "id": "points-balance-1",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "tangible-value-1",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Points Cash Value",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "3,900 coins"
+              },
+              {
+                "label": "Conversion Rate",
+                "value": "100 coins = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "how-points-work-1",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "steps": [
+              {
+                "title": "1. Earn through learning",
+                "description": "Complete financial literacy modules and quizzes to earn coins."
+              },
+              {
+                "title": "2. Convert with clarity",
+                "description": "See your exact cash equivalent value at every step."
+              },
+              {
+                "title": "3. Redeem toward goals",
+                "description": "Apply your earnings directly to your First Home Savings Knowledge fund."
+              }
+            ],
+            "ctaLabel": "Explore Learning Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "learning_guide"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-1",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are 63% toward your savings knowledge goal. Steady progress builds lasting expertise.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "learning-mission-1",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "First Home Savings Foundations",
+            "description": "Master deposit mechanics, mortgage interest basics, and savings strategies at your own pace.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "moduleId": "module-5"
+              }
+            }
+          ]
+        },
+        {
+          "id": "quiz-card-1",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "What is the primary benefit of a dedicated first-time buyer savings strategy?",
+            "options": [
+              "Structured contributions and clear milestone tracking",
+              "Unpredictable high-risk market speculation",
+              "Random bonus distributions"
+            ],
+            "reward": "50 points upon mastery",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {
+                "selectedOption": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "comprehension-feedback-1",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Recent Concept Check",
+            "question": "How do compound interest principles affect long-term savings?",
+            "yourAnswer": "Interest earns additional interest over time",
+            "correctAnswer": "Interest earns additional interest over time",
+            "feedback": "Correct! Consistent contributions combined with compounding accelerate your savings growth organically.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "confidence-progress-1",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Financial Confidence Meter",
+            "topic": "First Home Savings Mechanics",
+            "confidencePercent": 88,
+            "levelLabel": "Advanced Competence",
+            "nextMilestone": "Complete Module 6: Final Property Deposit Blueprint",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "educational-insight-1",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Savings Mastery Tip",
+            "insight": "Consistent review of literacy modules increases successful goal completion rates by over 40% for self-directed learners.",
+            "source": "LBG Financial Education Institute",
+            "actionLabel": "Read Full Article",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_INSIGHT",
+              "payload": {
+                "articleId": "insight-savings-mastery"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "LEARNING_MASTERY_ALIGNMENT",
+        "MANDATORY_STACK_COMPLIANCE",
+        "STORY_ARCHETYPE_CLARITY_FIRST"
+      ]
+    }
+  ]
+}

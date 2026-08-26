@@ -1,0 +1,107 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-03",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-05",
+        "classification": "OBSERVED",
+        "value": "First Home Savings Knowledge goal at 63% progress",
+        "source": "goal_tracker",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams is an education-focused customer motivated by learning mastery and financial literacy progress. She consistently completes educational modules, tracks her First Home Savings goal, and avoids timed challenges or public rankings.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Has 3900 lbgCoins and 3 connected brands",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-05",
+        "statement": "First Home Savings Knowledge goal is at 63% progress (1250/2000)",
+        "source": "goal_tracker",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence_layer_classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredRewardType",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-03"
+        ],
+        "inferenceMethod": "behavioral_affinity",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

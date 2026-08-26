@@ -1,0 +1,65 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "reads educational content",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_003 (David Park) is a Diamond tier member exhibiting a Long-Term Planner persona with a focus on future security, tracking multiple major financial goals including Retirement, Children's Education, and a Dream Home Deposit.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer has Diamond tier status and 28,400 current points balance.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Customer has active goals for Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "customerProfile.goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Immediate redemption rate is low at 0.03 with a long average redemption time of 2,160 hours.",
+        "source": "customerProfile.behaviors",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-001",
+        "attribute": "persona",
+        "value": "LONG_TERM_PLANNER",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-002",
+          "fact-003"
+        ],
+        "inferenceMethod": "Intelligence Layer Behavioral Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

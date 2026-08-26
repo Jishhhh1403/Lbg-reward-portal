@@ -1,5 +1,7 @@
-import { Eye, EyeOff, Loader2, Phone, Lock } from 'lucide-react'
-import { useState } from 'react'
+import { Eye, EyeOff, Loader2, Phone, Lock, Sparkles } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { fetchPersonaOptions } from '../../services/experienceApi'
+import type { PersonaOption } from '../../types/sdui'
 
 interface MobileStepProps {
   mobile: string
@@ -11,6 +13,7 @@ interface MobileStepProps {
   onSignInWithPassword: () => void
   onOpenPasswordStep: () => void
   onOpenSignup: () => void
+  onPersonaLogin: (persona: PersonaOption) => void
 }
 
 export default function MobileStep({
@@ -23,8 +26,21 @@ export default function MobileStep({
   onSignInWithPassword,
   onOpenPasswordStep,
   onOpenSignup,
+  onPersonaLogin,
 }: MobileStepProps) {
   const [showPassword, setShowPassword] = useState(false)
+  const [personas, setPersonas] = useState<PersonaOption[]>([])
+
+  useEffect(() => {
+    let cancelled = false
+    fetchPersonaOptions().then((options) => {
+      if (!cancelled && options) setPersonas(options)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   const canSubmit = mobile.length === 10 && password.length > 0 && !isLoading
 
   return (
@@ -118,6 +134,39 @@ export default function MobileStep({
           Create account
         </button>
       </div>
+
+      {personas.length > 0 && (
+        <div className="pt-3">
+          <div className="flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-slate-400">
+            <span className="h-px flex-1 bg-slate-200" />
+            <Sparkles size={13} className="text-brand-600" />
+            Demo personas
+            <span className="h-px flex-1 bg-slate-200" />
+          </div>
+          <p className="mt-2 text-center text-xs text-slate-500">
+            Sign in as an intelligence-layer persona — the rewards portal personalizes around their behaviour.
+          </p>
+          <div className="mt-3 grid gap-2">
+            {personas.map((persona) => (
+              <button
+                key={persona.id}
+                type="button"
+                disabled={isLoading}
+                onClick={() => onPersonaLogin(persona)}
+                className="flex items-center justify-between rounded-xl border border-brand-100 bg-brand-50/60 px-3.5 py-2.5 text-left transition enabled:hover:border-brand-300 enabled:hover:bg-brand-100/70 disabled:opacity-50"
+              >
+                <span>
+                  <span className="block text-sm font-semibold text-brand-900">{persona.name}</span>
+                  <span className="block text-xs text-slate-500">{persona.tier} member</span>
+                </span>
+                <span className="text-sm font-bold text-brand-700">
+                  {persona.points.toLocaleString()} pts
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

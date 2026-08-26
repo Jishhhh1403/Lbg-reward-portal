@@ -1,0 +1,778 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 14-component mobile dashboard designed for Ryan Okafor, featuring an immediate re-engagement welcome banner, expiring points alert for 1,500 points, total wallet balance display, instant reward popup configuration, multiple one-click quick redeem cards, tangible value previews, quick win action items, and transparent status trackers without manipulative scarcity.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses urgent expiring points and immediate value preference with 14 rich components tailored to the instant redemption persona."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides high utility through frictionless one-click instant rewards and clear visibility into expiring balances."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly matches historical preference for instant, low-friction redemptions within hours of earning."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean hierarchy, high contrast warnings for expiring points, and simple cognitive load suitable for a re-engaging user."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong telemetry showing 85% immediate redemption rate and 1,500 expiring points."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres strictly to design guidelines, preserving brand logos and regulated text formatting."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Surfaces personalized flash redemption options right at the top to greet the returning dormant user."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Uses standard reward and balance components within latency budgets."
+        }
+      },
+      "weightedTotal": 9.0,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimal 8-component screen focusing solely on the points balance and a single expiring points warning banner with standard catalog browsing.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Fails to meet rich component requirements (proposing fewer than 11 components)."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Lacks the rich instant redemption and quick-win cards required to drive immediate re-engagement."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Touches upon points but lacks the instant reward mechanisms preferred by the user."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 7,
+          "explanation": "Simple layout but underutilizes interface space for re-activation."
+        },
+        "evidenceConfidence": {
+          "score": 6,
+          "explanation": "Ignores key behavioral evidence regarding instant reward preference."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with basic UI rules."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "Purely standard view with no novel personalization for the returning user."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Feasible but suboptimal."
+        }
+      },
+      "weightedTotal": 5.85,
+      "hardGatesPass": false,
+      "objections": [
+        "Strategy proposes fewer than 11 components, violating the rich screen requirement (minimum 11-17 components)."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Instant At-Risk Mix composition for Ryan Okafor, leading with urgent transparent expiring points protection, instant reward popup, quick redeem options, flash reward banner, and frictionless re-engagement components.",
+      "components": [
+        {
+          "id": "points-balance-header",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "reengagement-welcome-banner",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Welcome back, Ryan!",
+            "message": "We've missed you. Your 3,600 points are safe and ready to use whenever you're ready.",
+            "ctaText": "Explore Quick Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "target": "quick_redeem"
+              }
+            }
+          ]
+        },
+        {
+          "id": "expiring-points-warning",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Points Expiring Soon",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "1,500 of your points are scheduled to expire in 7 days. Redeem them now to enjoy your rewards.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_EXPIRING",
+              "payload": {
+                "points": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "expiry-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Expiry Timer",
+            "days": 7,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Time remaining before 1,500 points expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "instant-welcome-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Quick Return Bonus!",
+            "subtitle": "Claim your instant reward to celebrate your return.",
+            "points": 200,
+            "expiresIn": "24 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT",
+              "payload": {
+                "points": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "flash-reward-deal",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Flash Reward Deal",
+            "subtitle": "Limited-time discounted treat for Gold members",
+            "originalPoints": 400,
+            "discountedPoints": 300,
+            "timer": "05:12:30",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH",
+              "payload": {
+                "points": 300
+              }
+            }
+          ]
+        },
+        {
+          "id": "quick-redeem-options",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Instant Low-Point Rewards",
+            "description": "Redeem instantly with one tap using your available balance.",
+            "rewards": [
+              {
+                "name": "Artisanal Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              },
+              {
+                "name": "Streaming Movie Rental",
+                "points": 500,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_QUICK",
+              "payload": {
+                "selected": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "quick-win-selection",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Effortless Wins",
+            "subtitle": "Claim small rewards immediately with zero friction",
+            "rewards": [
+              {
+                "name": "Digital Magazine Pass",
+                "points": 150
+              },
+              {
+                "name": "Music Playlist Access",
+                "points": 100
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "points": 150
+              }
+            }
+          ]
+        },
+        {
+          "id": "tangible-cash-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Points in Real Cash Value",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available Points",
+                "value": "3,600 pts"
+              },
+              {
+                "label": "Redemption Rate",
+                "value": "100 pts = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "best-value-options",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "options": [
+              {
+                "name": "Retail Gift Card (\u00a335)",
+                "points": 3300,
+                "cashValue": "\u00a335.00",
+                "valuePerPoint": 1.1,
+                "best": true
+              },
+              {
+                "name": "Instant Voucher (\u00a315)",
+                "points": 1500,
+                "cashValue": "\u00a315.00",
+                "valuePerPoint": 1.0,
+                "best": false
+              }
+            ],
+            "note": "Ranked by pounds-per-point value to help you get the most out of your balance.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_OPTION",
+              "payload": {
+                "option": "Retail Gift Card (\u00a335)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Tailored Return Offer",
+            "subtitle": "Exclusive pick based on your past favorites",
+            "offer": "Double points on your next local dining voucher",
+            "validUntil": "2026-09-20",
+            "message": "Activate this offer to earn 2x points on your immediate redemption.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACTIVATE_OFFER",
+              "payload": {
+                "offerId": "dining-double"
+              }
+            }
+          ]
+        },
+        {
+          "id": "local-merchant-deals",
+          "type": "LOCAL_DEALS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "city": "London",
+            "deals": [
+              {
+                "merchant": "City Cafe & Bakery",
+                "distanceKm": 0.4,
+                "offer": "Free pastry with coffee",
+                "points": 180
+              },
+              {
+                "merchant": "Metro Cinema",
+                "distanceKm": 1.2,
+                "offer": "Weekend ticket discount",
+                "points": 450
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_DEAL",
+              "payload": {
+                "city": "London"
+              }
+            }
+          ]
+        },
+        {
+          "id": "brand-category-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Explore Eligible Brands",
+            "actionLabel": "Browse Categories",
+            "categories": [
+              {
+                "label": "Coffee & Dining",
+                "count": 12,
+                "icon": "coffee"
+              },
+              {
+                "label": "Retail & Fashion",
+                "count": 24,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Film & Entertainment",
+                "count": 8,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "wallet-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronised",
+            "lastSyncedAt": "2026-08-24 09:40",
+            "message": "All connected brand balances are up to date.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "INSTANT_AT_RISK_MIX",
+        "EXPIRING_POINTS_URGENCY",
+        "HIGH_IMMEDIATE_REDEMPTION_PREFERENCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative Instant At-Risk Mix screen emphasizing quick win rewards, flash vouchers, tangible value breakdowns, and immediate re-engagement options with a slightly leaner component set.",
+      "components": [
+        {
+          "id": "points-balance-header-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "expiring-points-warning-2",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Urgent: 1,500 Points Expiring",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "You have 1,500 points expiring in 7 days. Use them today on any instant reward.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_EXPIRING",
+              "payload": {
+                "points": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "expiry-countdown-2",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "7 Days Left",
+            "days": 7,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Protect your expiring balance by claiming an instant reward.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "instant-reward-popup-2",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Instant Welcome Back Gift",
+            "subtitle": "Bonus points unlocked for your return",
+            "points": 150,
+            "expiresIn": "12 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT",
+              "payload": {
+                "points": 150
+              }
+            }
+          ]
+        },
+        {
+          "id": "quick-redeem-options-2",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "One-Tap Instant Redemptions",
+            "description": "Choose a reward to claim immediately.",
+            "rewards": [
+              {
+                "name": "Coffee & Pastry",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Lunch Delivery Voucher",
+                "points": 400,
+                "icon": "utensils"
+              },
+              {
+                "name": "Digital Film Rental",
+                "points": 250,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_QUICK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "quick-win-selection-2",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Quick Win Rewards",
+            "subtitle": "Effortless redemptions under 200 points",
+            "rewards": [
+              {
+                "name": "Audiobook Chapter",
+                "points": 120
+              },
+              {
+                "name": "App Sticker Pack",
+                "points": 50
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "points": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "tangible-cash-value-2",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Total Wallet Worth",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Current Points",
+                "value": "3,600 pts"
+              },
+              {
+                "label": "Estimated GBP Value",
+                "value": "\u00a336.00"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "flash-reward-banner-2",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Flash Deal of the Day",
+            "subtitle": "Save points on top-tier retail vouchers",
+            "originalPoints": 500,
+            "discountedPoints": 350,
+            "timer": "03:45:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH",
+              "payload": {
+                "points": 350
+              }
+            }
+          ]
+        },
+        {
+          "id": "reengagement-banner-2",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Good to See You Again",
+            "message": "Your rewards history is preserved. Pick up right where you left off.",
+            "ctaText": "View Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "target": "rewards"
+              }
+            }
+          ]
+        },
+        {
+          "id": "personalized-offer-2",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Special Comeback Offer",
+            "subtitle": "Bonus points on your next voucher",
+            "offer": "100 bonus points on any redemption over 300 points",
+            "validUntil": "2026-09-25",
+            "message": "Automatically applied when you redeem this week.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ACTIVATE_OFFER",
+              "payload": {
+                "offerId": "comeback-bonus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "local-deals-2",
+          "type": "LOCAL_DEALS_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "city": "London",
+            "deals": [
+              {
+                "merchant": "Central Roasters",
+                "distanceKm": 0.8,
+                "offer": "2-for-1 coffee voucher",
+                "points": 250
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_DEAL",
+              "payload": {
+                "city": "London"
+              }
+            }
+          ]
+        },
+        {
+          "id": "wallet-sync-status-2",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Accounts Synced",
+            "lastSyncedAt": "2026-08-24 09:40",
+            "message": "Connected partner programs are fully up to date.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "INSTANT_AT_RISK_MIX",
+        "QUICK_WIN_FOCUSED"
+      ]
+    }
+  ]
+}

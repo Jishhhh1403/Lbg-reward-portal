@@ -1,0 +1,563 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich, 7-component gamification-focused rewards-overview screen featuring POINTS_BALANCE, STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, MILESTONE_CARD, and a COMMUNITY_FEED component tailored for Marcus Johnson's high engagement and progress-oriented motivation.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses Marcus's goals around maintaining streaks, viewing challenges, and checking leaderboard standing."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility with 7 rich components providing instant access to his coins, rank, badges, and active streak."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Perfectly aligns with the PROGRESS_AND_COMMUNITY motivation profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean mobile layout with high contrast, clear hierarchy, and no cognitive overload."
+        },
+        "evidenceConfidence": {
+          "score": 10,
+          "explanation": "Backed by robust behavioral facts (34-day streak, rank 3, 8,750 coins)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains bank design system guidelines without altering mandatory text or logos."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces engaging community feed and milestone trackers matching his active engagement."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 7 components are standard and fully supported within the mobile latency budget."
+        }
+      },
+      "weightedTotal": 9.0,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 5-component layout featuring POINTS_BALANCE, STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, and BADGE_CARD to meet minimum mandatory components without extra enrichment.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers basic mandatory items but lacks milestone and community elements suited to his high engagement."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fewer components mean less immersive utility for a power user with 15 badges and 12 completed challenges."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with gamification motives, though less comprehensive than candidate-1."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Very clean and readable mobile interface."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Uses verified historical facts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully compliant with UI Constitution."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with no novel enhancements."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Highly feasible and lightweight."
+        }
+      },
+      "weightedTotal": 7.45,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Underutilizes Marcus's rich engagement profile by sticking to the absolute minimum component threshold."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Gamification-pure composition tailored for Marcus Johnson (GAMIFICATION_MOTIVATED persona), highlighting his 34-day streak, rank 3 leaderboard position, 12 completed challenges, and 15 earned badges.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-card",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Amazing consistency! You're on a 34-day active streak.",
+            "nextReward": "500 LBG Coins at 40 Days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 Coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 Coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 Coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 Coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-card",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Achievement Badges",
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Challenge Champion",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Community Star",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Trivia Genius",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Top Tier Elite",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "totalEarned": 15,
+            "totalAvailable": 20,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-card",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Weekly Community Showdown",
+            "description": "Complete 3 partner check-ins and share your badge milestone to unlock a bonus reward.",
+            "progress": 75,
+            "reward": "2,000 LBG Coins",
+            "daysLeft": 2,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "JOIN_CHALLENGE",
+              "payload": {
+                "challengeId": "weekly-showdown-05"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah T.",
+                "points": 11200,
+                "avatar": "ST",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David K.",
+                "points": 9500,
+                "avatar": "DK",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena R.",
+                "points": 8100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "period": "weekly",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-card",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "Which partner brand offers double coin rewards on weekend dining?",
+            "options": [
+              "GreenCaf\u00e9 Express",
+              "MetroBites",
+              "Skyline Bistro",
+              "UrbanGrill"
+            ],
+            "reward": "150 LBG Coins",
+            "timeLimit": 30,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-card",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 10 Challenges (Reached)",
+                "achieved": true
+              },
+              {
+                "label": "Earned 15 Badges (Reached)",
+                "achieved": true
+              },
+              {
+                "label": "Reach Leaderboard Top 3 (Reached)",
+                "achieved": true
+              },
+              {
+                "label": "Achieve 50-Day Streak (In Progress)",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "HIGH_STREAK_ALIGNMENT",
+        "GAMIFICATION_ENGAGEMENT"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Hybrid gamification and rewards utility mix for Marcus Johnson, blending competitive leaderboards and streaks with quick reward redemption and tangible wallet insights.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-card-2",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "34 days strong! Keep your streak alive today.",
+            "nextReward": "500 LBG Coins at 40 Days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 Coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 Coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 Coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 Coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value-card",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Your Coin Valuation",
+            "cashValue": "\u00a387.50",
+            "pointsEquivalent": 8750,
+            "breakdown": [
+              {
+                "label": "Challenge Rewards",
+                "value": "\u00a340.00"
+              },
+              {
+                "label": "Streak & Daily Bonuses",
+                "value": "\u00a347.50"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUATION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-card-2",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Weekly Community Showdown",
+            "description": "Complete 3 partner check-ins and share your badge milestone to unlock a bonus reward.",
+            "progress": 75,
+            "reward": "2,000 LBG Coins",
+            "daysLeft": 2,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "JOIN_CHALLENGE",
+              "payload": {
+                "challengeId": "weekly-showdown-05"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-2",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah T.",
+                "points": 11200,
+                "avatar": "ST",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David K.",
+                "points": 9500,
+                "avatar": "DK",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena R.",
+                "points": 8100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "period": "weekly",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-card",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Quick Rewards",
+            "description": "Redeem your coins instantly for everyday perks.",
+            "rewards": [
+              {
+                "name": "Artisanal Coffee",
+                "points": 500,
+                "icon": "coffee"
+              },
+              {
+                "name": "Dining Voucher \u00a310",
+                "points": 1000,
+                "icon": "utensils"
+              },
+              {
+                "name": "Cinema Ticket",
+                "points": 1500,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_REWARDS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "HYBRID_GAMIFICATION_UTILITY",
+        "ENGAGEMENT_AND_VALUE"
+      ]
+    }
+  ]
+}

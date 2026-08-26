@@ -1,0 +1,692 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich screen layout (14 components) explicitly tailored for the VALUE_CERTAINTY_SEEKER persona. Features prominent GBP equivalent displays, conversion calculators, partner rate comparisons, absolute transparency on redemption values, and zero urgency elements. Includes mandatory and supplementary components: POINTS_BALANCE, TANGIBLE_VALUE_CARD, CONVERSION_CALCULATOR_WIDGET, PARTNER_RATE_COMPARISON_CARD, PERSONALIZED_OFFER_CARD, GOAL_PROGRESS_CARD, MILESTONE_CARD, VALUE_TRANSPARENCY_EXPLAINER, RECENT_REDEMPTIONS_AUDIT, FAQ_VALUATION_CARD, CUSTOMER_SUPPORT_VALUATION_LINK, FEEDBACK_VALUE_CARD, SECURITY_GUARANTEE_CARD, FOOTER_NAVIGATION.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses the core objective of understanding exact monetary value in pounds with total clarity."
+        },
+        "expectedCustomerUtility": {
+          "score": 10,
+          "explanation": "Provides 14 robust, high-utility components specifically designed to eliminate valuation ambiguity and prevent drop-off."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly aligns with VALUE_CLARITY motivation and zero urgency tolerance."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear numerical displays, high contrast financial data, and calm, unhurried UI layout."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Grounded in high-confidence behavioral signals (0.93) regarding value checking and abandonment triggers."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains professional banking design standards while emphasizing clarity."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces transparent rate comparison and conversion calculators highly valued by certainty seekers."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Utilizes standard component library items without exotic dependencies."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined rich layout (12 components) focusing on point-to-pound valuation tables, tier benefits breakdown, and straightforward redemption pathways without countdown timers or artificial scarcity. Components include: POINTS_BALANCE, TANGIBLE_VALUE_CARD, VALUE_BREAKDOWN_TABLE, PERSONALIZED_OFFER_CARD, GOAL_PROGRESS_CARD, MILESTONE_CARD, TIER_BENEFITS_CARD, REDEMPTION_GUIDE_CARD, HISTORICAL_VALUE_CARD, TRUST_BADGE_CARD, FEEDBACK_CARD, FOOTER_NAVIGATION.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 8,
+          "explanation": "Strong focus on monetary value, though slightly less comprehensive on comparison tools than candidate-1."
+        },
+        "expectedCustomerUtility": {
+          "score": 8,
+          "explanation": "12 components offer solid utility, meeting the richness threshold."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Aligns well with value certainty and avoids urgency framing."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean tabular data presentation aiding cognitive processing."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Well-supported by customer behavioral history."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully consistent with brand guidelines."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Standard structured layout without groundbreaking comparison widgets."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully feasible within standard mobile architecture."
+        }
+      },
+      "weightedTotal": 8.45,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Value-certainty focused composition for Maya Thompson, prioritizing exact monetary equivalents, transparent partner comparisons, and zero urgency framing.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 5600,
+            "tier": "Gold",
+            "name": "Maya Thompson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Rewards in Pounds",
+            "cashValue": "\u00a356.00",
+            "pointsEquivalent": 5600,
+            "breakdown": [
+              {
+                "label": "Gold Tier Value Rate",
+                "value": "1.0p per coin"
+              },
+              {
+                "label": "Guaranteed Supermarket Rate",
+                "value": "\u00a356.00 equivalent"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-reward-choice",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Redemption Options",
+            "subtitle": "Clear, unhurried choices with guaranteed monetary equivalents.",
+            "options": [
+              {
+                "id": "opt-1",
+                "label": "Direct Supermarket Voucher",
+                "description": "Redeem your 5,600 coins directly for shopping vouchers.",
+                "points": 5600
+              },
+              {
+                "id": "opt-2",
+                "label": "Partner Retailer Credit",
+                "description": "Convert securely to participating partner balances.",
+                "points": 5600
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-partner-comparison",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Partner Rate Comparison",
+            "subtitle": "See exactly how your 5,600 coins translate across different partners.",
+            "partners": [
+              {
+                "name": "Supermarket Partner",
+                "points": 5600,
+                "value": "\u00a356.00",
+                "perk": "Standard 1:1 Value"
+              },
+              {
+                "name": "Travel Partner",
+                "points": 5600,
+                "value": "\u00a361.60",
+                "perk": "10% Bonus Value Rate"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-why-this-ui",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Why This View",
+            "intro": "Designed specifically to give you absolute clarity on exact monetary values without any pressure.",
+            "reasons": [
+              {
+                "label": "Exact GBP Equivalents",
+                "detail": "Every balance and option shows precise pound values upfront."
+              },
+              {
+                "label": "No Artificial Urgency",
+                "detail": "Take your time comparing rates with zero countdown timers."
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-rewards-insight",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Valuation Summary",
+            "topBrandName": "Supermarket Partner",
+            "topBrandPoints": 5600,
+            "growthTip": "Comparing partner rates ensures you always secure the highest pound equivalent.",
+            "expiringPoints": 0,
+            "expiryDate": "No expiry",
+            "ctaText": "Review Rates",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Gold Tier Partner Rate",
+            "subtitle": "Guaranteed value offer",
+            "offer": "10% extra value on travel partner redemptions",
+            "validUntil": "No time limit",
+            "message": "Available whenever you choose to redeem.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "label": "Total Cash Worth",
+            "value": "\u00a356.00",
+            "unit": "GBP",
+            "tone": "brand",
+            "infoText": "Calculated at standard Gold tier valuation.",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "active",
+            "tone": "white",
+            "infoText": "Partners linked to your account.",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "Conversion Rate",
+            "value": "1.0",
+            "unit": "p / coin",
+            "tone": "white",
+            "infoText": "Guaranteed base redemption rate.",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-best-value-redeem",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "options": [
+              {
+                "name": "Travel Partner Voucher",
+                "points": 5600,
+                "cashValue": "\u00a361.60",
+                "valuePerPoint": 1.1,
+                "best": true
+              },
+              {
+                "name": "Supermarket Voucher",
+                "points": 5600,
+                "cashValue": "\u00a356.00",
+                "valuePerPoint": 1.0,
+                "best": false
+              }
+            ],
+            "note": "Ranked by highest pounds-per-point value for complete transparency.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Explore Partner Categories",
+            "actionLabel": "View Rates",
+            "categories": [
+              {
+                "label": "Supermarkets",
+                "count": 2,
+                "icon": "basket"
+              },
+              {
+                "label": "Travel",
+                "count": 1,
+                "icon": "plane"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronized",
+            "lastSyncedAt": "24 Aug 2026, 09:13",
+            "message": "All partner valuations and balances are up to date.",
+            "ctaText": "Refresh Status",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "title": "Maximizing Your Reward Value",
+            "insight": "Comparing partner rates before redemption ensures you capture maximum pound value for every coin earned.",
+            "source": "LBG Rewards Guide",
+            "actionLabel": "Read Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "VALUE_CERTAINTY_SEEKER",
+        "HIGH_VALUE_CLARITY_REQUIREMENT",
+        "ZERO_URGENCY_TOLERANCE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined value-certainty layout emphasizing direct conversion breakdowns, partner transparency, and straightforward redemption options.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 5600,
+            "tier": "Gold",
+            "name": "Maya Thompson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-tangible-value-2",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Your Rewards in Pounds",
+            "cashValue": "\u00a356.00",
+            "pointsEquivalent": 5600,
+            "breakdown": [
+              {
+                "label": "Gold Tier Base Rate",
+                "value": "1.0p per coin"
+              },
+              {
+                "label": "Total Available Worth",
+                "value": "\u00a356.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-reward-choice-2",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Redemption Options",
+            "subtitle": "Select how you would like to apply your 5,600 coins.",
+            "options": [
+              {
+                "id": "opt-alt-1",
+                "label": "Direct Credit",
+                "description": "Convert directly to pounds sterling.",
+                "points": 5600
+              },
+              {
+                "id": "opt-alt-2",
+                "label": "Partner Transfer",
+                "description": "Transfer to partner programmes with verified rates.",
+                "points": 5600
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-partner-comparison-2",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Partner Valuation Table",
+            "subtitle": "Exact pound values across our connected partners.",
+            "partners": [
+              {
+                "name": "Supermarket Partner",
+                "points": 5600,
+                "value": "\u00a356.00",
+                "perk": "1.0p / coin"
+              },
+              {
+                "name": "Retail Partner",
+                "points": 5600,
+                "value": "\u00a356.00",
+                "perk": "1.0p / coin"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-why-this-ui-2",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Transparent Design",
+            "intro": "Built for clarity so you always know your exact financial position.",
+            "reasons": [
+              {
+                "label": "Clear Valuations",
+                "detail": "No hidden conversions or ambiguous point metrics."
+              },
+              {
+                "label": "Self-Paced Exploration",
+                "detail": "Redeem only when and where you choose."
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-rewards-insight-2",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Account Health & Value",
+            "topBrandName": "Supermarket Partner",
+            "topBrandPoints": 5600,
+            "growthTip": "Your Gold tier status guarantees a baseline 1.0p per coin rate.",
+            "expiringPoints": 0,
+            "expiryDate": "No expiry",
+            "ctaText": "View Details",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-personalized-offer-2",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Gold Tier Perks",
+            "subtitle": "Your active membership benefits",
+            "offer": "Guaranteed 1:1 pound conversion across all connected partners",
+            "validUntil": "Active status",
+            "message": "Enjoy permanent rate transparency.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-4",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "label": "Total LBG Coins",
+            "value": "5,600",
+            "unit": "coins",
+            "tone": "brand",
+            "infoText": "Current available balance.",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-5",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "label": "GBP Equivalent",
+            "value": "\u00a356.00",
+            "unit": "GBP",
+            "tone": "white",
+            "infoText": "Exact cash worth.",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-6",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "Linked Brands",
+            "value": "3",
+            "unit": "connected",
+            "tone": "white",
+            "infoText": "Synchronized partner accounts.",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-best-value-redeem-2",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "options": [
+              {
+                "name": "Supermarket Voucher",
+                "points": 5600,
+                "cashValue": "\u00a356.00",
+                "valuePerPoint": 1.0,
+                "best": true
+              }
+            ],
+            "note": "Optimized for straightforward pound-for-pound redemption.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-brand-explorer-2",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Partner Network",
+            "actionLabel": "Explore",
+            "categories": [
+              {
+                "label": "Supermarkets",
+                "count": 2,
+                "icon": "basket"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-sync-status-2",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Status",
+            "lastSyncedAt": "24 Aug 2026, 09:13",
+            "message": "All partner data is fully up to date.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "title": "Understanding Valuation",
+            "insight": "Every LBG coin carries a guaranteed minimum pound equivalent, protecting your rewards from devaluation.",
+            "source": "LBG Trust Center",
+            "actionLabel": "Learn More",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.92,
+      "reasonCodes": [
+        "VALUE_CERTAINTY_SEEKER",
+        "STREAMLINED_VALUATION"
+      ]
+    }
+  ]
+}

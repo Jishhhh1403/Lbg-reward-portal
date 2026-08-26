@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "decision-candidate-1-e9f9d715",
+  "correlationId": "e9f9d715",
+  "createdAt": "2025-02-15T00:00:00Z",
+  "expiresAt": "2025-02-22T00:00:00Z",
+  "customerRef": "customer_003",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 28400,
+        "tier": "Diamond",
+        "name": "David Park",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-retirement",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 28400,
+        "target": 100000,
+        "percentage": 28,
+        "estimatedCompletion": "2032",
+        "message": "Steady compounding on your Diamond tier accumulation puts you well on track for long-term security.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-education",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 20500,
+        "target": 50000,
+        "percentage": 41,
+        "estimatedCompletion": "2029",
+        "message": "Strong 41% progress! Your disciplined saving approach is paying off for future education needs.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-home",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 11250,
+        "target": 75000,
+        "percentage": 15,
+        "estimatedCompletion": "2035",
+        "message": "Building your foundation steadily. Every connected brand contribution accelerates this milestone.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new long-term milestone to guide your reward accumulation strategy.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Diamond Tier Growth Projection",
+        "currentValue": 28400,
+        "projectedValue": 65000,
+        "timeframe": "5 Years",
+        "growthRate": "7.5% APY equivalent",
+        "message": "Based on your historical accumulation rate and Diamond tier multiplier, your points portfolio is projected to more than double.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Long-Term Rewards Trajectory",
+        "growthLabel": "Projected Value (Points)",
+        "data": [
+          {
+            "year": "2026",
+            "value": 28400
+          },
+          {
+            "year": "2028",
+            "value": 41000
+          },
+          {
+            "year": "2030",
+            "value": 53500
+          },
+          {
+            "year": "2032",
+            "value": 68000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPAND_CHART",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Maximizing Long-Term Compounding",
+        "insight": "Holding rewards in high-tier status portfolios allows you to unlock exclusive investment-grade conversion rates upon milestone completion.",
+        "source": "LBG Wealth Rewards Research",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_EDUCATIONAL_ARTICLE",
+          "payload": {
+            "articleId": "compounding-rewards-101"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

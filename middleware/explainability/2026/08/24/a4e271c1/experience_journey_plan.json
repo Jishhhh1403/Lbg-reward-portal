@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review First Home Savings Knowledge goal progress and explore educational mastery insights at the customer's own pace.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer successfully views goal progress, reviews educational insight, and accesses voluntary quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand on my First Home Savings Knowledge goal?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-04"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my learning milestones connect to my savings mastery?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "learning milestones",
+        "educational insight",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Can I test my knowledge voluntarily with a self-paced quiz?",
+      "entryCondition": "Educational insights reviewed",
+      "requiredInformation": [
+        "quiz details",
+        "confidence score"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary tangible value context for LBG Coins.",
+      "contentNotes": [
+        "Translates coin balance into tangible educational value equivalents."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

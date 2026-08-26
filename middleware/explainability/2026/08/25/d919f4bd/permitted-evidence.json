@@ -1,0 +1,77 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "redeems almost exclusively as statement credits on linked card",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "Active holiday spending money goal at 53% progress",
+        "source": "journeyAnalysis",
+        "confidence": 0.92,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Daniel Brooks exhibits a strong payment utility focus, preferring statement credits and cash-equivalent rewards over vouchers or gamified experiences, with an active holiday savings goal at 53% progress.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Redeems almost exclusively as statement credits on linked card",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Active holiday spending money goal at 53% progress ($640/$1200)",
+        "source": "journeyAnalysis",
+        "confidence": 0.92
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Holds 7300 LBG coins / points balance",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "primaryMotivation",
+        "value": "PAYMENT_UTILITY",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "intelligenceLayerPersonaAnalysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "autonomyPreference",
+        "value": "high",
+        "confidence": 0.72,
+        "evidenceRefs": [
+          "fact-01"
+        ],
+        "inferenceMethod": "personalityInsightsMotiveScores",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

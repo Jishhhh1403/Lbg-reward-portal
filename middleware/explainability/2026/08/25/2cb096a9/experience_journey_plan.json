@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-review-statement-credit",
+  "journeyObjective": "Provide frictionless visibility into cashback earnings, points balance, statement credit redemption options, and payment-linked goal progress.",
+  "entryPoint": "Customer opens rewards overview to check cashback and statement credit allocation.",
+  "completionDefinition": "Customer views points balance, cashback summary, and reviews statement credit options without encountering irrelevant voucher prompts.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current points and cashback balance?",
+      "entryCondition": "Customer views rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "cashback balance"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points convert to bill reduction and how is automatic allocation set?",
+      "entryCondition": "Customer has reviewed points balance",
+      "requiredInformation": [
+        "statement credits",
+        "payment rewards",
+        "allocation settings"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-redeems-statement-credits",
+        "fact-auto-allocation"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is my progress toward my payment-linked savings goals?",
+      "entryCondition": "Customer has reviewed statement credit options and allocation",
+      "requiredInformation": [
+        "goal progress",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-predictable-rates"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide educational context on how statement credits work and how automatic payment allocation saves time.",
+      "contentNotes": [
+        "Educational guidance on bill reduction rates and cash equivalency."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes challenges regularly",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard daily",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "longest active streak in program",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Marcus Johnson is a highly engaged, gamification-motivated customer (Gold tier) with 8,750 LBG coins. He frequently participates in challenges, maintains a 34-day streak, checks the leaderboard daily, and actively shares his achievements.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins",
+        "statement": "Customer holds 8,750 LBG coins",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer is in the Gold tier",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-streak",
+        "statement": "Customer maintains an active streak of 34 days",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-challenges",
+        "statement": "Customer has completed 12 challenges",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-badges",
+        "statement": "Customer has earned 15 badges",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-leaderboard",
+        "statement": "Customer holds leaderboard rank 3",
+        "source": "customerProfile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-motivation",
+        "attribute": "primary_engagement_driver",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "completes challenges regularly",
+          "checks leaderboard daily",
+          "longest active streak in program",
+          "participates in community events"
+        ],
+        "inferenceMethod": "Intelligence Layer Persona Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

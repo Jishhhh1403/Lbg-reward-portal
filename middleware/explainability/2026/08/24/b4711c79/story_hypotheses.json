@@ -1,0 +1,65 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-1",
+      "storyTitle": "Advance Savings Knowledge and Track Milestones",
+      "oneSentenceStory": "Review current savings milestone progress and engage with targeted educational content to deepen financial competence.",
+      "customerSituation": "Customer is actively monitoring savings goals and completing educational modules without pressure.",
+      "storyTension": "Balancing ongoing financial literacy growth with clear, transparent tracking toward the first home savings target.",
+      "customerResolution": "View current progress toward the First Home Savings Knowledge goal and access the next educational quiz module.",
+      "primaryOutcome": "Master financial concepts and visualize steady progress toward home savings goals.",
+      "secondaryOutcome": null,
+      "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+      "evidenceRefs": [
+        "fact-01",
+        "fact-03"
+      ],
+      "confidence": 0.9,
+      "prohibitedDetours": [
+        "Timed challenges",
+        "Public leaderboards",
+        "Artificial scarcity"
+      ],
+      "completionSignals": [
+        "Goal progress card viewed",
+        "Educational quiz module accessed"
+      ],
+      "expiryAt": null
+    },
+    {
+      "storyId": "story-2",
+      "storyTitle": "Transparent Reward Insights and Learning Review",
+      "oneSentenceStory": "Examine transparent explanations of earned educational rewards and review completed milestone achievements.",
+      "customerSituation": "Customer has earned rewards via academy courses and seeks transparent understanding of their value.",
+      "storyTension": "Ensuring reward structures remain aligned with educational mastery rather than transactional chasing.",
+      "customerResolution": "Review clear documentation of academy bonuses and milestone achievements.",
+      "primaryOutcome": "Understand educational reward value and verify milestone status.",
+      "secondaryOutcome": null,
+      "narrativeMode": "UNDERSTAND_VALUE",
+      "evidenceRefs": [
+        "fact-01"
+      ],
+      "confidence": 0.75,
+      "prohibitedDetours": [
+        "Cash equivalent upsells",
+        "High-pressure redemption prompts"
+      ],
+      "completionSignals": [
+        "Milestone card reviewed",
+        "Reward details inspected"
+      ],
+      "expiryAt": null
+    }
+  ],
+  "recommendedStoryId": "story-1",
+  "rejectedStoryReasons": {
+    "story-2": "Story-2 focuses secondary on reward value review, whereas Story-1 directly supports the primary customer objective of advancing savings knowledge and milestone tracking."
+  },
+  "qualityGate": {
+    "passed": true,
+    "violations": [
+      "story-1: stripped unpermitted evidenceRefs ['fact-05']",
+      "story-2: stripped unpermitted evidenceRefs ['fact-04']"
+    ]
+  }
+}

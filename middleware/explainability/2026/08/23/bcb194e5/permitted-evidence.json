@@ -1,0 +1,74 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "high goal completion behavior",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_002 (Sarah Chen) is a Platinum-tier member with 6,820 LBG coins, demonstrating consistent monthly point accumulation, frequent goal-linked redemptions, and active tracking across three specific savings goals (Japan Vacation, New Phone, and Emergency Fund).",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-balance",
+        "statement": "Customer holds 6820 LBG coins with 3 connected brands.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-active-goals",
+        "statement": "Customer has three active goals: Japan Vacation (67% progress), New Phone (74% progress), and Emergency Fund (45% progress).",
+        "source": "Intelligence Layer goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behaviors",
+        "statement": "Customer exhibits frequent goal-linked redemptions, consistent monthly accumulation, and high goal completion behavior.",
+        "source": "Intelligence Layer signals",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-primary-motivation",
+        "attribute": "motivation",
+        "value": "GOAL_ACHIEVEMENT",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "consistent monthly accumulation",
+          "high goal completion behavior",
+          "saves points for larger rewards"
+        ],
+        "inferenceMethod": "Intelligence Layer behavioral pattern analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

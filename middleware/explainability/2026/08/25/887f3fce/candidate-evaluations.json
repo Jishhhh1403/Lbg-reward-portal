@@ -1,0 +1,328 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Structured Mastery Pathway: Focuses exclusively on the 'First Home Savings Knowledge' goal progress card (63%) paired with an educational insight card and a low-pressure knowledge quiz, entirely omitting timed challenges or competitive rankings.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses the active First Home Savings Knowledge goal and mastery preference."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility through competence-building modules and clear goal tracking without pressure."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 9,
+          "explanation": "Every component maps cleanly to advancing savings knowledge and structured progress."
+        },
+        "journeyAndActionContinuity": {
+          "score": 9,
+          "explanation": "Smooth flow from points balance to goal progress and targeted quiz completion."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm, structured layout matching the mastery-focused persona perfectly."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant with transparency standards and avoids all prohibited dark patterns."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with learning mastery and knowledge-building reward preferences."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong behavioral signals of 100% module completion and quiz retakes."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Provides tailored educational insights supporting the current home savings milestone."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses standard mandated components available within the rewards overview architecture."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Mixed Discovery & Points Redemption: Highlights points balance alongside partner conversion offers and general rewards insights, offering broader catalog exploration.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Less relevant to the specific active savings goal and structured learning preference."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Lower utility since partner conversions are less valued by this competence-driven persona."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 6,
+          "explanation": "Fragmented narrative mixing redemption catalog elements with educational content."
+        },
+        "journeyAndActionContinuity": {
+          "score": 6,
+          "explanation": "Abrupt shift from educational progress toward commercial partner offers."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 7,
+          "explanation": "Standard layout but introduces slight distraction from core learning focus."
+        },
+        "brandAndLegalConsistency": {
+          "score": 9,
+          "explanation": "Compliant with legal standards but weaker on brand personalization fit."
+        },
+        "rewardProfileAlignment": {
+          "score": 5,
+          "explanation": "Conflicts with the avoidance of commercial pressure and focus on mastery."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Relies on general engagement rather than specific learning signals."
+        },
+        "usefulNovelty": {
+          "score": 6,
+          "explanation": "Standard partner catalog presentation with little tailored novelty."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully feasible within existing platform capabilities."
+        }
+      },
+      "weightedTotal": 6.5,
+      "hardGatesPass": true,
+      "objections": [
+        "Lower alignment with customer motivation for learning mastery.",
+        "Introduces partner conversion distractions contrary to declared preferences."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Clarity-first structured mastery pathway: aligns points balance with First Home Savings Knowledge goal progress, structured educational insights, a learning mission, an interactive quiz, feedback, and confidence building without any gamified pressure.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You're 63% toward your First Home Savings Knowledge goal. Steady progress builds lasting financial confidence.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Home Buyers Academy",
+            "missionName": "Deposit Strategy & Compound Growth",
+            "description": "Master the fundamentals of building a robust savings deposit with structured modules designed for long-term clarity.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionName": "Deposit Strategy & Compound Growth"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "Which savings approach best protects your deposit fund against short-term market volatility while maintaining liquidity?",
+            "options": [
+              "High-yield structured savings pots with guaranteed rates",
+              "Unsecured speculative assets",
+              "Keeping cash at home"
+            ],
+            "reward": "50 Mastery Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Mastery Concept Check",
+            "question": "Structured savings protection",
+            "yourAnswer": "High-yield structured savings pots",
+            "correctAnswer": "High-yield structured savings pots with guaranteed rates",
+            "feedback": "Spot on! Utilizing structured savings pots provides capital security and predictable growth for your first home objective.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Literacy Confidence",
+            "topic": "Home Deposit Strategy",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Complete Module 6: Finalizing Mortgage Readiness",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Understanding Compound Growth in Savings",
+            "insight": "Consistently allocating small amounts to your dedicated savings pot harnesses compound growth, significantly shortening your timeline to your first home goal without taking on unnecessary risk.",
+            "source": "LBG Financial Education Research",
+            "actionLabel": "Explore Savings Calculator",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_INSIGHT",
+              "payload": {
+                "insightId": "compound-growth-home"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "steps": [
+              {
+                "title": "1. Engage & Learn",
+                "description": "Complete educational modules and knowledge quizzes to build financial mastery."
+              },
+              {
+                "title": "2. Track Goals",
+                "description": "Monitor your First Home Savings Knowledge progress transparently in real time."
+              },
+              {
+                "title": "3. Realize Value",
+                "description": "Convert your earned knowledge and LBG coins into tangible milestone value."
+              }
+            ],
+            "ctaLabel": "View Transparent Value Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_GUIDE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Rewards Worth in Real Terms",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "LBG Coins Value",
+                "value": "\u00a339.00"
+              },
+              {
+                "label": "Educational Module Bonuses",
+                "value": "\u00a33.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "EDUCATIONAL_COMPETENCE_MATCH",
+        "CLARITY_FIRST_NARRATIVE",
+        "MANDATORY_ORDERED_STACK_COMPLIANT"
+      ]
+    }
+  ]
+}

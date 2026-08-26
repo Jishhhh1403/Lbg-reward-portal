@@ -1,0 +1,82 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "preference for exact monetary equivalents",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Maya Thompson (Gold tier, 5600 LBG coins) exhibits behavior characteristic of a VALUE_CERTAINTY_SEEKER. She prioritizes exact monetary equivalents (GBP values) in her rewards overview, abandons redemptions when value is ambiguous, and responds poorly to countdown timers or urgency framing.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Repeatedly asks what points are worth in pounds before redeeming",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.93
+      },
+      {
+        "factId": "f2",
+        "statement": "Abandons redemptions when value is unclear",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.93
+      },
+      {
+        "factId": "f3",
+        "statement": "Compares partner rates across visits before committing",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.93
+      },
+      {
+        "factId": "f4",
+        "statement": "Prefers exact monetary equivalents over point abstractions",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.93
+      },
+      {
+        "factId": "f5",
+        "statement": "Responds poorly to countdown or urgency framing",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.93
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "ip1",
+        "attribute": "valueClarityRequirement",
+        "value": "HIGH",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "f4"
+        ],
+        "inferenceMethod": "Motive scoring and behavioral analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "ip2",
+        "attribute": "urgencyTolerance",
+        "value": "ZERO",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "f5"
+        ],
+        "inferenceMethod": "Behavioral pattern evaluation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

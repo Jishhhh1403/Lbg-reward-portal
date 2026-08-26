@@ -1,0 +1,377 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "d79b8249",
+  "createdAt": "2026-03-31T00:00:00Z",
+  "expiresAt": "2026-04-07T00:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiring Soon",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "You have 1,500 points expiring in 7 days. Redeem them now to make the most of your Gold tier balance.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reengagement",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Welcome back, Ryan!",
+        "message": "It's been 41 days since your last visit. We've saved your 3,600 LBG coins and lined up your favorite instant treats.",
+        "ctaText": "Explore Quick Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_BANNER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Flash Reward: Weekend Coffee Pass",
+        "subtitle": "Exclusive instant discount for Gold members",
+        "originalPoints": 400,
+        "discountedPoints": 250,
+        "timer": "168:00:00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_FLASH_REWARD",
+          "payload": {
+            "rewardId": "flash-coffee-pass"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Instant Redeem",
+        "description": "Claim these zero-friction rewards instantly with your LBG coins.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Snack Box Flash Deal",
+            "points": 350,
+            "icon": "utensils"
+          },
+          {
+            "name": "Digital Movie Rental",
+            "points": 450,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_QUICK",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-popup",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Gold Tier Special Bonus",
+        "subtitle": "Claim your welcome-back instant reward",
+        "points": 150,
+        "expiresIn": "7 days",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_BONUS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Quick Wins",
+        "subtitle": "Effortless rewards ready for immediate use",
+        "rewards": [
+          {
+            "name": "Music Streaming Pass (1 Month)",
+            "points": 500
+          },
+          {
+            "name": "E-Book Voucher",
+            "points": 300
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Your Wallet's Real Cash Value",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": [
+          {
+            "label": "Available LBG Coins",
+            "value": "\u00a336.00 equivalent"
+          },
+          {
+            "label": "Expiring Soon",
+            "value": "\u00a315.00 equivalent"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "label": "Connected Brands",
+        "value": "3",
+        "unit": "brands",
+        "tone": "brand",
+        "infoText": "Active partner programmes linked to your wallet",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BRANDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "label": "Redemption Speed",
+        "value": "6h",
+        "unit": "avg",
+        "tone": "white",
+        "infoText": "Your historical average time from earn to redeem",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_HISTORY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "label": "Badges Earned",
+        "value": "3",
+        "unit": "badges",
+        "tone": "white",
+        "infoText": "Milestone achievements unlocked in your profile",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BADGES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Curated Instant Rewards",
+        "rewards": [
+          {
+            "name": "Express Delivery Pass",
+            "points": 600,
+            "category": "Shopping",
+            "limited": true
+          },
+          {
+            "name": "Audiobook Credit",
+            "points": 750,
+            "category": "Entertainment",
+            "limited": false
+          },
+          {
+            "name": "Ride Share Voucher",
+            "points": 1000,
+            "category": "Travel",
+            "limited": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "BROWSE_CATALOGUE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-personal-offer",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Retail Instant Voucher",
+        "subtitle": "Tailored for your shopping preferences",
+        "offer": "\u00a310 Off Next Store Purchase",
+        "validUntil": "2026-09-20",
+        "message": "Use your points to claim this voucher instantly with zero waiting time.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_OFFER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-local-deals",
+      "type": "LOCAL_DEALS_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "city": "London",
+        "deals": [
+          {
+            "merchant": "City Coffee Roasters",
+            "distanceKm": 0.8,
+            "offer": "Free pastry with any hot drink",
+            "points": 250
+          },
+          {
+            "merchant": "Metro Bookstore",
+            "distanceKm": 1.4,
+            "offer": "15% off magazine selection",
+            "points": 300
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_LOCAL_DEALS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

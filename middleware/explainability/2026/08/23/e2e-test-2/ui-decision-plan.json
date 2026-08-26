@@ -1,0 +1,520 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-e2e-test-2",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component gamification dashboard tailored for Marcus Johnson (Gold tier, rank 3, 34-day streak), emphasizing challenges, leaderboards, and interactive community elements.",
+      "components": [
+        {
+          "id": "comp-pts-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-001",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Amazing consistency, Marcus! You're on fire.",
+            "nextReward": "500 bonus points at 40 days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 pts",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 pts",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 pts",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 pts",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-001",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Community Champion Quest",
+            "description": "Participate in 3 community reward sharing events this week to claim your bonus.",
+            "progress": 66,
+            "reward": "1,000 Points",
+            "daysLeft": 4,
+            "participants": 1250,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "JOIN_CHALLENGE",
+              "payload": {
+                "challengeId": "community-champion-quest"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-001",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 10200,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David Chen",
+                "points": 9400,
+                "avatar": "DC",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena Rostova",
+                "points": 8100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-001",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Achievement Badges",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Community Leader",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Gold Elite",
+                "icon": "crown",
+                "earned": true
+              },
+              {
+                "name": "Quiz Whiz",
+                "icon": "brain",
+                "earned": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-001",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "Which reward tier unlocks exclusive community event priority access?",
+            "options": [
+              "Silver Tier",
+              "Gold Tier",
+              "Platinum Tier",
+              "Bronze Tier"
+            ],
+            "reward": "150 Points",
+            "timeLimit": 30,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": "Gold Tier"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-001",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 10 Challenges (12/10)",
+                "achieved": true
+              },
+              {
+                "label": "Earn 15 Badges (15/15)",
+                "achieved": true
+              },
+              {
+                "label": "Reach Diamond Tier Status",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE_ROADMAP",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "HIGH_ENGAGEMENT_GAMIFICATION"
+      ]
+    },
+    "strategy": "Rich 7-component gamification dashboard tailored for Marcus Johnson (Gold tier, rank 3, 34-day streak), emphasizing challenges, leaderboards, and interactive community elements.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Rich 7-component gamification dashboard tailored for Marcus Johnson (Gold tier, rank 3, 34-day streak), emphasizing challenges, leaderboards, and interactive community elements.",
+    "components": [
+      {
+        "id": "comp-pts-001",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 8750,
+          "tier": "Gold",
+          "name": "Marcus Johnson",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_POINTS_HISTORY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-streak-001",
+        "type": "STREAK_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "streakDays": 34,
+          "message": "Amazing consistency, Marcus! You're on fire.",
+          "nextReward": "500 bonus points at 40 days",
+          "milestones": [
+            {
+              "days": 10,
+              "reward": "100 pts",
+              "achieved": true
+            },
+            {
+              "days": 20,
+              "reward": "250 pts",
+              "achieved": true
+            },
+            {
+              "days": 30,
+              "reward": "400 pts",
+              "achieved": true
+            },
+            {
+              "days": 40,
+              "reward": "500 pts",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_STREAK_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-challenge-001",
+        "type": "CHALLENGE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Community Champion Quest",
+          "description": "Participate in 3 community reward sharing events this week to claim your bonus.",
+          "progress": 66,
+          "reward": "1,000 Points",
+          "daysLeft": 4,
+          "participants": 1250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "JOIN_CHALLENGE",
+            "payload": {
+              "challengeId": "community-champion-quest"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-leaderboard-001",
+        "type": "LEADERBOARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "period": "weekly",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Sarah Jenkins",
+              "points": 10200,
+              "avatar": "SJ",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 2,
+              "name": "David Chen",
+              "points": 9400,
+              "avatar": "DC",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 3,
+              "name": "Marcus Johnson",
+              "points": 8750,
+              "avatar": "MJ",
+              "isCurrentUser": true
+            },
+            {
+              "rank": 4,
+              "name": "Elena Rostova",
+              "points": 8100,
+              "avatar": "ER",
+              "isCurrentUser": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_FULL_LEADERBOARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge-001",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Achievement Badges",
+          "totalEarned": 15,
+          "totalAvailable": 25,
+          "badges": [
+            {
+              "name": "Streak Master",
+              "icon": "flame",
+              "earned": true
+            },
+            {
+              "name": "Community Leader",
+              "icon": "trophy",
+              "earned": true
+            },
+            {
+              "name": "Gold Elite",
+              "icon": "crown",
+              "earned": true
+            },
+            {
+              "name": "Quiz Whiz",
+              "icon": "brain",
+              "earned": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_BADGES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz-001",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "question": "Which reward tier unlocks exclusive community event priority access?",
+          "options": [
+            "Silver Tier",
+            "Gold Tier",
+            "Platinum Tier",
+            "Bronze Tier"
+          ],
+          "reward": "150 Points",
+          "timeLimit": 30,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "Gold Tier"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-001",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "milestones": [
+            {
+              "label": "Complete 10 Challenges (12/10)",
+              "achieved": true
+            },
+            {
+              "label": "Earn 15 Badges (15/15)",
+              "achieved": true
+            },
+            {
+              "label": "Reach Diamond Tier Status",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONE_ROADMAP",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "HIGH_ENGAGEMENT_GAMIFICATION"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "completes challenges regularly",
+          "checks leaderboard daily",
+          "longest active streak in program",
+          "participates in community events",
+          "earns badges frequently",
+          "shares achievements socially"
+        ]
+      }
+    ],
+    "methodology": "Analysis of verified behavioral signals, challenge participation history, and community leaderboard standing from the intelligence layer.",
+    "temporaryInterpretation": true
+  }
+}

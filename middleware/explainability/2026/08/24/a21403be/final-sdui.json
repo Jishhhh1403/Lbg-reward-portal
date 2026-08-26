@@ -1,0 +1,262 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "a21403be",
+  "createdAt": "2023-10-25T10:00:00Z",
+  "expiresAt": "2023-11-03T10:00:00Z",
+  "customerRef": "customer_007",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 24500,
+        "tier": "Diamond",
+        "name": "Elena Vasquez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiry Notice",
+        "expiringPoints": 2400,
+        "daysLeft": 9,
+        "message": "You have 2,400 points expiring in 9 days. Allocate them to your long-term goals to preserve your hard-earned value.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ALLOCATE_POINTS",
+          "payload": {
+            "points": 2400
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Protect Your Balance",
+        "subtitle": "Quick actions to secure expiring rewards",
+        "rewards": [
+          {
+            "name": "Retirement Pot Top-Up",
+            "points": 2400
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "rewardName": "Retirement Pot Top-Up"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-retirement",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 24500,
+        "target": 100000,
+        "percentage": 25,
+        "estimatedCompletion": "2038",
+        "message": "Steady accumulation is key to long-term compounding success.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-education",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 18500,
+        "target": 50000,
+        "percentage": 37,
+        "estimatedCompletion": "2032",
+        "message": "Consistent contributions build a strong foundation for education.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-home",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 9000,
+        "target": 75000,
+        "percentage": 12,
+        "estimatedCompletion": "2035",
+        "message": "Every milestone brings your future home closer to reality.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Establish a new horizon for your long-term savings",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Portfolio Growth Projection",
+        "currentValue": 24500,
+        "projectedValue": 45000,
+        "timeframe": "5 Years",
+        "growthRate": "6.5% AER",
+        "message": "Your disciplined holding strategy maximizes compound returns over time.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Long-Term Value Trajectory",
+        "growthLabel": "Compounded Reward Growth",
+        "data": [
+          {
+            "year": "2026",
+            "value": 24500
+          },
+          {
+            "year": "2028",
+            "value": 31000
+          },
+          {
+            "year": "2030",
+            "value": 38500
+          },
+          {
+            "year": "2032",
+            "value": 45000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_CHART",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "The Advantage of Patience",
+        "insight": "Diamond tier members who maintain long-horizon allocations enjoy an average 18% higher return on accumulated rewards over 3 years.",
+        "source": "LBG Wealth Insights",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "OPEN_EDUCATIONAL_GUIDE",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

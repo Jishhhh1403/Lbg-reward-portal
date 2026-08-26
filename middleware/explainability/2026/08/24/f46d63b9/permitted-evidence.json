@@ -1,0 +1,92 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-03",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 is actively engaged in financial literacy and home savings progression, characterized by high competence motivation, thorough engagement with educational content, and a preference for mastery-oriented learning over timed or competitive mechanics.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3,900 LBG Coins and 3 connected brands with a Gold tier engagement score",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence-layer-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-03"
+        ],
+        "inferenceMethod": "behavioral-affinity",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

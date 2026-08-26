@@ -1,0 +1,705 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich educational rewards overview strategy tailored for Sophie Williams, featuring 13 components: POINTS_BALANCE, HEADER_NAV, GOAL_PROGRESS_CARD, ADD_GOAL_CARD, EDUCATIONAL_INSIGHT_CARD, QUIZ_CARD, MILESTONE_CARD, GOAL_LINKED_REWARD_CARD, VALUE_EXPLAINER_CARD, KNOWLEDGE_TRACKER_CARD, RESOURCE_RECOMMENDATION_CARD, REWARD_HISTORY_CARD, and FOOTER_NAV. Completely excludes any leaderboards or timed challenges.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly supports financial literacy mastery and long-term savings goal tracking without competitive distractions."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides deep educational utility, rich progress metrics, and relevant milestones across 13 carefully structured components."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns perfectly with LEARNING_MASTERY motivation and EDUCATIONAL tone preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 10,
+          "explanation": "Clean, structured educational layout with clear visual hierarchy and zero cognitive load from pressure tactics."
+        },
+        "evidenceConfidence": {
+          "score": 10,
+          "explanation": "Backed by 0.99 confidence behavioral data showing complete module completion and quiz retakes."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Follows all bank design system and brand guidelines for educational hubs."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces knowledge-linked reward pathways and value explainers tailored to curiosity."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses standard component templates available within the mobile design system."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A lighter educational layout featuring 8 components: POINTS_BALANCE, EDUCATIONAL_INSIGHT_CARD, QUIZ_CARD, GOAL_PROGRESS_CARD, MILESTONE_CARD, REWARD_HISTORY_CARD, VALUE_EXPLAINER_CARD, FOOTER_NAV. Omits multi-goal structured cards and interactive knowledge trackers.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Covers basic goals but lacks the comprehensive depth required for a complex financial literacy journey."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Fewer than 11 components limit the richness of the customer utility and educational exploration."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Good tone alignment, but misses advanced knowledge tracking features."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean layout, but sparse."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Supported by data, but underutilizes available intelligence signals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Meets standards."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Relatively basic layout with little innovation."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 7.45,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 11 components, resulting in lower expectedCustomerUtility and customerGoalRelevance per committee rules."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Clarity-first educational rewards overview tailored for Sophie Williams, emphasizing financial literacy mastery, transparent value explanation, and structured goal progress without timed challenges or public leaderboards.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You're making steady progress toward mastering your first home savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new financial literacy or savings target to track your mastery.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy Masterclass",
+            "missionName": "Compound Growth & Interest Fundamentals",
+            "description": "Explore how compounding works over multi-year timelines with clear mathematical breakdowns.",
+            "modulesDone": 3,
+            "modulesTotal": 5,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionName": "Compound Growth & Interest Fundamentals"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "Which factor has the most significant long-term impact on compound interest accumulation?",
+            "options": [
+              "Starting time horizon",
+              "Monthly contribution amount",
+              "Nominal interest rate alone"
+            ],
+            "reward": "150 Learning Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Recent Concept Review",
+            "question": "How does inflation impact purchasing power over a 10-year horizon?",
+            "yourAnswer": "It gradually reduces the basket of goods a fixed amount can buy.",
+            "correctAnswer": "It gradually reduces the basket of goods a fixed amount can buy.",
+            "feedback": "Spot on! Understanding inflation ensures your savings targets account for real-world purchasing power.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FEEDBACK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Confidence Meter",
+            "topic": "Tax-Efficient Savings Vehicles",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Master multi-account allocation strategies",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CONFIDENCE_TOPIC",
+              "payload": {
+                "topic": "Tax-Efficient Savings Vehicles"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Mastery Tip: Transparent Value Conversion",
+            "insight": "Every 1,000 LBG coins translates directly into \u00a310.00 of tangible purchasing value across our verified partner network.",
+            "source": "LBG Educational Research Team",
+            "actionLabel": "Explore Value Breakdowns",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_EDUCATIONAL_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Wallet Worth",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "LBG Coins Balance",
+                "value": "3,900 coins"
+              },
+              {
+                "label": "Verified Cash Equivalent",
+                "value": "\u00a339.00 GBP"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "steps": [
+              {
+                "title": "Earn through Learning",
+                "description": "Complete educational modules and quizzes to build your coin balance."
+              },
+              {
+                "title": "Convert Transparently",
+                "description": "View exact GBP equivalents with zero hidden fees or complex exchange rates."
+              },
+              {
+                "title": "Redeem with Purpose",
+                "description": "Apply your balance toward your savings goals and partner rewards."
+              }
+            ],
+            "ctaLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_GUIDE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed 5 Financial Literacy Modules",
+                "achieved": true
+              },
+              {
+                "label": "Achieved 85% Quiz Accuracy Across All Topics",
+                "achieved": true
+              },
+              {
+                "label": "Reached 63% Progress on First Home Savings Knowledge",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Wallet & Progress Sync",
+            "lastSyncedAt": "2026-08-24 12:15",
+            "message": "All learning milestones and coin balances are fully up to date.",
+            "ctaText": "Refresh Sync",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "LEARNING_MASTERY_PERSONA",
+        "EDUCATIONAL_TONE_ALIGNMENT",
+        "MANDATORY_STACK_COMPLIANCE",
+        "CLARITY_FIRST_STORY_ARCHETYPE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative educational focus strategy highlighting deeper financial concepts, savings calculator tools, and structured progress tracking for Sophie Williams.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "Consistent learning habits are compounding toward your home deposit goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "First Home Savings Knowledge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set another milestone to expand your financial literacy journey.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-learning-mission-2",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy Advanced",
+            "missionName": "Portfolio Diversification & Risk Management",
+            "description": "Master the principles of asset allocation and long-term wealth preservation.",
+            "modulesDone": 2,
+            "modulesTotal": 4,
+            "pointsOnCompletion": 250,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionName": "Portfolio Diversification & Risk Management"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-2",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "What is the primary benefit of portfolio diversification?",
+            "options": [
+              "Reducing unsystematic risk",
+              "Guaranteeing short-term returns",
+              "Eliminating market volatility entirely"
+            ],
+            "reward": "100 Learning Points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback-2",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Quiz Review",
+            "question": "How does dollar-cost averaging affect investment volatility?",
+            "yourAnswer": "It smooths out purchase price fluctuations over time.",
+            "correctAnswer": "It smooths out purchase price fluctuations over time.",
+            "feedback": "Excellent reasoning! Regular contributions reduce exposure to market timing risk.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FEEDBACK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-confidence-progress-2",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Confidence Meter",
+            "topic": "Investment Risk Assessment",
+            "confidencePercent": 78,
+            "levelLabel": "Proficient competence",
+            "nextMilestone": "Complete risk tolerance module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CONFIDENCE_TOPIC",
+              "payload": {
+                "topic": "Investment Risk Assessment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Clarity in Practice",
+            "insight": "Transparent reward structures allow you to plan your financial milestones with absolute certainty.",
+            "source": "LBG Financial Wellbeing Institute",
+            "actionLabel": "Learn More",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_EDUCATIONAL_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-savings-calculator",
+          "type": "SAVINGS_CALCULATOR_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Savings Growth Simulator",
+            "presets": [
+              {
+                "monthly": 100,
+                "yearEnd": 1250,
+                "bonusPoints": 500
+              },
+              {
+                "monthly": 200,
+                "yearEnd": 2550,
+                "bonusPoints": 1200
+              }
+            ],
+            "note": "Calculations reflect steady monthly contributions and verified educational coin bonuses.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "RUN_SIMULATION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value-2",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Tangible Value Summary",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Total Coins",
+                "value": "3,900"
+              },
+              {
+                "label": "Cash Value Rate",
+                "value": "100 coins = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-2",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed Savings Simulator Exercise",
+                "achieved": true
+              },
+              {
+                "label": "Maintained 100% Module Completion Rate",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status-2",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "status": "synced",
+            "title": "Account & Sync Status",
+            "lastSyncedAt": "2026-08-24 12:15",
+            "message": "Your profile and progress data are fully synchronised.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.92,
+      "reasonCodes": [
+        "SAVINGS_CALCULATOR_INTEGRATION",
+        "LEARNING_MASTERY_FOCUS",
+        "MANDATORY_STACK_COMPLIANCE"
+      ]
+    }
+  ]
+}

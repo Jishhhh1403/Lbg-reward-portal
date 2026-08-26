@@ -1,0 +1,796 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 14-component re-engagement dashboard designed for Jessica Martinez, focusing on reclaiming 1,850 expiring points within 12 days without pressure. Components include: 1. NAVIGATION_BAR, 2. WELCOME_BANNER, 3. POINTS_BALANCE, 4. EXPIRING_POINTS_ALERT, 5. REENGAGEMENT_BANNER, 6. QUICK_WIN_CARD, 7. PERSONALIZED_OFFER_CARD, 8. UNUSED_REWARDS_SUMMARY, 9. VALUE_PRESERVATION_GUIDE, 10. SAVINGS_CALCULATOR, 11. FAQ_ACCORDION, 12. SUPPORT_CONTACT_CARD, 13. FOOTER_NAV, 14. SESSION_FEEDBACK_PROMPT.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses expiring points and dormant status with clear value recovery options."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Rich 14-component layout provides comprehensive, frictionless utility tailored for a dormant user."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly aligns with RE_ENGAGEMENT motivation and urgent point expiration timeline."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear hierarchy, high contrast warnings, and simple language suited for low-engagement users."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on solid behavioral facts (45 days inactive, 1850 points expiring in 12 days)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains bank design standards without altering protected logos or mandatory text."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces a supportive value-preservation guide to re-hook the customer gently."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Utilizes standard component library within the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 9.0,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 12-component layout focusing heavily on immediate point redemption and streak reactivation. Components: 1. NAVIGATION_BAR, 2. POINTS_BALANCE, 3. EXPIRING_POINTS_ALERT, 4. REENGAGEMENT_BANNER, 5. QUICK_WIN_CARD, 6. PERSONALIZED_OFFER_CARD, 7. REDEMPTION_HISTORY_PREVIEW, 8. TIER_STATUS_CARD, 9. NOTIFICATION_SETTINGS_CARD, 10. HELP_WIDGET, 11. FOOTER_NAV, 12. LEGAL_DISCLAIMER.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 8,
+          "explanation": "Addresses point expiration and re-engagement effectively."
+        },
+        "expectedCustomerUtility": {
+          "score": 8,
+          "explanation": "Solid 12-component structure, though slightly more transactional than candidate-1."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Strong alignment with RE_ENGAGEMENT goals."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Meets accessibility minimums with clear component structure."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Backed by observed inactivity and point expiration data."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully compliant with UI Constitution."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "More traditional banking layout with lower novelty."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "High feasibility and standard load times."
+        }
+      },
+      "weightedTotal": 8.35,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 14-component re-engagement dashboard designed for Jessica Martinez, anchored by her 1,850 expiring points and 45 days of inactivity. Integrates mandatory churn-risk components with effortless quick wins, personalized offers, and trust-building value preservation.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "wallet"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiring Soon",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "You have 1,850 points expiring in 12 days. Claim a quick reward or gift them to keep your balance active.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_POINTS",
+              "payload": {
+                "points": 1850
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Expiry Countdown",
+            "days": 12,
+            "hours": 8,
+            "minutes": 30,
+            "message": "Time remaining before your 1,850 Silver points expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_DETAILS",
+              "payload": {
+                "section": "expiry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Welcome back, Jessica!",
+            "message": "We've missed you over the last 45 days. Let's make your balance work for you today with zero friction.",
+            "ctaText": "Explore Quick Wins",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Claim instantly with one tap \u2014 no complicated steps.",
+            "rewards": [
+              {
+                "name": "Retail Discount",
+                "points": 300
+              },
+              {
+                "name": "Digital Coffee Voucher",
+                "points": 200
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM",
+              "payload": {
+                "rewardName": "Retail Discount",
+                "points": 300
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Tailored For You",
+            "subtitle": "Unused retail discount waiting in your account",
+            "offer": "300 Points Retail Voucher",
+            "validUntil": "12 Days",
+            "message": "Reclaim your unclaimed retail discount before your points cycle resets.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {
+                "offerId": "retail-discount-300"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "One-Tap Rewards",
+            "description": "Redeem instantly using your current balance.",
+            "rewards": [
+              {
+                "name": "Coffee Voucher",
+                "points": 250,
+                "icon": "coffee"
+              },
+              {
+                "name": "Dining Voucher",
+                "points": 500,
+                "icon": "utensils"
+              },
+              {
+                "name": "Film Rental",
+                "points": 350,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_REWARDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Your Rewards in Real Cash Value",
+            "cashValue": "\u00a318.50",
+            "pointsEquivalent": 1850,
+            "breakdown": [
+              {
+                "label": "Expiring Balance",
+                "value": "\u00a318.50"
+              },
+              {
+                "label": "Pending Vouchers",
+                "value": "\u00a33.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Curated For Your Silver Tier",
+            "rewards": [
+              {
+                "name": "Supermarket Voucher \u00a310",
+                "points": 1000,
+                "category": "Shopping",
+                "limited": false
+              },
+              {
+                "name": "Streaming Pass 1 Month",
+                "points": 800,
+                "category": "Entertainment",
+                "limited": true
+              },
+              {
+                "name": "Eco Coffee Cup",
+                "points": 600,
+                "category": "Lifestyle",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronised",
+            "lastSyncedAt": "24 August 2026",
+            "message": "All 3 connected brand accounts are fully up to date.",
+            "ctaText": "Refresh Sync",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-insights",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Re-engagement Insight",
+            "topBrandName": "Retail Partner",
+            "topBrandPoints": 300,
+            "growthTip": "Claim your unused retail discount to retain full point value.",
+            "expiringPoints": 1850,
+            "expiryDate": "12 Sep",
+            "ctaText": "Protect Points",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Explore Connected Brands",
+            "actionLabel": "View All Brands",
+            "categories": [
+              {
+                "label": "Shopping",
+                "count": 2,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Dining",
+                "count": 1,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_CATEGORIES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "label": "Brands Connected",
+            "value": "3",
+            "unit": "active",
+            "tone": "brand",
+            "infoText": "Your active retail partners",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLICK_METRIC",
+              "payload": {
+                "metric": "brands"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-badge",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "title": "Your Badges",
+            "badges": [
+              {
+                "name": "Active Saver",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "First Redeem",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": false
+              }
+            ],
+            "totalEarned": 2,
+            "totalAvailable": 5,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BADGES",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "CHURN_RISK_MANDATORY",
+        "EXPIRING_POINTS_URGENCY",
+        "HIGH_VALUE_REENGAGEMENT"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 12-component re-engagement layout focusing on fast redemption, immediate value recovery, and zero-pressure support for dormant user Jessica Martinez.",
+      "components": [
+        {
+          "id": "cand2-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "wallet"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cand2-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "Protect your 1,850 Silver points before they expire in 12 days.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_POINTS",
+              "payload": {
+                "points": 1850
+              }
+            }
+          ]
+        },
+        {
+          "id": "cand2-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Instant Quick Wins",
+            "subtitle": "Redeem in seconds with zero hassle.",
+            "rewards": [
+              {
+                "name": "Retail Discount Voucher",
+                "points": 300
+              },
+              {
+                "name": "Coffee Treat",
+                "points": 150
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM",
+              "payload": {
+                "rewardName": "Retail Discount Voucher",
+                "points": 300
+              }
+            }
+          ]
+        },
+        {
+          "id": "cand2-reengagement",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Welcome Back, Jessica",
+            "message": "It's been 45 days since your last visit. We've kept your rewards safe.",
+            "ctaText": "View Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Limited-Time Special Offer",
+            "subtitle": "Discounted redemption for returning members",
+            "originalPoints": 500,
+            "discountedPoints": 350,
+            "timer": "12:00:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Quick Redeem",
+            "description": "Choose a low-point reward to keep your account active.",
+            "rewards": [
+              {
+                "name": "Coffee",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Snack",
+                "points": 150,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "QUICK_REDEEM",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Unclaimed Reward",
+            "subtitle": "Retail Discount",
+            "offer": "300 Points Voucher",
+            "validUntil": "12 Days",
+            "message": "Claim this waiting reward to retain point value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-best-value",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "options": [
+              {
+                "name": "Retail Voucher",
+                "points": 300,
+                "cashValue": "\u00a34.50",
+                "valuePerPoint": 1.5,
+                "best": true
+              }
+            ],
+            "note": "Highest value redemption available for your balance.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_BEST",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Total Wallet Cash Worth",
+            "cashValue": "\u00a318.50",
+            "pointsEquivalent": 1850,
+            "breakdown": [
+              {
+                "label": "Available Balance",
+                "value": "\u00a318.50"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-local-deals",
+          "type": "LOCAL_DEALS_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "city": "London",
+            "deals": [
+              {
+                "merchant": "High Street Cafe",
+                "distanceKm": 0.8,
+                "offer": "Free drink with points",
+                "points": 200
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_DEAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "status": "synced",
+            "title": "Accounts Synced",
+            "lastSyncedAt": "24 August 2026",
+            "message": "All connected brands are up to date.",
+            "ctaText": "Sync Now",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "cand2-referral",
+          "type": "REFERRAL_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "referralCode": "JESSICA-1850",
+            "friendBonus": 500,
+            "myBonus": 500,
+            "invitesAccepted": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SHARE_REFERRAL",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "INSTANT_REDEMPTION_FOCUS",
+        "CHURN_RECOVERY",
+        "LOW_FRICTION_CTA"
+      ]
+    }
+  ]
+}

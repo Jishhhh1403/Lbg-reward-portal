@@ -1,0 +1,58 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "prefers exact monetary equivalents over point abstractions",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Maya Thompson is a Gold tier customer with 5,600 points, categorized as a VALUE_CERTAINTY_SEEKER. She strongly prioritizes monetary clarity (VALUE_CLARITY), consistently seeking exact GBP equivalents before making redemption decisions and exhibiting a lower tolerance for point abstractions or urgency framing.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer holds 5,600 points in Gold tier.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Repeatedly asks what points are worth in pounds before redeeming and checks GBP value first.",
+        "source": "rewardsHistory",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Abandons redemptions when value is unclear and responds poorly to countdown or urgency framing.",
+        "source": "availableEvidence",
+        "confidence": 0.93
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "valueClarityPreference",
+        "value": "HIGH",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "fact-002",
+          "fact-003"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

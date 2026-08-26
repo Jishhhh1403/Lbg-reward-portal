@@ -1,0 +1,76 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "maintains multiple active goals across time horizons",
+        "source": "behavior",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "active streak combined with steady goal contributions",
+        "source": "behavior",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Priya Sharma exhibits a mixed engagement profile, balancing gamified short-term interactions (challenges, streaks, leaderboards) with long-term financial accumulation across four active goals (Bali Trip, New Laptop, Retirement Fund, Home Deposit).",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Customer maintains 4 active goals across different time horizons.",
+        "source": "Session Context & Intelligence Layer Goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Customer has a 21-day active streak and is rank 7 on the leaderboard.",
+        "source": "Intelligence Layer Customer Profile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Total LBG coins in wallet stand at 15,400.",
+        "source": "Wallet Sync Data",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.87,
+        "evidenceRefs": [
+          "balances instant fun with long-term saving",
+          "checks leaderboard and goal progress in same sessions"
+        ],
+        "inferenceMethod": "Intelligence Layer Behavior Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "engagementStyle",
+        "value": "HIGHLY_ACTIVE_MIXED",
+        "confidence": 0.88,
+        "evidenceRefs": [
+          "engagementScore: 0.88",
+          "monthly_active_days: 26"
+        ],
+        "inferenceMethod": "Profile Statistical Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

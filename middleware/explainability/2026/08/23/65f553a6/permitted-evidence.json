@@ -1,0 +1,114 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "high goal completion behavior",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s4",
+        "classification": "OBSERVED",
+        "value": "checks progress regularly",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s5",
+        "classification": "OBSERVED",
+        "value": "saves points for larger rewards",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sarah Chen (customer_002) is a Platinum-tier member with 6,820 LBG coins and 3 connected brands. She exhibits a goal-oriented saver profile with consistent monthly accumulation, regular progress monitoring, and high goal completion rates. She is actively managing three savings goals: Japan Vacation (67% complete), New Phone (74% complete), and Emergency Fund (45% complete).",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 6,820 LBG coins.",
+        "source": "wallet.lbgCoins",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-connected-brands",
+        "statement": "Customer has 3 connected brands.",
+        "source": "wallet.brandsConnected",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer tier is Platinum.",
+        "source": "customerProfile.tier",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goals",
+        "statement": "Customer is tracking three active goals: Japan Vacation, New Phone, and Emergency Fund.",
+        "source": "customerProfile.goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "GOAL_ACHIEVEMENT",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "consistent monthly accumulation",
+          "high goal completion behavior",
+          "checks progress regularly",
+          "saves points for larger rewards"
+        ],
+        "inferenceMethod": "Intelligence layer persona analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-persona",
+        "attribute": "persona",
+        "value": "GOAL_ORIENTED_SAVER",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "consistent monthly accumulation",
+          "high goal completion behavior",
+          "checks progress regularly",
+          "saves points for larger rewards"
+        ],
+        "inferenceMethod": "Intelligence layer behavioral clustering",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "00670c79",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T01:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_BALANCE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-reward",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Fresh Bonus Credited!",
+        "subtitle": "Your recent partner check-in bonus is ready.",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "points": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Flash Hour: Premium Coffee & Pastry Bundle",
+        "subtitle": "Exclusive limited-time partner discount for Gold members.",
+        "originalPoints": 450,
+        "discountedPoints": 300,
+        "timer": "01:45:20",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH_REWARD",
+          "payload": {
+            "rewardId": "flash-coffee-bundle",
+            "cost": 300
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant One-Tap Rewards",
+        "description": "Ready to claim right now with zero friction.",
+        "rewards": [
+          {
+            "name": "Artisanal Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Gourmet Lunch Voucher",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Stream Pass",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEMS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Wallet's Real Cash Worth",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available Reward Vouchers",
+            "value": "\u00a335.00"
+          },
+          {
+            "label": "Pending Partner Cashback",
+            "value": "\u00a37.50"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_BREAKDOWN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Lightning Win",
+        "subtitle": "Tap to grab your daily bonus instantly",
+        "rewards": [
+          {
+            "name": "Daily Express Bonus",
+            "points": 50
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "points": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "label": "Linked Brands",
+        "value": "3",
+        "unit": "Active",
+        "tone": "brand",
+        "infoText": "Connected partner ecosystem",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CONNECTED_BRANDS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

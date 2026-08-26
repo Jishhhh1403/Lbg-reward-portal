@@ -1,0 +1,449 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-e5d0f48a",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A 7-component rich screen structured for a multi-goal Long-Term Planner. Features POINTS_BALANCE, three dedicated goal cards (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, FUTURE_VALUE_CARD, PROJECTION_CHART, and EDUCATIONAL_INSIGHT_CARD.",
+      "components": [
+        {
+          "id": "comp-pts-bal-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-ret-02",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2031",
+            "message": "Steady accumulation keeps your retirement horizon securely on track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-edu-03",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2029",
+            "message": "Strong progress towards higher education milestone funding.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home-04",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "estimatedCompletion": "2033",
+            "message": "Consistent long-term deposits building your future home foundation.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-05",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new long-term milestone or investment target",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-fut-val-06",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Projected Portfolio Growth",
+            "currentValue": 28400,
+            "projectedValue": 45200,
+            "timeframe": "5 Years",
+            "growthRate": "7.5% p.a.",
+            "message": "Compounding your Diamond tier accumulation delivers significant long-term upside.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTIONS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-proj-chart-07",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Multi-Year Rewards Trajectory",
+            "growthLabel": "Estimated Coin Valuation",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2027",
+                "value": 32100
+              },
+              {
+                "year": "2028",
+                "value": 36500
+              },
+              {
+                "year": "2029",
+                "value": 41200
+              },
+              {
+                "year": "2030",
+                "value": 45200
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPAND_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-edu-ins-08",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Maximizing Long-Term Yields",
+            "insight": "Diamond tier members who maintain multi-year holding periods achieve up to 35% higher realized value on accumulated coin redemptions.",
+            "source": "LBG Wealth Intelligence",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATIONAL_GUIDE",
+              "payload": {
+                "guideId": "long-term-yields"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "MULTI_GOAL_RULE",
+        "INTELLIGENCE_SIGNALS"
+      ]
+    },
+    "strategy": "A 7-component rich screen structured for a multi-goal Long-Term Planner. Features POINTS_BALANCE, three dedicated goal cards (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, FUTURE_VALUE_CARD, PROJECTION_CHART, and EDUCATIONAL_INSIGHT_CARD.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A 7-component rich screen structured for a multi-goal Long-Term Planner. Features POINTS_BALANCE, three dedicated goal cards (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, FUTURE_VALUE_CARD, PROJECTION_CHART, and EDUCATIONAL_INSIGHT_CARD.",
+    "components": [
+      {
+        "id": "comp-pts-bal-01",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 28400,
+          "tier": "Diamond",
+          "name": "David Park",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-ret-02",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 28400,
+          "target": 100000,
+          "percentage": 28,
+          "estimatedCompletion": "2031",
+          "message": "Steady accumulation keeps your retirement horizon securely on track.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Retirement Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-edu-03",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 20500,
+          "target": 50000,
+          "percentage": 41,
+          "estimatedCompletion": "2029",
+          "message": "Strong progress towards higher education milestone funding.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Children Education Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-home-04",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 11250,
+          "target": 75000,
+          "percentage": 15,
+          "estimatedCompletion": "2033",
+          "message": "Consistent long-term deposits building your future home foundation.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Dream Home Deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal-05",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new long-term milestone or investment target",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-fut-val-06",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Projected Portfolio Growth",
+          "currentValue": 28400,
+          "projectedValue": 45200,
+          "timeframe": "5 Years",
+          "growthRate": "7.5% p.a.",
+          "message": "Compounding your Diamond tier accumulation delivers significant long-term upside.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PROJECTIONS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-proj-chart-07",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Multi-Year Rewards Trajectory",
+          "growthLabel": "Estimated Coin Valuation",
+          "data": [
+            {
+              "year": "2026",
+              "value": 28400
+            },
+            {
+              "year": "2027",
+              "value": 32100
+            },
+            {
+              "year": "2028",
+              "value": 36500
+            },
+            {
+              "year": "2029",
+              "value": 41200
+            },
+            {
+              "year": "2030",
+              "value": 45200
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXPAND_CHART",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-edu-ins-08",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Maximizing Long-Term Yields",
+          "insight": "Diamond tier members who maintain multi-year holding periods achieve up to 35% higher realized value on accumulated coin redemptions.",
+          "source": "LBG Wealth Intelligence",
+          "actionLabel": "Read Full Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_EDUCATIONAL_GUIDE",
+            "payload": {
+              "guideId": "long-term-yields"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "MULTI_GOAL_RULE",
+      "INTELLIGENCE_SIGNALS"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "Customer persona is LONG_TERM_PLANNER with FUTURE_SECURITY motivation",
+          "long-term accumulation pattern",
+          "values future projections"
+        ]
+      }
+    ],
+    "methodology": "Behavioral pattern analysis matching long-term accumulation metrics and engagement with educational content.",
+    "temporaryInterpretation": true
+  }
+}

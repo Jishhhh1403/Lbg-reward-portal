@@ -1,0 +1,445 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-fb8a1830",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A high-velocity mobile rewards overview screen tailored for the INSTANT_GRATIFICATION persona, featuring instant reward popups, flash banners, quick redeem options, and tangible cash value translations for Alex Rivera (4,250 LBG Coins, Gold Tier).",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 4250,
+            "tier": "Gold",
+            "name": "Alex Rivera",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-reward",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Bonus Instant Reward Unlocked!",
+            "subtitle": "Your quick activity earned you extra LBG Coins",
+            "points": 250,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_REWARD",
+              "payload": {
+                "points": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Flash Reward: Weekend Cinema Pass",
+            "subtitle": "Exclusive limited-time discount for Gold tier members",
+            "originalPoints": 1200,
+            "discountedPoints": 850,
+            "timer": "02:15:40",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {
+                "rewardName": "Weekend Cinema Pass",
+                "cost": 850
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "One-Tap Instant Redemptions",
+            "description": "Redeem your LBG Coins instantly for your favorite everyday treats",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Lunch Delivery",
+                "points": 500,
+                "icon": "utensils"
+              },
+              {
+                "name": "Streaming Movie Rental",
+                "points": 350,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_QUICK_REDEEMS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Your Wallet's Real Cash Power",
+            "cashValue": "\u00a342.50",
+            "pointsEquivalent": 4250,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "4,250 Coins"
+              },
+              {
+                "label": "Gold Tier Redemption Rate",
+                "value": "100 Coins = \u00a31.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CASH_CONVERSION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Instant Gratification Boosters",
+            "subtitle": "Claim these effortless rewards right now",
+            "rewards": [
+              {
+                "name": "Instant Snack Pass",
+                "points": 150
+              },
+              {
+                "name": "Digital Magazine Issue",
+                "points": 100
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Curated Instant Rewards For You",
+            "rewards": [
+              {
+                "name": "Express Ride Voucher",
+                "points": 400,
+                "category": "Travel",
+                "limited": false
+              },
+              {
+                "name": "VIP Coffee Upgrade",
+                "points": 250,
+                "category": "Dining",
+                "limited": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "BROWSE_REWARDS_CATALOG",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH_INSTANT_GRATIFICATION",
+        "HIGH_VELOCITY_REDEMPTION_ALIGNMENT"
+      ]
+    },
+    "strategy": "A high-velocity mobile rewards overview screen tailored for the INSTANT_GRATIFICATION persona, featuring instant reward popups, flash banners, quick redeem options, and tangible cash value translations for Alex Rivera (4,250 LBG Coins, Gold Tier).",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A high-velocity mobile rewards overview screen tailored for the INSTANT_GRATIFICATION persona, featuring instant reward popups, flash banners, quick redeem options, and tangible cash value translations for Alex Rivera (4,250 LBG Coins, Gold Tier).",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 4250,
+          "tier": "Gold",
+          "name": "Alex Rivera",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-instant-reward",
+        "type": "INSTANT_REWARD_POPUP",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Bonus Instant Reward Unlocked!",
+          "subtitle": "Your quick activity earned you extra LBG Coins",
+          "points": 250,
+          "expiresIn": "2 hours",
+          "celebration": true,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_INSTANT_REWARD",
+            "payload": {
+              "points": 250
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-flash-banner",
+        "type": "FLASH_REWARD_BANNER",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Flash Reward: Weekend Cinema Pass",
+          "subtitle": "Exclusive limited-time discount for Gold tier members",
+          "originalPoints": 1200,
+          "discountedPoints": 850,
+          "timer": "02:15:40",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_FLASH_REWARD",
+            "payload": {
+              "rewardName": "Weekend Cinema Pass",
+              "cost": 850
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-redeem",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "One-Tap Instant Redemptions",
+          "description": "Redeem your LBG Coins instantly for your favorite everyday treats",
+          "rewards": [
+            {
+              "name": "Artisan Coffee Voucher",
+              "points": 200,
+              "icon": "coffee"
+            },
+            {
+              "name": "Gourmet Lunch Delivery",
+              "points": 500,
+              "icon": "utensils"
+            },
+            {
+              "name": "Streaming Movie Rental",
+              "points": 350,
+              "icon": "film"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_QUICK_REDEEMS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Your Wallet's Real Cash Power",
+          "cashValue": "\u00a342.50",
+          "pointsEquivalent": 4250,
+          "breakdown": [
+            {
+              "label": "Available LBG Coins",
+              "value": "4,250 Coins"
+            },
+            {
+              "label": "Gold Tier Redemption Rate",
+              "value": "100 Coins = \u00a31.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CASH_CONVERSION_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Instant Gratification Boosters",
+          "subtitle": "Claim these effortless rewards right now",
+          "rewards": [
+            {
+              "name": "Instant Snack Pass",
+              "points": 150
+            },
+            {
+              "name": "Digital Magazine Issue",
+              "points": 100
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_QUICK_WIN",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-carousel",
+        "type": "REWARD_CAROUSEL",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Curated Instant Rewards For You",
+          "rewards": [
+            {
+              "name": "Express Ride Voucher",
+              "points": 400,
+              "category": "Travel",
+              "limited": false
+            },
+            {
+              "name": "VIP Coffee Upgrade",
+              "points": 250,
+              "category": "Dining",
+              "limited": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "BROWSE_REWARDS_CATALOG",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH_INSTANT_GRATIFICATION",
+      "HIGH_VELOCITY_REDEMPTION_ALIGNMENT"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ]
+      },
+      {
+        "attribute": "preferred_reward_type",
+        "value": "INSTANT",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "preferred_reward_type: INSTANT in profile behaviors"
+        ]
+      }
+    ],
+    "methodology": "Pattern analysis of redemption velocity, notification engagement, and flash offer responsiveness.",
+    "temporaryInterpretation": true
+  }
+}

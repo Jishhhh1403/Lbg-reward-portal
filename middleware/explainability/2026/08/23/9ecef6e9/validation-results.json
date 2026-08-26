@@ -1,0 +1,32 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "Component overload",
+        "severity": "HIGH",
+        "statement": "The selected candidate presents 7 distinct interactive reward and notification components simultaneously (Points Balance, Reengagement Banner, Expiring Points Alert, Tangible Value Card, Quick Redeem Card, Flash Reward Banner, Quick Win Card). This causes severe cognitive overload and decision fatigue for the user."
+      }
+    ],
+    "unresolvedCritical": 0,
+    "unresolvedHigh": 1,
+    "releaseReasons": [
+      "Candidate-1 violates component density limits by packing 7 high-priority promotional and transactional widgets onto a single mobile screen, triggering the component overload check."
+    ],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "HOLD recommended due to Component Overload. 7 concurrent cards create severe visual and cognitive clutter."
+      }
+    ]
+  },
+  "fallbackTriggered": false,
+  "reasonCodes": []
+}

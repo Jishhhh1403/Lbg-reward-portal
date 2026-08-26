@@ -1,0 +1,87 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Inspect LBG coin balance, evaluate cash-equivalent statement credit value, and execute bill relief redemption seamlessly.",
+  "entryPoint": "Customer opens rewards overview on mobile.",
+  "completionDefinition": "Customer successfully reviews balance, checks tangible value, and initiates statement credit application to linked card.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and what is its cash-equivalent value for bills?",
+      "entryCondition": "Customer views rewards overview.",
+      "requiredInformation": [
+        "7,300 LBG Coins",
+        "Cash-equivalent value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-exclusive-statement-credits"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How does this fit my holiday savings goal and statement credit preferences?",
+      "entryCondition": "Customer reviews balance and cash valuation.",
+      "requiredInformation": [
+        "Holiday Spending Money progress (53%)",
+        "Payment reward allocation"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-holiday-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I quickly apply my statement credit or choose optimal redemption?",
+      "entryCondition": "Customer reviews goal and allocation options.",
+      "requiredInformation": [
+        "Statement credit confirmation",
+        "Reward choice panel"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-exclusive-statement-credits"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-history",
+      "purpose": "Provide historical context on past statement credit redemptions.",
+      "contentNotes": [
+        "Previous statement credits applied to card"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

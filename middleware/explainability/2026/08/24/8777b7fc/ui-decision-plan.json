@@ -1,0 +1,482 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-8777b7fc",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Personalized educational milestone dashboard focusing on the 63% First Home Savings Knowledge goal progress, integrating Points Balance, Goal Progress Card, Learning Mission Card, Quiz Card, Comprehension Feedback Card, Confidence Progress Card, Educational Insight Card, Tangible Value Card, and How Points Work Card with clear mastery value cues.",
+      "components": [
+        {
+          "id": "points-balance-1",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "goal-progress-1",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are making steady progress! Consistent learning strengthens your deposit readiness.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "add-goal-1",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new savings or knowledge milestone",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "add_goal_modal"
+              }
+            }
+          ]
+        },
+        {
+          "id": "learning-mission-1",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Deposit Mechanics & Compound Growth",
+            "description": "Master how interest compounds and how rewards accelerate your home savings target.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MODULE",
+              "payload": {
+                "moduleId": "mod-05"
+              }
+            }
+          ]
+        },
+        {
+          "id": "quiz-card-1",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "What primary factor determines the growth rate of a dedicated deposit fund over 3 years?",
+            "options": [
+              "Consistent monthly contributions and compound interest",
+              "Random bonus drops",
+              "Switching provider every month"
+            ],
+            "reward": "50 bonus points",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "comprehension-feedback-1",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Recent Quiz Reflection",
+            "question": "How does inflation impact long-term savings power?",
+            "yourAnswer": "Purchasing power decreases over time without growth.",
+            "correctAnswer": "Purchasing power decreases over time without growth.",
+            "feedback": "Spot on! Maintaining a growth rate above inflation preserves your real purchasing power for your future home.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "confidence-progress-1",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Financial Confidence Meter",
+            "topic": "Deposit Strategy & Mortgages",
+            "confidencePercent": 84,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Complete module on mortgage principles",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "educational-insight-1",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Mastery Insight",
+            "insight": "Savers who review their goal breakdown monthly achieve their targets 22% faster through informed consistency.",
+            "source": "LBG Financial Literacy Research",
+            "actionLabel": "Explore curriculum",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CURRICULUM",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "tangible-value-1",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Rewards Value Breakdown",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Connected Brand Coins",
+                "value": "3,900 LBG coins (\u00a339.00 value)"
+              },
+              {
+                "label": "Completed Academy Modules",
+                "value": "100% verified mastery"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "how-points-work-1",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "steps": [
+              {
+                "title": "1. Engage & Learn",
+                "description": "Complete financial literacy modules and quizzes to deepen your knowledge."
+              },
+              {
+                "title": "2. Accumulate & Convert",
+                "description": "Earn LBG coins across connected brands with transparent cash value equivalence."
+              },
+              {
+                "title": "3. Fund Your Goals",
+                "description": "Direct your accumulated rewards toward your First Home Savings milestone."
+              }
+            ],
+            "ctaLabel": "View complete guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_GUIDE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "LEARNING_MASTERY_ALIGNMENT"
+      ]
+    },
+    "strategy": "Personalized educational milestone dashboard focusing on the 63% First Home Savings Knowledge goal progress, integrating Points Balance, Goal Progress Card, Learning Mission Card, Quiz Card, Comprehension Feedback Card, Confidence Progress Card, Educational Insight Card, Tangible Value Card, and How Points Work Card with clear mastery value cues.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Personalized educational milestone dashboard focusing on the 63% First Home Savings Knowledge goal progress, integrating Points Balance, Goal Progress Card, Learning Mission Card, Quiz Card, Comprehension Feedback Card, Confidence Progress Card, Educational Insight Card, Tangible Value Card, and How Points Work Card with clear mastery value cues.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress! Consistent learning strengthens your deposit readiness.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "add-goal-1",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new savings or knowledge milestone",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "add_goal_modal"
+            }
+          }
+        ]
+      },
+      {
+        "id": "learning-mission-1",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Rewards Academy",
+          "missionName": "Deposit Mechanics & Compound Growth",
+          "description": "Master how interest compounds and how rewards accelerate your home savings target.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_MODULE",
+            "payload": {
+              "moduleId": "mod-05"
+            }
+          }
+        ]
+      },
+      {
+        "id": "quiz-card-1",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What primary factor determines the growth rate of a dedicated deposit fund over 3 years?",
+          "options": [
+            "Consistent monthly contributions and compound interest",
+            "Random bonus drops",
+            "Switching provider every month"
+          ],
+          "reward": "50 bonus points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "comprehension-feedback-1",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Recent Quiz Reflection",
+          "question": "How does inflation impact long-term savings power?",
+          "yourAnswer": "Purchasing power decreases over time without growth.",
+          "correctAnswer": "Purchasing power decreases over time without growth.",
+          "feedback": "Spot on! Maintaining a growth rate above inflation preserves your real purchasing power for your future home.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "confidence-progress-1",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Confidence Meter",
+          "topic": "Deposit Strategy & Mortgages",
+          "confidencePercent": 84,
+          "levelLabel": "Advanced understanding",
+          "nextMilestone": "Complete module on mortgage principles",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "educational-insight-1",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Savers who review their goal breakdown monthly achieve their targets 22% faster through informed consistency.",
+          "source": "LBG Financial Literacy Research",
+          "actionLabel": "Explore curriculum",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CURRICULUM",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "tangible-value-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Your Rewards Value Breakdown",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": [
+            {
+              "label": "Connected Brand Coins",
+              "value": "3,900 LBG coins (\u00a339.00 value)"
+            },
+            {
+              "label": "Completed Academy Modules",
+              "value": "100% verified mastery"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "steps": [
+            {
+              "title": "1. Engage & Learn",
+              "description": "Complete financial literacy modules and quizzes to deepen your knowledge."
+            },
+            {
+              "title": "2. Accumulate & Convert",
+              "description": "Earn LBG coins across connected brands with transparent cash value equivalence."
+            },
+            {
+              "title": "3. Fund Your Goals",
+              "description": "Direct your accumulated rewards toward your First Home Savings milestone."
+            }
+          ],
+          "ctaLabel": "View complete guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_GUIDE",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "LEARNING_MASTERY_ALIGNMENT"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ]
+      }
+    ],
+    "methodology": "Verified behavioral signal analysis and motive score evaluation",
+    "temporaryInterpretation": true
+  }
+}

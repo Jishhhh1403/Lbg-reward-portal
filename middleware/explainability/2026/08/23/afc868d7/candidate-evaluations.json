@@ -1,0 +1,545 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich, 7-component gamification overview screen designed for Marcus Johnson featuring POINTS_BALANCE, STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, MILESTONE_CARD, and COMMUNITY_FEED. Layout leverages Marcus's high engagement profile and 34-day streak, emphasizing community interaction and progress tracking without dark patterns or artificial urgency.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses Marcus's gamification goals by displaying streak, leaderboard rank, and active challenges."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides high utility with 7 rich components tailored to his active engagement and preferred reward types."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Aligns perfectly with the PROGRESS_AND_COMMUNITY reward motivation profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean mobile layout with strong contrast and clear component hierarchy for easy scanning."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on robust verified behavioral data (34-day streak, 12 challenges, 15 badges)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Adheres to mobile rewards design system standards and brand guidelines."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Introduces engaging community and milestone tracking features naturally suited to his persona."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 7 components are fully supported in the current mobile component library within the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 8.7,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 5-component layout focusing solely on basic transactional rewards: POINTS_BALANCE, REDEMPTION_CATALOG, VOUCHER_LIST, FAQ_CARD, and SUPPORT_CARD.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 4,
+          "explanation": "Fails to target Marcus's gamification motivation and active streak/leaderboard interests."
+        },
+        "expectedCustomerUtility": {
+          "score": 4,
+          "explanation": "Underutilizes his high engagement score and preference for challenges."
+        },
+        "rewardProfileAlignment": {
+          "score": 3,
+          "explanation": "Ignores the PROGRESS_AND_COMMUNITY reward profile completely."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Standard layout but cognitively misaligned with user intent."
+        },
+        "evidenceConfidence": {
+          "score": 5,
+          "explanation": "Disregards strong behavioral evidence in favor of generic rewards overview."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with basic UI components."
+        },
+        "usefulNovelty": {
+          "score": 3,
+          "explanation": "No novel or personalized gamification features."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Technically feasible but fails strategic intent."
+        }
+      },
+      "weightedTotal": 5.15,
+      "hardGatesPass": true,
+      "objections": [
+        "Fails to provide a rich gamification experience matching the customer's GAMIFICATION_MOTIVATED persona.",
+        "Ignores mandatory components specified in the task charter such as STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, and MILESTONE_CARD."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Pure GAMIFICATION_MOTIVATED persona strategy leveraging Marcus's 34-day streak, 3rd leaderboard rank, 12 completed challenges, and 15 badges. Features STREAK_CARD, CHALLENGE_CARD, LEADERBOARD, BADGE_CARD, MILESTONE_CARD, and METRIC_TILE group for ultimate engagement.",
+      "components": [
+        {
+          "id": "comp-pts-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-01",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Incredible dedication! You are on a 34-day active streak.",
+            "nextReward": "500 LBG Coins at 40 days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 Coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 Coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 Coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 Coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-01",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "label": "Challenges Done",
+            "value": "12",
+            "unit": "completed",
+            "tone": "brand",
+            "infoText": "Total challenges conquered in your career",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-01",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Community Champion Sprint",
+            "description": "Participate in 3 community discussions and share 2 rewards achievements this week.",
+            "progress": 75,
+            "reward": "1,000 LBG Coins",
+            "daysLeft": 3,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE_DETAILS",
+              "payload": {
+                "challengeId": "community-champion-sprint"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-01",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 9600,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "Alex Rivers",
+                "points": 9120,
+                "avatar": "AR",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena Rostova",
+                "points": 8300,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-01",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Achievement Trophy Room",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "30-Day Streak",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Top 3 Leaderboard",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Challenge Master",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Community Icon",
+                "icon": "crown",
+                "earned": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-01",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 10 Challenges",
+                "achieved": true
+              },
+              {
+                "label": "Earn 15 Badges",
+                "achieved": true
+              },
+              {
+                "label": "Reach Top 3 Leaderboard Spot",
+                "achieved": true
+              },
+              {
+                "label": "Maintain 50-Day Streak",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONE_DETAILS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "GAMIFICATION_MOTIVATED_PERSONA",
+        "HIGH_ENGAGEMENT_SCORE",
+        "STREAK_AND_LEADERBOARD_ALIGNMENT"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Blended gamification and rewards discovery strategy for Marcus Johnson, incorporating quiz action, quick wins, and challenge momentum alongside his active streak and leaderboard standing.",
+      "components": [
+        {
+          "id": "comp-pts-02",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-02",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Day 34! Keep your momentum going strong.",
+            "nextReward": "500 LBG Coins at 40 days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 Coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 Coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 Coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 Coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-01",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "question": "Which brand category offers the highest streak multiplier this month?",
+            "options": [
+              "Dining & Restaurants",
+              "Travel & Leisure",
+              "Retail Shopping",
+              "Entertainment"
+            ],
+            "reward": "150 LBG Coins",
+            "timeLimit": 45,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-02",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Elite Weekly Sprint",
+            "description": "Maintain your top 3 position and complete 2 quick challenges to earn bonus rank points.",
+            "progress": 60,
+            "reward": "750 LBG Coins",
+            "daysLeft": 4,
+            "participants": 980,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CHALLENGE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard-02",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 9600,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "Alex Rivers",
+                "points": 9120,
+                "avatar": "AR",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-02",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Recent Badges Earned",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "34-Day Streak",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Quiz Master",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Leaderboard Elite",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Challenge Hero",
+                "icon": "star",
+                "earned": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "BLENDED_GAMIFICATION_STRATEGY",
+        "QUIZ_AND_STREAK_SYNERGY"
+      ]
+    }
+  ]
+}

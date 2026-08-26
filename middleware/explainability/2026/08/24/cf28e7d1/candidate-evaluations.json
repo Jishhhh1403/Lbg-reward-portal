@@ -1,0 +1,824 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A 13-component rich mobile screen tailored for the Interoperability Seeker persona (Leo Morgan). Features a unified portfolio view with plain-English transfer explanations, dedicated Family Holiday Fund goal tracking, partner program balance cards, and completely avoids technical jargon or complex terminology.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses portfolio consolidation across 3 partner programs and Family Holiday Fund tracking."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "13 rich components providing clear, jargon-free reward balances and transfer explanations."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Perfectly aligns with PORTABILITY motivation and interoperability preferences."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High cognitive fit using plain English and avoiding confusing technical jargon."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong session context and high confidence behavioural signals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains strict adherence to brand guidelines and mandatory components."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces seamless cross-partner consolidated viewing in a simple format."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully feasible within standard mobile component schemas and 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimal 8-component layout focusing solely on the points balance and a basic transfer button without the required rich goal cards and milestone progression.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Fails to provide the required comprehensive goal tracking and milestone cards."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Under 11 components, resulting in lower expected utility for multi-faceted user needs."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Touches on portability but misses comprehensive portfolio view elements."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 7,
+          "explanation": "Simple, but lacks the structured breakdown the user needs."
+        },
+        "evidenceConfidence": {
+          "score": 6,
+          "explanation": "Ignores key intelligence layer recommendations for milestone and long-term value."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Complies with branding but omits mandatory components."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "Too basic to offer meaningful novel utility."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible due to minimal component count."
+        }
+      },
+      "weightedTotal": 5.85,
+      "hardGatesPass": false,
+      "objections": [
+        "Strategy proposes fewer than 11 components (8 components), violating rich screen requirements.",
+        "Omits mandatory goal progression and milestone cards specified in the task charter."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 14-component mobile composition tailored for Leo Morgan (Interoperability Seeker), strictly fulfilling the Card Rule Engine Directives by placing CONSOLIDATED_REWARD_WALLET, SYNC_STATUS_CARD, PARTNER_VALUE_COMPARISON, PARTNER_TRANSFER_CARD, REWARD_PROVENANCE_CARD, GOAL_PROGRESS_CARD, and PROGRAMME_CONNECTION_CARD in immediate mandatory ordered stack after POINTS_BALANCE, followed by additional portfolio and goal components in plain English without technical jargon.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "points": 11200,
+            "tier": "Platinum",
+            "name": "Leo Morgan"
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {
+                "customer": "Leo Morgan"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-consolidated-wallet",
+          "type": "CONSOLIDATED_REWARD_WALLET",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Your Combined Reward Wallet",
+            "subtitle": "All your partner rewards viewed together in plain terms",
+            "programmes": [
+              {
+                "name": "LBG Coins",
+                "points": 11200,
+                "value": "\u00a3112.00",
+                "status": "Active"
+              },
+              {
+                "name": "Partner SkyPoints",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "status": "Connected"
+              },
+              {
+                "name": "Global Dining Club",
+                "points": 2800,
+                "value": "\u00a328.00",
+                "status": "Connected"
+              }
+            ],
+            "totalValue": "\u00a3185.00"
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "status": "synced",
+            "title": "Partner Balances Up to Date",
+            "lastSyncedAt": "24 Aug 2026, 09:23",
+            "message": "All 3 connected partner programmes are synchronised smoothly.",
+            "ctaText": "Refresh Balances"
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-partner-comparison",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "layout": {
+              "span": "half"
+            },
+            "title": "Compare Partner Value",
+            "subtitle": "See what your points are worth across programmes",
+            "partners": [
+              {
+                "name": "LBG Coins",
+                "points": 11200,
+                "value": "\u00a3112.00",
+                "perk": "1 coin = 1p standard value"
+              },
+              {
+                "name": "Partner SkyPoints",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "perk": "1 point = 1p toward flights"
+              },
+              {
+                "name": "Global Dining Club",
+                "points": 2800,
+                "value": "\u00a328.00",
+                "perk": "1 point = 1p toward dining"
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "VIEW_COMPARISON",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-partner-transfer",
+          "type": "PARTNER_TRANSFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Simple Point Transfer",
+            "fromProgramme": "LBG Coins",
+            "toPartner": "Partner SkyPoints",
+            "points": 1000,
+            "estimatedValue": "\u00a310.00",
+            "status": "Ready to transfer instantly in plain English"
+          },
+          "actions": [
+            {
+              "type": "EXECUTE_TRANSFER",
+              "payload": {
+                "from": "LBG Coins",
+                "to": "Partner SkyPoints",
+                "points": 1000
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-provenance",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "layout": {
+              "span": "half"
+            },
+            "title": "Where Your Points Came From",
+            "subtitle": "Plain English history of your recent reward earnings",
+            "history": [
+              {
+                "source": "Partner Transfer Bonus",
+                "date": "22 Aug 2026",
+                "points": 1000
+              },
+              {
+                "source": "LBG Coins Monthly Accrual",
+                "date": "15 Aug 2026",
+                "points": 2200
+              },
+              {
+                "source": "Global Dining Club Partner Sync",
+                "date": "10 Aug 2026",
+                "points": 800
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "layout": {
+              "span": "half"
+            },
+            "goalName": "Family Holiday Fund",
+            "current": 1750,
+            "target": 3000,
+            "percentage": 58,
+            "remaining": 1250,
+            "motivationalMessage": "You are over halfway to your Family Holiday Fund! Keep moving forward."
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Family Holiday Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-programme-connection",
+          "type": "PROGRAMME_CONNECTION_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Connected Partner Programmes",
+            "subtitle": "Manage your linked external balances in one place",
+            "programmes": [
+              {
+                "name": "Partner SkyPoints",
+                "status": "Active and Synced",
+                "connected": true
+              },
+              {
+                "name": "Global Dining Club",
+                "status": "Active and Synced",
+                "connected": true
+              },
+              {
+                "name": "Retail Rewards Hub",
+                "status": "Available to connect",
+                "connected": false
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "MANAGE_CONNECTIONS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-milestone",
+          "type": "GOAL_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "goalName": "Family Holiday Fund",
+            "milestones": [
+              {
+                "label": "25% - Booking Deposit Unlocked",
+                "reached": true
+              },
+              {
+                "label": "50% - Flight Upgrade Perk Unlocked",
+                "reached": true
+              },
+              {
+                "label": "75% - Hotel Stay Credit",
+                "reached": false
+              },
+              {
+                "label": "100% - Family Holiday Goal Reached",
+                "reached": false
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Rewards That Accelerate Your Holiday Fund",
+            "goalName": "Family Holiday Fund",
+            "rewards": [
+              {
+                "name": "Travel Partner Bonus Points",
+                "points": 500,
+                "goalLinked": true
+              },
+              {
+                "name": "Flight Booking Cashback",
+                "points": 750,
+                "goalLinked": true
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "VIEW_LINKED_REWARDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-card",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "milestones": [
+              {
+                "label": "Connected 3 partner programmes",
+                "achieved": true
+              },
+              {
+                "label": "Completed first partner transfer",
+                "achieved": true
+              },
+              {
+                "label": "Reached 50% on Family Holiday Fund",
+                "achieved": true
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "VIEW_ACHIEVEMENTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "layout": {
+              "span": "third"
+            },
+            "label": "Total Combined Balance",
+            "value": "18,500",
+            "unit": "points",
+            "tone": "brand",
+            "infoText": "Across all 3 connected partner accounts"
+          },
+          "actions": [
+            {
+              "type": "VIEW_METRIC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Understanding Point Transfers",
+            "insight": "Moving points between partner programmes is simple and secure. 1,000 LBG Coins converts smoothly to \u00a310.00 equivalent value with zero hidden fees.",
+            "source": "Rewards Guide",
+            "actionLabel": "Learn More"
+          },
+          "actions": [
+            {
+              "type": "READ_GUIDE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PORTABILITY_PERSONA_MATCH",
+        "MANDATORY_STACK_COMPLIANCE",
+        "PLAIN_ENGLISH_JARGON_FREE"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "An alternative 12-component layout emphasizing portfolio consolidation and partner value comparison for Leo Morgan, featuring the mandatory stack and plain-English transfer guides.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "points": 11200,
+            "tier": "Platinum",
+            "name": "Leo Morgan"
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-consolidated-wallet-2",
+          "type": "CONSOLIDATED_REWARD_WALLET",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Combined Reward Wallet",
+            "subtitle": "Your unified balance across partner programmes",
+            "programmes": [
+              {
+                "name": "LBG Coins",
+                "points": 11200,
+                "value": "\u00a3112.00",
+                "status": "Active"
+              },
+              {
+                "name": "Partner SkyPoints",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "status": "Connected"
+              }
+            ],
+            "totalValue": "\u00a3157.00"
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status-2",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "status": "synced",
+            "title": "All Balances Synchronised",
+            "lastSyncedAt": "Today, 09:23",
+            "message": "Your partner accounts are fully up to date.",
+            "ctaText": "Sync Now"
+          },
+          "actions": [
+            {
+              "type": "SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-partner-comparison-2",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "layout": {
+              "span": "half"
+            },
+            "title": "Partner Value Overview",
+            "subtitle": "Plain English comparison of your reward worth",
+            "partners": [
+              {
+                "name": "LBG Coins",
+                "points": 11200,
+                "value": "\u00a3112.00",
+                "perk": "Standard conversion"
+              },
+              {
+                "name": "Partner SkyPoints",
+                "points": 4500,
+                "value": "\u00a345.00",
+                "perk": "Travel partner conversion"
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "VIEW_COMPARISON",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-partner-transfer-2",
+          "type": "PARTNER_TRANSFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Transfer Between Partners",
+            "fromProgramme": "LBG Coins",
+            "toPartner": "Partner SkyPoints",
+            "points": 1000,
+            "estimatedValue": "\u00a310.00",
+            "status": "Ready for instant transfer"
+          },
+          "actions": [
+            {
+              "type": "TRANSFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-provenance-2",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "layout": {
+              "span": "half"
+            },
+            "title": "Points History",
+            "subtitle": "Recent earnings breakdown",
+            "history": [
+              {
+                "source": "Partner Transfer Bonus",
+                "date": "22 Aug 2026",
+                "points": 1000
+              },
+              {
+                "source": "Monthly Accrual",
+                "date": "15 Aug 2026",
+                "points": 2200
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-progress-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "layout": {
+              "span": "half"
+            },
+            "goalName": "Family Holiday Fund",
+            "current": 1750,
+            "target": 3000,
+            "percentage": 58,
+            "remaining": 1250,
+            "motivationalMessage": "Making steady progress toward your holiday."
+          },
+          "actions": [
+            {
+              "type": "GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-programme-connection-2",
+          "type": "PROGRAMME_CONNECTION_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Linked Partner Programmes",
+            "subtitle": "Manage your connections",
+            "programmes": [
+              {
+                "name": "Partner SkyPoints",
+                "status": "Connected",
+                "connected": true
+              },
+              {
+                "name": "Global Dining Club",
+                "status": "Connected",
+                "connected": true
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "CONNECTIONS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-milestone-2",
+          "type": "GOAL_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "goalName": "Family Holiday Fund",
+            "milestones": [
+              {
+                "label": "50% Milestone Reached",
+                "reached": true
+              },
+              {
+                "label": "75% Milestone Upcoming",
+                "reached": false
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-reward-2",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Holiday Fund Boosters",
+            "goalName": "Family Holiday Fund",
+            "rewards": [
+              {
+                "name": "Travel Partner Bonus",
+                "points": 500,
+                "goalLinked": true
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "BOOSTERS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-card-2",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "milestones": [
+              {
+                "label": "Connected multiple partner accounts",
+                "achieved": true
+              },
+              {
+                "label": "Holiday Fund over half way",
+                "achieved": true
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "ACHIEVEMENTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "layout": {
+              "span": "full"
+            },
+            "title": "Easy Portfolio Management",
+            "insight": "Consolidating your rewards helps you see your true purchasing power in clear British pounds.",
+            "source": "Guide",
+            "actionLabel": "Read More"
+          },
+          "actions": [
+            {
+              "type": "READ",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.9,
+      "reasonCodes": [
+        "ALTERNATIVE_PORTFOLIO_LAYOUT",
+        "MANDATORY_STACK_COMPLIANCE"
+      ]
+    }
+  ]
+}

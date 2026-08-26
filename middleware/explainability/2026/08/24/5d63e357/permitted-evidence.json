@@ -1,0 +1,57 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent statement credit redemptions",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_010 is a payment-utility focused rewards member who exclusively redeems points for statement credits to reduce bills, engages daily to check cashback and balances, and actively tracks a holiday savings goal currently at 53% progress.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Redeems almost exclusively as statement credits on linked card",
+        "source": "Session Context / Intelligence Signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Holds 7300 LBG Coins with 3 connected brands",
+        "source": "Wallet data",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Active holiday savings goal with 53% progress (640 of 1200 target)",
+        "source": "Intelligence Goal Analysis",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "preferredRewardType",
+        "value": "STATEMENT_CREDIT",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-01"
+        ],
+        "inferenceMethod": "BEHAVIORAL_PATTERN_ANALYSIS",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

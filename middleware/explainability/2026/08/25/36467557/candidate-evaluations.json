@@ -1,0 +1,261 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Structured Mastery & Progress Continuity Strategy: Displays Points Balance, Goal Progress Card (First Home Savings at 63%), Educational Insight Card, and a self-paced Quiz Card, strictly avoiding all timed challenges, public leaderboards, and pressure mechanics.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly supports First Home Savings goal tracking and mastery-oriented educational engagement."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility for a customer who spends extended sessions on educational content and values self-paced learning."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 10,
+          "explanation": "Every component maps cleanly to the mastery narrative without conflicting elements."
+        },
+        "journeyAndActionContinuity": {
+          "score": 9,
+          "explanation": "Clear flow from reviewing current progress to engaging with targeted educational insights and quizzes."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 10,
+          "explanation": "Calm, educational tone with zero manipulative urgency or cognitive overload."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant with financial literacy standards and transparency guidelines."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly matches LEARNING_MASTERY motivation and preference for educational rewards."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by robust behavioral telemetry showing 100% module completion and high quiz engagement."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces tailored educational insights that bridge savings milestones with conceptual mastery."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Utilizes standard mandatory components readily supported by the mobile channel schema."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Exploratory Knowledge Discovery Strategy: Focuses heavily on discovering new educational modules and milestone cards while de-emphasizing active goal tracking.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Touches on education but bypasses the active First Home Savings goal tracking."
+        },
+        "expectedCustomerUtility": {
+          "score": 8,
+          "explanation": "Good for general curiosity but less targeted than progress-linked mastery."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 8,
+          "explanation": "Coherent exploration story, but less aligned with the primary charter objective than Candidate 1."
+        },
+        "journeyAndActionContinuity": {
+          "score": 8,
+          "explanation": "Logical exploratory flow, though lacks immediate goal linkage."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm and pressure-free."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Matches curiosity but misses the active progress orientation."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Supported by curiosity telemetry."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Standard content discovery pattern."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 8.05,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Structured Mastery & Progress Continuity Strategy: Displays Points Balance, Goal Progress Card (First Home Savings at 63%), Learning Mission Card, Quiz Card, Comprehension Feedback Card, Confidence Progress Card, and Educational Insight Card, strictly avoiding all timed challenges, public leaderboards, and pressure mechanics.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are making steady progress toward your First Home Savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Home Deposit Fundamentals",
+            "description": "Understand how structured savings and reward points accelerate your deposit timeline.",
+            "modulesDone": 3,
+            "modulesTotal": 5,
+            "pointsOnCompletion": 150,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "home-deposit-fundamentals"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-card",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the primary benefit of compounding interest in a dedicated savings pot?",
+            "options": [
+              "It generates earnings on both your initial principal and accumulated interest over time.",
+              "It locks your funds indefinitely with no access.",
+              "It guarantees a fixed prize draw entry every week."
+            ],
+            "reward": "50 Points & Mastery Badge",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {
+                "selectedOption": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Concept Check Feedback",
+            "question": "What is the primary benefit of compounding interest in a dedicated savings pot?",
+            "yourAnswer": "It generates earnings on both your initial principal and accumulated interest over time.",
+            "correctAnswer": "It generates earnings on both your initial principal and accumulated interest over time.",
+            "feedback": "Correct! Compounding accelerates growth by earning returns on previously accumulated returns.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Confidence Meter",
+            "topic": "Savings Mechanics & Compounding",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Explore Mortgage Affordability Modules",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Maximizing Your Home Savings Pot",
+            "insight": "Consistent monthly contributions paired with connected brand rewards can shorten your deposit timeline by up to 4 months.",
+            "source": "LBG Financial Education Team",
+            "actionLabel": "Explore Module",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_INSIGHT",
+              "payload": {
+                "insightId": "home-savings-pot"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "MANDATORY_STACK_COMPLIANCE"
+      ]
+    }
+  ]
+}

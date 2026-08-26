@@ -1,0 +1,67 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "unused expiring points",
+        "source": "Intelligence Layer",
+        "confidence": 0.96,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "has not logged in for 45 days",
+        "source": "Intelligence Layer",
+        "confidence": 0.96,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Jessica Martinez is in a churn-risk state with 1,850 lbgCoins expiring in 12 days, having shown declining engagement and no login activity for 45 days.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "LBG coins balance is 1,850 with 12 days until expiry.",
+        "source": "Session Context wallet & Intelligence Layer risk",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Days since last activity is 45 days.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Connected brands count is 3.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-01",
+        "attribute": "engagementRisk",
+        "value": "HIGH",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "declining engagement over 60 days",
+          "stopped opening notifications",
+          "has not logged in for 45 days"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

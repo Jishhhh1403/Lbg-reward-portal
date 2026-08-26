@@ -1,0 +1,97 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review progress toward First Home Savings and engage with self-paced knowledge milestones.",
+  "entryPoint": "Customer opens rewards overview to check educational milestones and savings progress.",
+  "completionDefinition": "Customer views goal progress, reviews milestone card, and completes a knowledge quiz at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my First Home Savings goal?",
+      "entryCondition": "App launch and wallet sync",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-04"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational steps and milestones come next?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "learning mission status",
+        "educational milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I test my understanding at my own pace?",
+      "entryCondition": "Milestones and insights reviewed",
+      "requiredInformation": [
+        "quiz question",
+        "comprehension feedback",
+        "confidence metrics"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-tangible-value",
+      "purpose": "Provide clear cash value transparency for LBG coins and rewards.",
+      "contentNotes": [
+        "Translates 3900 LBG coins into GBP value with itemized breakdown."
+      ]
+    },
+    {
+      "surfaceId": "surface-how-it-works",
+      "purpose": "Explain earn, convert, and redeem mechanics clearly in plain English.",
+      "contentNotes": [
+        "Numbered step-by-step explainer for educational rewards."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

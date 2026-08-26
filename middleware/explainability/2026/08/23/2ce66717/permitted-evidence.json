@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "high notification engagement",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Alex Rivera has 4,250 LBG coins, a Gold tier status, and a high engagement score of 0.82. Behavior is characterized by fast redemptions (average 2.3 hours after earning) and responsiveness to flash offers and notifications.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins-001",
+        "statement": "Customer holds 4,250 LBG coins",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier-001",
+        "statement": "Customer tier is Gold",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-redemption-speed",
+        "statement": "Average redemption time is 2.3 hours after earning",
+        "source": "Intelligence Layer customerProfile behaviors",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-flash-offers",
+        "statement": "Customer responds to flash offers",
+        "source": "Journey Analysis supporting evidence",
+        "confidence": 0.94
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation-001",
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ],
+        "inferenceMethod": "Behavioral telemetry and intelligence layer persona classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-velocity-001",
+        "attribute": "redemptionVelocity",
+        "value": "HIGH",
+        "confidence": 0.95,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "avg_redemption_time_hours: 2.3"
+        ],
+        "inferenceMethod": "Historical redemption timing analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

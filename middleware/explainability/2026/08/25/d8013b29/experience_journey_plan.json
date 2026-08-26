@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-understand-value",
+  "journeyObjective": "Provide absolute clarity on the exact GBP value of 5,600 LBG coins and display transparent partner comparison rates without pressure.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews the tangible value card and inspects the partner comparison table without encountering urgency or ambiguity.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is the exact monetary value of my 5,600 LBG coins?",
+      "entryCondition": "Customer views rewards overview.",
+      "requiredInformation": [
+        "Wallet coin balance",
+        "Exact GBP cash equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-signal-worth",
+        "fact-signal-monetary"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do partner redemption rates compare side by side?",
+      "entryCondition": "Customer understands base cash value and explores partner options.",
+      "requiredInformation": [
+        "Partner conversion rates",
+        "Connected brands count"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-compare",
+        "fact-brands-connected"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do reward mechanics work and how can I proceed at my own pace?",
+      "entryCondition": "Customer reviews partner comparisons and evaluates education and controls.",
+      "requiredInformation": [
+        "How points work steps",
+        "Choice panel options"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-abandon",
+        "fact-signal-worth"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear partner redemption terms and conditions without pressure.",
+      "contentNotes": [
+        "Standard conversion rates apply",
+        "No expiry on standard LBG coins"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

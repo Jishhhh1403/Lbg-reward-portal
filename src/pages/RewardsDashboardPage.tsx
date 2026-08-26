@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Component, useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -30,10 +30,13 @@ import type {
   PointsProvider,
   WalletTransactionItem,
 } from '../types/rewards'
+import type { SduiGenerateResponse } from '../types/sdui'
 import { fetchWalletTransactions } from '../services/rewardsApi'
+import { generateExperience } from '../services/experienceApi'
 import LocatePointsModal from '../components/dashboard/LocatePointsModal'
 import RedeemPointsModal from '../components/dashboard/RedeemPointsModal'
 import MetricTile from '../components/dashboard/MetricTile'
+import SDUIRenderer from '../renderer/SDUIRenderer'
 import {
   SyncStatusCard,
   FlashRewardBanner,
@@ -103,15 +106,36 @@ const TIERS = [
    TODO: source from the customer summary endpoint once available */
 const EXPIRING_POINTS = 1250
 
-function useTier(totalPoints: number) {
+function useTier(totalPoints: number, declaredTier?: string) {
   return useMemo(() => {
-    const current = [...TIERS].reverse().find((t) => totalPoints >= t.min) ?? TIERS[0]
+    const byPoints = [...TIERS].reverse().find((t) => totalPoints >= t.min) ?? TIERS[0]
+    const current = TIERS.find((t) => t.name === declaredTier) ?? byPoints
     const idx = TIERS.indexOf(current)
     const next = TIERS[idx + 1] ?? null
-    const span = next ? next.min - current.min : 1
-    const progress = next ? Math.min(100, Math.round(((totalPoints - current.min) / span) * 100)) : 100
-    return { current, next, progress }
-  }, [totalPoints])
+    if (!next) return { current, next: null, progress: 100, pointsToNext: 0 }
+    const span = next.min - current.min
+    const raw = ((totalPoints - current.min) / span) * 100
+    return {
+      current,
+      next,
+      progress: Math.max(3, Math.min(100, Math.round(raw))),
+      pointsToNext: Math.max(0, next.min - totalPoints),
+    }
+  }, [totalPoints, declaredTier])
+}
+
+/* ------------------------------------------------------------------ */
+/* Error Boundary — catches crashes in personalized SDUI rendering     */
+/* ------------------------------------------------------------------ */
+
+interface EBProps { fallback: React.ReactNode; children: React.ReactNode }
+interface EBState { hasError: boolean }
+
+class SDUIErrorBoundary extends Component<EBProps, EBState> {
+  state: EBState = { hasError: false }
+  static getDerivedStateFromError(): EBState { return { hasError: true } }
+  componentDidCatch(err: Error) { console.warn('[SDUIErrorBoundary] personalized render crashed, falling back:', err) }
+  render() { return this.state.hasError ? this.props.fallback : this.props.children }
 }
 
 /* ------------------------------------------------------------------ */
@@ -135,7 +159,49 @@ export default function RewardsDashboardPage({
   const [txLoading, setTxLoading] = useState(false)
   const [txError, setTxError] = useState('')
 
-  const tier = useTier(customer.totalLbgCoins)
+  /* ---------------- personalized experience (QUEST-UI middleware) -------- */
+  const [experience, setExperience] = useState<SduiGenerateResponse | null>(null)
+  const [experienceStatus, setExperienceStatus] = useState<'loading' | 'personalized' | 'fallback'>('loading')
+  const [experienceNonce, setExperienceNonce] = useState(0)
+
+  useEffect(() => {
+    let cancelled = false
+    setExperienceStatus('loading')
+    const topBrands = [...pointsByBrand]
+      .sort((a, b) => b.points - a.points)
+      .slice(0, 5)
+      .map((p) => ({ name: p.brandName, points: p.points }))
+    generateExperience(customer.customerId, {
+      totalPoints: customer.totalBrandPoints,
+      lbgCoins: customer.totalLbgCoins,
+      brandsConnected: customer.brandsConnected,
+      topBrands,
+      lastSyncedAt: customer.lastSyncedAt,
+    })
+      .then((res) => {
+        if (cancelled) return
+        setExperience(res)
+        const hasComponents =
+          res.status === 'PERSONALIZED' && Array.isArray(res.sdui?.components) && res.sdui.components.length > 0
+        setExperienceStatus((prev) => {
+          if (hasComponents) return 'personalized'
+          if (prev === 'personalized') return 'personalized'
+          return 'fallback'
+        })
+      })
+      .catch((error) => {
+        if (cancelled) return
+        console.warn('[RewardsDashboard] Personalization unavailable, using static layout:', error)
+        setExperience(null)
+        setExperienceStatus('fallback')
+      })
+    return () => {
+      cancelled = true
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [customer.customerId, experienceNonce])
+
+  const tier = useTier(customer.totalLbgCoins + customer.totalBrandPoints / 2, customer.tier)
 
   /* Journey-scale progress for the hero slider: LBG coins earned out of the
      final (Platinum) threshold of 25,000. */
@@ -220,6 +286,7 @@ export default function RewardsDashboardPage({
     setRefreshing(true)
     try {
       await onRefresh()
+      setExperienceNonce((n) => n + 1)
     } finally {
       setRefreshing(false)
     }
@@ -596,6 +663,68 @@ export default function RewardsDashboardPage({
               transition={{ duration: 0.22 }}
               sx={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px', paddingBottom: '96px',  }}
             >
+              {experienceStatus === 'loading' && (
+                <div aria-busy="true" aria-label="Personalizing your rewards">
+                  <div className="grid grid-cols-3 gap-2.5">
+                    {[0, 1, 2].map((i) => (
+                      <div key={i} className="h-20 animate-pulse rounded-2xl bg-white/70" />
+                    ))}
+                  </div>
+                  {[0, 1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className="mt-3 h-28 animate-pulse rounded-2xl bg-white/70"
+                      style={{ animationDelay: `${i * 120}ms` }}
+                    />
+                  ))}
+                  <p className="mt-4 text-center text-xs text-slate-400">Personalizing your rewards…</p>
+                </div>
+              )}
+
+              {experienceStatus === 'personalized' && experience && (
+                <SDUIErrorBoundary
+                  fallback={
+                    <p className="rounded-xl border border-gold-200 bg-gold-50 px-3 py-2 text-xs text-gold-700">
+                      Personalized rendering hit an unexpected issue — showing the standard rewards layout.
+                    </p>
+                  }
+                >
+                  <div className="flex items-center justify-between rounded-full bg-white px-3.5 py-2 shadow-card">
+                    <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-700">
+                      <Sparkles size={13} /> Personalized for you
+                    </span>
+                    {(() => {
+                      const persona = experience.intelligence?.persona ?? experience.sdui?.persona ?? ''
+                      return persona ? (
+                        <span className="text-[11px] uppercase tracking-wide text-slate-400">
+                          {persona.replace(/_/g, ' ').toLowerCase()}
+                        </span>
+                      ) : null
+                    })()}
+                  </div>
+                  <SDUIRenderer
+                    components={experience.sdui?.components ?? []}
+                    narrative={experience.sdui?.narrative}
+                    onLocatePoints={() => setLocateOpen(true)}
+                    onRedeemPoints={() => setRedeemOpen(true)}
+                  />
+                </SDUIErrorBoundary>
+              )}
+
+              {experienceStatus === 'fallback' && (
+                <>
+                  {experience === null ? (
+                    <p className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-500">
+                      Personalization service unreachable — showing the standard rewards layout.
+                    </p>
+                  ) : (
+                    <p className="rounded-xl border border-gold-200 bg-gold-50 px-3 py-2 text-xs text-gold-700">
+                      Personalization is temporarily unavailable — showing the standard rewards layout.
+                    </p>
+                  )}
+                </>
+              )}
+
               {/* Metrics */}
               <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '10px' }}>
                 <MetricTile
@@ -690,11 +819,11 @@ export default function RewardsDashboardPage({
                   }}
                 >
                   <GoalProgressCard
-                    goalName={`${tier.next ? tier.next.name : 'Platinum'} tier status`}
+                    goalName={`${tier.next ? tier.next.name : tier.current.name} tier status`}
                     current={walletValue}
-                    target={tier.next?.min ?? 15000}
+                    target={tier.next?.min ?? TIERS[TIERS.length - 1].min}
                     percentage={tier.progress}
-                    remaining={Math.max(0, (tier.next?.min ?? 15000) - walletValue)}
+                    remaining={Math.max(0, (tier.next?.min ?? TIERS[TIERS.length - 1].min) - walletValue)}
                     motivationalMessage={
                       tier.next
                         ? `${formatPoints(Math.max(0, tier.next.min - walletValue))} more points unlocks premium conversion rates.`
@@ -809,7 +938,8 @@ export default function RewardsDashboardPage({
                   milestones={[
                     { label: 'Account opened & verified', reached: true },
                     { label: 'Gold tier unlocked', reached: walletValue >= TIERS[1].min },
-                    { label: '15k combined balance', reached: walletValue >= TIERS[2].min },
+                    { label: '6k combined balance — Platinum', reached: walletValue >= TIERS[2].min },
+                    { label: '12k combined balance — Diamond', reached: walletValue >= TIERS[TIERS.length - 1].min },
                   ]}
                 />
 
@@ -838,9 +968,9 @@ export default function RewardsDashboardPage({
                     message="Regular conversions protect you from point devaluation."
                   />
                   <LongTermGoalCard
-                    goalName="Platinum Status"
+                    goalName="Diamond Status"
                     current={walletValue}
-                    target={TIERS[2].min}
+                    target={TIERS[TIERS.length - 1].min}
                     percentage={tier.progress}
                     estimatedCompletion="2028"
                   />
@@ -988,7 +1118,7 @@ export default function RewardsDashboardPage({
                   growthTip={
                     tier.next
                       ? `${formatPoints(Math.max(0, tier.next.min - walletValue))} points to ${tier.next.name} — converting your largest idle balance gets you there fastest.`
-                      : 'You are at the top tier. Enjoy your Platinum perks.'
+                      : `You are at the top tier. Enjoy your ${tier.current.name} perks.`
                   }
                   expiringPoints={1250}
                   expiryDate="12 Sep"

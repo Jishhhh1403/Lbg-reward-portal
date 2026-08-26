@@ -1,0 +1,546 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich multi-goal layout for Long-Term Planner David Park, incorporating 11 components: POINTS_BALANCE, RETIREMENT_FUND_CARD, CHILDREN_EDUCATION_CARD, DREAM_HOME_CARD, ADD_GOAL_CARD, FUTURE_VALUE_CARD, PROJECTION_CHART, EDUCATIONAL_INSIGHT_CARD, MILESTONE_TIMELINE_CARD, REWARD_HISTORY_CARD, and SECURITY_SETTINGS_CARD. Each active goal gets a dedicated card, and future value projections highlight long-term wealth accumulation without dark patterns or urgency.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses all three active goals plus an add-goal card, perfectly matching the multi-goal planner profile."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides rich, useful projections and milestone tracking tailored to deferred high-value accumulation."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns with FUTURE_SECURITY motivation and DEFERRED_HIGH_VALUE redemption style."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear visual hierarchy, structured cards, and compliant contrast levels suitable for detailed financial reviews."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Strong confidence based on verified customer goals and stable behavioral patterns."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains design system standards without altering protected bank logos or terminology."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces forward-looking projections and milestone timelines that add genuine value for a long-term planner."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported within SDUI component library and standard latency budget."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Simplified single-goal focus screen featuring 7 components: POINTS_BALANCE, RETIREMENT_FUND_CARD, FUTURE_VALUE_CARD, PROJECTION_CHART, EDUCATIONAL_INSIGHT_CARD, REWARD_HISTORY_CARD, and QUICK_REDEEM_BUTTON. Highlights only the primary retirement goal and offers a quick redemption shortcut.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails to display all active financial goals (omits Education and Home deposits) and includes an unwanted quick redemption shortcut."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Incomplete view for a multi-goal customer; fewer than 9 components reduce utility for a planner tracking multiple milestones."
+        },
+        "rewardProfileAlignment": {
+          "score": 5,
+          "explanation": "Pushes quick redemption which contradicts the customer's proven deferred high-value style."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean layout, but misses crucial context for the customer's other active goals."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Partially relies on inferred primary goal while ignoring verified secondary goals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Consistent with design guidelines."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with no special adaptation for multi-goal planning."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Very simple to render."
+        }
+      },
+      "weightedTotal": 6.65,
+      "hardGatesPass": false,
+      "objections": [
+        "Fails component count threshold (proposes 7 components instead of 10-14 for rich multi-goal persona).",
+        "Violates preference alignment by offering quick redemption contrary to low immediate redemption rate and deferred high-value style.",
+        "Omits mandatory multi-goal structure required for customers with multiple active financial objectives."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Long-term planner multi-goal strategy for David Park, highlighting long-term accumulation, future value projections, and all three active financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit) plus an Add Goal card, supported by educational insights and metric tiles.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Projected Portfolio Growth",
+            "currentValue": 28400,
+            "projectedValue": 45000,
+            "timeframe": "3 Years",
+            "growthRate": "7.5% APY equivalent",
+            "message": "Continuing your steady accumulation pattern will compound your Diamond tier rewards significantly.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTIONS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "label": "Goal Completion Rate",
+            "value": "92%",
+            "unit": "success",
+            "tone": "brand",
+            "infoText": "Based on your completed financial milestones",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tiles-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "label": "Avg Redemption Time",
+            "value": "90",
+            "unit": "days",
+            "tone": "white",
+            "infoText": "Deferred high-value accumulation style",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tiles-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "label": "Active Goals",
+            "value": "3",
+            "unit": "pots",
+            "tone": "white",
+            "infoText": "Retirement, Education & Home",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2032",
+            "message": "You are making steady progress toward your long-term retirement security.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2029",
+            "message": "Strong acceleration in your education savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "estimatedCompletion": "2035",
+            "message": "Building a solid foundation for your future home deposit.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new long-term financial milestone to track with your Diamond tier rewards.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Long-Term Value Forecast",
+            "growthLabel": "Compounded Annual Growth",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2027",
+                "value": 33000
+              },
+              {
+                "year": "2028",
+                "value": 39000
+              },
+              {
+                "year": "2029",
+                "value": 46500
+              },
+              {
+                "year": "2030",
+                "value": 55000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "The Power of Compounding Rewards",
+            "insight": "By deferring point redemption and aligning balances with long-term goals, Diamond tier members achieve up to 40% higher cumulative milestone value.",
+            "source": "Rewards Wealth Institute",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATIONAL_GUIDE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "MULTI_GOAL_STRUCTURE",
+        "LONG_TERM_PLANNING"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative long-term planner strategy incorporating savings calculator and future milestones alongside core goals and projections for David Park.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2032",
+            "message": "Your primary retirement savings milestone.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2029",
+            "message": "Dedicated fund for education expenses.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "estimatedCompletion": "2035",
+            "message": "Long-term real estate milestone tracker.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another long-term financial objective.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value-2",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Diamond Tier Accumulation Value",
+            "currentValue": 28400,
+            "projectedValue": 48000,
+            "timeframe": "4 Years",
+            "growthRate": "8.0% equivalent",
+            "message": "Your deferred accumulation strategy maximizes tier benefits.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-savings-calculator",
+          "type": "SAVINGS_CALCULATOR_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Milestone Savings Simulator",
+            "presets": [
+              {
+                "monthly": 500,
+                "yearEnd": 6500,
+                "bonusPoints": 1200
+              },
+              {
+                "monthly": 1000,
+                "yearEnd": 13400,
+                "bonusPoints": 2800
+              }
+            ],
+            "note": "Calculations based on Diamond tier accumulation rates.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-future-milestone",
+          "type": "FUTURE_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Upcoming Milestone Timeline",
+            "milestones": [
+              {
+                "label": "Education Fund 50% Milestone",
+                "date": "Q2 2027",
+                "achieved": false
+              },
+              {
+                "label": "Retirement Fund 30% Milestone",
+                "date": "Q4 2027",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.9,
+      "reasonCodes": [
+        "SAVINGS_CALCULATOR_FOCUS",
+        "FUTURE_MILESTONES"
+      ]
+    }
+  ]
+}

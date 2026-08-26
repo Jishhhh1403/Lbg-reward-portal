@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide structured visibility into First Home Savings Knowledge progress and unhurried educational modules.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer views goal progress and engages with educational content or quiz review.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and knowledge savings stand today?",
+      "entryCondition": "App launched and authenticated",
+      "requiredInformation": [
+        "lbgCoins",
+        "goalName",
+        "progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What structured learning steps and knowledge goals can I advance next?",
+      "entryCondition": "User views initial points balance and goal status",
+      "requiredInformation": [
+        "goalName",
+        "modulesDone",
+        "modulesTotal"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-sig-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I check my understanding and solidify my financial mastery?",
+      "entryCondition": "User engages with learning path and curriculum milestones",
+      "requiredInformation": [
+        "question",
+        "options",
+        "reward"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-2",
+        "fact-sig-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide clear definitions of cash values and coin equivalence without pressure.",
+      "contentNotes": [
+        "Tangible value breakdown for 3,900 LBG coins"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

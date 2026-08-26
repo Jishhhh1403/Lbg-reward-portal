@@ -1,0 +1,81 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-04",
+        "classification": "OBSERVED",
+        "value": "First Home Savings Knowledge goal at 63% progress",
+        "source": "goal_tracking",
+        "confidence": 1.0,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams (Gold tier, 3900 LBG coins) demonstrates a strong educational competence profile, focusing on financial literacy, First Home Savings knowledge milestones, and mastery-based progression without timed or competitive pressures.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Active First Home Savings Knowledge goal at 63% progress (1250/2000)",
+        "source": "goal_tracking",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "engagementStyle",
+        "value": "MASTERY_ORIENTED",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "behavioral_clustering",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

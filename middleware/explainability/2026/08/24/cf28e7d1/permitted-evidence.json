@@ -1,0 +1,68 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "multi-programme reward balances and transfer inquiries",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Leo Morgan holds reward balances across three partner programmes, frequently asks about moving points between programmes, and wants one combined view of all earned rewards. Prefers simple plain-English explanations of transfers and is put off by technical jargon.",
+    "observedFacts": [
+      {
+        "factId": "fact_01",
+        "statement": "Holds reward balances across three partner programmes",
+        "source": "sessionContext / intelligenceLayer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact_02",
+        "statement": "Frequently asks about moving points between programmes",
+        "source": "sessionContext / intelligenceLayer",
+        "confidence": 0.91
+      },
+      {
+        "factId": "fact_03",
+        "statement": "LBG Coins balance is 11,200",
+        "source": "sessionContext",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop_01",
+        "attribute": "jargonSensitivity",
+        "value": "high",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "put off by technical jargon and complex terms",
+          "prefers simple plain-English explanations of transfers"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop_02",
+        "attribute": "portfolioConsolidationInterest",
+        "value": "high",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "wants one combined view of all earned rewards",
+          "holds reward balances across three partner programmes"
+        ],
+        "inferenceMethod": "stated_intent_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

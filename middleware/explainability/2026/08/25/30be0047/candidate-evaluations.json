@@ -1,0 +1,337 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Mastery-oriented learning pathway focusing on First Home Savings goal progression (63% complete), featuring self-paced quiz modules, milestone tracking, and transparent educational insights without timed challenges or competitive rankings.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly serves the active First Home Savings knowledge goal and learning mastery motivation profile."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility via relevant educational modules, quiz cards, and clear milestone progression."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 9,
+          "explanation": "Seamless alignment between screen components and the active mastery story."
+        },
+        "journeyAndActionContinuity": {
+          "score": 9,
+          "explanation": "Clear episodic progression from goal review to quiz engagement and milestone reflection."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm, educational tone with zero manipulative urgency or cognitive overload."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant with ethical standards, privacy requirements, and brand guidelines."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfectly matches LEARNING_MASTERY motive and preferred educational reward structures."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Backed by strong behavioral evidence of 100% module completion and high curiosity scores."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces tailored educational insights and transparent value progression."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "All required components (POINTS_BALANCE, QUIZ_CARD, GOAL_PROGRESS_CARD, MILESTONE_CARD, EDUCATIONAL_INSIGHT_CARD) are fully available."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broad value transparency and educational insight exploration focusing on general reward structures and curiosity-driven financial literacy topics.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 7,
+          "explanation": "Addresses general curiosity but is less directly tied to the specific First Home Savings knowledge milestone goal."
+        },
+        "expectedCustomerUtility": {
+          "score": 8,
+          "explanation": "Good educational insights, but lacks the immediate goal-tracking focus of candidate 1."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 8,
+          "explanation": "Coherent exploration of value transparency."
+        },
+        "journeyAndActionContinuity": {
+          "score": 8,
+          "explanation": "Logical flow from insight review to reward structure explanation."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm and accessible design."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with curiosity motive but secondary to primary mastery goal."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Good evidence supporting curiosity response."
+        },
+        "usefulNovelty": {
+          "score": 7,
+          "explanation": "Standard educational breakdown."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Components available."
+        }
+      },
+      "weightedTotal": 8.05,
+      "hardGatesPass": true,
+      "objections": []
+    }
+  ],
+  "recommendedCandidateId": "",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Mastery-oriented learning pathway focusing on First Home Savings goal progression (63% complete), featuring self-paced quiz modules, milestone tracking, and transparent educational insights without timed challenges or competitive rankings.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are making steady progress toward your First Home Savings knowledge goal. Keep exploring at your own pace.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "First Home Savings Masterclass",
+            "missionName": "Mortgage Deposit Strategies & Grants",
+            "description": "Deepen your understanding of government schemes, lifetime ISAs, and deposit structuring.",
+            "modulesDone": 5,
+            "modulesTotal": 8,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CONTINUE_MISSION",
+              "payload": {
+                "missionId": "fhs-masterclass-02"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "What is the government bonus percentage added to contributions in a Lifetime ISA?",
+            "options": [
+              "15% bonus on annual savings",
+              "25% bonus on annual savings",
+              "30% bonus on annual savings",
+              "20% bonus on annual savings"
+            ],
+            "reward": "50 points & Mastery Progress",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": "25% bonus on annual savings"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Concept Mastery Review",
+            "question": "How do compound returns affect long-term First Home savings?",
+            "yourAnswer": "Earnings generate additional returns over time",
+            "correctAnswer": "Earnings generate additional returns over time",
+            "feedback": "Spot on! Reinvested earnings compound your savings growth without extra risk.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Confidence Meter",
+            "topic": "Property Acquisition & Mortgage Mechanics",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced Competence",
+            "nextMilestone": "Unlock Expert Property Financing Module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Understanding Your Points Value",
+            "insight": "Your 3,900 LBG Coins represent tangible financial literacy milestones achieved through consistent module completion.",
+            "source": "Lloyds Bank Financial Education Research",
+            "actionLabel": "Explore Value Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "steps": [
+              {
+                "title": "Learn & Master",
+                "description": "Complete educational modules and quizzes at your own pace."
+              },
+              {
+                "title": "Convert Knowledge",
+                "description": "Turn completed milestones into verified financial competence."
+              },
+              {
+                "title": "Apply to Goals",
+                "description": "Use your insights to fund and structure your First Home savings pot."
+              }
+            ],
+            "ctaLabel": "View Educational Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Financial Competence Value",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Educational Modules",
+                "value": "\u00a330.00"
+              },
+              {
+                "label": "Streak & Consistency",
+                "value": "\u00a39.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "milestones": [
+              {
+                "label": "Complete 5 First Home Modules",
+                "achieved": true
+              },
+              {
+                "label": "Score 100% on Deposit Strategy Quiz",
+                "achieved": true
+              },
+              {
+                "label": "Reach 63% Overall Savings Knowledge Goal",
+                "achieved": true
+              },
+              {
+                "label": "Complete Full Masterclass Curriculum",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "LEARNING_MASTERY_ALIGNMENT"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review statement credit accumulation, check progress toward holiday savings goals, and easily apply cash-equivalent rewards against bills.",
+  "entryPoint": "User opens rewards overview screen.",
+  "completionDefinition": "User successfully reviews points balance, verifies holiday goal progress, and accesses direct statement credit redemption.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current balance and cash-equivalent worth?",
+      "entryCondition": "Screen opened",
+      "requiredInformation": [
+        "7300 LBG coins",
+        "Cash equivalent value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-01"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my holiday savings goal progressing?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "Holiday Spending Money goal at 53%"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I apply my rewards directly to statement credits?",
+      "entryCondition": "Goal progress verified",
+      "requiredInformation": [
+        "Statement credit options",
+        "Allocation control"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Educational details on how statement credits are calculated and applied.",
+      "contentNotes": [
+        "Guaranteed rate explanation",
+        "No expiry details"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

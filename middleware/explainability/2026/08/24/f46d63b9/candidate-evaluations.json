@@ -1,0 +1,396 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver an educational milestone and home savings progression overview featuring GOAL_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD, MILESTONE_CARD, and POINTS_BALANCE with no timed pressure or public rankings.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly targets the First Home Savings Knowledge goal at 63% and learning mastery."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "High utility through educational insights and transparent progress tracking."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 10,
+          "explanation": "Perfect alignment with Story-1 (Home Savings Knowledge Milestone)."
+        },
+        "journeyAndActionContinuity": {
+          "score": 9,
+          "explanation": "Smooth episode progression from progress overview to educational insight engagement."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Calm, educational tone matching customer preference without cognitive overload or timed elements."
+        },
+        "brandAndLegalConsistency": {
+          "score": 10,
+          "explanation": "Fully compliant with UI Constitution and privacy standards; zero dark patterns."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns precisely with LEARNING_MASTERY and educational reward preferences."
+        },
+        "evidenceConfidence": {
+          "score": 10,
+          "explanation": "Supported by robust behavioral evidence and high confidence scores (0.94+)."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Provides tailored financial literacy insights linked directly to savings milestones."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses standard mandatory components within mobile latency budget."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broad rewards dashboard highlighting general partner discovery and instant redemption options alongside points balance.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Ignores the specific home savings goal and learning mastery profile."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "General offers have lower utility for a mastery-oriented learner."
+        },
+        "screenLevelStoryCoherence": {
+          "score": 5,
+          "explanation": "Weak connection to active educational milestones."
+        },
+        "journeyAndActionContinuity": {
+          "score": 6,
+          "explanation": "Disjointed jump from general rewards to educational content."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean UI, but lacks thematic resonance."
+        },
+        "brandAndLegalConsistency": {
+          "score": 9,
+          "explanation": "Compliant, but less relevant."
+        },
+        "rewardProfileAlignment": {
+          "score": 5,
+          "explanation": "Contradicts preference for educational rewards over instant transactional ones."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "General profile data used, ignoring specific behavioral insights."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard generic rewards overview."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Feasible."
+        }
+      },
+      "weightedTotal": 6.3,
+      "hardGatesPass": true,
+      "objections": [
+        "Fails to adequately serve the customer's high competence motivation and home savings progression context."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver an educational milestone and home savings progression overview featuring GOAL_PROGRESS_CARD, LEARNING_MISSION_CARD, QUIZ_CARD, COMPREHENSION_FEEDBACK_CARD, CONFIDENCE_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD, MILESTONE_CARD, GOAL_LINKED_REWARD, HOW_POINTS_WORK_CARD, TANGIBLE_VALUE_CARD, and POINTS_BALANCE with no timed pressure or public rankings.",
+      "components": [
+        {
+          "id": "points-balance-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "goal-progress-01",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You're 63% toward your home savings knowledge target. Consistent learning compounds your financial capability.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "add-goal-01",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new learning or savings milestone to track.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "create-goal"
+              }
+            }
+          ]
+        },
+        {
+          "id": "learning-mission-01",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Rewards Academy",
+            "missionName": "Home Buyer Financial Foundations",
+            "description": "Master mortgage structuring, deposit allocation, and interest mitigation principles at your own pace.",
+            "modulesDone": 4,
+            "modulesTotal": 6,
+            "pointsOnCompletion": 500,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "learning-mission"
+              }
+            }
+          ]
+        },
+        {
+          "id": "quiz-card-01",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "question": "Which factor most effectively reduces total mortgage interest over a 25-year term?",
+            "options": [
+              "Making regular overpayments early in the term",
+              "Switching lenders every two years",
+              "Minimizing everyday card usage"
+            ],
+            "reward": "150 LBG Coins",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {
+                "answer": "Making regular overpayments early in the term"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comprehension-feedback-01",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Concept Reflection",
+            "question": "Understanding Compound Interest in Savings",
+            "yourAnswer": "Interest earned on both initial principal and accumulated interest",
+            "correctAnswer": "Interest earned on both initial principal and accumulated interest",
+            "feedback": "Correct. Reinvesting or maintaining your savings balance allows earnings to generate their own returns over time.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "confidence-progress-01",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Mastery Confidence Meter",
+            "topic": "Mortgage & Property Planning",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced comprehension",
+            "nextMilestone": "Complete property tax efficiency module",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "educational-insight-01",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Building Lasting Financial Competence",
+            "insight": "Consistent engagement with foundational modules correlates with a 40% improvement in long-term savings retention.",
+            "source": "LBG Financial Education Institute",
+            "actionLabel": "Explore curriculum",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "curriculum-hub"
+              }
+            }
+          ]
+        },
+        {
+          "id": "milestone-card-01",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "milestones": [
+              {
+                "label": "Completed Core Deposit Module",
+                "achieved": true
+              },
+              {
+                "label": "Achieved 60% Savings Milestone",
+                "achieved": true
+              },
+              {
+                "label": "Completed Advanced Budgeting Assessment",
+                "achieved": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "goal-linked-reward-01",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Rewards Accelerating Your Goal",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Academy Module Bonus Points",
+                "points": 300,
+                "goalLinked": true
+              },
+              {
+                "name": "Financial Literacy Milestone Completion",
+                "points": 500,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "how-points-work-01",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "steps": [
+              {
+                "title": "Earn through Learning",
+                "description": "Complete educational modules and quizzes to accumulate LBG Coins."
+              },
+              {
+                "title": "Convert to Value",
+                "description": "Translate your accumulated coins into practical savings boosts and milestone rewards."
+              },
+              {
+                "title": "Redeem with Purpose",
+                "description": "Apply your rewards directly toward your home savings journey."
+              }
+            ],
+            "ctaLabel": "View complete guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "rewards-guide"
+              }
+            }
+          ]
+        },
+        {
+          "id": "tangible-value-card-01",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Your Wallet Worth",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Academy Modules",
+                "value": "\u00a315.00"
+              },
+              {
+                "label": "Savings Milestones",
+                "value": "\u00a324.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "APPROVED_STORY",
+        "JOURNEY_FIRST",
+        "LEARNING_MASTERY_ALIGNMENT",
+        "MANDATORY_STACK_COMPLIANCE"
+      ]
+    }
+  ]
+}

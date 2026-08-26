@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "3697f4ba",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_003",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 28400,
+        "tier": "Diamond",
+        "name": "David Park",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-retirement",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 28400,
+        "target": 100000,
+        "percentage": 28,
+        "estimatedCompletion": "2031",
+        "message": "You are making steady progress toward your long-term retirement security.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-education",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 20500,
+        "target": 50000,
+        "percentage": 41,
+        "estimatedCompletion": "2029",
+        "message": "Strong accumulation pace; 41% funded for your children's future education.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-home",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 11250,
+        "target": 75000,
+        "percentage": 15,
+        "estimatedCompletion": "2033",
+        "message": "Building your home deposit steadily through disciplined reward accumulation.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Create an additional long-term savings or investment target.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Portfolio Future Value Projection",
+        "currentValue": 28400,
+        "projectedValue": 65000,
+        "timeframe": "5 Years",
+        "growthRate": "7.5% AER equivalent",
+        "message": "Your disciplined accumulation strategy compounds your reward value over time.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTIONS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Long-Term Rewards Growth Trajectory",
+        "growthLabel": "Estimated Portfolio Value (Points)",
+        "data": [
+          {
+            "year": "2026",
+            "value": 28400
+          },
+          {
+            "year": "2027",
+            "value": 37000
+          },
+          {
+            "year": "2028",
+            "value": 47500
+          },
+          {
+            "year": "2029",
+            "value": 58000
+          },
+          {
+            "year": "2030",
+            "value": 72000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_CHART_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Maximizing Compounding Rewards",
+        "insight": "Holding rewards in long-term accumulation pots yields up to 18% higher projected value compared to immediate point redemptions.",
+        "source": "Rewards Wealth Institute",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_EDUCATIONAL_GUIDE",
+          "payload": {
+            "articleId": "compounding-rewards-wealth"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

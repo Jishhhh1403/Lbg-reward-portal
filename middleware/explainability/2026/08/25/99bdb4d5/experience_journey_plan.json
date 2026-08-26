@@ -1,0 +1,74 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Enable self-paced tracking of 'First Home Savings Knowledge' progress and mastery quiz engagement without competitive pressure.",
+  "entryPoint": "Dashboard load showing points balance and active First Home Savings goal progress.",
+  "completionDefinition": "Customer views savings goal progress and engages with the recommended educational quiz component.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my balance and my First Home Savings goal?",
+      "entryCondition": "App launch and session initialization.",
+      "requiredInformation": [
+        "3900 LBG coins balance",
+        "First Home Savings Knowledge 63% progress (1250/2000)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-first-home",
+        "fact-coins-3900"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I continue building my financial literacy mastery and explore goal-linked rewards at my own pace?",
+      "entryCondition": "User has reviewed points balance and current goal progress.",
+      "requiredInformation": [
+        "Learning mission status",
+        "Educational quiz details",
+        "Comprehension and confidence milestones",
+        "Goal-linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-modules-100",
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational insights and tangible value transparency without competitive elements.",
+      "contentNotes": [
+        "Educational value breakdown",
+        "Self-paced study tips"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

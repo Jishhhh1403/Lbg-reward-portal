@@ -1,0 +1,78 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes challenges regularly",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "checks leaderboard daily",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "longest active streak in program",
+        "source": "behavior",
+        "confidence": 0.93,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Marcus Johnson is a highly engaged Gold-tier rewards customer (engagement score 0.95) with an active streak of 34 days, a leaderboard rank of 3, 12 completed challenges, and 15 earned badges. He demonstrates strong participation in community events and regular challenge completions.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer name is Marcus Johnson with 8,750 points and Gold tier status.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Maintains an active streak of 34 days and checks leaderboard daily.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Has completed 12 challenges and earned 15 badges.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Current leaderboard rank is 3.",
+        "source": "customerProfile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "engagementLevel",
+        "value": "HIGH",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "fact-002",
+          "fact-003"
+        ],
+        "inferenceMethod": "Behavioral analysis of streak maintenance and challenge completion frequency",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

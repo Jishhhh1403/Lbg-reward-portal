@@ -1,0 +1,501 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-9bce67eb",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver an educational rewards overview focused on the First Home Savings knowledge goal (63% progress), featuring educational insights, learning mission, self-paced quiz, comprehension feedback, and confidence progress without timed pressure.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3900,
+            "tier": "Gold",
+            "name": "Sophie Williams",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-progress",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "First Home Savings Knowledge",
+            "current": 1250,
+            "target": 2000,
+            "percentage": 63,
+            "remaining": 750,
+            "motivationalMessage": "You are 63% toward your First Home Savings Knowledge goal. Keep exploring modules at your own pace!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-learning-mission",
+          "type": "LEARNING_MISSION_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Rewards Academy Mission",
+            "missionName": "Advanced Savings & Deposit Strategies",
+            "description": "Master the core concepts of building a first home deposit through structured, self-paced learning.",
+            "modulesDone": 6,
+            "modulesTotal": 10,
+            "pointsOnCompletion": 300,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "learning_mission"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "question": "Which strategy best protects your first home savings deposit against unexpected inflation?",
+            "options": [
+              "Diversified short-term index funds",
+              "Keeping all cash in a non-interest current account",
+              "High-yield dedicated savings pots with fixed AER"
+            ],
+            "reward": "50 Points & Mastery Progress",
+            "timeLimit": 0,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ",
+              "payload": {
+                "quizId": "quiz-savings-inflation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-comprehension-feedback",
+          "type": "COMPREHENSION_FEEDBACK_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Concept Reflection",
+            "question": "Why do dedicated savings pots support long-term goals?",
+            "yourAnswer": "They provide predictable growth with guaranteed rate transparency.",
+            "correctAnswer": "They provide predictable growth with guaranteed rate transparency.",
+            "feedback": "Spot on! Clear separation of funds prevents accidental spending and locks in your progress.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-confidence-progress",
+          "type": "CONFIDENCE_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Financial Literacy Confidence",
+            "topic": "First Home Savings & Deposit Planning",
+            "confidencePercent": 85,
+            "levelLabel": "Advanced understanding",
+            "nextMilestone": "Complete remaining 4 deposit strategy modules",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Mastery Milestone Insight",
+            "insight": "Consistent module review reinforces long-term retention. You have successfully completed every literacy module with 100% accuracy.",
+            "source": "LBG Educational Intelligence Layer",
+            "actionLabel": "Explore Next Module",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "educational_insight_detail"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-how-points-work",
+          "type": "HOW_POINTS_WORK_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "steps": [
+              {
+                "title": "1. Learn & Earn",
+                "description": "Complete financial literacy modules and quizzes to earn points and build knowledge."
+              },
+              {
+                "title": "2. Convert with Clarity",
+                "description": "See exact GBP values and transparent cash-equivalent equivalents for all your points."
+              },
+              {
+                "title": "3. Redeem for Growth",
+                "description": "Apply your earnings toward your First Home Savings goal or educational rewards."
+              }
+            ],
+            "ctaLabel": "View Rewards Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "NAVIGATE",
+              "payload": {
+                "destination": "rewards_guide"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Rewards Cash Value",
+            "cashValue": "\u00a339.00",
+            "pointsEquivalent": 3900,
+            "breakdown": [
+              {
+                "label": "Available lbgCoins",
+                "value": "\u00a339.00"
+              },
+              {
+                "label": "Connected Brands Value",
+                "value": "\u00a30.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Goal-Accelerating Rewards",
+            "goalName": "First Home Savings Knowledge",
+            "rewards": [
+              {
+                "name": "Deposit Milestone Bonus",
+                "points": 500,
+                "goalLinked": true
+              },
+              {
+                "name": "Academy Completion Voucher",
+                "points": 300,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": []
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "EDUCATIONAL_MASTERY_ALIGNMENT",
+        "MANDATORY_ORDERED_STACK_COMPLIANCE",
+        "VALUE_CLARITY_TRANSPARENCY"
+      ]
+    },
+    "strategy": "Deliver an educational rewards overview focused on the First Home Savings knowledge goal (63% progress), featuring educational insights, learning mission, self-paced quiz, comprehension feedback, and confidence progress without timed pressure.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Deliver an educational rewards overview focused on the First Home Savings knowledge goal (63% progress), featuring educational insights, learning mission, self-paced quiz, comprehension feedback, and confidence progress without timed pressure.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward your First Home Savings Knowledge goal. Keep exploring modules at your own pace!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Rewards Academy Mission",
+          "missionName": "Advanced Savings & Deposit Strategies",
+          "description": "Master the core concepts of building a first home deposit through structured, self-paced learning.",
+          "modulesDone": 6,
+          "modulesTotal": 10,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "learning_mission"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which strategy best protects your first home savings deposit against unexpected inflation?",
+          "options": [
+            "Diversified short-term index funds",
+            "Keeping all cash in a non-interest current account",
+            "High-yield dedicated savings pots with fixed AER"
+          ],
+          "reward": "50 Points & Mastery Progress",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "quizId": "quiz-savings-inflation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Reflection",
+          "question": "Why do dedicated savings pots support long-term goals?",
+          "yourAnswer": "They provide predictable growth with guaranteed rate transparency.",
+          "correctAnswer": "They provide predictable growth with guaranteed rate transparency.",
+          "feedback": "Spot on! Clear separation of funds prevents accidental spending and locks in your progress.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Literacy Confidence",
+          "topic": "First Home Savings & Deposit Planning",
+          "confidencePercent": 85,
+          "levelLabel": "Advanced understanding",
+          "nextMilestone": "Complete remaining 4 deposit strategy modules",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Mastery Milestone Insight",
+          "insight": "Consistent module review reinforces long-term retention. You have successfully completed every literacy module with 100% accuracy.",
+          "source": "LBG Educational Intelligence Layer",
+          "actionLabel": "Explore Next Module",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "educational_insight_detail"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": [
+            {
+              "title": "1. Learn & Earn",
+              "description": "Complete financial literacy modules and quizzes to earn points and build knowledge."
+            },
+            {
+              "title": "2. Convert with Clarity",
+              "description": "See exact GBP values and transparent cash-equivalent equivalents for all your points."
+            },
+            {
+              "title": "3. Redeem for Growth",
+              "description": "Apply your earnings toward your First Home Savings goal or educational rewards."
+            }
+          ],
+          "ctaLabel": "View Rewards Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "rewards_guide"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Your Rewards Cash Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": [
+            {
+              "label": "Available lbgCoins",
+              "value": "\u00a339.00"
+            },
+            {
+              "label": "Connected Brands Value",
+              "value": "\u00a30.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Goal-Accelerating Rewards",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": [
+            {
+              "name": "Deposit Milestone Bonus",
+              "points": 500,
+              "goalLinked": true
+            },
+            {
+              "name": "Academy Completion Voucher",
+              "points": 300,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "EDUCATIONAL_MASTERY_ALIGNMENT",
+      "MANDATORY_ORDERED_STACK_COMPLIANCE",
+      "VALUE_CLARITY_TRANSPARENCY"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ]
+      }
+    ],
+    "methodology": "Verified behavioral signal analysis and intelligence layer classification",
+    "temporaryInterpretation": true
+  }
+}

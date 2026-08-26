@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "c9424417",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_009",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 5600,
+        "tier": "Gold",
+        "name": "Maya Thompson",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Your Points Cash Equivalent",
+        "cashValue": "\u00a356.00",
+        "pointsEquivalent": 5600,
+        "breakdown": [
+          {
+            "label": "Base Cash Conversion Rate",
+            "value": "100 points = \u00a31.00"
+          },
+          {
+            "label": "Gold Tier Bonus Factor",
+            "value": "1.0x Standard Rate"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-reward-choice",
+      "type": "REWARD_CHOICE_PANEL",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Redemption Options",
+        "subtitle": "Choose how you would like to apply your points with complete transparency.",
+        "options": [
+          {
+            "id": "cash-pot",
+            "label": "Direct Statement Credit",
+            "description": "Convert points directly to cash deposited into your linked account.",
+            "points": 5000
+          },
+          {
+            "id": "partner-voucher",
+            "label": "Partner Retailer Voucher",
+            "description": "Redeem for high-value partner shopping vouchers.",
+            "points": 5000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-partner-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Partner Conversion Rate Comparison",
+        "subtitle": "Compare exact GBP redemption values across our trusted retail partners before committing.",
+        "partners": [
+          {
+            "name": "Supermarket Partner",
+            "points": 5000,
+            "value": "\u00a350.00",
+            "perk": "Standard 1p per point rate"
+          },
+          {
+            "name": "Dining Partner",
+            "points": 5000,
+            "value": "\u00a355.00",
+            "perk": "Enhanced 1.1p per point rate"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-why-this-ui",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Why This View?",
+        "intro": "Designed specifically to give you clear, upfront monetary values without any confusing point abstractions.",
+        "reasons": [
+          {
+            "label": "Exact GBP Equivalents",
+            "detail": "Every reward shows exact cash value so you can make informed choices."
+          },
+          {
+            "label": "No Urgency or Pressure",
+            "detail": "Take your time comparing partner rates at your own pace."
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-rewards-insight",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Rewards Insight",
+        "topBrandName": "Supermarket Voucher",
+        "topBrandPoints": 1500,
+        "growthTip": "Redeeming with dining partners offers a slightly higher pence-per-point return on your 5,600 balance.",
+        "expiringPoints": 0,
+        "expiryDate": "None",
+        "ctaText": "Explore Conversion Rates",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-best-value",
+      "type": "BEST_VALUE_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "options": [
+          {
+            "name": "Dining Partner Voucher (\u00a355 value)",
+            "points": 5000,
+            "cashValue": "\u00a355.00",
+            "valuePerPoint": 1.1,
+            "best": true
+          },
+          {
+            "name": "Supermarket Voucher (\u00a350 value)",
+            "points": 5000,
+            "cashValue": "\u00a350.00",
+            "valuePerPoint": 1.0,
+            "best": false
+          }
+        ],
+        "note": "Ranked by pence-per-point return to ensure optimal value.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-personalized-offer",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Gold Member Partner Perk",
+        "subtitle": "Tailored redemption bonus",
+        "offer": "10% extra value on dining partner redemptions",
+        "validUntil": "No expiry pressure",
+        "message": "Available whenever you are ready to redeem.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Low-Point Redemptions",
+        "description": "Instant rewards available well within your 5,600 point balance.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee",
+            "points": 350,
+            "icon": "coffee"
+          },
+          {
+            "name": "Dining Voucher",
+            "points": 1500,
+            "icon": "utensils"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Points History",
+        "subtitle": "Clear breakdown of how your 5,600 points were earned.",
+        "history": [
+          {
+            "source": "Gold Tier Monthly Bonus",
+            "date": "1st of month",
+            "points": 600
+          },
+          {
+            "source": "Supermarket Partner Purchases",
+            "date": "Recent activity",
+            "points": 5000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "label": "Total Points",
+        "value": "5,600",
+        "unit": "pts",
+        "tone": "brand",
+        "infoText": "Your current accumulated balance"
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "label": "Cash Value",
+        "value": "\u00a356.00",
+        "unit": "GBP",
+        "tone": "white",
+        "infoText": "Equivalent monetary worth"
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "label": "Avg Redemption Time",
+        "value": "72",
+        "unit": "hours",
+        "tone": "white",
+        "infoText": "Your historical comparison window"
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "milestones": [
+          {
+            "label": "Reached Gold Tier Status",
+            "achieved": true
+          },
+          {
+            "label": "Accumulated over 5,000 points",
+            "achieved": true
+          },
+          {
+            "label": "Unlocked enhanced partner conversion rates",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": []
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

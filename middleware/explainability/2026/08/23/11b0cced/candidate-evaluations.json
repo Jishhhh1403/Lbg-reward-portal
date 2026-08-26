@@ -1,0 +1,530 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive rich screen (8 components) built for multi-goal customer Elena Vasquez (PLANNER_AT_RISK_MIX). Features POINTS_BALANCE, EXPIRING_POINTS_ALERT (transparent 9-day notice with no artificial urgency), individual goal cards for her three active goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, a FUTURE_VALUE_CARD showing projected long-term compounding, and an EDUCATIONAL_INSIGHT_CARD aligned with her historical preference for educational content.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses all three active long-term goals with dedicated cards plus add-goal functionality, perfectly matching the multi-goal mandate."
+        },
+        "expectedCustomerUtility": {
+          "score": 10,
+          "explanation": "Provides high utility by connecting expiring points to long-term savings goals and offering educational projected-value insights that resonate with her profile."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Aligns completely with the FUTURE_SECURITY motivation by emphasizing long-term asset accumulation over quick transactional rewards."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Structured cleanly with logical hierarchy and clear contrast, highly suitable for a planner seeking calm, transparent financial data."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Rests on robust historical data showing strong response to projected-value and educational content."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Follows LBG design guidelines for Diamond tier rewards overview with professional, reassuring tone."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Combines expiring points management directly with future value projections, offering a refreshing perspective on idle balances."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Uses standard LBG component library items available in the mobile channel layout."
+        }
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined screen focusing purely on points redemption and quick-win vouchers to drive immediate activity, featuring POINTS_BALANCE, EXPIRING_POINTS_ALERT, QUICK_WIN_VOUCHER, and POINTS_HISTORY (4 components total).",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 4,
+          "explanation": "Fails to address her active long-term goals (Retirement, Education, Home) and ignores the multi-goal rule."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Low utility for a planner who historically rejects immediate low-value redemptions (immediate redemption rate 5%)."
+        },
+        "rewardProfileAlignment": {
+          "score": 3,
+          "explanation": "Contradicts the FUTURE_SECURITY motivation by pushing short-term transactional vouchers."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple layout, but functionally mismatched for her cognitive needs."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Acknowledges expiring points data but ignores behavioral evidence regarding long-term accumulation."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent UI components, but poor contextual relevance."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "Standard generic redemption screen offering no novel value."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 5.45,
+      "hardGatesPass": false,
+      "objections": [
+        "Fails the multi-goal card requirement (customer has 3 active goals but strategy omits goal cards).",
+        "Violates reward profile alignment by pushing quick-win vouchers instead of supporting future security and long-term accumulation."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "PLANNER_AT_RISK_MIX composition for Elena Vasquez: leads with a transparent EXPIRING_POINTS_ALERT (2,400 points in 9 days) and FUTURE_VALUE_CARD projection, followed by three LONG_TERM_GOAL_CARD entries for her Retirement Fund, Children Education Fund, and Dream Home Deposit, an ADD_GOAL_CARD, an EDUCATIONAL_INSIGHT_CARD, and a PROJECTION_CHART, all designed to reassure her long-term savings trajectory without pressure tactics.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiry Notice",
+            "expiringPoints": 2400,
+            "daysLeft": 9,
+            "message": "You have 2,400 LBG Coins expiring in 9 days. Allocate them toward your long-term goals to preserve their compounding value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ALLOCATE_EXPIRING_POINTS",
+              "payload": {
+                "points": 2400
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Portfolio Growth Projection",
+            "currentValue": 24500,
+            "projectedValue": 45000,
+            "timeframe": "5 Years",
+            "growthRate": "7.5% APY equivalent",
+            "message": "Continuing your disciplined accumulation strategy secures long-term growth across your savings milestones.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2038",
+            "message": "Your foundation is set. Regular contributions accelerate your path to retirement freedom.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2031",
+            "message": "Strong progress made toward securing educational milestones for your children.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2034",
+            "message": "Building your future property deposit steadily through disciplined reward allocation.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Define a new long-horizon savings target for your portfolio",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "The Power of Compounding Rewards",
+            "insight": "Maintaining consistent contributions during market shifts historically multiplies long-term portfolio returns by up to 1.8x over a decade.",
+            "source": "LBG Wealth Advisory Research",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATIONAL_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Long-Term Wealth Trajectory",
+            "growthLabel": "Projected Growth (Compound Tier Rewards)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 24500
+              },
+              {
+                "year": "2028",
+                "value": 33000
+              },
+              {
+                "year": "2030",
+                "value": 45000
+              },
+              {
+                "year": "2032",
+                "value": 62000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_PROJECTIONS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.94,
+      "reasonCodes": [
+        "PLANNER_AT_RISK_MIX",
+        "FUTURE_SECURITY_MOTIVATION",
+        "MULTI_GOAL_RULE_COMPLIANT"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Long-Term Planner focused composition emphasizing structured financial projections and educational value to re-engage Elena's savings journey.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-future-value-2",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Decade Growth Outlook",
+            "currentValue": 24500,
+            "projectedValue": 55000,
+            "timeframe": "10 Years",
+            "growthRate": "8.0% Compound Rate",
+            "message": "Your Diamond tier status unlocks enhanced compounding across all linked savings allocations.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FUTURE_VALUE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2038",
+            "message": "Retirement Fund growth is foundational to your long-term security plan.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-education-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2031",
+            "message": "On track for educational fee milestones.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home-2",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2034",
+            "message": "Property deposit accumulation steady.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set an additional milestone for your wealth plan",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight-2",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Strategic Asset Allocation",
+            "insight": "Diversifying reward contributions across multiple horizon goals minimizes volatility and protects long-term purchasing power.",
+            "source": "LBG Wealth Insights",
+            "actionLabel": "Explore Strategies",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_EDUCATIONAL_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection-chart-2",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Multi-Year Wealth Projections",
+            "growthLabel": "Portfolio Value (\u00a3)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 52000
+              },
+              {
+                "year": "2028",
+                "value": 70000
+              },
+              {
+                "year": "2030",
+                "value": 95000
+              },
+              {
+                "year": "2032",
+                "value": 125000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.89,
+      "reasonCodes": [
+        "LONG_TERM_PLANNER_STRATEGY",
+        "FUTURE_SECURITY_MOTIVATION"
+      ]
+    }
+  ]
+}

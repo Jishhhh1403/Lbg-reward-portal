@@ -1,0 +1,71 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent challenge completion",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "daily leaderboard monitoring",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Marcus Johnson is a highly engaged mobile rewards user characterized by frequent challenge completion, daily leaderboard checks, and the program's longest active streak.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Completes challenges regularly",
+        "source": "behavioral analysis",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "Checks leaderboard daily",
+        "source": "behavioral analysis",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f3",
+        "statement": "Holds the longest active streak in program",
+        "source": "behavioral analysis",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f4",
+        "statement": "Has 8750 LBG coins available",
+        "source": "wallet sync",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "engagementStyle",
+        "value": "GAMIFIED_COMMUNITY",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "f3"
+        ],
+        "inferenceMethod": "pattern-matching",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "frequent challenge completion and badge accumulation",
+        "source": "behavior",
+        "confidence": 0.87,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "maintains 4 active goals across time horizons",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Priya Sharma maintains a mixed engagement profile, balancing gamified short-term community challenges and streaks with long-term financial accumulation across four active savings goals (Bali Trip, New Laptop, Retirement Fund, Home Deposit).",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Maintains 4 active savings goals across different time horizons.",
+        "source": "session_context_journey_analysis",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Active streak of 21 days with 26 monthly active days.",
+        "source": "session_context_journey_analysis",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Holds 15,400 LBG coins with 3 connected brands.",
+        "source": "session_context_wallet",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Completed 9 challenges and earned 11 badges.",
+        "source": "intelligence_layer_customer_profile",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "engagementStyle",
+        "value": "MIXED_COMMUNITY_AND_SAVINGS",
+        "confidence": 0.87,
+        "evidenceRefs": [
+          "balances instant fun with long-term saving",
+          "maintains multiple active goals across time horizons"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

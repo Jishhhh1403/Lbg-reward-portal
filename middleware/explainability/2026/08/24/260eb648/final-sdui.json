@@ -1,0 +1,441 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "260eb648",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-10-25T23:59:59Z",
+  "customerRef": "customer_005",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 8750,
+        "tier": "Gold",
+        "name": "Marcus Johnson",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_BALANCE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-streak-card",
+      "type": "STREAK_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "streakDays": 34,
+        "message": "Amazing consistency, Marcus! You are maintaining the longest active streak in the programme.",
+        "nextReward": "Gold Tier Streak Bonus (500 coins at 40 days)",
+        "milestones": [
+          {
+            "days": 10,
+            "reward": "100 coins",
+            "achieved": true
+          },
+          {
+            "days": 20,
+            "reward": "250 coins",
+            "achieved": true
+          },
+          {
+            "days": 30,
+            "reward": "400 coins",
+            "achieved": true
+          },
+          {
+            "days": 40,
+            "reward": "500 coins",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_STREAK_HISTORY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-challenge-card",
+      "type": "CHALLENGE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Community Champion Sprint",
+        "description": "Engage with 3 community events and check the leaderboard daily to complete this week's sprint.",
+        "progress": 75,
+        "reward": "1,000 bonus LBG coins",
+        "daysLeft": 3,
+        "participants": 1240,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CHALLENGE_DETAILS",
+          "payload": {
+            "challengeId": "community-champion-sprint"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-leaderboard",
+      "type": "LEADERBOARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "entries": [
+          {
+            "rank": 1,
+            "name": "Sarah T.",
+            "points": 10400,
+            "avatar": "ST",
+            "isCurrentUser": false
+          },
+          {
+            "rank": 2,
+            "name": "David K.",
+            "points": 9120,
+            "avatar": "DK",
+            "isCurrentUser": false
+          },
+          {
+            "rank": 3,
+            "name": "Marcus Johnson",
+            "points": 8750,
+            "avatar": "MJ",
+            "isCurrentUser": true
+          },
+          {
+            "rank": 4,
+            "name": "Elena R.",
+            "points": 8400,
+            "avatar": "ER",
+            "isCurrentUser": false
+          }
+        ],
+        "period": "weekly",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_FULL_LEADERBOARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-badge-card",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Achievement Badges",
+        "badges": [
+          {
+            "name": "Streak Master",
+            "icon": "flame",
+            "earned": true
+          },
+          {
+            "name": "Leaderboard Legend",
+            "icon": "crown",
+            "earned": true
+          },
+          {
+            "name": "Challenge Champion",
+            "icon": "trophy",
+            "earned": true
+          },
+          {
+            "name": "Quiz Whiz",
+            "icon": "brain",
+            "earned": true
+          }
+        ],
+        "totalEarned": 15,
+        "totalAvailable": 20,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_BADGES",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-milestone-card",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "milestones": [
+          {
+            "label": "Complete 10 challenges (Achieved: 12 completed)",
+            "achieved": true
+          },
+          {
+            "label": "Maintain 30-day active streak",
+            "achieved": true
+          },
+          {
+            "label": "Reach top 5 on weekly leaderboard (Currently Rank #3)",
+            "achieved": true
+          },
+          {
+            "label": "Earn 20 total badges (15/20 earned)",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "label": "Challenges Done",
+        "value": "12",
+        "unit": "completed",
+        "tone": "brand",
+        "infoText": "Total challenges successfully completed this season",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "label": "Badges Earned",
+        "value": "15",
+        "unit": "badges",
+        "tone": "white",
+        "infoText": "Total badges collected across all categories",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "label": "Leaderboard Rank",
+        "value": "#3",
+        "unit": "Gold tier",
+        "tone": "white",
+        "infoText": "Your current standing on the weekly community leaderboard",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-quiz-card",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "question": "What is the key advantage of maintaining your daily streak in the LBG rewards programme?",
+        "options": [
+          "Unlocks higher tier multipliers and bonus coin rewards",
+          "Nothing changes",
+          "Only resets your profile"
+        ],
+        "reward": "150 bonus coins",
+        "timeLimit": 60,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ_ANSWER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-community-challenge",
+      "type": "COMMUNITY_CHALLENGE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Global Community 100k Challenge",
+        "communityTotal": 84500,
+        "target": 100000,
+        "myContribution": 4200,
+        "endsOn": "15 Sep 2026",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CONTRIBUTE_TO_COMMUNITY",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-recommended-actions",
+      "type": "RECOMMENDED_ACTIONS",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Ways to Boost Your Rank",
+        "actions": [
+          {
+            "label": "Share your 34-day streak with community friends",
+            "points": 100,
+            "icon": "users"
+          },
+          {
+            "label": "Complete today's daily challenge sprint",
+            "points": 250,
+            "icon": "target"
+          },
+          {
+            "label": "Explore new partner brand offers to earn bonus coins",
+            "points": 300,
+            "icon": "shopping-bag"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXECUTE_RECOMMENDED_ACTION",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Gold Tier Exclusive Rewards",
+        "rewards": [
+          {
+            "name": "VIP Challenge Pass",
+            "points": 2000,
+            "category": "Experience",
+            "limited": true
+          },
+          {
+            "name": "Gold Tier Badge Upgrade",
+            "points": 1500,
+            "category": "Status",
+            "limited": false
+          },
+          {
+            "name": "Community Event Ticket",
+            "points": 3000,
+            "category": "Event",
+            "limited": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_REWARD",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-referral-card",
+      "type": "REFERRAL_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "referralCode": "MARCUS-34STREAK",
+        "friendBonus": 500,
+        "myBonus": 500,
+        "invitesAccepted": 4,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SHARE_REFERRAL_CODE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-points-health-score",
+      "type": "POINTS_HEALTH_SCORE",
+      "version": "1.0",
+      "priority": 15,
+      "props": {
+        "score": 96,
+        "delta": 4,
+        "tip": "Fantastic engagement! Keep up your daily check-ins to maintain your top 3 leaderboard position.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_HEALTH_DETAILS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

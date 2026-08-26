@@ -1,0 +1,187 @@
+{
+  "primaryActionComponentRef": "learning-mission-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 3,
+      "dependsOn": [
+        "tangible-value-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 4,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "learning-mission-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 5,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "quiz-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 6,
+      "dependsOn": [
+        "learning-mission-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comprehension-feedback-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 7,
+      "dependsOn": [
+        "quiz-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "confidence-progress-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 8,
+      "dependsOn": [
+        "comprehension-feedback-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 9,
+      "dependsOn": [
+        "confidence-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "tangible-value-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect total points balance to tangible cash equivalent value in plain terms.",
+      "bridgeCopy": "See exactly how your points translate into real-world purchasing power."
+    },
+    {
+      "fromComponentRef": "tangible-value-1",
+      "toComponentRef": "how-points-work-1",
+      "relationship": "concept-to-mechanics",
+      "bridgeIntent": "Explain the clear earn-and-convert mechanics behind the points balance.",
+      "bridgeCopy": "Understand how earning through learning builds your savings pot."
+    },
+    {
+      "fromComponentRef": "how-points-work-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "mechanics-to-goal",
+      "bridgeIntent": "Bridge general mechanics directly to the active First Home Savings Knowledge goal.",
+      "bridgeCopy": "Track your ongoing progress toward your primary savings target."
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "learning-mission-1",
+      "relationship": "goal-to-action",
+      "bridgeIntent": "Translate goal progress into actionable unhurried educational missions.",
+      "bridgeCopy": "Continue your learning modules at your own pace to advance your savings knowledge."
+    },
+    {
+      "fromComponentRef": "learning-mission-1",
+      "toComponentRef": "quiz-card-1",
+      "relationship": "mission-to-practice",
+      "bridgeIntent": "Provide an interactive quiz to test and reinforce module concepts.",
+      "bridgeCopy": "Test your understanding with an unhurried knowledge checkpoint."
+    },
+    {
+      "fromComponentRef": "quiz-card-1",
+      "toComponentRef": "comprehension-feedback-1",
+      "relationship": "quiz-to-feedback",
+      "bridgeIntent": "Deliver constructive feedback on quiz comprehension without timing or pressure.",
+      "bridgeCopy": "Review your answers and deepen conceptual mastery."
+    },
+    {
+      "fromComponentRef": "comprehension-feedback-1",
+      "toComponentRef": "confidence-progress-1",
+      "relationship": "feedback-to-confidence",
+      "bridgeIntent": "Show growth in overall financial confidence based on completed modules.",
+      "bridgeCopy": "Monitor your advancing financial literacy confidence score."
+    },
+    {
+      "fromComponentRef": "confidence-progress-1",
+      "toComponentRef": "educational-insight-1",
+      "relationship": "confidence-to-insight",
+      "bridgeIntent": "Provide expert educational context supporting steady learning habits.",
+      "bridgeCopy": "Explore expert insights on the value of consistent financial education."
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "leaderboard-1",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed per card rule engine directives and customer persona avoiding public rankings.",
+      "reasonCode": "SUPPRESSED_BY_RULE",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "countdown-1",
+      "componentType": "COUNTDOWN_CARD",
+      "reason": "Suppressed per hard suppressions active (no artificial urgency or timed pressure).",
+      "reasonCode": "SUPPRESSED_BY_RULE",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "community-challenge-1",
+      "componentType": "COMMUNITY_CHALLENGE_CARD",
+      "reason": "Banned component type per card rule engine directives.",
+      "reasonCode": "BANNED_COMPONENT",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

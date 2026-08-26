@@ -1,0 +1,73 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "completes financial modules to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) exhibits a strong preference for educational competence, financial literacy mastery, and structured savings goal tracking, completely avoiding timed challenges and public rankings.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f3",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f4",
+        "statement": "Holds 3,900 LBG Coins with 3 connected brands",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "engagementStyle",
+        "value": "EDUCATIONAL_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "f3"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

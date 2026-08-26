@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Review progress on the First Home Savings Knowledge goal and access mastery-focused educational modules.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer views goal progress and initiates or reviews an educational milestone component.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings knowledge?",
+      "entryCondition": "User opens the rewards overview screen",
+      "requiredInformation": [
+        "lbgCoins",
+        "goalName",
+        "progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-3900",
+        "fact-goal-home"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real world value and how do points work?",
+      "entryCondition": "User reviews current balance and savings trajectory",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent",
+        "howPointsWork"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-module-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What learning path and mastery steps can I take next?",
+      "entryCondition": "User explores educational pathways and quizzes",
+      "requiredInformation": [
+        "courseName",
+        "quizQuestion",
+        "confidencePercent"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motivation",
+        "fact-retake-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational resources and badge information without timed pressure",
+      "contentNotes": [
+        "Badge overview",
+        "Learning history"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

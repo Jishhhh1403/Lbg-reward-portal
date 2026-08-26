@@ -1,0 +1,436 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "A rich, 7-component re-engagement rewards overview screen tailored for Jessica Martinez (CHURN_RISK persona), featuring clear factual expiry details (1,850 lbgCoins in 12 days), a welcoming re-engagement banner, a frictionless 1-click quick-win card, a personalized offer card, a wallet summary, activity history, and a help/support card.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses the customer's real objective to reclaim expiring reward value and rediscover immediate effortless value."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides 7 rich components offering immediate utility, clear expiry facts, and a frictionless quick win without clutter."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Precisely aligns with the RE_ENGAGEMENT motivation and churn-risk profile."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High contrast, screen-reader friendly, clear hierarchy, low cognitive load suited for a re-engaging user."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on solid, verified facts (1,850 coins, 12 days expiry, 45 days inactivity)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully adheres to design system guidelines and mobile UI standards."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Introduces a streamlined quick-win redemption path that simplifies past friction."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 7 components are standard, approved system modules with existing schema support."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A minimal 4-component rewards screen focusing strictly on points balance and an expiring points countdown timer.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 5,
+          "explanation": "Provides factual data but lacks the richness needed for comprehensive re-engagement."
+        },
+        "expectedCustomerUtility": {
+          "score": 5,
+          "explanation": "Fewer than 5 components; fails to provide enough pathways or a quick-win card for effortless value."
+        },
+        "rewardProfileAlignment": {
+          "score": 6,
+          "explanation": "Touches on expiry but misses the broader re-engagement strategy."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Simple layout, but underutilizes screen real estate for value delivery."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Uses verified facts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Consistent with UI rules."
+        },
+        "usefulNovelty": {
+          "score": 4,
+          "explanation": "Too basic, offers nothing novel."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully feasible."
+        }
+      },
+      "weightedTotal": 6.1,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Strategy proposes fewer than 5 components (only 4), which scores low on expectedCustomerUtility and customerGoalRelevance per QUEST-UI rules."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component re-engagement rewards overview screen tailored for Jessica Martinez (CHURN_RISK persona), adhering strictly to the INSTANT_AT_RISK_MIX and CHURN_RISK guides. Leads with anchored points balance, a genuine expiring points alert (1,850 lbgCoins in 12 days), a warm re-engagement banner, a frictionless quick-win redemption card, a personalized offer card, a countdown card, and metric tiles.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "You have 1,850 lbgCoins that will expire in 12 days. Redeem them now to keep your hard-earned value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_POINTS",
+              "payload": {
+                "points": 1850
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Points Expiry Countdown",
+            "days": 12,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Time remaining before your 1,850 lbgCoins expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRY_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement-banner",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Welcome Back, Jessica!",
+            "message": "We've missed you! Explore your account and reclaim your rewards without any hassle.",
+            "ctaText": "Explore My Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Redeem instantly with just one tap.",
+            "rewards": [
+              {
+                "name": "Retail Discount Voucher",
+                "points": 300
+              },
+              {
+                "name": "Coffee & Snack Treat",
+                "points": 250
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Retail Discount Voucher"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Tailored For You",
+            "subtitle": "Exclusive Silver Tier Perk",
+            "offer": "Double coins on your next linked brand transaction",
+            "validUntil": "12 Days",
+            "message": "Re-activate your account benefits today with zero friction.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "brands",
+            "tone": "brand",
+            "infoText": "Active partner brands linked to your account.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BRANDS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "CHURN_RISK_MATCH",
+        "INSTANT_AT_RISK_MIX",
+        "VERIFIED_EXPIRY_FACTS"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "A streamlined 6-component re-engagement variant blending churn-risk urgency with quick redemption pathways, utilizing quick redeem cards and brand explorer to help Jessica rediscover immediate value.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert-2",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Points Expiry Alert",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "1,850 lbgCoins are set to expire in 12 days. Claim a reward now to secure your value.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_POINTS",
+              "payload": {
+                "points": 1850
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-2",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Instant Redeemable Rewards",
+            "description": "Redeem your balance instantly with low-point options.",
+            "rewards": [
+              {
+                "name": "Artisanal Coffee",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Dining Voucher",
+                "points": 500,
+                "icon": "utensils"
+              },
+              {
+                "name": "Cinema Ticket",
+                "points": 400,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_REWARDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-2",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Quick Win",
+            "subtitle": "Effortless 1-tap claim",
+            "rewards": [
+              {
+                "name": "Instant Retail Voucher",
+                "points": 300
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer-2",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Welcome Back Offer",
+            "subtitle": "Special reactivation bonus",
+            "offer": "500 bonus points on your first redemption",
+            "validUntil": "12 Days",
+            "message": "We are glad to have you back, Jessica.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer-2",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Explore Connected Brands",
+            "actionLabel": "View All Brands",
+            "categories": [
+              {
+                "label": "Retail",
+                "count": 2,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Dining",
+                "count": 1,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "CHURN_RISK_ALT",
+        "INSTANT_REWARDS_FOCUS"
+      ]
+    }
+  ]
+}

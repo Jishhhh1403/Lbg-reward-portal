@@ -1,0 +1,451 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-dbg006",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Comprehensive Long-Term Planner composition for David Park featuring all three active financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, Future Value Projection with Chart, and an Educational Insight Card.",
+      "components": [
+        {
+          "id": "points-balance-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2034",
+            "message": "Steady accumulation keeps you on track for your long-term retirement security.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-education",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2029",
+            "message": "Strong progress! You are nearly halfway to securing your children's educational future.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "estimatedCompletion": "2032",
+            "message": "Consistent monthly point contributions compound toward your future dream home.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "add-goal-card-001",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new milestone for your long-term wealth strategy",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_ADD_GOAL_MODAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "future-value-card-001",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Projected Portfolio Growth",
+            "currentValue": 28400,
+            "projectedValue": 65000,
+            "timeframe": "5 Years",
+            "growthRate": "7.5% APY equivalent",
+            "message": "By maintaining your current accumulation discipline, your point value compounds significantly over time.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "projection-chart-001",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Multi-Year Rewards Trajectory",
+            "growthLabel": "Estimated Portfolio Value (Points)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2027",
+                "value": 35000
+              },
+              {
+                "year": "2028",
+                "value": 43500
+              },
+              {
+                "year": "2029",
+                "value": 52000
+              },
+              {
+                "year": "2030",
+                "value": 65000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPAND_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "educational-insight-001",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "The Power of Compounding Rewards",
+            "insight": "Holding high-tier Diamond status while deferring immediate redemptions allows bonus multipliers to compound your lifetime rewards value by up to 34% over a 5-year horizon.",
+            "source": "Diamond Member Financial Strategy Guide",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_ARTICLE",
+              "payload": {
+                "articleId": "compounding-rewards-masterclass"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.98,
+      "reasonCodes": [
+        "PERSONA_MATCH_LONG_TERM_PLANNER",
+        "MULTI_GOAL_COMPLIANCE",
+        "FUTURE_SECURITY_MOTIVATION"
+      ]
+    },
+    "strategy": "Comprehensive Long-Term Planner composition for David Park featuring all three active financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, Future Value Projection with Chart, and an Educational Insight Card.",
+    "confidence": 0.98
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Comprehensive Long-Term Planner composition for David Park featuring all three active financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, Future Value Projection with Chart, and an Educational Insight Card.",
+    "components": [
+      {
+        "id": "points-balance-001",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 28400,
+          "tier": "Diamond",
+          "name": "David Park",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_POINTS_HISTORY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "goal-progress-retirement",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 28400,
+          "target": 100000,
+          "percentage": 28,
+          "estimatedCompletion": "2034",
+          "message": "Steady accumulation keeps you on track for your long-term retirement security.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Retirement Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "goal-progress-education",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 20500,
+          "target": 50000,
+          "percentage": 41,
+          "estimatedCompletion": "2029",
+          "message": "Strong progress! You are nearly halfway to securing your children's educational future.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Children Education Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "goal-progress-home",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 11250,
+          "target": 75000,
+          "percentage": 15,
+          "estimatedCompletion": "2032",
+          "message": "Consistent monthly point contributions compound toward your future dream home.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Dream Home Deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-goal-card-001",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new milestone for your long-term wealth strategy",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_ADD_GOAL_MODAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "future-value-card-001",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Projected Portfolio Growth",
+          "currentValue": 28400,
+          "projectedValue": 65000,
+          "timeframe": "5 Years",
+          "growthRate": "7.5% APY equivalent",
+          "message": "By maintaining your current accumulation discipline, your point value compounds significantly over time.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PROJECTION_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "projection-chart-001",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Multi-Year Rewards Trajectory",
+          "growthLabel": "Estimated Portfolio Value (Points)",
+          "data": [
+            {
+              "year": "2026",
+              "value": 28400
+            },
+            {
+              "year": "2027",
+              "value": 35000
+            },
+            {
+              "year": "2028",
+              "value": 43500
+            },
+            {
+              "year": "2029",
+              "value": 52000
+            },
+            {
+              "year": "2030",
+              "value": 65000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXPAND_CHART",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "educational-insight-001",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "The Power of Compounding Rewards",
+          "insight": "Holding high-tier Diamond status while deferring immediate redemptions allows bonus multipliers to compound your lifetime rewards value by up to 34% over a 5-year horizon.",
+          "source": "Diamond Member Financial Strategy Guide",
+          "actionLabel": "Read Full Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_EDUCATIONAL_ARTICLE",
+            "payload": {
+              "articleId": "compounding-rewards-masterclass"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "PERSONA_MATCH_LONG_TERM_PLANNER",
+      "MULTI_GOAL_COMPLIANCE",
+      "FUTURE_SECURITY_MOTIVATION"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "rarely redeems for small rewards",
+          "interested in investment-like rewards",
+          "reads educational content",
+          "values future projections"
+        ]
+      }
+    ],
+    "methodology": "Verified persona analysis and behavioral signals aggregation",
+    "temporaryInterpretation": true
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review rewards balance, check First Home Savings Knowledge goal progress at 63%, and engage with targeted educational insights and mastery components at own pace.",
+  "entryPoint": "App opened to Rewards Overview dashboard",
+  "completionDefinition": "Customer views goal progress card and successfully engages with educational quiz and learning mission components.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my rewards and my First Home Savings Knowledge goal?",
+      "entryCondition": "Customer views dashboard header and active savings goal progress",
+      "requiredInformation": [
+        "Points balance (3,900 LBG coins)",
+        "Goal progress (63%)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-4"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial mastery and track educational progress?",
+      "entryCondition": "Customer reviews goal status and scrolls to educational modules",
+      "requiredInformation": [
+        "Learning mission progress",
+        "Educational insights and tangible value explanation"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-1",
+        "fact-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Can I test my understanding and review key concepts through a quiz?",
+      "entryCondition": "Customer engages with learning mission or educational insight",
+      "requiredInformation": [
+        "Quiz question",
+        "Comprehension feedback",
+        "Confidence progress"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "ANSWER_QUIZ",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational tips and milestone tracking without competitive pressure.",
+      "contentNotes": [
+        "Daily financial wellbeing tips",
+        "Milestone checklists"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

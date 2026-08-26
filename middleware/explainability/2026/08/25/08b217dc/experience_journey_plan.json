@@ -1,0 +1,69 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-statement-credit",
+  "journeyObjective": "Provide effortless tracking of points balance and direct one-tap redemption of statement credits on the linked card.",
+  "entryPoint": "Daniel opens the rewards overview on mobile.",
+  "completionDefinition": "Daniel views his points balance, checks cash-equivalent tangible value, and selects statement credit application.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How many LBG coins do I have, and what is my holiday savings progress?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Holiday Spending Money goal at 53% ($640/$1,200)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-holiday-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I apply my coins directly to my bill or statement credit?",
+      "entryCondition": "Balance and goal reviewed",
+      "requiredInformation": [
+        "Statement credit value equivalent",
+        "Automatic payment allocation options"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-statement-credit-pref",
+        "fact-auto-payment"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide transparent terms on statement credit conversion rates.",
+      "contentNotes": [
+        "100 LBG coins = \u00a31.00 statement credit"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

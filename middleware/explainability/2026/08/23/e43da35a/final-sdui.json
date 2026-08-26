@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "e43da35a",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_002",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 6820,
+        "tier": "Platinum",
+        "name": "Sarah Chen",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_POINTS_BREAKDOWN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-japan",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Japan Vacation",
+        "current": 1680,
+        "target": 2500,
+        "percentage": 67,
+        "remaining": 820,
+        "motivationalMessage": "You're over two-thirds of the way to Tokyo! Keep up the stellar accumulation.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Japan Vacation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-phone",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "goalName": "New Phone",
+        "current": 890,
+        "target": 1200,
+        "percentage": 74,
+        "remaining": 310,
+        "motivationalMessage": "Almost there! Just 310 more coins to unlock your upgrade.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "New Phone"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-emergency",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Emergency Fund",
+        "current": 1350,
+        "target": 3000,
+        "percentage": 45,
+        "remaining": 1650,
+        "motivationalMessage": "Solid momentum on your safety net. Consistency pays off!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Emergency Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new savings target to keep your momentum going.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-milestone",
+      "type": "GOAL_MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Japan Vacation",
+        "milestones": [
+          {
+            "label": "25% - Flight Deposit Secured",
+            "reached": true
+          },
+          {
+            "label": "50% - Hotel Voucher Unlocked",
+            "reached": true
+          },
+          {
+            "label": "75% - Excursion Pass",
+            "reached": false
+          },
+          {
+            "label": "100% - Full Trip Funded",
+            "reached": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONE_DETAILS",
+          "payload": {
+            "goalName": "Japan Vacation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Rewards Accelerating Your Goals",
+        "goalName": "Japan Vacation",
+        "rewards": [
+          {
+            "name": "Flight Discount",
+            "points": 5000,
+            "goalLinked": true
+          },
+          {
+            "name": "Hotel Voucher",
+            "points": 3000,
+            "goalLinked": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_GOAL_REWARD",
+          "payload": {
+            "rewardName": "Flight Discount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-recommended-actions",
+      "type": "RECOMMENDED_ACTIONS",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Boost Your Savings",
+        "actions": [
+          {
+            "label": "Link partner brand for 500 bonus coins",
+            "points": 500,
+            "icon": "shopping-bag"
+          },
+          {
+            "label": "Refer a friend to your savings circle",
+            "points": 300,
+            "icon": "users"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXECUTE_ACTION",
+          "payload": {
+            "actionType": "LINK_BRAND"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

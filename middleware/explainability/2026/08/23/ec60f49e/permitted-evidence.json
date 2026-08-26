@@ -1,0 +1,80 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "strong long-term accumulation history now stalled",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "significant points expiring while saving toward long-horizon goals",
+        "source": "risk",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer 007 (Elena Vasquez) is a Diamond-tier disciplined saver classified as PLANNER_AT_RISK_MIX with FUTURE_SECURITY motivation. Engagement has recently declined (34 days since last activity), with 24,500 LBG coins sitting idle and 2,400 points expiring in 9 days. She has three active long-term goals (Retirement Fund, Children Education Fund, Dream Home Deposit) and historically responds well to projected-value and educational content.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins-balance",
+        "statement": "Customer holds 24,500 LBG coins.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-expiring-points",
+        "statement": "2,400 points are expiring in 9 days.",
+        "source": "Intelligence Layer risk",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer tier is Diamond.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goals-count",
+        "statement": "Customer has 3 active savings goals.",
+        "source": "Intelligence Layer goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "Persona classification is PLANNER_AT_RISK_MIX with FUTURE_SECURITY motivation."
+        ],
+        "inferenceMethod": "Intelligence Layer analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-preferred-content",
+        "attribute": "preferred_content_style",
+        "value": "projected-value and educational content",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "historically responded well to projected-value and educational content"
+        ],
+        "inferenceMethod": "Behavioral history analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

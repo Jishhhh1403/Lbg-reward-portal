@@ -1,0 +1,99 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams is a Gold-tier customer with 3,900 LBG Coins, highly engaged in financial literacy and long-term educational content. She exhibits strong competence and curiosity motives, focusing on mastery rather than competitive rankings or timed challenges.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Customer completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.99
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Customer retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.99
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Customer spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.99
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Customer has 3,900 LBG coins and 3 connected brands",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-05",
+        "statement": "First Home Savings Knowledge goal is at 63% progress (1250/2000)",
+        "source": "goal_tracker",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-02",
+        "attribute": "engagementStyle",
+        "value": "SELF_PACED_EDUCATIONAL",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-03"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

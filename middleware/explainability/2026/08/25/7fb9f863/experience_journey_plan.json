@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review financial literacy progress, examine First Home Savings milestone status, and engage with mastery-oriented learning modules at the customer's own pace.",
+  "entryPoint": "Rewards overview dashboard focusing on educational mastery and home savings progress.",
+  "completionDefinition": "Customer successfully inspects goal progress, reviews educational insights, and accesses a self-paced learning module without pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings goal?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-04"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial understanding and track my rewards value?",
+      "entryCondition": "Customer reviews snapshot and savings progress",
+      "requiredInformation": [
+        "educational insights",
+        "cash value translation"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-03"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What self-paced modules and milestones can I explore next?",
+      "entryCondition": "Customer absorbs educational insights",
+      "requiredInformation": [
+        "learning mission",
+        "quiz",
+        "comprehension feedback",
+        "confidence progress",
+        "goal linked reward"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide transparent program rules and how points work without timed pressure.",
+      "contentNotes": [
+        "Detailed breakdown of point accumulation",
+        "Cash value equivalents"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

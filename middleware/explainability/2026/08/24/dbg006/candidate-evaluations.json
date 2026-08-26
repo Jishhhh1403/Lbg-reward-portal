@@ -1,0 +1,306 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component screen tailored for David Park (Long-Term Planner) featuring POINTS_BALANCE, three dedicated GOAL_PROGRESS_CARDs for Retirement Fund, Children's Education Fund, and Dream Home Deposit, an ADD_GOAL_CARD, a FUTURE_VALUE_CARD with PROJECTION_CHART, and an EDUCATIONAL_INSIGHT_CARD focusing on long-term wealth accumulation.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses all three active multi-goal objectives plus an add goal card."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides rich future value projections and educational insights matching future security motivation."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Perfect alignment with long-term accumulation and investment-like rewards."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean data presentation with clear chart labeling and high contrast."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on high-confidence behavioral signals and explicit goals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Strict adherence to UI Constitution and brand styling rules."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Offers helpful projection simulations without intrusive prompts."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported within current latency and component budgets."
+        }
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined 5-component screen focusing only on points summary, single primary retirement goal card, projection chart, and educational tips.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Omits two of the customer's active major goals (Education and Home)."
+        },
+        "expectedCustomerUtility": {
+          "score": 7,
+          "explanation": "Useful but incomplete representation of the customer's full multi-goal portfolio."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with future security but lacks comprehensive goal tracking."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clean and easy to navigate."
+        },
+        "evidenceConfidence": {
+          "score": 8,
+          "explanation": "Reflects overall motivation but ignores secondary goals."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Fully compliant."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with no added value."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Very easy to render."
+        }
+      },
+      "weightedTotal": 7.35,
+      "hardGatesPass": true,
+      "objections": [
+        "Fails to render all active goals for a multi-goal customer (Rule: Multi-goal customers must see one card per goal plus an ADD_GOAL_CARD)."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Comprehensive Long-Term Planner composition for David Park featuring all three active financial goals (Retirement Fund, Children Education Fund, Dream Home Deposit), an ADD_GOAL_CARD, Future Value Projection with Chart, and an Educational Insight Card.",
+      "components": [
+        {
+          "id": "points-balance-001",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 28400,
+            "tier": "Diamond",
+            "name": "David Park",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_POINTS_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 28400,
+            "target": 100000,
+            "percentage": 28,
+            "estimatedCompletion": "2034",
+            "message": "Steady accumulation keeps you on track for your long-term retirement security.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-education",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 20500,
+            "target": 50000,
+            "percentage": 41,
+            "estimatedCompletion": "2029",
+            "message": "Strong progress! You are nearly halfway to securing your children's educational future.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-progress-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 11250,
+            "target": 75000,
+            "percentage": 15,
+            "estimatedCompletion": "2032",
+            "message": "Consistent monthly point contributions compound toward your future dream home.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "add-goal-card-001",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new milestone for your long-term wealth strategy",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_ADD_GOAL_MODAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "future-value-card-001",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Projected Portfolio Growth",
+            "currentValue": 28400,
+            "projectedValue": 65000,
+            "timeframe": "5 Years",
+            "growthRate": "7.5% APY equivalent",
+            "message": "By maintaining your current accumulation discipline, your point value compounds significantly over time.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "projection-chart-001",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Multi-Year Rewards Trajectory",
+            "growthLabel": "Estimated Portfolio Value (Points)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 28400
+              },
+              {
+                "year": "2027",
+                "value": 35000
+              },
+              {
+                "year": "2028",
+                "value": 43500
+              },
+              {
+                "year": "2029",
+                "value": 52000
+              },
+              {
+                "year": "2030",
+                "value": 65000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPAND_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "educational-insight-001",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "The Power of Compounding Rewards",
+            "insight": "Holding high-tier Diamond status while deferring immediate redemptions allows bonus multipliers to compound your lifetime rewards value by up to 34% over a 5-year horizon.",
+            "source": "Diamond Member Financial Strategy Guide",
+            "actionLabel": "Read Full Guide",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_ARTICLE",
+              "payload": {
+                "articleId": "compounding-rewards-masterclass"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.98,
+      "reasonCodes": [
+        "PERSONA_MATCH_LONG_TERM_PLANNER",
+        "MULTI_GOAL_COMPLIANCE",
+        "FUTURE_SECURITY_MOTIVATION"
+      ]
+    }
+  ]
+}

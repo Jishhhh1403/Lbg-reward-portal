@@ -1,0 +1,88 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "always previews a reward before committing points",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "gravitates to offers labelled guaranteed or fixed value",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Amelia Carter (Gold tier, 6,450 LBG coins) demonstrates a distinct preference for guaranteed value and upfront preview transparency before committing points. She consistently reviews full terms, avoids hidden conversion rates, and requires clear, tangible value cards without friction.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer has 6,450 LBG coins and Gold tier status.",
+        "source": "wallet and customer profile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Always previews a reward before committing points.",
+        "source": "behavioral intelligence signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Abandons flows that hide final value until after selection.",
+        "source": "behavioral intelligence signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Gravitates to offers labeled guaranteed or fixed value.",
+        "source": "behavioral intelligence signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-005",
+        "statement": "Reads full terms before redeeming anything and dislikes surprise deductions.",
+        "source": "behavioral intelligence signals",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "preferredInteractionStyle",
+        "value": "TRANSPARENT_PREVIEW",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "probPreferRewardPreview: 0.91"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "valueSensitivity",
+        "value": "GUARANTEED_CERTAINTY",
+        "confidence": 0.84,
+        "evidenceRefs": [
+          "probPreferGuaranteedValue: 0.84"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

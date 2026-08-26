@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "immediate redemption preference",
+        "source": "intelligence_layer",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "expiring points urgency",
+        "source": "session_context",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Ryan Okafor is a Gold tier customer with 3,600 LBG coins and 1,500 points expiring within 7 days. He has experienced 41 days of inactivity after a historical period of daily visits, but historically demonstrates rapid, immediate redemption behaviors for small instant rewards.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "1,500 points are expiring within 7 days.",
+        "source": "session_context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Customer has been inactive for 41 days after historical high engagement.",
+        "source": "session_context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Wallet contains 3,600 LBG coins and 3 connected brands.",
+        "source": "session_context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Customer historically redeemed points within hours of earning and responds strongly to instant vouchers.",
+        "source": "intelligence_layer",
+        "confidence": 0.92
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-001",
+        "attribute": "urgencySensitivity",
+        "value": "HIGH",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-004"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-002",
+        "attribute": "preferredRewardFormat",
+        "value": "INSTANT_VOUCHER",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-004"
+        ],
+        "inferenceMethod": "historical_redemption_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

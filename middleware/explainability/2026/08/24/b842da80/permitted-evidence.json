@@ -1,0 +1,100 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams is an engaged, learning-oriented customer with 3,900 LBG Coins, a Gold tier status, and a clear focus on financial literacy. She demonstrates strong intrinsic motivation around competence and educational mastery, actively completing literacy modules to 100%, retaking quizzes until fully understood, and tracking progress toward her First Home Savings Knowledge goal (currently at 63%). She explicitly avoids timed challenges and public leaderboards.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f3",
+        "statement": "Spends longest session time on educational content with an average session duration of 16 minutes",
+        "source": "behavior",
+        "confidence": 0.9
+      },
+      {
+        "factId": "f4",
+        "statement": "Active goal in First Home Savings Knowledge with 63% progress (1,250 / 2,000)",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f5",
+        "statement": "Holds 3,900 LBG Coins and Gold tier status",
+        "source": "wallet",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "ip1",
+        "attribute": "learningStyle",
+        "value": "SELF_PACED_MASTERY",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "f3"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2027-02-24T00:00:00Z"
+      },
+      {
+        "propertyId": "ip2",
+        "attribute": "competitivePressureSensitivity",
+        "value": "AVVERSE",
+        "confidence": 0.95,
+        "evidenceRefs": [
+          "f1",
+          "f2",
+          "avoids timed challenges and public rankings"
+        ],
+        "inferenceMethod": "stated_preference_and_behavior",
+        "expiresAt": "2027-02-24T00:00:00Z"
+      }
+    ]
+  }
+}

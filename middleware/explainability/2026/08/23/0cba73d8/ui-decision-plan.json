@@ -1,0 +1,367 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-0cba73d8",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component re-engagement rewards overview screen tailored for Jessica Martinez (CHURN_RISK persona), adhering strictly to the INSTANT_AT_RISK_MIX and CHURN_RISK guides. Leads with anchored points balance, a genuine expiring points alert (1,850 lbgCoins in 12 days), a warm re-engagement banner, a frictionless quick-win redemption card, a personalized offer card, a countdown card, and metric tiles.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 1850,
+            "tier": "Silver",
+            "name": "Jessica Martinez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1850,
+            "daysLeft": 12,
+            "message": "You have 1,850 lbgCoins that will expire in 12 days. Redeem them now to keep your hard-earned value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_POINTS",
+              "payload": {
+                "points": 1850
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Points Expiry Countdown",
+            "days": 12,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Time remaining before your 1,850 lbgCoins expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRY_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement-banner",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Welcome Back, Jessica!",
+            "message": "We've missed you! Explore your account and reclaim your rewards without any hassle.",
+            "ctaText": "Explore My Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Redeem instantly with just one tap.",
+            "rewards": [
+              {
+                "name": "Retail Discount Voucher",
+                "points": 300
+              },
+              {
+                "name": "Coffee & Snack Treat",
+                "points": 250
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {
+                "rewardName": "Retail Discount Voucher"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Tailored For You",
+            "subtitle": "Exclusive Silver Tier Perk",
+            "offer": "Double coins on your next linked brand transaction",
+            "validUntil": "12 Days",
+            "message": "Re-activate your account benefits today with zero friction.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "brands",
+            "tone": "brand",
+            "infoText": "Active partner brands linked to your account.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BRANDS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.96,
+      "reasonCodes": [
+        "CHURN_RISK_MATCH",
+        "INSTANT_AT_RISK_MIX",
+        "VERIFIED_EXPIRY_FACTS"
+      ]
+    },
+    "strategy": "Rich 7-component re-engagement rewards overview screen tailored for Jessica Martinez (CHURN_RISK persona), adhering strictly to the INSTANT_AT_RISK_MIX and CHURN_RISK guides. Leads with anchored points balance, a genuine expiring points alert (1,850 lbgCoins in 12 days), a warm re-engagement banner, a frictionless quick-win redemption card, a personalized offer card, a countdown card, and metric tiles.",
+    "confidence": 0.96
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Rich 7-component re-engagement rewards overview screen tailored for Jessica Martinez (CHURN_RISK persona), adhering strictly to the INSTANT_AT_RISK_MIX and CHURN_RISK guides. Leads with anchored points balance, a genuine expiring points alert (1,850 lbgCoins in 12 days), a warm re-engagement banner, a frictionless quick-win redemption card, a personalized offer card, a countdown card, and metric tiles.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 1850,
+          "tier": "Silver",
+          "name": "Jessica Martinez",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Expiring Points Notice",
+          "expiringPoints": 1850,
+          "daysLeft": 12,
+          "message": "You have 1,850 lbgCoins that will expire in 12 days. Redeem them now to keep your hard-earned value.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_POINTS",
+            "payload": {
+              "points": 1850
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-countdown",
+        "type": "COUNTDOWN_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Points Expiry Countdown",
+          "days": 12,
+          "hours": 0,
+          "minutes": 0,
+          "message": "Time remaining before your 1,850 lbgCoins expire.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_EXPIRY_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reengagement-banner",
+        "type": "REENGAGEMENT_BANNER",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Welcome Back, Jessica!",
+          "message": "We've missed you! Explore your account and reclaim your rewards without any hassle.",
+          "ctaText": "Explore My Rewards",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "DISMISS_BANNER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Effortless Quick Wins",
+          "subtitle": "Redeem instantly with just one tap.",
+          "rewards": [
+            {
+              "name": "Retail Discount Voucher",
+              "points": 300
+            },
+            {
+              "name": "Coffee & Snack Treat",
+              "points": 250
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_QUICK_WIN",
+            "payload": {
+              "rewardName": "Retail Discount Voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-personalized-offer",
+        "type": "PERSONALIZED_OFFER_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Tailored For You",
+          "subtitle": "Exclusive Silver Tier Perk",
+          "offer": "Double coins on your next linked brand transaction",
+          "validUntil": "12 Days",
+          "message": "Re-activate your account benefits today with zero friction.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_OFFER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tiles",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "label": "Connected Brands",
+          "value": "3",
+          "unit": "brands",
+          "tone": "brand",
+          "infoText": "Active partner brands linked to your account.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BRANDS",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "CHURN_RISK_MATCH",
+      "INSTANT_AT_RISK_MIX",
+      "VERIFIED_EXPIRY_FACTS"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "RE_ENGAGEMENT",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "declining engagement over 60 days",
+          "unused expiring points",
+          "has not logged in for 45 days"
+        ]
+      }
+    ],
+    "methodology": "Rule-based intelligence persona mapping and behavioral recency analysis",
+    "temporaryInterpretation": true
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-010-01",
+        "classification": "OBSERVED",
+        "value": "frequent redemptions as statement credits",
+        "source": "behavior",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Daniel Brooks is payment-utility focused, prioritizing predictable monetary returns such as statement credits over experiential rewards. He actively tracks a holiday savings goal currently at 53% progress and frequently checks cashback accumulation.",
+    "observedFacts": [
+      {
+        "factId": "fact-010-01",
+        "statement": "Redeems almost exclusively as statement credits on linked card",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-010-02",
+        "statement": "Checks cashback earned alongside balance every visit",
+        "source": "behavior",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-010-03",
+        "statement": "Active holiday savings goal at 53 percent progress",
+        "source": "journeyAnalysis",
+        "confidence": 0.92
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-010-01",
+        "attribute": "preferredRewardType",
+        "value": "PAYMENT_LINKED",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-010-01",
+          "fact-010-02"
+        ],
+        "inferenceMethod": "behavioral_aggregation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

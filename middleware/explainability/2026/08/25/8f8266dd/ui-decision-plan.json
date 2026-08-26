@@ -1,0 +1,269 @@
+{
+  "planId": "plan-8f8266dd",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Highlight educational mastery modules, 63% First Home Savings Knowledge goal progress, and unhurried quiz completion without any public leaderboards or timed challenges.",
+    "components": [
+      {
+        "id": "comp-points",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You're making steady, thoughtful progress toward your first home knowledge milestone.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Homebuyer Mastery",
+          "missionName": "Mortgage & Deposit Essentials",
+          "description": "Master structured concepts around mortgage structuring and deposit compounding at your own pace.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "learning_mission"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which factor most reliably reduces long-term interest paid on a fixed-rate mortgage?",
+          "options": "Higher initial deposit size, Shorter loan term duration, Additional monthly overpayments",
+          "reward": "50 LBG Coins",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT",
+            "payload": {
+              "action": "answer_quiz"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Mastery Checkpoint",
+          "question": "How do compound savings rates apply to your deposit fund?",
+          "yourAnswer": "Interest is calculated on both initial principal and accumulated interest.",
+          "correctAnswer": "Interest is calculated on both initial principal and accumulated interest.",
+          "feedback": "Spot on! Complete understanding of compounding secures your long-term foundation.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Topic Confidence",
+          "topic": "Deposit Strategies",
+          "confidencePercent": 88,
+          "levelLabel": "High mastery confidence",
+          "nextMilestone": "Advanced Property Tax module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-edu-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Literacy Principle",
+          "insight": "Taking time to review module fundamentals guarantees lasting financial competence over quick speculation.",
+          "source": "LBG Education Advisory",
+          "actionLabel": "Explore curriculum notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "curriculum_notes"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": [
+            {
+              "title": "Learn & Master",
+              "description": "Complete educational modules and quizzes at your own unhurried pace."
+            },
+            {
+              "title": "Earn & Grow",
+              "description": "Collect LBG coins as you build demonstrable financial literacy."
+            },
+            {
+              "title": "Apply to Goals",
+              "description": "Link your mastery directly to your First Home Savings target."
+            }
+          ],
+          "ctaLabel": "View complete guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Your Rewards Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Achievement Value",
+            "value": "100% backed by verified module completion"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": [
+            {
+              "label": "Completed Deposit Fundamentals Module",
+              "achieved": true
+            },
+            {
+              "label": "Achieved 63% First Home Savings Knowledge Progress",
+              "achieved": true
+            },
+            {
+              "label": "Mastered Mortgage Structure Assessment",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Goal-Linked Learning Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Homebuyer Guidebook & \u00a325 Deposit Boost Voucher",
+            "points": 1200,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM",
+            "payload": {
+              "rewardId": "goal_linked_voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-coach",
+        "type": "COACH_TIP_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "coachName": "Ava from Rewards Coaching",
+          "headline": "Pace yourself for deep comprehension",
+          "body": "Taking your time on each quiz ensures you absorb every detail of home deposit planning without feeling rushed.",
+          "relatedBrand": "LBG Academy",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "LEARNING_MASTERY_FOCUS",
+      "COMPLIANT_ORDERED_STACK"
+    ]
+  },
+  "strategy": "Highlight educational mastery modules, 63% First Home Savings Knowledge goal progress, and unhurried quiz completion without any public leaderboards or timed challenges.",
+  "confidence": 0.98
+}

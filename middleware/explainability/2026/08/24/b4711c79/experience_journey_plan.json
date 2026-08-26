@@ -1,0 +1,87 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review savings progress and engage with targeted educational content for mastery.",
+  "entryPoint": "Customer dashboard review of savings milestone progress and educational module status.",
+  "completionDefinition": "Customer views First Home Savings Knowledge progress and accesses the next quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How close am I to reaching my First Home Savings Knowledge milestone?",
+      "entryCondition": "Customer opens the dashboard with active savings goal.",
+      "requiredInformation": [
+        "First Home Savings Knowledge target and current progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-05"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my current coins translate into educational value and clear milestones?",
+      "entryCondition": "Goal inspection completed successfully.",
+      "requiredInformation": [
+        "Wallet LBG coins balance",
+        "Tangible educational value translation"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-04"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Which educational module and quiz should I complete next to deepen my financial competence?",
+      "entryCondition": "Value and progress reviewed.",
+      "requiredInformation": [
+        "Learning mission status",
+        "Quiz module options"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-01",
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide additional context on reward provenance and financial tips without gamification.",
+      "contentNotes": [
+        "Detailed breakdown of past academy module bonus points"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

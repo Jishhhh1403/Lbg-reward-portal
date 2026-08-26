@@ -1,0 +1,86 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "high goal completion behavior",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_002 is a goal-oriented saver actively tracking progress across three major savings goals (Japan Vacation, New Phone, and Emergency Fund). Exhibits consistent monthly accumulation and high goal completion behavior with a preference for goal-linked rewards.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 6820 LBG Coins with 0 total points.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-connected-brands",
+        "statement": "Customer has 3 connected brands.",
+        "source": "sessionContext.wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-active-goals",
+        "statement": "Customer has three active savings goals: Japan Vacation (67%), New Phone (74%), and Emergency Fund (45%).",
+        "source": "intelligenceLayer.goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-persona",
+        "attribute": "persona",
+        "value": "GOAL_ORIENTED_SAVER",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "consistent monthly accumulation",
+          "high goal completion behavior",
+          "saves points for larger rewards"
+        ],
+        "inferenceMethod": "intelligence_layer_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "GOAL_ACHIEVEMENT",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "high goal completion behavior"
+        ],
+        "inferenceMethod": "intelligence_layer_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

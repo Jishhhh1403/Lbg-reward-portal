@@ -1,0 +1,105 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "long\u2011term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "rarely redeems for small rewards",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "interested in investment\u2011like rewards",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "David Park (customer_003) is a Diamond tier member with 28,400 points. He exhibits long\u2011term accumulation behavior, rarely redeems small rewards, and values future projections. He currently tracks three long\u2011term reward goals (Retirement Fund, Children Education Fund, Dream Home Deposit) with progress of 28%, 41% and 15% respectively. His motivation is future financial security.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Customer tier is Diamond",
+        "source": "INTELLIGENCE_LAYER",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f2",
+        "statement": "Points balance is 28,400",
+        "source": "INTELLIGENCE_LAYER",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f3",
+        "statement": "Has three long\u2011term goals with specified target and current values",
+        "source": "INTELLIGENCE_LAYER",
+        "confidence": 0.94
+      },
+      {
+        "factId": "f4",
+        "statement": "Engagement score is 0.76",
+        "source": "INTELLIGENCE_LAYER",
+        "confidence": 0.9
+      },
+      {
+        "factId": "f5",
+        "statement": "Behavior signals include long\u2011term accumulation pattern, interest in investment\u2011like rewards, and reads educational content",
+        "source": "INTELLIGENCE_LAYER",
+        "confidence": 0.89
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "f5"
+        ],
+        "inferenceMethod": "direct_match_to_intelligence_layer_motivation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p2",
+        "attribute": "preferredRewardType",
+        "value": "LONG_TERM",
+        "confidence": 0.88,
+        "evidenceRefs": [
+          "f5"
+        ],
+        "inferenceMethod": "behavior_signal_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p3",
+        "attribute": "redemptionFrequency",
+        "value": "LOW",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "f5"
+        ],
+        "inferenceMethod": "behavior_signal_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

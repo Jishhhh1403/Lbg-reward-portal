@@ -1,0 +1,92 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "First Home Savings Knowledge at 63% progress",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "goal tracking"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams is an education-focused rewards member with 3,900 LBG coins and an active savings goal ('First Home Savings Knowledge' at 63% progress). She consistently engages with financial literacy modules, prefers mastery-based learning over timed challenges, and avoids public leaderboards.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 3,900 LBG coins in the rewards wallet.",
+        "source": "Session Context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goal-progress",
+        "statement": "Customer has an active goal 'First Home Savings Knowledge' with 1,250 of 2,000 target value completed (63%).",
+        "source": "Intelligence Layer Output",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-module-completion",
+        "statement": "Customer completes every financial literacy module to 100% and retakes quizzes until concepts are fully understood.",
+        "source": "Available Evidence",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-avoidance-timed",
+        "statement": "Customer avoids timed challenges and public rankings.",
+        "source": "Available Evidence",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "motivated by mastering topics rather than winning them"
+        ],
+        "inferenceMethod": "Intelligence Layer Persona Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-engagement-tone",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "spends longest session time on educational content",
+          "prefers educational rewards and structured progress"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

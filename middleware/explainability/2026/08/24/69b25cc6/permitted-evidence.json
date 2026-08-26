@@ -1,0 +1,94 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) exhibits an educational competence profile, focusing on long-term financial literacy, structured learning progression, and mastery of knowledge without gamified pressure.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavioral_signals",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3900 LBG coins and 3 connected brands with a Gold tier status",
+        "source": "wallet_context",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence_layer_classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "persona",
+        "value": "EDUCATIONAL_COMPETENCE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence_layer_classification",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

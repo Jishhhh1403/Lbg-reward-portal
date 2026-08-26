@@ -1,0 +1,74 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "high goal completion behavior",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sarah Chen is a Platinum tier user with 6,820 LBG coins, identified as a GOAL_ORIENTED_SAVER. She exhibits consistent monthly accumulation, frequent goal-linked redemptions, high goal completion rates, and regularly tracks progress across three active structured savings goals (Japan Vacation, New Phone, Emergency Fund).",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "Customer holds 6,820 LBG coins and Platinum tier status.",
+        "source": "sessionContext",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Customer has three active goals: Japan Vacation (67% progress), New Phone (74% progress), and Emergency Fund (45% progress).",
+        "source": "intelligenceLayer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Customer exhibits frequent goal-linked redemptions and consistent monthly accumulation.",
+        "source": "intelligenceLayer",
+        "confidence": 0.91
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "engagementStyle",
+        "value": "PROGRESS_TRACKING",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "checks progress regularly"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

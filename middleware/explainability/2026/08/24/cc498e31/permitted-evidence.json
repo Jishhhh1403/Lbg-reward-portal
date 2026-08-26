@@ -1,0 +1,83 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "Diamond tier status with large idle balance",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "Expiring points requiring secure protection guidance",
+        "source": "journey_analysis",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Diamond tier customer Elena Vasquez is a disciplined long-term saver (Planner at Risk) experiencing a stall in accumulation, with 24,500 idle lbgCoins and 2,400 points expiring in 9 days. She responds well to projected-value and educational content.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Diamond tier customer with 24,500 idle lbgCoins",
+        "source": "session_wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f2",
+        "statement": "2,400 points expiring in 9 days",
+        "source": "journey_analysis",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f3",
+        "statement": "Retirement fund contributions untouched for over a month",
+        "source": "intelligence_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f4",
+        "statement": "Stopped opening notifications after years of steady saving",
+        "source": "intelligence_signals",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "engagement_trend",
+        "value": "declining",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "f3",
+          "f4"
+        ],
+        "inferenceMethod": "behavioral_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p2",
+        "attribute": "content_preference",
+        "value": "educational_and_projected_value",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "historically responded well to projected-value and educational content"
+        ],
+        "inferenceMethod": "historical_preference_matching",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -39,7 +39,7 @@ export interface CustomerSummary {
   lastSyncedAt: string
 }
 
-export type TierName = 'Silver' | 'Gold' | 'Platinum'
+export type TierName = 'Silver' | 'Gold' | 'Platinum' | 'Diamond'
 
 export interface WalletTransactionItem {
   id: string

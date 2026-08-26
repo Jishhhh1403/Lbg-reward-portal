@@ -1,0 +1,98 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "fact-03",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams is focused on financial competence, educational module completion, and tracking progress toward a First Home Savings Knowledge goal without gamified or pressure tactics.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "intelligence layer signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "intelligence layer signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "intelligence layer signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3900 LBG coins and 0 points in wallet",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-05",
+        "statement": "Tracks First Home Savings Knowledge goal at 63 percent progress",
+        "source": "intelligence layer goal",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02",
+          "fact-03"
+        ],
+        "inferenceMethod": "intelligence layer persona analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-03"
+        ],
+        "inferenceMethod": "personalizationSignals topMotives",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

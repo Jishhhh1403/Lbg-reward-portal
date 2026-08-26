@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "e154525e",
+  "createdAt": "2026-08-23T10:00:00.000Z",
+  "expiresAt": "2026-09-04T10:00:00.000Z",
+  "customerRef": "customer_004",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 1850,
+        "tier": "Silver",
+        "name": "Jessica Martinez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiring Soon",
+        "expiringPoints": 1850,
+        "daysLeft": 12,
+        "message": "You have 1,850 points expiring in 12 days. Redeem them now to make the most of your Silver rewards balance.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING_POINTS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reengagement-banner",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Welcome back, Jessica!",
+        "message": "We've missed you over the last 45 days. Pick up right where you left off with your 1,850 Silver tier balance.",
+        "ctaText": "Explore My Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_BANNER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Quick Win Redemption",
+        "subtitle": "Effortless rewards ready to claim instantly",
+        "rewards": [
+          {
+            "name": "Retail Discount",
+            "points": 300
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "rewardName": "Retail Discount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-personalized-offer",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Exclusive Return Offer",
+        "subtitle": "Tailored for your Silver tier status",
+        "offer": "Double points on your next brand partner purchase",
+        "validUntil": "12 Days",
+        "message": "Welcome back bonus to help you get maximum value from your remaining points.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ACTIVATE_OFFER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile-1",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "label": "Total Balance",
+        "value": "1,850",
+        "unit": "pts",
+        "tone": "brand",
+        "infoText": "Available across connected accounts",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-2",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "label": "Connected Brands",
+        "value": "3",
+        "unit": "brands",
+        "tone": "white",
+        "infoText": "Active reward sync channels",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-metric-tile-3",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "label": "Badges Earned",
+        "value": "2",
+        "unit": "badges",
+        "tone": "white",
+        "infoText": "Milestones unlocked",
+        "layout": {
+          "span": "third"
+        }
+      },
+      "actions": []
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "status": "synced",
+        "title": "Wallet Status Up to Date",
+        "lastSyncedAt": "2026-08-23T09:12:25.256Z",
+        "message": "All connected brand accounts and points balances are fully synchronized.",
+        "ctaText": "Sync Now",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "a5797e34",
+  "createdAt": "2026-08-23T06:44:19.364Z",
+  "expiresAt": "2026-09-05T00:00:00.000Z",
+  "customerRef": "customer_004",
+  "components": [
+    {
+      "id": "comp-pts-bal-001",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 1850,
+        "tier": "Silver",
+        "name": "Jessica Martinez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-exp-alert-001",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiring Soon",
+        "expiringPoints": 1850,
+        "daysLeft": 12,
+        "message": "You have 1,850 points expiring in 12 days. Redeem them now to keep your rewards value.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_EXPIRING_POINTS",
+          "payload": {
+            "points": 1850
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-reengage-001",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Welcome Back, Jessica",
+        "message": "We've missed you over the last 45 days! Pick up right where you left off with your 1,850 points ready to use.",
+        "ctaText": "Explore My Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_BANNER",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win-001",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Effortless Quick Win",
+        "subtitle": "Redeem instantly with no complex steps",
+        "rewards": [
+          {
+            "name": "Retail Discount Voucher",
+            "points": 300
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "rewardName": "Retail Discount Voucher",
+            "points": 300
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-pers-offer-001",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Tailored For You",
+        "subtitle": "Exclusive Silver Tier Perk",
+        "offer": "Double points on your next partner brand purchase",
+        "validUntil": "2026-09-05",
+        "message": "Re-activate your rewards journey today and enjoy boosted earnings.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ACTIVATE_OFFER",
+          "payload": {
+            "offerId": "offer-silver-boost"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-sync-status-001",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "status": "synced",
+        "title": "Wallet Status",
+        "lastSyncedAt": "2026-08-23T06:44:19.364Z",
+        "message": "All 3 linked brands and reward balances are fully up to date.",
+        "ctaText": "Sync Now",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

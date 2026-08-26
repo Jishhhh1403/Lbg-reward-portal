@@ -1,0 +1,874 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-988ceb3b",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A rich, gamification-first mobile rewards overview screen containing 14 components tailored to Marcus Johnson's 'GAMIFICATION_MOTIVATED' persona, featuring active streaks, challenges, leaderboards, badges, quizzes, and community metrics.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 8750,
+            "tier": "Gold",
+            "name": "Marcus Johnson",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak-card",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "streakDays": 34,
+            "message": "Amazing consistency, Marcus! You're on fire.",
+            "nextReward": "500 bonus coins at 40 days",
+            "milestones": [
+              {
+                "days": 10,
+                "reward": "100 coins",
+                "achieved": true
+              },
+              {
+                "days": 20,
+                "reward": "250 coins",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "400 coins",
+                "achieved": true
+              },
+              {
+                "days": 40,
+                "reward": "500 coins",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge-card",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Community Champion Weekly Sprint",
+            "description": "Complete 3 community partner check-ins and share your badge progress.",
+            "progress": 75,
+            "reward": "750 LBG Coins + Gold Badge",
+            "daysLeft": 2,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "JOIN_CHALLENGE",
+              "payload": {
+                "challengeId": "community-champion-weekly"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "period": "weekly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Sarah Jenkins",
+                "points": 11200,
+                "avatar": "SJ",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "David Chen",
+                "points": 9450,
+                "avatar": "DC",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 3,
+                "name": "Marcus Johnson",
+                "points": 8750,
+                "avatar": "MJ",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 4,
+                "name": "Elena Rostova",
+                "points": 8100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badge-card",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Badge Trophy Room",
+            "totalEarned": 15,
+            "totalAvailable": 25,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Leaderboard Elite",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Community Star",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Quiz Whiz",
+                "icon": "brain",
+                "earned": true
+              },
+              {
+                "name": "Crown Holder",
+                "icon": "crown",
+                "earned": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quiz-card",
+          "type": "QUIZ_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "question": "Which partner brand offers double LBG coin multipliers on weekend dining?",
+            "options": [
+              "Bistro & Co",
+              "Urban Cafe Network",
+              "Metro Express",
+              "Global Gourmet"
+            ],
+            "reward": "150 Coins",
+            "timeLimit": 45,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SUBMIT_QUIZ_ANSWER",
+              "payload": {
+                "selectedOption": "Urban Cafe Network"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "label": "Challenges Done",
+            "value": "12",
+            "unit": "completed",
+            "tone": "brand",
+            "infoText": "12 of 15 completed this season",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "label": "Leaderboard Rank",
+            "value": "#3",
+            "unit": "Gold Tier",
+            "tone": "brand",
+            "infoText": "Top 1% of active members",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-metric-tile-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "label": "Badges Earned",
+            "value": "15",
+            "unit": "trophies",
+            "tone": "brand",
+            "infoText": "60% collection unlocked",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": []
+        },
+        {
+          "id": "comp-community-challenge",
+          "type": "COMMUNITY_CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Global Community Milestone Goal",
+            "communityTotal": 450000,
+            "target": 500000,
+            "myContribution": 3400,
+            "endsOn": "15 Sep 2026",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_COMMUNITY_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Gold Tier Exclusive Rewards",
+            "rewards": [
+              {
+                "name": "VIP Lounge Access Pass",
+                "points": 3500,
+                "category": "Travel",
+                "limited": true
+              },
+              {
+                "name": "Curated Gourmet Dining Box",
+                "points": 2500,
+                "category": "Dining",
+                "limited": false
+              },
+              {
+                "name": "Premium Coffee Subscription",
+                "points": 1800,
+                "category": "Lifestyle",
+                "limited": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone-card",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "milestones": [
+              {
+                "label": "Reached 30-Day Streak Milestone",
+                "achieved": true
+              },
+              {
+                "label": "Completed 10 Challenges",
+                "achieved": true
+              },
+              {
+                "label": "Reached Top 5 Leaderboard Standing",
+                "achieved": true
+              },
+              {
+                "label": "Unlock Diamond Tier Status",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-recommended-actions",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Boost Your Standing Today",
+            "actions": [
+              {
+                "label": "Check in with a community peer",
+                "points": 50,
+                "icon": "users"
+              },
+              {
+                "label": "Explore brand partner offers",
+                "points": 100,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Complete today's challenge target",
+                "points": 200,
+                "icon": "target"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXECUTE_ACTION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-referral-card",
+          "type": "REFERRAL_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "referralCode": "MARCUS-34SK",
+            "friendBonus": 500,
+            "myBonus": 500,
+            "invitesAccepted": 4,
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SHARE_REFERRAL",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "HIGH_ENGAGEMENT_GAMIFICATION",
+        "COMMUNITY_MOTIVATION"
+      ]
+    },
+    "strategy": "A rich, gamification-first mobile rewards overview screen containing 14 components tailored to Marcus Johnson's 'GAMIFICATION_MOTIVATED' persona, featuring active streaks, challenges, leaderboards, badges, quizzes, and community metrics.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A rich, gamification-first mobile rewards overview screen containing 14 components tailored to Marcus Johnson's 'GAMIFICATION_MOTIVATED' persona, featuring active streaks, challenges, leaderboards, badges, quizzes, and community metrics.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 8750,
+          "tier": "Gold",
+          "name": "Marcus Johnson",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-streak-card",
+        "type": "STREAK_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "streakDays": 34,
+          "message": "Amazing consistency, Marcus! You're on fire.",
+          "nextReward": "500 bonus coins at 40 days",
+          "milestones": [
+            {
+              "days": 10,
+              "reward": "100 coins",
+              "achieved": true
+            },
+            {
+              "days": 20,
+              "reward": "250 coins",
+              "achieved": true
+            },
+            {
+              "days": 30,
+              "reward": "400 coins",
+              "achieved": true
+            },
+            {
+              "days": 40,
+              "reward": "500 coins",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_STREAK_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-challenge-card",
+        "type": "CHALLENGE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Community Champion Weekly Sprint",
+          "description": "Complete 3 community partner check-ins and share your badge progress.",
+          "progress": 75,
+          "reward": "750 LBG Coins + Gold Badge",
+          "daysLeft": 2,
+          "participants": 1420,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "JOIN_CHALLENGE",
+            "payload": {
+              "challengeId": "community-champion-weekly"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-leaderboard",
+        "type": "LEADERBOARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "period": "weekly",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Sarah Jenkins",
+              "points": 11200,
+              "avatar": "SJ",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 2,
+              "name": "David Chen",
+              "points": 9450,
+              "avatar": "DC",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 3,
+              "name": "Marcus Johnson",
+              "points": 8750,
+              "avatar": "MJ",
+              "isCurrentUser": true
+            },
+            {
+              "rank": 4,
+              "name": "Elena Rostova",
+              "points": 8100,
+              "avatar": "ER",
+              "isCurrentUser": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_FULL_LEADERBOARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge-card",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Badge Trophy Room",
+          "totalEarned": 15,
+          "totalAvailable": 25,
+          "badges": [
+            {
+              "name": "Streak Master",
+              "icon": "flame",
+              "earned": true
+            },
+            {
+              "name": "Leaderboard Elite",
+              "icon": "trophy",
+              "earned": true
+            },
+            {
+              "name": "Community Star",
+              "icon": "star",
+              "earned": true
+            },
+            {
+              "name": "Quiz Whiz",
+              "icon": "brain",
+              "earned": true
+            },
+            {
+              "name": "Crown Holder",
+              "icon": "crown",
+              "earned": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_BADGES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz-card",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "question": "Which partner brand offers double LBG coin multipliers on weekend dining?",
+          "options": [
+            "Bistro & Co",
+            "Urban Cafe Network",
+            "Metro Express",
+            "Global Gourmet"
+          ],
+          "reward": "150 Coins",
+          "timeLimit": 45,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "Urban Cafe Network"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tile-1",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "label": "Challenges Done",
+          "value": "12",
+          "unit": "completed",
+          "tone": "brand",
+          "infoText": "12 of 15 completed this season",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-metric-tile-2",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "label": "Leaderboard Rank",
+          "value": "#3",
+          "unit": "Gold Tier",
+          "tone": "brand",
+          "infoText": "Top 1% of active members",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-metric-tile-3",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "label": "Badges Earned",
+          "value": "15",
+          "unit": "trophies",
+          "tone": "brand",
+          "infoText": "60% collection unlocked",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-community-challenge",
+        "type": "COMMUNITY_CHALLENGE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Global Community Milestone Goal",
+          "communityTotal": 450000,
+          "target": 500000,
+          "myContribution": 3400,
+          "endsOn": "15 Sep 2026",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_COMMUNITY_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-carousel",
+        "type": "REWARD_CAROUSEL",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Gold Tier Exclusive Rewards",
+          "rewards": [
+            {
+              "name": "VIP Lounge Access Pass",
+              "points": 3500,
+              "category": "Travel",
+              "limited": true
+            },
+            {
+              "name": "Curated Gourmet Dining Box",
+              "points": 2500,
+              "category": "Dining",
+              "limited": false
+            },
+            {
+              "name": "Premium Coffee Subscription",
+              "points": 1800,
+              "category": "Lifestyle",
+              "limited": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_REWARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-card",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "milestones": [
+            {
+              "label": "Reached 30-Day Streak Milestone",
+              "achieved": true
+            },
+            {
+              "label": "Completed 10 Challenges",
+              "achieved": true
+            },
+            {
+              "label": "Reached Top 5 Leaderboard Standing",
+              "achieved": true
+            },
+            {
+              "label": "Unlock Diamond Tier Status",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-recommended-actions",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Boost Your Standing Today",
+          "actions": [
+            {
+              "label": "Check in with a community peer",
+              "points": 50,
+              "icon": "users"
+            },
+            {
+              "label": "Explore brand partner offers",
+              "points": 100,
+              "icon": "shopping-bag"
+            },
+            {
+              "label": "Complete today's challenge target",
+              "points": 200,
+              "icon": "target"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXECUTE_ACTION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-referral-card",
+        "type": "REFERRAL_CARD",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "referralCode": "MARCUS-34SK",
+          "friendBonus": 500,
+          "myBonus": 500,
+          "invitesAccepted": 4,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SHARE_REFERRAL",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "HIGH_ENGAGEMENT_GAMIFICATION",
+      "COMMUNITY_MOTIVATION"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.93,
+        "evidenceRefs": [
+          "completes challenges regularly",
+          "checks leaderboard daily",
+          "longest active streak in program",
+          "participates in community events",
+          "earns badges frequently",
+          "shares achievements socially"
+        ]
+      }
+    ],
+    "methodology": "Behavioral pattern analysis focusing on gamification engagement, challenge completion rates, and social interaction.",
+    "temporaryInterpretation": true
+  }
+}

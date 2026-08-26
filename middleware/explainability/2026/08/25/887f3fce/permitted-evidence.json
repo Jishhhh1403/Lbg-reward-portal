@@ -1,0 +1,91 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "fact-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-02",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "fact-03",
+        "classification": "OBSERVED",
+        "value": "First Home Savings Knowledge goal at 63% progress",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer engages deeply with educational modules and financial literacy content, prioritizing knowledge mastery and structured goal tracking over gamified pressure.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavioral_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavioral_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Maintains an active savings goal 'First Home Savings Knowledge' at 63% progress",
+        "source": "wallet_and_goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3,900 LBG coins and 3 connected brands",
+        "source": "wallet_summary",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "learningOrientation",
+        "value": "MASTERY_FOCUSED",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "gamificationSensitivity",
+        "value": "AVOIDS_PRESSURE",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-01"
+        ],
+        "inferenceMethod": "stated_avoidance_signals",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

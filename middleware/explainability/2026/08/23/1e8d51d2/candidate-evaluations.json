@@ -1,0 +1,520 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich multi-goal strategy for Sarah Chen featuring 7 components: POINTS_BALANCE, three dedicated GOAL_PROGRESS_CARD components (Japan Vacation at 67%, New Phone at 74%, Emergency Fund at 45%), ADD_GOAL_CARD, GOAL_LINKED_REWARD, and MILESTONE_CARD, perfectly aligned with her GOAL_ORIENTED_SAVER persona and progress tracking engagement style.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 10,
+          "explanation": "Directly addresses all three active structured savings goals with dedicated cards plus an add goal option, perfectly matching the multi-goal requirement."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Provides exceptionally high utility by offering comprehensive progress tracking and tailored goal-linked rewards across 7 rich components."
+        },
+        "rewardProfileAlignment": {
+          "score": 10,
+          "explanation": "Directly supports GOAL_ACHIEVEMENT motivation through milestone recognition and targeted savings acceleration."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "Clear, structured layout with high contrast progress bars and legible typography suitable for frequent progress checking."
+        },
+        "evidenceConfidence": {
+          "score": 10,
+          "explanation": "Based on solid intelligence layer data confirming exact goal values, tier status, and active savings habits."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains strict adherence to design guidelines without modifying bank logos or regulated text."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Delivers a cohesive multi-goal dashboard view that gracefully unifies accumulation tracking and redemption options."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Fully supported by available component library and existing telemetry data under the 5000ms latency budget."
+        }
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Condensed rewards overview strategy featuring 4 components: POINTS_BALANCE, a single consolidated GOAL_PROGRESS_CARD, GOAL_LINKED_REWARD, and MILESTONE_CARD.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Fails the multi-goal rule by grouping all goals into a single card instead of one per goal plus an ADD_GOAL_CARD."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Provides fewer components than the required 6-9 rich screen threshold, reducing utility for a multi-goal saver."
+        },
+        "rewardProfileAlignment": {
+          "score": 8,
+          "explanation": "Aligns with goal achievement generally but lacks granular breakdown for her three active goals."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean and accessible, but requires extra navigation to view individual goal statuses."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Uses verified intelligence layer facts."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Complies with design system rules."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard layout with no distinct personalization for multi-goal tracking."
+        },
+        "operationalFeasibility": {
+          "score": 10,
+          "explanation": "Highly feasible and lightweight."
+        }
+      },
+      "weightedTotal": 7.15,
+      "hardGatesPass": true,
+      "objections": [
+        "Strategy proposes fewer than 5 components and fails to provide one card per goal plus an ADD_GOAL_CARD for a multi-goal customer."
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Goal-oriented multi-goal savings dashboard tailored for Sarah Chen. Features 7 rich components covering all three active savings goals (Japan Vacation, New Phone, Emergency Fund) as required by the multi-goal rule, plus an ADD_GOAL_CARD, GOAL_LINKED_REWARD, MILESTONE_CARD, and RECOMMENDED_ACTIONS to accelerate her Platinum tier savings.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 6820,
+            "tier": "Platinum",
+            "name": "Sarah Chen",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-japan",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Japan Vacation",
+            "current": 1680,
+            "target": 2500,
+            "percentage": 67,
+            "remaining": 820,
+            "motivationalMessage": "You're 67% towards your dream trip! Just 820 more points to go.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Japan Vacation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-phone",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "New Phone",
+            "current": 890,
+            "target": 1200,
+            "percentage": 74,
+            "remaining": 310,
+            "motivationalMessage": "Almost there! Only 310 points remaining for your new phone upgrade.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "New Phone"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-emergency",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Emergency Fund",
+            "current": 1350,
+            "target": 3000,
+            "percentage": 45,
+            "remaining": 1650,
+            "motivationalMessage": "Steady progress on your safety net. Keep up the consistent saving!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Emergency Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new savings target to accelerate your Platinum rewards.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-reward",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Rewards Accelerating Your Goals",
+            "goalName": "Japan Vacation",
+            "rewards": [
+              {
+                "name": "Partner Airline Lounge Pass",
+                "points": 1500,
+                "goalLinked": true
+              },
+              {
+                "name": "Hotel Booking Credit (\u00a350)",
+                "points": 2500,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_GOAL_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-milestone",
+          "type": "MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "milestones": [
+              {
+                "label": "Reached Platinum Tier Status",
+                "achieved": true
+              },
+              {
+                "label": "Saved 5,000+ Total Points",
+                "achieved": true
+              },
+              {
+                "label": "Complete 3 Active Savings Goals",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-recommended-actions",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Boost Your Point Balance",
+            "actions": [
+              {
+                "label": "Link a new partner brand card",
+                "points": 500,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Complete monthly savings check-in",
+                "points": 200,
+                "icon": "target"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXECUTE_ACTION",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH_GOAL_ORIENTED",
+        "MULTI_GOAL_RULE_APPLIED",
+        "RICH_COMPONENT_COUNT"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative comprehensive savings & tangible value strategy for Sarah Chen. Blends her multi-goal progress tracking with tangible cash equivalent insights and educational value to support her Platinum savings journey.",
+      "components": [
+        {
+          "id": "comp-points-balance-2",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 6820,
+            "tier": "Platinum",
+            "name": "Sarah Chen",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-japan-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Japan Vacation",
+            "current": 1680,
+            "target": 2500,
+            "percentage": 67,
+            "remaining": 820,
+            "motivationalMessage": "67% achieved! Your Japan trip is coming into focus.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Japan Vacation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-phone-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "New Phone",
+            "current": 890,
+            "target": 1200,
+            "percentage": 74,
+            "remaining": 310,
+            "motivationalMessage": "74% complete! Almost ready for your upgrade.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "New Phone"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-emergency-2",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Emergency Fund",
+            "current": 1350,
+            "target": 3000,
+            "percentage": 45,
+            "remaining": 1650,
+            "motivationalMessage": "45% reached. Every contribution strengthens your safety net.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Emergency Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal-2",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another savings milestone to track with your LBG coins.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Your Points Cash Value",
+            "cashValue": "\u00a368.20",
+            "pointsEquivalent": 6820,
+            "breakdown": [
+              {
+                "label": "Available for redemption",
+                "value": "\u00a368.20"
+              },
+              {
+                "label": "Platinum Tier Multiplier Bonus",
+                "value": "1.5x active"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-educational-insight",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Platinum Tip: Maximizing Goal Efficiency",
+            "insight": "Redeeming points directly towards linked savings goals unlocks an extra 10% bonus value on partner travel and tech rewards.",
+            "source": "LBG Rewards Advisory",
+            "actionLabel": "Learn More",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "OPEN_EDUCATIONAL_GUIDE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Curated for Your Savings Goals",
+            "rewards": [
+              {
+                "name": "Flight Discount",
+                "points": 5000,
+                "category": "Travel",
+                "limited": false
+              },
+              {
+                "name": "Hotel Voucher",
+                "points": 3000,
+                "category": "Travel",
+                "limited": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_REWARD_CATALOGUE",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "SECONDARY_STRATEGY_TANGIBLE_VALUE",
+        "MULTI_GOAL_RULE_APPLIED",
+        "RICH_COMPONENT_COUNT"
+      ]
+    }
+  ]
+}

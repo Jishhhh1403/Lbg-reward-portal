@@ -1,0 +1,88 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig_01",
+        "classification": "OBSERVED",
+        "value": "historically redeemed points within hours",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig_02",
+        "classification": "OBSERVED",
+        "value": "1,500 points expiring within 7 days",
+        "source": "wallet_audit",
+        "confidence": 1.0,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer customer_008 (Ryan Okafor) is an at-risk high-value Gold tier member who has been inactive for 41 days after previously visiting daily. They have 3,600 LBG coins available, with 1,500 points expiring in 7 days. Historically, they exhibit rapid redemption behavior (within hours) and respond strongly to flash offers and small instant rewards.",
+    "observedFacts": [
+      {
+        "factId": "fact_01",
+        "statement": "Customer has 3,600 LBG coins total in wallet.",
+        "source": "session_wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_02",
+        "statement": "1,500 points are expiring within 7 days.",
+        "source": "session_journey_analysis",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_03",
+        "statement": "Customer has been inactive for over a month (41 days).",
+        "source": "intelligence_layer_profile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact_04",
+        "statement": "Historically redeemed points within hours of earning.",
+        "source": "intelligence_layer_signals",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact_05",
+        "statement": "Responds strongly to flash offers and instant vouchers.",
+        "source": "intelligence_layer_signals",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf_01",
+        "attribute": "urgencySensitivity",
+        "value": "HIGH",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "1,500 points expiring within a week",
+          "historically redeemed points within hours"
+        ],
+        "inferenceMethod": "behavioral_pattern_matching",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf_02",
+        "attribute": "preferredRewardGranularity",
+        "value": "INSTANT_SMALL_VALUE",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "small instant rewards drove past engagement spikes",
+          "responds strongly to flash offers and instant vouchers"
+        ],
+        "inferenceMethod": "historical_redemption_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

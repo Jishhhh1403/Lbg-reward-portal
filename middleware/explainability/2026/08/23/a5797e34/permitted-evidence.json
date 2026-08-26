@@ -1,0 +1,88 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "1850 points expiring in 12 days",
+        "source": "wallet",
+        "confidence": 0.96,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "45 days inactive",
+        "source": "sessionContext",
+        "confidence": 0.96,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer has experienced a decline in engagement over the last 60 days, with 45 days since last login, an engagement score of 0.23, and 1,850 points expiring in 12 days.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "45 days since last activity",
+        "source": "sessionContext.journeyAnalysis.supportingEvidence",
+        "confidence": 0.96
+      },
+      {
+        "factId": "fact-002",
+        "statement": "1850 points expiring in 12 days",
+        "source": "sessionContext.journeyAnalysis.supportingEvidence",
+        "confidence": 0.96
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Low engagement score (0.23)",
+        "source": "sessionContext.journeyAnalysis.supportingEvidence",
+        "confidence": 0.96
+      },
+      {
+        "factId": "fact-004",
+        "statement": "Declining engagement over 60 days",
+        "source": "intelligenceLayer.signals",
+        "confidence": 0.96
+      },
+      {
+        "factId": "fact-005",
+        "statement": "Stopped opening notifications",
+        "source": "intelligenceLayer.signals",
+        "confidence": 0.96
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "churnRisk",
+        "value": "HIGH",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "fact-001",
+          "fact-003",
+          "fact-004"
+        ],
+        "inferenceMethod": "intelligence-layer-persona-classification",
+        "expiresAt": "2026-09-05T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-002",
+        "attribute": "redemptionUrgency",
+        "value": "EXPIRING_POINTS",
+        "confidence": 0.96,
+        "evidenceRefs": [
+          "fact-002"
+        ],
+        "inferenceMethod": "wallet-balance-analysis",
+        "expiresAt": "2026-09-05T00:00:00Z"
+      }
+    ]
+  }
+}

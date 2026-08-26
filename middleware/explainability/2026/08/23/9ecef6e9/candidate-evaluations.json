@@ -1,0 +1,446 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component layout tailored for 'INSTANT_AT_RISK_MIX' persona: REENGAGEMENT_BANNER (welcome back), POINTS_BALANCE (3,600 coins), EXPIRING_POINTS_ALERT (1,500 points in 7 days), QUICK_REDEEM_CARD (coffee/snack instant vouchers), TANGIBLE_VALUE_CARD (showing real-world monetary savings), QUICK_WIN_CARD (1-click low friction redemption), and ACTIVITY_SUMMARY_CARD (brief overview of account status).",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 9,
+          "explanation": "Directly addresses expiring points and immediate value motivation across 7 distinct components."
+        },
+        "expectedCustomerUtility": {
+          "score": 9,
+          "explanation": "Rich screen structure (7 components) perfectly matches user's historical preference for instant vouchers and quick wins."
+        },
+        "rewardProfileAlignment": {
+          "score": 9,
+          "explanation": "Strictly aligns with IMMEDIATE_VALUE motivation without resorting to artificial urgency."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 9,
+          "explanation": "High contrast warnings, clear typography, and logical tab/screen hierarchy suitable for lapsed user re-engagement."
+        },
+        "evidenceConfidence": {
+          "score": 9,
+          "explanation": "Based on solid historical telemetry (0.85 immediate redemption rate, 7-day expiration fact)."
+        },
+        "brandAndDesignConsistency": {
+          "score": 9,
+          "explanation": "Maintains LBG design system guidelines with exact component availability."
+        },
+        "usefulNovelty": {
+          "score": 8,
+          "explanation": "Integrates welcome-back context gracefully with instant redemption options."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "All 7 components are standard and fully tested within the mobile schema."
+        }
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true,
+      "objections": []
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Minimal 4-component strategy focusing only on POINTS_BALANCE, EXPIRING_POINTS_ALERT, QUICK_REDEEM_CARD, and REENGAGEMENT_BANNER to reduce cognitive load.",
+      "scores": {
+        "customerGoalRelevance": {
+          "score": 6,
+          "explanation": "Misses the rich component threshold (fewer than 5 components), reducing overall depth."
+        },
+        "expectedCustomerUtility": {
+          "score": 6,
+          "explanation": "Too sparse for a lapsed user who needs both tangible value proof and quick wins to spark engagement."
+        },
+        "rewardProfileAlignment": {
+          "score": 7,
+          "explanation": "Covers expiration and instant redeem, but lacks tangible value demonstration."
+        },
+        "accessibilityAndCognitiveFit": {
+          "score": 8,
+          "explanation": "Clean and simple, but underutilizes screen real estate for behavioral re-engagement."
+        },
+        "evidenceConfidence": {
+          "score": 7,
+          "explanation": "Relies on basic expiration signals only."
+        },
+        "brandAndDesignConsistency": {
+          "score": 8,
+          "explanation": "Compliant with standard UI components."
+        },
+        "usefulNovelty": {
+          "score": 5,
+          "explanation": "Standard transactional presentation with no added re-engagement value."
+        },
+        "operationalFeasibility": {
+          "score": 9,
+          "explanation": "Highly feasible."
+        }
+      },
+      "weightedTotal": 6.75,
+      "hardGatesPass": true,
+      "objections": [
+        {
+          "agent": "Personalization Synthesiser",
+          "issue": "Strategy proposes fewer than 5 components (only 4), which violates the requirement for rich screens (6-9 components) tailored to customer persona."
+        }
+      ]
+    }
+  ],
+  "recommendedCandidateId": "candidate-1",
+  "recommendationRationale": "",
+  "rejections": [],
+  "allCandidates": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Rich 7-component layout tailored for 'INSTANT_AT_RISK_MIX' persona: REENGAGEMENT_BANNER (welcome back), POINTS_BALANCE (3,600 coins), EXPIRING_POINTS_ALERT (1,500 points in 7 days), QUICK_REDEEM_CARD (coffee/snack instant vouchers), TANGIBLE_VALUE_CARD (showing real-world monetary savings), QUICK_WIN_CARD (1-click low friction redemption), and FLASH_REWARD_BANNER (limited-time flash deal).",
+      "components": [
+        {
+          "id": "comp-pts-bal-01",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengage-02",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Welcome back, Ryan!",
+            "message": "We've missed you over the last 41 days. Jump right back in and redeem your points instantly before they expire.",
+            "ctaText": "Explore Instant Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_REENGAGEMENT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-03",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Expiring Points Notice",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "You have 1,500 points expiring in 7 days. Redeem them now to avoid losing your earned value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-04",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Your Wallet's Cash Value",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available LBG Coins",
+                "value": "\u00a336.00"
+              },
+              {
+                "label": "Expiring Soon",
+                "value": "\u00a315.00"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-05",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant Redeemable Rewards",
+            "description": "Claim these low-point treats instantly with a single tap.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee Voucher",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Flash Deal Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              },
+              {
+                "name": "Cinema Ticket Pass",
+                "points": 500,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_INSTANT_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner-06",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "7-Day Flash Deal",
+            "subtitle": "Special discounted reward to welcome you back",
+            "originalPoints": 400,
+            "discountedPoints": 250,
+            "timer": "168:00:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-07",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Effortless Quick Wins",
+            "subtitle": "Zero-friction redemptions for your Gold tier status",
+            "rewards": [
+              {
+                "name": "Instant Digital Voucher",
+                "points": 150
+              },
+              {
+                "name": "Express Snack Credit",
+                "points": 200
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "INSTANT_AT_RISK_MIX",
+        "EXPIRING_POINTS_URGENCY",
+        "IMMEDIATE_VALUE_MOTIVATION"
+      ]
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Streamlined 6-component instant redemption focus: POINTS_BALANCE, EXPIRING_POINTS_ALERT, INSTANT_REWARD_POPUP, QUICK_REDEEM_CARD, QUICK_WIN_CARD, and TANGIBLE_VALUE_CARD designed for maximum immediate payout and zero friction.",
+      "components": [
+        {
+          "id": "comp-pts-bal-02",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-02",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Expiring Points Urgent Notice",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "1,500 points are set to expire in 7 days. Use them today!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_EXPIRING_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-pop-02",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Gold Tier Bonus Reward",
+            "subtitle": "Available immediately for your account",
+            "points": 300,
+            "expiresIn": "7 days",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT_POPUP",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem-02",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "One-Tap Instant Rewards",
+            "description": "Redeem your balance instantly with zero delay.",
+            "rewards": [
+              {
+                "name": "Morning Coffee",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Snack",
+                "points": 300,
+                "icon": "utensils"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_INSTANT_REWARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win-02",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Fast Reward Pickups",
+            "subtitle": "Quick wins ready to claim now",
+            "rewards": [
+              {
+                "name": "Instant Voucher A",
+                "points": 250
+              },
+              {
+                "name": "Instant Voucher B",
+                "points": 350
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-02",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Total Redemption Value",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Total Balance Worth",
+                "value": "\u00a336.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.91,
+      "reasonCodes": [
+        "INSTANT_AT_RISK_MIX",
+        "STREAMLINED_REDEMPTION"
+      ]
+    }
+  ]
+}

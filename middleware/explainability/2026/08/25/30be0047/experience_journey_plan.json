@@ -1,0 +1,95 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Engage with mastery-oriented financial education and track First Home Savings knowledge goal progress.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews goal progress (63%), examines milestone status, and initiates or completes the next educational quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my First Home Savings goal?",
+      "entryCondition": "Customer opens the rewards overview dashboard.",
+      "requiredInformation": [
+        "First Home Savings Knowledge goal current progress (63%)",
+        "LBG Coins balance (3,900)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "f1",
+        "f3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial literacy and grasp the true value?",
+      "entryCondition": "Customer reviews goal tracking and moves to educational pathways.",
+      "requiredInformation": [
+        "Learning mission progress",
+        "Tangible value breakdown",
+        "Educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "f1",
+        "f2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I test my understanding and complete my next learning milestone?",
+      "entryCondition": "Customer engages with the educational quiz and comprehension feedback.",
+      "requiredInformation": [
+        "Quiz question",
+        "Comprehension feedback",
+        "Confidence progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "SUBMIT_QUIZ",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "f1",
+        "f2",
+        "f4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-badges",
+      "purpose": "Display accumulated educational badges and achievements without competitive leaderboards.",
+      "contentNotes": [
+        "9 badges earned",
+        "Mastery level indicators"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

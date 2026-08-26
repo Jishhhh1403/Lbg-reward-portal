@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Provide frictionless visibility into coin balance, holiday savings goal progress, and direct one-tap statement credit redemption.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer inspects balance, reviews 53% holiday goal progress, and successfully executes or initiates a statement credit redemption.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How many LBG coins do I have and what are they worth in cash?",
+      "entryCondition": "App launch / tab selection",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Cash equivalent value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my Holiday Spending Money goal progressing?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "Holiday Spending Money goal at 53% completion"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I apply my rewards directly to my statement or bills?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "Statement credit options",
+        "Automatic payment allocation rules"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "REDEEM_STATEMENT_CREDIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redemptions",
+        "fact-allocation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education",
+      "purpose": "Provide clear explanations of how points convert to statement credits without friction.",
+      "contentNotes": [
+        "How points work breakdown",
+        "Value certainty guidelines"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

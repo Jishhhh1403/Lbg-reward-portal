@@ -1,0 +1,65 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "responds to flash offers",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Alex Rivera exhibits high engagement (score 0.82) with a strong preference for immediate, tangible reward redemptions. Wallet contains 4250 lbgCoins and 0 standard points. Exhibits a high immediate redemption rate (0.89) with short intervals between earning and redeeming (avg 2.3 hours).",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 4250 lbgCoins and 0 total points.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-engagement-score",
+        "statement": "Customer has an engagement score of 0.82 and active monthly days of 24.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-redemption-behavior",
+        "statement": "Customer has an immediate redemption rate of 0.89 with an average redemption time of 2.3 hours.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 0.94
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "immediate_redemption_rate: 0.89"
+        ],
+        "inferenceMethod": "Behavioral pattern analysis and intelligence layer synthesis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

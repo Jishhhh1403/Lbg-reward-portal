@@ -1,0 +1,748 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-97cfec03",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A comprehensive 14-component guaranteed-certainty composition for Amelia Carter, prioritizing upfront value calculators, mandatory ordered personalized offers and best value redeem cards, guaranteed conversion badges, and zero hidden conditions.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 6450,
+            "tier": "Gold",
+            "name": "Amelia Carter",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Guaranteed Fixed-Rate Conversion Offer",
+            "subtitle": "Exclusive Gold Member Preview",
+            "offer": "Convert 2,000 LBG coins for a guaranteed \u00a320.00 statement credit with zero variable fees.",
+            "validUntil": "30 September 2026",
+            "message": "Preview full terms before committing any points. Zero hidden conditions.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "PREVIEW_OFFER_TERMS",
+              "payload": {
+                "offerId": "offer-fixed-conversion-01"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-best-value-redeem",
+          "type": "BEST_VALUE_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "options": [
+              {
+                "name": "Guaranteed Cash Credit",
+                "points": 2000,
+                "cashValue": "\u00a320.00",
+                "valuePerPoint": 1.0,
+                "best": true
+              },
+              {
+                "name": "Partner Voucher Fixed",
+                "points": 1500,
+                "cashValue": "\u00a314.50",
+                "valuePerPoint": 0.97,
+                "best": false
+              }
+            ],
+            "note": "Ranked strictly by pounds-per-point guaranteed value. Always preview terms prior to point deduction.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "COMPARE_REDEMPTION_OPTIONS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Your Current Wallet Value Breakdown",
+            "cashValue": "\u00a364.50",
+            "pointsEquivalent": 6450,
+            "breakdown": [
+              {
+                "label": "Guaranteed Statement Credit Rate",
+                "value": "1.00p per coin"
+              },
+              {
+                "label": "Fixed Partner Redemption",
+                "value": "Fully Guaranteed"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant Guaranteed Wins",
+            "subtitle": "Low-point redemptions with fixed rates",
+            "rewards": [
+              {
+                "name": "Coffee Voucher Fixed",
+                "points": 500
+              },
+              {
+                "name": "Digital Magazine Pass",
+                "points": 750
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "PREVIEW_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-choice-panel",
+          "type": "REWARD_CHOICE_PANEL",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Transparent Redemption Choices",
+            "subtitle": "No pressure, absolute certainty on every path",
+            "options": [
+              {
+                "id": "opt-1",
+                "label": "Redeem for Statement Credit",
+                "description": "Fixed \u00a320.00 value for 2,000 coins",
+                "points": 2000
+              },
+              {
+                "id": "opt-2",
+                "label": "Keep Collecting",
+                "description": "Retain points with guaranteed balance protection",
+                "points": 0
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "SELECT_CHOICE",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-partner-comparison",
+          "type": "PARTNER_VALUE_COMPARISON",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Partner Programme Value Comparison",
+            "subtitle": "Side-by-side fixed conversion rates in plain GBP",
+            "partners": [
+              {
+                "name": "Retail Partner A",
+                "points": 2000,
+                "value": "\u00a320.00",
+                "perk": "Guaranteed 1:1 Rate"
+              },
+              {
+                "name": "Travel Partner B",
+                "points": 2000,
+                "value": "\u00a318.50",
+                "perk": "Fixed conversion fee waived"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "COMPARE_PARTNERS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-why-this-ui",
+          "type": "WHY_THIS_UI_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Why This Screen Is Formatted For You",
+            "intro": "Designed to match your preference for absolute transparency and guaranteed conversion rates.",
+            "reasons": [
+              {
+                "label": "Upfront Previews",
+                "detail": "Every redemption option displays exact final values before any commitment."
+              },
+              {
+                "label": "Fixed-Value Focus",
+                "detail": "Zero variable rates or hidden deductions in your recommended options."
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_EXPLAINER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-provenance",
+          "type": "REWARD_PROVENANCE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Points Provenance & Audit History",
+            "subtitle": "Clear record of exactly how every coin was earned",
+            "history": [
+              {
+                "source": "Gold Tier Monthly Bonus",
+                "date": "15 Aug 2026",
+                "points": 1000
+              },
+              {
+                "source": "Verified Partner Transaction",
+                "date": "10 Aug 2026",
+                "points": 5450
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_FULL_HISTORY",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Sync Status",
+            "lastSyncedAt": "2026-08-24T08:01:21.780Z",
+            "message": "All balances and guaranteed conversion rates are fully up to date.",
+            "ctaText": "Refresh Status",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-1",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "label": "LBG Coins Available",
+            "value": "6,450",
+            "unit": "coins",
+            "tone": "white",
+            "infoText": "Guaranteed baseline value of \u00a364.50",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "TAP_METRIC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-2",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "label": "Connected Brands",
+            "value": "3",
+            "unit": "brands",
+            "tone": "white",
+            "infoText": "All partners verified with fixed rates",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "TAP_METRIC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tile-3",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "label": "Conversion Rate",
+            "value": "1.0",
+            "unit": "p / coin",
+            "tone": "brand",
+            "infoText": "Guaranteed fixed baseline",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "TAP_METRIC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH_GUARANTEED_CERTAINTY",
+        "UPFRONT_PREVIEW_COMPLIANCE",
+        "MANDATORY_ORDERED_STACK_VALIDATED"
+      ]
+    },
+    "strategy": "A comprehensive 14-component guaranteed-certainty composition for Amelia Carter, prioritizing upfront value calculators, mandatory ordered personalized offers and best value redeem cards, guaranteed conversion badges, and zero hidden conditions.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A comprehensive 14-component guaranteed-certainty composition for Amelia Carter, prioritizing upfront value calculators, mandatory ordered personalized offers and best value redeem cards, guaranteed conversion badges, and zero hidden conditions.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 6450,
+          "tier": "Gold",
+          "name": "Amelia Carter",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-personalized-offer",
+        "type": "PERSONALIZED_OFFER_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Guaranteed Fixed-Rate Conversion Offer",
+          "subtitle": "Exclusive Gold Member Preview",
+          "offer": "Convert 2,000 LBG coins for a guaranteed \u00a320.00 statement credit with zero variable fees.",
+          "validUntil": "30 September 2026",
+          "message": "Preview full terms before committing any points. Zero hidden conditions.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "PREVIEW_OFFER_TERMS",
+            "payload": {
+              "offerId": "offer-fixed-conversion-01"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-best-value-redeem",
+        "type": "BEST_VALUE_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "options": [
+            {
+              "name": "Guaranteed Cash Credit",
+              "points": 2000,
+              "cashValue": "\u00a320.00",
+              "valuePerPoint": 1.0,
+              "best": true
+            },
+            {
+              "name": "Partner Voucher Fixed",
+              "points": 1500,
+              "cashValue": "\u00a314.50",
+              "valuePerPoint": 0.97,
+              "best": false
+            }
+          ],
+          "note": "Ranked strictly by pounds-per-point guaranteed value. Always preview terms prior to point deduction.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "COMPARE_REDEMPTION_OPTIONS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Your Current Wallet Value Breakdown",
+          "cashValue": "\u00a364.50",
+          "pointsEquivalent": 6450,
+          "breakdown": [
+            {
+              "label": "Guaranteed Statement Credit Rate",
+              "value": "1.00p per coin"
+            },
+            {
+              "label": "Fixed Partner Redemption",
+              "value": "Fully Guaranteed"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Instant Guaranteed Wins",
+          "subtitle": "Low-point redemptions with fixed rates",
+          "rewards": [
+            {
+              "name": "Coffee Voucher Fixed",
+              "points": 500
+            },
+            {
+              "name": "Digital Magazine Pass",
+              "points": 750
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "PREVIEW_QUICK_WIN",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-choice-panel",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Transparent Redemption Choices",
+          "subtitle": "No pressure, absolute certainty on every path",
+          "options": [
+            {
+              "id": "opt-1",
+              "label": "Redeem for Statement Credit",
+              "description": "Fixed \u00a320.00 value for 2,000 coins",
+              "points": 2000
+            },
+            {
+              "id": "opt-2",
+              "label": "Keep Collecting",
+              "description": "Retain points with guaranteed balance protection",
+              "points": 0
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_CHOICE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-partner-comparison",
+        "type": "PARTNER_VALUE_COMPARISON",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Partner Programme Value Comparison",
+          "subtitle": "Side-by-side fixed conversion rates in plain GBP",
+          "partners": [
+            {
+              "name": "Retail Partner A",
+              "points": 2000,
+              "value": "\u00a320.00",
+              "perk": "Guaranteed 1:1 Rate"
+            },
+            {
+              "name": "Travel Partner B",
+              "points": 2000,
+              "value": "\u00a318.50",
+              "perk": "Fixed conversion fee waived"
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "COMPARE_PARTNERS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Why This Screen Is Formatted For You",
+          "intro": "Designed to match your preference for absolute transparency and guaranteed conversion rates.",
+          "reasons": [
+            {
+              "label": "Upfront Previews",
+              "detail": "Every redemption option displays exact final values before any commitment."
+            },
+            {
+              "label": "Fixed-Value Focus",
+              "detail": "Zero variable rates or hidden deductions in your recommended options."
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "DISMISS_EXPLAINER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-provenance",
+        "type": "REWARD_PROVENANCE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Points Provenance & Audit History",
+          "subtitle": "Clear record of exactly how every coin was earned",
+          "history": [
+            {
+              "source": "Gold Tier Monthly Bonus",
+              "date": "15 Aug 2026",
+              "points": 1000
+            },
+            {
+              "source": "Verified Partner Transaction",
+              "date": "10 Aug 2026",
+              "points": 5450
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_FULL_HISTORY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "status": "synced",
+          "title": "Wallet Sync Status",
+          "lastSyncedAt": "2026-08-24T08:01:21.780Z",
+          "message": "All balances and guaranteed conversion rates are fully up to date.",
+          "ctaText": "Refresh Status",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tile-1",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "label": "LBG Coins Available",
+          "value": "6,450",
+          "unit": "coins",
+          "tone": "white",
+          "infoText": "Guaranteed baseline value of \u00a364.50",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "TAP_METRIC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tile-2",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "label": "Connected Brands",
+          "value": "3",
+          "unit": "brands",
+          "tone": "white",
+          "infoText": "All partners verified with fixed rates",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "TAP_METRIC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tile-3",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "label": "Conversion Rate",
+          "value": "1.0",
+          "unit": "p / coin",
+          "tone": "brand",
+          "infoText": "Guaranteed fixed baseline",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "TAP_METRIC",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH_GUARANTEED_CERTAINTY",
+      "UPFRONT_PREVIEW_COMPLIANCE",
+      "MANDATORY_ORDERED_STACK_VALIDATED"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "GUARANTEED_CERTAINTY",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "fact-behavior-preview",
+          "fact-behavior-fixed"
+        ]
+      }
+    ],
+    "methodology": "Behavioral analysis and intelligence layer profiling based on redemption preview patterns and affinity for fixed-value offers.",
+    "temporaryInterpretation": true
+  }
+}

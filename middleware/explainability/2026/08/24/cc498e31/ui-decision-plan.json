@@ -1,0 +1,703 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-cc498e31",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 13-component educational and projected-value rewards overview tailored for multi-goal Planner at Risk (Elena Vasquez). Features three long-term goal cards, an Add Goal Card, Points Balance, calm Expiring Points Alert (2,400 points in 9 days), Projection Chart showing long-term compounding, Educational Insight Card, Metric Tile set, Quick Win Card, Future Value Card, Tangible Value Card, and Rewards Insight Card. Grounded entirely in Elena's real intelligence profile with zero dark patterns.",
+      "components": [
+        {
+          "id": "points-balance-header",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 24500,
+            "tier": "Diamond",
+            "name": "Elena Vasquez",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "expiring-points-notice",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Protect Your Accumulated Value",
+            "expiringPoints": 2400,
+            "daysLeft": 9,
+            "message": "2,400 of your points are scheduled to expire in 9 days. Allocate them to your long-term goals or secure them in your savings pot to maintain your financial trajectory.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "ALLOCATE_POINTS",
+              "payload": {
+                "points": 2400
+              }
+            }
+          ]
+        },
+        {
+          "id": "quick-win-safeguard",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Secure Protected Allocation",
+            "subtitle": "Effortless points safeguard for Diamond tier members",
+            "rewards": [
+              {
+                "name": "Retirement Fund Top-Up",
+                "points": 2400
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "SECURE_POINTS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "goal-retirement-fund",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 24500,
+            "target": 100000,
+            "percentage": 25,
+            "estimatedCompletion": "2032",
+            "message": "You are 25% toward your secure retirement foundation. Consistent contributions compound powerfully over time.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-children-education",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Children Education Fund",
+            "current": 18500,
+            "target": 50000,
+            "percentage": 37,
+            "estimatedCompletion": "2030",
+            "message": "Strong progress at 37%. Your disciplined saving ensures steady educational backing.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Children Education Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "goal-dream-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Dream Home Deposit",
+            "current": 9000,
+            "target": 75000,
+            "percentage": 12,
+            "estimatedCompletion": "2035",
+            "message": "12% achieved. Long-horizon property planning benefits from steady, automated compounding.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Dream Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "add-new-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Create another long-term horizon fund to secure your financial future",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "future-value-projection",
+          "type": "FUTURE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Long-Term Compounding Outlook",
+            "currentValue": 24500,
+            "projectedValue": 45000,
+            "timeframe": "5 Years",
+            "growthRate": "6.2% AER equivalent",
+            "message": "Maintaining your Diamond tier savings rate projects robust value growth across your portfolio.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "projection-chart-growth",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Multi-Year Rewards Compounding Forecast",
+            "growthLabel": "Projected Portfolio Value (\u00a3)",
+            "data": [
+              {
+                "year": "2026",
+                "value": 24500
+              },
+              {
+                "year": "2027",
+                "value": 28200
+              },
+              {
+                "year": "2028",
+                "value": 32500
+              },
+              {
+                "year": "2029",
+                "value": 37800
+              },
+              {
+                "year": "2030",
+                "value": 45000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPAND_CHART",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "educational-insight-compounding",
+          "type": "EDUCATIONAL_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "The Power of Patience in Rewards Accumulation",
+            "insight": "Consistent long-term savers who protect expiring points and maintain idle balances in growth pots achieve 3.4x higher lifetime milestone completion than frequent short-term redeemers.",
+            "source": "LBG Financial Well-being Research",
+            "actionLabel": "Read Full Insight",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "READ_INSIGHT",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "tangible-value-summary",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Portfolio Cash Equivalent",
+            "cashValue": "\u00a3245.00",
+            "pointsEquivalent": 24500,
+            "breakdown": [
+              {
+                "label": "Retirement Fund Value",
+                "value": "\u00a3122.50"
+              },
+              {
+                "label": "Children Education Fund Value",
+                "value": "\u00a392.50"
+              },
+              {
+                "label": "Dream Home Deposit Value",
+                "value": "\u00a330.00"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BREAKDOWN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "rewards-insight-overview",
+          "type": "REWARDS_INSIGHT_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Diamond Tier Portfolio Summary",
+            "topBrandName": "LBG Secure Savings",
+            "topBrandPoints": 24500,
+            "growthTip": "Reactivating your monthly retirement contribution will resume your steady compounding trajectory.",
+            "expiringPoints": 2400,
+            "expiryDate": "02 Sep",
+            "ctaText": "Review Allocation Rules",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REVIEW_RULES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "sync-status-trusted",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Synchronisation Secure",
+            "lastSyncedAt": "24 Aug 2026, 09:53",
+            "message": "All three connected savings pots and lbgCoins balances are securely verified and up to date.",
+            "ctaText": "Verify Sync",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PLANNER_AT_RISK_MIX_ALIGNMENT",
+        "FUTURE_SECURITY_MOTIVATION",
+        "MULTI_GOAL_COMPLIANCE",
+        "EDUCATIONAL_PREFERENCE_MATCH"
+      ]
+    },
+    "strategy": "A rich 13-component educational and projected-value rewards overview tailored for multi-goal Planner at Risk (Elena Vasquez). Features three long-term goal cards, an Add Goal Card, Points Balance, calm Expiring Points Alert (2,400 points in 9 days), Projection Chart showing long-term compounding, Educational Insight Card, Metric Tile set, Quick Win Card, Future Value Card, Tangible Value Card, and Rewards Insight Card. Grounded entirely in Elena's real intelligence profile with zero dark patterns.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A rich 13-component educational and projected-value rewards overview tailored for multi-goal Planner at Risk (Elena Vasquez). Features three long-term goal cards, an Add Goal Card, Points Balance, calm Expiring Points Alert (2,400 points in 9 days), Projection Chart showing long-term compounding, Educational Insight Card, Metric Tile set, Quick Win Card, Future Value Card, Tangible Value Card, and Rewards Insight Card. Grounded entirely in Elena's real intelligence profile with zero dark patterns.",
+    "components": [
+      {
+        "id": "points-balance-header",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 24500,
+          "tier": "Diamond",
+          "name": "Elena Vasquez",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "expiring-points-notice",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Protect Your Accumulated Value",
+          "expiringPoints": 2400,
+          "daysLeft": 9,
+          "message": "2,400 of your points are scheduled to expire in 9 days. Allocate them to your long-term goals or secure them in your savings pot to maintain your financial trajectory.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ALLOCATE_POINTS",
+            "payload": {
+              "points": 2400
+            }
+          }
+        ]
+      },
+      {
+        "id": "quick-win-safeguard",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Secure Protected Allocation",
+          "subtitle": "Effortless points safeguard for Diamond tier members",
+          "rewards": [
+            {
+              "name": "Retirement Fund Top-Up",
+              "points": 2400
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SECURE_POINTS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "goal-retirement-fund",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 24500,
+          "target": 100000,
+          "percentage": 25,
+          "estimatedCompletion": "2032",
+          "message": "You are 25% toward your secure retirement foundation. Consistent contributions compound powerfully over time.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Retirement Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "goal-children-education",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 18500,
+          "target": 50000,
+          "percentage": 37,
+          "estimatedCompletion": "2030",
+          "message": "Strong progress at 37%. Your disciplined saving ensures steady educational backing.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Children Education Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "goal-dream-home",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 9000,
+          "target": 75000,
+          "percentage": 12,
+          "estimatedCompletion": "2035",
+          "message": "12% achieved. Long-horizon property planning benefits from steady, automated compounding.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Dream Home Deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-new-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Create another long-term horizon fund to secure your financial future",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_NEW_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "future-value-projection",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Long-Term Compounding Outlook",
+          "currentValue": 24500,
+          "projectedValue": 45000,
+          "timeframe": "5 Years",
+          "growthRate": "6.2% AER equivalent",
+          "message": "Maintaining your Diamond tier savings rate projects robust value growth across your portfolio.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PROJECTION_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "projection-chart-growth",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Multi-Year Rewards Compounding Forecast",
+          "growthLabel": "Projected Portfolio Value (\u00a3)",
+          "data": [
+            {
+              "year": "2026",
+              "value": 24500
+            },
+            {
+              "year": "2027",
+              "value": 28200
+            },
+            {
+              "year": "2028",
+              "value": 32500
+            },
+            {
+              "year": "2029",
+              "value": 37800
+            },
+            {
+              "year": "2030",
+              "value": 45000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXPAND_CHART",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "educational-insight-compounding",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "The Power of Patience in Rewards Accumulation",
+          "insight": "Consistent long-term savers who protect expiring points and maintain idle balances in growth pots achieve 3.4x higher lifetime milestone completion than frequent short-term redeemers.",
+          "source": "LBG Financial Well-being Research",
+          "actionLabel": "Read Full Insight",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_INSIGHT",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "tangible-value-summary",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Portfolio Cash Equivalent",
+          "cashValue": "\u00a3245.00",
+          "pointsEquivalent": 24500,
+          "breakdown": [
+            {
+              "label": "Retirement Fund Value",
+              "value": "\u00a3122.50"
+            },
+            {
+              "label": "Children Education Fund Value",
+              "value": "\u00a392.50"
+            },
+            {
+              "label": "Dream Home Deposit Value",
+              "value": "\u00a330.00"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BREAKDOWN",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "rewards-insight-overview",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Diamond Tier Portfolio Summary",
+          "topBrandName": "LBG Secure Savings",
+          "topBrandPoints": 24500,
+          "growthTip": "Reactivating your monthly retirement contribution will resume your steady compounding trajectory.",
+          "expiringPoints": 2400,
+          "expiryDate": "02 Sep",
+          "ctaText": "Review Allocation Rules",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REVIEW_RULES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "sync-status-trusted",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "status": "synced",
+          "title": "Wallet Synchronisation Secure",
+          "lastSyncedAt": "24 Aug 2026, 09:53",
+          "message": "All three connected savings pots and lbgCoins balances are securely verified and up to date.",
+          "ctaText": "Verify Sync",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PLANNER_AT_RISK_MIX_ALIGNMENT",
+      "FUTURE_SECURITY_MOTIVATION",
+      "MULTI_GOAL_COMPLIANCE",
+      "EDUCATIONAL_PREFERENCE_MATCH"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "strong long-term accumulation history now stalled",
+          "retirement fund contributions untouched for over a month",
+          "significant points expiring while saving toward long-horizon goals"
+        ]
+      }
+    ],
+    "methodology": "Pattern analysis of savings history, idle coin accumulation, and historical responsiveness to projected value content.",
+    "temporaryInterpretation": true
+  }
+}

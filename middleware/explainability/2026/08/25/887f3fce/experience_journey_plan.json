@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review home savings goal progress and engage with targeted educational insights without gamified pressure.",
+  "entryPoint": "Customer views rewards overview home screen.",
+  "completionDefinition": "Customer views the goal progress card and completes a targeted financial literacy quiz episode.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my home savings goal and points balance?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "goal progress percentage",
+        "goal target and current values"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-03"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational insights and structured pathways support my mastery?",
+      "entryCondition": "Goal status understood",
+      "requiredInformation": [
+        "learning modules",
+        "financial literacy tips",
+        "tangible value breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-01"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I test my knowledge and continue my learning journey?",
+      "entryCondition": "Educational insights reviewed",
+      "requiredInformation": [
+        "quiz details",
+        "learning mission progress",
+        "confidence score"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-02"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide transparent terms and educational provenance for points and rewards.",
+      "contentNotes": [
+        "Terms of earning",
+        "Educational module catalogue reference"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

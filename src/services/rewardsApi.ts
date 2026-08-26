@@ -23,21 +23,49 @@ import scottishWidowsLogo from '../assets/scottishwidows.png'
 import mbnaLogo from '../assets/mbna.png'
 
 const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL ?? ''
-const LATENCY_MS = 650
 
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+let _jwtToken: string | null = localStorage.getItem('rewards_jwt')
+
+export function setAuthToken(token: string | null) {
+  _jwtToken = token
+  if (token) localStorage.setItem('rewards_jwt', token)
+  else localStorage.removeItem('rewards_jwt')
 }
 
-async function tryFetch<T>(path: string, init?: RequestInit): Promise<T | null> {
+export function getAuthToken(): string | null {
+  return _jwtToken
+}
+
+function authHeaders(): Record<string, string> {
+  const h: Record<string, string> = { 'Content-Type': 'application/json' }
+  if (_jwtToken) h['Authorization'] = `Bearer ${_jwtToken}`
+  return h
+}
+
+function snakeToCamel(str: string): string {
+  return str.replace(/_([a-z])/g, (_, c: string) => c.toUpperCase())
+}
+
+function camelizeKeys(obj: unknown): unknown {
+  if (Array.isArray(obj)) return obj.map(camelizeKeys)
+  if (obj !== null && typeof obj === 'object' && !(obj instanceof Date)) {
+    return Object.fromEntries(
+      Object.entries(obj as Record<string, unknown>).map(([k, v]) => [snakeToCamel(k), camelizeKeys(v)]),
+    )
+  }
+  return obj
+}
+
+async function apiFetch<T>(path: string, init?: RequestInit): Promise<T | null> {
   if (!API_BASE_URL) return null
   try {
     const res = await fetch(`${API_BASE_URL}${path}`, {
-      headers: { 'Content-Type': 'application/json' },
+      headers: authHeaders(),
       ...init,
     })
     if (!res.ok) throw new Error(`Request failed with status ${res.status}`)
-    return (await res.json()) as T
+    const json = await res.json()
+    return camelizeKeys(json) as T
   } catch (error) {
     console.warn(`[rewardsApi] Falling back to demo data for ${path}:`, error)
     return null
@@ -69,6 +97,7 @@ export const DEMO_BRANDS: BrandOption[] = [
   { id: 'brd_amazon', name: 'Amazon', category: 'Shopping', logoText: 'AZ', color: '#ff9900', minRedeem: 1500 },
   { id: 'brd_asos', name: 'ASOS', category: 'Shopping', logoText: 'AS', color: '#111827', minRedeem: 1200 },
   { id: 'brd_boots', name: 'Boots', category: 'Health', logoText: 'BO', color: '#0e7490', minRedeem: 600 },
+  { id: 'brd_alphamedical', name: 'AlphaMedical', category: 'Health', logoText: 'AM', color: '#0f766e', minRedeem: 650 },
   { id: 'brd_holland', name: 'Holland & Barrett', category: 'Health', logoText: 'HB', color: '#15803d', minRedeem: 800 },
   { id: 'brd_cineworld', name: 'Cineworld', category: 'Entertainment', logoText: 'CW', color: '#7c3aed', minRedeem: 900 },
   { id: 'brd_spotify', name: 'Spotify', category: 'Entertainment', logoText: 'SP', color: '#16a34a', minRedeem: 700 },
@@ -142,16 +171,18 @@ export async function loginWithPassword(
   phone: string,
   password: string,
 ): Promise<{ customerId: string; userName: string; phone: string }> {
-  await tryFetch('/api/v1/customers/login/password', {
-    method: 'POST',
-    body: JSON.stringify({ phone, password }),
-  })
-  await delay(LATENCY_MS)
   if (!phone.trim() || !password.trim()) {
     throw new Error('Enter your phone number and password to continue.')
   }
-  const customer = DEMO_CUSTOMER
-  return { customerId: customer.customerId, userName: customer.userName, phone }
+  const res = await apiFetch<{ accessToken: string; customerId: string; userName: string; phone: string }>(
+    '/api/v1/customers/login/password',
+    { method: 'POST', body: JSON.stringify({ phone, password }) },
+  )
+  if (res) {
+    setAuthToken(res.accessToken)
+    return { customerId: res.customerId, userName: res.userName, phone: res.phone }
+  }
+  throw new Error('Invalid phone number or password.')
 }
 
 export async function signupCustomer(payload: {
@@ -160,27 +191,24 @@ export async function signupCustomer(payload: {
   phone: string
   password: string
 }): Promise<void> {
-  await tryFetch('/api/v1/customers/signup', { method: 'POST', body: JSON.stringify(payload) })
-  await delay(LATENCY_MS)
+  await apiFetch('/api/v1/customers/signup', { method: 'POST', body: JSON.stringify(payload) })
 }
 
 export async function fetchBrandOptions(): Promise<BrandOption[]> {
-  const remote = await tryFetch<BrandOption[]>('/api/v1/brands')
+  const remote = await apiFetch<BrandOption[]>('/api/v1/brands')
   if (remote?.length) return remote
-  await delay(250)
   return DEMO_BRANDS
 }
 
 export async function fetchEarnedRewardMapByBrand(
   customerId: string,
 ): Promise<Record<string, string>> {
-  const remote = await tryFetch<Array<{ brandId: string; rewardId: string }>>(
+  const remote = await apiFetch<Array<{ brandId: string; rewardId: string }>>(
     `/api/v1/rewards?customer_id=${encodeURIComponent(customerId)}&status=EARNED&limit=500`,
   )
   if (remote) {
     return Object.fromEntries(remote.map((r) => [r.brandId, r.rewardId]))
   }
-  await delay(200)
   return Object.fromEntries(DEMO_POINTS_BY_BRAND.map((p, i) => [p.brandId, `rwd_${1000 + i}`]))
 }
 
@@ -188,18 +216,16 @@ export async function fetchWalletTransactions(
   customerId: string,
   limit = 25,
 ): Promise<WalletTransactionItem[]> {
-  const remote = await tryFetch<WalletTransactionItem[]>(
+  const remote = await apiFetch<WalletTransactionItem[]>(
     `/api/v1/wallet/${encodeURIComponent(customerId)}/transactions?limit=${limit}`,
   )
   if (remote) return remote
-  await delay(350)
   return DEMO_TRANSACTIONS.slice(0, limit)
 }
 
 export async function fetchCustomerDashboardById(customerId: string): Promise<DashboardData> {
-  const remote = await tryFetch<DashboardData>(`/api/v1/customers/${encodeURIComponent(customerId)}/summary`)
+  const remote = await apiFetch<DashboardData>(`/api/v1/customers/${encodeURIComponent(customerId)}/summary`)
   if (remote) return remote
-  await delay(300)
   return {
     customer: DEMO_CUSTOMER,
     pointsByBrand: DEMO_POINTS_BY_BRAND,
@@ -207,11 +233,10 @@ export async function fetchCustomerDashboardById(customerId: string): Promise<Da
 }
 
 export async function fetchCustomerDashboard(phone: string): Promise<DashboardData> {
-  const remote = await tryFetch<DashboardData>(
+  const remote = await apiFetch<DashboardData>(
     `/api/v1/customers/lookup/summary?phone=${encodeURIComponent(phone)}`,
   )
   if (remote) return remote
-  await delay(300)
   return {
     customer: { ...DEMO_CUSTOMER, phone },
     pointsByBrand: DEMO_POINTS_BY_BRAND,

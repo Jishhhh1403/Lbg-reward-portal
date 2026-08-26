@@ -1,0 +1,125 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-statement-credit",
+      "strategy": "Direct statement credit focus with clear points balance, cash-equivalent translation, and one-tap bill application.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.65,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-holiday-goal",
+      "strategy": "Goal-centric navigation focusing on holiday spending money progress and automated points allocations.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-statement-credit",
+    "storyTitle": "Review and Apply Statement Credit",
+    "oneSentenceStory": "Daniel views his 7,300 coin balance and applies available cash-equivalent value directly as a statement credit to his linked card.",
+    "customerSituation": "Daniel visits the mobile rewards overview to check his points balance and review cashback earnings.",
+    "storyTension": "Ensuring transparent, friction-free translation of points into tangible bill relief without confusing voucher distractions.",
+    "customerResolution": "Direct one-tap application of statement credits to his linked card balance.",
+    "primaryOutcome": "Effortless tracking and redemption of cash-equivalent statement credits and financial goals.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-statement-credit-pref",
+      "fact-cashback-check"
+    ],
+    "confidence": 0.95,
+    "prohibitedDetours": [
+      "Voucher promotions",
+      "Leaderboards",
+      "Experiential rewards"
+    ],
+    "completionSignals": [
+      "Customer views points balance",
+      "Customer selects statement credit option"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-statement-credit",
+      "storyId": "story-statement-credit",
+      "journeyObjective": "Provide effortless tracking of points balance and direct one-tap redemption of statement credits on the linked card.",
+      "completionDefinition": "Customer views points balance, checks cash-equivalent tangible value, and selects statement credit application.",
+      "episodeSketches": [
+        "Display points balance and cash-equivalent statement credit value",
+        "Present direct one-tap statement credit application option aligned with holiday savings goal"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-statement-credit",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 94,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate statement credit strategy perfectly matches Daniel's payment utility motivation and explicit preference for cash equivalents."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All dark pattern, manipulation, and gamification risks are fully suppressed in accordance with charter constraints."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and educational tone ensure clarity for financial tasks without cognitive overload."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-journey alignment is exceptionally tight with clear single-dominant action policy."
+    }
+  ]
+}

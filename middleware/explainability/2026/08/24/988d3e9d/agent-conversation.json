@@ -1,0 +1,189 @@
+{
+  "totalMessages": 5,
+  "messages": [
+    {
+      "messageId": "msg-3cab7c40a61c",
+      "sequence": 1,
+      "timestamp": "2026-08-24T17:43:19.918969+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "orchestrator",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Orchestrator verified task parameters and confirmed consent for rewards-personalization scope.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-bd8b3abe7847",
+      "sequence": 2,
+      "timestamp": "2026-08-24T17:43:19.919058+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "consent-guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Consent valid. Verified no protected attributes are inferred and no prohibited dark patterns are present.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-f1fafc61b6c0",
+      "sequence": 3,
+      "timestamp": "2026-08-24T17:43:19.919082+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "journey-intent-agent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Identified EDUCATIONAL_COMPETENCE persona. Proposing mandatory components including POINTS_BALANCE, GOAL_PROGRESS_CARD, QUIZ_CARD, MILESTONE_CARD, and EDUCATIONAL_INSIGHT_CARD, while strictly suppressing leaderboards and timed challenges.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-e12f24c35cd9",
+      "sequence": 4,
+      "timestamp": "2026-08-24T17:43:25.120505+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Context Analyst",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "OBSERVATION",
+      "summary": "Confirmed customer motivation as LEARNING_MASTERY based on high module completion and avoidance of public rankings.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-d3511fb7d86d",
+      "sequence": 5,
+      "timestamp": "2026-08-24T17:43:25.120520+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Customer Story Architect",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Recommended story-1 to focus on First Home Savings Knowledge goal progression without competitive pressure.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    }
+  ],
+  "agentParticipation": {
+    "orchestrator": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "consent-guardian": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "journey-intent-agent": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "Context Analyst": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "OBSERVATION"
+      ]
+    },
+    "Customer Story Architect": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    }
+  },
+  "stageTimeline": [
+    {
+      "sequence": 1,
+      "stage": "Q",
+      "agent": "orchestrator",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T17:43:19.918969+00:00"
+    },
+    {
+      "sequence": 2,
+      "stage": "Q",
+      "agent": "consent-guardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T17:43:19.919058+00:00"
+    },
+    {
+      "sequence": 3,
+      "stage": "Q",
+      "agent": "journey-intent-agent",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-24T17:43:19.919082+00:00"
+    },
+    {
+      "sequence": 4,
+      "stage": "U",
+      "agent": "Context Analyst",
+      "messageType": "OBSERVATION",
+      "timestamp": "2026-08-24T17:43:25.120505+00:00"
+    },
+    {
+      "sequence": 5,
+      "stage": "U",
+      "agent": "Customer Story Architect",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-24T17:43:25.120520+00:00"
+    }
+  ]
+}

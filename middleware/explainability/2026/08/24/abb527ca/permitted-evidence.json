@@ -1,0 +1,79 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent statement credit redemptions",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "active holiday savings goal tracking",
+        "source": "goals",
+        "confidence": 0.92,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_010 (Daniel Brooks) is a highly engaged, payment-utility-focused customer with 7,300 LBG coins and an active holiday savings goal. Exhibits strong preference for predictable, guaranteed statement credits and automatic payment rewards rather than lifestyle vouchers.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-lbg-coins",
+        "statement": "Customer holds 7,300 LBG coins in wallet.",
+        "source": "session-context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-redemption-habit",
+        "statement": "Redeems almost exclusively as statement credits on linked card.",
+        "source": "availableEvidence",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-holiday-goal",
+        "statement": "Active holiday savings goal with target value 1200.0 and current value 640.0 (53% progress).",
+        "source": "intelligence-layer",
+        "confidence": 0.92
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "inf-motivation",
+        "attribute": "motivation",
+        "value": "PAYMENT_UTILITY",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "redeems almost exclusively as statement credits on linked card",
+          "checks cashback earned alongside balance every visit",
+          "uninterested in vouchers or experiences, wants money off bills"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "inf-preferred-reward-type",
+        "attribute": "preferredRewardType",
+        "value": "STATEMENT_CREDIT",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "redeems almost exclusively as statement credits on linked card",
+          "sets allocation of earned points to automatic payment rewards"
+        ],
+        "inferenceMethod": "historical-redemption-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

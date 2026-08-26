@@ -1,0 +1,91 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "large points balance sitting idle above 20k",
+        "source": "wallet & intelligence layer",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "significant points expiring while saving toward long-horizon goals",
+        "source": "intelligence layer risk",
+        "confidence": 0.99,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "historically responded well to projected-value and educational content",
+        "source": "intelligence layer behaviors",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Elena Vasquez is a Diamond tier saver with a stalled long-term accumulation history, holding 24,500 lbgCoins with 2,400 points expiring in 9 days. She has a planner profile focused on future security and long-horizon goals (Retirement, Children's Education, Dream Home).",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Customer holds 24,500 lbgCoins balance.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f2",
+        "statement": "2,400 points are expiring in 9 days.",
+        "source": "Intelligence Layer risk",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f3",
+        "statement": "Customer has three active long-term goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "Intelligence Layer goals",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f4",
+        "statement": "Engagement score is 0.28 with 34 days since last activity.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "preferredContent",
+        "value": "projected-value and educational content",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "historically responded well to projected-value and educational content"
+        ],
+        "inferenceMethod": "behavioral history analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p2",
+        "attribute": "riskSensitivity",
+        "value": "high risk of churn/disengagement due to stalled accumulation",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "strong long-term accumulation history now stalled",
+          "declining logins threaten an otherwise disciplined savings journey"
+        ],
+        "inferenceMethod": "persona intelligence evaluation",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

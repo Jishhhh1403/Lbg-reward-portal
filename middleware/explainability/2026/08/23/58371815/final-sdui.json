@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "58371815",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-11-05T00:00:00Z",
+  "customerRef": "customer_007",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 24500,
+        "tier": "Diamond",
+        "name": "Elena Vasquez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Protect Your Accumulated Value",
+        "expiringPoints": 2400,
+        "daysLeft": 9,
+        "message": "2,400 of your points are scheduled to expire in 9 days. Allocate them toward your long-term goals to secure your financial future.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ALLOCATE_EXPIRING_POINTS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Long-Term Portfolio Projection",
+        "currentValue": 24500,
+        "projectedValue": 68200,
+        "timeframe": "5 Years",
+        "growthRate": "7.5% APY Equivalent",
+        "message": "Continuing your steady accumulation pattern ensures robust growth across your entire portfolio.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-lt-goal-1",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 24500,
+        "target": 100000,
+        "percentage": 25,
+        "estimatedCompletion": "2038",
+        "message": "Your foundational pillar for lifelong independence.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-lt-goal-2",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 18500,
+        "target": 50000,
+        "percentage": 37,
+        "estimatedCompletion": "2032",
+        "message": "Steady compounding toward higher education milestones.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-lt-goal-3",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 9000,
+        "target": 75000,
+        "percentage": 12,
+        "estimatedCompletion": "2035",
+        "message": "Long-horizon foundation for your family's permanent residence.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Establish a new long-horizon financial objective",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "The Power of Compound Accumulation",
+        "insight": "Consistent, long-horizon allocation of reward points into high-yield milestones generates up to 3x more terminal value over a decade compared to sporadic redemption.",
+        "source": "LBG Wealth & Rewards Advisory",
+        "actionLabel": "Read Full Insight",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_EDUCATIONAL_ARTICLE",
+          "payload": {
+            "articleId": "compound-accumulation-01"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "planId": "plan-c20d4108",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Clarity-first approach tailored to Daniel Brooks' payment-utility motivation, emphasizing coin balance, holiday savings goal progress, and straightforward statement credit application without gamification.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 7300,
+          "tier": "Platinum",
+          "name": "Daniel Brooks",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE",
+            "payload": {
+              "lbgCoins": 7300
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Holiday Spending Money",
+          "current": 640.0,
+          "target": 1200.0,
+          "percentage": 53,
+          "remaining": 560.0,
+          "motivationalMessage": "You are 53% toward your holiday goal with automatic statement credits helping you save.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL",
+            "payload": {
+              "goalName": "Holiday Spending Money"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-payment-reward",
+        "type": "PAYMENT_REWARD_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Automatic Statement Credit",
+          "paymentMethod": "Platinum Card ending in \u2022\u20224821",
+          "rewardRate": "1.0% back in statement credits",
+          "monthlyCap": "\u00a350.00 cap",
+          "description": "Your earned LBG coins convert automatically to reduce your monthly card bill.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONFIGURE_PAYMENT_REWARD",
+            "payload": {
+              "autoApply": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-allocation",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Reward Allocation",
+          "subtitle": "Choose how your incoming LBG coins are applied",
+          "allocation": {
+            "label": "Statement Credit Bill Reduction",
+            "percent": 100
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "UPDATE_ALLOCATION",
+            "payload": {
+              "percent": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-payment-confirmation",
+        "type": "PAYMENT_REWARD_CONFIRMATION",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Recent Statement Credit Applied",
+          "message": "Successfully credited to your card statement from your LBG coin balance.",
+          "amount": "\u00a325.00",
+          "reference": "LBG-SC-8821",
+          "date": "24 Aug 2026",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_RECEIPT",
+            "payload": {
+              "reference": "LBG-SC-8821"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Your Rewards Cash Value",
+          "cashValue": "\u00a373.00",
+          "pointsEquivalent": 7300,
+          "breakdown": {
+            "label": "Statement Credit Rate",
+            "value": "100 coins = \u00a31.00"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "APPLY_STATEMENT_CREDIT",
+            "payload": {
+              "pointsToRedeem": 7300,
+              "cashValue": "\u00a373.00"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Statement Credit Efficiency",
+          "topBrandName": "Linked Card Bill",
+          "topBrandPoints": 7300,
+          "growthTip": "Redeeming as a statement credit gives you the highest guaranteed monetary return on your LBG coins.",
+          "expiringPoints": 0,
+          "expiryDate": "31 Dec",
+          "ctaText": "Apply \u00a373.00 Now",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "TRIGGER_REDEEM",
+            "payload": {
+              "action": "apply_statement_credit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-it-works",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": {
+            "title": "Direct Bill Reduction",
+            "description": "Convert your LBG coins instantly into pounds off your card statement with zero fees or complicated partner restrictions."
+          },
+          "ctaLabel": "Learn about statement credits",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_EDUCATION",
+            "payload": {
+              "topic": "statement_credits"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "PAYMENT_UTILITY_FOCUSED"
+    ]
+  },
+  "strategy": "Clarity-first approach tailored to Daniel Brooks' payment-utility motivation, emphasizing coin balance, holiday savings goal progress, and straightforward statement credit application without gamification.",
+  "confidence": 0.98
+}

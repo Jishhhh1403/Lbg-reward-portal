@@ -1,0 +1,81 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes financial literacy modules to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_011 (Sophie Williams) demonstrates a strong preference for competence-driven learning and mastery over competitive or time-sensitive incentives. She engages deeply with financial literacy modules, achieving 100% completion rates and dedicating extended session times to educational content without utilizing leaderboards.",
+    "observedFacts": [
+      {
+        "factId": "fact-01",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-02",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-03",
+        "statement": "Spends longest session time on educational content",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-04",
+        "statement": "Holds 3900 LBG coins and 0 loyalty points with 3 connected brands",
+        "source": "Wallet Data",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-01",
+        "attribute": "learningPacing",
+        "value": "self-paced",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "fact-01",
+          "fact-02"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-02",
+        "attribute": "competitiveEngagement",
+        "value": "avoidant",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "avoids timed challenges and public rankings"
+        ],
+        "inferenceMethod": "stated-behavioral-preference",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "c6d30747",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_003",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 28400,
+        "tier": "Diamond",
+        "name": "David Park",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {
+            "customerId": "customer_003"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-1",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 28400,
+        "target": 100000,
+        "percentage": 28,
+        "estimatedCompletion": "2032",
+        "message": "Strong accumulation pace. You are well on your way to securing your future retirement.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-2",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 20500,
+        "target": 50000,
+        "percentage": 41,
+        "estimatedCompletion": "2029",
+        "message": "Excellent progress! 41% achieved toward your children's educational milestone.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal-3",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 11250,
+        "target": 75000,
+        "percentage": 15,
+        "estimatedCompletion": "2034",
+        "message": "Steady growth. Consistent contributions will accelerate your home deposit goal.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new long-term milestone or investment target",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Projected Wealth Growth",
+        "currentValue": 28400,
+        "projectedValue": 65000,
+        "timeframe": "5 Years",
+        "growthRate": "7.5% APY equivalent",
+        "message": "Your disciplined accumulation strategy significantly amplifies your long-term purchasing power.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Multi-Year Accumulation Projection",
+        "growthLabel": "Estimated Portfolio Value",
+        "data": [
+          {
+            "year": "2026",
+            "value": 28400
+          },
+          {
+            "year": "2028",
+            "value": 41000
+          },
+          {
+            "year": "2030",
+            "value": 53000
+          },
+          {
+            "year": "2032",
+            "value": 65000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPAND_CHART",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Mastering Compound Rewards",
+        "insight": "Diamond tier members who maintain long-term holdings benefit from tier multiplier bonuses and exclusive high-yield partner allocations.",
+        "source": "LBG Wealth Intelligence",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_ARTICLE",
+          "payload": {
+            "articleId": "compound-rewards-mastery"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "67c035a9",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-11-03T00:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "comp-pts-bal-001",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE_WALLET",
+          "payload": {
+            "destination": "wallet_overview"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-exp-alert-002",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Points Expiry Notice",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "1,500 of your 3,600 lbgCoins are scheduled to expire in 7 days. Redeem them now to enjoy your rewards.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING_REWARDS",
+          "payload": {
+            "filter": "expiring"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win-003",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Instant Welcome Back Win",
+        "subtitle": "Claim these effortless low-point rewards instantly with 1-tap.",
+        "rewards": [
+          {
+            "name": "Artesian Coffee Voucher",
+            "points": 200
+          },
+          {
+            "name": "Digital Snack Box",
+            "points": 350
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "rewardId": "coffee-voucher-200"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner-004",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Flash Deal: Gourmet Dining Voucher",
+        "subtitle": "Limited-time discount tailored for your instant redemption preference.",
+        "originalPoints": 800,
+        "discountedPoints": 550,
+        "timer": "168:00:00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_FLASH_REWARD",
+          "payload": {
+            "rewardId": "flash-dining-550"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem-005",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Quick Redeem Rewards",
+        "description": "Redeem instantly using your Gold tier lbgCoins balance.",
+        "rewards": [
+          {
+            "name": "Cinema Ticket Pass",
+            "points": 450,
+            "icon": "film"
+          },
+          {
+            "name": "Caf\u00e9 Latte & Pastry",
+            "points": 250,
+            "icon": "coffee"
+          },
+          {
+            "name": "Gourmet Food Delivery",
+            "points": 600,
+            "icon": "utensils"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEMS",
+          "payload": {
+            "category": "instant"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-popup-006",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Welcome Back Bonus!",
+        "subtitle": "We missed you Ryan! Here is a celebratory bonus reward for returning.",
+        "points": 300,
+        "expiresIn": "48 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_BONUS",
+          "payload": {
+            "bonusId": "welcome-back-300"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value-007",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Your Total Balance Worth",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": [
+          {
+            "label": "Available lbgCoins",
+            "value": "3,600 coins"
+          },
+          {
+            "label": "Expiring Soon",
+            "value": "1,500 coins"
+          },
+          {
+            "label": "Estimated Cash Value",
+            "value": "\u00a336.00 GBP"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CASH_CONVERSION",
+          "payload": {
+            "currency": "GBP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-reengage-banner-008",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Great to see you again, Ryan!",
+        "message": "It's been 41 days since your last visit. Pick up right where you left off with instant rewards and flash offers.",
+        "ctaText": "Explore Instant Rewards",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_REENGAGEMENT",
+          "payload": {
+            "action": "explore"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

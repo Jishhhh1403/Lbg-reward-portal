@@ -1,0 +1,33 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "COHERENCE: the compiled screen still tells exactly one story; the first non-anchor card establishes it; one dominant action remains unambiguous; mandatory card-rule insertions carry declared narrative placements and did not fragment the mainline.",
+        "severity": "HIGH",
+        "statement": "postCompileCoherence check failed: compiled order diverges from approved narrative sequence (first mismatch at position 2: approved=['comp-add-goal'], compiled=['comp-learning-mission'])."
+      }
+    ],
+    "unresolvedCritical": 1,
+    "unresolvedHigh": 1,
+    "releaseReasons": [],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "Coherence validation failed due to component ordering mismatch between the approved narrative sequence and the compiled SDUI output."
+      }
+    ]
+  },
+  "fallbackTriggered": true,
+  "reasonCodes": [
+    "R.CONTINUITY.UNAVAILABLE",
+    "R.COHERENCE.HOLD"
+  ]
+}

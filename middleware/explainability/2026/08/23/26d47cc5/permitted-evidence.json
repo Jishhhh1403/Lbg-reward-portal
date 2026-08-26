@@ -1,0 +1,67 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "frequent goal-linked redemptions",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "consistent monthly accumulation",
+        "source": "behavior",
+        "confidence": 0.91,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_002 (Sarah Chen) is a Platinum-tier member with 6,820 LBG coins, demonstrating consistent monthly accumulation and a goal-oriented saving behavior pattern. She actively tracks progress toward multiple defined savings goals including Japan Vacation, New Phone, and Emergency Fund.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Holds 6,820 LBG coins with 3 connected brands.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f2",
+        "statement": "Exhibits frequent goal-linked redemptions and high goal completion rate of 78%.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f3",
+        "statement": "Maintains 3 active savings goals: Japan Vacation (67%), New Phone (74%), and Emergency Fund (45%).",
+        "source": "Intelligence Layer goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "savingsOrientation",
+        "value": "LONG_TERM_FOCUSED",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "frequent goal-linked redemptions",
+          "saves points for larger rewards",
+          "consistent monthly accumulation"
+        ],
+        "inferenceMethod": "behavioral-pattern-analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

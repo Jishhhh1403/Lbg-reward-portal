@@ -1,0 +1,92 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.9,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams (customer_011) engages deeply with financial literacy modules, prefers mastery over competitive elements, and maintains an active savings goal 'First Home Savings Knowledge' at 63% progress with 3,900 LBG coins.",
+    "observedFacts": [
+      {
+        "factId": "fact-1",
+        "statement": "Completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-2",
+        "statement": "Retakes quizzes until concepts are fully understood",
+        "source": "behavior",
+        "confidence": 0.95
+      },
+      {
+        "factId": "fact-3",
+        "statement": "Spends longest session time on educational content",
+        "source": "behavior",
+        "confidence": 0.9
+      },
+      {
+        "factId": "fact-4",
+        "statement": "Active savings goal: First Home Savings Knowledge at 63% progress",
+        "source": "wallet/goals",
+        "confidence": 1.0
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-1",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "fact-1",
+          "fact-2",
+          "fact-3"
+        ],
+        "inferenceMethod": "intelligence_layer_persona_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-2",
+        "attribute": "engagementTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.85,
+        "evidenceRefs": [
+          "fact-3"
+        ],
+        "inferenceMethod": "behavioral_affinity",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

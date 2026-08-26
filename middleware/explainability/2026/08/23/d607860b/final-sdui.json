@@ -1,0 +1,256 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "d607860b",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T02:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-pts-bal-01",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-inst-rew-02",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Bonus Instant Reward Unlocked!",
+        "subtitle": "Your recent brand activity earned you a surprise reward.",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "points": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-ban-03",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Flash Reward Deal: Weekend Cinema Pass",
+        "subtitle": "Limited-time redemption discount exclusively for Gold tier members.",
+        "originalPoints": 1000,
+        "discountedPoints": 750,
+        "timer": "01:45:30",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH_REWARD",
+          "payload": {
+            "rewardName": "Weekend Cinema Pass",
+            "points": 750
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-red-04",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant Coffee & Dining Treats",
+        "description": "Tap to redeem immediately with your 4,250 points balance.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Voucher",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Bistro Lunch Discount",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Streaming Rental",
+            "points": 350,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REWARDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tang-val-05",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Points Cash Value",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available Balance",
+            "value": "4,250 points"
+          },
+          {
+            "label": "Conversion Rate",
+            "value": "100 pts = \u00a31.00"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-rew-car-06",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Curated For Your Fast Pace",
+        "rewards": [
+          {
+            "name": "Gourmet Coffee Pass",
+            "points": 200,
+            "category": "Food & Drink",
+            "limited": false
+          },
+          {
+            "name": "Express Delivery Voucher",
+            "points": 400,
+            "category": "Shopping",
+            "limited": true
+          },
+          {
+            "name": "Digital Audiobook",
+            "points": 600,
+            "category": "Entertainment",
+            "limited": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "BROWSE_REWARDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win-07",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Effortless One-Tap Wins",
+        "subtitle": "Redeem instantly without leaving your dashboard.",
+        "rewards": [
+          {
+            "name": "Digital Magazine Issue",
+            "points": 150
+          },
+          {
+            "name": "Music Streaming Day Pass",
+            "points": 250
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-badge-card-08",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Your Achievements",
+        "badges": [
+          {
+            "name": "Speed Redeemer",
+            "icon": "flame",
+            "earned": true
+          },
+          {
+            "name": "Flash Master",
+            "icon": "star",
+            "earned": true
+          },
+          {
+            "name": "Gold Member",
+            "icon": "crown",
+            "earned": true
+          }
+        ],
+        "totalEarned": 3,
+        "totalAvailable": 10,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_BADGES",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-statement-credit",
+  "journeyObjective": "Enable effortless review of coin balance, tangible cash equivalent value, and direct one-click statement credit application toward upcoming card bills.",
+  "entryPoint": "Rewards Overview Dashboard",
+  "completionDefinition": "Customer successfully views coin balance, checks holiday goal progress, and initiates statement credit redemption.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and how much cash are my rewards worth?",
+      "entryCondition": "Customer opens the rewards overview screen",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Platinum tier status",
+        "Cash equivalent calculation"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-redemption-habit"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my holiday savings goal progressing and how can I apply my points directly to my bill?",
+      "entryCondition": "Customer reviews balance and seeks direct payment utility options",
+      "requiredInformation": [
+        "Holiday Spending Money goal at 53%",
+        "Statement credit allocation settings"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-holiday",
+        "fact-auto-rewards"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear legal terms regarding statement credit conversion rates",
+      "contentNotes": [
+        "100 LBG coins = \u00a31.00 statement credit"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

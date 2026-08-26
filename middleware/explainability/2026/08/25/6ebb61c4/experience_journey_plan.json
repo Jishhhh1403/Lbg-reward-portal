@@ -1,0 +1,100 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Engage with self-paced educational modules and monitor First Home Savings Knowledge goal progress without pressure.",
+  "entryPoint": "Rewards overview dashboard",
+  "completionDefinition": "Customer views points balance, reviews First Home Savings Knowledge goal progress, and engages with educational modules and quizzes at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my rewards and learning progress stand right now?",
+      "entryCondition": "Customer opens the rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal name",
+        "current value",
+        "target value",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-home-savings-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial mastery and verify my understanding?",
+      "entryCondition": "Customer reviews points and active savings goal",
+      "requiredInformation": [
+        "course name",
+        "current lesson",
+        "total lessons",
+        "quiz question",
+        "options",
+        "reward"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-complete-modules",
+        "fact-retake-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What insights and milestones support my ongoing learning journey?",
+      "entryCondition": "Customer completes or reviews learning modules and quizzes",
+      "requiredInformation": [
+        "comprehension feedback",
+        "confidence level",
+        "educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motivation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-help",
+      "purpose": "Provide supplementary context on how learning points convert to savings boosts.",
+      "contentNotes": [
+        "Self-paced learning guide",
+        "FAQ on milestone rewards"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

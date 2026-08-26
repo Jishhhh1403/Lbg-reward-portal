@@ -1,0 +1,412 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-672f284e",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A rich 7-component composition tailored for the GOAL_ORIENTED_SAVER persona managing 3 goals (Japan Vacation, New Phone, Emergency Fund) plus 6,820 LBG coins. Includes mandatory POINTS_BALANCE, one GOAL_PROGRESS_CARD per active goal, ADD_GOAL_CARD, GOAL_MILESTONE_CARD, and GOAL_LINKED_REWARD.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 6820,
+            "tier": "Platinum",
+            "name": "Sarah Chen",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_BALANCE_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-japan",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Japan Vacation",
+            "current": 1680,
+            "target": 2500,
+            "percentage": 67,
+            "remaining": 820,
+            "motivationalMessage": "You're over two-thirds of the way to Tokyo! Keep up the steady accumulation.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Japan Vacation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-phone",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "New Phone",
+            "current": 890,
+            "target": 1200,
+            "percentage": 74,
+            "remaining": 310,
+            "motivationalMessage": "Almost there! Just 310 more coins to unlock your upgrade.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "New Phone"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-emergency",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Emergency Fund",
+            "current": 1350,
+            "target": 3000,
+            "percentage": 45,
+            "remaining": 1650,
+            "motivationalMessage": "Solid progress on your financial cushion. Consistent monthly saving is paying off.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goal": "Emergency Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new savings target to keep your momentum going.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_NEW_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-milestones",
+          "type": "GOAL_MILESTONE_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "goalName": "Japan Vacation",
+            "milestones": [
+              {
+                "label": "25% - Flight Deposit Secured",
+                "reached": true
+              },
+              {
+                "label": "50% - Hotel Voucher Unlocked",
+                "reached": true
+              },
+              {
+                "label": "75% - Excursion Pass",
+                "reached": false
+              },
+              {
+                "label": "100% - Full Trip Redemptions",
+                "reached": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_MILESTONES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked-rewards",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Rewards Accelerating Your Japan Vacation",
+            "goalName": "Japan Vacation",
+            "rewards": [
+              {
+                "name": "Travel Partner Double Coins",
+                "points": 500,
+                "goalLinked": true
+              },
+              {
+                "name": "Airport Lounge Access Voucher",
+                "points": 1200,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_REWARD",
+              "payload": {
+                "goal": "Japan Vacation"
+              }
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "PERSONA_MATCH",
+        "MULTI_GOAL_COMPLIANCE",
+        "INTELLIGENCE_SIGNALS"
+      ]
+    },
+    "strategy": "A rich 7-component composition tailored for the GOAL_ORIENTED_SAVER persona managing 3 goals (Japan Vacation, New Phone, Emergency Fund) plus 6,820 LBG coins. Includes mandatory POINTS_BALANCE, one GOAL_PROGRESS_CARD per active goal, ADD_GOAL_CARD, GOAL_MILESTONE_CARD, and GOAL_LINKED_REWARD.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A rich 7-component composition tailored for the GOAL_ORIENTED_SAVER persona managing 3 goals (Japan Vacation, New Phone, Emergency Fund) plus 6,820 LBG coins. Includes mandatory POINTS_BALANCE, one GOAL_PROGRESS_CARD per active goal, ADD_GOAL_CARD, GOAL_MILESTONE_CARD, and GOAL_LINKED_REWARD.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 6820,
+          "tier": "Platinum",
+          "name": "Sarah Chen",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-japan",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Japan Vacation",
+          "current": 1680,
+          "target": 2500,
+          "percentage": 67,
+          "remaining": 820,
+          "motivationalMessage": "You're over two-thirds of the way to Tokyo! Keep up the steady accumulation.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "Japan Vacation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-phone",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "goalName": "New Phone",
+          "current": 890,
+          "target": 1200,
+          "percentage": 74,
+          "remaining": 310,
+          "motivationalMessage": "Almost there! Just 310 more coins to unlock your upgrade.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "New Phone"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-emergency",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Emergency Fund",
+          "current": 1350,
+          "target": 3000,
+          "percentage": 45,
+          "remaining": 1650,
+          "motivationalMessage": "Solid progress on your financial cushion. Consistent monthly saving is paying off.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "Emergency Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new savings target to keep your momentum going.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_NEW_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-milestones",
+        "type": "GOAL_MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "goalName": "Japan Vacation",
+          "milestones": [
+            {
+              "label": "25% - Flight Deposit Secured",
+              "reached": true
+            },
+            {
+              "label": "50% - Hotel Voucher Unlocked",
+              "reached": true
+            },
+            {
+              "label": "75% - Excursion Pass",
+              "reached": false
+            },
+            {
+              "label": "100% - Full Trip Redemptions",
+              "reached": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-rewards",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Rewards Accelerating Your Japan Vacation",
+          "goalName": "Japan Vacation",
+          "rewards": [
+            {
+              "name": "Travel Partner Double Coins",
+              "points": 500,
+              "goalLinked": true
+            },
+            {
+              "name": "Airport Lounge Access Voucher",
+              "points": 1200,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_REWARD",
+            "payload": {
+              "goal": "Japan Vacation"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "PERSONA_MATCH",
+      "MULTI_GOAL_COMPLIANCE",
+      "INTELLIGENCE_SIGNALS"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "GOAL_ACHIEVEMENT",
+        "confidence": 0.91,
+        "evidenceRefs": [
+          "fact-behavior-signals",
+          "fact-active-goals"
+        ]
+      }
+    ],
+    "methodology": "Behavioral pattern analysis and goal progress tracking via intelligence layer.",
+    "temporaryInterpretation": true
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "7451c826",
+  "createdAt": "2026-03-30T00:00:00Z",
+  "expiresAt": "2026-04-06T00:00:00Z",
+  "customerRef": "customer_003",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 28400,
+        "tier": "Diamond",
+        "name": "David Park",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 28400,
+        "target": 100000,
+        "percentage": 28,
+        "remaining": 71600,
+        "motivationalMessage": "Steady accumulation puts your retirement milestone firmly on track.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Retirement Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress-2",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 20500,
+        "target": 50000,
+        "percentage": 41,
+        "remaining": 29500,
+        "motivationalMessage": "Great progress! 41% achieved toward higher education security.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Children Education Fund"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-goal-progress-3",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 11250,
+        "target": 75000,
+        "percentage": 15,
+        "remaining": 63750,
+        "motivationalMessage": "Building your foundation brick by brick.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "Dream Home Deposit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Establish a new long-horizon financial milestone.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_NEW_GOAL",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Compound Growth Projection",
+        "currentValue": 28400,
+        "projectedValue": 52000,
+        "timeframe": "3 Years",
+        "growthRate": "6.5% APY equivalent",
+        "message": "Continuing your disciplined accumulation strategy maximizes your future purchasing power.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PROJECTION_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Long-Term Wealth Horizon",
+        "growthLabel": "Projected Value (Points)",
+        "data": [
+          {
+            "year": "2026",
+            "value": 28400
+          },
+          {
+            "year": "2028",
+            "value": 41500
+          },
+          {
+            "year": "2030",
+            "value": 63000
+          },
+          {
+            "year": "2032",
+            "value": 95000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPAND_CHART",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-long-term-goal",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "goalName": "Retirement Security Horizon",
+        "current": 28400,
+        "target": 100000,
+        "percentage": 28,
+        "estimatedCompletion": "2034",
+        "message": "On track for long-term independence based on your current 15 active monthly days cadence.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_LONG_TERM_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "The Power of Compounding Rewards",
+        "insight": "Holding balances across linked partner brands allows coin multipliers to compound significantly faster than frequent micro-redemptions.",
+        "source": "Wealth & Rewards Research Desk",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_EDUCATIONAL_ARTICLE",
+          "payload": {
+            "articleId": "compounding-rewards-101"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

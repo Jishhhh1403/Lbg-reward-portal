@@ -1,0 +1,127 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Display prominent GBP cash equivalent (\u00a356.00 value for 5,600 coins), side-by-side partner conversion rates, and a clean customer choice panel without any urgency framing or point abstraction.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Provide a simplified points wallet view with expandable partner comparison tables and standard explanatory text regarding conversion rates.",
+      "scores": {
+        "customerGoalRelevance": 7,
+        "expectedCustomerUtility": 7,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 8,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 7,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 5,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 7.6,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-1",
+    "storyTitle": "Absolute Clarity on Coin Value in Pounds",
+    "oneSentenceStory": "The customer views their exact GBP cash equivalent and partner rates without urgency pressure, enabling a confident and informed redemption choice.",
+    "customerSituation": "Maya holds 5,600 LBG coins and is reviewing her options across partner merchants but requires absolute clarity on the exact monetary worth in pounds before committing.",
+    "storyTension": "Complex point abstractions and unclear conversion rates risk causing hesitation or redemption abandonment.",
+    "customerResolution": "Transparent GBP valuation and clear partner rate comparisons are displayed directly, matching her preference for precise monetary terms.",
+    "primaryOutcome": "Gain absolute clarity on exact monetary and partner value of accumulated points.",
+    "secondaryOutcome": null,
+    "narrativeMode": "UNDERSTAND_VALUE",
+    "evidenceRefs": [
+      "fact-coins-balance",
+      "fact-eval-intent",
+      "fact-signal-asks-worth",
+      "fact-signal-prefers-monetary"
+    ],
+    "confidence": 0.93,
+    "prohibitedDetours": [
+      "Countdown timers or artificial scarcity",
+      "Gamification elements like streaks or leaderboards",
+      "Obscuring monetary conversion values behind point abstractions"
+    ],
+    "completionSignals": [
+      "Customer views clear GBP cash-equivalent value for points",
+      "Customer accesses transparent partner rate comparisons"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-1",
+      "journeyObjective": "Provide absolute clarity on exact GBP cash equivalents and transparent partner conversion rates for Maya's 5,600 coins.",
+      "completionDefinition": "Customer reviews the GBP cash equivalent (\u00a356.00) and compares partner rates with zero urgency pressure.",
+      "episodeSketches": [
+        "Display points balance alongside prominent GBP cash equivalent (\u00a356.00).",
+        "Present side-by-side transparent partner rate comparisons.",
+        "Provide customer choice panel for informed redemption decisions."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.5,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 94,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 93,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly targets VALUE_CERTAINTY_SEEKER persona by leading directly with exact GBP cash equivalents and partner rates."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns, countdown timers, or artificial scarcity detected. Fully respects customer aversion to urgency framing."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Components provide high cognitive fit with clear numerical disclosures and straightforward tabular partner comparisons."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-1 and journey-candidate-1 exhibit perfect narrative and structural alignment. Decision is PASS."
+    }
+  ]
+}

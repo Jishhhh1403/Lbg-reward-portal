@@ -1,0 +1,37 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "Component overload",
+        "severity": "HIGH",
+        "statement": "The candidate payload includes 14 distinct interactive components stacked sequentially (points balance, re-engagement banner, expiring points alert, countdown card, instant reward popup, flash reward banner, quick redeem card, quick win card, tangible value card, metric tiles, reward carousel, personalized offer card, brand explorer, sync status). This creates severe cognitive overload and decision fatigue for the user."
+      },
+      {
+        "category": "Weak or conflicting evidence",
+        "severity": "MEDIUM",
+        "statement": "There is redundant information displayed across multiple components, such as the 1,500 expiring points shown simultaneously in the expiring points alert, countdown card, and tangible value card breakdown, as well as duplicate representations of the points balance (POINTS_BALANCE component, METRIC_TILE, and TANGIBLE_VALUE_CARD)."
+      }
+    ],
+    "unresolvedCritical": 0,
+    "unresolvedHigh": 1,
+    "releaseReasons": [
+      "Excessive component count (14 components) violates cognitive load thresholds and UX best practices."
+    ],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "Holding release due to component overload (14 components). The screen contains redundant points displays and excessive competing calls to action, risking cognitive fatigue."
+      }
+    ]
+  },
+  "fallbackTriggered": false,
+  "reasonCodes": []
+}

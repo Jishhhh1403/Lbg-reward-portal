@@ -1,0 +1,885 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-958fc843",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "A balanced 14-component rich screen for Priya Sharma blending short-term goal progress, long-term horizon saving, gamification (streaks, challenges, badges, leaderboard), and projections, fully aligned with the MIXED_PROFILE guide.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 15400,
+            "tier": "Platinum",
+            "name": "Priya Sharma",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-bali",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "goalName": "Bali Trip",
+            "current": 2900,
+            "target": 4000,
+            "percentage": 72,
+            "remaining": 1100,
+            "motivationalMessage": "You're just 1,100 points away from your dream trip to Bali!",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "Bali Trip"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-laptop",
+          "type": "GOAL_PROGRESS_CARD",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "goalName": "New Laptop",
+            "current": 1500,
+            "target": 2500,
+            "percentage": 60,
+            "remaining": 1000,
+            "motivationalMessage": "Great momentum! Keep going to reach your New Laptop goal.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_GOAL_DETAILS",
+              "payload": {
+                "goalName": "New Laptop"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-retirement",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "goalName": "Retirement Fund",
+            "current": 15400,
+            "target": 80000,
+            "percentage": 19,
+            "estimatedCompletion": "2038",
+            "message": "Steady contributions compound significantly over the long horizon.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LONG_TERM_GOAL",
+              "payload": {
+                "goalName": "Retirement Fund"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-home",
+          "type": "LONG_TERM_GOAL_CARD",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "goalName": "Home Deposit",
+            "current": 11000,
+            "target": 50000,
+            "percentage": 22,
+            "estimatedCompletion": "2032",
+            "message": "Building your future home step by step with consistent saving.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LONG_TERM_GOAL",
+              "payload": {
+                "goalName": "Home Deposit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-add-goal",
+          "type": "ADD_GOAL_CARD",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Add a New Goal",
+            "subtitle": "Set a new savings target to accelerate your journey.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CREATE_GOAL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-streak",
+          "type": "STREAK_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "streakDays": 21,
+            "message": "Amazing 21-day activity streak! You are building fantastic habits.",
+            "nextReward": "Bonus 500 Points at 30 Days",
+            "milestones": [
+              {
+                "days": 7,
+                "reward": "100 Points",
+                "achieved": true
+              },
+              {
+                "days": 14,
+                "reward": "250 Points",
+                "achieved": true
+              },
+              {
+                "days": 30,
+                "reward": "500 Points",
+                "achieved": false
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_STREAK_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-challenge",
+          "type": "CHALLENGE_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Community Savings Sprint",
+            "description": "Contribute to any active goal 3 times this week to earn bonus points.",
+            "progress": 66,
+            "reward": "750 Points",
+            "daysLeft": 4,
+            "participants": 1420,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "JOIN_CHALLENGE",
+              "payload": {
+                "challengeId": "community-savings-sprint"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-leaderboard",
+          "type": "LEADERBOARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "period": "monthly",
+            "entries": [
+              {
+                "rank": 1,
+                "name": "Marcus V.",
+                "points": 24500,
+                "avatar": "MV",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 2,
+                "name": "Elena R.",
+                "points": 22100,
+                "avatar": "ER",
+                "isCurrentUser": false
+              },
+              {
+                "rank": 7,
+                "name": "Priya Sharma",
+                "points": 15400,
+                "avatar": "PS",
+                "isCurrentUser": true
+              },
+              {
+                "rank": 8,
+                "name": "Liam K.",
+                "points": 14900,
+                "avatar": "LK",
+                "isCurrentUser": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_LEADERBOARD",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-badges",
+          "type": "BADGE_CARD",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "title": "Achievement Badges",
+            "totalEarned": 11,
+            "totalAvailable": 20,
+            "badges": [
+              {
+                "name": "Streak Master",
+                "icon": "flame",
+                "earned": true
+              },
+              {
+                "name": "Goal Crusher",
+                "icon": "trophy",
+                "earned": true
+              },
+              {
+                "name": "Savings Star",
+                "icon": "star",
+                "earned": true
+              },
+              {
+                "name": "Financial Guru",
+                "icon": "brain",
+                "earned": false
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_ALL_BADGES",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-projection",
+          "type": "PROJECTION_CHART",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Long-Term Value Growth",
+            "growthLabel": "Estimated 5-Year Projection",
+            "data": [
+              {
+                "year": "2026",
+                "value": 15400
+              },
+              {
+                "year": "2027",
+                "value": 24000
+              },
+              {
+                "year": "2028",
+                "value": 35000
+              },
+              {
+                "year": "2029",
+                "value": 48000
+              },
+              {
+                "year": "2030",
+                "value": 65000
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_PROJECTION_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-goal-linked",
+          "type": "GOAL_LINKED_REWARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Rewards Accelerating Your Goals",
+            "goalName": "Bali Trip",
+            "rewards": [
+              {
+                "name": "Partner Flight Bonus",
+                "points": 1000,
+                "goalLinked": true
+              },
+              {
+                "name": "Hotel Booking Cashback",
+                "points": 500,
+                "goalLinked": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_REWARD",
+              "payload": {
+                "rewardName": "Partner Flight Bonus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-recommended-actions",
+          "type": "RECOMMENDED_ACTIONS",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Boost Your Progress Today",
+            "actions": [
+              {
+                "label": "Link a new partner brand",
+                "points": 500,
+                "icon": "shopping-bag"
+              },
+              {
+                "label": "Invite a friend to join goals",
+                "points": 300,
+                "icon": "users"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "PERFORM_ACTION",
+              "payload": {
+                "actionName": "Link a new partner brand"
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-metrics",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "label": "Active Days",
+            "value": "26",
+            "unit": "days/mo",
+            "tone": "brand",
+            "infoText": "Consistent monthly activity supporting your goals.",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_METRICS",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.92,
+      "reasonCodes": [
+        "MIXED_PROFILE_MATCH",
+        "MULTI_GOAL_SUPPORT",
+        "GAMIFICATION_AND_PROJECTIONS"
+      ]
+    },
+    "strategy": "A balanced 14-component rich screen for Priya Sharma blending short-term goal progress, long-term horizon saving, gamification (streaks, challenges, badges, leaderboard), and projections, fully aligned with the MIXED_PROFILE guide.",
+    "confidence": 0.92
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "A balanced 14-component rich screen for Priya Sharma blending short-term goal progress, long-term horizon saving, gamification (streaks, challenges, badges, leaderboard), and projections, fully aligned with the MIXED_PROFILE guide.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 15400,
+          "tier": "Platinum",
+          "name": "Priya Sharma",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-bali",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Bali Trip",
+          "current": 2900,
+          "target": 4000,
+          "percentage": 72,
+          "remaining": 1100,
+          "motivationalMessage": "You're just 1,100 points away from your dream trip to Bali!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "Bali Trip"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-laptop",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "goalName": "New Laptop",
+          "current": 1500,
+          "target": 2500,
+          "percentage": 60,
+          "remaining": 1000,
+          "motivationalMessage": "Great momentum! Keep going to reach your New Laptop goal.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "New Laptop"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-retirement",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 15400,
+          "target": 80000,
+          "percentage": 19,
+          "estimatedCompletion": "2038",
+          "message": "Steady contributions compound significantly over the long horizon.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_LONG_TERM_GOAL",
+            "payload": {
+              "goalName": "Retirement Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-home",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "goalName": "Home Deposit",
+          "current": 11000,
+          "target": 50000,
+          "percentage": 22,
+          "estimatedCompletion": "2032",
+          "message": "Building your future home step by step with consistent saving.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_LONG_TERM_GOAL",
+            "payload": {
+              "goalName": "Home Deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new savings target to accelerate your journey.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-streak",
+        "type": "STREAK_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "streakDays": 21,
+          "message": "Amazing 21-day activity streak! You are building fantastic habits.",
+          "nextReward": "Bonus 500 Points at 30 Days",
+          "milestones": [
+            {
+              "days": 7,
+              "reward": "100 Points",
+              "achieved": true
+            },
+            {
+              "days": 14,
+              "reward": "250 Points",
+              "achieved": true
+            },
+            {
+              "days": 30,
+              "reward": "500 Points",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_STREAK_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-challenge",
+        "type": "CHALLENGE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Community Savings Sprint",
+          "description": "Contribute to any active goal 3 times this week to earn bonus points.",
+          "progress": 66,
+          "reward": "750 Points",
+          "daysLeft": 4,
+          "participants": 1420,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "JOIN_CHALLENGE",
+            "payload": {
+              "challengeId": "community-savings-sprint"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-leaderboard",
+        "type": "LEADERBOARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "period": "monthly",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Marcus V.",
+              "points": 24500,
+              "avatar": "MV",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 2,
+              "name": "Elena R.",
+              "points": 22100,
+              "avatar": "ER",
+              "isCurrentUser": false
+            },
+            {
+              "rank": 7,
+              "name": "Priya Sharma",
+              "points": 15400,
+              "avatar": "PS",
+              "isCurrentUser": true
+            },
+            {
+              "rank": 8,
+              "name": "Liam K.",
+              "points": 14900,
+              "avatar": "LK",
+              "isCurrentUser": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_LEADERBOARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badges",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Achievement Badges",
+          "totalEarned": 11,
+          "totalAvailable": 20,
+          "badges": [
+            {
+              "name": "Streak Master",
+              "icon": "flame",
+              "earned": true
+            },
+            {
+              "name": "Goal Crusher",
+              "icon": "trophy",
+              "earned": true
+            },
+            {
+              "name": "Savings Star",
+              "icon": "star",
+              "earned": true
+            },
+            {
+              "name": "Financial Guru",
+              "icon": "brain",
+              "earned": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_BADGES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-projection",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Long-Term Value Growth",
+          "growthLabel": "Estimated 5-Year Projection",
+          "data": [
+            {
+              "year": "2026",
+              "value": 15400
+            },
+            {
+              "year": "2027",
+              "value": 24000
+            },
+            {
+              "year": "2028",
+              "value": 35000
+            },
+            {
+              "year": "2029",
+              "value": 48000
+            },
+            {
+              "year": "2030",
+              "value": 65000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PROJECTION_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Rewards Accelerating Your Goals",
+          "goalName": "Bali Trip",
+          "rewards": [
+            {
+              "name": "Partner Flight Bonus",
+              "points": 1000,
+              "goalLinked": true
+            },
+            {
+              "name": "Hotel Booking Cashback",
+              "points": 500,
+              "goalLinked": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardName": "Partner Flight Bonus"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-recommended-actions",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Boost Your Progress Today",
+          "actions": [
+            {
+              "label": "Link a new partner brand",
+              "points": 500,
+              "icon": "shopping-bag"
+            },
+            {
+              "label": "Invite a friend to join goals",
+              "points": 300,
+              "icon": "users"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "PERFORM_ACTION",
+            "payload": {
+              "actionName": "Link a new partner brand"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-metrics",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "label": "Active Days",
+          "value": "26",
+          "unit": "days/mo",
+          "tone": "brand",
+          "infoText": "Consistent monthly activity supporting your goals.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_METRICS",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.92,
+    "reasonCodes": [
+      "MIXED_PROFILE_MATCH",
+      "MULTI_GOAL_SUPPORT",
+      "GAMIFICATION_AND_PROJECTIONS"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "PROGRESS_AND_COMMUNITY",
+        "confidence": 0.87,
+        "evidenceRefs": [
+          "balances instant fun with long-term saving",
+          "completes challenges while accumulating toward goals",
+          "active streak combined with steady goal contributions"
+        ]
+      }
+    ],
+    "methodology": "Verified behavioral analysis combining telemetry, goal tracking history, and engagement patterns.",
+    "temporaryInterpretation": true
+  }
+}

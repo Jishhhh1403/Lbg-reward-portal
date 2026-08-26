@@ -1,0 +1,93 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-learning-completion",
+        "classification": "OBSERVED",
+        "value": "completes financial modules to 100%",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "sig-goal-progress",
+        "classification": "OBSERVED",
+        "value": "First Home Savings goal at 63% progress",
+        "source": "wallet",
+        "confidence": 1.0,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "sig-quiz-preference",
+        "classification": "OBSERVED",
+        "value": "retakes quizzes for conceptual mastery",
+        "source": "behavior",
+        "confidence": 0.94,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Sophie Williams (customer_011) engages with the platform primarily through structured learning, financial literacy modules, and long-term goal tracking for First Home Savings, exhibiting high competence motivation and curiosity without competitive pressure.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 3,900 LBG coins across 3 connected brands.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goal-progress",
+        "statement": "Active First Home Savings goal is at 63% progress (1,250 out of 2,000).",
+        "source": "Session Context journeyAnalysis & Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-learning-behavior",
+        "statement": "Completes every financial literacy module to 100% and retakes quizzes until concepts are fully understood.",
+        "source": "Intelligence Layer signals",
+        "confidence": 0.94
+      },
+      {
+        "factId": "fact-session-time",
+        "statement": "Spends longest session time on educational content, averaging 16 minutes per session.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 0.94
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "motivated by mastering topics rather than winning them"
+        ],
+        "inferenceMethod": "Intelligence Layer behavioral pattern analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-tone",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "spends longest session time on educational content",
+          "probPreferEducationReward: 0.86"
+        ],
+        "inferenceMethod": "Component affinity and engagement scoring",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

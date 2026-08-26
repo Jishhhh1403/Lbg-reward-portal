@@ -1,0 +1,85 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-edu-01",
+        "classification": "OBSERVED",
+        "value": "completes every financial literacy module to 100%",
+        "source": "behavior",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "sig-goal-02",
+        "classification": "OBSERVED",
+        "value": "First Home Savings Knowledge goal at 63% progress",
+        "source": "wallet_and_goals",
+        "confidence": 1.0,
+        "allowedPurpose": "personalization"
+      },
+      {
+        "signalId": "sig-pref-03",
+        "classification": "OBSERVED",
+        "value": "avoids timed challenges and public rankings",
+        "source": "user_preference_profile",
+        "confidence": 0.95,
+        "allowedPurpose": "personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Sophie Williams (customer_011) is an active participant in educational financial modules with 3,900 LBG Coins, a 63% progress rate on her First Home Savings Knowledge goal, and a strong preference for learning mastery over timed challenges or public leaderboards.",
+    "observedFacts": [
+      {
+        "factId": "fact-coins-011",
+        "statement": "Customer holds 3,900 LBG Coins in wallet",
+        "source": "Session Context",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-goal-011",
+        "statement": "First Home Savings Knowledge goal is at 63% progress (1,250 of 2,000 target value)",
+        "source": "Session Context & Intelligence Layer",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behavior-011",
+        "statement": "Completes every financial literacy module to 100% and retakes quizzes until concepts are fully understood",
+        "source": "Task Charter Available Evidence",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-motive-011",
+        "attribute": "motivation",
+        "value": "LEARNING_MASTERY",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "completes every financial literacy module to 100%",
+          "retakes quizzes until concepts are fully understood",
+          "motivated by mastering topics rather than winning them"
+        ],
+        "inferenceMethod": "Intelligence Layer behavioral analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-tone-011",
+        "attribute": "preferredTone",
+        "value": "EDUCATIONAL",
+        "confidence": 0.9,
+        "evidenceRefs": [
+          "spends longest session time on educational content",
+          "avoids timed challenges and public rankings"
+        ],
+        "inferenceMethod": "Personalization signals analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

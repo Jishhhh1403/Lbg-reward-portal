@@ -1,0 +1,69 @@
+/* ------------------------------------------------------------------ */
+/* Global layout — full-viewport, mobile-first (no device simulation)  */
+/* ------------------------------------------------------------------ */
+.app-root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f7fb;
+}
+
+/* ------------------------------------------------------------------ */
+/* Shared page scaffolding                                             */
+/* ------------------------------------------------------------------ */
+.page-body {
+  padding: 0 18px 96px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5b6b7c;
+}
+
+/* ------------------------------------------------------------------ */
+/* Auth screens                                                        */
+/* ------------------------------------------------------------------ */
+.auth-hero-band {
+  background:
+    radial-gradient(120% 130% at 88% -20%, rgba(255, 255, 255, 0.3), transparent 52%),
+    linear-gradient(125deg, #0d47a1 0%, #1565c0 52%, #1e88e5 100%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero banner                                                         */
+/* ------------------------------------------------------------------ */
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(130% 150% at 86% -30%, rgba(255, 255, 255, 0.32), transparent 50%),
+    linear-gradient(118deg, #0b3f8f 0%, #1565c0 46%, #26a9e0 100%);
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Transfer confirmation overlay                                       */
+/* ------------------------------------------------------------------ */
+.transfer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    155deg,
+    rgba(9, 30, 66, 0.94),
+    rgba(13, 71, 161, 0.92)
+  );
+  backdrop-filter: blur(6px);
+}

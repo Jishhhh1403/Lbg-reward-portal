@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "33fa9859",
+  "createdAt": "2023-10-27T10:00:00Z",
+  "expiresAt": "2023-10-27T12:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_BALANCE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-popup",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Fresh Bonus Credited!",
+        "subtitle": "Your recent partner checkout earned you instant rewards.",
+        "points": 250,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "points": 250
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Flash Weekend Coffee & Pastry Pass",
+        "subtitle": "Exclusive Gold Tier flash discount available right now.",
+        "originalPoints": 600,
+        "discountedPoints": 350,
+        "timer": "02:14:55",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_FLASH_OFFER",
+          "payload": {
+            "offerId": "flash-coffee-01",
+            "cost": 350
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant One-Tap Rewards",
+        "description": "Redeem instantly using your available 4,250 LBG coins.",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Bundle",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Dining Voucher \u00a310",
+            "points": 800,
+            "icon": "utensils"
+          },
+          {
+            "name": "Weekend Cinema Pass",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REDEEMS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Wallet's Real-World Worth",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available Coin Value",
+            "value": "\u00a342.50"
+          },
+          {
+            "label": "Gold Tier Bonus Multiplier",
+            "value": "1.5x active"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Effortless Micro-Rewards",
+        "subtitle": "Tap to claim minor treats instantly.",
+        "rewards": [
+          {
+            "name": "Digital Magazine Pass",
+            "points": 150
+          },
+          {
+            "name": "Express Car Wash Voucher",
+            "points": 300
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Curated For Your Instant Taste",
+        "rewards": [
+          {
+            "name": "Gourmet Meal Delivery Voucher",
+            "points": 1200,
+            "category": "Dining",
+            "limited": true
+          },
+          {
+            "name": "Streaming Service 1-Month Pass",
+            "points": 900,
+            "category": "Entertainment",
+            "limited": false
+          },
+          {
+            "name": "Airport Lounge Access",
+            "points": 2500,
+            "category": "Travel",
+            "limited": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "OPEN_REWARD_CATALOGUE",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

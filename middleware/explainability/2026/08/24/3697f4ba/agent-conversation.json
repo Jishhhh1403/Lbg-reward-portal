@@ -1,0 +1,498 @@
+{
+  "totalMessages": 14,
+  "messages": [
+    {
+      "messageId": "msg-cd54286f6d90",
+      "sequence": 1,
+      "timestamp": "2026-08-24T07:12:45.849436+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "Orchestrator",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Initialized task charter for customer_003 under rewards-overview journey with LONG_TERM_PLANNER persona.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-be31107fc1b6",
+      "sequence": 2,
+      "timestamp": "2026-08-24T07:12:45.849466+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "Consent Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Verified valid consent for purpose 'rewards-personalization' within allowed scope. No prohibited data access detected.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-33c97f100ad5",
+      "sequence": 3,
+      "timestamp": "2026-08-24T07:12:45.849482+00:00",
+      "stage": "Q",
+      "round": "committee",
+      "fromAgent": "Journey & Intent Agent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Identified high confidence (0.89) in LONG_TERM_PLANNER persona. Proposed mandatory components geared toward future security, goal progress, and projections.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-d93124845329",
+      "sequence": 4,
+      "timestamp": "2026-08-24T07:12:49.858577+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Context Analyst",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "OBSERVATION",
+      "summary": "Customer exhibits strong long-term planning behaviors with active financial and educational goals, aligning with the Long-Term Planner persona.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-80709f0bcf58",
+      "sequence": 5,
+      "timestamp": "2026-08-24T07:12:49.858607+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Consent Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "OBSERVATION",
+      "summary": "Consent scope 'rewards-personalization' is valid; all personalization adheres strictly to non-sensitive behavioral signals.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-e8ce28318f90",
+      "sequence": 6,
+      "timestamp": "2026-08-24T07:12:49.858622+00:00",
+      "stage": "U",
+      "round": "committee",
+      "fromAgent": "Accessibility",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Cognitive load score evaluated at 62 with 10 permitted components (3 goal cards + ADD_GOAL_CARD + mandatory components), remaining well within the maximum component and cognitive load thresholds.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-32897bcb018a",
+      "sequence": 7,
+      "timestamp": "2026-08-24T07:12:53.976177+00:00",
+      "stage": "E",
+      "round": "committee",
+      "fromAgent": "Personalization Synthesiser",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 successfully incorporates all three customer goals plus an add goal card, satisfying rich screen and multi-goal requirements.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-9b218b498f3c",
+      "sequence": 8,
+      "timestamp": "2026-08-24T07:12:53.976205+00:00",
+      "stage": "E",
+      "round": "committee",
+      "fromAgent": "Risk Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "No dark patterns, manipulative urgency, or privacy violations detected. Fully compliant with hard gates.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-fb3ca6e1449b",
+      "sequence": 9,
+      "timestamp": "2026-08-24T07:12:53.976220+00:00",
+      "stage": "E",
+      "round": "committee",
+      "fromAgent": "Accessibility Agent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Component layout meets all contrast, screen-reader, and cognitive load guidelines.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-7b60793e0209",
+      "sequence": 10,
+      "timestamp": "2026-08-24T07:13:02.777854+00:00",
+      "stage": "S",
+      "round": "committee",
+      "fromAgent": "Component Planner",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly fulfills all mandatory multi-goal requirements for David Park, rendering individual LONG_TERM_GOAL_CARD instances for Retirement Fund, Children Education Fund, and Dream Home Deposit, followed by the ADD_GOAL_CARD.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-43351183e283",
+      "sequence": 11,
+      "timestamp": "2026-08-24T07:13:02.777870+00:00",
+      "stage": "S",
+      "round": "committee",
+      "fromAgent": "UI Constitution Guardian",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "All props populated with authentic customer data (David Park, 28400 points, Diamond tier). Zero dark patterns or artificial urgency.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-4460f1797db7",
+      "sequence": 12,
+      "timestamp": "2026-08-24T07:13:02.777876+00:00",
+      "stage": "S",
+      "round": "committee",
+      "fromAgent": "Accessibility Agent",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Grid layout spans are correctly paired (half spans grouped in pairs, full spans used for charts and summaries) ensuring excellent cognitive flow.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-cccf24ac8eea",
+      "sequence": 13,
+      "timestamp": "2026-08-24T07:13:08.281739+00:00",
+      "stage": "T",
+      "round": "committee",
+      "fromAgent": "sdui-compiler",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "PROPOSAL",
+      "summary": "Compiled 8 components",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    },
+    {
+      "messageId": "msg-0d61593aadf5",
+      "sequence": 14,
+      "timestamp": "2026-08-24T07:13:09.945394+00:00",
+      "stage": "R",
+      "round": "committee",
+      "fromAgent": "red-team",
+      "toAgents": [
+        "orchestrator"
+      ],
+      "messageType": "APPROVAL",
+      "summary": "Stage R validation successful. All criteria met; releasing candidate-1 SDUI.",
+      "claims": [],
+      "recommendedActions": [],
+      "objections": [],
+      "candidateRefs": [],
+      "policyRefs": [],
+      "modelVersion": "gemini-3.5-flash-lite",
+      "promptTemplateVersion": "2.0"
+    }
+  ],
+  "agentParticipation": {
+    "Orchestrator": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "Consent Guardian": {
+      "messageCount": 2,
+      "stages": [
+        "U",
+        "Q"
+      ],
+      "messageTypes": [
+        "OBSERVATION",
+        "APPROVAL"
+      ]
+    },
+    "Journey & Intent Agent": {
+      "messageCount": 1,
+      "stages": [
+        "Q"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "Context Analyst": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "OBSERVATION"
+      ]
+    },
+    "Accessibility": {
+      "messageCount": 1,
+      "stages": [
+        "U"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "Personalization Synthesiser": {
+      "messageCount": 1,
+      "stages": [
+        "E"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "Risk Guardian": {
+      "messageCount": 1,
+      "stages": [
+        "E"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "Accessibility Agent": {
+      "messageCount": 2,
+      "stages": [
+        "E",
+        "S"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "Component Planner": {
+      "messageCount": 1,
+      "stages": [
+        "S"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "UI Constitution Guardian": {
+      "messageCount": 1,
+      "stages": [
+        "S"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    },
+    "sdui-compiler": {
+      "messageCount": 1,
+      "stages": [
+        "T"
+      ],
+      "messageTypes": [
+        "PROPOSAL"
+      ]
+    },
+    "red-team": {
+      "messageCount": 1,
+      "stages": [
+        "R"
+      ],
+      "messageTypes": [
+        "APPROVAL"
+      ]
+    }
+  },
+  "stageTimeline": [
+    {
+      "sequence": 1,
+      "stage": "Q",
+      "agent": "Orchestrator",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:12:45.849436+00:00"
+    },
+    {
+      "sequence": 2,
+      "stage": "Q",
+      "agent": "Consent Guardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:12:45.849466+00:00"
+    },
+    {
+      "sequence": 3,
+      "stage": "Q",
+      "agent": "Journey & Intent Agent",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-24T07:12:45.849482+00:00"
+    },
+    {
+      "sequence": 4,
+      "stage": "U",
+      "agent": "Context Analyst",
+      "messageType": "OBSERVATION",
+      "timestamp": "2026-08-24T07:12:49.858577+00:00"
+    },
+    {
+      "sequence": 5,
+      "stage": "U",
+      "agent": "Consent Guardian",
+      "messageType": "OBSERVATION",
+      "timestamp": "2026-08-24T07:12:49.858607+00:00"
+    },
+    {
+      "sequence": 6,
+      "stage": "U",
+      "agent": "Accessibility",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-24T07:12:49.858622+00:00"
+    },
+    {
+      "sequence": 7,
+      "stage": "E",
+      "agent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:12:53.976177+00:00"
+    },
+    {
+      "sequence": 8,
+      "stage": "E",
+      "agent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:12:53.976205+00:00"
+    },
+    {
+      "sequence": 9,
+      "stage": "E",
+      "agent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:12:53.976220+00:00"
+    },
+    {
+      "sequence": 10,
+      "stage": "S",
+      "agent": "Component Planner",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:13:02.777854+00:00"
+    },
+    {
+      "sequence": 11,
+      "stage": "S",
+      "agent": "UI Constitution Guardian",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:13:02.777870+00:00"
+    },
+    {
+      "sequence": 12,
+      "stage": "S",
+      "agent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:13:02.777876+00:00"
+    },
+    {
+      "sequence": 13,
+      "stage": "T",
+      "agent": "sdui-compiler",
+      "messageType": "PROPOSAL",
+      "timestamp": "2026-08-24T07:13:08.281739+00:00"
+    },
+    {
+      "sequence": 14,
+      "stage": "R",
+      "agent": "red-team",
+      "messageType": "APPROVAL",
+      "timestamp": "2026-08-24T07:13:09.945394+00:00"
+    }
+  ]
+}

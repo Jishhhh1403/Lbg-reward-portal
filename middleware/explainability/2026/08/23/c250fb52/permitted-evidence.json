@@ -1,0 +1,93 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "s1",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s2",
+        "classification": "OBSERVED",
+        "value": "interested in investment-like rewards",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "s3",
+        "classification": "OBSERVED",
+        "value": "values future projections",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_003 (David Park) exhibits a long-term accumulation pattern focusing on major life financial goals like retirement and education funds, showing high goal completion rates and a preference for long-term value over immediate small redemptions.",
+    "observedFacts": [
+      {
+        "factId": "f1",
+        "statement": "Total LBG Coins balance is 28,400.",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f2",
+        "statement": "Connected brands count is 3.",
+        "source": "wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "f3",
+        "statement": "Customer tracks 3 specific financial goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+        "source": "intelligence-layer",
+        "confidence": 0.95
+      },
+      {
+        "factId": "f4",
+        "statement": "Low redemption frequency with an average redemption time of 2,160 hours and immediate redemption rate of 0.03.",
+        "source": "intelligence-layer",
+        "confidence": 0.9
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "p1",
+        "attribute": "planningHorizon",
+        "value": "LONG_TERM",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "rarely redeems for small rewards",
+          "reads educational content"
+        ],
+        "inferenceMethod": "behavioral_pattern_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "p2",
+        "attribute": "preferredEngagementStyle",
+        "value": "ANALYTICAL_PROJECTIONS",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "values future projections",
+          "interested in investment-like rewards"
+        ],
+        "inferenceMethod": "engagement_history_analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

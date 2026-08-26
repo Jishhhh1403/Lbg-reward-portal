@@ -1,0 +1,65 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": "rewards-personalization",
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-001",
+        "classification": "OBSERVED",
+        "value": "frequent immediate redemptions",
+        "source": "Intelligence Layer",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-002",
+        "classification": "OBSERVED",
+        "value": "responds to flash offers",
+        "source": "Intelligence Layer",
+        "confidence": 0.94,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer Alex Rivera exhibits high engagement with immediate reward redemptions, short timeframes between earning and redeeming, and strong responsiveness to flash offers, pointing towards an instant gratification motivation.",
+    "observedFacts": [
+      {
+        "factId": "fact-001",
+        "statement": "LBG coin balance is 4250 with 3 brands connected",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-002",
+        "statement": "Frequent immediate redemptions and short time between earning and redeeming",
+        "source": "Intelligence Layer signals",
+        "confidence": 0.94
+      },
+      {
+        "factId": "fact-003",
+        "statement": "Responds to flash offers and has high notification engagement",
+        "source": "Intelligence Layer signals",
+        "confidence": 0.94
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-001",
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.94,
+        "evidenceRefs": [
+          "frequent immediate redemptions",
+          "short time between earning and redeeming",
+          "responds to flash offers"
+        ],
+        "inferenceMethod": "Behavioral analysis of redemption velocity",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

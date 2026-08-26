@@ -1,0 +1,38 @@
+{
+  "validationResults": {
+    "schemaValid": true,
+    "componentRegistryValid": true,
+    "contentRegistryValid": true,
+    "accessibilityValid": true
+  },
+  "releaseCheck": {
+    "releaseDecision": "HOLD",
+    "challenges": [
+      {
+        "category": "Component overload",
+        "severity": "HIGH",
+        "statement": "The candidate layout includes 14 components rendered simultaneously on a single screen for a re-engaging user. This represents severe component overload and cognitive fatigue, violating best practices for UI simplicity and readability."
+      },
+      {
+        "category": "Loss of customer choice",
+        "severity": "MEDIUM",
+        "statement": "Multiple overlapping widgets (Expiring Points Alert, Expiry Countdown, Quick Win Card, Personalized Offer Card, Quick Redeem Card, Tangible Value Card, Rewards Insight Card) repeat the exact same core message and call-to-action about 1,850 expiring points in different formats, crowding out other content and creating choice fatigue."
+      }
+    ],
+    "unresolvedCritical": 0,
+    "unresolvedHigh": 1,
+    "releaseReasons": [
+      "Component count (14 components) is excessive and causes severe cognitive overload.",
+      "Redundancy across alert, countdown, insight, and value cards repeats the same information multiple times."
+    ],
+    "agentMessages": [
+      {
+        "fromAgent": "red-team",
+        "messageType": "CHALLENGE",
+        "summary": "Holding release due to severe component overload (14 components on a single screen) and heavy redundancy around expiring points messages."
+      }
+    ]
+  },
+  "fallbackTriggered": false,
+  "reasonCodes": []
+}

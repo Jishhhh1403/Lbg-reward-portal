@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "c733386c",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T02:00:00Z",
+  "customerRef": "customer_001",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 4250,
+        "tier": "Gold",
+        "name": "Alex Rivera",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET_DETAILS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-instant-popup",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Fresh Bonus Earned!",
+        "subtitle": "Your recent activity unlocked a quick-claim reward.",
+        "points": 500,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_INSTANT_REWARD",
+          "payload": {
+            "points": 500
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Gold Tier Flash Offer",
+        "subtitle": "Limited-time discount on premium dining vouchers.",
+        "originalPoints": 1200,
+        "discountedPoints": 850,
+        "timer": "02:15:40",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_FLASH_REWARD",
+          "payload": {
+            "rewardName": "Premium Dining Voucher",
+            "cost": 850
+          }
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant One-Tap Treats",
+        "description": "Redeem instantly with your 4,250 Gold balance.",
+        "rewards": [
+          {
+            "name": "Artisanal Coffee & Pastry",
+            "points": 200,
+            "icon": "coffee"
+          },
+          {
+            "name": "Express Gourmet Meal Voucher",
+            "points": 500,
+            "icon": "utensils"
+          },
+          {
+            "name": "Cinema Screening Pass",
+            "points": 1000,
+            "icon": "film"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_ALL_QUICK_REWARDS",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Wallet's Cash Power",
+        "cashValue": "\u00a342.50",
+        "pointsEquivalent": 4250,
+        "breakdown": [
+          {
+            "label": "Available Reward Value",
+            "value": "\u00a342.50"
+          },
+          {
+            "label": "Gold Tier Bonus Multiplier",
+            "value": "1.5x active"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CASH_CONVERSION",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Curated For Your Fast Style",
+        "rewards": [
+          {
+            "name": "Weekend Spa Day",
+            "points": 3500,
+            "category": "Lifestyle",
+            "limited": true
+          },
+          {
+            "name": "Tech Accessory Pass",
+            "points": 2500,
+            "category": "Shopping",
+            "limited": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "BROWSE_CATALOGUE",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Instant Effortless Wins",
+        "subtitle": "Redeem in under 1 minute",
+        "rewards": [
+          {
+            "name": "Digital Audiobook Token",
+            "points": 150
+          },
+          {
+            "name": "Ride-Share Credit (\u00a35)",
+            "points": 450
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "id": "comp-metric-tile",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "label": "Avg Redemption Speed",
+        "value": "2.3",
+        "unit": "hours",
+        "tone": "brand",
+        "infoText": "Your typical turnaround from earning to enjoying.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_STATS",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  }
+}

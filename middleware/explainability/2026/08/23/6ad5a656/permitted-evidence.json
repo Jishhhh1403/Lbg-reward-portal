@@ -1,0 +1,87 @@
+{
+  "permittedEvidence": {
+    "consentValid": true,
+    "purposeValid": true,
+    "permittedScope": [
+      "rewards-personalization"
+    ],
+    "veto": false,
+    "permittedSignals": [
+      {
+        "signalId": "sig-01",
+        "classification": "OBSERVED",
+        "value": "long-term accumulation pattern",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      },
+      {
+        "signalId": "sig-02",
+        "classification": "OBSERVED",
+        "value": "values future projections",
+        "source": "behavior",
+        "confidence": 0.89,
+        "allowedPurpose": "rewards-personalization"
+      }
+    ]
+  },
+  "customerContext": {
+    "summary": "Customer_003 (David Park) is a Diamond-tier member demonstrating a long-term accumulation pattern with a low redemption frequency, focusing on investment-like rewards, future value projections, and educational content. They maintain 28,400 lbgCoins and are actively tracking three major financial goals: Retirement Fund, Children Education Fund, and Dream Home Deposit.",
+    "observedFacts": [
+      {
+        "factId": "fact-wallet-coins",
+        "statement": "Customer holds 28,400 lbgCoins with 0 points.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-brands-connected",
+        "statement": "Customer has 3 brands connected.",
+        "source": "Session Context wallet",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-tier",
+        "statement": "Customer belongs to the Diamond tier.",
+        "source": "Intelligence Layer customerProfile",
+        "confidence": 1.0
+      },
+      {
+        "factId": "fact-behaviors",
+        "statement": "Customer exhibits low immediate redemption rate (0.03) and high goal completion rate (0.92).",
+        "source": "Intelligence Layer customerProfile behaviors",
+        "confidence": 0.95
+      }
+    ],
+    "declaredPreferences": [],
+    "inferredProperties": [
+      {
+        "propertyId": "prop-persona",
+        "attribute": "persona",
+        "value": "LONG_TERM_PLANNER",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "rarely redeems for small rewards",
+          "interested in investment-like rewards",
+          "values future projections"
+        ],
+        "inferenceMethod": "Intelligence Layer Behavioral Pattern Analysis",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      },
+      {
+        "propertyId": "prop-motivation",
+        "attribute": "motivation",
+        "value": "FUTURE_SECURITY",
+        "confidence": 0.89,
+        "evidenceRefs": [
+          "long-term accumulation pattern",
+          "values future projections",
+          "interested in investment-like rewards"
+        ],
+        "inferenceMethod": "Intelligence Layer Motivation Mapping",
+        "expiresAt": "2026-09-20T00:00:00Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,775 @@
+{
+  "uiDecisionPlan": {
+    "planId": "plan-442d2634",
+    "selectedCandidate": {
+      "candidateId": "candidate-1",
+      "strategy": "Instant-at-risk mix composition for Ryan Okafor: leading with a warm re-engagement banner after 41 days of inactivity, anchored points balance, a factual 7-day expiring points alert for his 1,500 points, instant reward popup, quick redeem options, flash reward banner, tangible value translation, and quick win cards to drive frictionless re-activation.",
+      "components": [
+        {
+          "id": "comp-points-balance",
+          "type": "POINTS_BALANCE",
+          "version": "1.0",
+          "priority": 1,
+          "props": {
+            "points": 3600,
+            "tier": "Gold",
+            "name": "Ryan Okafor",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_WALLET",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reengagement",
+          "type": "REENGAGEMENT_BANNER",
+          "version": "1.0",
+          "priority": 2,
+          "props": {
+            "title": "Welcome back, Ryan",
+            "message": "We've missed you over the last 41 days! Your Gold tier status is waiting and your rewards are ready to claim.",
+            "ctaText": "Explore My Rewards",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "DISMISS_BANNER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-expiring-alert",
+          "type": "EXPIRING_POINTS_ALERT",
+          "version": "1.0",
+          "priority": 3,
+          "props": {
+            "title": "Points Expiry Notice",
+            "expiringPoints": 1500,
+            "daysLeft": 7,
+            "message": "You have 1,500 points scheduled to expire in 7 days. Redeem them now to enjoy your earned value.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_EXPIRING",
+              "payload": {
+                "points": 1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-countdown",
+          "type": "COUNTDOWN_CARD",
+          "version": "1.0",
+          "priority": 4,
+          "props": {
+            "title": "Expiry Countdown",
+            "days": 7,
+            "hours": 0,
+            "minutes": 0,
+            "message": "Time remaining before your 1,500 points expire.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_DETAILS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-instant-popup",
+          "type": "INSTANT_REWARD_POPUP",
+          "version": "1.0",
+          "priority": 5,
+          "props": {
+            "title": "Instant Coffee Perk",
+            "subtitle": "Claim your favourite artisanal coffee right away.",
+            "points": 200,
+            "expiresIn": "2 hours",
+            "celebration": true,
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_INSTANT",
+              "payload": {
+                "reward": "Coffee Voucher",
+                "points": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-flash-banner",
+          "type": "FLASH_REWARD_BANNER",
+          "version": "1.0",
+          "priority": 6,
+          "props": {
+            "title": "Flash Deal Snack Box",
+            "subtitle": "Limited-time point discount for instant snacking.",
+            "originalPoints": 450,
+            "discountedPoints": 350,
+            "timer": "02:15:00",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_FLASH",
+              "payload": {
+                "reward": "Flash Deal Snack Box",
+                "points": 350
+              }
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-redeem",
+          "type": "QUICK_REDEEM_CARD",
+          "version": "1.0",
+          "priority": 7,
+          "props": {
+            "title": "Instant Low-Cost Rewards",
+            "description": "Redeem instantly with your 6-hour average turnaround speed.",
+            "rewards": [
+              {
+                "name": "Artisan Coffee",
+                "points": 200,
+                "icon": "coffee"
+              },
+              {
+                "name": "Gourmet Snack Box",
+                "points": 350,
+                "icon": "utensils"
+              },
+              {
+                "name": "Stream Pass",
+                "points": 500,
+                "icon": "film"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REDEEM_QUICK",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-quick-win",
+          "type": "QUICK_WIN_CARD",
+          "version": "1.0",
+          "priority": 8,
+          "props": {
+            "title": "Effortless Rewards",
+            "subtitle": "Tap once to claim instantly.",
+            "rewards": [
+              {
+                "name": "Digital Magazine",
+                "points": 150
+              },
+              {
+                "name": "Music Track",
+                "points": 100
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_QUICK_WIN",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-tangible-value",
+          "type": "TANGIBLE_VALUE_CARD",
+          "version": "1.0",
+          "priority": 9,
+          "props": {
+            "title": "Your Wallet Cash Value",
+            "cashValue": "\u00a336.00",
+            "pointsEquivalent": 3600,
+            "breakdown": [
+              {
+                "label": "Available Points Worth",
+                "value": "\u00a336.00"
+              },
+              {
+                "label": "Expiring Soon",
+                "value": "\u00a315.00"
+              }
+            ],
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_VALUATION",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-metric-tiles",
+          "type": "METRIC_TILE",
+          "version": "1.0",
+          "priority": 10,
+          "props": {
+            "label": "LBG Coins",
+            "value": "3,600",
+            "unit": "coins",
+            "tone": "brand",
+            "infoText": "Ready to convert instantly",
+            "layout": {
+              "span": "third"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLICK_METRIC",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-reward-carousel",
+          "type": "REWARD_CAROUSEL",
+          "version": "1.0",
+          "priority": 11,
+          "props": {
+            "title": "Curated For You",
+            "rewards": [
+              {
+                "name": "Coffee Voucher",
+                "points": 200,
+                "category": "Food & Drink",
+                "limited": false
+              },
+              {
+                "name": "Flash Deal Snack Box",
+                "points": 350,
+                "category": "Snacks",
+                "limited": true
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "VIEW_CAROUSEL",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-personalized-offer",
+          "type": "PERSONALIZED_OFFER_CARD",
+          "version": "1.0",
+          "priority": 12,
+          "props": {
+            "title": "Welcome Back Offer",
+            "subtitle": "Exclusive for Ryan",
+            "offer": "Double points on your next instant redemption",
+            "validUntil": "2026-09-15",
+            "message": "Claim any instant reward this week to activate.",
+            "layout": {
+              "span": "half"
+            }
+          },
+          "actions": [
+            {
+              "type": "CLAIM_OFFER",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-brand-explorer",
+          "type": "BRAND_EXPLORER_CARD",
+          "version": "1.0",
+          "priority": 13,
+          "props": {
+            "title": "Explore Instant Partners",
+            "actionLabel": "Browse All",
+            "categories": [
+              {
+                "label": "Coffee & Cafes",
+                "count": 12,
+                "icon": "coffee"
+              },
+              {
+                "label": "Dining",
+                "count": 8,
+                "icon": "utensils"
+              },
+              {
+                "label": "Retail",
+                "count": 15,
+                "icon": "shopping-bag"
+              }
+            ],
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "EXPLORE_BRANDS",
+              "payload": {}
+            }
+          ]
+        },
+        {
+          "id": "comp-sync-status",
+          "type": "SYNC_STATUS_CARD",
+          "version": "1.0",
+          "priority": 14,
+          "props": {
+            "status": "synced",
+            "title": "Wallet Sync Status",
+            "lastSyncedAt": "24 Aug 2026, 10:34",
+            "message": "All instant reward balances are fully up to date.",
+            "ctaText": "Refresh",
+            "layout": {
+              "span": "full"
+            }
+          },
+          "actions": [
+            {
+              "type": "REFRESH_SYNC",
+              "payload": {}
+            }
+          ]
+        }
+      ],
+      "confidence": 0.95,
+      "reasonCodes": [
+        "INSTANT_AT_RISK_MIX",
+        "EXPIRING_POINTS_URGENCY",
+        "RAPID_REDEMPTION_HABIT"
+      ]
+    },
+    "strategy": "Instant-at-risk mix composition for Ryan Okafor: leading with a warm re-engagement banner after 41 days of inactivity, anchored points balance, a factual 7-day expiring points alert for his 1,500 points, instant reward popup, quick redeem options, flash reward banner, tangible value translation, and quick win cards to drive frictionless re-activation.",
+    "confidence": 0.95
+  },
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Instant-at-risk mix composition for Ryan Okafor: leading with a warm re-engagement banner after 41 days of inactivity, anchored points balance, a factual 7-day expiring points alert for his 1,500 points, instant reward popup, quick redeem options, flash reward banner, tangible value translation, and quick win cards to drive frictionless re-activation.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3600,
+          "tier": "Gold",
+          "name": "Ryan Okafor",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reengagement",
+        "type": "REENGAGEMENT_BANNER",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Welcome back, Ryan",
+          "message": "We've missed you over the last 41 days! Your Gold tier status is waiting and your rewards are ready to claim.",
+          "ctaText": "Explore My Rewards",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "DISMISS_BANNER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Points Expiry Notice",
+          "expiringPoints": 1500,
+          "daysLeft": 7,
+          "message": "You have 1,500 points scheduled to expire in 7 days. Redeem them now to enjoy your earned value.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_EXPIRING",
+            "payload": {
+              "points": 1500
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-countdown",
+        "type": "COUNTDOWN_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Expiry Countdown",
+          "days": 7,
+          "hours": 0,
+          "minutes": 0,
+          "message": "Time remaining before your 1,500 points expire.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-instant-popup",
+        "type": "INSTANT_REWARD_POPUP",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Instant Coffee Perk",
+          "subtitle": "Claim your favourite artisanal coffee right away.",
+          "points": 200,
+          "expiresIn": "2 hours",
+          "celebration": true,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_INSTANT",
+            "payload": {
+              "reward": "Coffee Voucher",
+              "points": 200
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-flash-banner",
+        "type": "FLASH_REWARD_BANNER",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Flash Deal Snack Box",
+          "subtitle": "Limited-time point discount for instant snacking.",
+          "originalPoints": 450,
+          "discountedPoints": 350,
+          "timer": "02:15:00",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_FLASH",
+            "payload": {
+              "reward": "Flash Deal Snack Box",
+              "points": 350
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-redeem",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Instant Low-Cost Rewards",
+          "description": "Redeem instantly with your 6-hour average turnaround speed.",
+          "rewards": [
+            {
+              "name": "Artisan Coffee",
+              "points": 200,
+              "icon": "coffee"
+            },
+            {
+              "name": "Gourmet Snack Box",
+              "points": 350,
+              "icon": "utensils"
+            },
+            {
+              "name": "Stream Pass",
+              "points": 500,
+              "icon": "film"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_QUICK",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Effortless Rewards",
+          "subtitle": "Tap once to claim instantly.",
+          "rewards": [
+            {
+              "name": "Digital Magazine",
+              "points": 150
+            },
+            {
+              "name": "Music Track",
+              "points": 100
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_QUICK_WIN",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Your Wallet Cash Value",
+          "cashValue": "\u00a336.00",
+          "pointsEquivalent": 3600,
+          "breakdown": [
+            {
+              "label": "Available Points Worth",
+              "value": "\u00a336.00"
+            },
+            {
+              "label": "Expiring Soon",
+              "value": "\u00a315.00"
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUATION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tiles",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "label": "LBG Coins",
+          "value": "3,600",
+          "unit": "coins",
+          "tone": "brand",
+          "infoText": "Ready to convert instantly",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLICK_METRIC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-carousel",
+        "type": "REWARD_CAROUSEL",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Curated For You",
+          "rewards": [
+            {
+              "name": "Coffee Voucher",
+              "points": 200,
+              "category": "Food & Drink",
+              "limited": false
+            },
+            {
+              "name": "Flash Deal Snack Box",
+              "points": 350,
+              "category": "Snacks",
+              "limited": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CAROUSEL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-personalized-offer",
+        "type": "PERSONALIZED_OFFER_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Welcome Back Offer",
+          "subtitle": "Exclusive for Ryan",
+          "offer": "Double points on your next instant redemption",
+          "validUntil": "2026-09-15",
+          "message": "Claim any instant reward this week to activate.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_OFFER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-brand-explorer",
+        "type": "BRAND_EXPLORER_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Explore Instant Partners",
+          "actionLabel": "Browse All",
+          "categories": [
+            {
+              "label": "Coffee & Cafes",
+              "count": 12,
+              "icon": "coffee"
+            },
+            {
+              "label": "Dining",
+              "count": 8,
+              "icon": "utensils"
+            },
+            {
+              "label": "Retail",
+              "count": 15,
+              "icon": "shopping-bag"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXPLORE_BRANDS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "status": "synced",
+          "title": "Wallet Sync Status",
+          "lastSyncedAt": "24 Aug 2026, 10:34",
+          "message": "All instant reward balances are fully up to date.",
+          "ctaText": "Refresh",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "INSTANT_AT_RISK_MIX",
+      "EXPIRING_POINTS_URGENCY",
+      "RAPID_REDEMPTION_HABIT"
+    ]
+  },
+  "rewardInteractionProfile": {
+    "attributes": [
+      {
+        "attribute": "motivation",
+        "value": "IMMEDIATE_VALUE",
+        "confidence": 0.92,
+        "evidenceRefs": [
+          "historically redeemed points within hours of earning",
+          "responds strongly to flash offers and instant vouchers",
+          "small instant rewards drove past engagement spikes"
+        ]
+      }
+    ],
+    "methodology": "behavioral pattern matching against historical redemption speed and responsiveness to immediate tangible gratification",
+    "temporaryInterpretation": true
+  }
+}
