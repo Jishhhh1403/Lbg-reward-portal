@@ -105,17 +105,17 @@ function CardDetailsModal({
   saved?: CardData | null
   onSave: (c: CardData) => void
 }) {
-  const [name, setName] = useState('')
-  const [number, setNumber] = useState('')
-  const [expiry, setExpiry] = useState('')
-  const [cvv, setCvv] = useState('')
+  const [name, setName] = useState('Sindhu Nangunuri')
+  const [number, setNumber] = useState('4242 4242 4242 4242')
+  const [expiry, setExpiry] = useState('12/36')
+  const [cvv, setCvv] = useState('654')
 
   useEffect(() => {
     if (open) {
-      setName(saved?.name ?? '')
-      setNumber(saved?.number ?? '')
-      setExpiry(saved?.expiry ?? '')
-      setCvv(saved?.cvv ?? '')
+      setName(saved?.name ?? 'Sindhu Nangunuri')
+      setNumber(saved?.number ?? '4242 4242 4242 4242')
+      setExpiry(saved?.expiry ?? '12/36')
+      setCvv(saved?.cvv ?? '654')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
@@ -223,10 +223,6 @@ function CardDetailsModal({
           sx={{ fontFamily: FONT, fontSize: 24, fontWeight: 700, color: C.textPrimary, pr: '36px', mb: '8px' }}
         >
           Enter card details
-        </Typography>
-
-        <Typography sx={{ fontFamily: FONT, fontSize: 14, color: '#7A7D91', lineHeight: 1.5, mb: '20px' }}>
-          Demo card details: Sindhu Nangunuri, 4242 4242 4242 4242, Expiry 12/36, CVV 654
         </Typography>
 
         <Box component="form" onSubmit={(e) => e.preventDefault()} noValidate>

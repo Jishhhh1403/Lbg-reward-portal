@@ -33,9 +33,15 @@ function formatDate(d: Date): string {
   return d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
+function formatDateTime(d: Date): string {
+  const date = d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
+  const time = d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true })
+  return `${date} ${time}`
+}
+
 const ORDER_NOW = new Date()
 const ORDER_REFERENCE = generateOrderRef()
-const ORDER_DATE = formatDate(ORDER_NOW)
+const ORDER_DATE = formatDateTime(ORDER_NOW)
 
 const STEPS = [
   { title: 'Review', subtitle: 'Your policy' },
@@ -337,7 +343,7 @@ export default function PaymentSuccessPage() {
 
           <Box component="dl" sx={{ m: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <DetailRow label="Order Reference" value={ORDER_REFERENCE} />
-            <DetailRow label="Date" value={ORDER_DATE} />
+            <DetailRow label="Date & Time" value={ORDER_DATE} />
           </Box>
 
           <Box sx={{ borderTop: `1px solid ${C.border}`, my: '24px' }} role="presentation" />
@@ -355,32 +361,11 @@ export default function PaymentSuccessPage() {
             <Box>
               <Stack direction="row" spacing="12px" sx={{ justifyContent: 'space-between', alignItems: 'baseline' }}>
                 <Typography component="dt" sx={{ fontFamily: FONT, fontSize: 14, fontWeight: 500, color: C.textSecondary }}>
-                  Coins Applied (LBG Coins)
+                  Savings using LBG Coins
                 </Typography>
                 <Typography component="dd" sx={{ fontFamily: FONT, fontSize: 15, fontWeight: 700, color: GREEN_TEXT, m: 0 }}>
                   -£{COIN_DISCOUNT.toFixed(2)}
                 </Typography>
-              </Stack>
-              <Stack direction="row" spacing="8px" sx={{ justifyContent: 'space-between', alignItems: 'center', mt: '6px' }}>
-                <Typography sx={{ fontFamily: FONT, fontSize: 13, color: C.textSecondary }}>
-                  {COINS_APPLIED.toLocaleString('en-GB')} Coins applied
-                </Typography>
-                <Box
-                  sx={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    bgcolor: C.successLight,
-                    color: GREEN_TEXT,
-                    borderRadius: '999px',
-                    px: '10px',
-                    py: '3px',
-                    fontFamily: FONT,
-                    fontSize: 12.5,
-                    fontWeight: 700,
-                  }}
-                >
-                  +{COINS_EARNED} Coins earned
-                </Box>
               </Stack>
             </Box>
           </Box>
@@ -394,6 +379,30 @@ export default function PaymentSuccessPage() {
             <Typography sx={{ fontFamily: FONT, fontSize: 26, fontWeight: 700, color: C.textPrimary }}>
               £{FINAL_PAID.toFixed(2)}
             </Typography>
+          </Stack>
+
+          <Box sx={{ borderTop: `1px solid ${C.border}`, my: '20px' }} role="presentation" />
+
+          <Stack direction="row" spacing="12px" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography sx={{ fontFamily: FONT, fontSize: 13, color: C.textSecondary }}>
+              Coins earned from this purchase
+            </Typography>
+            <Box
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                bgcolor: C.successLight,
+                color: GREEN_TEXT,
+                borderRadius: '999px',
+                px: '10px',
+                py: '3px',
+                fontFamily: FONT,
+                fontSize: 12.5,
+                fontWeight: 700,
+              }}
+            >
+              +{COINS_EARNED} Coins (£{(COINS_EARNED * 0.01).toFixed(2)})
+            </Box>
           </Stack>
         </Box>
 
@@ -427,7 +436,7 @@ export default function PaymentSuccessPage() {
           <Box
             component="button"
             onClick={() => {
-              window.location.href = 'http://localhost:5173'
+              window.location.href = 'http://localhost:5173?view=dashboard'
             }}
             sx={{
               width: '100%',

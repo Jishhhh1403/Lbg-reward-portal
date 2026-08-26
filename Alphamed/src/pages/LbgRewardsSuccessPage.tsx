@@ -3,12 +3,36 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import { keyframes } from '@mui/material/styles'
 import HomeIcon from '@mui/icons-material/Home'
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
+import lbgCoin from '../assets/lbg-coin.png'
 import RewardsHeader from '../components/rewards/RewardsHeader'
 import { ALPHAMEDICOL_TO_LBG_RATE } from '../services/lbgRewardsApi'
 import type { SuccessRouteState } from '../types'
+
+const spin = keyframes`
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(720deg); }
+`
+
+const PARTICLE_COLORS = ['#FFD700', '#FF6B35', '#00C9A7', '#FF4081', '#448AFF', '#AA66CC', '#FFAB40']
+const PARTICLE_COUNT = 18
+
+const particleAnimations = PARTICLE_COLORS.map((_, i) => {
+  const angle = (360 / PARTICLE_COUNT) * i
+  const distance = 60 + (i % 3) * 20
+  const x = Math.round(Math.cos((angle * Math.PI) / 180) * distance)
+  const y = Math.round(Math.sin((angle * Math.PI) / 180) * distance)
+  return keyframes`
+    0% { transform: translate(0, 0) scale(0); opacity: 0; }
+    15% { transform: translate(0, 0) scale(1.2); opacity: 1; }
+    50% { transform: translate(${x}px, ${y}px) scale(1); opacity: 1; }
+    100% { transform: translate(${x * 1.25}px, ${y * 1.25 + 20}px) scale(0); opacity: 0; }
+  `
+})
 
 const UNIFIED_REWARDS_URL =
   import.meta.env.VITE_UNIFIED_REWARDS_URL ?? 'http://localhost:5173'
@@ -38,27 +62,35 @@ export default function LbgRewardsSuccessPage() {
                 'radial-gradient(closest-side, rgba(46,125,50,.18), transparent)',
             }}
           />
-          <svg viewBox="0 0 52 52" width={108} height={108} aria-hidden>
-            <circle
-              className="success-ring"
-              cx="26"
-              cy="26"
-              r="25"
-              fill="none"
-              stroke="#2e7d32"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-            />
-            <path
-              className="success-check"
-              d="M15 27.5l7.5 7.5L37.5 20"
-              fill="none"
-              stroke="#2e7d32"
-              strokeWidth="3.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          {PARTICLE_COLORS.map((color, i) => {
+            const size = 4 + (i % 3) * 2.5
+            const delay = (i % 5) * 0.08
+            return (
+              <Box
+                key={i}
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: size,
+                  height: size,
+                  mt: -size / 2,
+                  ml: -size / 2,
+                  borderRadius: '50%',
+                  bgcolor: color,
+                  boxShadow: `0 0 6px ${color}`,
+                  animation: `${particleAnimations[i]} 1.4s ease-out ${delay}s 2 both`,
+                  pointerEvents: 'none',
+                }}
+              />
+            )
+          })}
+          <Box
+            component="img"
+            src={lbgCoin}
+            alt="LBG Coin"
+            sx={{ width: 108, height: 108, mx: 'auto', animation: `${spin} 1s ease-in-out 2`, position: 'relative', zIndex: 1 }}
+          />
         </Box>
 
         <Typography variant="h5" fontWeight={800} mt={2}>
@@ -83,13 +115,13 @@ export default function LbgRewardsSuccessPage() {
           <SummaryRow
             label="Converted"
             value={`${converted.toLocaleString()} pts`}
-            icon="🩺"
+            iconNode={<SwapHorizIcon sx={{ fontSize: 18, color: '#546e7a' }} />}
           />
           <SummaryRow
             label="You received"
             value={`${lbgCoins.toLocaleString()} LBG Coins`}
             highlight
-            icon="🪙"
+            iconNode={<Box component="img" src={lbgCoin} alt="LBG" sx={{ width: 18, height: 18 }} />}
           />
           <SummaryRow
             label="Remaining balance"
@@ -160,7 +192,8 @@ function SummaryRow(props: {
   label: string
   value: string
   highlight?: boolean
-  icon: string
+  icon?: string
+  iconNode?: React.ReactNode
 }) {
   return (
     <Box
@@ -174,7 +207,7 @@ function SummaryRow(props: {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
         <Box component="span" aria-hidden sx={{ fontSize: 18 }}>
-          {props.icon}
+          {props.iconNode ?? props.icon}
         </Box>
         <Typography fontSize={13} color="text.secondary">
           {props.label}

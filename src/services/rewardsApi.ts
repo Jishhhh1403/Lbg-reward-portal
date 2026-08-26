@@ -88,20 +88,6 @@ export const DEMO_CUSTOMER: CustomerSummary = {
 }
 
 export const DEMO_BRANDS: BrandOption[] = [
-  { id: 'brd_avios', name: 'Avios', category: 'Travel', logoText: 'AV', color: '#cc0000', minRedeem: 1000 },
-  { id: 'brd_ba', name: 'British Airways', category: 'Travel', logoText: 'BA', color: '#1d4ed8', minRedeem: 2000 },
-  { id: 'brd_tesco', name: 'Tesco Clubcard', category: 'Groceries', logoText: 'TC', color: '#00539f', minRedeem: 500 },
-  { id: 'brd_sainsburys', name: "Sainsbury's", category: 'Groceries', logoText: "S'", color: '#f06c00', minRedeem: 500 },
-  { id: 'brd_nandos', name: "Nando's", category: 'Dining', logoText: 'N', color: '#dc2626', minRedeem: 750 },
-  { id: 'brd_costa', name: 'Costa Coffee', category: 'Dining', logoText: 'CC', color: '#8b1d1d', minRedeem: 400 },
-  { id: 'brd_amazon', name: 'Amazon', category: 'Shopping', logoText: 'AZ', color: '#ff9900', minRedeem: 1500 },
-  { id: 'brd_asos', name: 'ASOS', category: 'Shopping', logoText: 'AS', color: '#111827', minRedeem: 1200 },
-  { id: 'brd_boots', name: 'Boots', category: 'Health', logoText: 'BO', color: '#0e7490', minRedeem: 600 },
-  { id: 'brd_alphamedical', name: 'AlphaMedical', category: 'Health', logoText: 'AM', color: '#0f766e', minRedeem: 650 },
-  { id: 'brd_holland', name: 'Holland & Barrett', category: 'Health', logoText: 'HB', color: '#15803d', minRedeem: 800 },
-  { id: 'brd_cineworld', name: 'Cineworld', category: 'Entertainment', logoText: 'CW', color: '#7c3aed', minRedeem: 900 },
-  { id: 'brd_spotify', name: 'Spotify', category: 'Entertainment', logoText: 'SP', color: '#16a34a', minRedeem: 700 },
-  { id: 'brd_uber', name: 'Uber', category: 'Travel', logoText: 'UB', color: '#0f172a', minRedeem: 500 },
   { id: 'brd_alphamedicol', name: 'AlphaMedicol', category: 'Health', logoText: 'AM', color: '#0e7490', minRedeem: 600, logoUrl: alphaMedicolLogo },
   { id: 'brd_rinkoff', name: 'Rinkoff Bakery', category: 'Dining', logoText: 'RB', color: '#b45309', minRedeem: 500, logoUrl: rinkoffBakeryLogo },
   { id: 'brd_broadway', name: 'Broadway Market', category: 'Shopping', logoText: 'BM', color: '#4d7c0f', minRedeem: 500, logoUrl: broadwayMarketLogo },
@@ -121,12 +107,6 @@ export const DEMO_BRANDS: BrandOption[] = [
 ]
 
 export const DEMO_POINTS_BY_BRAND: PointsProvider[] = [
-  { brandId: 'brd_avios', brandName: 'Avios', category: 'Travel', points: 9400, color: '#cc0000', logoText: 'AV' },
-  { brandId: 'brd_tesco', brandName: 'Tesco Clubcard', category: 'Groceries', points: 8150, color: '#00539f', logoText: 'TC' },
-  { brandId: 'brd_amazon', brandName: 'Amazon', category: 'Shopping', points: 6300, color: '#ff9900', logoText: 'AZ' },
-  { brandId: 'brd_nandos', brandName: "Nando's", category: 'Dining', points: 4750, color: '#dc2626', logoText: 'N' },
-  { brandId: 'brd_boots', brandName: 'Boots', category: 'Health', points: 5250, color: '#0e7490', logoText: 'BO' },
-  { brandId: 'brd_cineworld', brandName: 'Cineworld', category: 'Entertainment', points: 4400, color: '#7c3aed', logoText: 'CW' },
   { brandId: 'brd_alphamedicol', brandName: 'AlphaMedicol', category: 'Health', points: 2100, color: '#0e7490', logoText: 'AM', logoUrl: alphaMedicolLogo },
   { brandId: 'brd_rinkoff', brandName: 'Rinkoff Bakery', category: 'Dining', points: 1750, color: '#b45309', logoText: 'RB', logoUrl: rinkoffBakeryLogo },
   { brandId: 'brd_broadway', brandName: 'Broadway Market', category: 'Shopping', points: 1300, color: '#4d7c0f', logoText: 'BM', logoUrl: broadwayMarketLogo },

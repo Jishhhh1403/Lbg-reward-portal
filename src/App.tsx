@@ -38,6 +38,39 @@ export default function App() {
   const [brands, setBrands] = useState<BrandOption[]>([])
   const [earnedRewardMap, setEarnedRewardMap] = useState<Record<string, string>>({})
 
+  /* Auto-login to dashboard when ?view=dashboard is present */
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('view') === 'dashboard') {
+      const setup = async () => {
+        setIsLoading(true)
+        try {
+          const summary: CustomerSummary = {
+            customerId: 'customer_demo',
+            userName: 'Demo User',
+            phone: '',
+            totalLbgCoins: 15000,
+            totalBrandPoints: 0,
+            brandsConnected: 3,
+            tier: 'Gold',
+            lastSyncedAt: new Date().toISOString(),
+          }
+          const brandOptions = await fetchBrandOptions()
+          setCustomerId('customer_demo')
+          setUserName('Demo User')
+          setCustomer(summary)
+          setPointsByBrand([])
+          setBrands(brandOptions)
+          setEarnedRewardMap({})
+          setStep('dashboard')
+        } finally {
+          setIsLoading(false)
+        }
+      }
+      void setup()
+    }
+  }, [])
+
   /* ---------------- auth handlers ---------------- */
 
   const handleMobileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

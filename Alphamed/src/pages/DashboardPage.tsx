@@ -362,7 +362,7 @@ export default function DashboardPage() {
             <Tab value="reports" label="Reports" />
           </Tabs>
 
-          <Box sx={{ display: 'grid', gap: 1.25, mt: 1.5 }}>
+          <Box sx={{ display: 'grid', gap: 1.25, mt: 1.5, width: '98%', overflow: 'hidden', boxSizing: 'border-box' }}>
             {appointments.map((appointment) => (
               <AppointmentCard
                 key={`${appointment.title}-${appointment.date}`}
@@ -509,6 +509,8 @@ function AppointmentCard({ appointment }: { appointment: AppointmentItem }) {
         display: 'flex',
         gap: 1.75,
         alignItems: 'center',
+        minWidth: 0,
+        overflow: 'hidden',
         boxShadow: '0 8px 20px -16px rgba(13,40,80,.45)',
       }}
     >
