@@ -54,8 +54,22 @@ export default function RootEntryRoute() {
       /* ignore */
     }
 
+    // The Unified Rewards portal deep-links with name + phone only (no email on
+    // its customer summary). Fall back to the seeded demo customer so the
+    // AlphaMedicol transfer flow still resolves a linked account.
+    const DEMO_EMAIL = 'alex.morgan@demo.com'
+    const resolvedEmail = customerEmail ?? storedEmail ?? (customerName ? DEMO_EMAIL : undefined)
+
+    if (resolvedEmail) {
+      try {
+        localStorage.setItem('am_customer_email', decodeURIComponent(resolvedEmail))
+      } catch {
+        /* ignore */
+      }
+    }
+
     const state: DashboardRouteState = {
-      email: customerEmail ?? storedEmail ?? undefined,
+      email: resolvedEmail,
       userName: customerName ?? storedName ?? undefined,
     }
 

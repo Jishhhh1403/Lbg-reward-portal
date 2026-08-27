@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Coins, ExternalLink, Search, X } from 'lucide-react'
 import type { PointsProvider } from '../../types/rewards'
+import { buildBrandRedirectUrl } from '../../utils/redirect'
 import BottomSheetModal from '../ui/BottomSheetModal'
 
 interface RedeemPointsModalProps {
@@ -9,6 +10,7 @@ interface RedeemPointsModalProps {
   totalPoints: number
   pointsData: PointsProvider[]
   customerName: string
+  customerPhone?: string
   onClose: () => void
 }
 
@@ -28,6 +30,7 @@ export default function RedeemPointsModal({
   totalPoints,
   pointsData,
   customerName,
+  customerPhone,
   onClose,
 }: RedeemPointsModalProps) {
   const [query, setQuery] = useState('')
@@ -189,12 +192,18 @@ export default function RedeemPointsModal({
               <div className="mt-5 space-y-2">
                 <motion.button
                   whileTap={{ scale: 0.98 }}
-                  onClick={() =>
-                    window.location.assign(
-                      redirectTarget.redirectUrl ??
-                        `https://www.${redirectTarget.name.toLowerCase().replace(/[^a-z]/g, '')}.com`,
-                    )
-                  }
+                  onClick={() => {
+                    const url = redirectTarget
+                      ? buildBrandRedirectUrl(
+                          redirectTarget.id,
+                          redirectTarget.name,
+                          redirectTarget.redirectUrl,
+                          { name: customerName, phone: customerPhone },
+                        )
+                      : null
+                    if (url) window.location.assign(url)
+                    else setRedirectTarget(null)
+                  }}
                   className="w-full rounded-xl bg-brand-600 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
                 >
                   Continue to {redirectTarget.name}

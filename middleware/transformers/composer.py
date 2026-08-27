@@ -336,9 +336,9 @@ class ExperienceComposer:
 
         components.append(_make_component("REWARDS_INSIGHT_CARD", next_priority, {
             "title": "Your Rewards Insight",
-            "topBrandName": "Avios Travel",
+            "topBrandName": "Top partner",
             "topBrandPoints": 640,
-            "growthTip": f"Redeeming with travel partners moves you {max(remaining // 10, 1)} points closer to your goal on average.",
+            "growthTip": f"Redeeming with your partner moves you {max(remaining // 10, 1)} points closer to your goal on average.",
             "expiringPoints": 0,
             "expiryDate": "",
             "ctaText": "Redeem smarter",

@@ -22,6 +22,39 @@ import lloydsLivingLogo from '../assets/lloydsliving.png'
 import scottishWidowsLogo from '../assets/scottishwidows.png'
 import mbnaLogo from '../assets/mbna.png'
 
+const BRAND_LOGO_BY_ID: Record<string, string> = {
+  brd_alphamedicol: alphaMedicolLogo,
+  brd_rinkoff: rinkoffBakeryLogo,
+  brd_broadway: broadwayMarketLogo,
+  brd_bankofscotland: bankOfScotlandLogo,
+  brd_amc: amcLogo,
+  brd_blackhorse: blackHorseLogo,
+  brd_birmingham: birminghamLogo,
+  brd_cavendish: cavendishOnlineLogo,
+  brd_embark: embarkLogo,
+  brd_hgp: hgpLogo,
+  brd_ldc: ldcLogo,
+  brd_lexautolease: lexAutoleaseLogo,
+  brd_lloydswealth: lloydsWealthLogo,
+  brd_lloydsliving: lloydsLivingLogo,
+  brd_scottishwidows: scottishWidowsLogo,
+  brd_mbna: mbnaLogo,
+}
+
+/** Fills in missing brand logoUrls from the local asset map (backend may not
+ *  store/serve logo files, so we map known brand ids to the bundled images). */
+export function withBrandLogos<T extends { id?: string; brandId?: string; logoUrl?: string }>(
+  items: T[] | null | undefined,
+): T[] {
+  if (!items?.length) return items ?? []
+  return items.map((item) => {
+    if (item.logoUrl) return item
+    const key = (item.id ?? item.brandId) as string
+    const logoUrl = BRAND_LOGO_BY_ID[key]
+    return logoUrl ? { ...item, logoUrl } : item
+  })
+}
+
 const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL ?? ''
 
 let _jwtToken: string | null = localStorage.getItem('rewards_jwt')
@@ -88,14 +121,14 @@ export const DEMO_CUSTOMER: CustomerSummary = {
 }
 
 export const DEMO_BRANDS: BrandOption[] = [
-  { id: 'brd_alphamedicol', name: 'AlphaMedicol', category: 'Health', logoText: 'AM', color: '#0e7490', minRedeem: 600, logoUrl: alphaMedicolLogo },
+  { id: 'brd_alphamedicol', name: 'AlphaMedicol', category: 'Health', logoText: 'AM', color: '#0e7490', minRedeem: 600, logoUrl: alphaMedicolLogo, redirectUrl: 'http://localhost:5174' },
   { id: 'brd_rinkoff', name: 'Rinkoff Bakery', category: 'Dining', logoText: 'RB', color: '#b45309', minRedeem: 500, logoUrl: rinkoffBakeryLogo },
   { id: 'brd_broadway', name: 'Broadway Market', category: 'Shopping', logoText: 'BM', color: '#4d7c0f', minRedeem: 500, logoUrl: broadwayMarketLogo },
   { id: 'brd_bankofscotland', name: 'Bank of Scotland', category: 'Banking', logoText: 'BS', color: '#1e40af', minRedeem: 500, logoUrl: bankOfScotlandLogo },
   { id: 'brd_amc', name: 'AMC', category: 'Banking', logoText: 'AM', color: '#0369a1', minRedeem: 500, logoUrl: amcLogo },
   { id: 'brd_blackhorse', name: 'Black Horse', category: 'Banking', logoText: 'BH', color: '#065f46', minRedeem: 500, logoUrl: blackHorseLogo },
   { id: 'brd_birmingham', name: 'Birmingham', category: 'Banking', logoText: 'BI', color: '#7c2d12', minRedeem: 500, logoUrl: birminghamLogo },
-  { id: 'brd_cavendish', name: 'Cavendish Online', category: 'Banking', logoText: 'CO', color: '#4338ca', minRedeem: 500, logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5174' },
+  { id: 'brd_cavendish', name: 'Cavendish Online', category: 'Banking', logoText: 'CO', color: '#4338ca', minRedeem: 500, logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5175' },
   { id: 'brd_embark', name: 'Embark', category: 'Insurance', logoText: 'EM', color: '#9d174d', minRedeem: 500, logoUrl: embarkLogo },
   { id: 'brd_hgp', name: 'HGP', category: 'Insurance', logoText: 'HG', color: '#a16207', minRedeem: 500, logoUrl: hgpLogo },
   { id: 'brd_ldc', name: 'LDC', category: 'Insurance', logoText: 'LD', color: '#155e75', minRedeem: 500, logoUrl: ldcLogo },
@@ -107,14 +140,14 @@ export const DEMO_BRANDS: BrandOption[] = [
 ]
 
 export const DEMO_POINTS_BY_BRAND: PointsProvider[] = [
-  { brandId: 'brd_alphamedicol', brandName: 'AlphaMedicol', category: 'Health', points: 2100, color: '#0e7490', logoText: 'AM', logoUrl: alphaMedicolLogo },
+  { brandId: 'brd_alphamedicol', brandName: 'AlphaMedicol', category: 'Health', points: 2100, color: '#0e7490', logoText: 'AM', logoUrl: alphaMedicolLogo, redirectUrl: 'http://localhost:5174' },
   { brandId: 'brd_rinkoff', brandName: 'Rinkoff Bakery', category: 'Dining', points: 1750, color: '#b45309', logoText: 'RB', logoUrl: rinkoffBakeryLogo },
   { brandId: 'brd_broadway', brandName: 'Broadway Market', category: 'Shopping', points: 1300, color: '#4d7c0f', logoText: 'BM', logoUrl: broadwayMarketLogo },
   { brandId: 'brd_bankofscotland', brandName: 'Bank of Scotland', category: 'Banking', points: 2600, color: '#1e40af', logoText: 'BS', logoUrl: bankOfScotlandLogo },
   { brandId: 'brd_amc', brandName: 'AMC', category: 'Banking', points: 1450, color: '#0369a1', logoText: 'AM', logoUrl: amcLogo },
   { brandId: 'brd_blackhorse', brandName: 'Black Horse', category: 'Banking', points: 1900, color: '#065f46', logoText: 'BH', logoUrl: blackHorseLogo },
   { brandId: 'brd_birmingham', brandName: 'Birmingham', category: 'Banking', points: 900, color: '#7c2d12', logoText: 'BI', logoUrl: birminghamLogo },
-  { brandId: 'brd_cavendish', brandName: 'Cavendish Online', category: 'Banking', points: 1150, color: '#4338ca', logoText: 'CO', logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5174' },
+  { brandId: 'brd_cavendish', brandName: 'Cavendish Online', category: 'Banking', points: 1150, color: '#4338ca', logoText: 'CO', logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5175' },
   { brandId: 'brd_embark', brandName: 'Embark', category: 'Insurance', points: 1600, color: '#9d174d', logoText: 'EM', logoUrl: embarkLogo },
   { brandId: 'brd_hgp', brandName: 'HGP', category: 'Insurance', points: 750, color: '#a16207', logoText: 'HG', logoUrl: hgpLogo },
   { brandId: 'brd_ldc', brandName: 'LDC', category: 'Insurance', points: 2200, color: '#155e75', logoText: 'LD', logoUrl: ldcLogo },
@@ -133,14 +166,14 @@ function daysAgo(days: number, hour = 12): string {
 }
 
 export const DEMO_TRANSACTIONS: WalletTransactionItem[] = [
-  { id: 'tx_01', type: 'EARN', description: 'Points earned at Nando\u2019s', amount: 320, currency: 'BRAND_POINT', createdAt: daysAgo(0, 13) },
-  { id: 'tx_02', type: 'CONVERT', description: 'Converted Tesco Clubcard points to LBG coins', amount: 850, currency: 'LBG_COIN', createdAt: daysAgo(1) },
-  { id: 'tx_03', type: 'REDEEM', description: 'Redeemed coins at Costa Coffee', amount: -450, currency: 'LBG_COIN', createdAt: daysAgo(3) },
-  { id: 'tx_04', type: 'EARN', description: 'Points earned at Tesco Clubcard', amount: 540, currency: 'BRAND_POINT', createdAt: daysAgo(5) },
-  { id: 'tx_05', type: 'EARN', description: 'Points earned at Avios', amount: 1250, currency: 'BRAND_POINT', createdAt: daysAgo(8) },
-  { id: 'tx_06', type: 'CONVERT', description: 'Converted Amazon points to LBG coins', amount: 600, currency: 'LBG_COIN', createdAt: daysAgo(11) },
-  { id: 'tx_07', type: 'REDEEM', description: 'Redeemed coins at Cineworld', amount: -900, currency: 'LBG_COIN', createdAt: daysAgo(14) },
-  { id: 'tx_08', type: 'EARN', description: 'Points earned at Boots', amount: 210, currency: 'BRAND_POINT', createdAt: daysAgo(18) },
+  { id: 'tx_01', type: 'EARN', description: 'Points earned from AlphaMedicol', amount: 320, currency: 'BRAND_POINT', createdAt: daysAgo(0, 13) },
+  { id: 'tx_02', type: 'CONVERT', description: 'Converted partner points to LBG coins', amount: 850, currency: 'LBG_COIN', createdAt: daysAgo(1) },
+  { id: 'tx_03', type: 'REDEEM', description: 'Redeemed coins with AlphaMedicol', amount: -450, currency: 'LBG_COIN', createdAt: daysAgo(3) },
+  { id: 'tx_04', type: 'EARN', description: 'Points earned from Rinkoff Bakery', amount: 540, currency: 'BRAND_POINT', createdAt: daysAgo(5) },
+  { id: 'tx_05', type: 'EARN', description: 'Points earned from Broadway Market', amount: 1250, currency: 'BRAND_POINT', createdAt: daysAgo(8) },
+  { id: 'tx_06', type: 'CONVERT', description: 'Converted partner points to LBG coins', amount: 600, currency: 'LBG_COIN', createdAt: daysAgo(11) },
+  { id: 'tx_07', type: 'REDEEM', description: 'Redeemed coins with Rinkoff Bakery', amount: -900, currency: 'LBG_COIN', createdAt: daysAgo(14) },
+  { id: 'tx_08', type: 'EARN', description: 'Points earned from LDC', amount: 210, currency: 'BRAND_POINT', createdAt: daysAgo(18) },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -176,8 +209,7 @@ export async function signupCustomer(payload: {
 
 export async function fetchBrandOptions(): Promise<BrandOption[]> {
   const remote = await apiFetch<BrandOption[]>('/api/v1/brands')
-  if (remote?.length) return remote
-  return DEMO_BRANDS
+  return withBrandLogos(remote?.length ? remote : DEMO_BRANDS)
 }
 
 export async function fetchEarnedRewardMapByBrand(
@@ -205,7 +237,12 @@ export async function fetchWalletTransactions(
 
 export async function fetchCustomerDashboardById(customerId: string): Promise<DashboardData> {
   const remote = await apiFetch<DashboardData>(`/api/v1/customers/${encodeURIComponent(customerId)}/summary`)
-  if (remote) return remote
+  if (remote) {
+    return {
+      customer: remote.customer,
+      pointsByBrand: withBrandLogos(remote.pointsByBrand),
+    }
+  }
   return {
     customer: DEMO_CUSTOMER,
     pointsByBrand: DEMO_POINTS_BY_BRAND,
@@ -216,7 +253,12 @@ export async function fetchCustomerDashboard(phone: string): Promise<DashboardDa
   const remote = await apiFetch<DashboardData>(
     `/api/v1/customers/lookup/summary?phone=${encodeURIComponent(phone)}`,
   )
-  if (remote) return remote
+  if (remote) {
+    return {
+      customer: remote.customer,
+      pointsByBrand: withBrandLogos(remote.pointsByBrand),
+    }
+  }
   return {
     customer: { ...DEMO_CUSTOMER, phone },
     pointsByBrand: DEMO_POINTS_BY_BRAND,

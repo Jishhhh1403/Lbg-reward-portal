@@ -2,12 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight, BadgeCheck, Check, ExternalLink, Mail, Phone, ShieldCheck } from 'lucide-react'
 import type { BrandOption } from '../../types/rewards'
+import { buildBrandRedirectUrl } from '../../utils/redirect'
 import BottomSheetModal from '../ui/BottomSheetModal'
 import OtpInputGroup from '../forms/OtpInputGroup'
 
 interface LocatePointsModalProps {
   isOpen: boolean
   brandOptions: BrandOption[]
+  customerName?: string
+  customerPhone?: string
   onClose: () => void
   onVerified: (brand: BrandOption) => void
 }
@@ -18,7 +21,7 @@ type ContactMethod = 'email' | 'phone'
 const inputClass =
   'w-full rounded-xl border border-slate-300 bg-white px-3.5 py-3 text-sm shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/25'
 
-export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVerified }: LocatePointsModalProps) {
+export default function LocatePointsModal({ isOpen, brandOptions, customerName, customerPhone, onClose, onVerified }: LocatePointsModalProps) {
   const [step, setStep] = useState<Step>('form')
   const [group, setGroup] = useState<string>('All')
   const [selectedBrandId, setSelectedBrandId] = useState<string | null>(null)
@@ -303,7 +306,16 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
             <div className="space-y-2">
               <motion.button
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.location.assign(selectedBrand.redirectUrl ?? `https://www.${selectedBrand.name.toLowerCase().replace(/[^a-z]/g, '')}.com`)}
+                onClick={() => {
+                  const url = buildBrandRedirectUrl(
+                    selectedBrand.id,
+                    selectedBrand.name,
+                    selectedBrand.redirectUrl,
+                    { name: customerName ?? '', phone: customerPhone },
+                  )
+                  if (url) window.location.assign(url)
+                  else onClose()
+                }}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
               >
                 <ExternalLink size={15} /> Continue to partner app

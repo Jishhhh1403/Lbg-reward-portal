@@ -6,7 +6,7 @@ import os
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from sqlalchemy import text
+from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import Base, engine, async_session
@@ -40,27 +40,14 @@ def _days_ago(days: int, hour: int = 12) -> datetime:
 
 
 SEED_BRANDS = [
-    {"id": "brd_avios", "name": "Avios", "category": "Travel", "logo_text": "AV", "color": "#cc0000", "min_redeem": 1000},
-    {"id": "brd_ba", "name": "British Airways", "category": "Travel", "logo_text": "BA", "color": "#1d4ed8", "min_redeem": 2000},
-    {"id": "brd_tesco", "name": "Tesco Clubcard", "category": "Groceries", "logo_text": "TC", "color": "#00539f", "min_redeem": 500},
-    {"id": "brd_sainsburys", "name": "Sainsbury's", "category": "Groceries", "logo_text": "S'", "color": "#f06c00", "min_redeem": 500},
-    {"id": "brd_nandos", "name": "Nando's", "category": "Dining", "logo_text": "N", "color": "#dc2626", "min_redeem": 750},
-    {"id": "brd_costa", "name": "Costa Coffee", "category": "Dining", "logo_text": "CC", "color": "#8b1d1d", "min_redeem": 400},
-    {"id": "brd_amazon", "name": "Amazon", "category": "Shopping", "logo_text": "AZ", "color": "#ff9900", "min_redeem": 1500},
-    {"id": "brd_asos", "name": "ASOS", "category": "Shopping", "logo_text": "AS", "color": "#111827", "min_redeem": 1200},
-    {"id": "brd_boots", "name": "Boots", "category": "Health", "logo_text": "BO", "color": "#0e7490", "min_redeem": 600},
-    {"id": "brd_holland", "name": "Holland & Barrett", "category": "Health", "logo_text": "HB", "color": "#15803d", "min_redeem": 800},
-    {"id": "brd_cineworld", "name": "Cineworld", "category": "Entertainment", "logo_text": "CW", "color": "#7c3aed", "min_redeem": 900},
-    {"id": "brd_spotify", "name": "Spotify", "category": "Entertainment", "logo_text": "SP", "color": "#16a34a", "min_redeem": 700},
-    {"id": "brd_uber", "name": "Uber", "category": "Travel", "logo_text": "UB", "color": "#0f172a", "min_redeem": 500},
-    {"id": "brd_alphamedicol", "name": "AlphaMedicol", "category": "Health", "logo_text": "AM", "color": "#0e7490", "min_redeem": 600},
+    {"id": "brd_alphamedicol", "name": "AlphaMedicol", "category": "Health", "logo_text": "AM", "color": "#0e7490", "min_redeem": 600, "redirect_url": "http://localhost:5174"},
     {"id": "brd_rinkoff", "name": "Rinkoff Bakery", "category": "Dining", "logo_text": "RB", "color": "#b45309", "min_redeem": 500},
     {"id": "brd_broadway", "name": "Broadway Market", "category": "Shopping", "logo_text": "BM", "color": "#4d7c0f", "min_redeem": 500},
     {"id": "brd_bankofscotland", "name": "Bank of Scotland", "category": "Banking", "logo_text": "BS", "color": "#1e40af", "min_redeem": 500},
     {"id": "brd_amc", "name": "AMC", "category": "Banking", "logo_text": "AM", "color": "#0369a1", "min_redeem": 500},
     {"id": "brd_blackhorse", "name": "Black Horse", "category": "Banking", "logo_text": "BH", "color": "#065f46", "min_redeem": 500},
     {"id": "brd_birmingham", "name": "Birmingham", "category": "Banking", "logo_text": "BI", "color": "#7c2d12", "min_redeem": 500},
-    {"id": "brd_cavendish", "name": "Cavendish Online", "category": "Banking", "logo_text": "CO", "color": "#4338ca", "min_redeem": 500, "redirect_url": "http://localhost:5174"},
+    {"id": "brd_cavendish", "name": "Cavendish Online", "category": "Banking", "logo_text": "CO", "color": "#4338ca", "min_redeem": 500, "redirect_url": "http://localhost:5175"},
     {"id": "brd_embark", "name": "Embark", "category": "Insurance", "logo_text": "EM", "color": "#9d174d", "min_redeem": 500},
     {"id": "brd_hgp", "name": "HGP", "category": "Insurance", "logo_text": "HG", "color": "#a16207", "min_redeem": 500},
     {"id": "brd_ldc", "name": "LDC", "category": "Insurance", "logo_text": "LD", "color": "#155e75", "min_redeem": 500},
@@ -72,12 +59,6 @@ SEED_BRANDS = [
 ]
 
 DEMO_CONNECTED_BRANDS = [
-    ("brd_avios", "Avios", "Travel", 9400.0, "#cc0000", "AV"),
-    ("brd_tesco", "Tesco Clubcard", "Groceries", 8150.0, "#00539f", "TC"),
-    ("brd_amazon", "Amazon", "Shopping", 6300.0, "#ff9900", "AZ"),
-    ("brd_nandos", "Nando's", "Dining", 4750.0, "#dc2626", "N"),
-    ("brd_boots", "Boots", "Health", 5250.0, "#0e7490", "BO"),
-    ("brd_cineworld", "Cineworld", "Entertainment", 4400.0, "#7c3aed", "CW"),
     ("brd_alphamedicol", "AlphaMedicol", "Health", 2100.0, "#0e7490", "AM"),
     ("brd_rinkoff", "Rinkoff Bakery", "Dining", 1750.0, "#b45309", "RB"),
     ("brd_broadway", "Broadway Market", "Shopping", 1300.0, "#4d7c0f", "BM"),
@@ -97,14 +78,14 @@ DEMO_CONNECTED_BRANDS = [
 ]
 
 DEMO_TRANSACTIONS = [
-    ("EARN", "Points earned at Nando's", 320.0, "BRAND_POINT", _days_ago(0, 13)),
-    ("CONVERT", "Converted Tesco Clubcard points to LBG coins", 850.0, "LBG_COIN", _days_ago(1)),
-    ("REDEEM", "Redeemed coins at Costa Coffee", -450.0, "LBG_COIN", _days_ago(3)),
-    ("EARN", "Points earned at Tesco Clubcard", 540.0, "BRAND_POINT", _days_ago(5)),
-    ("EARN", "Points earned at Avios", 1250.0, "BRAND_POINT", _days_ago(8)),
-    ("CONVERT", "Converted Amazon points to LBG coins", 600.0, "LBG_COIN", _days_ago(11)),
-    ("REDEEM", "Redeemed coins at Cineworld", -900.0, "LBG_COIN", _days_ago(14)),
-    ("EARN", "Points earned at Boots", 210.0, "BRAND_POINT", _days_ago(18)),
+    ("EARN", "Points earned from AlphaMedicol", 320.0, "BRAND_POINT", _days_ago(0, 13)),
+    ("CONVERT", "Converted partner points to LBG coins", 850.0, "LBG_COIN", _days_ago(1)),
+    ("REDEEM", "Redeemed coins with AlphaMedicol", -450.0, "LBG_COIN", _days_ago(3)),
+    ("EARN", "Points earned from Rinkoff Bakery", 540.0, "BRAND_POINT", _days_ago(5)),
+    ("EARN", "Points earned from Broadway Market", 1250.0, "BRAND_POINT", _days_ago(8)),
+    ("CONVERT", "Converted partner points to LBG coins", 600.0, "LBG_COIN", _days_ago(11)),
+    ("REDEEM", "Redeemed coins with Rinkoff Bakery", -900.0, "LBG_COIN", _days_ago(14)),
+    ("EARN", "Points earned from LDC", 210.0, "BRAND_POINT", _days_ago(18)),
 ]
 
 PERSONA_CUSTOMERS = [
@@ -707,6 +688,30 @@ async def seed_database() -> None:
                 description=f"Earned at {brand_name}",
             )
             session.add(reward)
+
+        # Seeded touchpoint used by the AlphaMedicol deep-link when the signed-in
+        # email is passed through; persists a starter AlphaMedicol balance so the
+        # convert journey always has points available.
+        am_email = "ltc.cto.iet@gmail.com"
+        am_customer = await session.scalar(
+            select(Customer.id).where(Customer.email == am_email)
+        )
+        if am_customer is None:
+            am_id = uuid.uuid4()
+            session.add(Customer(
+                id=am_id,
+                name="LTC Cto",
+                email=am_email,
+                phone="0732472259",
+                password_hash=_hash_password("demo1234"),
+                tier="Silver",
+            ))
+            session.add(Wallet(customer_id=am_id, lbg_coin_balance=1500.0))
+            session.add(BrandPointsLedger(
+                customer_id=am_id,
+                brand_id="brd_alphamedicol",
+                available_points=2000.0,
+            ))
 
         for tx_type, desc, amount, currency, created_at in DEMO_TRANSACTIONS:
             tx = WalletTransaction(

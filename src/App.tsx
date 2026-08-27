@@ -13,6 +13,7 @@ import {
   loginWithPassword,
   setAuthToken,
   signupCustomer,
+  withBrandLogos,
 } from './services/rewardsApi'
 
 const EMPTY_OTP = ['', '', '', '', '', '']
@@ -60,7 +61,7 @@ export default function App() {
           setUserName('Demo User')
           setCustomer(summary)
           setPointsByBrand([])
-          setBrands(brandOptions)
+          setBrands(withBrandLogos(brandOptions))
           setEarnedRewardMap({})
           setStep('dashboard')
         } finally {
@@ -226,7 +227,7 @@ export default function App() {
       setPassword('')
       setCustomer(summary)
       setPointsByBrand([])
-      setBrands(brandOptions)
+      setBrands(withBrandLogos(brandOptions))
       setEarnedRewardMap({})
       setStep('home')
     } finally {
@@ -265,7 +266,7 @@ export default function App() {
       // Intelligence-layer persona session: the persona-derived summary is the
       // source of truth, so only refresh the brand catalogue.
       const brandOptions = await fetchBrandOptions()
-      setBrands(brandOptions)
+      setBrands(withBrandLogos(brandOptions))
       return
     }
     try {
@@ -275,8 +276,8 @@ export default function App() {
         fetchEarnedRewardMapByBrand(targetId),
       ])
       setCustomer(summary.customer)
-      setPointsByBrand(summary.pointsByBrand)
-      setBrands(brandOptions)
+      setPointsByBrand(withBrandLogos(summary.pointsByBrand))
+      setBrands(withBrandLogos(brandOptions))
       setEarnedRewardMap(earned)
       if (!userName && summary.customer.userName) setUserName(summary.customer.userName)
     } catch (error) {

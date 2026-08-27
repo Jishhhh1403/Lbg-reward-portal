@@ -66,14 +66,14 @@ export interface TransferResult {
 }
 
 /**
- * GET /api/v1/customers/lookup/summary
+ * GET /api/v1/customers/alphamedicol/summary?email=
  * Returns true when a unified account exists for the email; false on 404.
  */
 export async function checkLbgUnifiedAccountByEmail(
   email: string,
 ): Promise<boolean> {
   try {
-    const res = await api.get('/api/v1/customers/lookup/summary', {
+    const res = await api.get('/api/v1/customers/alphamedicol/summary', {
       params: { email },
     })
     const summary = res.data as Record<string, unknown> | undefined
@@ -90,14 +90,14 @@ export async function checkLbgUnifiedAccountByEmail(
 }
 
 /**
- * GET /api/v1/customers/lookup/summary
+ * GET /api/v1/customers/alphamedicol/summary?email=
  * Returns normalized balances; zeroed values on 404.
  */
 export async function fetchLinkedCustomerSummaryByEmail(
   email: string,
 ): Promise<LbgLinkedCustomerSummary> {
   try {
-    const res = await api.get('/api/v1/customers/lookup/summary', {
+    const res = await api.get('/api/v1/customers/alphamedicol/summary', {
       params: { email },
     })
     const data = res.data as Record<string, unknown>

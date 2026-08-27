@@ -44,9 +44,9 @@ const item = {
 }
 
 const recentTx = [
-  { id: 'r1', label: 'Tesco Stores', detail: 'Groceries · Today', amount: -23.4 },
+  { id: 'r1', label: 'Supermarket', detail: 'Groceries · Today', amount: -23.4 },
   { id: 'r2', label: 'Salary', detail: 'Income · Yesterday', amount: 2450.0 },
-  { id: 'r3', label: 'Costa Coffee', detail: 'Dining · Mon', amount: -3.85 },
+  { id: 'r3', label: 'Coffee Shop', detail: 'Dining · Mon', amount: -3.85 },
 ]
 
 /* Profile photos live in src/assets/customers, named after the customer's first name

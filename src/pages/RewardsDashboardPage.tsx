@@ -913,7 +913,7 @@ export default function RewardsDashboardPage({
                   <ExpiringPointsAlert
                     expiringPoints={1250}
                     daysLeft={21}
-                    message="Nando's balance has been idle for 60 days."
+                    message="One of your partner balances has been idle for 60 days."
                     onUsePoints={() => setRedeemOpen(true)}
                   />
                   <CountdownCard
@@ -1138,8 +1138,8 @@ export default function RewardsDashboardPage({
               transition={{ duration: 0.22 }}
               sx={{ padding: '20px', paddingBottom: '96px' }}
             >
-              <Typography sx={{ marginBottom: '12px', paddingX: '4px', fontSize: 14, fontWeight: 600, color: '#1e293b' }}>
-                Wallet transactions
+              <Typography sx={{ marginBottom: '12px', paddingX: '4px', fontSize: 18, fontWeight: 700, color: '#1e293b', textAlign: 'center' }}>
+                Transaction History
               </Typography>
               {txLoading && (
                 <Box
@@ -1236,9 +1236,8 @@ export default function RewardsDashboardPage({
                               fontSize: 14,
                               fontWeight: 500,
                               color: '#0f172a',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              whiteSpace: 'nowrap',
+                              lineHeight: 1.4,
+                              wordBreak: 'break-word',
                             }}
                           >
                             {normalizeTransactionDescription(tx.description)}
@@ -1432,6 +1431,8 @@ export default function RewardsDashboardPage({
       <LocatePointsModal
         isOpen={locateOpen}
         brandOptions={brands}
+        customerName={customer.userName}
+        customerPhone={customer.phone}
         onClose={() => setLocateOpen(false)}
         onVerified={() => {
           /* hook for backend linking call */
@@ -1440,6 +1441,7 @@ export default function RewardsDashboardPage({
       <RedeemPointsModal
         isOpen={redeemOpen}
         customerName={customer.userName}
+        customerPhone={customer.phone}
         totalPoints={totalPoints}
         pointsData={pointsByBrand}
         onClose={() => setRedeemOpen(false)}

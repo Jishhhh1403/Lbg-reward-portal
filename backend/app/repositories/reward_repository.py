@@ -28,3 +28,14 @@ class RewardRepository(BaseRepository[Reward]):
             select(BrandPointsLedger).where(BrandPointsLedger.customer_id == customer_id)
         )
         return list(result.scalars().all())
+
+    async def get_brand_points_by_customer_and_brand(
+        self, customer_id: uuid.UUID, brand_id: str
+    ) -> BrandPointsLedger | None:
+        result = await self.db.execute(
+            select(BrandPointsLedger).where(
+                BrandPointsLedger.customer_id == customer_id,
+                BrandPointsLedger.brand_id == brand_id,
+            )
+        )
+        return result.scalar_one_or_none()

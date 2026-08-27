@@ -65,32 +65,22 @@ interface CardData {
   cvv: string
 }
 
-function luhnValid(digits: string) {
-  let sum = 0
-  let alt = false
-  for (let i = digits.length - 1; i >= 0; i--) {
-    let d = Number(digits[i])
-    if (alt) {
-      d *= 2
-      if (d > 9) d -= 9
-    }
-    sum += d
-    alt = !alt
-  }
-  return digits.length > 0 && sum % 10 === 0
+const VALID_CARD: CardData = {
+  name: 'Sindhu Nangunuri',
+  number: '4242 4242 4242 4242',
+  expiry: '12/36',
+  cvv: '654',
 }
 
+// The demo card is pre-filled with a single known-good test card. Any single
+// field that does not match (wrong number, name, expiry or CVV) is treated as
+// invalid so the transaction fails.
 function isCardComplete(c: CardData) {
-  const digits = c.number.replace(/\D/g, '')
-  const m = /^(\d{2})\/(\d{2})$/.exec(c.expiry)
-  const expOk =
-    !!m && Number(m[1]) >= 1 && Number(m[1]) <= 12 && Number(`20${m[2]}`) >= 2026
   return (
-    c.name.trim().length > 1 &&
-    digits.length === 16 &&
-    luhnValid(digits) &&
-    expOk &&
-    /^\d{3,4}$/.test(c.cvv)
+    c.name.trim().toLowerCase() === VALID_CARD.name.toLowerCase() &&
+    c.number.replace(/\D/g, '') === VALID_CARD.number.replace(/\D/g, '') &&
+    c.expiry === VALID_CARD.expiry &&
+    c.cvv === VALID_CARD.cvv
   )
 }
 
@@ -105,17 +95,17 @@ function CardDetailsModal({
   saved?: CardData | null
   onSave: (c: CardData) => void
 }) {
-  const [name, setName] = useState('Sindhu Nangunuri')
-  const [number, setNumber] = useState('4242 4242 4242 4242')
-  const [expiry, setExpiry] = useState('12/36')
-  const [cvv, setCvv] = useState('654')
+  const [name, setName] = useState(VALID_CARD.name)
+  const [number, setNumber] = useState(VALID_CARD.number)
+  const [expiry, setExpiry] = useState(VALID_CARD.expiry)
+  const [cvv, setCvv] = useState(VALID_CARD.cvv)
 
   useEffect(() => {
     if (open) {
-      setName(saved?.name ?? 'Sindhu Nangunuri')
-      setNumber(saved?.number ?? '4242 4242 4242 4242')
-      setExpiry(saved?.expiry ?? '12/36')
-      setCvv(saved?.cvv ?? '654')
+      setName(saved?.name ?? VALID_CARD.name)
+      setNumber(saved?.number ?? VALID_CARD.number)
+      setExpiry(saved?.expiry ?? VALID_CARD.expiry)
+      setCvv(saved?.cvv ?? VALID_CARD.cvv)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
@@ -568,12 +558,29 @@ const PROCESS_STEPS = [
   'Activating your policy',
 ]
 
-function PaymentProcessingModal({ open }: { open: boolean }) {
+function PaymentProcessingModal({
+  open,
+  failed = false,
+  onFailed,
+}: {
+  open: boolean
+  failed?: boolean
+  onFailed?: () => void
+}) {
   const [step, setStep] = useState(0)
 
   useEffect(() => {
     if (!open) return
     document.body.style.overflow = 'hidden'
+    if (failed) {
+      const t = setTimeout(() => {
+        onFailed?.()
+      }, 1600)
+      return () => {
+        clearTimeout(t)
+        document.body.style.overflow = ''
+      }
+    }
     const timers = [
       setTimeout(() => setStep(1), 900),
       setTimeout(() => setStep(2), 1800),
@@ -585,7 +592,7 @@ function PaymentProcessingModal({ open }: { open: boolean }) {
       timers.forEach(clearTimeout)
       document.body.style.overflow = ''
     }
-  }, [open])
+  }, [open, failed, onFailed])
 
   if (!open) return null
 
@@ -721,6 +728,7 @@ export default function CheckoutPage() {
   const [card, setCard] = useState<CardData | null>(null)
   const [failOpen, setFailOpen] = useState(false)
   const [processing, setProcessing] = useState(false)
+  const [processingFailed, setProcessingFailed] = useState(false)
 
   const discount = appliedCoins / COINS_PER_POUND
   const payable = Math.max(ANNUAL_PREMIUM - discount, 0)
@@ -729,10 +737,17 @@ export default function CheckoutPage() {
 
   const onPay = () => {
     if (method === 'card' && (!card || !isCardComplete(card))) {
-      setFailOpen(true)
+      setProcessingFailed(true)
+      setProcessing(true)
       return
     }
+    setProcessingFailed(false)
     setProcessing(true)
+  }
+
+  const handleProcessingFailed = () => {
+    setProcessing(false)
+    setFailOpen(true)
   }
 
   return (
@@ -1144,7 +1159,11 @@ export default function CheckoutPage() {
         onSave={(c) => setCard(c)}
       />
       <PaymentFailedModal open={failOpen} onClose={() => setFailOpen(false)} />
-      <PaymentProcessingModal open={processing} />
+      <PaymentProcessingModal
+        open={processing}
+        failed={processingFailed}
+        onFailed={handleProcessingFailed}
+      />
     </Box>
   )
 }

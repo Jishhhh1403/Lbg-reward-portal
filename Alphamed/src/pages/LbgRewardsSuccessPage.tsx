@@ -89,7 +89,7 @@ export default function LbgRewardsSuccessPage() {
             component="img"
             src={lbgCoin}
             alt="LBG Coin"
-            sx={{ width: 108, height: 108, mx: 'auto', animation: `${spin} 1s ease-in-out 2`, position: 'relative', zIndex: 1 }}
+            sx={{ width: 108, height: 108, mx: 'auto', animation: `${spin} 1s ease-in-out 1`, position: 'relative', zIndex: 1 }}
           />
         </Box>
 
