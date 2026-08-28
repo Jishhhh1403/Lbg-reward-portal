@@ -1,5 +1,6 @@
 import sys
 import os
+import logging
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from services.base import IntelligenceProvider
@@ -19,14 +20,54 @@ from models.intelligence import (
 )
 from personas.customer_data import CUSTOMER_DATA
 
+logger = logging.getLogger(__name__)
+
 
 class MockIntelligenceProvider(IntelligenceProvider):
+    def __init__(self):
+        self._db_available = False
+        self._try_init_db()
+
+    def _try_init_db(self):
+        try:
+            from services.db_client import get_customer
+            self._db_available = True
+            logger.info("[PROVIDER] Database client available, will prefer DB")
+        except Exception as e:
+            logger.info("[PROVIDER] Database client not available, using static data: %s", e)
+            self._db_available = False
+
     def get_customer_intelligence(self, customer_id: str) -> IntelligenceResponse:
-        data = CUSTOMER_DATA.get(customer_id)
+        data = None
+
+        # Try database first
+        if self._db_available:
+            try:
+                import asyncio
+                try:
+                    loop = asyncio.get_running_loop()
+                    import concurrent.futures
+                    with concurrent.futures.ThreadPoolExecutor() as pool:
+                        future = pool.submit(asyncio.run, self._get_from_db(customer_id))
+                        data = future.result(timeout=5.0)
+                except RuntimeError:
+                    data = asyncio.run(self._get_from_db(customer_id))
+            except Exception as e:
+                logger.warning("[PROVIDER] DB fetch failed for %s: %s, falling back to static", customer_id, e)
+                data = None
+
+        # Fallback to static data
+        if data is None:
+            data = CUSTOMER_DATA.get(customer_id)
+
         if not data:
             raise ValueError(f"Customer {customer_id} not found")
 
         return self._analyze_customer(data)
+
+    async def _get_from_db(self, customer_id: str):
+        from services.db_client import get_customer
+        return await get_customer(customer_id)
 
     def _motive_scores(self, data: dict) -> MotiveScores:
         return MotiveScores(**data.get("motive_scores", {}))

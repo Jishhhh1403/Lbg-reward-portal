@@ -476,6 +476,159 @@ def test_sanitize_resolves_rewrites_question_text_to_episode_id():
     assert result.passed, result.errors
 
 
+def test_sanitize_repairs_out_of_order_action_without_consequence():
+    """Regression: when the LLM emits narrative components in non-sequence
+    order, the old code sorted a copy but repaired by index into the
+    unsorted list — repairing the WRONG component and leaving the actual
+    ACTION without consequence untouched.  Verify the fix."""
+    from validators.coherence_validator import sanitize_narrative_sequence
+
+    plan = ExperienceJourneyPlan.model_validate(make_journey_plan(2))
+    # Build a sequence where components are NOT in sequence order:
+    #   seq 1: ORIENTATION (mj-1)
+    #   seq 3: ACTION with NO consequence (mj-1) ← should be repaired
+    #   seq 2: EVIDENCE (mj-1)
+    #   seq 4: MEANING (mj-2)
+    # Because seq=3 comes before seq=2 in the list, the old sorted-index
+    # bug would repair the wrong slot.
+    raw = {
+        "primaryActionComponentRef": "comp-points",
+        "components": [
+            {"componentRef": "comp-points", "miniJourneyId": "mj-1", "narrativeRole": "ORIENTATION", "sequence": 1, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-action-x", "miniJourneyId": "mj-1", "narrativeRole": "ACTION", "sequence": 3, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-evi", "miniJourneyId": "mj-1", "narrativeRole": "EVIDENCE", "sequence": 2, "dependsOn": ["comp-points"], "resolves": [], "optional": False},
+            {"componentRef": "comp-meaning", "miniJourneyId": "mj-2", "narrativeRole": "MEANING", "sequence": 4, "dependsOn": [], "resolves": [], "optional": False},
+        ],
+        "transitions": [],
+        "deferredComponents": [],
+        "qualityGate": {"passed": True, "violations": []},
+    }
+    model = NarrativeSequence.model_validate(raw)
+    component_type_map = {
+        "comp-points": "POINTS_BALANCE",
+        "comp-action-x": "REWARDS_INSIGHT_CARD",
+        "comp-evi": "HEADER",
+        "comp-meaning": "GOAL_PROGRESS_CARD",
+    }
+    cleaned, notes = sanitize_narrative_sequence(model, plan, component_type_map=component_type_map)
+    # comp-action-x is ACTION with no consequence follower in mj-1 — must be repaired
+    comp_action = next(c for c in cleaned.components if c.componentRef == "comp-action-x")
+    assert comp_action.narrativeRole != NarrativeRole.ACTION, (
+        f"comp-action-x should have been repaired from ACTION but got {comp_action.narrativeRole}"
+    )
+    assert any("repaired ACTION on comp-action-x" in n for n in notes)
+    # comp-points (primary) must NOT be repaired
+    comp_primary = next(c for c in cleaned.components if c.componentRef == "comp-points")
+    assert comp_primary.narrativeRole == NarrativeRole.ORIENTATION
+    # The repaired sequence must pass contract validation
+    result = validate_narrative_sequence(cleaned, plan, None)
+    assert result.passed, result.errors
+
+
+def test_sanitize_any_unknown_type_action_without_consequence_is_repaired():
+    """Verify that ANY component type (even ones NOT in _NON_ACTIONABLE_TYPES)
+    gets repaired from ACTION to EVIDENCE when it has no consequence follower."""
+    from validators.coherence_validator import sanitize_narrative_sequence
+
+    plan = ExperienceJourneyPlan.model_validate(make_journey_plan(2))
+    raw = {
+        "primaryActionComponentRef": "comp-points",
+        "components": [
+            {"componentRef": "comp-points", "miniJourneyId": "mj-1", "narrativeRole": "ORIENTATION", "sequence": 1, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-x-x", "miniJourneyId": "mj-1", "narrativeRole": "ACTION", "sequence": 2, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-payoff", "miniJourneyId": "mj-2", "narrativeRole": "PAYOFF", "sequence": 3, "dependsOn": [], "resolves": [], "optional": False},
+        ],
+        "transitions": [],
+        "deferredComponents": [],
+        "qualityGate": {"passed": True, "violations": []},
+    }
+    model = NarrativeSequence.model_validate(raw)
+    # comp-x-x is in mj-1 but the only consequence (comp-payoff) is in mj-2
+    cleaned, notes = sanitize_narrative_sequence(model, plan)
+    comp_x = next(c for c in cleaned.components if c.componentRef == "comp-x-x")
+    assert comp_x.narrativeRole == NarrativeRole.EVIDENCE, (
+        f"comp-x-x (unknown type) should be repaired to EVIDENCE, got {comp_x.narrativeRole}"
+    )
+    assert any("repaired ACTION on comp-x-x" in n for n in notes)
+
+
+def test_sanitize_repairs_non_actionable_primary_action():
+    """Regression: when the LLM incorrectly designates a REWARDS_INSIGHT_CARD
+    (or similar non-actionable type) as the primary action, the sanitizer must
+    downgrade it to REFERENCE and reassign primaryActionComponentRef to the
+    next available ACTION component.  This is the exact failure模式 for
+    customers like 'danil brooks' where comp-rewards-insight was ACTION + primary."""
+    from validators.coherence_validator import sanitize_narrative_sequence
+
+    plan = ExperienceJourneyPlan.model_validate(make_journey_plan(2))
+    raw = {
+        "primaryActionComponentRef": "comp-rewards-insight",
+        "components": [
+            {"componentRef": "comp-points", "miniJourneyId": "mj-1", "narrativeRole": "ORIENTATION", "sequence": 1, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-rewards-insight", "miniJourneyId": "mj-1", "narrativeRole": "ACTION", "sequence": 2, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-real-action", "miniJourneyId": "mj-2", "narrativeRole": "ACTION", "sequence": 3, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-payoff", "miniJourneyId": "mj-2", "narrativeRole": "PAYOFF", "sequence": 4, "dependsOn": ["comp-real-action"], "resolves": [], "optional": False},
+        ],
+        "transitions": [],
+        "deferredComponents": [],
+        "qualityGate": {"passed": True, "violations": []},
+    }
+    model = NarrativeSequence.model_validate(raw)
+    component_type_map = {
+        "comp-points": "POINTS_BALANCE",
+        "comp-rewards-insight": "REWARDS_INSIGHT_CARD",
+        "comp-real-action": "PERSONALIZED_OFFER_CARD",
+        "comp-payoff": "FUTURE_VALUE_CARD",
+    }
+    cleaned, notes = sanitize_narrative_sequence(model, plan, component_type_map=component_type_map)
+    # comp-rewards-insight must be downgraded from ACTION to REFERENCE
+    comp_insight = next(c for c in cleaned.components if c.componentRef == "comp-rewards-insight")
+    assert comp_insight.narrativeRole == NarrativeRole.REFERENCE, (
+        f"comp-rewards-insight should be REFERENCE, got {comp_insight.narrativeRole}"
+    )
+    # primary must be reassigned to comp-real-action
+    assert cleaned.primaryActionComponentRef == "comp-real-action", (
+        f"primary should be comp-real-action, got {cleaned.primaryActionComponentRef}"
+    )
+    assert any("reassigned primary action" in n for n in notes)
+    # The repaired sequence must pass contract validation
+    result = validate_narrative_sequence(cleaned, plan, None)
+    assert result.passed, result.errors
+
+
+def test_sanitize_non_actionable_primary_no_other_action_vetoes():
+    """When a non-actionable type is the ONLY ACTION and is primary,
+    there's no other ACTION to reassign to — this is a genuine error
+    that should still veto (no valid composition possible)."""
+    from validators.coherence_validator import sanitize_narrative_sequence
+
+    plan = ExperienceJourneyPlan.model_validate(make_journey_plan(2))
+    raw = {
+        "primaryActionComponentRef": "comp-rewards-insight",
+        "components": [
+            {"componentRef": "comp-points", "miniJourneyId": "mj-1", "narrativeRole": "ORIENTATION", "sequence": 1, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-rewards-insight", "miniJourneyId": "mj-1", "narrativeRole": "ACTION", "sequence": 2, "dependsOn": [], "resolves": [], "optional": False},
+            {"componentRef": "comp-evi", "miniJourneyId": "mj-2", "narrativeRole": "EVIDENCE", "sequence": 3, "dependsOn": [], "resolves": [], "optional": False},
+        ],
+        "transitions": [],
+        "deferredComponents": [],
+        "qualityGate": {"passed": True, "violations": []},
+    }
+    model = NarrativeSequence.model_validate(raw)
+    component_type_map = {
+        "comp-points": "POINTS_BALANCE",
+        "comp-rewards-insight": "REWARDS_INSIGHT_CARD",
+        "comp-evi": "HEADER",
+    }
+    cleaned, notes = sanitize_narrative_sequence(model, plan, component_type_map=component_type_map)
+    # comp-rewards-insight downgraded, but no other ACTION to reassign to
+    assert cleaned.primaryActionComponentRef == "comp-rewards-insight"
+    # Validator should catch: primary is now REFERENCE
+    result = validate_narrative_sequence(cleaned, plan, None)
+    assert not result.passed
+    assert any("REFERENCE component designated as primary action" in e for e in result.errors)
+
+
 def test_reconcile_compiled_order_honors_approved_sequence():
     """Mechanical compilation must not let priority numbers override the
     approved narrative order; card-rule insertions keep their neighbourhood."""
@@ -707,28 +860,36 @@ def test_grounding_failed_reason_code_constant():
     assert GROUNDING_FAILED_REASON == "U.STORY.GROUNDING.FAILED"
 
 
-def test_composer_rejects_single_episode_plan():
+def test_composer_repairs_single_episode_plan():
+    """Single episode is auto-duplicated to meet min_length=2."""
     payload = {"experienceJourneyPlan": make_journey_plan(1)}
     model, error = validate_plan_payload(payload)
-    assert error and "at least 2" in error
+    assert error is None
+    assert len(model.miniJourneys) >= 2
 
 
-def test_composer_rejects_heading_only_plans():
+def test_composer_repairs_empty_customer_question():
+    """Empty customerQuestion is repaired with a placeholder instead of vetoing."""
     plan = make_journey_plan(2)
     plan["miniJourneys"][0]["customerQuestion"] = ""
     payload = {"experienceJourneyPlan": plan}
     model, error = validate_plan_payload(payload)
-    assert error and "customer question" in error
+    assert error is None
+    assert model.miniJourneys[0].customerQuestion == "What would you like to know?"
 
 
-def test_sequencer_defers_unresolved_references():
+def test_sequencer_repairs_unresolved_references():
+    """Unresolved dependsOn references are repaired (dropped) instead of vetoing."""
     agent = NarrativeSequencerAgent(_NullLLM(), "Narrative Sequencer", "narrative-sequencer")
     seq = make_narrative_sequence()
     seq["components"][1]["dependsOn"] = ["ghost-component"]
     state = AGENT_STATE()
     state["selected_candidate"] = {"components": make_components()}
     model, error = agent.validate_sequence({"narrativeSequence": seq}, state)
-    assert error and "ghost-component" in error
+    assert error is None
+    # The ghost-component dependency should have been repaired away
+    for sc in model.components:
+        assert "ghost-component" not in sc.dependsOn
 
 
 def test_guardian_maps_decision_to_message_type():
@@ -829,22 +990,28 @@ def test_stage_e_story_selection_failure_routes_to_fallback():
     assert "E.STORY_SELECTION.FAILED" in result["reason_codes"]
 
 
-def test_stage_s_invalid_journey_plan_routes_to_fallback():
+def test_stage_s_invalid_journey_plan_repaired_by_graph():
+    """Single-episode plan is auto-repaired (duplicated to 2) by the graph."""
     script = happy_script(**{
         "STRUCTURE AND SYNTHESISE": stage_s_payload(plan=make_journey_plan(1)),
     })
     result, _ = run_graph(script, base_state())
-    assert result["fallback_triggered"] is True
-    assert "S.JOURNEY_PLAN.INVALID" in result["reason_codes"]
+    # Plan repaired → no fallback
+    assert result.get("stages_completed") is not None
+    assert "S" in result.get("stages_completed", [])
 
 
 def test_stage_s_invalid_sequence_routes_to_fallback():
+    """When a non-primary ACTION loses its consequence (set to REFERENCE),
+    the sanitizer now repairs the orphaned ACTION to EVIDENCE instead of
+    vetoeing — the composition passes with a repaired narrative."""
     seq = make_narrative_sequence()
     seq["components"][3]["narrativeRole"] = "REFERENCE"  # ACTION loses its consequence
     script = happy_script(**{"STRUCTURE AND SYNTHESISE": stage_s_payload(sequence=seq)})
     result, _ = run_graph(script, base_state())
-    assert result["fallback_triggered"] is True
-    assert "S.COHERENCE.VETO" in result["reason_codes"]
+    # Sanitizer rescues the broken sequence → no fallback
+    assert result.get("stages_completed") is not None
+    assert "S" in result.get("stages_completed", [])
 
 
 def test_card_rule_keeps_already_placed_stack_card_in_approved_position():

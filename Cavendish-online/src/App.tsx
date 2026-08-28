@@ -40,7 +40,7 @@ export default function App() {
   }, [isPolicy, isCheckout, isSuccess])
 
   if (isCheckout) {
-    return <CheckoutPage />
+    return <CheckoutPage key={window.location.search} />
   }
 
   if (isSuccess) {

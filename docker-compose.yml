@@ -1,21 +1,135 @@
+version: '3.8'
+
 services:
   postgres:
-    image: postgres:16-alpine
-    container_name: rewards-postgres
-    restart: unless-stopped
+    image: postgres:15-alpine
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: rewards
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    environment:
+      POSTGRES_USER: ilrp
+      POSTGRES_PASSWORD: ilrp_dev_2024
+      POSTGRES_DB: ilrp
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ilrp -d ilrp"]
       interval: 5s
-      timeout: 3s
+      timeout: 5s
       retries: 5
+    networks:
+      - ilrp-net
+
+  besu:
+    image: hyperledger/besu:24.12.2
+    container_name: ilrp-besu
+    user: root
+    ports:
+      - "8545:8545"
+      - "8546:8546"
+      - "30303:30303"
+    volumes:
+      - ./besu/genesis:/genesis:ro
+      - ./besu/config:/config:ro
+      - besu-data:/opt/besu/data
+    command:
+      - --genesis-file=/genesis/genesis-ibft.json
+      - --config-file=/config/config.toml
+      - --data-path=/opt/besu/data
+      - --rpc-http-enabled=true
+      - --rpc-http-api=ETH,NET,WEB3,IBFT,TXPOOL,DEBUG,TRACE
+      - --rpc-http-host=0.0.0.0
+      - --rpc-http-port=8545
+      - --rpc-http-cors-origins=*
+      - --rpc-ws-enabled=true
+      - --rpc-ws-api=ETH,NET,WEB3,IBFT,TXPOOL
+      - --rpc-ws-host=0.0.0.0
+      - --rpc-ws-port=8546
+      - --host-allowlist=*
+      - --min-gas-price=0
+      - --node-private-key-file=/config/keys/validator.key
+    networks:
+      - ilrp-net
+
+  dlt:
+    build:
+      context: .
+      dockerfile: dlt/Dockerfile
+    ports:
+      - "8003:8000"
+    volumes:
+      - ./dlt/deployed:/app/deployed
+    depends_on:
+      postgres:
+        condition: service_healthy
+      besu:
+        condition: service_started
+    environment:
+      BESU_RPC_URL: http://besu:8545
+      BESU_CHAIN_ID: "1337"
+      BANK_PRIVATE_KEY: ${BANK_PRIVATE_KEY}
+      BANK_ONCHAIN_ADDRESS: ${BANK_ONCHAIN_ADDRESS:-0xA64dFE27e652ee3A38f42888C2d570E39CA479E7}
+      CONTRACT_ADDRESS_FILE: /app/deployed/contract_address.txt
+      CONTRACTS_DIR: /app/contracts
+      DATABASE_URL: postgresql://ilrp:ilrp_dev_2024@postgres:5432/ilrp
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_USER: ilrp
+      DB_PASSWORD: ilrp_dev_2024
+      DB_NAME: ilrp
+    restart: on-failure
+    networks:
+      - ilrp-net
+
+  intelligence-layer:
+    build: ./intelligence-layer
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./intelligence-layer:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      dlt:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql://ilrp:ilrp_dev_2024@postgres:5432/ilrp
+      BESU_RPC_URL: http://besu:8545
+      BESU_CHAIN_ID: "1337"
+      LBGCOIN_CONTRACT_ADDRESS: ${LBGCOIN_CONTRACT_ADDRESS:-0x0000000000000000000000000000000000000000}
+      DLT_SERVICE_URL: http://dlt:8000
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  middleware:
+    build: ./middleware
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./middleware:/app
+      - ./middleware/explainability:/app/explainability
+    depends_on:
+      intelligence-layer:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      dlt:
+        condition: service_started
+    environment:
+      - INTELLIGENCE_SERVICE_URL=http://intelligence-layer:8000
+      - DLT_SERVICE_URL=http://dlt:8000
+      - DATABASE_URL=postgresql://ilrp:ilrp_dev_2024@postgres:5432/ilrp
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL:-openai/gpt-oss-120b}
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 volumes:
   pgdata:
+  besu-data:
+
+networks:
+  ilrp-net:
+    driver: bridge
+
+# Frontend runs natively with `npm run dev` (Vite on 5173).

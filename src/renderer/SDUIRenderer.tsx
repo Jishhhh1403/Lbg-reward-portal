@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react'
+import { motion } from 'framer-motion'
 import type { NarrativeAct, SDUIComponent } from '../types/sdui'
 import MetricTile from '../components/dashboard/MetricTile'
 import {
@@ -247,16 +248,34 @@ function renderComponent(
 /** Section header rendered between narrative acts — the storytelling glue. */
 function ActHeader({ act, index }: { act: NarrativeAct; index: number }) {
   return (
-    <div className="flex items-center gap-2.5 px-1 pt-2">
-      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-100 text-[10px] font-bold text-brand-700">
+    <motion.div
+      initial={{ opacity: 0, x: -12 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+      className="flex items-center gap-2.5 px-1 pt-3 pb-1"
+    >
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-[10px] font-bold text-brand-700">
         {index + 1}
       </span>
-      <div>
-        <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-600">{act.label}</h2>
+      <div className="min-w-0 flex-1">
+        <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-700">{act.label}</h2>
         {act.role ? <p className="text-[11px] leading-tight text-slate-400">{act.role}</p> : null}
       </div>
-      <div className="h-px flex-1 bg-slate-200" />
-    </div>
+      <div className="h-px w-12 bg-gradient-to-r from-slate-200 to-transparent" />
+    </motion.div>
+  )
+}
+
+/** Wraps each card row with a subtle staggered entrance animation. */
+function AnimatedRow({ children, index }: { children: React.ReactNode; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: index * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }}
+    >
+      {children}
+    </motion.div>
   )
 }
 
@@ -316,19 +335,23 @@ export default function SDUIRenderer({
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 px-0.5">
       {sections.map((section, sIndex) => (
         <div key={section.act?.id ?? `stream-${sIndex}`} className="space-y-3">
           {section.act ? <ActHeader act={section.act} index={sIndex} /> : null}
           {buildRows(section.items).map((row, i) =>
             row.kind === 'single' ? (
-              <div key={row.component.id ?? i}>{renderComponent(row.component, handlers)}</div>
+              <AnimatedRow key={row.component.id ?? i} index={i}>
+                {renderComponent(row.component, handlers)}
+              </AnimatedRow>
             ) : (
-              <div key={(row.items.map((c) => c.id).join('-') || String(i)) + '-row'} className="grid grid-cols-2 gap-3">
-                {row.items.map((component) => (
-                  <div key={component.id}>{renderComponent(component, handlers)}</div>
-                ))}
-              </div>
+              <AnimatedRow key={(row.items.map((c) => c.id).join('-') || String(i)) + '-row'} index={i}>
+                <div className="grid grid-cols-2 gap-3">
+                  {row.items.map((component) => (
+                    <div key={component.id}>{renderComponent(component, handlers)}</div>
+                  ))}
+                </div>
+              </AnimatedRow>
             ),
           )}
         </div>

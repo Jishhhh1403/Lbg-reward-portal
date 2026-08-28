@@ -12,6 +12,7 @@ import {
   Bell,
   ChevronRight,
   Crown,
+  CreditCard,
   Gem,
   Gift,
   Home,
@@ -19,6 +20,7 @@ import {
   Loader2,
   Medal,
   RefreshCw,
+  Send,
   Sparkles,
   TrendingUp,
   UserRound,
@@ -86,6 +88,8 @@ interface RewardsDashboardPageProps {
   earnedRewardMap: Record<string, string>
   onBackToHome: () => void
   onRefresh: () => Promise<void>
+  customerEmail?: string
+  customerPhone?: string
 }
 
 const MotionBox = motion.create(Box)
@@ -124,6 +128,57 @@ function useTier(totalPoints: number, declaredTier?: string) {
   }, [totalPoints, declaredTier])
 }
 
+type TierName = (typeof TIERS)[number]['name']
+
+/* Embossed metal-card gradient themes — used for Gold/Platinum tiers where
+   no dedicated card image is available.  Silver uses the silvercard image. */
+const TIER_CARD_THEMES: Record<TierName, { card: string; labelText: string; nameText: string; metaText: string; metaIcon: string; tierPill: string; tickIdle: string; tickActive: string; track: string; barFill: string; noteText: string; coinIcon: string }> = {
+  Silver: {
+    card: '',
+    labelText: '',
+    nameText: '',
+    metaText: '',
+    metaIcon: '',
+    tierPill: '',
+    tickIdle: '',
+    tickActive: '',
+    track: '',
+    barFill: '',
+    noteText: '',
+    coinIcon: '',
+  },
+  Gold: {
+    card:
+      'border-yellow-100/60 bg-[linear-gradient(130deg,#6b4e12_0%,#b08a26_14%,#e8c96a_32%,#f7e7a8_45%,#e3c163_58%,#a67f1f_80%,#59400c_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.65),inset_0_-18px_30px_rgba(88,58,4,0.35),0_22px_45px_-22px_rgba(88,58,4,0.75)]',
+    coinIcon: 'text-amber-900',
+    tierPill: 'bg-amber-950/10 text-amber-950 ring-1 ring-amber-800/30',
+    labelText: 'text-amber-950/80',
+    nameText: 'text-amber-950 [text-shadow:0_1px_0_rgba(255,255,255,0.55),0_-1px_1px_rgba(15,23,42,0.35)]',
+    metaText: 'text-amber-950/80',
+    metaIcon: 'text-emerald-800',
+    tickIdle: 'text-amber-950/55',
+    tickActive: 'text-amber-950 font-bold',
+    track: 'bg-amber-950/20',
+    barFill: 'from-amber-600 via-amber-300 to-yellow-100',
+    noteText: 'text-amber-950/85',
+  },
+  Platinum: {
+    card:
+      'border-white/70 bg-[linear-gradient(130deg,#7c8693_0%,#b9c3cd_14%,#eef2f6_32%,#ffffff_46%,#e6ecf1_58%,#aeb9c4_80%,#6b7683_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.9),inset_0_-18px_30px_rgba(51,60,72,0.25),0_22px_45px_-22px_rgba(51,60,72,0.65)]',
+    coinIcon: 'text-slate-600',
+    tierPill: 'bg-slate-700/10 text-slate-700 ring-1 ring-slate-500/25',
+    labelText: 'text-slate-600/85',
+    nameText: 'text-slate-800 [text-shadow:0_1px_0_rgba(255,255,255,0.55),0_-1px_1px_rgba(15,23,42,0.35)]',
+    metaText: 'text-slate-700/80',
+    metaIcon: 'text-emerald-700',
+    tickIdle: 'text-slate-600/55',
+    tickActive: 'text-slate-800 font-bold',
+    track: 'bg-slate-700/15',
+    barFill: 'from-slate-400 via-sky-200 to-white',
+    noteText: 'text-slate-700/85',
+  },
+}
+
 /* ------------------------------------------------------------------ */
 /* Error Boundary — catches crashes in personalized SDUI rendering     */
 /* ------------------------------------------------------------------ */
@@ -149,6 +204,8 @@ export default function RewardsDashboardPage({
   earnedRewardMap,
   onBackToHome,
   onRefresh,
+  customerEmail,
+  customerPhone,
 }: RewardsDashboardPageProps) {
   const [activeTab, setActiveTab] = useState<DashboardTab>('home')
   const [locateOpen, setLocateOpen] = useState(false)
@@ -378,211 +435,122 @@ export default function RewardsDashboardPage({
         <AnimatePresence mode="wait">
           {activeTab !== 'activity' && (
             <MotionBox key="hero" exit={{ opacity: 0, y: -8 }} sx={{ paddingBottom: 4 }}>
-              {/* Coins hero */}
-              <MotionBox
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 }}
-                sx={{
-                  marginTop: '12px',
-                  borderRadius: '24px',
-                  color: '#0f172a',
-                  backgroundImage: `url(${silverCardImg})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  padding: '20px',
-                  
-                }}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'stretch', justifyContent: 'space-between', marginTop: '-8px' }}>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '4px',
-                      marginTop: '14px',
-                      paddingTop: '-5px'
-                    }}
-                  >
-                    {/* Card-holder name with a punched-in letterpress finish */}
-                    <Box
-                      sx={{
-                        fontSize: 14,
-                        fontWeight: 800,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.22em',
-                        color: 'rgba(30,41,59,0.72)',
-                        textShadow:
-                          '0 1px 0 rgba(255,255,255,0.95), 0 -1px 1px rgba(15,23,42,0.30), 0 2px 3px rgba(15,23,42,0.12)',
-                      }}
-                    >
-                      {customer.userName}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: 12,
-                        fontWeight: 500,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.14em',
-                      }}
-                    >
-                      Your LBG Coins
-                    </Box>
-                    <MotionBox
-                      key={customer.totalLbgCoins}
-                      initial={{ scale: 0.94, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                      sx={{ fontSize: 34, fontWeight: 900, letterSpacing: '-0.025em' , mt: -1}}
-                    >
-                      {formatPoints(customer.totalLbgCoins)}
-                    </MotionBox>
-                    {/* Current-tier tag */}
-                    <Box
-                      sx={{
-                        alignSelf: 'flex-start',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                        borderRadius: '999px',
-                        border: '1px solid rgba(30,41,59,0.35)',
-                        bgcolor: 'rgba(255,255,255,0.5)',
-                        paddingX: '10px',
-                        paddingTop: '3px',
-                        paddingBottom: '3px',
-                        fontSize: 11,
-                        fontWeight: 700,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: '#334155',
-                      }}
-                    >
-                      <tier.current.icon size={12} /> {tier.current.name}
-                    </Box>
-                  </Box>
-                  <MotionImg
-                    src={lbgCoinImg}
-                    alt="LBG Coin"
-                    initial={{ rotateY: 0 }}
-                    animate={{ rotateY: 360 }}
-                    transition={{ duration: 1.5, ease: 'easeInOut' }}
-                    style={{ width: 'auto', objectFit: 'contain' }}
-                  />
-                  {/* <Box
-                    sx={{
-                      borderRadius: '999px',
-                      bgcolor: 'rgba(221,190,114,0.9)',
-                      paddingX: '10px',
-                      paddingTop: '2px',
-                      paddingBottom: '2px',
-                      fontSize: 11,
-                      fontWeight: 700,
-                      color: '#073a2d',
-                    }}
-                  >
-                    {tier.current.name.toUpperCase()}
-                  </Box> */}
-                </Box>
-                <Typography
-                  sx={{ marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: 12 }}
+              {/* Coins hero — Silver uses card image; Gold/Platinum use embossed gradient */}
+              {tier.current.name === 'Silver' ? (
+                <MotionBox
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 }}
+                  sx={{
+                    marginTop: '12px',
+                    borderRadius: '24px',
+                    color: '#0f172a',
+                    backgroundImage: `url(${silverCardImg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    padding: '20px',
+                  }}
                 >
-                  <TrendingUp size={13} color="#059669" /> +850 vs last month{' '}
-                  <span style={{ opacity: 0.55 }}>|</span>{' '}
-                  {formatLastSyncedAt(customer.lastSyncedAt)}
-                </Typography>
-
-                {/* Tier progress */}
-                <Box sx={{ marginTop: 2,  }}>
-                  <Box
-                    sx={{
-                      position: 'relative',
-                      marginBottom: '6px',
-                      height: 16,
-                    }}
-                  >
-                    {TIERS.map((t, i) => {
-                      /* Anchor each label at its true position on the 0–25k journey scale */
-                      const pos = (t.min / TIERS[TIERS.length - 1].min) * 100
-                      const anchor =
-                        i === 0
-                          ? { left: 0 }
-                          : i === TIERS.length - 1
-                            ? { right: 0 }
-                            : { left: `${pos}%`, transform: 'translateX(-50%)' }
-                      return (
-                        <Box
-                          key={t.name}
-                          sx={{
-                            position: 'absolute',
-                            top: 0,
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            fontSize: 11,
-                            fontWeight: 500,
-                            whiteSpace: 'nowrap',
-                            color: '#585d64',
-                            ...(tier.current.name === t.name && { color: '#585d64', fontWeight: 700 }),
-                            ...anchor,
-                          }}
-                        >
-                          <t.icon size={11} /> {t.name}
-                        </Box>
-                      )
-                    })}
+                  <Box sx={{ display: 'flex', alignItems: 'stretch', justifyContent: 'space-between', marginTop: '-8px' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '14px' }}>
+                      <Box sx={{ fontSize: 14, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.22em', color: 'rgba(30,41,59,0.72)', textShadow: '0 1px 0 rgba(255,255,255,0.95), 0 -1px 1px rgba(15,23,42,0.30)' }}>
+                        {customer.userName}
+                      </Box>
+                      <Box sx={{ fontSize: 12, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.14em' }}>Your LBG Coins</Box>
+                      <MotionBox key={customer.totalLbgCoins} initial={{ scale: 0.94, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 220, damping: 18 }} sx={{ fontSize: 34, fontWeight: 900, letterSpacing: '-0.025em', mt: -1 }}>
+                        {formatPoints(customer.totalLbgCoins)}
+                      </MotionBox>
+                      <Box sx={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '4px', borderRadius: '999px', border: '1px solid rgba(30,41,59,0.35)', bgcolor: 'rgba(255,255,255,0.5)', paddingX: '10px', paddingTop: '3px', paddingBottom: '3px', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#334155' }}>
+                        <tier.current.icon size={12} /> {tier.current.name}
+                      </Box>
+                    </Box>
+                    <MotionImg src={lbgCoinImg} alt="LBG Coin" initial={{ rotateY: 0 }} animate={{ rotateY: 360 }} transition={{ duration: 1.5, ease: 'easeInOut' }} style={{ width: 'auto', height: '100px', objectFit: 'contain', filter: 'drop-shadow(0 0 14px rgba(255,215,0,0.65)) drop-shadow(0 0 6px rgba(255,215,0,0.4))' }} />
                   </Box>
-                  <Box
-                    sx={{
-                      position: 'relative',
-                      height: 8,
-                      overflow: 'hidden',
-                      borderRadius: '999px',
-                      bgcolor: '#e5e7eb',
-                    }}
-                  >
-                    <MotionBox
-                      initial={{ width: 0 }}
-                      animate={{ width: `${journeyProgress}%` }}
-                      transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
-                      sx={{
-                        position: 'absolute',
-                        top: 0,
-                        bottom: 0,
-                        left: 0,
-                        borderRadius: '999px',
-                        background: '#006a4d',
-                      }}
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      marginTop: '6px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <Typography sx={{ fontSize: 11 }}>
-                      {tier.next
-                        ? `${formatPoints(Math.max(0, tier.next.min - customer.totalLbgCoins))} pts to ${tier.next.name}`
-                        : 'Top tier reached — enjoy your Platinum perks'}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '2px',
-                        fontSize: 11,
-                        fontWeight: 600,
-                        color: '#006a4d',
-                      }}
-                    >
-                      Know more <ChevronRight size={13} />
+                  <Typography sx={{ marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: 12 }}>
+                    <TrendingUp size={13} color="#059669" /> +850 vs last month <span style={{ opacity: 0.55 }}>|</span> {formatLastSyncedAt(customer.lastSyncedAt)}
+                  </Typography>
+                  {/* Tier progress */}
+                  <Box sx={{ marginTop: 2 }}>
+                    <Box sx={{ position: 'relative', marginBottom: '6px', height: 16 }}>
+                      {TIERS.map((t, i) => {
+                        const pos = (t.min / TIERS[TIERS.length - 1].min) * 100
+                        const anchor = i === 0 ? { left: 0 } : i === TIERS.length - 1 ? { right: 0 } : { left: `${pos}%`, transform: 'translateX(-50%)' }
+                        return (
+                          <Box key={t.name} sx={{ position: 'absolute', top: 0, display: 'flex', alignItems: 'center', gap: '4px', fontSize: 11, fontWeight: 500, whiteSpace: 'nowrap', color: '#585d64', ...(tier.current.name === t.name && { color: '#585d64', fontWeight: 700 }), ...anchor }}>
+                            <t.icon size={11} /> {t.name}
+                          </Box>
+                        )
+                      })}
+                    </Box>
+                    <Box sx={{ position: 'relative', height: 8, overflow: 'hidden', borderRadius: '999px', bgcolor: '#e5e7eb' }}>
+                      <MotionBox initial={{ width: 0 }} animate={{ width: `${journeyProgress}%` }} transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }} sx={{ position: 'absolute', top: 0, bottom: 0, left: 0, borderRadius: '999px', background: '#006a4d' }} />
+                    </Box>
+                    <Box sx={{ marginTop: '6px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <Typography sx={{ fontSize: 11 }}>
+                        {tier.next ? `${formatPoints(Math.max(0, tier.next.min - customer.totalLbgCoins))} pts to ${tier.next.name}` : 'Top tier reached — enjoy your Platinum perks'}
+                      </Typography>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: '2px', fontSize: 11, fontWeight: 600, color: '#006a4d' }}>
+                        Know more <ChevronRight size={13} />
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
-              </MotionBox>
+                </MotionBox>
+              ) : (
+                /* Gold / Platinum embossed metal card */
+                <MotionBox
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 }}
+                  className={`relative overflow-hidden border p-5 ${TIER_CARD_THEMES[tier.current.name]?.card ?? ''}`}
+                  sx={{ marginTop: '12px', borderRadius: '24px' }}
+                >
+                  <div className="pointer-events-none absolute -right-20 -top-28 h-60 w-80 rotate-12 bg-gradient-to-b from-white/25 via-white/8 to-transparent blur-xl" />
+                  <div className="pointer-events-none absolute -bottom-24 -left-12 h-48 w-72 -rotate-6 bg-gradient-to-t from-black/20 to-transparent blur-lg" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+                  <div className="relative">
+                    <div className="flex items-center justify-between">
+                      <div className={`flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] ${TIER_CARD_THEMES[tier.current.name]?.labelText ?? ''}`}>
+                        <Gift size={15} className={TIER_CARD_THEMES[tier.current.name]?.coinIcon ?? ''} /> LBG Coins
+                      </div>
+                    </div>
+                    <div className="mt-2 flex items-center gap-3">
+                      <motion.p key={customer.totalLbgCoins} initial={{ scale: 0.94, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 220, damping: 18 }} className={`text-4xl font-black tracking-tight text-slate-900 ${TIER_CARD_THEMES[tier.current.name]?.nameText ?? ''}`}>
+                        {formatPoints(customer.totalLbgCoins)}
+                      </motion.p>
+                      <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ${TIER_CARD_THEMES[tier.current.name]?.tierPill ?? ''}`}>
+                        {tier.current.name}
+                      </span>
+                      <motion.img src={lbgCoinImg} alt="LBG Coin" initial={{ rotateY: 0 }} animate={{ rotateY: 360 }} transition={{ duration: 1.5, ease: 'easeInOut' }} className="ml-auto h-24 w-auto object-contain" style={{ filter: 'drop-shadow(0 0 14px rgba(255,215,0,0.65)) drop-shadow(0 0 6px rgba(255,215,0,0.4))' }} />
+                    </div>
+                    <p className={`mt-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] ${TIER_CARD_THEMES[tier.current.name]?.nameText ?? ''}`}>
+                      {customer.userName}
+                    </p>
+                    <p className={`mt-1 flex items-center gap-1 text-xs ${TIER_CARD_THEMES[tier.current.name]?.metaText ?? ''}`}>
+                      <TrendingUp size={13} className={TIER_CARD_THEMES[tier.current.name]?.metaIcon ?? ''} /> +850 this month · {formatLastSyncedAt(customer.lastSyncedAt)}
+                    </p>
+                    <div className="mt-4">
+                      <div className="mb-1.5 flex justify-between text-[11px] font-medium">
+                        {TIERS.map((t) => (
+                          <span key={t.name} className={`flex items-center gap-1 ${tier.current.name === t.name ? (TIER_CARD_THEMES[tier.current.name]?.tickActive ?? '') : (TIER_CARD_THEMES[tier.current.name]?.tickIdle ?? '')}`}>
+                            <t.icon size={11} /> {t.name}
+                          </span>
+                        ))}
+                      </div>
+                      <div className={`relative h-2 overflow-hidden rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)] ${TIER_CARD_THEMES[tier.current.name]?.track ?? ''}`}>
+                        <motion.div className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] ${TIER_CARD_THEMES[tier.current.name]?.barFill ?? ''}`} initial={{ width: 0 }} animate={{ width: `${tier.progress}%` }} transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }} />
+                      </div>
+                      <p className={`mt-1.5 text-[11px] ${TIER_CARD_THEMES[tier.current.name]?.noteText ?? ''}`}>
+                        {tier.next
+                          ? tier.pointsToNext > 0
+                            ? `${formatPoints(tier.pointsToNext)} pts to ${tier.next.name}`
+                            : `${tier.next.name} status unlocks on your next conversion`
+                          : `Top tier reached — enjoy your ${tier.current.name} perks`}
+                      </p>
+                    </div>
+                  </div>
+                </MotionBox>
+              )}
 
               {/* Action buttons */}
               <Box sx={{ marginTop: 2, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '10px', paddingBottom: '4px' }}>
@@ -725,6 +693,8 @@ export default function RewardsDashboardPage({
                 </>
               )}
 
+              {experienceStatus === 'fallback' && (
+              <>
               {/* Metrics */}
               <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '10px' }}>
                 <MetricTile
@@ -733,6 +703,7 @@ export default function RewardsDashboardPage({
                   tone="white"
                   valueColor="#006a4d"
                   infoText="Sum of points held across all connected partner brands."
+                  icon={lbgCoinImg}
                 />
                 <MetricTile
                   label="Brands linked"
@@ -1126,6 +1097,8 @@ export default function RewardsDashboardPage({
                   onCta={() => setRedeemOpen(true)}
                 />
               </Box>
+              </>
+              )}
             </MotionBox>
           )}
 
@@ -1197,9 +1170,25 @@ export default function RewardsDashboardPage({
                         ? { bgcolor: '#eef7f3', color: '#045a42' }
                         : tx.type === 'CONVERT'
                           ? { bgcolor: '#f0f9ff', color: '#0284c7' }
-                          : { bgcolor: '#fdf9ef', color: '#a98a41' }
+                          : tx.type === 'REDEEM'
+                            ? { bgcolor: '#fdf9ef', color: '#a98a41' }
+                            : tx.type === 'TRANSFER'
+                              ? { bgcolor: '#f5f3ff', color: '#7c3aed' }
+                              : tx.type === 'EXPIRE'
+                                ? { bgcolor: '#fef2f2', color: '#b91c1c' }
+                                : { bgcolor: '#f8fafc', color: '#64748b' }
                     const Icon =
-                      tx.type === 'EARN' ? ArrowDownCircle : tx.type === 'CONVERT' ? RefreshCw : Gift
+                      tx.type === 'EARN'
+                        ? ArrowDownCircle
+                        : tx.type === 'CONVERT'
+                          ? RefreshCw
+                          : tx.type === 'REDEEM'
+                            ? Gift
+                            : tx.type === 'TRANSFER'
+                              ? Send
+                              : tx.type === 'EXPIRE'
+                                ? CreditCard
+                                : Gift
                     return (
                       <MotionBox
                         key={tx.id}
@@ -1436,12 +1425,18 @@ export default function RewardsDashboardPage({
         onVerified={() => {
           /* hook for backend linking call */
         }}
+        customerName={customer.userName}
+        customerEmail={customerEmail}
+        customerPhone={customerPhone}
       />
       <RedeemPointsModal
         isOpen={redeemOpen}
         customerName={customer.userName}
         totalPoints={totalPoints}
         pointsData={pointsByBrand}
+        allBrands={brands}
+        customerEmail={customerEmail}
+        customerPhone={customerPhone}
         onClose={() => setRedeemOpen(false)}
       />
     </Box>

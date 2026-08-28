@@ -1,14 +1,17 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Coins, ExternalLink, Search, X } from 'lucide-react'
-import type { PointsProvider } from '../../types/rewards'
+import type { BrandOption, PointsProvider } from '../../types/rewards'
 import BottomSheetModal from '../ui/BottomSheetModal'
 
 interface RedeemPointsModalProps {
   isOpen: boolean
   totalPoints: number
   pointsData: PointsProvider[]
+  allBrands?: BrandOption[]
   customerName: string
+  customerEmail?: string
+  customerPhone?: string
   onClose: () => void
 }
 
@@ -27,16 +30,39 @@ export default function RedeemPointsModal({
   isOpen,
   totalPoints,
   pointsData,
+  allBrands = [],
   customerName,
+  customerEmail,
+  customerPhone,
   onClose,
 }: RedeemPointsModalProps) {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('All')
   const [redirectTarget, setRedirectTarget] = useState<CatalogItem | null>(null)
 
-  const catalog = useMemo<CatalogItem[]>(
-    () =>
-      pointsData.map((p) => ({
+  const catalog = useMemo<CatalogItem[]>(() => {
+    const pointsMap = new Map(pointsData.map((p) => [p.brandId, p]))
+    const items: CatalogItem[] = []
+    const seen = new Set<string>()
+    for (const b of allBrands) {
+      if (seen.has(b.id)) continue
+      seen.add(b.id)
+      const p = pointsMap.get(b.id)
+      items.push({
+        id: b.id,
+        name: b.name,
+        category: b.category,
+        logoText: b.logoText,
+        color: b.color,
+        yourPoints: p?.points ?? 0,
+        logoUrl: b.logoUrl ?? p?.logoUrl,
+        redirectUrl: b.redirectUrl ?? p?.redirectUrl,
+      })
+    }
+    for (const p of pointsData) {
+      if (seen.has(p.brandId)) continue
+      seen.add(p.brandId)
+      items.push({
         id: p.brandId,
         name: p.brandName,
         category: p.category,
@@ -45,9 +71,10 @@ export default function RedeemPointsModal({
         yourPoints: p.points,
         logoUrl: p.logoUrl,
         redirectUrl: p.redirectUrl,
-      })),
-    [pointsData],
-  )
+      })
+    }
+    return items
+  }, [pointsData, allBrands])
 
   const categories = useMemo(
     () => ['All', ...Array.from(new Set(catalog.map((c) => c.category)))],
@@ -189,12 +216,15 @@ export default function RedeemPointsModal({
               <div className="mt-5 space-y-2">
                 <motion.button
                   whileTap={{ scale: 0.98 }}
-                  onClick={() =>
-                    window.location.assign(
-                      redirectTarget.redirectUrl ??
-                        `https://www.${redirectTarget.name.toLowerCase().replace(/[^a-z]/g, '')}.com`,
-                    )
-                  }
+                  onClick={() => {
+                    const baseUrl = redirectTarget.redirectUrl ??
+                      `https://www.${redirectTarget.name.toLowerCase().replace(/[^a-z]/g, '')}.com`
+                    const url = new URL(baseUrl)
+                    if (customerEmail) url.searchParams.set('customerEmail', customerEmail)
+                    if (customerName) url.searchParams.set('customerName', encodeURIComponent(customerName))
+                    if (customerPhone) url.searchParams.set('customerPhone', customerPhone)
+                    window.location.assign(url.toString())
+                  }}
                   className="w-full rounded-xl bg-brand-600 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
                 >
                   Continue to {redirectTarget.name}

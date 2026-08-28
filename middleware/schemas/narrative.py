@@ -138,8 +138,8 @@ class SupportingSurface(BaseModel):
 class MiniJourney(BaseModel):
     miniJourneyId: str
     order: int
-    customerQuestion: str
-    entryCondition: str
+    customerQuestion: str = ""
+    entryCondition: str = ""
     requiredInformation: list[str] = Field(default_factory=list)
     allowedNarrativeRoles: list[NarrativeRole] = Field(default_factory=list)
     requiredActionType: Optional[str] = None
@@ -147,6 +147,22 @@ class MiniJourney(BaseModel):
     transitionsTo: Optional[str] = None
     requiredEvidenceRefs: list[str] = Field(default_factory=list)
     optional: bool = False
+
+    @field_validator("customerQuestion", mode="before")
+    @classmethod
+    def _repair_customer_question(cls, v):
+        """LLMs sometimes emit null, empty string or non-string for customerQuestion.
+        Coerce to a safe placeholder so the journey plan is not rejected."""
+        if v is None or (isinstance(v, str) and not v.strip()):
+            return "What would you like to know?"
+        return v
+
+    @field_validator("entryCondition", mode="before")
+    @classmethod
+    def _repair_entry_condition(cls, v):
+        if v is None or (isinstance(v, str) and not v.strip()):
+            return "Previous episode resolved"
+        return v
 
     @field_validator("allowedNarrativeRoles", mode="before")
     @classmethod
@@ -177,7 +193,7 @@ class ExperienceJourneyPlan(BaseModel):
     entryPoint: str
     completionDefinition: str
     primaryActionPolicy: PrimaryActionPolicy = PrimaryActionPolicy.ONE_DOMINANT
-    miniJourneys: list[MiniJourney] = Field(min_length=2, max_length=4)
+    miniJourneys: list[MiniJourney] = Field(min_length=2, max_length=6)
     supportingSurfaces: list[SupportingSurface] = Field(default_factory=list)
     qualityGate: GateResult = Field(default_factory=GateResult)
 

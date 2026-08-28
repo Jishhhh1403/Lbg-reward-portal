@@ -29,6 +29,7 @@ stack replicated from `SDUI/rewards-intelligence-pov`:
    ```
 
    The middleware reads `GEMINI_API_KEY` from `middleware/.env`.
+   docker compose exec postgres psql -U ilrp -d ilrp
 
 2. Frontend:
 

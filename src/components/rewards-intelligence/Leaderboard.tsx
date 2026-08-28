@@ -36,7 +36,12 @@ export default function Leaderboard({
   ]
 
   return (
-    <div className="rounded-2xl border border-brand-100 bg-white p-4 shadow-card">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="rounded-2xl border border-brand-100 bg-white p-4 shadow-card"
+    >
       <div className="mb-3 flex items-center gap-1.5">
         <Trophy size={15} className="text-sky-600" />
         <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
@@ -63,9 +68,9 @@ export default function Leaderboard({
             className={`flex items-center gap-2.5 rounded-xl p-2.5 transition-colors ${
               entry.isCurrentUser ? 'border border-brand-200 bg-brand-50' : 'bg-slate-50'
             }`}
-            initial={{ opacity: 0, x: -14 }}
+            initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.07 }}
+            transition={{ delay: i * 0.06, duration: 0.3, ease: 'easeOut' }}
           >
             <div className="w-6 text-center">{rankIcon(entry.rank)}</div>
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-[10px] font-bold text-white">
@@ -80,6 +85,6 @@ export default function Leaderboard({
           </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }

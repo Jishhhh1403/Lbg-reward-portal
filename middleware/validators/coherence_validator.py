@@ -247,39 +247,89 @@ def sanitize_narrative_sequence(
         "REWARD_CHOICE_PANEL",
         "CONSOLIDATED_REWARD_WALLET",
     }
-    ordered = sorted(rebuilt, key=lambda s: s.sequence)
     consequence_roles = {NarrativeRole.FEEDBACK, NarrativeRole.PAYOFF, NarrativeRole.CONTINUATION}
     primary_ref = sequence.primaryActionComponentRef
-    for i, sc in enumerate(ordered):
+
+    # ── Pass 1: Repair non-actionable types (trust/transparency cards) ──────
+    for i, sc in enumerate(rebuilt):
         if sc.narrativeRole != NarrativeRole.ACTION:
             continue
-        # Look up the real component type from the provided map.
         real_type = (component_type_map or {}).get(sc.componentRef, "")
-        is_non_actionable = real_type in _NON_ACTIONABLE_TYPES
-        # Check if there is a consequence follower in the same mini-journey
+        if real_type not in _NON_ACTIONABLE_TYPES:
+            continue
+        repaired_role = NarrativeRole.REFERENCE
+        rebuilt[i] = sc.model_copy(update={"narrativeRole": repaired_role})
+        notes.append(
+            f"repaired ACTION on {sc.componentRef} (type={real_type}) "
+            f"-> {repaired_role.value} (non-actionable type)"
+        )
+        if sc.componentRef == primary_ref:
+            new_primary = next(
+                (c.componentRef for c in rebuilt
+                 if c.narrativeRole == NarrativeRole.ACTION and c.componentRef != sc.componentRef),
+                None,
+            )
+            if new_primary:
+                primary_ref = new_primary
+                notes.append(
+                    f"reassigned primary action from {sc.componentRef} to {new_primary}"
+                )
+
+    # ── Pass 2: Repair ALL ACTIONs without consequence followers ────────────
+    # The sequence contract requires every non-optional ACTION to have a
+    # FEEDBACK/PAYOFF/CONTINUATION consequence.  When the LLM mis-assigns
+    # ACTION to a component with no consequence, the validator always vetoes.
+    # Deterministically downgrade to EVIDENCE (safe, non-actionable, exempt
+    # from the consequence rule).
+    for i, sc in enumerate(rebuilt):
+        if sc.narrativeRole != NarrativeRole.ACTION:
+            continue
         has_consequence = any(
             n.narrativeRole in consequence_roles
-            for n in ordered[i + 1:]
+            for n in rebuilt[i + 1:]
             if n.miniJourneyId == sc.miniJourneyId and not n.optional
         )
-        # Repair if: (a) known non-actionable type, OR
-        # (b) any ACTION without a consequence follower — the validator would
-        #     reject it anyway, so repair proactively to avoid veto.
-        # Never repair the primary action — if it has no consequence, that is
-        # a genuine structural error that should veto.
-        if sc.componentRef == primary_ref:
+        if has_consequence:
             continue
-        if is_non_actionable or not has_consequence:
-            repaired_role = NarrativeRole.REFERENCE if is_non_actionable else NarrativeRole.EVIDENCE
-            rebuilt[i] = sc.model_copy(update={"narrativeRole": repaired_role})
-            notes.append(
-                f"repaired ACTION on {sc.componentRef} (type={real_type or '?'}) "
-                f"-> {repaired_role.value} "
-                f"({'non-actionable type' if is_non_actionable else 'no consequence follower'})"
+        # This ACTION has no consequence follower — repair it.
+        real_type = (component_type_map or {}).get(sc.componentRef, "")
+        is_primary = sc.componentRef == primary_ref
+        rebuilt[i] = sc.model_copy(update={"narrativeRole": NarrativeRole.EVIDENCE})
+        notes.append(
+            f"repaired ACTION on {sc.componentRef} (type={real_type or '?'}) "
+            f"-> EVIDENCE (no consequence follower)"
+            + (" [was primary]" if is_primary else "")
+        )
+        if is_primary:
+            # Try to find another ACTION with a consequence to be the new primary.
+            new_primary = next(
+                (c.componentRef for j, c in enumerate(rebuilt)
+                 if c.narrativeRole == NarrativeRole.ACTION
+                 and c.componentRef != sc.componentRef
+                 and any(
+                     n.narrativeRole in consequence_roles
+                     for n in rebuilt[j + 1:]
+                     if n.miniJourneyId == c.miniJourneyId and not n.optional
+                 )),
+                None,
             )
+            if not new_primary:
+                # No ACTION with consequence — pick any remaining ACTION.
+                new_primary = next(
+                    (c.componentRef for c in rebuilt
+                     if c.narrativeRole == NarrativeRole.ACTION and c.componentRef != sc.componentRef),
+                    None,
+                )
+            if new_primary:
+                primary_ref = new_primary
+                notes.append(
+                    f"reassigned primary action from {sc.componentRef} to {new_primary}"
+                )
 
     payload = sequence.model_dump()
     payload["components"] = [c.model_dump() for c in rebuilt]
+    if primary_ref != sequence.primaryActionComponentRef:
+        payload["primaryActionComponentRef"] = primary_ref
     return sequence.__class__(**payload), notes
 
 

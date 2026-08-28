@@ -13,6 +13,8 @@ import {
   loginWithPassword,
   setAuthToken,
   signupCustomer,
+  consumeCrossAppEventsFromUrl,
+  computeAdjustedLbgBalance,
 } from './services/rewardsApi'
 
 const EMPTY_OTP = ['', '', '', '', '', '']
@@ -31,12 +33,17 @@ export default function App() {
   const [signupFlow, setSignupFlow] = useState(false)
 
   /* ---------------- session + dashboard state ---------------- */
-  const [customerId, setCustomerId] = useState<string | null>(null)
-  const [userName, setUserName] = useState('')
+  const [customerId, setCustomerId] = useState<string | null>(() => {
+    try { return localStorage.getItem('rewards_session_id') } catch { return null }
+  })
+  const [userName, setUserName] = useState(() => {
+    try { return localStorage.getItem('rewards_session_name') ?? '' } catch { return '' }
+  })
   const [customer, setCustomer] = useState<CustomerSummary | null>(null)
   const [pointsByBrand, setPointsByBrand] = useState<PointsProvider[]>([])
   const [brands, setBrands] = useState<BrandOption[]>([])
   const [earnedRewardMap, setEarnedRewardMap] = useState<Record<string, string>>({})
+  const [hydrated, setHydrated] = useState(false)
 
   /* Auto-login to dashboard when ?view=dashboard is present */
   useEffect(() => {
@@ -191,6 +198,10 @@ export default function App() {
       setUserName(res.userName)
       setMobile(res.phone)
       setSignupFlow(false)
+      try {
+        localStorage.setItem('rewards_session_id', res.customerId)
+        localStorage.setItem('rewards_session_name', res.userName)
+      } catch { /* ignore */ }
       await loadDashboardData(res.customerId)
       setStep('splash')
     } catch (error) {
@@ -209,11 +220,13 @@ export default function App() {
     setIsLoading(true)
     setLoginError('')
     try {
+      const personaEmail = `${persona.name.split(' ')[0].toLowerCase()}@example.com`
       const summary: CustomerSummary = {
         customerId: persona.id,
         userName: persona.name,
         phone: '',
-        totalLbgCoins: persona.points,
+        email: personaEmail,
+        totalLbgCoins: computeAdjustedLbgBalance(persona.points),
         totalBrandPoints: 0,
         brandsConnected: 3,
         tier: persona.tier as CustomerSummary['tier'],
@@ -228,18 +241,45 @@ export default function App() {
       setPointsByBrand([])
       setBrands(brandOptions)
       setEarnedRewardMap({})
-      setStep('home')
+      try {
+        localStorage.setItem('rewards_session_id', persona.id)
+        localStorage.setItem('rewards_session_name', persona.name)
+      } catch { /* ignore */ }
+      setStep('splash')
     } finally {
       setIsLoading(false)
     }
   }
 
-  /* Splash shows for its full progress animation, then continues to home. */
+  /* Splash shows for its full progress animation, then continues to home or dashboard. */
   useEffect(() => {
     if (step !== 'splash') return
     const timer = window.setTimeout(() => setStep('home'), 3000)
     return () => window.clearTimeout(timer)
   }, [step])
+
+  /* Consume cross-app events from URL params on mount and step changes */
+  useEffect(() => {
+    const newEvents = consumeCrossAppEventsFromUrl()
+    if (newEvents.length > 0 && customerId) {
+      // Refresh dashboard data to pick up new transactions
+      void loadDashboardData()
+    }
+  }, [step, customerId])
+
+  /* Auto-resume from persisted session on mount */
+  useEffect(() => {
+    if (hydrated) return
+    const storedId = customerId
+    const storedName = userName
+    if (storedId && storedName) {
+      // If returning with cross-app events, go directly to dashboard
+      const hasEvents = new URLSearchParams(window.location.search).has('cross_app_events')
+      setStep(hasEvents ? 'dashboard' : 'splash')
+      void loadDashboardData(storedId)
+    }
+    setHydrated(true)
+  }, [customerId, userName, hydrated])
 
   const handleSignOut = useCallback(() => {
     setAuthToken(null)
@@ -253,6 +293,10 @@ export default function App() {
     setOtp([...EMPTY_OTP])
     setSignupFlow(false)
     setLoginError('')
+    try {
+      localStorage.removeItem('rewards_session_id')
+      localStorage.removeItem('rewards_session_name')
+    } catch { /* ignore */ }
     setStep('mobile')
   }, [])
 
@@ -358,6 +402,8 @@ export default function App() {
                 earnedRewardMap={earnedRewardMap}
                 onBackToHome={() => setStep('home')}
                 onRefresh={() => loadDashboardData()}
+                customerEmail={customer.email}
+                customerPhone={mobile || customer.phone}
               />
             )}
           </motion.div>

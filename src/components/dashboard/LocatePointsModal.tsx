@@ -10,6 +10,9 @@ interface LocatePointsModalProps {
   brandOptions: BrandOption[]
   onClose: () => void
   onVerified: (brand: BrandOption) => void
+  customerName?: string
+  customerEmail?: string
+  customerPhone?: string
 }
 
 type Step = 'form' | 'otp' | 'done'
@@ -18,7 +21,7 @@ type ContactMethod = 'email' | 'phone'
 const inputClass =
   'w-full rounded-xl border border-slate-300 bg-white px-3.5 py-3 text-sm shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/25'
 
-export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVerified }: LocatePointsModalProps) {
+export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVerified, customerName, customerEmail, customerPhone }: LocatePointsModalProps) {
   const [step, setStep] = useState<Step>('form')
   const [group, setGroup] = useState<string>('All')
   const [selectedBrandId, setSelectedBrandId] = useState<string | null>(null)
@@ -303,7 +306,14 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
             <div className="space-y-2">
               <motion.button
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.location.assign(selectedBrand.redirectUrl ?? `https://www.${selectedBrand.name.toLowerCase().replace(/[^a-z]/g, '')}.com`)}
+                onClick={() => {
+                  const baseUrl = selectedBrand.redirectUrl ?? `https://www.${selectedBrand.name.toLowerCase().replace(/[^a-z]/g, '')}.com`
+                  const url = new URL(baseUrl)
+                  if (customerEmail) url.searchParams.set('customerEmail', customerEmail)
+                  if (customerName) url.searchParams.set('customerName', encodeURIComponent(customerName))
+                  if (customerPhone) url.searchParams.set('customerPhone', customerPhone)
+                  window.location.assign(url.toString())
+                }}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-700"
               >
                 <ExternalLink size={15} /> Continue to partner app

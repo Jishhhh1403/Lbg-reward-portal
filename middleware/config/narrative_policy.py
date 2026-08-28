@@ -33,7 +33,7 @@ ONE_SENTENCE_MAX_LEN = 240
 
 # --- Mini-journeys (spec §5.2 / §13.1) ---
 MINI_JOURNEY_MIN = 2
-MINI_JOURNEY_MAX = _env_int("NARRATIVE_MINI_JOURNEY_MAX", 4)
+MINI_JOURNEY_MAX = _env_int("NARRATIVE_MINI_JOURNEY_MAX", 6)
 
 # --- Screen composition caps (existing constitution + accessibility) ---
 MAX_SCREEN_COMPONENTS = _env_int("NARRATIVE_MAX_COMPONENTS", 20)

@@ -32,6 +32,7 @@ export interface CustomerSummary {
   customerId: string
   userName: string
   phone: string
+  email?: string
   totalLbgCoins: number
   totalBrandPoints: number
   brandsConnected: number
@@ -43,7 +44,7 @@ export type TierName = 'Silver' | 'Gold' | 'Platinum' | 'Diamond'
 
 export interface WalletTransactionItem {
   id: string
-  type: 'EARN' | 'REDEEM' | 'CONVERT'
+  type: 'EARN' | 'REDEEM' | 'CONVERT' | 'TRANSFER' | 'EXPIRE'
   description: string
   amount: number
   currency: 'LBG_COIN' | 'BRAND_POINT'

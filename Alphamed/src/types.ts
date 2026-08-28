@@ -17,4 +17,6 @@ export interface SuccessRouteState {
   remainingPoints?: number
   lbgPoints?: number
   updatedLbgPoints?: number
+  transactionId?: string
+  completedAt?: string
 }

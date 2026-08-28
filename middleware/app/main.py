@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -13,6 +13,19 @@ from dotenv import load_dotenv
 load_dotenv(str(Path(__file__).parent.parent / ".env"))
 
 from services.orchestration_service import OrchestrationService
+from services.db_client import (
+    get_pool,
+    close_pool,
+    get_customer_by_email,
+    get_customer_by_id,
+    update_customer_points,
+    update_alphamed_points,
+    update_cavendish_points,
+    create_transaction,
+    get_customer_transactions,
+    list_brands,
+    log_dlt_audit,
+)
 
 
 class PersonalizationRequest(BaseModel):
@@ -66,7 +79,13 @@ async def lifespan(app: FastAPI):
         groq_api_key=groq_key,
         groq_model=groq_model,
     )
+    try:
+        await get_pool()
+        print("[STARTUP] Database pool initialized")
+    except Exception as e:
+        print(f"[STARTUP] Database not available at startup: {e}")
     yield
+    await close_pool()
 
 
 app = FastAPI(
@@ -224,6 +243,7 @@ def _infer_persona(components: list) -> str:
 
 @app.get("/health")
 async def health():
+    cache_stats = orchestration_service.cache.stats() if orchestration_service else {}
     return {
         "status": "healthy",
         "service": "quest-ui-orchestrator",
@@ -247,4 +267,316 @@ async def health():
             "coherence-guardian",
             "session-continuity",
         ],
+        "cache": cache_stats,
     }
+
+
+# ------------------------------------------------------------------
+# SDUI Cache Management
+# ------------------------------------------------------------------
+
+
+@app.get("/sdui/cache/stats")
+async def cache_stats():
+    """Debug: show cache stats."""
+    if not orchestration_service:
+        return {"error": "service not initialized"}
+    return orchestration_service.cache.stats()
+
+
+@app.delete("/sdui/cache/{customer_id}")
+async def invalidate_customer_cache(customer_id: str):
+    """Manual: clear cached SDUI for one customer."""
+    if not orchestration_service:
+        return {"error": "service not initialized"}
+    removed = orchestration_service.cache.invalidate(customer_id)
+    return {"customer_id": customer_id, "removed": removed}
+
+
+@app.delete("/sdui/cache")
+async def invalidate_all_cache():
+    """Manual: flush all cached SDUIs."""
+    if not orchestration_service:
+        return {"error": "service not initialized"}
+    count = orchestration_service.cache.invalidate_all()
+    return {"flushed": count}
+
+
+# ------------------------------------------------------------------
+# AlphaMed Transfer API
+# ------------------------------------------------------------------
+
+ALPHAMED_TO_LBG_RATE = 5
+COINS_PER_POUND = 100
+CAVENDISH_REWARD_RATE = 5
+
+
+@app.get("/api/v1/customers/lookup/summary")
+async def lookup_customer_summary(email: str = Query(...)):
+    try:
+        customer = await get_customer_by_email(email)
+        if not customer:
+            raise HTTPException(status_code=404, detail="Customer not found")
+        return {
+            "hasAccount": True,
+            "customerId": customer["customer_id"],
+            "alphamedicolPoints": customer["alphamed_points"],
+            "cavendishPoints": customer.get("cavendish_points", 0) or 0,
+            "totalLbgPoints": customer["points"],
+            "phone": "",
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class TransferRequest(BaseModel):
+    customer_email: str
+    points_to_transfer: int
+    idempotency_key: str = ""
+
+
+@app.post("/api/v1/customers/transfer/alphamedicol")
+async def transfer_alphamedicol(req: TransferRequest):
+    try:
+        customer = await get_customer_by_email(req.customer_email)
+        if not customer:
+            raise HTTPException(status_code=404, detail="Customer not found")
+
+        if customer["alphamed_points"] < req.points_to_transfer:
+            raise HTTPException(
+                status_code=400,
+                detail="Insufficient AlphaMed points",
+            )
+
+        if req.points_to_transfer <= 0:
+            raise HTTPException(status_code=400, detail="Transfer amount must be positive")
+
+        new_alphamed = customer["alphamed_points"] - req.points_to_transfer
+        lbg_issued = req.points_to_transfer * ALPHAMED_TO_LBG_RATE
+        new_lbg = customer["points"] + lbg_issued
+
+        await update_alphamed_points(customer["customer_id"], new_alphamed)
+        await update_customer_points(customer["customer_id"], new_lbg)
+
+        tx = await create_transaction(
+            customer_id=customer["customer_id"],
+            tx_type="CONVERT",
+            points=req.points_to_transfer,
+            description=f"AlphaMed points converted to {lbg_issued} LBG coins",
+            brand_key="alphamedical",
+            reward_name="AlphaMed-to-LBG Conversion",
+        )
+
+        wallet = customer.get("wallet_address")
+        dlt_result = None
+        if wallet:
+            try:
+                import httpx as _httpx
+                dlt_url = os.getenv("DLT_SERVICE_URL", "http://dlt:8000")
+                async with _httpx.AsyncClient(timeout=10.0) as client:
+                    resp = await client.post(
+                        f"{dlt_url}/dlt/mint",
+                        json={
+                            "customer_id": customer["customer_id"],
+                            "to_address": wallet,
+                            "amount": lbg_issued * 10**18,
+                        },
+                    )
+                    resp.raise_for_status()
+                    dlt_result = resp.json()
+                    blockchain = dlt_result.get("blockchain", dlt_result)
+                    await log_dlt_audit(
+                        customer_id=customer["customer_id"],
+                        operation="MINT",
+                        amount=lbg_issued,
+                        to_address=wallet,
+                        tx_hash=blockchain.get("tx_hash"),
+                        block_number=blockchain.get("block_number"),
+                        gas_used=blockchain.get("gas_used"),
+                        status=blockchain.get("status", "SIMULATED"),
+                        metadata={"source": "alphamed_transfer", "idempotency_key": req.idempotency_key},
+                    )
+            except Exception as e:
+                print(f"[TRANSFER] DLT mint failed (non-blocking): {e}")
+
+        transaction_id = f"AMX-{tx['id']:06d}"
+
+        return {
+            "transactionId": transaction_id,
+            "pointsTransferred": req.points_to_transfer,
+            "lbgCoinsIssued": lbg_issued,
+            "remainingPoints": new_alphamed,
+            "updatedLbgPoints": new_lbg,
+            "completedAt": tx["created_at"].isoformat() if hasattr(tx["created_at"], "isoformat") else str(tx["created_at"]),
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ------------------------------------------------------------------
+# Cavendish Online Payment API
+# ------------------------------------------------------------------
+
+
+class CavendishPaymentRequest(BaseModel):
+    customer_email: str
+    coins_to_redeem: int
+    payment_amount_gbp: float
+    payment_method: str = "card"
+
+
+@app.post("/api/v1/customers/pay/cavendish")
+async def pay_cavendish(req: CavendishPaymentRequest):
+    try:
+        customer = await get_customer_by_email(req.customer_email)
+        if not customer:
+            raise HTTPException(status_code=404, detail="Customer not found")
+
+        if req.coins_to_redeem < 0:
+            raise HTTPException(status_code=400, detail="Coins to redeem must be non-negative")
+
+        if req.coins_to_redeem > customer["points"]:
+            raise HTTPException(
+                status_code=400,
+                detail="Insufficient LBG coins",
+            )
+
+        new_points = customer["points"] - req.coins_to_redeem
+        reward_coins = round(req.payment_amount_gbp * CAVENDISH_REWARD_RATE)
+        current_cavendish = customer.get("cavendish_points", 0) or 0
+
+        tx1 = await create_transaction(
+            customer_id=customer["customer_id"],
+            tx_type="REDEEM",
+            points=req.coins_to_redeem,
+            description=f"LBG Coins redeemed at Cavendish Online (£{req.coins_to_redeem / COINS_PER_POUND:.2f} discount)",
+            brand_key="cavendish_online",
+            reward_name="Cavendish Payment Redemption",
+        )
+
+        if reward_coins > 0:
+            final_points = new_points + reward_coins
+            new_cavendish = current_cavendish + reward_coins
+            await update_customer_points(customer["customer_id"], final_points)
+            await update_cavendish_points(customer["customer_id"], new_cavendish)
+            tx2 = await create_transaction(
+                customer_id=customer["customer_id"],
+                tx_type="EARN",
+                points=reward_coins,
+                description=f"Earned {reward_coins} LBG Coins from Cavendish payment",
+                brand_key="cavendish_online",
+                reward_name="Cavendish Payment Reward",
+            )
+        else:
+            await update_customer_points(customer["customer_id"], new_points)
+            final_points = new_points
+            new_cavendish = current_cavendish
+
+        transaction_id = f"CVX-{tx1['id']:06d}"
+
+        return {
+            "transactionId": transaction_id,
+            "coinsRedeemed": req.coins_to_redeem,
+            "coinsEarned": reward_coins,
+            "coinDiscount": round(req.coins_to_redeem / COINS_PER_POUND, 2),
+            "amountPayable": round(req.payment_amount_gbp, 2),
+            "paymentMethod": req.payment_method,
+            "updatedLbgPoints": final_points,
+            "updatedCavendishPoints": new_cavendish,
+            "completedAt": tx1["created_at"].isoformat() if hasattr(tx1["created_at"], "isoformat") else str(tx1["created_at"]),
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/customers/{customer_id}/summary")
+async def get_customer_summary(customer_id: str):
+    try:
+        customer = await get_customer_by_id(customer_id)
+        if not customer:
+            customer = await get_customer_by_email(f"{customer_id}@example.com")
+        if not customer:
+            raise HTTPException(status_code=404, detail="Customer not found")
+
+        brand_list = []
+        try:
+            brand_list = await list_brands()
+        except Exception:
+            pass
+
+        points_by_brand = []
+        for brand in brand_list:
+            points = 0
+            if brand["brandKey"] == "alphamedical":
+                points = customer["alphamed_points"]
+            elif brand["brandKey"] == "cavendish_online":
+                points = customer.get("cavendish_points", 0) or 0
+            else:
+                points = max(0, customer["points"] // max(1, len(brand_list)))
+
+            points_by_brand.append({
+                "brandId": f"brd_{brand['brandKey']}",
+                "brandName": brand["name"],
+                "category": brand["category"],
+                "points": points,
+                "color": "#0e7490",
+                "logoText": brand["name"][:2].upper(),
+            })
+
+        tier = customer["tier"]
+        return {
+            "customer": {
+                "customerId": customer["customer_id"],
+                "userName": customer["name"],
+                "phone": "",
+                "totalLbgCoins": customer["points"],
+                "totalBrandPoints": sum(p["points"] for p in points_by_brand),
+                "brandsConnected": len(points_by_brand),
+                "tier": tier,
+                "lastSyncedAt": "",
+            },
+            "pointsByBrand": points_by_brand,
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/wallet/{customer_id}/transactions")
+async def get_wallet_transactions(customer_id: str, limit: int = Query(25)):
+    try:
+        txs = await get_customer_transactions(customer_id, limit)
+        result = []
+        for tx in txs:
+            amount = tx["points"]
+            if tx["tx_type"] == "REDEEM":
+                amount = -amount
+            elif tx["tx_type"] == "EXPIRE":
+                amount = -amount
+            elif tx["tx_type"] == "CONVERT":
+                amount = tx["points"]
+            elif tx["tx_type"] == "TRANSFER":
+                amount = tx["points"]
+
+            currency = "LBG_COIN" if tx["tx_type"] in ("EARN", "CONVERT", "REDEEM") else "BRAND_POINT"
+            if tx["brand_key"] in ("alphamedical", "cavendish_online"):
+                currency = "LBG_COIN"
+
+            result.append({
+                "id": f"tx_{tx['id']}",
+                "type": tx["tx_type"],
+                "description": tx["description"] or f"{tx['tx_type']} transaction",
+                "amount": amount,
+                "currency": currency,
+                "createdAt": tx["created_at"].isoformat() if hasattr(tx["created_at"], "isoformat") else str(tx["created_at"]),
+            })
+        return result
+    except Exception:
+        return []

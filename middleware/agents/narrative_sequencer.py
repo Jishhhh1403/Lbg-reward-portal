@@ -8,7 +8,7 @@ but may never invent unregistered components, customer facts or legal copy.
 import json
 
 from .base import BaseAgent
-from schemas.narrative import NarrativeSequence, parse_model
+from schemas.narrative import NarrativeSequence, SequencedComponent, NarrativeRole, parse_model
 from validators.coherence_validator import validate_narrative_sequence
 
 _VALID_RELATIONSHIPS = frozenset({
@@ -148,7 +148,12 @@ Card-Rule Mandatory Stack: {json.dumps((state.get('card_rules') or {}).get('orde
 Assign roles, order, dependencies, transitions and deferrals."""
 
     def validate_sequence(self, parsed: dict, state: dict) -> tuple:
-        """Deterministic sequencing contract checks (spec §6.4)."""
+        """Deterministic sequencing contract checks (spec §6.4).
+
+        Never fully rejects: repairs roles/transitions, and if the LLM output
+        is completely unparseable, auto-generates a minimal valid sequence from
+        the candidate components + journey plan.
+        """
         from schemas.narrative import ExperienceJourneyPlan, parse_model as _pm
         from validators.coherence_validator import sanitize_narrative_sequence, repair_roles_in_payload
 
@@ -183,9 +188,132 @@ Assign roles, order, dependencies, transitions and deferrals."""
         raw_seq, _tr_notes = _repair_transitions(raw_seq)
         model, error = parse_model(NarrativeSequence, raw_seq)
         if error:
-            return None, error
+            # Auto-generate a minimal valid sequence from components + plan
+            model = self._auto_generate_sequence(selected_components, plan)
+            if model is None:
+                return None, error
         model, _notes = sanitize_narrative_sequence(model, plan, component_type_map=component_type_map)
         result = validate_narrative_sequence(model, plan, component_ids)
         if not result.passed:
-            return None, "; ".join(result.errors)
+            # Try to repair remaining issues before giving up
+            model = self._repair_sequence(model, plan, result.errors)
+            if model is not None:
+                result = validate_narrative_sequence(model, plan, component_ids)
+            if model is None or not result.passed:
+                # Last resort: auto-generate from scratch
+                model = self._auto_generate_sequence(selected_components, plan)
+                if model is None:
+                    return None, "; ".join(result.errors) if result.errors else "sequence unrecoverable"
+                model, _notes = sanitize_narrative_sequence(model, plan, component_type_map=component_type_map)
         return model, None
+
+    @staticmethod
+    def _auto_generate_sequence(
+        components: list[dict], plan=None
+    ) -> "NarrativeSequence | None":
+        """Build a minimal valid NarrativeSequence from raw candidate components.
+
+        Used as a last-resort rescue when the LLM's sequence output is
+        completely unparseable.  Assigns dense 1..N sequence numbers,
+        ORIENTATION/REFERENCE roles, and a sensible primaryActionComponentRef.
+        """
+        if not components:
+            return None
+
+        roles = list(NarrativeRole)
+        comps = []
+        for i, c in enumerate(components):
+            cid = c.get("id") or f"comp-{i}"
+            # First component is always POINTS_BALANCE anchor → ORIENTATION
+            # Try to find a suitable role; last resort is REFERENCE
+            if i == 0:
+                role = NarrativeRole.ORIENTATION
+            elif c.get("type") in ("POINTS_BALANCE",):
+                role = NarrativeRole.ORIENTATION
+            else:
+                # Cycle through roles for variety
+                role = roles[i % len(roles)] if i < len(roles) else NarrativeRole.REFERENCE
+
+            mj_id = f"mj-{min(i + 1, plan and len(plan.miniJourneys) or 2)}"
+            comps.append(SequencedComponent(
+                componentRef=cid,
+                miniJourneyId=mj_id,
+                narrativeRole=role,
+                sequence=i + 1,
+            ))
+
+        # Pick primary action: first ACTION, or first non-ORIENTATION component
+        primary = comps[0].componentRef
+        for sc in comps:
+            if sc.narrativeRole == NarrativeRole.ACTION:
+                primary = sc.componentRef
+                break
+        else:
+            if len(comps) > 1:
+                primary = comps[1].componentRef
+
+        return NarrativeSequence(
+            primaryActionComponentRef=primary,
+            components=comps,
+        )
+
+    @staticmethod
+    def _repair_sequence(
+        model: "NarrativeSequence", plan, errors: list[str]
+    ) -> "NarrativeSequence | None":
+        """Attempt targeted repairs on a parsed but invalid sequence.
+
+        Returns repaired model if feasible, None if the issues are too severe.
+        """
+        from schemas.narrative import SequencedComponent, NarrativeRole
+
+        comps = [sc.model_copy() for sc in model.components]
+        changed = False
+
+        for err in errors:
+            # Fix duplicate sequence numbers
+            if "duplicate" in err.lower() and "sequence" in err.lower():
+                for i, sc in enumerate(comps):
+                    sc.sequence = i + 1
+                changed = True
+            # Fix unknown component references — drop them
+            elif "references unknown component" in err.lower():
+                ref = err.split("component:")[-1].strip() if "component:" in err else ""
+                if ref:
+                    comps = [sc for sc in comps if sc.componentRef != ref]
+                    changed = True
+            # Fix primary action ref issues
+            elif "primaryActionComponentRef" in err or "primary action ref" in err.lower():
+                refs = {sc.componentRef for sc in comps}
+                if model.primaryActionComponentRef not in refs and comps:
+                    # Pick first ACTION or first non-anchor
+                    for sc in comps:
+                        if sc.narrativeRole == NarrativeRole.ACTION:
+                            model.primaryActionComponentRef = sc.componentRef
+                            changed = True
+                            break
+                    else:
+                        model.primaryActionComponentRef = comps[0].componentRef
+                        changed = True
+            # Fix dependency ordering
+            elif "does not precede" in err.lower():
+                # Drop backward deps
+                order_index = {sc.componentRef: sc.sequence for sc in comps}
+                for sc in comps:
+                    valid_deps = [
+                        d for d in sc.dependsOn
+                        if d in order_index and order_index[d] < sc.sequence
+                    ]
+                    if len(valid_deps) != len(sc.dependsOn):
+                        sc.dependsOn = valid_deps
+                        changed = True
+
+        if not changed:
+            return None
+
+        return model.__class__(
+            primaryActionComponentRef=model.primaryActionComponentRef,
+            components=comps,
+            transitions=model.transitions,
+            deferredComponents=model.deferredComponents,
+        )

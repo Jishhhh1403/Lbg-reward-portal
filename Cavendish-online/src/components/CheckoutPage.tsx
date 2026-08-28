@@ -16,6 +16,7 @@ import {
   X,
   Zap,
 } from 'lucide-react'
+import { fetchCustomerSummary, payCavendish } from '../services/cavendishApi'
 
 const C = {
   primary: '#D10A74',
@@ -31,9 +32,8 @@ const C = {
 // FONT comes from the shared theme so the whole app renders one font family
 
 const ANNUAL_PREMIUM = 60
-const COIN_BALANCE = 6200
 const COINS_PER_POUND = 100
-const COIN_CAP = Math.round(ANNUAL_PREMIUM * 0.8 * COINS_PER_POUND)
+const DEFAULT_COIN_CAP = Math.round(ANNUAL_PREMIUM * 0.8 * COINS_PER_POUND)
 
 const METHODS = [
   { id: 'card', title: 'Card Payment', subtitle: 'Visa, Mastercard, Amex', icon: <CreditCard size={22} color={C.primary} /> },
@@ -105,17 +105,17 @@ function CardDetailsModal({
   saved?: CardData | null
   onSave: (c: CardData) => void
 }) {
-  const [name, setName] = useState('Sindhu Nangunuri')
-  const [number, setNumber] = useState('4242 4242 4242 4242')
-  const [expiry, setExpiry] = useState('12/36')
-  const [cvv, setCvv] = useState('654')
+  const [name, setName] = useState('')
+  const [number, setNumber] = useState('')
+  const [expiry, setExpiry] = useState('')
+  const [cvv, setCvv] = useState('')
 
   useEffect(() => {
     if (open) {
-      setName(saved?.name ?? 'Sindhu Nangunuri')
-      setNumber(saved?.number ?? '4242 4242 4242 4242')
-      setExpiry(saved?.expiry ?? '12/36')
-      setCvv(saved?.cvv ?? '654')
+      setName(saved?.name ?? '')
+      setNumber(saved?.number ?? '')
+      setExpiry(saved?.expiry ?? '')
+      setCvv(saved?.cvv ?? '')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
@@ -223,6 +223,10 @@ function CardDetailsModal({
           sx={{ fontFamily: FONT, fontSize: 24, fontWeight: 700, color: C.textPrimary, pr: '36px', mb: '8px' }}
         >
           Enter card details
+        </Typography>
+
+        <Typography sx={{ fontFamily: FONT, fontSize: 14, color: '#7A7D91', lineHeight: 1.5, mb: '20px' }}>
+          Demo card details: Sindhu Nangunuri, 4242 4242 4242 4242, Expiry 12/36, CVV 654
         </Typography>
 
         <Box component="form" onSubmit={(e) => e.preventDefault()} noValidate>
@@ -374,7 +378,7 @@ function StepCircle({
 }
 
 
-function PaymentFailedModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+function PaymentFailedModal({ open, onClose, message }: { open: boolean; onClose: () => void; message?: string }) {
   const rootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -509,7 +513,7 @@ function PaymentFailedModal({ open, onClose }: { open: boolean; onClose: () => v
           id="fail-modal-msg"
           sx={{ fontFamily: FONT, fontSize: 14.5, color: C.textSecondary, lineHeight: 1.55, mb: '22px' }}
         >
-          We were unable to verify the card details provided. Please check your information and try again.
+          {message || 'We were unable to verify the card details provided. Please check your information and try again.'}
         </Typography>
 
         <Stack spacing="10px" sx={{ mb: '24px', textAlign: 'left' }}>
@@ -720,19 +724,99 @@ export default function CheckoutPage() {
   const [cardModalOpen, setCardModalOpen] = useState(false)
   const [card, setCard] = useState<CardData | null>(null)
   const [failOpen, setFailOpen] = useState(false)
+  const [failMessage, setFailMessage] = useState('')
   const [processing, setProcessing] = useState(false)
+
+  const [coinBalance, setCoinBalance] = useState(0)
+  const [customerEmail, setCustomerEmail] = useState('')
+  const [_customerId, setCustomerId] = useState('')
+  const [balanceLoading, setBalanceLoading] = useState(true)
+  const [paying, setPaying] = useState(false)
+  const [payError, setPayError] = useState('')
+
+  const coinCap = Math.min(DEFAULT_COIN_CAP, coinBalance)
 
   const discount = appliedCoins / COINS_PER_POUND
   const payable = Math.max(ANNUAL_PREMIUM - discount, 0)
   const rewardCoins = Math.round(payable * 5)
-  const fillPct = (coins / COIN_CAP) * 100
+  const fillPct = coinCap > 0 ? (coins / coinCap) * 100 : 0
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const email = params.get('customerEmail') ?? params.get('email') ?? localStorage.getItem('am_customer_email') ?? ''
+    if (email) {
+      setCustomerEmail(email)
+      localStorage.setItem('am_customer_email', email)
+      setBalanceLoading(true)
+      fetchCustomerSummary(email)
+        .then((data) => {
+          if (data) {
+            setCoinBalance(data.totalLbgPoints ?? 0)
+            setCustomerId(data.customerId ?? '')
+          } else {
+            setCoinBalance(0)
+          }
+        })
+        .catch(() => {
+          setCoinBalance(0)
+        })
+        .finally(() => setBalanceLoading(false))
+    } else {
+      setCoinBalance(0)
+      setBalanceLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (coinBalance > 0 && coins > coinCap) {
+      setCoins(coinCap)
+    }
+  }, [coinBalance, coinCap, coins])
 
   const onPay = () => {
     if (method === 'card' && (!card || !isCardComplete(card))) {
       setFailOpen(true)
+      setFailMessage('We were unable to verify the card details provided. Please check your information and try again.')
       return
     }
-    setProcessing(true)
+    if (appliedCoins > 0 && !customerEmail) {
+      setFailOpen(true)
+      setFailMessage('No customer account found. Please sign in to the LBG Rewards app first, then return to Cavendish to pay.')
+      return
+    }
+    if (!customerEmail) {
+      setFailOpen(true)
+      setFailMessage('Please sign in to the LBG Rewards app first to use your coins.')
+      return
+    }
+    setPayError('')
+    setPaying(true)
+
+    payCavendish({
+      customer_email: customerEmail,
+      coins_to_redeem: appliedCoins,
+      payment_amount_gbp: payable,
+      payment_method: method,
+    })
+      .then((result) => {
+        const checkoutData = {
+          subtotal: ANNUAL_PREMIUM,
+          coinsApplied: appliedCoins,
+          coinDiscount: result.coinDiscount,
+          coinsEarned: result.coinsEarned,
+          finalPaid: result.amountPayable,
+          transactionId: result.transactionId,
+          updatedLbgPoints: result.updatedLbgPoints,
+          paymentMethod: method,
+        }
+        sessionStorage.setItem('cavendish_checkout', JSON.stringify(checkoutData))
+        setCoinBalance(result.updatedLbgPoints)
+        setProcessing(true)
+      })
+      .catch((err) => {
+        setPayError(err.message || 'Payment failed. Please try again.')
+        setPaying(false)
+      })
   }
 
   return (
@@ -861,21 +945,28 @@ export default function CheckoutPage() {
           </Stack>
 
           <Typography sx={{ fontFamily: FONT, fontSize: 18, fontWeight: 800, color: C.primary, lineHeight: 1.1 }}>
-            {coins.toLocaleString('en-GB')}{' '}
-            <span style={{ fontSize: 18, fontWeight: 600, color: C.textSecondary }}>
-              coins ≈ £{(coins / COINS_PER_POUND).toFixed(2)}
-            </span>
+            {balanceLoading ? (
+              'Loading…'
+            ) : (
+              <>
+                {coinBalance.toLocaleString('en-GB')}{' '}
+                <span style={{ fontSize: 18, fontWeight: 600, color: C.textSecondary }}>
+                  coins ≈ £{(coinBalance / COINS_PER_POUND).toFixed(2)}
+                </span>
+              </>
+            )}
           </Typography>
 
           <Box
             component="input"
             type="range"
             min={0}
-            max={COIN_CAP}
+            max={coinCap}
             step={50}
             value={coins}
             aria-label="Select coins to redeem"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCoins(Number(e.target.value))}
+            disabled={balanceLoading}
             sx={{
               width: '100%',
               mt: '18px',
@@ -909,12 +1000,13 @@ export default function CheckoutPage() {
 
           <Stack direction="row" sx={{ mt: '10px', gap: '12px', justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography sx={{ fontFamily: FONT, fontSize: 10, lineHeight: '17px', color: C.textSecondary, flex: '1 1 auto', minWidth: 0 }}>
-              Balance <strong style={{ color: C.textPrimary }}>{COIN_BALANCE.toLocaleString('en-GB')}</strong> | Cap{' '}
-              <strong style={{ color: C.textPrimary }}>{COIN_CAP.toLocaleString('en-GB')}</strong> | {COINS_PER_POUND} coins = £1
+              Balance <strong style={{ color: C.textPrimary }}>{coinBalance.toLocaleString('en-GB')}</strong> | Cap{' '}
+              <strong style={{ color: C.textPrimary }}>{coinCap.toLocaleString('en-GB')}</strong> | {COINS_PER_POUND} coins = £1
             </Typography>
             <Box
               component="button"
               onClick={() => setAppliedCoins(appliedCoins === coins ? 0 : coins)}
+              disabled={balanceLoading || coinBalance === 0}
               sx={{
                 flexShrink: 0,
                 cursor: 'pointer',
@@ -930,6 +1022,7 @@ export default function CheckoutPage() {
                 transition: 'background .15s ease',
                 '&:hover': { background: C.tint },
                 '&:focus-visible': { outline: `2px solid ${C.primaryDark}`, outlineOffset: 2 },
+                '&:disabled': { opacity: 0.5, cursor: 'not-allowed' },
               }}
             >
               {appliedCoins === coins ? 'Applied ✓' : 'Apply'}
@@ -1100,9 +1193,15 @@ export default function CheckoutPage() {
           }}
         >
           <Box sx={{ maxWidth: 430, mx: 'auto', width: '100%' }}>
+            {payError && (
+              <Typography sx={{ fontFamily: FONT, fontSize: 13, color: '#C62828', mb: '8px', textAlign: 'center' }}>
+                {payError}
+              </Typography>
+            )}
             <Box
               component="button"
               onClick={onPay}
+              disabled={paying || processing}
               aria-label={`Pay £${payable.toFixed(2)} now`}
               sx={{
                 width: '100%',
@@ -1111,7 +1210,7 @@ export default function CheckoutPage() {
                 bgcolor: C.primary,
                 color: '#fff',
                 border: 'none',
-                cursor: 'pointer',
+                cursor: paying || processing ? 'not-allowed' : 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -1121,12 +1220,13 @@ export default function CheckoutPage() {
                 fontWeight: 700,
                 letterSpacing: '.2px',
                 transition: 'background .15s ease',
+                opacity: paying || processing ? 0.7 : 1,
                 '&:hover': { bgcolor: C.primaryDark },
                 '&:focus-visible': { outline: `3px solid ${C.primaryDark}`, outlineOffset: 2 },
               }}
             >
               <Lock size={16} />
-              Pay £{payable.toFixed(2)}
+              {paying ? 'Processing…' : `Pay £${payable.toFixed(2)}`}
             </Box>
             <Typography sx={{ fontFamily: FONT, fontSize: 11.5, textAlign: 'center', mt: '9px', color: C.textSecondary, lineHeight: '17px' }}>
               By tapping Pay, you agree to our{' '}
@@ -1143,7 +1243,7 @@ export default function CheckoutPage() {
         onClose={() => setCardModalOpen(false)}
         onSave={(c) => setCard(c)}
       />
-      <PaymentFailedModal open={failOpen} onClose={() => setFailOpen(false)} />
+      <PaymentFailedModal open={failOpen} onClose={() => setFailOpen(false)} message={failMessage} />
       <PaymentProcessingModal open={processing} />
     </Box>
   )

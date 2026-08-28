@@ -51,6 +51,7 @@ export default function BonusRewardCard({
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         whileTap={claimed ? undefined : { scale: 0.99 }}
         className={`relative overflow-hidden rounded-2xl border p-4 shadow-card ${
           claimed

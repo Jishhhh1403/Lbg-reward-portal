@@ -24,6 +24,7 @@ export default function ChallengeCard({
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="rounded-2xl border border-brand-100 bg-white p-4 shadow-card"
     >
       <div className="mb-2.5 flex items-center gap-1.5">
@@ -36,18 +37,18 @@ export default function ChallengeCard({
           <span>{daysLeft}d left</span>
         </div>
       </div>
-      {description && <p className="mb-3 text-xs leading-snug text-slate-500">{description}</p>}
+      {description && <p className="mb-3 text-xs leading-relaxed text-slate-500">{description}</p>}
       <div className="mb-3">
-        <div className="mb-1 flex justify-between text-[11px]">
+        <div className="mb-1.5 flex justify-between text-[11px]">
           <span className="text-slate-400">Progress</span>
           <span className="font-semibold text-brand-700">{progress}%</span>
         </div>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
+        <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
           <motion.div
             className="h-full rounded-full bg-gradient-to-r from-brand-500 to-gold-400"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
-            transition={{ duration: 1, ease: 'easeOut' }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           />
         </div>
       </div>
@@ -60,8 +61,9 @@ export default function ChallengeCard({
       </div>
       <motion.button
         onClick={onContinue}
+        whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
-        className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-brand-600 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
+        className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-brand-600 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
       >
         Continue <ArrowRight size={14} />
       </motion.button>

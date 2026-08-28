@@ -149,12 +149,23 @@ export default function LbgRewardsConvertPage() {
     setTransferring(true)
     setErrorMessage(null)
     try {
-      await transferAlphaMedicolPointsToLbg({
+      const result = await transferAlphaMedicolPointsToLbg({
         customerEmail: page.email,
         pointsToTransfer: points,
       })
 
-      // Aesthetic confirmation before routing to the summary screen.
+      let updatedAlphamed = page.maxPoints - points
+      let updatedLbg = lbgCoins
+      try {
+        const freshSummary = await fetchLinkedCustomerSummaryByEmail(page.email)
+        if (freshSummary.hasAccount) {
+          updatedAlphamed = freshSummary.alphamedicolPoints
+          updatedLbg = freshSummary.totalLbgPoints
+        }
+      } catch {
+        // Use computed values if re-fetch fails
+      }
+
       setShowOverlay(true)
       await new Promise((resolve) => setTimeout(resolve, 2400))
       if (!mountedRef.current) return
@@ -162,8 +173,11 @@ export default function LbgRewardsConvertPage() {
       const successState: SuccessRouteState = {
         email: page.email,
         originalPoints: page.maxPoints,
-        remainingPoints: page.maxPoints - points,
-        lbgPoints: lbgCoins,
+        remainingPoints: updatedAlphamed,
+        lbgPoints: result.lbgCoinsIssued,
+        updatedLbgPoints: updatedLbg,
+        transactionId: result.transactionId,
+        completedAt: result.completedAt,
       }
       navigate('/lbg-rewards/success', { state: successState })
     } catch (error) {

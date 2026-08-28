@@ -42,9 +42,11 @@ export default function LbgRewardsSuccessPage() {
   const location = useLocation()
   const routeState = (location.state ?? {}) as SuccessRouteState
 
-  const converted = routeState.originalPoints ?? 138
-  const remaining = routeState.remainingPoints ?? Math.max(0, converted - 138)
-  const lbgCoins = routeState.lbgPoints ?? converted * ALPHAMEDICOL_TO_LBG_RATE
+  const converted = routeState.originalPoints ?? 0
+  const remaining = routeState.remainingPoints ?? 0
+  const lbgCoins = routeState.lbgPoints ?? 0
+  const transactionId = routeState.transactionId ?? ''
+  const completedAt = routeState.completedAt ?? ''
 
   return (
     <Box sx={{ minHeight: '100%', pb: 6 }}>
@@ -112,6 +114,13 @@ export default function LbgRewardsSuccessPage() {
             textAlign: 'left',
           }}
         >
+          {transactionId ? (
+            <SummaryRow
+              label="Transaction ID"
+              value={transactionId}
+              icon="📋"
+            />
+          ) : null}
           <SummaryRow
             label="Converted"
             value={`${converted.toLocaleString()} pts`}
@@ -128,6 +137,16 @@ export default function LbgRewardsSuccessPage() {
             value={`${remaining.toLocaleString()} pts`}
             icon="💼"
           />
+          {completedAt ? (
+            <SummaryRow
+              label="Completed at"
+              value={new Date(completedAt).toLocaleString('en-GB', {
+                day: '2-digit', month: 'short', year: 'numeric',
+                hour: '2-digit', minute: '2-digit',
+              })}
+              icon="🕐"
+            />
+          ) : null}
           <Typography fontSize={11} color="text.secondary" mt={1.75} textAlign="center">
             Rate applied: 1 AlphaMedicol Point = {ALPHAMEDICOL_TO_LBG_RATE} LBG Coins
           </Typography>
@@ -152,6 +171,7 @@ export default function LbgRewardsSuccessPage() {
                 state: {
                   email: routeState.email,
                   points: remaining,
+                  maxPoints: remaining,
                   hasLinkedAccount: true,
                 },
               })
@@ -167,12 +187,17 @@ export default function LbgRewardsSuccessPage() {
             startIcon={<OpenInNewIcon />}
             onClick={() => {
               try {
-                const phone = localStorage.getItem('am_customer_phone')
                 const url = new URL(UNIFIED_REWARDS_URL)
-                url.searchParams.set('demo', '1')
-                if (phone && phone.length === 10) {
-                  url.searchParams.set('mobile', phone)
-                }
+                const crossAppEvents = JSON.stringify([{
+                  id: `evt_${Date.now()}`,
+                  type: 'CONVERT',
+                  description: `Converted ${converted.toLocaleString()} AlphaMedicol points to LBG coins`,
+                  amount: lbgCoins,
+                  currency: 'LBG_COIN',
+                  createdAt: completedAt || new Date().toISOString(),
+                  source: 'AlphaMedicol',
+                }])
+                url.searchParams.set('cross_app_events', crossAppEvents)
                 window.location.assign(url.toString())
               } catch {
                 window.location.assign(UNIFIED_REWARDS_URL)

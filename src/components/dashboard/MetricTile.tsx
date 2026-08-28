@@ -9,6 +9,7 @@ interface MetricTileProps {
   infoText?: string
   delay?: number
   valueColor?: string
+  icon?: string
 }
 
 export default function MetricTile({
@@ -19,6 +20,7 @@ export default function MetricTile({
   infoText,
   delay = 0,
   valueColor,
+  icon,
 }: MetricTileProps) {
   const styles =
     tone === 'brand'
@@ -46,13 +48,16 @@ export default function MetricTile({
           </>
         )}
       </div>
-      <p
-        className="mt-1 text-base font-bold tracking-tight"
-        style={valueColor ? { color: valueColor } : undefined}
-      >
-        {value}
-        {unit && <span className="ml-0.5 text-xs font-medium opacity-70">{unit}</span>}
-      </p>
+      <div className="mt-1 flex items-center justify-center gap-1.5">
+        {icon && <img src={icon} alt="" className="h-5 w-5 object-contain" />}
+        <p
+          className="text-base font-bold tracking-tight"
+          style={valueColor ? { color: valueColor } : undefined}
+        >
+          {value}
+          {unit && <span className="ml-0.5 text-xs font-medium opacity-70">{unit}</span>}
+        </p>
+      </div>
     </motion.div>
   )
 }

@@ -39,7 +39,8 @@ const CARD = {
 }
 
 function goCheckout() {
-  window.location.hash = '#/checkout'
+  const email = localStorage.getItem('am_customer_email') || ''
+  window.location.hash = `#/checkout${email ? `?email=${encodeURIComponent(email)}` : ''}`
 }
 
 const FIELDS: { label: string; value: React.ReactNode }[] = [

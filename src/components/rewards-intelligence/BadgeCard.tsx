@@ -29,7 +29,12 @@ export default function BadgeCard({
   totalAvailable = 0,
 }: BadgeCardProps) {
   return (
-    <div className="rounded-2xl border border-brand-100 bg-white p-4 shadow-card">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="rounded-2xl border border-brand-100 bg-white p-4 shadow-card"
+    >
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           <Award size={15} className="text-gold-600" />
@@ -47,8 +52,8 @@ export default function BadgeCard({
               key={i}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: badge.earned ? 1 : 0.45 }}
-              transition={{ delay: i * 0.08 }}
-              className={`flex flex-col items-center rounded-xl p-2.5 ${
+              transition={{ delay: i * 0.07, type: 'spring', stiffness: 300, damping: 20 }}
+              className={`flex flex-col items-center rounded-xl p-2.5 transition-colors ${
                 badge.earned ? 'bg-gold-50 ring-1 ring-gold-200' : 'bg-slate-50 ring-1 ring-slate-100'
               }`}
             >
@@ -66,6 +71,6 @@ export default function BadgeCard({
           )
         })}
       </div>
-    </div>
+    </motion.div>
   )
 }

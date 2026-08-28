@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import { ArrowLeft, Check, Download, Gift, Lock, ShieldCheck } from 'lucide-react'
 import { fontFamily as FONT } from '../theme'
@@ -15,11 +16,29 @@ const C = {
 
 const GREEN_TEXT = '#15803D'
 
-const SUBTOTAL = 60
-const COINS_APPLIED = 1800
-const COIN_DISCOUNT = 18
-const COINS_EARNED = 42
-const FINAL_PAID = SUBTOTAL - COIN_DISCOUNT
+const REWARDS_APP_URL = import.meta.env.VITE_REWARDS_APP_URL ?? 'http://localhost:5173'
+
+interface CheckoutData {
+  subtotal: number
+  coinsApplied: number
+  coinDiscount: number
+  coinsEarned: number
+  finalPaid: number
+  transactionId: string
+  updatedLbgPoints: number
+  paymentMethod: string
+}
+
+const DEFAULT_DATA: CheckoutData = {
+  subtotal: 60,
+  coinsApplied: 0,
+  coinDiscount: 0,
+  coinsEarned: 42,
+  finalPaid: 60,
+  transactionId: '',
+  updatedLbgPoints: 0,
+  paymentMethod: 'card',
+}
 
 function generateOrderRef(): string {
   const now = new Date()
@@ -33,15 +52,8 @@ function formatDate(d: Date): string {
   return d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
-function formatDateTime(d: Date): string {
-  const date = d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
-  const time = d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: true })
-  return `${date} ${time}`
-}
-
 const ORDER_NOW = new Date()
-const ORDER_REFERENCE = generateOrderRef()
-const ORDER_DATE = formatDateTime(ORDER_NOW)
+const ORDER_DATE = formatDate(ORDER_NOW)
 
 const STEPS = [
   { title: 'Review', subtitle: 'Your policy' },
@@ -209,6 +221,28 @@ function DetailRow({
 }
 
 export default function PaymentSuccessPage() {
+  const [checkoutData, setCheckoutData] = useState<CheckoutData>(DEFAULT_DATA)
+
+  useEffect(() => {
+    const raw = sessionStorage.getItem('cavendish_checkout')
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw) as CheckoutData
+        setCheckoutData(parsed)
+        sessionStorage.removeItem('cavendish_checkout')
+      } catch {
+        // keep defaults
+      }
+    }
+  }, [])
+
+  const SUBTOTAL = checkoutData.subtotal
+  const COINS_APPLIED = checkoutData.coinsApplied
+  const COIN_DISCOUNT = checkoutData.coinDiscount
+  const COINS_EARNED = checkoutData.coinsEarned
+  const FINAL_PAID = checkoutData.finalPaid
+  const ORDER_REFERENCE = checkoutData.transactionId || generateOrderRef()
+
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#f6f5f8', display: 'flex', flexDirection: 'column' }}>
       <header>
@@ -229,7 +263,7 @@ export default function PaymentSuccessPage() {
             <Stack direction="row" spacing="12px" sx={{ alignItems: 'center' }}>
               <Box
                 component="a"
-                href="http://localhost:5173"
+                href={REWARDS_APP_URL}
                 aria-label="Back to LBG Rewards Portal"
                 sx={{
                   width: 36,
@@ -343,7 +377,7 @@ export default function PaymentSuccessPage() {
 
           <Box component="dl" sx={{ m: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <DetailRow label="Order Reference" value={ORDER_REFERENCE} />
-            <DetailRow label="Date & Time" value={ORDER_DATE} />
+            <DetailRow label="Date" value={ORDER_DATE} />
           </Box>
 
           <Box sx={{ borderTop: `1px solid ${C.border}`, my: '24px' }} role="presentation" />
@@ -367,6 +401,27 @@ export default function PaymentSuccessPage() {
                   -£{COIN_DISCOUNT.toFixed(2)}
                 </Typography>
               </Stack>
+              <Stack direction="row" spacing="8px" sx={{ justifyContent: 'space-between', alignItems: 'center', mt: '6px' }}>
+                <Typography sx={{ fontFamily: FONT, fontSize: 13, color: C.textSecondary }}>
+                  {COINS_APPLIED.toLocaleString('en-GB')} Coins applied
+                </Typography>
+                {/* <Box
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    bgcolor: C.successLight,
+                    color: GREEN_TEXT,
+                    borderRadius: '999px',
+                    px: '10px',
+                    py: '3px',
+                    fontFamily: FONT,
+                    fontSize: 12.5,
+                    fontWeight: 700,
+                  }}
+                >
+                  +{COINS_EARNED} Coins earned
+                </Box> */}
+              </Stack>
             </Box>
           </Box>
 
@@ -379,30 +434,6 @@ export default function PaymentSuccessPage() {
             <Typography sx={{ fontFamily: FONT, fontSize: 26, fontWeight: 700, color: C.textPrimary }}>
               £{FINAL_PAID.toFixed(2)}
             </Typography>
-          </Stack>
-
-          <Box sx={{ borderTop: `1px solid ${C.border}`, my: '20px' }} role="presentation" />
-
-          <Stack direction="row" spacing="12px" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography sx={{ fontFamily: FONT, fontSize: 13, color: C.textSecondary }}>
-              Coins earned from this purchase
-            </Typography>
-            <Box
-              sx={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                bgcolor: C.successLight,
-                color: GREEN_TEXT,
-                borderRadius: '999px',
-                px: '10px',
-                py: '3px',
-                fontFamily: FONT,
-                fontSize: 12.5,
-                fontWeight: 700,
-              }}
-            >
-              +{COINS_EARNED} Coins (£{(COINS_EARNED * 0.01).toFixed(2)})
-            </Box>
           </Stack>
         </Box>
 
@@ -436,7 +467,22 @@ export default function PaymentSuccessPage() {
           <Box
             component="button"
             onClick={() => {
-              window.location.href = 'http://localhost:5173?view=dashboard'
+              try {
+                const url = new URL(REWARDS_APP_URL)
+                const crossAppEvents = JSON.stringify([{
+                  id: `evt_${Date.now()}`,
+                  type: 'REDEEM',
+                  description: `Redeemed ${COINS_APPLIED.toLocaleString('en-GB')} LBG coins at Cavendish Online`,
+                  amount: -COINS_APPLIED,
+                  currency: 'LBG_COIN',
+                  createdAt: new Date().toISOString(),
+                  source: 'Cavendish Online',
+                }])
+                url.searchParams.set('cross_app_events', crossAppEvents)
+                window.location.href = url.toString()
+              } catch {
+                window.location.href = REWARDS_APP_URL
+              }
             }}
             sx={{
               width: '100%',

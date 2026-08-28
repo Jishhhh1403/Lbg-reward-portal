@@ -23,6 +23,7 @@ import scottishWidowsLogo from '../assets/scottishwidows.png'
 import mbnaLogo from '../assets/mbna.png'
 
 const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL ?? ''
+const LATENCY_MS = 650
 
 let _jwtToken: string | null = localStorage.getItem('rewards_jwt')
 
@@ -42,21 +43,88 @@ function authHeaders(): Record<string, string> {
   return h
 }
 
-function snakeToCamel(str: string): string {
-  return str.replace(/_([a-z])/g, (_, c: string) => c.toUpperCase())
+/* ------------------------------------------------------------------ */
+/* Cross-app event persistence (localStorage on the Rewards origin)    */
+/* ------------------------------------------------------------------ */
+
+const CROSS_APP_KEY = 'rewards_cross_app_events'
+
+export interface CrossAppEvent {
+  id: string
+  type: 'EARN' | 'CONVERT' | 'REDEEM' | 'TRANSFER' | 'EXPIRE'
+  description: string
+  amount: number
+  currency: 'LBG_COIN' | 'BRAND_POINT'
+  createdAt: string
+  source: string
 }
 
-function camelizeKeys(obj: unknown): unknown {
-  if (Array.isArray(obj)) return obj.map(camelizeKeys)
-  if (obj !== null && typeof obj === 'object' && !(obj instanceof Date)) {
-    return Object.fromEntries(
-      Object.entries(obj as Record<string, unknown>).map(([k, v]) => [snakeToCamel(k), camelizeKeys(v)]),
-    )
+export function getCrossAppEvents(): CrossAppEvent[] {
+  try {
+    const raw = localStorage.getItem(CROSS_APP_KEY)
+    if (!raw) return []
+    return JSON.parse(raw) as CrossAppEvent[]
+  } catch {
+    return []
   }
-  return obj
 }
 
-async function apiFetch<T>(path: string, init?: RequestInit): Promise<T | null> {
+export function addCrossAppEvent(event: Omit<CrossAppEvent, 'id'>): void {
+  const events = getCrossAppEvents()
+  const newEvent: CrossAppEvent = {
+    ...event,
+    id: `cross_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+  }
+  events.unshift(newEvent)
+  localStorage.setItem(CROSS_APP_KEY, JSON.stringify(events))
+}
+
+export function consumeCrossAppEventsFromUrl(): CrossAppEvent[] {
+  const params = new URLSearchParams(window.location.search)
+  const events: CrossAppEvent[] = []
+  const raw = params.get('cross_app_events')
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw) as CrossAppEvent[]
+      if (Array.isArray(parsed)) {
+        for (const evt of parsed) {
+          addCrossAppEvent(evt)
+          events.push(evt)
+        }
+      }
+    } catch {
+      // ignore malformed events
+    }
+  }
+  // Clean URL
+  if (raw) {
+    const url = new URL(window.location.href)
+    url.searchParams.delete('cross_app_events')
+    window.history.replaceState({}, '', url.toString())
+  }
+  return events
+}
+
+/**
+ * Recompute the LBG coin balance from the base value plus all stored
+ * cross-app events.  Positive event amounts (CONVERT, EARN, TRANSFER)
+ * increase the balance; negative amounts (REDEEM, EXPIRE) decrease it.
+ * Only LBG_COIN-currency events affect the coin total.
+ */
+export function computeAdjustedLbgBalance(base: number): number {
+  const events = getCrossAppEvents()
+  const delta = events.reduce((sum, e) => {
+    if (e.currency !== 'LBG_COIN') return sum
+    return sum + e.amount
+  }, 0)
+  return Math.max(base + delta, 0)
+}
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function tryFetch<T>(path: string, init?: RequestInit): Promise<T | null> {
   if (!API_BASE_URL) return null
   try {
     const res = await fetch(`${API_BASE_URL}${path}`, {
@@ -64,8 +132,7 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T | null> 
       ...init,
     })
     if (!res.ok) throw new Error(`Request failed with status ${res.status}`)
-    const json = await res.json()
-    return camelizeKeys(json) as T
+    return (await res.json()) as T
   } catch (error) {
     console.warn(`[rewardsApi] Falling back to demo data for ${path}:`, error)
     return null
@@ -80,6 +147,7 @@ export const DEMO_CUSTOMER: CustomerSummary = {
   customerId: 'cst_90124',
   userName: 'Alex Morgan',
   phone: '07700900123',
+  email: 'alex.morgan@example.com',
   totalLbgCoins: 12480,
   totalBrandPoints: 38250,
   brandsConnected: 6,
@@ -88,14 +156,27 @@ export const DEMO_CUSTOMER: CustomerSummary = {
 }
 
 export const DEMO_BRANDS: BrandOption[] = [
-  { id: 'brd_alphamedicol', name: 'AlphaMedicol', category: 'Health', logoText: 'AM', color: '#0e7490', minRedeem: 600, logoUrl: alphaMedicolLogo },
+  { id: 'brd_avios', name: 'Avios', category: 'Travel', logoText: 'AV', color: '#cc0000', minRedeem: 1000 },
+  { id: 'brd_ba', name: 'British Airways', category: 'Travel', logoText: 'BA', color: '#1d4ed8', minRedeem: 2000 },
+  { id: 'brd_tesco', name: 'Tesco Clubcard', category: 'Groceries', logoText: 'TC', color: '#00539f', minRedeem: 500 },
+  { id: 'brd_sainsburys', name: "Sainsbury's", category: 'Groceries', logoText: "S'", color: '#f06c00', minRedeem: 500 },
+  { id: 'brd_nandos', name: "Nando's", category: 'Dining', logoText: 'N', color: '#dc2626', minRedeem: 750 },
+  { id: 'brd_costa', name: 'Costa Coffee', category: 'Dining', logoText: 'CC', color: '#8b1d1d', minRedeem: 400 },
+  { id: 'brd_amazon', name: 'Amazon', category: 'Shopping', logoText: 'AZ', color: '#ff9900', minRedeem: 1500 },
+  { id: 'brd_asos', name: 'ASOS', category: 'Shopping', logoText: 'AS', color: '#111827', minRedeem: 1200 },
+  { id: 'brd_boots', name: 'Boots', category: 'Health', logoText: 'BO', color: '#0e7490', minRedeem: 600 },
+  { id: 'brd_alphamedicol', name: 'AlphaMedicol', category: 'Health', logoText: 'AM', color: '#0e7490', minRedeem: 600, logoUrl: alphaMedicolLogo, redirectUrl: 'http://localhost:5174' },
+  { id: 'brd_holland', name: 'Holland & Barrett', category: 'Health', logoText: 'HB', color: '#15803d', minRedeem: 800 },
+  { id: 'brd_cineworld', name: 'Cineworld', category: 'Entertainment', logoText: 'CW', color: '#7c3aed', minRedeem: 900 },
+  { id: 'brd_spotify', name: 'Spotify', category: 'Entertainment', logoText: 'SP', color: '#16a34a', minRedeem: 700 },
+  { id: 'brd_uber', name: 'Uber', category: 'Travel', logoText: 'UB', color: '#0f172a', minRedeem: 500 },
   { id: 'brd_rinkoff', name: 'Rinkoff Bakery', category: 'Dining', logoText: 'RB', color: '#b45309', minRedeem: 500, logoUrl: rinkoffBakeryLogo },
   { id: 'brd_broadway', name: 'Broadway Market', category: 'Shopping', logoText: 'BM', color: '#4d7c0f', minRedeem: 500, logoUrl: broadwayMarketLogo },
   { id: 'brd_bankofscotland', name: 'Bank of Scotland', category: 'Banking', logoText: 'BS', color: '#1e40af', minRedeem: 500, logoUrl: bankOfScotlandLogo },
   { id: 'brd_amc', name: 'AMC', category: 'Banking', logoText: 'AM', color: '#0369a1', minRedeem: 500, logoUrl: amcLogo },
   { id: 'brd_blackhorse', name: 'Black Horse', category: 'Banking', logoText: 'BH', color: '#065f46', minRedeem: 500, logoUrl: blackHorseLogo },
   { id: 'brd_birmingham', name: 'Birmingham', category: 'Banking', logoText: 'BI', color: '#7c2d12', minRedeem: 500, logoUrl: birminghamLogo },
-  { id: 'brd_cavendish', name: 'Cavendish Online', category: 'Banking', logoText: 'CO', color: '#4338ca', minRedeem: 500, logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5174' },
+  { id: 'brd_cavendish', name: 'Cavendish Online', category: 'Banking', logoText: 'CO', color: '#4338ca', minRedeem: 500, logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5175' },
   { id: 'brd_embark', name: 'Embark', category: 'Insurance', logoText: 'EM', color: '#9d174d', minRedeem: 500, logoUrl: embarkLogo },
   { id: 'brd_hgp', name: 'HGP', category: 'Insurance', logoText: 'HG', color: '#a16207', minRedeem: 500, logoUrl: hgpLogo },
   { id: 'brd_ldc', name: 'LDC', category: 'Insurance', logoText: 'LD', color: '#155e75', minRedeem: 500, logoUrl: ldcLogo },
@@ -107,6 +188,12 @@ export const DEMO_BRANDS: BrandOption[] = [
 ]
 
 export const DEMO_POINTS_BY_BRAND: PointsProvider[] = [
+  { brandId: 'brd_avios', brandName: 'Avios', category: 'Travel', points: 9400, color: '#cc0000', logoText: 'AV' },
+  { brandId: 'brd_tesco', brandName: 'Tesco Clubcard', category: 'Groceries', points: 8150, color: '#00539f', logoText: 'TC' },
+  { brandId: 'brd_amazon', brandName: 'Amazon', category: 'Shopping', points: 6300, color: '#ff9900', logoText: 'AZ' },
+  { brandId: 'brd_nandos', brandName: "Nando's", category: 'Dining', points: 4750, color: '#dc2626', logoText: 'N' },
+  { brandId: 'brd_boots', brandName: 'Boots', category: 'Health', points: 5250, color: '#0e7490', logoText: 'BO' },
+  { brandId: 'brd_cineworld', brandName: 'Cineworld', category: 'Entertainment', points: 4400, color: '#7c3aed', logoText: 'CW' },
   { brandId: 'brd_alphamedicol', brandName: 'AlphaMedicol', category: 'Health', points: 2100, color: '#0e7490', logoText: 'AM', logoUrl: alphaMedicolLogo },
   { brandId: 'brd_rinkoff', brandName: 'Rinkoff Bakery', category: 'Dining', points: 1750, color: '#b45309', logoText: 'RB', logoUrl: rinkoffBakeryLogo },
   { brandId: 'brd_broadway', brandName: 'Broadway Market', category: 'Shopping', points: 1300, color: '#4d7c0f', logoText: 'BM', logoUrl: broadwayMarketLogo },
@@ -114,7 +201,7 @@ export const DEMO_POINTS_BY_BRAND: PointsProvider[] = [
   { brandId: 'brd_amc', brandName: 'AMC', category: 'Banking', points: 1450, color: '#0369a1', logoText: 'AM', logoUrl: amcLogo },
   { brandId: 'brd_blackhorse', brandName: 'Black Horse', category: 'Banking', points: 1900, color: '#065f46', logoText: 'BH', logoUrl: blackHorseLogo },
   { brandId: 'brd_birmingham', brandName: 'Birmingham', category: 'Banking', points: 900, color: '#7c2d12', logoText: 'BI', logoUrl: birminghamLogo },
-  { brandId: 'brd_cavendish', brandName: 'Cavendish Online', category: 'Banking', points: 1150, color: '#4338ca', logoText: 'CO', logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5174' },
+  { brandId: 'brd_cavendish', brandName: 'Cavendish Online', category: 'Banking', points: 1150, color: '#4338ca', logoText: 'CO', logoUrl: cavendishOnlineLogo, redirectUrl: 'http://localhost:5175' },
   { brandId: 'brd_embark', brandName: 'Embark', category: 'Insurance', points: 1600, color: '#9d174d', logoText: 'EM', logoUrl: embarkLogo },
   { brandId: 'brd_hgp', brandName: 'HGP', category: 'Insurance', points: 750, color: '#a16207', logoText: 'HG', logoUrl: hgpLogo },
   { brandId: 'brd_ldc', brandName: 'LDC', category: 'Insurance', points: 2200, color: '#155e75', logoText: 'LD', logoUrl: ldcLogo },
@@ -135,12 +222,13 @@ function daysAgo(days: number, hour = 12): string {
 export const DEMO_TRANSACTIONS: WalletTransactionItem[] = [
   { id: 'tx_01', type: 'EARN', description: 'Points earned at Nando\u2019s', amount: 320, currency: 'BRAND_POINT', createdAt: daysAgo(0, 13) },
   { id: 'tx_02', type: 'CONVERT', description: 'Converted Tesco Clubcard points to LBG coins', amount: 850, currency: 'LBG_COIN', createdAt: daysAgo(1) },
-  { id: 'tx_03', type: 'REDEEM', description: 'Redeemed coins at Costa Coffee', amount: -450, currency: 'LBG_COIN', createdAt: daysAgo(3) },
-  { id: 'tx_04', type: 'EARN', description: 'Points earned at Tesco Clubcard', amount: 540, currency: 'BRAND_POINT', createdAt: daysAgo(5) },
-  { id: 'tx_05', type: 'EARN', description: 'Points earned at Avios', amount: 1250, currency: 'BRAND_POINT', createdAt: daysAgo(8) },
-  { id: 'tx_06', type: 'CONVERT', description: 'Converted Amazon points to LBG coins', amount: 600, currency: 'LBG_COIN', createdAt: daysAgo(11) },
-  { id: 'tx_07', type: 'REDEEM', description: 'Redeemed coins at Cineworld', amount: -900, currency: 'LBG_COIN', createdAt: daysAgo(14) },
-  { id: 'tx_08', type: 'EARN', description: 'Points earned at Boots', amount: 210, currency: 'BRAND_POINT', createdAt: daysAgo(18) },
+  { id: 'tx_03', type: 'REDEEM', description: 'LBG Coins redeemed at Cavendish Online', amount: -1800, currency: 'LBG_COIN', createdAt: daysAgo(2) },
+  { id: 'tx_04', type: 'REDEEM', description: 'Redeemed coins at Costa Coffee', amount: -450, currency: 'LBG_COIN', createdAt: daysAgo(3) },
+  { id: 'tx_05', type: 'EARN', description: 'Points earned at Tesco Clubcard', amount: 540, currency: 'BRAND_POINT', createdAt: daysAgo(5) },
+  { id: 'tx_06', type: 'EARN', description: 'Points earned at Avios', amount: 1250, currency: 'BRAND_POINT', createdAt: daysAgo(8) },
+  { id: 'tx_07', type: 'CONVERT', description: 'Converted Amazon points to LBG coins', amount: 600, currency: 'LBG_COIN', createdAt: daysAgo(11) },
+  { id: 'tx_08', type: 'REDEEM', description: 'Redeemed coins at Cineworld', amount: -900, currency: 'LBG_COIN', createdAt: daysAgo(14) },
+  { id: 'tx_09', type: 'EARN', description: 'Points earned at Boots', amount: 210, currency: 'BRAND_POINT', createdAt: daysAgo(18) },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -154,7 +242,7 @@ export async function loginWithPassword(
   if (!phone.trim() || !password.trim()) {
     throw new Error('Enter your phone number and password to continue.')
   }
-  const res = await apiFetch<{ accessToken: string; customerId: string; userName: string; phone: string }>(
+  const res = await tryFetch<{ accessToken: string; customerId: string; userName: string; phone: string }>(
     '/api/v1/customers/login/password',
     { method: 'POST', body: JSON.stringify({ phone, password }) },
   )
@@ -162,7 +250,9 @@ export async function loginWithPassword(
     setAuthToken(res.accessToken)
     return { customerId: res.customerId, userName: res.userName, phone: res.phone }
   }
-  throw new Error('Invalid phone number or password.')
+  await delay(LATENCY_MS)
+  const customer = DEMO_CUSTOMER
+  return { customerId: customer.customerId, userName: customer.userName, phone }
 }
 
 export async function signupCustomer(payload: {
@@ -171,24 +261,27 @@ export async function signupCustomer(payload: {
   phone: string
   password: string
 }): Promise<void> {
-  await apiFetch('/api/v1/customers/signup', { method: 'POST', body: JSON.stringify(payload) })
+  await tryFetch('/api/v1/customers/signup', { method: 'POST', body: JSON.stringify(payload) })
+  await delay(LATENCY_MS)
 }
 
 export async function fetchBrandOptions(): Promise<BrandOption[]> {
-  const remote = await apiFetch<BrandOption[]>('/api/v1/brands')
+  const remote = await tryFetch<BrandOption[]>('/api/v1/brands')
   if (remote?.length) return remote
+  await delay(250)
   return DEMO_BRANDS
 }
 
 export async function fetchEarnedRewardMapByBrand(
   customerId: string,
 ): Promise<Record<string, string>> {
-  const remote = await apiFetch<Array<{ brandId: string; rewardId: string }>>(
+  const remote = await tryFetch<Array<{ brandId: string; rewardId: string }>>(
     `/api/v1/rewards?customer_id=${encodeURIComponent(customerId)}&status=EARNED&limit=500`,
   )
   if (remote) {
     return Object.fromEntries(remote.map((r) => [r.brandId, r.rewardId]))
   }
+  await delay(200)
   return Object.fromEntries(DEMO_POINTS_BY_BRAND.map((p, i) => [p.brandId, `rwd_${1000 + i}`]))
 }
 
@@ -196,29 +289,52 @@ export async function fetchWalletTransactions(
   customerId: string,
   limit = 25,
 ): Promise<WalletTransactionItem[]> {
-  const remote = await apiFetch<WalletTransactionItem[]>(
+  const remote = await tryFetch<WalletTransactionItem[]>(
     `/api/v1/wallet/${encodeURIComponent(customerId)}/transactions?limit=${limit}`,
   )
-  if (remote) return remote
-  return DEMO_TRANSACTIONS.slice(0, limit)
+  let base: WalletTransactionItem[]
+  if (remote) {
+    base = remote
+  } else {
+    await delay(350)
+    base = DEMO_TRANSACTIONS.slice(0, limit)
+  }
+  // Merge cross-app events
+  const crossEvents = getCrossAppEvents().map((e) => ({
+    id: e.id,
+    type: e.type,
+    description: e.description,
+    amount: e.amount,
+    currency: e.currency as 'LBG_COIN' | 'BRAND_POINT',
+    createdAt: e.createdAt,
+  }))
+  const merged = [...crossEvents, ...base]
+  merged.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  return merged.slice(0, limit)
 }
 
 export async function fetchCustomerDashboardById(customerId: string): Promise<DashboardData> {
-  const remote = await apiFetch<DashboardData>(`/api/v1/customers/${encodeURIComponent(customerId)}/summary`)
-  if (remote) return remote
+  const remote = await tryFetch<DashboardData>(`/api/v1/customers/${encodeURIComponent(customerId)}/summary`)
+  if (remote) {
+    return { ...remote, customer: { ...remote.customer, totalLbgCoins: computeAdjustedLbgBalance(remote.customer.totalLbgCoins) } }
+  }
+  await delay(300)
   return {
-    customer: DEMO_CUSTOMER,
+    customer: { ...DEMO_CUSTOMER, totalLbgCoins: computeAdjustedLbgBalance(DEMO_CUSTOMER.totalLbgCoins) },
     pointsByBrand: DEMO_POINTS_BY_BRAND,
   }
 }
 
 export async function fetchCustomerDashboard(phone: string): Promise<DashboardData> {
-  const remote = await apiFetch<DashboardData>(
+  const remote = await tryFetch<DashboardData>(
     `/api/v1/customers/lookup/summary?phone=${encodeURIComponent(phone)}`,
   )
-  if (remote) return remote
+  if (remote) {
+    return { ...remote, customer: { ...remote.customer, totalLbgCoins: computeAdjustedLbgBalance(remote.customer.totalLbgCoins) } }
+  }
+  await delay(300)
   return {
-    customer: { ...DEMO_CUSTOMER, phone },
+    customer: { ...DEMO_CUSTOMER, phone, totalLbgCoins: computeAdjustedLbgBalance(DEMO_CUSTOMER.totalLbgCoins) },
     pointsByBrand: DEMO_POINTS_BY_BRAND,
   }
 }

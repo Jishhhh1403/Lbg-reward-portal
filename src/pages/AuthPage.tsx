@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Phone } from 'lucide-react'
 import type { AppStep } from '../types/rewards'
 import type { PersonaOption } from '../types/sdui'
+import { fetchPersonaOptions } from '../services/experienceApi'
 import OtpStep from '../components/auth/OtpStep'
 import PasswordStep from '../components/auth/PasswordStep'
 import SignupStep from '../components/auth/SignupStep'
+import lloydsLogo from "../assets/lbg-logo.svg"
 
 interface AuthPageProps {
   step: Extract<AppStep, 'mobile' | 'otp' | 'password' | 'signup'>
@@ -40,11 +43,21 @@ const variants = {
 
 export default function AuthPage(props: AuthPageProps) {
   const { step } = props
+  const [personas, setPersonas] = useState<PersonaOption[]>([])
+
+  useEffect(() => {
+    fetchPersonaOptions()
+      .then((options) => {
+        if (options && options.length > 0) setPersonas(options)
+      })
+      .catch(() => {})
+  }, [])
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden">
       {/* Dark header */}
       <div className="px-6 pb-6 pt-8 text-center relative">
+        <img src={lloydsLogo} alt="Lloyds Bank" className="mx-auto mb-3 h-12 w-auto" />
         <h1 className="text-lg font-semibold text-white mt-5 ">Log on</h1>
           <div className="absolute right-6 top-6 h-9 w-9 rounded-full border border-white/30 bg-white/5 flex items-center justify-center mt-5">
             <Phone size={14} className="text-white/70" />
@@ -134,25 +147,44 @@ export default function AuthPage(props: AuthPageProps) {
                   </div>
                 </div>
 
-                <div className="mt-8 border-t border-slate-500 pt-6 text-center text-slate-300 space-y-3">
-                  <p className="text-xs uppercase tracking-widest text-slate-400">Quick demo</p>
-                  <p className="text-[11px] text-slate-500">Tap a persona to explore the rewards dashboard instantly.</p>
-                  <div className="flex flex-wrap justify-center gap-2 pt-1">
-                    {([
-                      { id: 'p_high', name: 'High Earner', points: 28500, tier: 'Platinum' },
-                      { id: 'p_mid', name: 'Active Saver', points: 9800, tier: 'Gold' },
-                      { id: 'p_low', name: 'New Member', points: 1200, tier: 'Silver' },
-                    ] as const).map((p) => (
-                      <button
-                        key={p.id}
-                        type="button"
-                        onClick={() => props.onPersonaLogin(p)}
-                        className="rounded-lg border border-slate-600 bg-slate-800/60 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700/60"
-                      >
-                        {p.name}
-                      </button>
-                    ))}
-                  </div>
+                <div className="mt-8 border-t border-slate-500 pt-6 text-center text-slate-300 space-y-4">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-slate-300">Quick demo</p>
+                  <p className="text-xs text-slate-400">Tap a customer to explore the personalized rewards dashboard.</p>
+                  {(() => {
+                    const list = personas.length > 0
+                      ? personas
+                      : ([
+                          { id: 'customer_003', name: 'David Park', points: 28400, tier: 'Diamond' },
+                          { id: 'customer_002', name: 'Sarah Chen', points: 6820, tier: 'Platinum' },
+                          { id: 'customer_001', name: 'Alex Rivera', points: 4250, tier: 'Gold' },
+                          { id: 'customer_004', name: 'Jessica Martinez', points: 1850, tier: 'Silver' },
+                        ] as const)
+                    const tierColor: Record<string, string> = {
+                      Diamond: 'from-cyan-400 to-blue-500',
+                      Platinum: 'from-slate-300 to-slate-400',
+                      Gold: 'from-amber-400 to-yellow-500',
+                      Silver: 'from-gray-300 to-gray-400',
+                    }
+                    return (
+                      <div className="grid grid-cols-2 gap-3 pt-2">
+                        {list.map((p) => (
+                          <button
+                            key={p.id}
+                            type="button"
+                            onClick={() => props.onPersonaLogin(p)}
+                            className="flex flex-col items-center gap-1 rounded-xl border border-slate-600 bg-slate-800/80 px-4 py-4 text-left transition-colors hover:border-emerald-500/50 hover:bg-slate-700/80"
+                          >
+                            <span className={`inline-block h-8 w-8 rounded-full bg-gradient-to-br ${tierColor[p.tier] ?? 'from-slate-400 to-slate-500'} text-[10px] font-bold text-black flex items-center justify-center`}>
+                              {p.name.split(' ').map(n => n[0]).join('')}
+                            </span>
+                            <span className="text-sm font-semibold text-white">{p.name}</span>
+                            <span className="text-[11px] font-medium text-slate-400">{p.tier}</span>
+                            <span className="text-[11px] text-emerald-400">{p.points.toLocaleString()} pts</span>
+                          </button>
+                        ))}
+                      </div>
+                    )
+                  })()}
                 </div>
               </div>
             )}

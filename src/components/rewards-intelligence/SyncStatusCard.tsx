@@ -49,27 +49,33 @@ export default function SyncStatusCard({
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="rounded-2xl border border-brand-100 bg-white p-4 shadow-card"
     >
       <div className="flex items-start gap-3">
-        <span
+        <motion.span
           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${config.badgeClass}`}
+          initial={{ scale: 0.6, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.15, type: 'spring', stiffness: 300 }}
         >
           <Icon size={16} className={`${config.iconClass} ${config.spin ? 'animate-spin' : ''}`} />
-        </span>
+        </motion.span>
         <div className="min-w-0 flex-1">
           <p className={`text-sm font-semibold ${config.titleClass}`}>{title}</p>
           {lastSyncedAt && <p className="mt-0.5 text-[11px] text-slate-400">Last synced, {lastSyncedAt}</p>}
-          {message && <p className="mt-0.5 text-[11px] leading-snug text-slate-500">{message}</p>}
+          {message && <p className="mt-0.5 text-[11px] leading-relaxed text-slate-500">{message}</p>}
         </div>
       </div>
-      <button
+      <motion.button
         onClick={onRefresh}
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.98 }}
         className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 py-2.5 text-sm font-medium text-brand-700 transition-colors hover:bg-brand-50"
       >
         <RefreshCw size={13} />
         {ctaText} <ChevronRight size={13} />
-      </button>
+      </motion.button>
     </motion.div>
   )
 }

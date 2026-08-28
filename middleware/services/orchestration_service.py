@@ -9,6 +9,7 @@ from services.intelligence_client import IntelligenceClient
 from services.card_rule_engine import evaluate_rules
 
 from services.llm_router import build_failover_llm
+from services.sdui_cache import SDUICache
 
 
 class OrchestrationService:
@@ -21,10 +22,18 @@ class OrchestrationService:
         self.graph = build_quest_ui_graph(self.llm)
         self.explainability_writer = ExplainabilityWriter()
         self.intelligence_client = IntelligenceClient()
+        self.cache = SDUICache(ttl_seconds=3600)
 
     async def generate_sdui(self, request: dict) -> dict:
         correlation_id = request.get("correlationId", "unknown")
         request_id = request.get("requestId", "unknown")
+        customer_id = request.get("customerReference", "")
+
+        cached = self.cache.get(customer_id)
+        if cached is not None:
+            print(f"[CACHE HIT] customer={customer_id} — returning cached SDUI")
+            return cached
+        print(f"[CACHE MISS] customer={customer_id} — running full pipeline")
 
         intelligence_data = await self.intelligence_client.get_customer_intelligence(
             request.get("customerReference", "")
@@ -136,6 +145,10 @@ class OrchestrationService:
 
         response_dict = response.model_dump()
         response_dict["intelligence"] = intelligence_data
+
+        self.cache.set(customer_id, response_dict)
+        print(f"[CACHE STORE] customer={customer_id} — cached for 1 hour")
+
         return response_dict
 
     def _build_validation_summary(self, state: dict) -> ValidationSummary:

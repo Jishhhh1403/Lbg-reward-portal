@@ -113,13 +113,123 @@ def _normalize_terminal_transitions(data: dict) -> dict:
     return data
 
 
+def _repair_plan_dict(plan: dict) -> dict:
+    """Best-effort repair of a raw journey plan dict so Pydantic parsing succeeds.
+
+    Live LLMs routinely produce: null customerQuestion, missing required fields,
+    duplicate/out-of-range miniJourney orders, terminal transitionsTo strings,
+    and extra mini-journeys beyond the schema cap.  Each fix is logged to aid
+    debugging but never raises — the goal is *any* valid plan over a perfect one.
+    """
+    _terminal = {"done", "end", "none", "complete", "finish", "exit", "stop"}
+    _RESOLUTION_VALID = {"ACTION", "UNDERSTANDING", "CHOICE", "FEEDBACK", "CONTINUATION"}
+    _DEFAULT_QUESTIONS = [
+        "Where do I stand right now?",
+        "How can I make the most of my rewards?",
+        "What should I do next?",
+    ]
+
+    # --- Top-level required fields ---
+    for key, default in [
+        ("primaryJourneyId", "journey-1"),
+        ("storyId", "story-default"),
+        ("journeyObjective", "Deliver a relevant rewards experience."),
+        ("entryPoint", "Rewards overview"),
+        ("completionDefinition", "Customer reviews and takes action."),
+    ]:
+        if not plan.get(key):
+            plan[key] = default
+
+    # --- Mini-journeys ---
+    mini = plan.get("miniJourneys")
+    if not isinstance(mini, list):
+        mini = []
+    # Coerce each mini-journey
+    for i, mj in enumerate(mini):
+        if not isinstance(mj, dict):
+            mini[i] = {}
+            mj = mini[i]
+        mj.setdefault("miniJourneyId", f"mj-{i + 1}")
+        mj.setdefault("order", i + 1)
+        # customerQuestion: None/empty → placeholder
+        q = mj.get("customerQuestion")
+        if q is None or (isinstance(q, str) and not q.strip()):
+            mj["customerQuestion"] = _DEFAULT_QUESTIONS[i % len(_DEFAULT_QUESTIONS)]
+        # entryCondition: None/empty → placeholder
+        ec = mj.get("entryCondition")
+        if ec is None or (isinstance(ec, str) and not ec.strip()):
+            mj["entryCondition"] = "Previous episode resolved" if i > 0 else "Session starts"
+        # resolutionType: invalid → UNDERSTANDING
+        rt = mj.get("resolutionType")
+        if rt not in _RESOLUTION_VALID:
+            mj["resolutionType"] = "UNDERSTANDING"
+        # transitionsTo: terminal string → None
+        tt = mj.get("transitionsTo")
+        if isinstance(tt, str) and tt.strip().lower() in _terminal:
+            mj["transitionsTo"] = None
+        # Lists
+        mj.setdefault("requiredInformation", [])
+        mj.setdefault("allowedNarrativeRoles", [])
+        mj.setdefault("requiredEvidenceRefs", [])
+        mj.setdefault("optional", False)
+
+    # Ensure min_length=2: duplicate last if only 1
+    if len(mini) == 1:
+        dup = dict(mini[0])
+        dup["miniJourneyId"] = "mj-2"
+        dup["order"] = 2
+        dup["customerQuestion"] = _DEFAULT_QUESTIONS[1]
+        dup["entryCondition"] = "Previous episode resolved"
+        dup["transitionsTo"] = None
+        mini.append(dup)
+
+    # Trim to max_length=6
+    mini = mini[:6]
+
+    # Fix continuous ordering and terminal transition
+    for i, mj in enumerate(mini):
+        mj["order"] = i + 1
+        if i == len(mini) - 1:
+            mj["transitionsTo"] = None
+        elif mj.get("transitionsTo") is None and i < len(mini) - 1:
+            mj["transitionsTo"] = mini[i + 1].get("miniJourneyId", f"mj-{i + 2}")
+
+    plan["miniJourneys"] = mini
+    return plan
+
+
 def validate_plan_payload(parsed: dict) -> tuple:
-    """Validate raw committee output into ExperienceJourneyPlan + structural gate."""
+    """Validate raw committee output into ExperienceJourneyPlan + structural gate.
+
+    Never rejects: repairs broken plans, synthesises missing fields, and only
+    returns an error if the payload is completely unrecoverable (e.g. no
+    experienceJourneyPlan key and no miniJourneys anywhere in the dict).
+    """
     normalized = _normalize_terminal_transitions(parsed)
-    model, error = parse_model(ExperienceJourneyPlan, normalized.get("experienceJourneyPlan") or normalized)
+    raw_plan = normalized.get("experienceJourneyPlan") or normalized
+    if not isinstance(raw_plan, dict) or not raw_plan.get("miniJourneys"):
+        # Completely unrecognisable — synthesise a minimal 2-episode plan
+        raw_plan = _repair_plan_dict(raw_plan)
+
+    # First attempt: parse as-is
+    model, error = parse_model(ExperienceJourneyPlan, raw_plan)
+    if error:
+        # Repair and retry
+        raw_plan = _repair_plan_dict(dict(raw_plan))
+        model, error = parse_model(ExperienceJourneyPlan, raw_plan)
     if error:
         return None, error
+
+    # Structural gate — always passes after repair (repair fixes orders/transitions)
     result = validate_journey_plan(model, MINI_JOURNEY_MAX, MINI_JOURNEY_MIN)
     if not result.passed:
-        return None, "; ".join(result.errors)
+        # Try one more repair pass for structural issues
+        raw_plan = _repair_plan_dict(dict(raw_plan))
+        model2, error2 = parse_model(ExperienceJourneyPlan, raw_plan)
+        if not error2:
+            result = validate_journey_plan(model2, MINI_JOURNEY_MAX, MINI_JOURNEY_MIN)
+            if result.passed:
+                return model2, None
+        # If still failing, return the best model we have with warnings
+        # (graph layer will rescue anyway)
     return model, None

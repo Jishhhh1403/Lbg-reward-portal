@@ -24,6 +24,7 @@ export default function GoalProgressCard({
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="flex h-full flex-col rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50/80 via-white to-brand-50/60 p-4 shadow-card"
     >
       <div className="mb-2.5 flex items-start justify-between gap-2">
@@ -42,7 +43,7 @@ export default function GoalProgressCard({
             className="h-full rounded-full bg-gradient-to-r from-brand-500 to-emerald-400"
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
+            transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           />
         </div>
         <div className="mt-1.5 flex justify-between">
@@ -56,7 +57,7 @@ export default function GoalProgressCard({
           className="text-xl font-black tracking-tight text-slate-900"
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
+          transition={{ delay: 0.25, type: 'spring', stiffness: 250, damping: 18 }}
         >
           {percentage}%
         </motion.p>
@@ -65,7 +66,7 @@ export default function GoalProgressCard({
 
       {motivationalMessage && (
         <div className="mb-2 rounded-xl bg-emerald-50 p-2.5 text-center">
-          <p className="text-[10px] leading-snug text-emerald-800">{motivationalMessage}</p>
+          <p className="text-[10px] leading-relaxed text-emerald-800">{motivationalMessage}</p>
         </div>
       )}
 
