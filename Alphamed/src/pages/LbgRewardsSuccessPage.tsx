@@ -169,7 +169,7 @@ export default function LbgRewardsSuccessPage() {
               try {
                 const phone = localStorage.getItem('am_customer_phone')
                 const url = new URL(UNIFIED_REWARDS_URL)
-                url.searchParams.set('demo', '1')
+                url.searchParams.set('view', 'dashboard')
                 if (phone && phone.length === 10) {
                   url.searchParams.set('mobile', phone)
                 }

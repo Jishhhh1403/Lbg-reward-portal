@@ -376,7 +376,7 @@ export default function PaymentSuccessPage() {
             <Typography sx={{ fontFamily: FONT, fontSize: 16, fontWeight: 700, color: C.textPrimary }}>
               Final Amount Paid
             </Typography>
-            <Typography sx={{ fontFamily: FONT, fontSize: 26, fontWeight: 700, color: C.textPrimary }}>
+            <Typography sx={{ fontFamily: FONT, fontSize: 15, fontWeight: 700, color: C.textPrimary }}>
               £{FINAL_PAID.toFixed(2)}
             </Typography>
           </Stack>
