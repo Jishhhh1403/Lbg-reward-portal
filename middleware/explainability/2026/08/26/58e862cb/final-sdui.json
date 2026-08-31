@@ -1,0 +1,459 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "58e862cb",
+  "createdAt": "2026-08-26T10:00:00.000Z",
+  "expiresAt": "2026-09-26T10:00:00.000Z",
+  "customerRef": "customer_004",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 1850,
+        "tier": "Silver",
+        "name": "Jessica Martinez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reengagement",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Welcome back, Jessica",
+        "message": "We've kept your 1,850 points safe while you were away. Take all the time you need to explore your options.",
+        "ctaText": "Review Your Balance",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_DETAILS",
+          "payload": {
+            "target": "balance_overview"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Points Status Notice",
+        "expiringPoints": 1850,
+        "daysLeft": 12,
+        "message": "1,850 points have reached their standard review window in 12 days. You can easily keep, transfer, or redeem them whenever you are ready.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "TENSION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-metrics",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "label": "Account Protection",
+        "value": "Active",
+        "unit": "Secure",
+        "tone": "brand",
+        "infoText": "Your Silver tier status and accumulated rewards are fully protected under our member flexibility policy.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Points Value",
+        "cashValue": "\u00a318.50",
+        "pointsEquivalent": 1850,
+        "breakdown": {
+          "label": "Standard Redemption Rate",
+          "value": "100 points = \u00a31.00 value across partnered brands"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-value-explainer",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Flexible Redemption Explained",
+        "insight": "You are never locked into a single choice. Points can be held, converted to gift vouchers, or donated to partner causes at zero extra cost.",
+        "source": "Member Guidance Team",
+        "actionLabel": "Read Autonomy Pledge",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "OPEN_MODAL",
+          "payload": {
+            "topic": "autonomy_pledge"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-customer-choice",
+      "type": "REWARD_CHOICE_PANEL",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Your Redemption Choices",
+        "subtitle": "Select how you would like to manage your 1,850 points at your own pace.",
+        "options": [
+          {
+            "id": "opt-voucher",
+            "label": "Convert to Digital Voucher",
+            "description": "Redeem instantly for online retail or grocery partners with no expiry on the voucher.",
+            "points": 1850
+          },
+          {
+            "id": "opt-extend",
+            "label": "Extend Points Validity",
+            "description": "Simply confirm to extend your points balance for an additional 90 days free of charge.",
+            "points": 0
+          },
+          {
+            "id": "opt-donate",
+            "label": "Donate to Community Partner",
+            "description": "Convert your points into a charitable contribution matched by our Foundation.",
+            "points": 1850
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_CHOICE",
+          "payload": {
+            "selectedOption": "pending_user_selection"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Low-Effort Protection",
+        "subtitle": "No complex steps required",
+        "rewards": {
+          "name": "One-Click Validity Extension",
+          "points": 0
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXTEND_POINTS",
+          "payload": {
+            "days": 90
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-preferences",
+      "type": "PREFERENCES_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "categories": [
+          {
+            "label": "Low-pressure reminders only",
+            "enabled": true
+          },
+          {
+            "label": "Email digests (Monthly)",
+            "enabled": false
+          },
+          {
+            "label": "Push notifications disabled",
+            "enabled": true
+          }
+        ],
+        "onSaveLabel": "Save communication preferences",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "UPDATE_PREFERENCES",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "CELEBRATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-it-works",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "steps": [
+          {
+            "title": "1. Transparent Balance",
+            "description": "Your points are always fully accounted for and inspectable."
+          },
+          {
+            "title": "2. Zero Artificial Pressure",
+            "description": "We give you clear notice periods without countdown alarms or dark patterns."
+          },
+          {
+            "title": "3. Your Choice, Always",
+            "description": "Decide when and how to use or extend your rewards."
+          }
+        ],
+        "ctaLabel": "Read Member Charter",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CHARTER",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "CONTINUATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Points History Overview",
+        "subtitle": "Activity leading to your current balance",
+        "history": [
+          {
+            "source": "Silver Tier Anniversary Bonus",
+            "date": "15 May 2026",
+            "points": 1000
+          },
+          {
+            "source": "Partner Retailer Cashback",
+            "date": "02 Apr 2026",
+            "points": 850
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "status": "synced",
+        "title": "Secure Wallet Connection",
+        "lastSyncedAt": "2026-08-26T09:21:12.569Z",
+        "message": "Your rewards vault is fully synchronized and encrypted.",
+        "ctaText": "Refresh Status",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "PROTECT_AND_REASSURE",
+    "headline": "Your rewards are safe \u2014 here's the fastest win",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "HOOK",
+        "label": "Why this matters now",
+        "role": "Grab attention with the single most relevant moment",
+        "componentIds": [
+          "comp-reengagement",
+          "comp-expiring-alert"
+        ]
+      },
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-metrics",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-quick-win",
+          "comp-how-it-works"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-value-explainer",
+          "comp-customer-choice",
+          "comp-preferences",
+          "comp-provenance",
+          "comp-sync-status"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-protect-value",
+    "primaryOutcome": "Secure clear, reassuring understanding of points value and available redemption paths without pressure.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "RESUME",
+    "primaryActionComponentId": "comp-value-explainer"
+  }
+}

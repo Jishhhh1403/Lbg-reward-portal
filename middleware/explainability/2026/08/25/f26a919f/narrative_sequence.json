@@ -1,0 +1,256 @@
+{
+  "primaryActionComponentRef": "comp-learning-mission",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [
+        "comp-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-learning-mission",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "ACTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [
+        "comp-tangible-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quiz-card",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-learning-mission"
+      ],
+      "resolves": [
+        "comp-learning-mission"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-comprehension-feedback",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-quiz-card"
+      ],
+      "resolves": [
+        "comp-quiz-card"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-confidence-progress",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-comprehension-feedback"
+      ],
+      "resolves": [
+        "comp-comprehension-feedback"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-confidence-progress"
+      ],
+      "resolves": [
+        "comp-confidence-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-educational-insight"
+      ],
+      "resolves": [
+        "comp-educational-insight"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-linked-reward",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [
+        "comp-how-points-work"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-milestone-card",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "CELEBRATION",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-goal-linked-reward"
+      ],
+      "resolves": [
+        "comp-goal-linked-reward"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-milestone-card"
+      ],
+      "resolves": [
+        "comp-milestone-card"
+      ],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect current reward standing directly to active First Home Savings Knowledge progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide transparent cash value equivalents for total points accrued.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-learning-mission",
+      "relationship": "sequential",
+      "bridgeIntent": "Transition from value clarity into active self-paced educational missions.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-learning-mission",
+      "toComponentRef": "comp-quiz-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer untimed knowledge checks aligned with current learning modules.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quiz-card",
+      "toComponentRef": "comp-comprehension-feedback",
+      "relationship": "sequential",
+      "bridgeIntent": "Display instant formative feedback to support mastery without time pressure.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-comprehension-feedback",
+      "toComponentRef": "comp-confidence-progress",
+      "relationship": "sequential",
+      "bridgeIntent": "Summarize growth in financial literacy confidence.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-confidence-progress",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Reinforce learning habits with expert research insights.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-educational-insight",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain transparently how educational engagement translates to points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-goal-linked-reward",
+      "relationship": "sequential",
+      "bridgeIntent": "Showcase goal-linked perks unlocked through steady knowledge acquisition.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-linked-reward",
+      "toComponentRef": "comp-milestone-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Celebrate milestones achieved along the First Home Savings learning path.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-milestone-card",
+      "toComponentRef": "comp-add-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer the option to set future educational milestones when ready.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "comp-leaderboard",
+      "componentType": "LEADERBOARD",
+      "reason": "Customer profile indicates avoidance of public rankings and competitive leaderboards.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "comp-countdown",
+      "componentType": "COUNTDOWN_CARD",
+      "reason": "Timed urgency elements are prohibited by Sophie's learning-mastery motivation profile.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

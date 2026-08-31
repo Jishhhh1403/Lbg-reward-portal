@@ -1,0 +1,72 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Facilitate self-paced advancement in First Home Savings financial literacy modules and milestone tracking.",
+  "entryPoint": "Rewards dashboard overview focusing on active learning goals and tangible value clarity.",
+  "completionDefinition": "Customer reviews goal progress and initiates or completes a tailored financial literacy quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and savings knowledge?",
+      "entryCondition": "App launch on rewards-overview journey",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-signal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What pathways and educational steps help me master my First Home Savings goal?",
+      "entryCondition": "Completed review of current status and tangible value",
+      "requiredInformation": [
+        "learning modules",
+        "quiz options",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "QUIZ_COMPLETION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-2",
+        "fact-signal-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide clear educational provenance and transparency on how points and educational rewards work.",
+      "contentNotes": [
+        "How points work breakdown",
+        "Tangible value cash equivalent details"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

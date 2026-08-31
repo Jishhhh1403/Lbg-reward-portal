@@ -1,0 +1,71 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Enable Sophie to effortlessly track her First Home Savings Knowledge goal and engage in self-paced financial literacy mastery.",
+  "entryPoint": "Dashboard load showing LBG coin balance and active First Home Savings Knowledge goal progress.",
+  "completionDefinition": "Customer reviews goal progress on First Home Savings Knowledge and engages with educational quiz or mastery content.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my rewards and savings knowledge goal?",
+      "entryCondition": "App opened by customer Sophie Williams",
+      "requiredInformation": [
+        "lbgCoins: 3900",
+        "First Home Savings Knowledge goal: 63% progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-first-home-goal",
+        "fact-coins-balance"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I build confidence and advance my mastery without timed pressures?",
+      "entryCondition": "Customer reviews current coin balance and active goal progress",
+      "requiredInformation": [
+        "Learning mission progress",
+        "Self-paced quiz data"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-module-completion",
+        "fact-quiz-retakes",
+        "fact-avoids-challenges"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide transparent coin value breakdown and educational context without aggressive redemption prompts.",
+      "contentNotes": [
+        "Tangible value card explaining LBG coin purchasing power",
+        "How points work educational breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

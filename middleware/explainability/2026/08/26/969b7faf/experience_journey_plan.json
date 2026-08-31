@@ -1,0 +1,111 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-holiday-progress",
+  "journeyObjective": "Review balance, inspect Holiday Spending Money goal progress at 53%, and execute statement credit allocation without distraction.",
+  "entryPoint": "Rewards overview screen on mobile",
+  "completionDefinition": "Customer views coin balance, checks goal progress, and selects statement credit allocation path.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and its cash value?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real financial value?",
+      "entryCondition": "Snapshot viewed",
+      "requiredInformation": [
+        "tangibleValue",
+        "cashEquivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-check-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "How close am I to my holiday spending goal and how can I redeem?",
+      "entryCondition": "Value clarity established",
+      "requiredInformation": [
+        "goalProgress",
+        "statementCreditOptions",
+        "allocationControl"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-holiday-goal",
+        "fact-intent-credit"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "What are my next milestones and earning insights?",
+      "entryCondition": "Redemption path selected",
+      "requiredInformation": [
+        "milestones",
+        "insights"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-auto-allocation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-tips",
+      "purpose": "Provide educational context on how point values remain protected and transparent.",
+      "contentNotes": [
+        "How points work summary",
+        "Value guarantee breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

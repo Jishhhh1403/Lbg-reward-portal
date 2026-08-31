@@ -1,0 +1,308 @@
+{
+  "planId": "plan-386f3b28",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Educational Mastery & Progress Focus: Highlight First Home Savings knowledge goal progress (63%), display current LBG coin balance (3900), and feature next financial literacy module & quiz without any timed pressure, leaderboards, or manipulative urgency.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You're making steady progress toward mastering home buying fundamentals.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Next Learning Step",
+          "missionName": "Mortgage Readiness & Deposit Strategies",
+          "description": "Explore expert insights on building your deposit securely at your own pace.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MISSION",
+            "payload": {
+              "missionId": "mortgage-readiness"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which factor most reliably strengthens a first-time home buyer's deposit timeline?",
+          "options": "Consistent automated savings contributions & literacy mastery",
+          "reward": "50 LBG Coins",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_QUIZ",
+            "payload": {
+              "quizId": "home-deposit-quiz"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Mastery Checkpoint",
+          "question": "What is the primary benefit of compound savings growth?",
+          "yourAnswer": "Interest earned on both initial principal and accumulated interest over time.",
+          "correctAnswer": "Interest earned on both initial principal and accumulated interest over time.",
+          "feedback": "Correct! Thorough understanding of compounding accelerates long-term savings goals.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Competence Tracking",
+          "topic": "First Home Financial Literacy",
+          "confidencePercent": 88,
+          "levelLabel": "Building strong confidence",
+          "nextMilestone": "Deposit Readiness Certification",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Why Financial Literacy Matters",
+          "insight": "Savers who complete structured learning modules reach their property deposit milestones 30% faster with clearer budgeting habits.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Explore Insights",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Coin Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "LBG Educational Coin Value",
+            "value": "100 coins = \u00a31.00 equivalent value"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Learn & Earn",
+            "description": "Complete educational modules and knowledge quizzes at your own self-directed pace to accumulate and redeem points transparently."
+          },
+          "ctaLabel": "View Learning Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 4 Financial Literacy Modules with 100% Mastery",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "First Home Savings Rewards",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Homebuyer Guide & \u00a325 Partner Voucher",
+            "points": 1500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Knowledge Goal",
+          "subtitle": "Set another learning milestone at your own pace",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ADD_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-daily-money-tip",
+        "type": "DAILY_MONEY_TIP_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "tipTitle": "Understanding Mortgage Interest Rates",
+          "tipBody": "Fixed vs variable rates explained clearly to help you plan your long-term property budget.",
+          "category": "Home Buying",
+          "readTimeMin": 3,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "title": "Learning Momentum Insight",
+          "topBrandName": "LBG Financial Academy",
+          "topBrandPoints": 3900,
+          "growthTip": "Consistent daily engagement builds lasting financial competence.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "View Learning Summary",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-coach-tip",
+        "type": "COACH_TIP_CARD",
+        "version": "1.0",
+        "priority": 15,
+        "props": {
+          "coachName": "Ava from Rewards Coaching",
+          "headline": "Mastery over Speed",
+          "body": "Taking time to fully understand each quiz concept ensures enduring financial confidence.",
+          "relatedBrand": "LBG Academy",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 16,
+        "props": {
+          "title": "Designed for Your Learning Style",
+          "intro": "This overview prioritizes autonomous educational progress without timed pressures or public rankings.",
+          "reasons": {
+            "label": "Self-Paced Competence",
+            "detail": "Tailored to support deep financial literacy mastery at your own speed."
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK",
+      "HARD_SUPPRESSIONS_ACTIVE"
+    ]
+  },
+  "strategy": "Educational Mastery & Progress Focus: Highlight First Home Savings knowledge goal progress (63%), display current LBG coin balance (3900), and feature next financial literacy module & quiz without any timed pressure, leaderboards, or manipulative urgency.",
+  "confidence": 0.98
+}

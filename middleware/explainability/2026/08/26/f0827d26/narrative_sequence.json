@@ -1,0 +1,200 @@
+{
+  "primaryActionComponentRef": "learning-mission-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "learning-mission-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "quiz-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "learning-mission-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comprehension-feedback-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "quiz-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "confidence-progress-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comprehension-feedback-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "educational-insight-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-linked-reward-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "tangible-value-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "milestone-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 10,
+      "dependsOn": [
+        "goal-linked-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 11,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "metric-tile-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 12,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "metric-tile-2",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 13,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "metric-tile-3",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 14,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "badge-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 15,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect coin balance directly to active First Home Savings goal.",
+      "bridgeCopy": "Your 3,900 coins support your active savings journey."
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "learning-mission-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Bridge 63% savings progress into the next autonomous learning step.",
+      "bridgeCopy": "Advance your knowledge to close the remaining \u00a3750 gap."
+    },
+    {
+      "fromComponentRef": "learning-mission-1",
+      "toComponentRef": "quiz-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer self-paced quiz validation following the learning mission.",
+      "bridgeCopy": "Test your conceptual understanding without time limits."
+    },
+    {
+      "fromComponentRef": "quiz-card-1",
+      "toComponentRef": "comprehension-feedback-1",
+      "relationship": "action-to-feedback",
+      "bridgeIntent": "Provide immediate educational feedback on comprehension.",
+      "bridgeCopy": "See how your answers reinforce compound growth principles."
+    },
+    {
+      "fromComponentRef": "comprehension-feedback-1",
+      "toComponentRef": "confidence-progress-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Translate quiz success into confidence metrics.",
+      "bridgeCopy": "Track your growing mastery confidence."
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "planId": "plan-e57a4ffb",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Deliver transparent, educational rewards content featuring First Home Savings goal tracking alongside mastery-oriented quizzes and knowledge milestones without any timed challenges or gamified pressure.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "Steady progress toward your First Home Savings milestone.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Financial Mastery Pathway",
+          "missionName": "Advanced Savings & Asset Building",
+          "description": "Deepen your understanding of structured long-term financial growth and asset allocation.",
+          "modulesDone": 4,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MISSION",
+            "payload": {
+              "missionName": "Advanced Savings & Asset Building"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of compounding interest over a 10-year horizon for first-time buyers?",
+          "options": "A) Immediate cash payout\nB) Exponential growth on reinvested earnings\nC) Fixed nominal returns",
+          "reward": "150 Learning Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "B"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Mastery Verification",
+          "question": "How does compound growth accelerate savings milestones?",
+          "yourAnswer": "Reinvested returns generate their own earnings over time.",
+          "correctAnswer": "Reinvested returns generate their own earnings over time.",
+          "feedback": "Correct. Your mastery of this concept ensures precise long-term planning.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Literacy Confidence",
+          "topic": "Long-Term Savings & Mortgages",
+          "confidencePercent": 92,
+          "levelLabel": "Mastery Level Reached",
+          "nextMilestone": "Property Acquisition Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Consistent module completion directly correlates with a 62% higher milestone attainment rate in long-term savings goals.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Explore Module Details",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_INSIGHT",
+            "payload": {
+              "insightId": "insight-1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": [
+            {
+              "title": "Earn Through Learning",
+              "description": "Complete financial literacy modules and quizzes to accumulate points effortlessly."
+            },
+            {
+              "title": "Transparent Valuation",
+              "description": "Every point represents clear, guaranteed cash value applicable to your savings goals."
+            },
+            {
+              "title": "Autonomous Growth",
+              "description": "Track milestones at your own pace with zero timed pressures or rankings."
+            }
+          ],
+          "ctaLabel": "View Valuation Details",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Your Reward Value Breakdown",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "First Home Savings Pot Equivalent",
+            "value": "\u00a339.00 ready for transfer"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-milestone",
+        "type": "GOAL_MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "milestones": [
+            {
+              "label": "Foundation Module Completed",
+              "reached": true
+            },
+            {
+              "label": "50% Savings Milestone",
+              "reached": true
+            },
+            {
+              "label": "Advanced Mastery Assessment",
+              "reached": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Goal-Aligned Reward Unlock",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "\u00a325.00 Savings Booster Top-Up",
+            "points": 2500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardName": "\u00a325.00 Savings Booster Top-Up"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-recommended-actions",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Recommended Next Steps",
+          "actions": [
+            {
+              "label": "Review Advanced Budgeting Module",
+              "points": 150,
+              "icon": "target"
+            },
+            {
+              "label": "Transfer Points to Savings Pot",
+              "points": 0,
+              "icon": "shopping-bag"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE",
+      "EDUCATIONAL_TONE"
+    ]
+  },
+  "strategy": "Deliver transparent, educational rewards content featuring First Home Savings goal tracking alongside mastery-oriented quizzes and knowledge milestones without any timed challenges or gamified pressure.",
+  "confidence": 0.95
+}

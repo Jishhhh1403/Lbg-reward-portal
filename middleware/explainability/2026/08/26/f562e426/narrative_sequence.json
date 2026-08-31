@@ -1,0 +1,219 @@
+{
+  "primaryActionComponentRef": "comp-reward-choice",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-choice",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-comparison",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-reward-choice"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-partner-comparison"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-why-this-ui",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-why-this-ui"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-personalized-offer",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-rewards-insight"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-best-value-redeem",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-personalized-offer"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-provenance",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-best-value-redeem"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-allocation",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-reward-provenance"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-reward-allocation"
+      ],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Translates raw coin balance into clear cash-equivalent metrics.",
+      "bridgeCopy": "Your 6,450 LBG coins translate directly to \u00a364.50 in guaranteed value."
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-reward-choice",
+      "relationship": "sequential",
+      "bridgeIntent": "Presents transparent redemption choices with full upfront previews.",
+      "bridgeCopy": "Explore guaranteed redemption options with zero hidden conversion fees."
+    },
+    {
+      "fromComponentRef": "comp-reward-choice",
+      "toComponentRef": "comp-partner-comparison",
+      "relationship": "sequential",
+      "bridgeIntent": "Provides objective comparison across partners to verify fixed rates.",
+      "bridgeCopy": "Compare fixed-rate options across our trusted retail partners."
+    },
+    {
+      "fromComponentRef": "comp-partner-comparison",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Educational deep dive into how guaranteed fixed conversion is calculated.",
+      "bridgeCopy": "Understand how our fixed conversion rates protect your coin value."
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-why-this-ui",
+      "relationship": "sequential",
+      "bridgeIntent": "Explains why this interface prioritizes transparency and upfront terms.",
+      "bridgeCopy": "Designed around your strict requirement for transparent terms."
+    },
+    {
+      "fromComponentRef": "comp-why-this-ui",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Summarizes valuation health and stability.",
+      "bridgeCopy": "Review your valuation stability and complete audit trail."
+    },
+    {
+      "fromComponentRef": "comp-rewards-insight",
+      "toComponentRef": "comp-personalized-offer",
+      "relationship": "sequential",
+      "bridgeIntent": "Surfaces a curated spotlight offer featuring guaranteed terms.",
+      "bridgeCopy": "Examine this personalized spotlight offer designed for guaranteed certainty."
+    },
+    {
+      "fromComponentRef": "comp-personalized-offer",
+      "toComponentRef": "comp-best-value-redeem",
+      "relationship": "sequential",
+      "bridgeIntent": "Directs customer to preview the best value guaranteed redemption.",
+      "bridgeCopy": "Preview the highest value guaranteed redemption option before committing."
+    },
+    {
+      "fromComponentRef": "comp-best-value-redeem",
+      "toComponentRef": "comp-reward-provenance",
+      "relationship": "sequential",
+      "bridgeIntent": "Shows historical proof of successful guaranteed redemptions.",
+      "bridgeCopy": "Review past redemptions confirming zero surprise deductions."
+    },
+    {
+      "fromComponentRef": "comp-reward-provenance",
+      "toComponentRef": "comp-reward-allocation",
+      "relationship": "payoff-to-continuation",
+      "bridgeIntent": "Confirms allocation control over guaranteed coin holdings.",
+      "bridgeCopy": "Manage your holding allocations with complete autonomy."
+    },
+    {
+      "fromComponentRef": "comp-reward-allocation",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provides concluding educational insight on guaranteed valuation protection.",
+      "bridgeCopy": "Learn more about safeguarding your rewards portfolio."
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

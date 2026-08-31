@@ -1,0 +1,291 @@
+{
+  "planId": "plan-dd141091",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "First Home Savings Knowledge progression view combining points balance, GOAL_PROGRESS (63%), mandatory stack educational components, TANGIBLE_VALUE_CARD, HOW_POINTS_WORK_CARD, and untimed QUIZ modules aligned with LEARNING_MASTERY.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward mastering your first home savings fundamentals.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_PROGRESS",
+            "payload": {
+              "goal": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Rewards Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Mastery Equivalency",
+            "value": "39 financial literacy modules unlocked"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "steps": {
+            "title": "Complete Modules",
+            "description": "Earn points as you study financial modules and complete quizzes at your own pace."
+          },
+          "ctaLabel": "Explore Learning Path",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXPLORE_LEARNING",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "courseName": "First Home Buyer Mastery",
+          "currentLesson": 4,
+          "totalLessons": 6,
+          "lessonPoints": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_LESSON",
+            "payload": {
+              "lesson": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "question": "What is the recommended minimum deposit percentage for a standard First Home Savings scheme?",
+          "options": "A) 5% | B) 10% | C) 20%",
+          "reward": "150 Points & Concept Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_QUIZ_MODULE",
+            "payload": {
+              "quizId": "first-home-deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Recent Concept Check",
+          "question": "Compound interest calculation over 5 years",
+          "yourAnswer": "Correctly understood via module review",
+          "correctAnswer": "Verified 100% mastery score",
+          "feedback": "Your thorough review of module details ensures rock-solid financial comprehension.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_FEEDBACK",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Topic Confidence Tracker",
+          "topic": "First Home Savings & Mortgage Basics",
+          "confidencePercent": 88,
+          "levelLabel": "Mastering concepts independently",
+          "nextMilestone": "Final Knowledge Assessment",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CONFIDENCE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Learners who retake quizzes until scoring 100% retain 40% more financial literacy over 12 months.",
+          "source": "LBG Educational Research",
+          "actionLabel": "Review Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_INSIGHT",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-ladder",
+        "type": "MILESTONE_REWARD_LADDER",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "rungs": {
+            "percent": 63,
+            "reward": "Knowledge Milestone Badge Unlocked",
+            "unlocked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Milestone Reward Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Advanced Mortgage Calculator Masterclass",
+            "points": 0,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge-card",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Mastery Badges",
+          "badges": {
+            "name": "First Home Savings Expert",
+            "icon": "brain",
+            "earned": true
+          },
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BADGES",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "LEARNING_MASTERY_ALIGNMENT"
+    ]
+  },
+  "strategy": "First Home Savings Knowledge progression view combining points balance, GOAL_PROGRESS (63%), mandatory stack educational components, TANGIBLE_VALUE_CARD, HOW_POINTS_WORK_CARD, and untimed QUIZ modules aligned with LEARNING_MASTERY.",
+  "confidence": 0.95
+}

@@ -1,0 +1,62 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-continue-goal",
+      "storyTitle": "Track Holiday Fund & Bill Credits",
+      "oneSentenceStory": "Review current LBG coin balance and track progress toward the Holiday Spending Money goal while managing statement credits.",
+      "customerSituation": "Customer opens rewards overview on mobile to check accumulated coins and milestone progress.",
+      "storyTension": "Ensuring earned rewards translate transparently into bill reductions without navigating complex voucher catalogues.",
+      "customerResolution": "Clear display of coin balance, guaranteed rate statement credit options, and goal progression toward holiday savings.",
+      "primaryOutcome": "Review predictable monetary reward progress and apply statement credits efficiently.",
+      "secondaryOutcome": null,
+      "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+      "evidenceRefs": [
+        "fact-wallet-coins",
+        "fact-goal-holiday",
+        "fact-signal-statement-credits"
+      ],
+      "confidence": 0.92,
+      "prohibitedDetours": [
+        "gamification/leaderboards/public rankings/streaks",
+        "forced voucher exploration"
+      ],
+      "completionSignals": [
+        "Customer views point balance",
+        "Customer reviews goal progress"
+      ],
+      "expiryAt": null
+    },
+    {
+      "storyId": "story-resolve-action",
+      "storyTitle": "Direct Statement Credit Allocation",
+      "oneSentenceStory": "Allocate accumulated points directly to automatic payment rewards for guaranteed bill relief.",
+      "customerSituation": "Customer wants to apply available LBG coins toward upcoming statement credits with minimal friction.",
+      "storyTension": "Avoiding friction or hidden conditions in statement credit redemption.",
+      "customerResolution": "Direct, one-touch application of available balance to statement credits.",
+      "primaryOutcome": "Review predictable monetary reward progress and apply statement credits efficiently.",
+      "secondaryOutcome": null,
+      "narrativeMode": "RESOLVE_ACTION",
+      "evidenceRefs": [
+        "fact-wallet-coins",
+        "fact-signal-automatic-payment",
+        "fact-signal-guaranteed-rates"
+      ],
+      "confidence": 0.88,
+      "prohibitedDetours": [
+        "artificial scarcity",
+        "manipulative urgency"
+      ],
+      "completionSignals": [
+        "Customer selects statement credit option",
+        "Customer confirms allocation"
+      ],
+      "expiryAt": null
+    }
+  ],
+  "recommendedStoryId": "story-continue-goal",
+  "rejectedStoryReasons": {},
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

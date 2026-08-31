@@ -1,0 +1,139 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-statement-credit-focus",
+      "strategy": "Direct rewards overview emphasizing coin balance, automatic statement credit allocation, and tangible bill reduction value without gamification or voucher distractions.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-goal-progress-integrated",
+      "strategy": "Balanced rewards overview combining Holiday Spending Money goal tracking with clear statement credit utility and predictable reward rate transparency.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-protect-value",
+    "storyTitle": "Securing Bill Reductions",
+    "oneSentenceStory": "Review current coin balances and allocate accumulated rewards directly to upcoming statement credits.",
+    "customerSituation": "Customer visits the rewards overview to check accumulated LBG coins and cashback earnings.",
+    "storyTension": "Ensuring earned points are efficiently converted into tangible bill relief without friction.",
+    "customerResolution": "Reviewing points balance and confirming automatic statement credit allocation.",
+    "primaryOutcome": "Effortless verification of payment utility rewards and clear tracking toward financial goals.",
+    "secondaryOutcome": null,
+    "narrativeMode": "PROTECT_VALUE",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-redemption-habit",
+      "fact-cashback-checking"
+    ],
+    "confidence": 0.94,
+    "prohibitedDetours": [
+      "Gamified leaderboards",
+      "Voucher marketplace promotions",
+      "Artificial urgency messaging"
+    ],
+    "completionSignals": [
+      "VIEW_POINTS_BALANCE",
+      "CONFIRM_STATEMENT_CREDIT"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-statement-credit",
+      "storyId": "story-protect-value",
+      "journeyObjective": "Provide frictionless verification of coin balances and direct allocation of rewards toward statement credits and bill reduction.",
+      "completionDefinition": "Customer views points balance, reviews tangible cashback value, and confirms statement credit allocation.",
+      "episodeSketches": [
+        "Episode 1: Display precise points balance (7,300 LBG coins) alongside accumulated cashback.",
+        "Episode 2: Present direct statement credit allocation option for upcoming card bills.",
+        "Episode 3: Confirm automated payment reward setting with clear value transparency."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.5,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "journey-candidate-goal-integration",
+      "storyId": "story-protect-value",
+      "journeyObjective": "Integrate savings milestone tracking with statement credit payment utility options.",
+      "completionDefinition": "Customer reviews Holiday Spending Money goal progress and links reward allocation to bill reduction.",
+      "episodeSketches": [
+        "Episode 1: Display points balance and Holiday Spending Money progress (53%).",
+        "Episode 2: Show how current coin accumulation supports statement credit utility."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 8.8,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-statement-credit",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 94,
+    "actionOutcomeContinuity": 96,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Evaluated candidate strategies against Daniel Brooks' strict payment utility preference and verified high alignment with statement credit redemption habits."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All hard gates passed. Confirmed complete absence of gamification, artificial urgency, leaderboards, or prohibited data usage."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Design structure aligns with cognitive preferences for clear value transparency and straightforward bill reduction actions."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-journey coherence assessment passed with top score. Selected journey-candidate-statement-credit as the primary execution path."
+    }
+  ]
+}

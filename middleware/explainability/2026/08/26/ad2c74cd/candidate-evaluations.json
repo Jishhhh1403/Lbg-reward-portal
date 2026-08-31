@@ -1,0 +1,126 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Present an immediate, zero-friction instant reward picker highlighting the 1,500 expiring points with a clean choice panel, avoiding any countdown panic or manipulative urgency.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.65,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Offer a multi-step gamified goal builder to re-engage the dormant user over a 30-day savings horizon.",
+      "scores": {
+        "customerGoalRelevance": 4,
+        "expectedCustomerUtility": 4,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 4,
+        "accessibilityAndCognitiveFit": 6,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 3,
+        "evidenceConfidence": 6,
+        "usefulNovelty": 5,
+        "operationalFeasibility": 8
+      },
+      "weightedTotal": 4.85,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-rescue-expiring",
+    "storyTitle": "Secure Expiring Value Instantly",
+    "oneSentenceStory": "Ryan rescues 1,500 expiring points by claiming an instant, high-value voucher with zero friction.",
+    "customerSituation": "Ryan has 1,500 points expiring in 7 days following a period of 41 days of inactivity.",
+    "storyTension": "Risk of losing accumulated value without manipulative urgency or notification pressure.",
+    "customerResolution": "Selects a low-friction instant reward from a clear choice panel.",
+    "primaryOutcome": "Secure immediate tangible value from expiring points with zero friction.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-expiring-points",
+      "fact-inactivity",
+      "fact-instant-reward-preference"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "manipulative urgency or artificial scarcity",
+      "partner comparison surfaces"
+    ],
+    "completionSignals": [
+      "Customer views expiring points notice without panic",
+      "Customer redeems an instant reward within the session"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-rescue-expiring",
+      "journeyObjective": "Instantly surface expiring points and provide a low-friction instant reward picker to secure value within the session.",
+      "completionDefinition": "Customer interacts with the choice panel and successfully redeems an instant reward voucher.",
+      "episodeSketches": [
+        "Display calm, clear notice of 1,500 expiring points alongside current coin balance.",
+        "Present instant reward picker with autonomy-focused customer choice panel.",
+        "One-tap instant claim confirmation with immediate positive feedback."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.7,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 95,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly matches Ryan's immediate reward horizon and high autonomy preference."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns or manipulative countdown timers detected. Passes all compliance and notification fatigue safeguards."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Choice panel and instant reward picker meet high cognitive accessibility and touch target standards."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-rescue-expiring and journey-candidate-1 exhibit flawless narrative alignment and smooth episode continuity."
+    }
+  ]
+}

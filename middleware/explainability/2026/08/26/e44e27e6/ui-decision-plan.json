@@ -1,0 +1,294 @@
+{
+  "planId": "plan-e44e27e6",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Mastery-oriented educational rewards overview focusing on First Home Savings Knowledge goal progress, 3,900 points balance, milestone markers, and targeted concept quizzes without timed challenges or public rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward mastering your First Home Savings target. Keep building your foundational knowledge.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Savings Mastery Mission",
+          "missionName": "First Home Deposit Mechanics",
+          "description": "Deep dive into mortgage structures, interest compounding, and government LISA bonuses.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "target": "learning_mission_detail"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which account type offers a 25% government bonus specifically for first-time home buyers?",
+          "options": "Cash ISA, Lifetime ISA (LISA), Help to Buy ISA, Standard Savings Account",
+          "reward": "100 lbgCoins + Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "answer": "Lifetime ISA (LISA)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Mastery Check",
+          "question": "What happens to compound interest over a 5-year savings horizon?",
+          "yourAnswer": "Earnings generate additional interest on both principal and accumulated returns.",
+          "correctAnswer": "Earnings generate additional interest on both principal and accumulated returns.",
+          "feedback": "Perfect mastery! You have successfully grasped the core compounding principle.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Competence & Confidence Tracker",
+          "topic": "Mortgage Readiness & Deposit Planning",
+          "confidencePercent": 88,
+          "levelLabel": "Advanced Competence",
+          "nextMilestone": "Unlock Expert Deposit Strategist status at 95%",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Why Savings Knowledge Matters",
+          "insight": "Savers who complete structured financial education modules achieve their deposit targets 4.2 months faster on average.",
+          "source": "LBG Financial Competence Research Unit",
+          "actionLabel": "Explore curriculum",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "target": "curriculum_overview"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Rewards Value Breakdown",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Module Rewards",
+            "value": "\u00a330.00"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Milestone Reward Unlock",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Conveyancing Fee Credit (\u00a350)",
+            "points": 2000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardId": "conveyancing-credit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 12 Financial Literacy Modules",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-badge",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Mastery Badges Earned",
+          "badges": {
+            "name": "Savings Scholar",
+            "icon": "brain",
+            "earned": true
+          },
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "steps": {
+            "title": "Learn & Earn",
+            "description": "Complete educational modules and knowledge quizzes to build your lbgCoins balance transparently."
+          },
+          "ctaLabel": "View complete guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-daily-tip",
+        "type": "DAILY_MONEY_TIP_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "tipTitle": "Understanding LISA Bonus Timing",
+          "tipBody": "Government bonuses on Lifetime ISAs are paid monthly, maximizing your interest accumulation over time.",
+          "category": "Home Buying",
+          "readTimeMin": 2,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-recommended-actions",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "title": "Recommended Next Steps",
+          "actions": {
+            "label": "Review Next Module: Mortgage Approval Stages",
+            "points": 150,
+            "icon": "target"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "target": "mortgage_approval_module"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MASTERY_MOMENTUM"
+    ]
+  },
+  "strategy": "Mastery-oriented educational rewards overview focusing on First Home Savings Knowledge goal progress, 3,900 points balance, milestone markers, and targeted concept quizzes without timed challenges or public rankings.",
+  "confidence": 0.98
+}

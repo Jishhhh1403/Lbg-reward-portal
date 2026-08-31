@@ -1,0 +1,373 @@
+{
+  "planId": "plan-fe51f7cd",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Aligns 100% with payment-utility customer persona: verifies 7,300 coins, presents tangible cash value, automated statement credit configuration, and holiday savings progress without suppressed gamification.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 7300,
+          "tier": "Platinum",
+          "name": "Daniel Brooks",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE",
+            "payload": {
+              "lbgCoins": 7300
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Holiday Spending Money",
+          "current": 640.0,
+          "target": 1200.0,
+          "percentage": 53.0,
+          "remaining": 560.0,
+          "motivationalMessage": "You're 53% toward your holiday target with steady cashback additions.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL",
+            "payload": {
+              "goalName": "Holiday Spending Money"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-payment-reward",
+        "type": "PAYMENT_REWARD_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Statement Credit Redemption",
+          "paymentMethod": "LBG Platinum Credit Card ending in \u20224821",
+          "rewardRate": "100 LBG Coins = \u00a31.00 cash back",
+          "monthlyCap": "No monthly limit",
+          "description": "Apply your 7,300 coins directly to reduce your upcoming statement balance.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "APPLY_STATEMENT_CREDIT",
+            "payload": {
+              "coins": 7300,
+              "cashValue": "\u00a373.00"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-allocation",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Automatic Payment Allocation",
+          "subtitle": "Direct monthly earnings toward your linked card statement automatically.",
+          "allocation": {
+            "label": "Statement Credit",
+            "percent": 100
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "UPDATE_ALLOCATION",
+            "payload": {
+              "percent": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-payment-confirmation",
+        "type": "PAYMENT_REWARD_CONFIRMATION",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Recent Statement Credit Applied",
+          "message": "Successfully credited to your linked card.",
+          "amount": "\u00a325.00",
+          "reference": "REF-88392-LBG",
+          "date": "24 Aug 2026",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_RECEIPT",
+            "payload": {
+              "reference": "REF-88392-LBG"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Your Guaranteed Cash Value",
+          "cashValue": "\u00a373.00",
+          "pointsEquivalent": 7300,
+          "breakdown": {
+            "label": "Direct Statement Credit Value",
+            "value": "1.0p per coin guaranteed"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_DETAILS",
+            "payload": {
+              "rate": "1p"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Cashback & Earning Insight",
+          "topBrandName": "Connected Retail Partners",
+          "topBrandPoints": 1450,
+          "growthTip": "Your connected card spending generated \u00a314.50 in cashback this month.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "View Earning History",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_EARNINGS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Add a New Saving Goal",
+          "subtitle": "Set aside future cashback for specific upcoming bills or expenses.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Holiday Fund Booster",
+          "goalName": "Holiday Spending Money",
+          "rewards": {
+            "name": "Automatic Statement Redirection",
+            "points": 500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "LINK_GOAL_REWARD",
+            "payload": {
+              "goalName": "Holiday Spending Money"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Reached \u00a350 total cashback applied this quarter",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "steps": {
+            "title": "Guaranteed 1p Conversion",
+            "description": "Every LBG coin converts to exactly 1 penny off your statement with zero hidden fees."
+          },
+          "ctaLabel": "Learn More",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_EDUCATION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-choice",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Quick Statement Credit Redemptions",
+          "subtitle": "Select an amount to apply instantly to your bill.",
+          "options": {
+            "id": "opt-25",
+            "label": "\u00a325.00 Statement Credit",
+            "description": "Redeem 2,500 LBG coins for immediate bill reduction",
+            "points": 2500
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_REDEMPTION_OPTION",
+            "payload": {
+              "optionId": "opt-25",
+              "points": 2500
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tile",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "label": "Total Cashback Saved This Year",
+          "value": "245.50",
+          "unit": "GBP",
+          "tone": "brand",
+          "infoText": "Direct savings applied to linked card bills in 2026.",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_METRIC_DETAILS",
+            "payload": {
+              "metric": "annual_savings"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "status": "synced",
+          "title": "Connected Account Status",
+          "lastSyncedAt": "Today at 08:42 AM",
+          "message": "3 partner brands securely connected and actively tracking cashback.",
+          "ctaText": "Manage Connections",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "MANAGE_CONNECTIONS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 15,
+        "props": {
+          "title": "Designed for Practical Value",
+          "intro": "We prioritize direct statement credits and clear cashback tracking based on your preferences.",
+          "reasons": {
+            "label": "Statement Credit Focus",
+            "detail": "No lifestyle vouchers or confusing partner catalogs\u2014just straightforward money off bills."
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PREFERENCES",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "PAYMENT_UTILITY_OPTIMIZED"
+    ]
+  },
+  "strategy": "Aligns 100% with payment-utility customer persona: verifies 7,300 coins, presents tangible cash value, automated statement credit configuration, and holiday savings progress without suppressed gamification.",
+  "confidence": 0.98
+}

@@ -1,0 +1,126 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Instant One-Tap Redemption Focus: Surface points balance, high-urgency expiration banner (calm tone, no countdown/artificial scarcity), and a prominent instant reward grid for 1-click quick redemption.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Re-engagement Flash Deal Grid: Highlight a playful quick-win challenge paired with instant reward options to restart activity without notification pressure.",
+      "scores": {
+        "customerGoalRelevance": 8,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 8,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 8,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 8.15,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-instant-redemption",
+    "storyTitle": "Claim Your Instant Rewards",
+    "oneSentenceStory": "Easily redeem your expiring points for instant vouchers before they disappear.",
+    "customerSituation": "Customer has 1,500 points expiring in 7 days after a period of inactivity.",
+    "storyTension": "Risk of losing accumulated point value due to impending expiration without high friction.",
+    "customerResolution": "Select and claim a low-friction instant reward in one tap.",
+    "primaryOutcome": "Instant realization of reward value for expiring points with minimum friction.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-expiring-points",
+      "fact-flash-offers"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Displaying complex partner comparisons",
+      "Long-term financial growth projections",
+      "Manipulative countdown timers"
+    ],
+    "completionSignals": [
+      "CLICK_QUICK_REDEEM",
+      "CLAIM_INSTANT_VOUCHER"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-instant-redemption",
+      "journeyObjective": "Provide instant visibility into coin balance and expiring points, offering a 1-tap quick redeem grid for immediate tangible value.",
+      "completionDefinition": "Customer successfully selects and claims an instant reward using expiring points.",
+      "episodeSketches": [
+        "View points balance and calm expiration notice",
+        "Browse instant reward grid tailored to historical preferences",
+        "Execute 1-tap quick redemption for instant voucher"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 95,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 94,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly aligns with immediate reward motivation and high historical redemption velocity."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Confirmed zero dark patterns, manipulative urgency, or countdown timers. Expiration notice is calm and informative."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Layout meets WCAG contrast and cognitive load standards for dormant users experiencing fatigue."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-journey coherence score is exceptionally high (95/100). Fully approved."
+    }
+  ]
+}

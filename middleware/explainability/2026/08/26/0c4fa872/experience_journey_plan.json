@@ -1,0 +1,87 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-understand-value",
+  "journeyObjective": "Deliver precise GBP monetary equivalents and transparent partner conversion comparisons to empower unhurried, autonomous reward evaluation and selection.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer views exact monetary value in GBP, compares partner conversion rates, and independently selects a redemption option without pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance worth in exact cash value?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "5,600 LBG coins balance",
+        "GBP cash equivalent breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-balance",
+        "fact-signal-monetary"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do partner conversion rates compare side-by-side?",
+      "entryCondition": "Customer reviews balance and cash equivalent",
+      "requiredInformation": [
+        "Partner conversion options",
+        "Exchange values"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-compares"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do I choose my preferred redemption option autonomously?",
+      "entryCondition": "Customer completes partner rate comparisons",
+      "requiredInformation": [
+        "Redemption options with exact values"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-eval-phase"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency",
+      "purpose": "Provide absolute clarity on coin valuation without urgency or gamification.",
+      "contentNotes": [
+        "No countdown timers",
+        "No streaks or leaderboards"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

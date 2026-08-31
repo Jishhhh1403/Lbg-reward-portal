@@ -1,0 +1,96 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Review First Home Savings Knowledge goal progress and access self-paced educational modules for mastery.",
+  "entryPoint": "User opens rewards overview screen",
+  "completionDefinition": "Customer reviews goal progress (63%) and opens the next educational literacy module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my coins and my home savings goal?",
+      "entryCondition": "Session initialized",
+      "requiredInformation": [
+        "lbgCoins",
+        "goalName",
+        "current",
+        "target",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-home-goal",
+        "fact-coins-balance"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my educational milestones connect to real tangible value and rewards?",
+      "entryCondition": "Goal status understood",
+      "requiredInformation": [
+        "milestones",
+        "rewards",
+        "tangibleValue"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-mod-complete"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is the next learning step I can take at my own pace?",
+      "entryCondition": "Value and milestones reviewed",
+      "requiredInformation": [
+        "learningPath",
+        "quiz",
+        "comprehension",
+        "confidence"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "OPEN_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-session-duration",
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-insights",
+      "purpose": "Provide transparent educational insights and tangible value breakdowns without time pressure",
+      "contentNotes": [
+        "TANGIBLE_VALUE_CARD",
+        "EDUCATIONAL_INSIGHT_CARD"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

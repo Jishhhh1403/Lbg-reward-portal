@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-evaluate-transfers",
+  "journeyObjective": "Present a unified multi-partner rewards dashboard with clear, jargon-free portability and transfer options.",
+  "entryPoint": "Rewards Overview Dashboard",
+  "completionDefinition": "Customer views combined balance summary and inspects straightforward partner transfer options.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my total reward balance across all my accounts?",
+      "entryCondition": "Dashboard loaded",
+      "requiredInformation": [
+        "Total combined reward balance",
+        "Connected partner count"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I easily move and compare my points between partners without jargon?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "Wallet breakdown",
+        "Partner comparison values",
+        "Transfer mechanics"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-transfer-inquiries",
+        "fact-plain-english"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How does this support my Family Holiday Fund goal?",
+      "entryCondition": "Transfer options inspected",
+      "requiredInformation": [
+        "Goal progress",
+        "Linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-multi-partner"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary plain-English tips on how reward transfers work.",
+      "contentNotes": [
+        "Simple transfer guide steps"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

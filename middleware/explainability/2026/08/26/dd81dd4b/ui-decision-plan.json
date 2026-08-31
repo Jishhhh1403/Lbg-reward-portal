@@ -1,0 +1,279 @@
+{
+  "planId": "plan-dd81dd4b",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Unified Rewards & Plain-English Transfers: Display combined multi-partner balance view with direct, jargon-free transfer options and clear Family Holiday Fund progress.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 11200,
+          "tier": "Platinum",
+          "name": "Leo Morgan",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-consolidated-wallet",
+        "type": "CONSOLIDATED_REWARD_WALLET",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Your Combined Reward Wallet",
+          "subtitle": "All your partner balances in one simple view",
+          "programmes": [
+            {
+              "name": "Aviation Rewards",
+              "points": 4500,
+              "value": "\u00a345.00",
+              "status": "Connected & Active"
+            },
+            {
+              "name": "Retail Partners Club",
+              "points": 3700,
+              "value": "\u00a337.00",
+              "status": "Connected & Active"
+            },
+            {
+              "name": "Dining & Leisure",
+              "points": 3000,
+              "value": "\u00a330.00",
+              "status": "Connected & Active"
+            }
+          ],
+          "totalValue": "\u00a3112.00",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "status": "synced",
+          "title": "Partner Accounts Up to Date",
+          "lastSyncedAt": "Today at 06:27",
+          "message": "All 3 partner programmes are securely connected with no pending sync issues.",
+          "ctaText": "Refresh Accounts",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-partner-value-comparison",
+        "type": "PARTNER_VALUE_COMPARISON",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Partner Value Comparison",
+          "subtitle": "See what your points are worth across our trusted partners in plain English",
+          "partners": [
+            {
+              "name": "Aviation Rewards",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Best for flights and travel upgrades"
+            },
+            {
+              "name": "Retail Partners Club",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Best for high street vouchers"
+            },
+            {
+              "name": "Dining & Leisure",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Best for restaurant savings"
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "steps": [
+            {
+              "title": "1. View Together",
+              "description": "See all partner balances in one place without jumping between apps."
+            },
+            {
+              "title": "2. Choose Transfer",
+              "description": "Move points instantly with zero complex conversion formulas."
+            },
+            {
+              "title": "3. Reach Goals",
+              "description": "Put your combined value directly towards your savings targets."
+            }
+          ],
+          "ctaLabel": "Read Plain-English Guide",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_GUIDE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-partner-transfer",
+        "type": "PARTNER_TRANSFER_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Easy Partner Transfer",
+          "fromProgramme": "Retail Partners Club",
+          "toPartner": "Aviation Rewards",
+          "points": 1000,
+          "estimatedValue": "\u00a310.00",
+          "status": "Ready to transfer instantly",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "TRANSFER_POINTS",
+            "payload": {
+              "amount": 1000
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-provenance",
+        "type": "REWARD_PROVENANCE_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Where Your Points Came From",
+          "subtitle": "Transparent activity history across your connected accounts",
+          "history": [
+            {
+              "source": "Aviation Rewards Partner Bonus",
+              "date": "24 Aug 2026",
+              "points": 1000
+            },
+            {
+              "source": "Retail Partners Club Monthly Sync",
+              "date": "20 Aug 2026",
+              "points": 700
+            },
+            {
+              "source": "Dining & Leisure Cashback",
+              "date": "15 Aug 2026",
+              "points": 500
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Total Balance in Real Money",
+          "cashValue": "\u00a3112.00",
+          "pointsEquivalent": 11200,
+          "breakdown": {
+            "label": "Direct Conversion Rate",
+            "value": "100 points = \u00a31.00 clear value"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "goalName": "Family Holiday Fund",
+          "current": 1750,
+          "target": 3000,
+          "percentage": 58,
+          "remaining": 1250,
+          "motivationalMessage": "You are 58% towards your family holiday goal with your combined rewards!",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-programme-connection",
+        "type": "PROGRAMME_CONNECTION_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Connected Partner Programmes",
+          "subtitle": "Manage your linked accounts securely",
+          "programmes": [
+            {
+              "name": "Aviation Rewards",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Retail Partners Club",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Dining & Leisure",
+              "status": "Active",
+              "connected": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_APPLIED"
+    ]
+  },
+  "strategy": "Unified Rewards & Plain-English Transfers: Display combined multi-partner balance view with direct, jargon-free transfer options and clear Family Holiday Fund progress.",
+  "confidence": 0.95
+}

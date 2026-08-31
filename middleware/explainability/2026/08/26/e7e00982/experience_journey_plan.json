@@ -1,0 +1,112 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-consolidate-rewards",
+  "journeyObjective": "Provide Leo with a unified rewards wallet and plain-English transfer options across partner programmes.",
+  "entryPoint": "Dashboard overview of combined partner reward balances",
+  "completionDefinition": "Leo reviews his consolidated balances and understands partner transfer rules without jargon.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "What is the total value of my rewards across all programmes?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "total points",
+        "programmes connected",
+        "cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-three-programmes",
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my partner balances connect and transfer securely?",
+      "entryCondition": "Viewed wallet snapshot",
+      "requiredInformation": [
+        "sync status",
+        "provenance history",
+        "transfer rules"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-plain-english",
+        "fact-jargon-aversion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "How can I compare and move my points between partners simply?",
+      "entryCondition": "Reviewed trust and connection state",
+      "requiredInformation": [
+        "partner comparison values",
+        "transfer options",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-moving-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How does my consolidated balance support my Family Holiday Fund?",
+      "entryCondition": "Completed partner comparison review",
+      "requiredInformation": [
+        "goal progress",
+        "goal linked rewards",
+        "milestone details"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-combined-view"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-jargon-help",
+      "purpose": "Provide plain-English definitions for transfer terminology on demand.",
+      "contentNotes": [
+        "Glossary of partner transfer terms in simple English"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

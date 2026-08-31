@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-transfers",
+  "journeyObjective": "Present a unified view of reward balances across partner programmes with plain-English transfer guides toward the Family Holiday Fund.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews combined balances and accesses transparent, jargon-free partner transfer options.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my total reward balance across all my accounts right now?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "Unified balance",
+        "Connected partner count"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-balances-3-partners",
+        "fact-wants-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my partner balances and Family Holiday Fund progress help me reach my goal?",
+      "entryCondition": "User views unified balance",
+      "requiredInformation": [
+        "Goal progress",
+        "Partner values"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-balances-3-partners"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I easily transfer points between programmes without confusing jargon?",
+      "entryCondition": "User inspects goal and partner values",
+      "requiredInformation": [
+        "Partner comparisons",
+        "Transfer mechanism"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "TRANSFER",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-asks-moving-points",
+        "fact-plain-english-pref"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-provenance",
+      "purpose": "Provide complete auditability of where reward balances originated.",
+      "contentNotes": [
+        "Source breakdown",
+        "Historical dates"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

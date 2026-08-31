@@ -1,0 +1,92 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Advance First Home Savings knowledge through targeted educational modules, quiz reinforcement, and transparent milestone tracking.",
+  "entryPoint": "Rewards Overview dashboard for Sophie Williams",
+  "completionDefinition": "Successfully complete a learning module or review milestone progress toward the 63% First Home Savings goal.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and First Home Savings knowledge goal?",
+      "entryCondition": "Dashboard loaded",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points convert to tangible savings and what should I learn next?",
+      "entryCondition": "Viewed points balance and goal",
+      "requiredInformation": [
+        "tangible value breakdown",
+        "learning path",
+        "quiz"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-retake-quiz"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What milestone am I working toward next?",
+      "entryCondition": "Completed quiz review",
+      "requiredInformation": [
+        "milestones",
+        "goal linked reward",
+        "insights"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-session-time"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education-tips",
+      "purpose": "Provide daily financial knowledge bite for mastery",
+      "contentNotes": [
+        "Daily financial tip card"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "planId": "plan-b73bf13c",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Goal-centric educational journey focusing on First Home Savings Knowledge progress (63%), incorporating transparent coin balance and next mastery module without timed pressure or leaderboards.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You're making steady progress toward your deposit mastery at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "learning-mission-1",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Next Mastery Step",
+          "missionName": "Advanced Mortgage Structuring",
+          "description": "Deepen your understanding of fixed vs. variable rates at your own pace.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_MISSION",
+            "payload": {
+              "missionId": "mortgage-structuring"
+            }
+          }
+        ]
+      },
+      {
+        "id": "quiz-card-1",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which factor most reliably reduces long-term interest paid on a mortgage?",
+          "options": "A larger initial deposit, Choosing the longest term available, Minimising early repayment options",
+          "reward": "50 Bonus Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "selectedOption": "A larger initial deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comprehension-feedback-1",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Check",
+          "question": "Why does a 20% deposit often unlock preferential interest rates?",
+          "yourAnswer": "Lower lender risk",
+          "correctAnswer": "Lower lender risk",
+          "feedback": "Spot on! Lenders view larger equity buffers as lower risk, passing savings on to you.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "confidence-progress-1",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Mastery Confidence",
+          "topic": "First-Time Buyer Readiness",
+          "confidencePercent": 85,
+          "levelLabel": "Building strong competence",
+          "nextMilestone": "Complete Module 4 to reach Advanced status",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "educational-insight-1",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Literacy Insight",
+          "insight": "Consistent small savings contributions combined with structured knowledge modules increase mortgage approval confidence by 40%.",
+          "source": "LBG Educational Research Team",
+          "actionLabel": "Explore Reading Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_READING_NOTES",
+            "payload": {
+              "topic": "mortgage-approval"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tangible-value-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Reward Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "LBG Coins Value",
+            "value": "100 coins = \u00a31.00 transparent redemption value"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Earn through learning",
+            "description": "Complete modules and quizzes at your own pace to accumulate coins that convert directly into savings boosts or partner value."
+          },
+          "ctaLabel": "Learn More About Points",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-linked-reward-1",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Goal Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Conveyancing Fee Credit (\u00a350)",
+            "points": 2000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardName": "Conveyancing Fee Credit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "milestone-card-1",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": {
+            "label": "Completed 3 Financial Literacy Modules",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "coach-tip-card-1",
+        "type": "COACH_TIP_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "coachName": "Ava from Rewards Coaching",
+          "headline": "Pace yourself for sustainable mastery",
+          "body": "Taking time to fully understand each concept ensures your financial decisions are grounded and confident.",
+          "relatedBrand": "LBG Financial Education",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MASTERY_ORIENTED"
+    ]
+  },
+  "strategy": "Goal-centric educational journey focusing on First Home Savings Knowledge progress (63%), incorporating transparent coin balance and next mastery module without timed pressure or leaderboards.",
+  "confidence": 0.98
+}

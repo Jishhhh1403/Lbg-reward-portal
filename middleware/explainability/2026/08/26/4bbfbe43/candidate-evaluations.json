@@ -1,0 +1,151 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Direct Statement Credit Focus: Emphasizes points balance, cashback tracking, and immediate one-tap statement credit application for bill reduction, fully aligning with payment utility preferences without any gamification.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Goal-Linked Savings Integration: Focuses on tracking progress toward the 'Holiday Spending Money' goal with clear monetary breakdowns and automatic reward allocation options.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-1",
+    "storyTitle": "Apply Statement Credit for Bill Reduction",
+    "oneSentenceStory": "Customer checks current coin balance and cashback to allocate rewards directly to statement credit.",
+    "customerSituation": "Customer visits mobile app to review rewards standing and current goal progress.",
+    "storyTension": "Ensuring transparent coin-to-conversion rates without encountering irrelevant vouchers or gamification.",
+    "customerResolution": "Direct, frictionless application of accumulated rewards as a statement credit on the linked card.",
+    "primaryOutcome": "Effortless tracking and application of statement credits for bill reduction.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-signal-1",
+      "fact-signal-2",
+      "fact-signal-3",
+      "fact-wallet-coins"
+    ],
+    "confidence": 0.94,
+    "prohibitedDetours": [
+      "Displaying leaderboards",
+      "Pushing lifestyle vouchers",
+      "Promoting partner travel experiences"
+    ],
+    "completionSignals": [
+      "statement_credit_applied",
+      "balance_viewed"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-1",
+      "journeyObjective": "Provide clear rewards overview and frictionless statement credit application for bill reduction.",
+      "completionDefinition": "Customer views balance/cashback and successfully applies or allocates statement credit.",
+      "episodeSketches": [
+        "Episode 1: Display points balance (7,300 coins) and cashback earned clearly at the top.",
+        "Episode 2: Show active holiday goal progress and tangible value conversion.",
+        "Episode 3: Provide one-tap statement credit application action."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.8,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "journey-candidate-2",
+      "storyId": "story-1",
+      "journeyObjective": "Goal-centric rewards review highlighting holiday savings progress and automatic allocation.",
+      "completionDefinition": "Customer reviews goal milestones and confirms allocation settings.",
+      "episodeSketches": [
+        "Episode 1: Highlight Holiday Spending Money goal progress (53%).",
+        "Episode 2: Present tangible value breakdown supporting the goal.",
+        "Episode 3: Confirm automatic reward allocation settings."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.0,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 95,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 directly matches Daniel Brooks' high payment utility preference and aversion to gamification."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero manipulation, dark pattern, or urgency risks detected. Fully compliant with UI Constitution."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and clear typographic hierarchy for financial data."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story-1 precisely captures the bill reduction intent using verifiable session facts."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate 1 cleanly sequences mandatory components into a single dominant action flow."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "All coherence metrics exceed threshold (PASS). No conflicting narratives or orphan components."
+    }
+  ]
+}

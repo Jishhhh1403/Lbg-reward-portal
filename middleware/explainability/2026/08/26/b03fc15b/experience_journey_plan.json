@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-candidate-1",
+  "storyId": "story-continue-savings-goal",
+  "journeyObjective": "Provide a seamless rewards-overview experience centered on First Home Savings goal progress, educational quiz mastery, and pressure-free milestone tracking.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews goal progress, accesses the educational quiz module, and views goal-linked milestone rewards.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my savings stand and what are my coins worth?",
+      "entryCondition": "Session start on rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-goal-first-home"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial competence and progress my knowledge goal?",
+      "entryCondition": "Customer reviews balance and goal snapshot",
+      "requiredInformation": [
+        "learning modules",
+        "quiz options"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-module-100",
+        "fact-signal-retake-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What milestones and rewards support my long-term home savings journey?",
+      "entryCondition": "Customer engages with educational modules",
+      "requiredInformation": [
+        "milestones",
+        "goal-linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-first-home"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear programme terms and transparency on coin valuation.",
+      "contentNotes": [
+        "100 LBG Coins equals \u00a31.00 in savings boost value."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

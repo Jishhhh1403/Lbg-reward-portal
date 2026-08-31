@@ -1,0 +1,248 @@
+{
+  "planId": "plan-969b7faf",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Deliver a frictionless, cash-equivalent focused rewards overview for Daniel Brooks, highlighting his 7,300 LBG coins, 53% Holiday Spending Money goal, and seamless statement credit options without any gamification clutter.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 7300,
+          "tier": "Platinum",
+          "name": "Daniel Brooks",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Holiday Spending Money",
+          "current": 640.0,
+          "target": 1200.0,
+          "percentage": 53,
+          "remaining": 560.0,
+          "motivationalMessage": "You're over halfway to your holiday fund! Keep stacking predictable cash-equivalent rewards.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-payment-reward",
+        "type": "PAYMENT_REWARD_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Statement Credit Accelerator",
+          "paymentMethod": "LBG Platinum Debit & Credit Card",
+          "rewardRate": "1.0% back in statement credit",
+          "monthlyCap": "No monthly cap",
+          "description": "Automatically apply your earned coins directly to your statement with guaranteed 1:1 cash value conversion.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONFIGURE_AUTO_PAYMENT",
+            "payload": {
+              "status": "active"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-allocation",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Automatic Reward Allocation",
+          "subtitle": "Direct all new coin earnings straight into your monthly statement credit pot.",
+          "allocation": {
+            "label": "Statement Credit Auto-Redeem",
+            "percent": 100
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "UPDATE_ALLOCATION",
+            "payload": {
+              "percent": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-payment-confirmation",
+        "type": "PAYMENT_REWARD_CONFIRMATION",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Last Auto-Credit Applied",
+          "message": "Successfully credited to your linked card statement.",
+          "amount": "\u00a325.00",
+          "reference": "CR-7300-LBG",
+          "date": "24 Aug 2026",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Your Coin Cash Value",
+          "cashValue": "\u00a373.00",
+          "pointsEquivalent": 7300,
+          "breakdown": {
+            "label": "Guaranteed Statement Credit Rate",
+            "value": "100 coins = \u00a31.00"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Statement Credit Efficiency",
+          "topBrandName": "Linked LBG Card",
+          "topBrandPoints": 7300,
+          "growthTip": "Your redemption habit yields maximum cash return with zero currency decay.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "Review Statement History",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_HISTORY",
+            "payload": {
+              "filter": "statement_credit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Holiday Fund Booster",
+          "goalName": "Holiday Spending Money",
+          "rewards": {
+            "name": "Direct Statement Payout",
+            "points": 7300,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "APPLY_TO_GOAL",
+            "payload": {
+              "goal": "Holiday Spending Money"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-card",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "milestones": {
+            "label": "50% Holiday Savings Milestone Reached (\u00a3600)",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "steps": {
+            "title": "Guaranteed Valuation",
+            "description": "LBG coins maintain a fixed 1:1 statement credit conversion rate so you always know your exact spending power."
+          },
+          "ctaLabel": "Learn about statement credits",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reward-choice-panel",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Redemption Options",
+          "subtitle": "Choose how you want to apply your available balance",
+          "options": {
+            "id": "opt-statement-credit",
+            "label": "Statement Credit",
+            "description": "Redeem directly against your card balance instantly",
+            "points": 7300
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_OPTION",
+            "payload": {
+              "optionId": "opt-statement-credit"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE",
+      "LOW_GAMIFICATION_COMPLIANCE"
+    ]
+  },
+  "strategy": "Deliver a frictionless, cash-equivalent focused rewards overview for Daniel Brooks, highlighting his 7,300 LBG coins, 53% Holiday Spending Money goal, and seamless statement credit options without any gamification clutter.",
+  "confidence": 0.98
+}

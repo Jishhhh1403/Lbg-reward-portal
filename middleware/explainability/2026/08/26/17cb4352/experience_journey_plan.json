@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Deliver self-paced learning milestone visibility and First Home Savings goal tracking without timed pressure.",
+  "entryPoint": "Rewards overview screen opened with active educational mastery focus.",
+  "completionDefinition": "Customer views 63% progress marker and opens educational quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now in my savings mastery?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real educational value?",
+      "entryCondition": "Balance and initial progress reviewed",
+      "requiredInformation": [
+        "tangible value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-session-time"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What pathways can I take next to continue learning at my own pace?",
+      "entryCondition": "Value transparency understood",
+      "requiredInformation": [
+        "learning modules",
+        "quizzes",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-coach",
+      "purpose": "Provide contextual guidance from rewards coaching without pressure.",
+      "contentNotes": [
+        "Coach tips on steady savings habits"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

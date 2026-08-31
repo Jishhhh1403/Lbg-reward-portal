@@ -1,0 +1,237 @@
+{
+  "primaryActionComponentRef": "learning-mission-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "learning-mission-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "quiz-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 4,
+      "dependsOn": [
+        "learning-mission-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comprehension-feedback-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "quiz-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "confidence-progress-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comprehension-feedback-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "confidence-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-1",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "educational-insight-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-1",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "how-points-work-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-linked-reward-1",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 10,
+      "dependsOn": [
+        "tangible-value-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "add-goal-card-1",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 11,
+      "dependsOn": [
+        "goal-linked-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "coach-tip-card-1",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [
+        "add-goal-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "why-this-ui-card-1",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 13,
+      "dependsOn": [
+        "coach-tip-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect your total coins balance directly to your active First Home Savings goal.",
+      "bridgeCopy": "See how your 3,900 coins support your 63% progress toward homeownership."
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "learning-mission-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Bridge savings progress into ongoing educational mastery.",
+      "bridgeCopy": "Continue your learning path with Advanced Savings & Compound Growth."
+    },
+    {
+      "fromComponentRef": "learning-mission-1",
+      "toComponentRef": "quiz-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Test your knowledge with unpressured quizzes.",
+      "bridgeCopy": "Check your understanding at your own pace."
+    },
+    {
+      "fromComponentRef": "quiz-card-1",
+      "toComponentRef": "comprehension-feedback-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Review quiz competence and mastery feedback.",
+      "bridgeCopy": "Here is how well you mastered the core concept."
+    },
+    {
+      "fromComponentRef": "comprehension-feedback-1",
+      "toComponentRef": "confidence-progress-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Track your growing financial literacy confidence.",
+      "bridgeCopy": "Your confidence level continues to build steadily."
+    },
+    {
+      "fromComponentRef": "confidence-progress-1",
+      "toComponentRef": "educational-insight-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Understand why deep mastery produces better long-term results.",
+      "bridgeCopy": "Discover the science behind unpressured learning."
+    },
+    {
+      "fromComponentRef": "educational-insight-1",
+      "toComponentRef": "how-points-work-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Learn how educational points translate into real value.",
+      "bridgeCopy": "Understand how earning points through learning works."
+    },
+    {
+      "fromComponentRef": "how-points-work-1",
+      "toComponentRef": "tangible-value-1",
+      "relationship": "sequential",
+      "bridgeIntent": "View the concrete cash equivalent of your accumulated balance.",
+      "bridgeCopy": "Your 3,900 coins represent \u00a339.00 in tangible reward value."
+    },
+    {
+      "fromComponentRef": "tangible-value-1",
+      "toComponentRef": "goal-linked-reward-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect your tangible value to upcoming goal milestones.",
+      "bridgeCopy": "Preview your milestone-linked reward for your savings target."
+    },
+    {
+      "fromComponentRef": "goal-linked-reward-1",
+      "toComponentRef": "add-goal-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Add additional goals whenever you are ready to expand your learning.",
+      "bridgeCopy": "Create a new goal at your own comfortable pace."
+    },
+    {
+      "fromComponentRef": "add-goal-card-1",
+      "toComponentRef": "coach-tip-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Receive encouraging coaching tailored to your unpressured style.",
+      "bridgeCopy": "A quick tip from your rewards coach."
+    },
+    {
+      "fromComponentRef": "coach-tip-card-1",
+      "toComponentRef": "why-this-ui-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Review why this interface is designed specifically without pressure or timers.",
+      "bridgeCopy": "Transparency on why your experience is calm, educational, and unpressured."
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "primaryJourneyId": "journey-statement-credit-review",
+  "storyId": "story-statement-credit-review",
+  "journeyObjective": "Enable Daniel Brooks to review his cash value points balance and instantly apply them as statement credits toward his linked card or active holiday goal.",
+  "entryPoint": "Dashboard rewards overview",
+  "completionDefinition": "Customer views points balance, reviews tangible cash value, and initiates statement credit application or goal allocation.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "How many LBG coins do I have and what are they worth in cash?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "cashEquivalentValue"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my points convert into guaranteed bill reductions?",
+      "entryCondition": "User reviews balance summary",
+      "requiredInformation": [
+        "conversionRate",
+        "guaranteedValue"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-guaranteed-rates",
+        "fact-wants-money-off-bills"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What options do I have to allocate my rewards toward bills or my holiday goal?",
+      "entryCondition": "User understands cash equivalent value",
+      "requiredInformation": [
+        "goalProgress",
+        "statementCreditOptions",
+        "allocationRules"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-hook",
+      "requiredEvidenceRefs": [
+        "fact-redeems-statement-credits",
+        "fact-automatic-payment-rewards"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-hook",
+      "order": 4,
+      "customerQuestion": "Why should I apply my statement credit or update my allocation right now?",
+      "entryCondition": "User evaluates redemption options",
+      "requiredInformation": [
+        "insightSummary",
+        "expiryOrGrowthDetail"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 5,
+      "customerQuestion": "How am I progressing toward my payment utility and holiday goals?",
+      "entryCondition": "User reviews active allocations and recent redemptions",
+      "requiredInformation": [
+        "goalProgress",
+        "recentRedemptions"
+      ],
+      "allowedNarrativeRoles": [
+        "CONTINUATION"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redeems-statement-credits"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear legal and guaranteed rate disclosures without cluttering the main flow.",
+      "contentNotes": [
+        "Guaranteed rate terms",
+        "Statement credit processing times"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

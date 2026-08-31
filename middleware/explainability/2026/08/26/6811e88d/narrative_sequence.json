@@ -1,0 +1,222 @@
+{
+  "primaryActionComponentRef": "comp-expiring-alert",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-expiring-alert",
+      "miniJourneyId": "mj-2-hook",
+      "narrativeRole": "TENSION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-2-hook",
+      "narrativeRole": "MEANING",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-expiring-alert"
+      ],
+      "resolves": [
+        "comp-expiring-alert"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress-1",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress-2",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-goal-progress-2"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-future-value",
+      "miniJourneyId": "mj-4-momentum",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-projection-chart",
+      "miniJourneyId": "mj-4-momentum",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-future-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-4-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-projection-chart"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-4-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-educational-insight"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-sync-status",
+      "miniJourneyId": "mj-4-momentum",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-rewards-insight"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-why-this-ui",
+      "miniJourneyId": "mj-4-momentum",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-expiring-alert",
+      "relationship": "sequential",
+      "bridgeIntent": "Move from overall balance to the specific upcoming expiration without panic.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-expiring-alert",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Translate expiring points into clear cash and accumulation value.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-goal-progress-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect transparent value directly to existing long-term goals.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress-1",
+      "toComponentRef": "comp-goal-progress-2",
+      "relationship": "sequential",
+      "bridgeIntent": "Display secondary accumulation goal for balanced overview.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress-2",
+      "toComponentRef": "comp-add-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide option to expand long-horizon savings targets.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-add-goal",
+      "toComponentRef": "comp-future-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate the multi-year impact of continued disciplined saving.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-future-value",
+      "toComponentRef": "comp-projection-chart",
+      "relationship": "sequential",
+      "bridgeIntent": "Visualize projected growth trajectory over time.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-projection-chart",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide educational context on long-term value preservation.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-educational-insight",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Summarize portfolio health and calm reallocation options.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-rewards-insight",
+      "toComponentRef": "comp-sync-status",
+      "relationship": "payoff-to-continuation",
+      "bridgeIntent": "Confirm secure status of connected accounts.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "comp-quick-win",
+      "componentType": "QUICK_WIN_CARD",
+      "reason": "Avoid immediate short-term transaction push that conflicts with long-horizon planner profile.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

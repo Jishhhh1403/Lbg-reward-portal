@@ -1,0 +1,124 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-statement-credit-direct",
+      "strategy": "Present a streamlined rewards overview focusing immediately on LBG coin balance, tangible cash-equivalent value in local currency, and a direct one-tap statement credit redemption option for bill reduction.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-goal-progress-blend",
+      "strategy": "Display rewards balance alongside holiday savings goal progress with linked statement credit allocation controls to satisfy both payment utility and goal tracking motives.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.1,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-verify-statement-credit",
+    "storyTitle": "Verify and Apply Statement Credit",
+    "oneSentenceStory": "The customer views their current LBG coin balance and directly applies accumulated value as a statement credit toward bill reduction.",
+    "customerSituation": "Customer visits the rewards overview on mobile to check current accumulated LBG coins and evaluate progress toward bill reduction.",
+    "storyTension": "Ensuring the available balance translates transparently to guaranteed bill reduction without unnecessary gamified clutter.",
+    "customerResolution": "Customer effortlessly verifies the balance and accesses direct statement credit redemption options.",
+    "primaryOutcome": "Effortless verification of points value and direct access to payment-linked statement credit redemption.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-redeems-statement",
+      "fact-wants-bills"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Displaying leaderboards or social rankings",
+      "Promoting experiential vouchers or partner retail deals"
+    ],
+    "completionSignals": [
+      "Customer views points balance component",
+      "Customer taps statement credit redemption option"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-statement-credit",
+      "storyId": "story-verify-statement-credit",
+      "journeyObjective": "Enable effortless verification of coin balances and direct application of statement credits for bill reduction.",
+      "completionDefinition": "Customer views points balance and selects statement credit redemption.",
+      "episodeSketches": [
+        "Display current coin balance and tangible cash equivalent value.",
+        "Provide direct one-tap statement credit redemption action."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-statement-credit",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 95,
+    "actionOutcomeContinuity": 96,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate strategy 'candidate-statement-credit-direct' perfectly aligns with Daniel Brooks' PAYMENT_UTILITY motive and strict preference for guaranteed statement credits."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "No dark patterns, artificial scarcity, or gamification elements detected. Zero manipulative urgency."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and readability verified for mobile rewards overview."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-journey coherence verified with absolute alignment between statement credit verification and direct bill reduction action."
+    }
+  ]
+}

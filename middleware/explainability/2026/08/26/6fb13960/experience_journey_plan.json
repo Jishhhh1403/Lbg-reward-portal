@@ -1,0 +1,71 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-review-balance",
+  "journeyObjective": "Provide an immediate, transparent overview of accumulated points balance, cash-equivalent bill reduction value, and active holiday goal progress.",
+  "entryPoint": "Rewards Overview mobile screen load",
+  "completionDefinition": "Customer successfully reviews balance, cash equivalent, and holiday spending goal progress without distraction.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How many LBG coins do I have and what is their exact cash value?",
+      "entryCondition": "Screen load",
+      "requiredInformation": [
+        "points: 7300",
+        "cashValue: \u00a373.00"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-cashback-check"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my automatic payment reward configured and how close am I to my holiday goal?",
+      "entryCondition": "Completed balance review",
+      "requiredInformation": [
+        "Holiday Spending Money progress: 53%",
+        "Auto payment allocation rules"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "CONFIRM_ALLOCATION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-statement-credit",
+        "fact-auto-payment",
+        "fact-holiday-goal"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-insights",
+      "purpose": "Provide clear educational breakdown of how coin values translate directly to bill reductions.",
+      "contentNotes": [
+        "Educational tip on statement credits",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "primaryActionComponentRef": "comp-expiring-alert",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-expiring-alert",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "TENSION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-expiring-alert"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-retirement-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-education-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-retirement-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-home-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-education-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-home-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-future-value",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-retirement-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-projection-chart",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-future-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-projection-chart"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-educational-insight"
+      ],
+      "resolves": [
+        "comp-expiring-alert"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-rewards-insight"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-why-this-ui",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 13,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-expiring-alert",
+      "relationship": "sequential",
+      "bridgeIntent": "Introduce upcoming expiration without pressure",
+      "bridgeCopy": "Review your balance status and upcoming preservation windows calmly."
+    },
+    {
+      "fromComponentRef": "comp-expiring-alert",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate tangible cash equivalence of the balance",
+      "bridgeCopy": "Understand the real-world value secured within your portfolio."
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-retirement-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect total balance to long-term retirement savings",
+      "bridgeCopy": "See how your accumulated coins power your foundational retirement milestone."
+    },
+    {
+      "fromComponentRef": "comp-retirement-goal",
+      "toComponentRef": "comp-education-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Extend goal tracking to children's education",
+      "bridgeCopy": "Review progress across all active family savings objectives."
+    },
+    {
+      "fromComponentRef": "comp-education-goal",
+      "toComponentRef": "comp-home-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Include dream home deposit goal",
+      "bridgeCopy": "Track your complete portfolio of long-horizon capital goals."
+    },
+    {
+      "fromComponentRef": "comp-home-goal",
+      "toComponentRef": "comp-add-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide option to expand savings goals",
+      "bridgeCopy": "Create new milestones tailored to upcoming horizons."
+    },
+    {
+      "fromComponentRef": "comp-retirement-goal",
+      "toComponentRef": "comp-future-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Show compounding projections",
+      "bridgeCopy": "Project how patient capital growth multiplies your savings over time."
+    },
+    {
+      "fromComponentRef": "comp-future-value",
+      "toComponentRef": "comp-projection-chart",
+      "relationship": "sequential",
+      "bridgeIntent": "Visualize growth timeline",
+      "bridgeCopy": "Examine the projected trajectory of your retirement fund."
+    },
+    {
+      "fromComponentRef": "comp-projection-chart",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide educational context on value protection",
+      "bridgeCopy": "Learn why preservation and compounding work best together."
+    },
+    {
+      "fromComponentRef": "comp-educational-insight",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer clear allocation review",
+      "bridgeCopy": "Take action to secure your expiring points into active goals."
+    },
+    {
+      "fromComponentRef": "comp-rewards-insight",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain mechanics clearly",
+      "bridgeCopy": "Review step-by-step guidance on how points work."
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-why-this-ui",
+      "relationship": "sequential",
+      "bridgeIntent": "Reinforce transparency and trust",
+      "bridgeCopy": "Understand why this interface was tailored specifically to your preferences."
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

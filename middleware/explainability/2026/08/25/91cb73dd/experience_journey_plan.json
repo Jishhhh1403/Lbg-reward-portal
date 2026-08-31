@@ -1,0 +1,114 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-mastery",
+  "journeyObjective": "Enable calm, self-paced progression on the First Home Savings Knowledge goal through structured learning modules and clear milestone rewards.",
+  "entryPoint": "Dashboard overview for Sophie Williams",
+  "completionDefinition": "Customer views goal progress, reviews milestone details, and selects a self-paced financial literacy module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do my points and home savings goal stand today?",
+      "entryCondition": "Session start for Sophie Williams",
+      "requiredInformation": [
+        "3,900 LBG Coins",
+        "Gold Tier",
+        "First Home Savings Knowledge 63% progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-home-goal",
+        "fact-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How are my coins calculated and what tangible value do they represent?",
+      "entryCondition": "Viewed snapshot and goal progress",
+      "requiredInformation": [
+        "Tangible value equivalent",
+        "How points work transparently"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What structured learning modules can I explore next at my own pace?",
+      "entryCondition": "Reviewed trust and tangible value equivalents",
+      "requiredInformation": [
+        "Academy module catalog",
+        "Quiz practice",
+        "Comprehension feedback"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "NAVIGATE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-module-completion",
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "What milestone rewards and knowledge badges reinforce my steady progress?",
+      "entryCondition": "Completed or reviewed learning module option",
+      "requiredInformation": [
+        "Milestones",
+        "Confidence progress",
+        "Educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-home-goal"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide clear definitions of points conversion and learning module structure without pressure.",
+      "contentNotes": [
+        "No timed elements",
+        "Self-paced tips"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

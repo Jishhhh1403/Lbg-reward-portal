@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-instant-redemption",
+  "storyId": "story-instant-redemption",
+  "journeyObjective": "Provide instant visibility into coin balance and expiring points, offering a 1-tap quick redeem grid for immediate tangible value.",
+  "entryPoint": "Dashboard load for dormant Gold tier customer with expiring points",
+  "completionDefinition": "Customer successfully selects and claims an instant reward using expiring points.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How many coins do I have and what is expiring?",
+      "entryCondition": "Session initialized with wallet context",
+      "requiredInformation": [
+        "lbgCoins",
+        "expiringPoints",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What quick treats can I grab right now before they vanish?",
+      "entryCondition": "Wallet balance and expiration acknowledged",
+      "requiredInformation": [
+        "quick redeem items",
+        "tangible cash value",
+        "instant rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-flash-offers",
+        "fact-historical-redemption"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Can I claim this instantly with one tap?",
+      "entryCondition": "Reward selected from quick redeem or instant pool",
+      "requiredInformation": [
+        "reward name",
+        "points cost",
+        "instant fulfillment"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "CLICK_QUICK_REDEEM",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-historical-redemption"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide transparent provenance and sync status for peace of mind",
+      "contentNotes": [
+        "Sync status indicator",
+        "Reward provenance history"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "planId": "plan-fd3114d5",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Unified multi-partner rewards overview highlighting simple, plain-English point transfers and clear goal progress toward the Family Holiday Fund without technical jargon or gamification elements.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 11200,
+          "tier": "Platinum",
+          "name": "Leo Morgan",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "consolidated-wallet-1",
+        "type": "CONSOLIDATED_REWARD_WALLET",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Combined Reward Wallet",
+          "subtitle": "All your partner balances in one place",
+          "programmes": [
+            {
+              "name": "Primary Bank Rewards",
+              "points": 11200,
+              "value": "\u00a3112.00",
+              "status": "Connected"
+            },
+            {
+              "name": "Partner Retail Club",
+              "points": 4500,
+              "value": "\u00a345.00",
+              "status": "Connected"
+            },
+            {
+              "name": "Travel Miles Network",
+              "points": 8300,
+              "value": "\u00a383.00",
+              "status": "Connected"
+            }
+          ],
+          "totalValue": "\u00a3240.00",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "sync-status-1",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "status": "synced",
+          "title": "Partner Sync Status",
+          "lastSyncedAt": "Today at 05:16",
+          "message": "All 3 partner accounts are successfully connected and up to date.",
+          "ctaText": "Refresh Accounts",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "partner-value-comparison-1",
+        "type": "PARTNER_VALUE_COMPARISON",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Partner Value Comparison",
+          "subtitle": "See how your points compare across connected programmes",
+          "partners": [
+            {
+              "name": "Primary Bank Rewards",
+              "points": 11200,
+              "value": "\u00a3112.00",
+              "perk": "1 point = 1p value"
+            },
+            {
+              "name": "Partner Retail Club",
+              "points": 4500,
+              "value": "\u00a345.00",
+              "perk": "1 point = 1p value"
+            },
+            {
+              "name": "Travel Miles Network",
+              "points": 8300,
+              "value": "\u00a383.00",
+              "perk": "1 point = 1p value"
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-card-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Total Cash Value",
+          "cashValue": "\u00a3240.00",
+          "pointsEquivalent": 24000,
+          "breakdown": {
+            "label": "Combined across 3 programmes",
+            "value": "\u00a3240.00 total spend value"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "partner-transfer-card-1",
+        "type": "PARTNER_TRANSFER_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Simple Point Transfers",
+          "fromProgramme": "Primary Bank Rewards",
+          "toPartner": "Travel Miles Network",
+          "points": 2000,
+          "estimatedValue": "\u00a320.00",
+          "status": "Ready to transfer instantly",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXECUTE_TRANSFER",
+            "payload": {
+              "points": 2000
+            }
+          }
+        ]
+      },
+      {
+        "id": "reward-provenance-card-1",
+        "type": "REWARD_PROVENANCE_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Recent Transfer Activity",
+          "subtitle": "Clear history of your reward movements",
+          "history": [
+            {
+              "source": "Partner Transfer Bonus",
+              "date": "24 Aug 2026",
+              "points": 1000
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-card-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": [
+            {
+              "title": "1. Connect Partners",
+              "description": "Link your favorite accounts to view all balances in one simple screen."
+            },
+            {
+              "title": "2. Compare Value",
+              "description": "See exact pound values clearly without any confusing hidden formulas."
+            },
+            {
+              "title": "3. Transfer Easily",
+              "description": "Move your rewards between partners instantly with just one tap."
+            }
+          ],
+          "ctaLabel": "Learn More About Transfers",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-card-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "goalName": "Family Holiday Fund",
+          "current": 1750,
+          "target": 3000,
+          "percentage": 58,
+          "remaining": 1250,
+          "motivationalMessage": "You're over halfway to your Family Holiday Fund goal!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "programme-connection-card-1",
+        "type": "PROGRAMME_CONNECTION_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Connected Partner Programmes",
+          "subtitle": "Manage your active partner programme links",
+          "programmes": [
+            {
+              "name": "Primary Bank Rewards",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Partner Retail Club",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Travel Miles Network",
+              "status": "Active",
+              "connected": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE"
+    ]
+  },
+  "strategy": "Unified multi-partner rewards overview highlighting simple, plain-English point transfers and clear goal progress toward the Family Holiday Fund without technical jargon or gamification elements.",
+  "confidence": 0.95
+}

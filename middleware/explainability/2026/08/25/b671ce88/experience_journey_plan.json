@@ -1,0 +1,107 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review financial literacy quiz milestones and track First Home Savings goal progress in an unpressured, mastery-oriented environment.",
+  "entryPoint": "Customer opens the rewards and learning overview in the mobile app.",
+  "completionDefinition": "Customer views educational quiz milestones and goal progress comfortably without pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my balance and learning?",
+      "entryCondition": "App launch",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-modules-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How does my savings goal progress look?",
+      "entryCondition": "Completed balance review",
+      "requiredInformation": [
+        "First Home Savings Knowledge goal progress (63%)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational milestones and learning modules can I explore next?",
+      "entryCondition": "Reviewed goal progress",
+      "requiredInformation": [
+        "learning modules",
+        "quiz milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CLICK",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-modules-100",
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What are my points worth in tangible terms?",
+      "entryCondition": "Reviewed learning modules",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide transparent terms on points conversion and learning module rewards without any time pressure.",
+      "contentNotes": [
+        "No expiration warnings or countdowns for this educational profile."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

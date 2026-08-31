@@ -1,0 +1,220 @@
+{
+  "planId": "plan-ab9beece",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Surface points balance and transparent expiring points notice without manipulative countdowns, followed by instant reward options and quick win redemption tailored for Ryan's playful instant gratification style.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3600,
+          "tier": "Gold",
+          "name": "Ryan Okafor",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Heads up, Ryan!",
+          "expiringPoints": 1500,
+          "daysLeft": 7,
+          "message": "1,500 of your LBG coins are gently reminding you it's treat time by next week.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Wallet Power",
+          "cashValue": "\u00a336.00",
+          "pointsEquivalent": 3600,
+          "breakdown": {
+            "label": "Available LBG Coins",
+            "value": "3,600 coins"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quick-redeem",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Instant Treats Ready For You",
+          "description": "Claim instantly with zero fuss \u2014 just tap and enjoy your perks!",
+          "rewards": {
+            "name": "Artisan Coffee & Pastry Bundle",
+            "points": 350,
+            "icon": "coffee"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_INSTANT",
+            "payload": {
+              "rewardName": "Artisan Coffee & Pastry Bundle",
+              "pointsCost": 350
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-carousel",
+        "type": "REWARD_CAROUSEL",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "More Instant Picks",
+          "rewards": {
+            "name": "Movie Night Streaming Pass",
+            "points": 500,
+            "category": "Entertainment",
+            "limited": false
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Super Speedy Win",
+          "subtitle": "Claim in under 30 seconds",
+          "rewards": {
+            "name": "Snack Box Voucher",
+            "points": 200
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-streak-card",
+        "type": "STREAK_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "streakDays": 0,
+          "message": "Welcome back, Ryan! Let's kick off a brand new reward streak today.",
+          "nextReward": "Bonus 100 coins on your next instant redeem",
+          "milestones": {
+            "days": 3,
+            "reward": "Coffee voucher bonus",
+            "achieved": false
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-personalized-offer",
+        "type": "PERSONALIZED_OFFER_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Picked Just For You",
+          "subtitle": "Instant gratification special",
+          "offer": "Free Delivery Pass on next order",
+          "validUntil": "7 days",
+          "message": "Because you love fast, effortless perks!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reengagement-banner",
+        "type": "REENGAGEMENT_BANNER",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Great to see you again, Ryan!",
+          "message": "Your rewards have been waiting patiently. Let's make today rewarding.",
+          "ctaText": "Explore Instant Treats",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-badge-card",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Your Collector Badges",
+          "badges": {
+            "name": "Instant Redeemer",
+            "icon": "zap",
+            "earned": true
+          },
+          "totalEarned": 3,
+          "totalAvailable": 10,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "status": "synced",
+          "title": "Wallet Synchronised",
+          "lastSyncedAt": "Just now",
+          "message": "All 3,600 LBG coins are fully up to date and secure.",
+          "ctaText": "Refresh",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "IMMEDIATE_VALUE_MATCH"
+    ]
+  },
+  "strategy": "Surface points balance and transparent expiring points notice without manipulative countdowns, followed by instant reward options and quick win redemption tailored for Ryan's playful instant gratification style.",
+  "confidence": 0.98
+}

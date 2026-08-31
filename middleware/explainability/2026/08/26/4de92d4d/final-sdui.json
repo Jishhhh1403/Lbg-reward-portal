@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "4de92d4d",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_WALLET",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "Steady progress through structured learning and disciplined saving brings your first home closer.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "First Home Savings Knowledge"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-learning-mission",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "courseName": "Rewards Academy: Advanced Property Planning",
+        "currentLesson": 3,
+        "totalLessons": 5,
+        "lessonPoints": 150,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CONTINUE_LESSON",
+          "payload": {
+            "courseName": "Rewards Academy: Advanced Property Planning",
+            "lesson": 3
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quiz",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "question": "What is the primary benefit of compounding interest in long-term savings vehicles?",
+        "options": "A) Linear growth over time\nB) Earning returns on both principal and accumulated interest\nC) Fixed dividend payout regardless of balance",
+        "reward": "150 Learning Points",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ_ANSWER",
+          "payload": {
+            "selectedOption": "B"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-learning-mission"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-comprehension-feedback",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Mastery Verification",
+        "question": "How does compound growth accelerate your savings goal?",
+        "yourAnswer": "Returns generate additional earnings.",
+        "correctAnswer": "Returns generate additional earnings on both initial principal and prior gains.",
+        "feedback": "Excellent conceptual understanding. You have fully grasped the compounding mechanism.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "REVIEW_FEEDBACK",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "comp-quiz"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-confidence-progress",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Financial Competence Index",
+        "topic": "Mortgage & Savings Planning",
+        "confidencePercent": 88,
+        "levelLabel": "Advanced Mastery",
+        "nextMilestone": "Expert Property Strategist Badge",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_CONFIDENCE_METRICS",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-comprehension-feedback"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Knowledge Deep-Dive",
+        "insight": "Consistent module engagement correlates with a 42% higher successful savings completion rate over 24 months.",
+        "source": "LBG Financial Literacy Research Institute",
+        "actionLabel": "Explore Reading Library",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "OPEN_LIBRARY",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-confidence-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Your Rewards Value Transparency",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": {
+          "Base Balance": "\u00a331.00",
+          "Academy Modules Bonus": "\u00a38.00"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_VALUE_DETAILS",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-educational-insight"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "steps": {
+          "Step 1": "Complete structured financial literacy modules at your own pace.",
+          "Step 2": "Pass knowledge quizzes to reinforce mastery without timer pressure.",
+          "Step 3": "Apply earned points and knowledge directly toward long-term savings goals."
+        },
+        "ctaLabel": "View Detailed Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_POINTS_GUIDE",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "First Home Goal Milestone Reward",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": {
+          "name": "Conveyancing Fee Contribution Voucher",
+          "points": 2000,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_GOAL_REWARD",
+          "payload": {
+            "rewardName": "Conveyancing Fee Contribution Voucher"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-how-points-work"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "milestones": {
+          "Foundation Module Completed": true,
+          "First Home Savings 50% Milestone": true,
+          "Advanced Compound Interest Mastery": false
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_MILESTONES",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-linked-reward"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-badge",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Mastery Badges & Achievements",
+        "badges": {
+          "Financial Literacy Scholar": "brain",
+          "Consistent Learner": "flame",
+          "Goal Strategist": "trophy",
+          "Mastery Expert": "crown"
+        },
+        "totalEarned": 9,
+        "totalAvailable": 12,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BADGES",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "comp-milestone"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-learning-mission",
+          "comp-quiz",
+          "comp-how-points-work",
+          "comp-goal-linked-reward"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-comprehension-feedback",
+          "comp-confidence-progress",
+          "comp-milestone",
+          "comp-badge"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-explore-learning",
+    "primaryOutcome": "Master financial literacy topics and track savings goal advancement.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-learning-mission"
+  }
+}

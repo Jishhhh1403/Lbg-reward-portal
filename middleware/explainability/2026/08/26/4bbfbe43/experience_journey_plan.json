@@ -1,0 +1,111 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Provide clear rewards overview and frictionless statement credit application for bill reduction.",
+  "entryPoint": "Customer opens app to review rewards standing and current goal progress.",
+  "completionDefinition": "Customer views balance/cashback and successfully applies or allocates statement credit.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and cashback standing?",
+      "entryCondition": "App opened",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How does my holiday savings goal stand?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "goalName",
+        "current",
+        "target",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-goal-holiday"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I apply my rewards directly as a statement credit?",
+      "entryCondition": "Goal reviewed",
+      "requiredInformation": [
+        "paymentMethod",
+        "rewardRate"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What exact cash value and transparency does my coin balance represent?",
+      "entryCondition": "Statement credit option reviewed",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-2",
+        "fact-signal-5"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational",
+      "purpose": "Provide transparent breakdowns of how coin-to-statement-credit conversions operate without gamification.",
+      "contentNotes": [
+        "Educational explanation of point valuation and guaranteed rates."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

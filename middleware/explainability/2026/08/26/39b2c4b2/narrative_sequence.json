@@ -1,0 +1,183 @@
+{
+  "primaryActionComponentRef": "partner-transfer-card-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "consolidated-reward-wallet-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "sync-status-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "consolidated-reward-wallet-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "partner-value-comparison-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "sync-status-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 5,
+      "dependsOn": [
+        "partner-value-comparison-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "partner-transfer-card-1",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "tangible-value-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-provenance-card-1",
+      "miniJourneyId": "mj-5",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "partner-transfer-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-card-1",
+      "miniJourneyId": "mj-5",
+      "narrativeRole": "MEANING",
+      "sequence": 8,
+      "dependsOn": [
+        "reward-provenance-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-card-1",
+      "miniJourneyId": "mj-6",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "how-points-work-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "programme-connection-card-1",
+      "miniJourneyId": "mj-7",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 10,
+      "dependsOn": [
+        "goal-progress-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "consolidated-reward-wallet-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Show individual balance consolidated into multi-partner view",
+      "bridgeCopy": "See how your total balance breaks down across partner programmes."
+    },
+    {
+      "fromComponentRef": "consolidated-reward-wallet-1",
+      "toComponentRef": "sync-status-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Confirm live synchronization of all partner accounts",
+      "bridgeCopy": "Your combined balances are securely updated."
+    },
+    {
+      "fromComponentRef": "sync-status-card-1",
+      "toComponentRef": "partner-value-comparison-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Present clear partner comparison options",
+      "bridgeCopy": "Compare value across programmes to choose your best transfer path."
+    },
+    {
+      "fromComponentRef": "partner-value-comparison-1",
+      "toComponentRef": "tangible-value-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Quantify point values in tangible GBP terms",
+      "bridgeCopy": "Every point translates directly into spending power."
+    },
+    {
+      "fromComponentRef": "tangible-value-card-1",
+      "toComponentRef": "partner-transfer-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Enable simple point transfer between partners",
+      "bridgeCopy": "Move your points instantly with zero fees or complex jargon."
+    },
+    {
+      "fromComponentRef": "partner-transfer-card-1",
+      "toComponentRef": "reward-provenance-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Display history of transferred and earned points",
+      "bridgeCopy": "Review your recent transfer history for complete transparency."
+    },
+    {
+      "fromComponentRef": "reward-provenance-card-1",
+      "toComponentRef": "how-points-work-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain how point portability works simply",
+      "bridgeCopy": "Understand the three easy steps to managing multi-partner rewards."
+    },
+    {
+      "fromComponentRef": "how-points-work-card-1",
+      "toComponentRef": "goal-progress-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect portability to your Family Holiday Fund progress",
+      "bridgeCopy": "Combine your partner balances to accelerate your savings goal."
+    },
+    {
+      "fromComponentRef": "goal-progress-card-1",
+      "toComponentRef": "programme-connection-card-1",
+      "relationship": "payoff-to-continuation",
+      "bridgeIntent": "Confirm all partner programme connections are active",
+      "bridgeCopy": "Manage and verify all connected programmes in one place."
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

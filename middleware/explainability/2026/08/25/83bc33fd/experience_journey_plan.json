@@ -1,0 +1,96 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Enable Sophie to inspect her First Home Savings Knowledge progress and access unhurried mastery modules transparently.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer views goal progress metrics and opens an educational module or knowledge checkpoint.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings mastery?",
+      "entryCondition": "User opens rewards and financial literacy overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-home",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate to tangible financial value and learning?",
+      "entryCondition": "User reviews points health and educational mechanics",
+      "requiredInformation": [
+        "tangible value breakdown",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-sig-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What mastery modules and milestones can I explore next at my own pace?",
+      "entryCondition": "User inspects structured learning pathways and milestones",
+      "requiredInformation": [
+        "goal progress",
+        "learning mission",
+        "quiz",
+        "feedback",
+        "confidence",
+        "insight"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "OPEN_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-3",
+        "fact-sig-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide clear definitions of points equivalence without promotional pressure",
+      "contentNotes": [
+        "Educational footnotes on savings conversion"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

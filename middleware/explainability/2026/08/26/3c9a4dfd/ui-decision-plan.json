@@ -1,0 +1,232 @@
+{
+  "planId": "plan-3c9a4dfd",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Align strictly with EDUCATIONAL_COMPETENCE persona and mastery motivation by centering on goal progress, transparent tangible value, learning missions, and quizzes while suppressing timed challenges and rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward mastering your first home knowledge and savings target.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Rewards Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Home Savings Equivalent",
+            "value": "1.0% contribution boost"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Financial Mastery Path",
+          "missionName": "First Home Mortgage Fundamentals",
+          "description": "Master the core principles of home buying and deposit structuring at your own pace.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary benefit of a fixed-rate mortgage during your initial savings phase?",
+          "options": "Predictable monthly budgeting, Variable interest rates, Zero down payment",
+          "reward": "50 Points & Module Mastery",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_QUIZ",
+            "payload": {
+              "quizId": "quiz-mortgage-basics"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Recent Concept Check",
+          "question": "Understanding Compound Interest in Savings Pots",
+          "yourAnswer": "Interest calculated on initial principal and accumulated interest",
+          "correctAnswer": "Interest calculated on initial principal and accumulated interest",
+          "feedback": "Excellent mastery! You successfully grasped how compounding accelerates long-term savings growth.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Competence & Confidence Tracker",
+          "topic": "Mortgage & Property Acquisition",
+          "confidencePercent": 88,
+          "levelLabel": "Advanced Understanding",
+          "nextMilestone": "Final property assessment module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Consistent review of financial modules correlates with a 40% higher accuracy in long-term budget forecasting.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Review Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Transparent Earning",
+            "description": "Every module completed and milestone achieved adds transparent, guaranteed value to your savings goals."
+          },
+          "ctaLabel": "Explore Programme Terms",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Unlocked Goal Milestone",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Deposit Saver Bonus Boost",
+            "points": 300,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set another educational or savings milestone to track",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "milestones": {
+            "label": "Completed 4 Financial Literacy Modules with 100% Mastery",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANT",
+      "SUPPRESSIONS_RESPECTED"
+    ]
+  },
+  "strategy": "Align strictly with EDUCATIONAL_COMPETENCE persona and mastery motivation by centering on goal progress, transparent tangible value, learning missions, and quizzes while suppressing timed challenges and rankings.",
+  "confidence": 0.96
+}

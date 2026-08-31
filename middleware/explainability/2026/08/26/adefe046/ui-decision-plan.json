@@ -1,0 +1,281 @@
+{
+  "planId": "plan-adefe046",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Personalize the rewards-overview mobile interface to emphasize educational modules, First Home Savings Knowledge progress (63%), and transparent value explainers while strictly suppressing timed challenges and public leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward mastering your first home savings knowledge milestone.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Financial Literacy Mastery",
+          "missionName": "Advanced Mortgage & Deposit Strategies",
+          "description": "Deepen your expertise on deposit structures and interest accumulation at your own pace.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of a fixed-rate savings accumulation schedule for a deposit?",
+          "options": "Predictable interest compounding without rate volatility risk",
+          "reward": "150 Learning Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "quizId": "deposit-strategies-q1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Verification",
+          "question": "How do compounding intervals affect long-term deposit growth?",
+          "yourAnswer": "More frequent compounding increases effective annual yield.",
+          "correctAnswer": "More frequent compounding increases effective annual yield.",
+          "feedback": "Correct! You have fully mastered this concept.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Mastery Confidence Tracker",
+          "topic": "First Home Deposit Mechanics",
+          "confidencePercent": 92,
+          "levelLabel": "High Mastery Confidence",
+          "nextMilestone": "Expert Deposit Structuring Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Literacy Research Insight",
+          "insight": "Learners who review foundational mechanics twice retain 40% more long-term financial capability.",
+          "source": "Rewards Academy Insights",
+          "actionLabel": "Review Module Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": [
+            {
+              "title": "Earn via Learning",
+              "description": "Complete financial literacy modules and quizzes to earn transparent reward points."
+            },
+            {
+              "title": "Track Goals",
+              "description": "Link your points directly to long-term savings goals like your first home deposit."
+            },
+            {
+              "title": "Redeem with Clarity",
+              "description": "Convert points to tangible financial value with zero hidden conditions."
+            }
+          ],
+          "ctaLabel": "Explore Transparent Value Rules",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Transparent Coin Valuation",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Base LBG Coin Value",
+            "value": "100 coins = \u00a31.00 transparent cash equivalent"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Savings Boost Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Deposit Top-Up Match",
+            "points": 500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": [
+            {
+              "label": "Completed 5 Financial Literacy Modules",
+              "achieved": true
+            },
+            {
+              "label": "Reached 60% First Home Savings Goal",
+              "achieved": true
+            },
+            {
+              "label": "Achieve 80% Overall Mastery Score",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-coach-tip",
+        "type": "COACH_TIP_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "coachName": "Ava from Rewards Coaching",
+          "headline": "Consistency Over Speed",
+          "body": "Taking your time with each financial module ensures lasting competence for your home purchase journey.",
+          "relatedBrand": "Rewards Academy",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Add a New Learning Goal",
+          "subtitle": "Set a new financial literacy or savings target at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "title": "Learning & Growth Summary",
+          "topBrandName": "Rewards Academy",
+          "topBrandPoints": 3900,
+          "growthTip": "Your consistent module review habits build robust financial literacy.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "View Full Analytics",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "LEARNING_MASTERY_COMPLIANT"
+    ]
+  },
+  "strategy": "Personalize the rewards-overview mobile interface to emphasize educational modules, First Home Savings Knowledge progress (63%), and transparent value explainers while strictly suppressing timed challenges and public leaderboards.",
+  "confidence": 0.96
+}

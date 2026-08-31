@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-candidate-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review statement credit earnings and track progress toward holiday spending money with maximum payment utility.",
+  "entryPoint": "Dashboard overview showing points balance and holiday savings progress.",
+  "completionDefinition": "Customer views points balance, holiday goal progress, and executes or confirms statement credit allocation.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and holiday savings?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-sig-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I apply my rewards directly to statement bills?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "payment rewards",
+        "allocation control"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-sig-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is the exact cash value of my rewards?",
+      "entryCondition": "Payment reward confirmed",
+      "requiredInformation": [
+        "cash value breakdown",
+        "insights"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education",
+      "purpose": "Provide educational context on how points convert to statement credits without gamification clutter.",
+      "contentNotes": [
+        "How points work educational card",
+        "Tangible cash value breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

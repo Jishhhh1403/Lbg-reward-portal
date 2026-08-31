@@ -1,0 +1,136 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Instant reward spotlight focusing on expiring points with a low-friction 1-click customer choice panel for immediate tangible redemption.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Flash offer challenge featuring streak bonuses and gamified instant vouchers to re-engage the inactive user.",
+      "scores": {
+        "customerGoalRelevance": 8,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 9,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 8.5,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-instant-redemption",
+    "storyTitle": "Quick Win for Expiring Points",
+    "oneSentenceStory": "Ryan seizes an immediate, low-friction instant reward to claim tangible value for points expiring soon without feeling manipulated.",
+    "customerSituation": "Ryan returns after 41 days of inactivity and has 1,500 points expiring in 7 days.",
+    "storyTension": "Risk of losing points and friction from long-term planning or notification fatigue.",
+    "customerResolution": "A clear, transparent instant reward option lets Ryan redeem effortlessly in seconds.",
+    "primaryOutcome": "Immediate and effortless redemption of expiring points for tangible value.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-expiring-points",
+      "fact-inactivity",
+      "fact-instant-reward-response"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "manipulative countdown or urgency tactics",
+      "partner comparisons or long-term growth education",
+      "fear-based notification framing"
+    ],
+    "completionSignals": [
+      "Customer views instant reward card",
+      "Customer selects item in customer choice panel",
+      "Successful point redemption transaction"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-instant-redemption",
+      "journeyObjective": "Facilitate immediate, effortless redemption of 1,500 expiring points via an instant reward card and customer choice panel.",
+      "completionDefinition": "Customer views points, inspects expiring points banner, interacts with instant reward card, and completes redemption via customer choice panel.",
+      "episodeSketches": [
+        "Episode 1: Surface transparent points balance and expiring points notification without fear-based framing.",
+        "Episode 2: Present instant reward card and low-friction customer choice panel for immediate one-click redemption."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.7,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 95,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 strongly matches immediate value preference and historical redemption speed."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero manipulative countdowns or fear-based framing detected. Compliance verified."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Cognitive fit and low-friction interface meet high accessibility standards."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story hypothesis story-instant-redemption perfectly aligns with customer context."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate-1 seamlessly supports the approved story with one dominant action."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "All coherence metrics passed with high confidence. PASS decision locked."
+    }
+  ]
+}

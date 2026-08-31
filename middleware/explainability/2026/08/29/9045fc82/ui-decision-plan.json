@@ -1,0 +1,226 @@
+{
+  "planId": "plan-9045fc82",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Educational Mastery & Goal Progression Strategy: Centers the experience on the 63% progress of 'First Home Savings Knowledge', highlighting POINTS_BALANCE, GOAL_PROGRESS_CARD, LEARNING_MISSION_CARD, QUIZ_CARD, COMPREHENSION_FEEDBACK_CARD, CONFIDENCE_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD, and TANGIBLE_VALUE_CARD with an educational tone, strictly avoiding timed challenges or competitive rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 1480,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your first home knowledge goal at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Structured Learning Path",
+          "missionName": "First Home Savings Mastery",
+          "description": "Complete curated financial literacy modules to build lasting competence for homeownership.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of a Lifetime ISA government bonus for first-time buyers?",
+          "options": "A) 25% bonus on contributions up to \u00a34,000 per year\nB) Guaranteed mortgage approval\nC) Tax-free cash withdrawals at any time",
+          "reward": "75 LBG Coins & Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_QUIZ",
+            "payload": {
+              "quizId": "quiz-lisa-basics"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Check",
+          "question": "Why do compound savings matter over 5 years?",
+          "yourAnswer": "Interest earns additional interest on the total balance over time.",
+          "correctAnswer": "Interest earns additional interest on the total balance over time.",
+          "feedback": "Correct! Consistent contributions combined with compounding accelerate your target timeline.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Learning Confidence",
+          "topic": "Mortgage Readiness & Deposit Structures",
+          "confidencePercent": 84,
+          "levelLabel": "Advanced understanding",
+          "nextMilestone": "Final Module: Completion Assessment",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Literacy Insight",
+          "insight": "Understanding deposit structures early reduces borrowing costs by up to 1.2% over a standard 25-year mortgage term.",
+          "source": "LBG Financial Education Research Desk",
+          "actionLabel": "Explore Module Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Points Cash Value & Transparency",
+          "cashValue": "\u00a314.80",
+          "pointsEquivalent": 1480,
+          "breakdown": {
+            "label": "Learning Module Completion Value",
+            "value": "\u00a314.80 equivalent in educational rewards"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Milestone Reward Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Homebuyer Expert Badge & \u00a325 Savings Boost Voucher",
+            "points": 1480,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 5 out of 8 First Home Savings modules",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Add a New Learning Goal",
+          "subtitle": "Expand your financial literacy roadmap with modular topics.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "steps": {
+            "title": "Learn & Earn Transparently",
+            "description": "Complete educational modules at your own pace to earn LBG Coins and build verified financial capability."
+          },
+          "ctaLabel": "View Programme Terms",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_MASTERY_COMPLIANT"
+    ]
+  },
+  "strategy": "Educational Mastery & Goal Progression Strategy: Centers the experience on the 63% progress of 'First Home Savings Knowledge', highlighting POINTS_BALANCE, GOAL_PROGRESS_CARD, LEARNING_MISSION_CARD, QUIZ_CARD, COMPREHENSION_FEEDBACK_CARD, CONFIDENCE_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD, and TANGIBLE_VALUE_CARD with an educational tone, strictly avoiding timed challenges or competitive rankings.",
+  "confidence": 0.98
+}

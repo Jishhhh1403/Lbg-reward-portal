@@ -1,0 +1,92 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-realign-long-term-security",
+  "journeyObjective": "Provide a calm, educational rewards overview highlighting long-term goal progress and transparent options for expiring points.",
+  "entryPoint": "Rewards Overview Screen for Elena Vasquez",
+  "completionDefinition": "Customer reviews goal progress and successfully allocates expiring points toward a long-horizon savings goal.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand and what needs my attention?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "expiring points status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-points-balance",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How are my long-term savings goals progressing and what is their projected value?",
+      "entryCondition": "Customer views balance overview and expiring points alert",
+      "requiredInformation": [
+        "goal progress for retirement, education, and home",
+        "projected growth and educational value"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-savings-stall",
+        "fact-multiple-goals",
+        "fact-historical-response"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I securely allocate my expiring points toward my goals?",
+      "entryCondition": "Customer reviews goal progress and educational insights",
+      "requiredInformation": [
+        "goal linked reward options",
+        "tangible cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ALLOCATE_POINTS",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-expiring-points",
+        "fact-multiple-goals"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-insights",
+      "purpose": "Provide calm educational guidance on compounding and long-term security without urgency.",
+      "contentNotes": [
+        "Educational insight into long-horizon holding",
+        "Value transparency breakdowns"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

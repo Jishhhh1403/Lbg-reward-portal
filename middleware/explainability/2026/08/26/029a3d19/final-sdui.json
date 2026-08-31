@@ -1,0 +1,497 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "029a3d19",
+  "createdAt": "2026-03-31T00:00:00Z",
+  "expiresAt": "2026-04-07T00:00:00Z",
+  "customerRef": "customer_007",
+  "components": [
+    {
+      "id": "comp-1-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 24500,
+        "tier": "Diamond",
+        "name": "Elena Vasquez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-1-snapshot",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-2-expiring",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Value Protection Notice",
+        "expiringPoints": 2400,
+        "daysLeft": 9,
+        "message": "2,400 points are scheduled to expire in 9 days. Secure them into your long-term goals calmly.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-2-hook",
+        "role": "TENSION",
+        "dependsOn": [
+          "comp-1-balance"
+        ],
+        "resolves": [
+          "comp-1-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-3-health",
+      "type": "POINTS_HEALTH_SCORE",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "score": 88,
+        "delta": 2,
+        "tip": "Your accumulated value remains strong and well-positioned for long-horizon compounding.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-2-hook",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-2-expiring"
+        ],
+        "resolves": [
+          "comp-2-expiring"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-4-goal-retirement",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 24500,
+        "target": 100000,
+        "percentage": 25,
+        "estimatedCompletion": "2031",
+        "message": "Steady accumulation preserves your long-term security. 25% achieved toward your target.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-3-health"
+        ],
+        "resolves": [
+          "comp-3-health"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-5-goal-education",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 18500,
+        "target": 50000,
+        "percentage": 37,
+        "remaining": 31500,
+        "motivationalMessage": "Consistent monthly allocations ensure steady progress without market exposure.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-4-goal-retirement"
+        ],
+        "resolves": [
+          "comp-4-goal-retirement"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-6-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Projected Long-Term Growth",
+        "currentValue": 24500,
+        "projectedValue": 38200,
+        "timeframe": "5 Years",
+        "growthRate": "4.5% p.a. equivalent",
+        "message": "Educational projection based on your historical holding pattern and partner multipliers.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-5-goal-education"
+        ],
+        "resolves": [
+          "comp-5-goal-education"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-7-projection-chart",
+      "type": "PROJECTION_CHART",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Compound Value Trajectory",
+        "growthLabel": "Estimated Portfolio Growth",
+        "data": [
+          {
+            "year": "2026",
+            "value": 24500
+          },
+          {
+            "year": "2027",
+            "value": 27200
+          },
+          {
+            "year": "2028",
+            "value": 30100
+          },
+          {
+            "year": "2029",
+            "value": 33200
+          },
+          {
+            "year": "2030",
+            "value": 38200
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-6-future-value"
+        ],
+        "resolves": [
+          "comp-6-future-value"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-8-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Educational Insight: Value Preservation",
+        "insight": "Allocating idle points directly into long-term funds protects against devaluation and compounds purchasing power over time.",
+        "source": "Wealth & Rewards Research",
+        "actionLabel": "Read Full Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-7-projection-chart"
+        ],
+        "resolves": [
+          "comp-7-projection-chart"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-9-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Your Points Cash Equivalent",
+        "cashValue": "\u00a3245.00",
+        "pointsEquivalent": 24500,
+        "breakdown": {
+          "Retirement Fund Value": "\u00a3185.00",
+          "Education Fund Value": "\u00a360.00"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-8-educational-insight"
+        ],
+        "resolves": [
+          "comp-8-educational-insight"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-10-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Add a New Long-Term Goal",
+        "subtitle": "Set up a dedicated savings milestone with zero fees.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-9-tangible-value"
+        ],
+        "resolves": [
+          "comp-9-tangible-value"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-11-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Calm Allocation Option",
+        "subtitle": "Transfer expiring 2,400 points to Retirement Fund",
+        "rewards": {
+          "name": "Retirement Fund Top-Up",
+          "points": 2400
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-3-pathways",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-10-add-goal"
+        ],
+        "resolves": [
+          "comp-10-add-goal"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-12-earn-breakdown",
+      "type": "EARN_BREAKDOWN_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "period": "this year",
+        "segments": {
+          "Retirement Fund": 12000,
+          "Education Fund": 5000,
+          "Partner Transfers": 7500
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-4-momentum",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-11-quick-win"
+        ],
+        "resolves": [
+          "comp-11-quick-win"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-13-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Points History & Provenance",
+        "subtitle": "Transparent audit trail of your accumulated balance",
+        "history": {
+          "source": "Retirement Bonus",
+          "date": "15 Aug 2026",
+          "points": 12000
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-5-trust",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-12-earn-breakdown"
+        ],
+        "resolves": [
+          "comp-12-earn-breakdown"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-14-why-ui",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "title": "Why This View?",
+        "intro": "Designed specifically for disciplined long-term savers like you.",
+        "reasons": {
+          "Value Protection": "Clear timeline for expiring points without countdown pressure",
+          "Compound Projections": "Transparent educational modeling of your 5-year outlook"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-protect-value",
+        "miniJourneyId": "mj-5-trust",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "comp-13-provenance"
+        ],
+        "resolves": [
+          "comp-13-provenance"
+        ],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "BUILD_YOUR_FUTURE",
+    "headline": "Your plan, moving forward",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "HOOK",
+        "label": "Why this matters now",
+        "role": "Grab attention with the single most relevant moment",
+        "componentIds": [
+          "comp-2-expiring"
+        ]
+      },
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-1-balance",
+          "comp-3-health",
+          "comp-4-goal-retirement",
+          "comp-5-goal-education",
+          "comp-6-future-value",
+          "comp-7-projection-chart",
+          "comp-9-tangible-value",
+          "comp-12-earn-breakdown"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-10-add-goal",
+          "comp-11-quick-win"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-8-educational-insight",
+          "comp-13-provenance",
+          "comp-14-why-ui"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-protect-value",
+    "primaryOutcome": "Re-engage with long-term savings security and clear value protection.",
+    "primaryJourneyId": "journey-protect-value",
+    "currentMiniJourneyId": "mj-3-pathways",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-11-quick-win"
+  }
+}

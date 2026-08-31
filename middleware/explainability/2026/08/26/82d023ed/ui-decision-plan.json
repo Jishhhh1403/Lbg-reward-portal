@@ -1,0 +1,304 @@
+{
+  "planId": "plan-82d023ed",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Goal-Centric Educational Mastery: Highlights First Home Savings Knowledge progress (63%), current points balance (3900 LBG Coins), tangible coin value transparency, and direct pathways to unhurried educational quiz modules and mastery milestones without any timed pressure or social rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET",
+            "payload": {
+              "destination": "wallet_details"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% through your First Home Savings Knowledge goal. Keep exploring self-paced modules at your own rhythm.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalId": "first-home-savings"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Savings Knowledge Path",
+          "missionName": "First Home Acquisition Fundamentals",
+          "description": "Master deposit mechanics, interest structures, and government savings schemes at your own pace.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "RESUME_MISSION",
+            "payload": {
+              "missionId": "home-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which savings vehicle offers tax-free bonuses specifically tailored for first-time home buyers in the UK?",
+          "options": "Help to Buy ISA, Lifetime ISA (LISA), Standard Cash ISA, Regular Saver",
+          "reward": "150 LBG Coins & Milestone Credit",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_QUIZ",
+            "payload": {
+              "quizId": "quiz-lisa-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Mastery Check",
+          "question": "Why does compound growth accelerate savings over long horizons?",
+          "yourAnswer": "Interest is earned on both initial principal and accumulated interest over time.",
+          "correctAnswer": "Interest is earned on both initial principal and accumulated interest over time.",
+          "feedback": "Spot on. Your consistent review of core financial principles ensures deep comprehension.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "REVIEW_EXPLANATION",
+            "payload": {
+              "topicId": "compound-growth"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-confidence",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Knowledge Confidence",
+          "topic": "First Home Deposit Planning",
+          "confidencePercent": 88,
+          "levelLabel": "High Competence",
+          "nextMilestone": "Conveyancing & Completion Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CONFIDENCE_DETAILS",
+            "payload": {
+              "topic": "deposit-planning"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Literacy Insight",
+          "insight": "Learners who review foundational concepts periodically retain 40% more practical knowledge for long-term property planning.",
+          "source": "LBG Educational Research Desk",
+          "actionLabel": "Explore Reading Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_INSIGHT",
+            "payload": {
+              "insightId": "insight-retention"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Coin Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Redemption Equivalency",
+            "value": "100 LBG Coins = \u00a31.00 across connected partner brands with zero conversion fees."
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_DETAILS",
+            "payload": {
+              "breakdownType": "coin-value"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Complete Modules",
+            "description": "Earn LBG Coins as you master financial literacy topics and hit educational milestones."
+          },
+          "ctaLabel": "Learn More About Earning",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GUIDE",
+            "payload": {
+              "guideId": "earning-guide"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "First Home Savings Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Advanced Property Buying Masterclass Voucher",
+            "points": 1200,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardId": "property-masterclass"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": {
+            "label": "Completed 5 Literacy Modules & Reached 63% Savings Knowledge Goal",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONE",
+            "payload": {
+              "milestoneId": "milestone-63"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Knowledge Goal",
+          "subtitle": "Set up another self-paced learning objective for your financial journey",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {
+              "category": "knowledge"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "CARD_RULE_ENGINE_COMPLIANT",
+      "EDUCATIONAL_TONE"
+    ]
+  },
+  "strategy": "Goal-Centric Educational Mastery: Highlights First Home Savings Knowledge progress (63%), current points balance (3900 LBG Coins), tangible coin value transparency, and direct pathways to unhurried educational quiz modules and mastery milestones without any timed pressure or social rankings.",
+  "confidence": 0.95
+}

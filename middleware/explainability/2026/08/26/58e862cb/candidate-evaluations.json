@@ -1,0 +1,132 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Reassuring, low-pressure rewards overview featuring transparent point status, calm value explanation, and flexible customer choice panel honoring complete autonomy and risk protection without artificial urgency.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Standard transactional balance view with immediate countdown timer and high-urgency redemption notifications to prompt rapid point usage before expiry.",
+      "scores": {
+        "customerGoalRelevance": 4,
+        "expectedCustomerUtility": 3,
+        "screenLevelStoryCoherence": 3,
+        "journeyAndActionContinuity": 4,
+        "accessibilityAndCognitiveFit": 5,
+        "brandAndLegalConsistency": 2,
+        "rewardProfileAlignment": 3,
+        "evidenceConfidence": 7,
+        "usefulNovelty": 2,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 3.9,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-protect-value",
+    "storyTitle": "Clear Value Protection",
+    "oneSentenceStory": "Review your 1850 expiring points calmly and choose a flexible redemption path at your own pace.",
+    "customerSituation": "Customer returns after 45 days of inactivity with points nearing expiration.",
+    "storyTension": "Risk of losing accumulated rewards without feeling pressured or manipulated by countdown timers.",
+    "customerResolution": "Transparent review of points balance and straightforward redemption options honoring full personal autonomy.",
+    "primaryOutcome": "Secure clear, reassuring understanding of points value and available redemption paths without pressure.",
+    "secondaryOutcome": null,
+    "narrativeMode": "PROTECT_VALUE",
+    "evidenceRefs": [
+      "fact-inactive-days",
+      "fact-expiring-points",
+      "fact-autonomy-preference"
+    ],
+    "confidence": 0.95,
+    "prohibitedDetours": [
+      "manipulative urgency",
+      "dark patterns",
+      "artificial scarcity",
+      "leaderboards or public rankings"
+    ],
+    "completionSignals": [
+      "Customer views points balance",
+      "Customer interacts with customer choice panel calmly"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-protect-value",
+      "journeyObjective": "Provide a calm, transparent overview of expiring points and flexible redemption options with zero artificial urgency, honoring Jessica Martinez's autonomy preference.",
+      "completionDefinition": "Customer reviews points balance, inspects the value explainer, and interacts with the customer choice panel at their own pace.",
+      "episodeSketches": [
+        "Episode 1: Display reassuring welcome and transparent POINTS_BALANCE with EXPIRING_POINTS_NOTICE (1850 points in 12 days, framed calmly without countdown alarms).",
+        "Episode 2: Present VALUE_EXPLAINER detailing unhurried options and long-term utility.",
+        "Episode 3: Provide CUSTOMER_CHOICE_PANEL allowing low-friction, self-paced redemption choices respecting autonomy and risk protection."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.35,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 94,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 93,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 successfully aligns with CHURN_RISK persona and high autonomy/risk protection preferences while strictly avoiding gamification and artificial urgency."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All manipulative urgency, countdown framing, and dark patterns are fully excluded. Compliance with UI Constitution and privacy policies verified."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Cognitive load is minimized with clear, reassuring language and predictable layout suited for a dormant user returning after 45 days."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate 1 cleanly maps mandatory components (POINTS_BALANCE, EXPIRING_POINTS_NOTICE, VALUE_EXPLAINER, CUSTOMER_CHOICE_PANEL) into a seamless 3-episode flow."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Coherence assessment passed with high scores across story clarity, journey continuity, and primary action transparency."
+    }
+  ]
+}

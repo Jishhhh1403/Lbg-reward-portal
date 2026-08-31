@@ -1,0 +1,106 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-unify-and-transfer",
+  "journeyObjective": "Provide a single consolidated view of multi-partner reward balances with plain-English transfer options and goal progress tracking.",
+  "entryPoint": "Dashboard entry for multi-programme rewards review",
+  "completionDefinition": "Customer reviews consolidated balances, understands transfer options in plain English, and views Family Holiday Fund progress.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "What is my total combined balance across all partner programmes?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "brandsConnected"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-three-partners",
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my connected partner accounts and transfers work safely in plain English?",
+      "entryCondition": "Customer reviews snapshot and seeks clarity on partner synchronisation",
+      "requiredInformation": [
+        "syncStatus",
+        "partnerProgrammes"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-plain-english",
+        "fact-jargon-aversion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What are my best value transfer options between partners?",
+      "entryCondition": "Customer understands account synchronisation and explores portability",
+      "requiredInformation": [
+        "partnerValues",
+        "transferRates"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-moving-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How is my Family Holiday Fund progressing towards our target?",
+      "entryCondition": "Customer reviews transfer options and views active savings goal",
+      "requiredInformation": [
+        "goalProgress",
+        "targetValue"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-combined-view"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-faq",
+      "purpose": "Plain-English guidance on how partner points convert without technical jargon.",
+      "contentNotes": [
+        "Simple conversion ratios",
+        "FAQ on transfer timelines"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

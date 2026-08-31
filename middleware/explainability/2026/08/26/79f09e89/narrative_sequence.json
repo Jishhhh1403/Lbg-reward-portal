@@ -1,0 +1,261 @@
+{
+  "primaryActionComponentRef": "comp-reward-choice-panel",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value-card",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-choice-panel",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-tangible-value-card"
+      ],
+      "resolves": [
+        "comp-tangible-value-card"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-value-comparison",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-reward-choice-panel"
+      ],
+      "resolves": [
+        "comp-reward-choice-panel"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-why-this-ui-card",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-partner-value-comparison"
+      ],
+      "resolves": [
+        "comp-partner-value-comparison"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight-card",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-why-this-ui-card"
+      ],
+      "resolves": [
+        "comp-why-this-ui-card"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work-card",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-rewards-insight-card"
+      ],
+      "resolves": [
+        "comp-rewards-insight-card"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-transfer-card",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-how-points-work-card"
+      ],
+      "resolves": [
+        "comp-how-points-work-card"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-value-comp-2",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-partner-transfer-card"
+      ],
+      "resolves": [
+        "comp-partner-transfer-card"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-allocation-control",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-partner-value-comp-2"
+      ],
+      "resolves": [
+        "comp-partner-value-comp-2"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress-card",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-reward-allocation-control"
+      ],
+      "resolves": [
+        "comp-reward-allocation-control"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight-card",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "MEANING",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-goal-progress-card"
+      ],
+      "resolves": [
+        "comp-goal-progress-card"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal-card",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 13,
+      "dependsOn": [
+        "comp-educational-insight-card"
+      ],
+      "resolves": [
+        "comp-educational-insight-card"
+      ],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-tangible-value-card",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Translate coin balance directly into pounds sterling.",
+      "bridgeCopy": "See your exact worth in pounds."
+    },
+    {
+      "fromComponentRef": "comp-tangible-value-card",
+      "toComponentRef": "comp-reward-choice-panel",
+      "relationship": "sequential",
+      "bridgeIntent": "Empower redemption choices based on verified cash value.",
+      "bridgeCopy": "Choose how to redeem your \u00a356.00."
+    },
+    {
+      "fromComponentRef": "comp-reward-choice-panel",
+      "toComponentRef": "comp-partner-value-comparison",
+      "relationship": "sequential",
+      "bridgeIntent": "Compare partner rates side by side.",
+      "bridgeCopy": "Compare partner rates before deciding."
+    },
+    {
+      "fromComponentRef": "comp-partner-value-comparison",
+      "toComponentRef": "comp-why-this-ui-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain why transparent valuation is provided.",
+      "bridgeCopy": "Designed for complete value clarity."
+    },
+    {
+      "fromComponentRef": "comp-why-this-ui-card",
+      "toComponentRef": "comp-rewards-insight-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide portfolio insights across connected brands.",
+      "bridgeCopy": "Your multi-brand portfolio summary."
+    },
+    {
+      "fromComponentRef": "comp-rewards-insight-card",
+      "toComponentRef": "comp-how-points-work-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain coin mechanics clearly.",
+      "bridgeCopy": "Understand how points accumulate."
+    },
+    {
+      "fromComponentRef": "comp-how-points-work-card",
+      "toComponentRef": "comp-partner-transfer-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer flexible partner transfer options.",
+      "bridgeCopy": "Transfer between connected programmes."
+    },
+    {
+      "fromComponentRef": "comp-partner-transfer-card",
+      "toComponentRef": "comp-partner-value-comp-2",
+      "relationship": "sequential",
+      "bridgeIntent": "Inspect travel and leisure partner rates.",
+      "bridgeCopy": "Alternative partner rates."
+    },
+    {
+      "fromComponentRef": "comp-partner-value-comp-2",
+      "toComponentRef": "comp-reward-allocation-control",
+      "relationship": "sequential",
+      "bridgeIntent": "Control coin allocation across savings and spending.",
+      "bridgeCopy": "Manage your allocation preferences."
+    },
+    {
+      "fromComponentRef": "comp-reward-allocation-control",
+      "toComponentRef": "comp-goal-progress-card",
+      "relationship": "sequential",
+      "bridgeIntent": "View progress toward travel fund goal.",
+      "bridgeCopy": "Track your savings goal progress."
+    },
+    {
+      "fromComponentRef": "comp-goal-progress-card",
+      "toComponentRef": "comp-educational-insight-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide educational context on pacing.",
+      "bridgeCopy": "Learn about pressure-free redemption."
+    },
+    {
+      "fromComponentRef": "comp-educational-insight-card",
+      "toComponentRef": "comp-add-goal-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Invite creation of new custom goals.",
+      "bridgeCopy": "Set a new savings goal."
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

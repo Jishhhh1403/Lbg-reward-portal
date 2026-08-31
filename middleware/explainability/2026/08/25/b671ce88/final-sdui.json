@@ -1,0 +1,467 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "b671ce88",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-11-25T00:00:00Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "points-balance-1",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-progress-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "You're making steady progress toward your First Home Savings goal at your own pace.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "learning-mission-1",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Financial Literacy Mastery",
+        "missionName": "Advanced Savings & Compound Growth",
+        "description": "Deepen your understanding of long-term savings strategies with our expert-backed modules.",
+        "modulesDone": 5,
+        "modulesTotal": 5,
+        "pointsOnCompletion": 300,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "learning-mission-details"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "OPTION",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "quiz-card-1",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "question": "What is the primary benefit of consistent unpressured savings habit formation?",
+        "options": "Long-term financial resilience and stress-free milestone achievement",
+        "reward": "150 Learning Points",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "START_QUIZ",
+          "payload": {
+            "quizId": "quiz-savings-habits"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ACTION",
+        "dependsOn": [
+          "learning-mission-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comprehension-feedback-1",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Quiz Competence Review",
+        "question": "Compound growth calculation",
+        "yourAnswer": "Correctly answered on second attempt",
+        "correctAnswer": "A = P(1 + r/n)^nt",
+        "feedback": "Excellent mastery! You retook the quiz until the underlying concept was fully clear.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "quiz-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "confidence-progress-1",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Confidence Tracker",
+        "topic": "Housing Market & Savings Mechanics",
+        "confidencePercent": 95,
+        "levelLabel": "Mastery Achieved",
+        "nextMilestone": "Property Investment Fundamentals",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comprehension-feedback-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "educational-insight-1",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Why Mastery Matters",
+        "insight": "Studies show that learners who take time to fully master financial concepts retain 40% better long-term decision making capabilities.",
+        "source": "LBG Financial Education Institute",
+        "actionLabel": "Explore Learning Resources",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_INSIGHT",
+          "payload": {
+            "insightId": "mastery-benefits"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "confidence-progress-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "how-points-work-1",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "steps": [
+          {
+            "title": "Earn through Learning",
+            "description": "Complete educational modules and pass quizzes at your own comfortable pace."
+          },
+          {
+            "title": "Link to Real Goals",
+            "description": "Apply your points and knowledge directly to savings targets like your First Home Fund."
+          }
+        ],
+        "ctaLabel": "View Programme Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "educational-insight-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "tangible-value-1",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Your Rewards Value",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": {
+          "label": "Learning Module Rewards",
+          "value": "\u00a339.00 equivalent value across 3 connected brands"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "how-points-work-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-linked-reward-1",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Milestone Reward",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": {
+          "name": "Homebuyer Legal Fee Voucher Contribution",
+          "points": 1200,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "LINK_REWARD",
+          "payload": {
+            "rewardId": "homebuyer-voucher"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "tangible-value-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "add-goal-card-1",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Add a New Learning or Savings Goal",
+        "subtitle": "Set a new milestone whenever you're ready.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ADD_GOAL",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "goal-linked-reward-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "coach-tip-card-1",
+      "type": "COACH_TIP_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "coachName": "Ava from Rewards Coaching",
+        "headline": "Patience is Your Superpower",
+        "body": "Taking time to thoroughly understand each financial module builds a rock-solid foundation for your future home purchase.",
+        "relatedBrand": "LBG Financial Education",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "add-goal-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "why-this-ui-card-1",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Designed for Your Learning Style",
+        "intro": "We tailor your rewards overview to support deep competence building without timers or pressure.",
+        "reasons": [
+          {
+            "label": "Unpressured Pace",
+            "detail": "No countdowns or urgency tactics\u2014learn and save purely at your own rhythm."
+          },
+          {
+            "label": "Knowledge First",
+            "detail": "Every quiz and milestone is designed to reinforce mastery over competition."
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "coach-tip-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "points-balance-1",
+          "goal-progress-1",
+          "tangible-value-1"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "learning-mission-1",
+          "quiz-card-1",
+          "how-points-work-1",
+          "goal-linked-reward-1",
+          "add-goal-card-1",
+          "coach-tip-card-1"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comprehension-feedback-1",
+          "confidence-progress-1"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "educational-insight-1",
+          "why-this-ui-card-1"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Master financial literacy topics and track savings goal progress without pressure.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-3",
+    "entryMode": "START",
+    "primaryActionComponentId": "learning-mission-1"
+  }
+}

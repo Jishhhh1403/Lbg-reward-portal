@@ -1,0 +1,120 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Guide Sophie through her active First Home Savings Knowledge goal progress and offer calm access to structured educational modules.",
+  "entryPoint": "Rewards overview dashboard for Sophie Williams",
+  "completionDefinition": "Customer views goal progress and engages with a structured learning module or quiz at an unhurried pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my balance and goals?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goalName",
+        "current",
+        "target",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-educ-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "What is the exact tangible and educational value of my rewards?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent",
+        "breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What structured learning modules and goals can I advance next?",
+      "entryCondition": "Trust and value understood",
+      "requiredInformation": [
+        "courseName",
+        "currentLesson",
+        "totalLessons",
+        "question",
+        "options",
+        "reward"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "ENGAGE_LEARNING",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-educ-100",
+        "fact-retake-quiz"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "What milestones and foundational insights support my financial literacy mastery?",
+      "entryCondition": "Learning module or quiz engaged",
+      "requiredInformation": [
+        "milestones",
+        "insight",
+        "source"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "EVIDENCE",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-long-session"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-help",
+      "purpose": "Provide supplementary clarity on points accumulation and educational rewards without time pressure.",
+      "contentNotes": [
+        "How points work guide",
+        "Educational transparency notes"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Review cashback balance, monitor Holiday Spending Money goal progress, and access direct statement credit redemptions with guaranteed rate transparency.",
+  "entryPoint": "Mobile rewards overview screen",
+  "completionDefinition": "Customer views point balance, checks goal progress toward holiday savings, and reviews statement credit options.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and tangible cash value?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my Holiday Spending Money goal progressing?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "goalName",
+        "current",
+        "target",
+        "percentage",
+        "remaining"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-goal-holiday"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do my rewards convert directly into bill reductions and statement credits?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "paymentMethod",
+        "rewardRate",
+        "cashValue"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-signal-statement-credits",
+        "fact-signal-guaranteed-rates"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What pathways and guaranteed value explanations support my redemption choices?",
+      "entryCondition": "Statement credits examined",
+      "requiredInformation": [
+        "steps",
+        "options",
+        "breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-guaranteed-rates"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear guaranteed rate and redemption terms without cluttering the primary flow.",
+      "contentNotes": [
+        "Guaranteed rate terms 1% statement credit conversion."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

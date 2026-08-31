@@ -1,0 +1,137 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Direct statement credit focus with holiday savings goal progress tracking, tangible cash-equivalent display, and zero gamification elements.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Alternative educational focus on guaranteed reward rate calculation and automatic statement credit rules without goal progress tracking.",
+      "scores": {
+        "customerGoalRelevance": 8,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 8,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 6,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 8.2,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-1",
+    "storyTitle": "Holiday Spending Bill Reduction",
+    "oneSentenceStory": "Review accumulated rewards and track progress toward holiday bill reduction without gamification pressure.",
+    "customerSituation": "Customer visits the rewards overview to inspect cash-equivalent worth and active goal progress.",
+    "storyTension": "Ensuring transparent, predictable value without intrusive promotional clutter or gamified distractions.",
+    "customerResolution": "Clear display of statement credit utility and direct access to automatic bill reduction options.",
+    "primaryOutcome": "Effortless verification of accumulated cash value and progress toward bill-reducing rewards.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-signal-1",
+      "fact-signal-2",
+      "fact-signal-5"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Gamification elements like leaderboards or public rankings",
+      "Voucher or travel partner discovery pushes",
+      "Artificial scarcity or manipulative urgency"
+    ],
+    "completionSignals": [
+      "Customer views point balance and cash equivalent accurately",
+      "Goal progress toward holiday spending money is clearly displayed",
+      "Frictionless access to statement credit redemption options"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-1",
+      "journeyObjective": "Inspect reward balance, cash-equivalent worth, and active statement credit goal progress.",
+      "completionDefinition": "Customer verifies point balance, sees holiday spending goal progress, and accesses statement credit redemption effortlessly.",
+      "episodeSketches": [
+        "Display points balance and cash-equivalent value clearly at the top.",
+        "Show holiday spending money goal progress bar with current vs target value.",
+        "Provide frictionless direct action button for statement credit redemption."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 100,
+    "journeyContinuity": 100,
+    "miniJourneyCompleteness": 100,
+    "transitionStrength": 100,
+    "actionOutcomeContinuity": 100,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with payment utility motivation and specific focus on statement credit goal tracking."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns or gamification elements detected; hard gates all passed."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and clear textual contrast for cash-equivalent and goal tracking components."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story-1 selected verbatim from Stage U hypotheses, meeting all customer intent criteria."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate 1 directly serves story-1 with smooth episodic flow and one dominant action."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Coherence assessment passed with maximum marks across story clarity and journey continuity."
+    }
+  ]
+}

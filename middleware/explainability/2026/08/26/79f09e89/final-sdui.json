@@ -1,0 +1,463 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "79f09e89",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-10-25T23:59:59Z",
+  "customerRef": "customer_009",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 5600,
+        "tier": "Gold",
+        "name": "Maya Thompson",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value-card",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Your Exact Cash Equivalent",
+        "cashValue": "\u00a356.00",
+        "pointsEquivalent": 5600,
+        "breakdown": {
+          "label": "Conversion Rate",
+          "value": "100 coins = \u00a31.00 across 3 connected brands"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-choice-panel",
+      "type": "REWARD_CHOICE_PANEL",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Redemption Choice Panel",
+        "subtitle": "Select how you would like to apply your \u00a356.00 equivalent value at your own pace.",
+        "options": {
+          "id": "opt-supermarket",
+          "label": "Supermarket Partner Voucher",
+          "description": "Convert directly to grocery shopping credit with zero hidden fees.",
+          "points": 5000
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "SELECT",
+          "payload": {
+            "choiceId": "opt-supermarket"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-tangible-value-card"
+        ],
+        "resolves": [
+          "comp-tangible-value-card"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-value-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Partner Rate Comparison",
+        "subtitle": "Compare exact monetary value across your connected merchant partners.",
+        "partners": {
+          "name": "Supermarket Grocers",
+          "points": 5600,
+          "value": "\u00a356.00",
+          "perk": "1.0p per coin standard rate"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-reward-choice-panel"
+        ],
+        "resolves": [
+          "comp-reward-choice-panel"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-why-this-ui-card",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Designed for Value Certainty",
+        "intro": "We show exact pound conversions and partner rates upfront so you can make informed choices without pressure.",
+        "reasons": {
+          "label": "Exact Conversion",
+          "detail": "Every coin's value is clearly defined in pounds sterling with no abstract multipliers."
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-partner-value-comparison"
+        ],
+        "resolves": [
+          "comp-partner-value-comparison"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-rewards-insight-card",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Portfolio Value Insight",
+        "topBrandName": "Supermarket Grocers",
+        "topBrandPoints": 2800,
+        "growthTip": "Your 5,600 coins maintain steady purchasing power across all 3 connected brands.",
+        "expiringPoints": 0,
+        "expiryDate": "N/A",
+        "ctaText": "Review Partner Rates",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-why-this-ui-card"
+        ],
+        "resolves": [
+          "comp-why-this-ui-card"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work-card",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "steps": {
+          "title": "Transparent Accumulation",
+          "description": "Coins earned across 3 connected brands pool into a single secure balance with guaranteed \u00a30.01 per coin baseline value."
+        },
+        "ctaLabel": "Read Full Terms",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-rewards-insight-card"
+        ],
+        "resolves": [
+          "comp-rewards-insight-card"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-transfer-card",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Flexible Brand Transfer",
+        "fromProgramme": "LBG Universal Coins",
+        "toPartner": "Retail Partner Network",
+        "points": 2000,
+        "estimatedValue": "\u00a320.00",
+        "status": "Ready for instant transfer",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-how-points-work-card"
+        ],
+        "resolves": [
+          "comp-how-points-work-card"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-value-comp-2",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Travel & Leisure Partner Rates",
+        "subtitle": "Alternative redemption options with direct cash equivalence.",
+        "partners": {
+          "name": "Travel Booking Partner",
+          "points": 5600,
+          "value": "\u00a358.80",
+          "perk": "1.05p per coin enhanced partner rate"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-partner-transfer-card"
+        ],
+        "resolves": [
+          "comp-partner-transfer-card"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-allocation-control",
+      "type": "REWARD_ALLOCATION_CONTROL",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Reward Allocation Control",
+        "subtitle": "Decide how your coins are distributed between savings conversion and active spending.",
+        "allocation": {
+          "label": "Savings Pot Conversion",
+          "percent": 60
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-partner-value-comp-2"
+        ],
+        "resolves": [
+          "comp-partner-value-comp-2"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress-card",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "goalName": "Holiday Travel Fund",
+        "current": 5600,
+        "target": 10000,
+        "percentage": 56,
+        "remaining": 4400,
+        "motivationalMessage": "You are more than halfway to your travel goal with guaranteed cash equivalence.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-reward-allocation-control"
+        ],
+        "resolves": [
+          "comp-reward-allocation-control"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight-card",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Maximising Value Without Urgency",
+        "insight": "Taking your time to compare partner rates ensures you extract maximum purchasing power from every coin.",
+        "source": "LBG Rewards Research Team",
+        "actionLabel": "Explore Guides",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-goal-progress-card"
+        ],
+        "resolves": [
+          "comp-goal-progress-card"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-add-goal-card",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Add a New Savings Goal",
+        "subtitle": "Set custom targets tracked directly in pounds sterling.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CREATE_GOAL",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-educational-insight-card"
+        ],
+        "resolves": [
+          "comp-educational-insight-card"
+        ],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-tangible-value-card",
+          "comp-goal-progress-card"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-how-points-work-card",
+          "comp-partner-transfer-card",
+          "comp-add-goal-card"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-reward-choice-panel",
+          "comp-partner-value-comparison",
+          "comp-why-this-ui-card",
+          "comp-rewards-insight-card",
+          "comp-partner-value-comp-2",
+          "comp-reward-allocation-control",
+          "comp-educational-insight-card"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-evaluate-value",
+    "primaryOutcome": "Clarity of tangible monetary value and informed autonomy in reward choices.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-reward-choice-panel"
+  }
+}

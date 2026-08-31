@@ -1,0 +1,134 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Streak-Momentum Focus: Highlight the active 34-day streak prominently at the top with POINTS_BALANCE, followed immediately by ongoing CHALLENGE modules and LEADERBOARD standing to maintain Marcus's daily engagement loop.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.25,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Leaderboard Climb Focus: Feature leaderboard rank 3 prominently with community badges and CHALLENGE modules to encourage competitive progression.",
+      "scores": {
+        "customerGoalRelevance": 8,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 8,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.35,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-streak-momentum",
+    "storyTitle": "Maintain Your 34-Day Streak",
+    "oneSentenceStory": "Marcus wants to keep his active 34-day streak alive by checking his daily progress and engaging with active challenges.",
+    "customerSituation": "Marcus is actively checking his rewards overview to review his standing and maintain momentum.",
+    "storyTension": "The daily streak is at stake and active challenges require ongoing participation to secure rewards.",
+    "customerResolution": "Marcus views his streak status, checks his leaderboard rank, and jumps directly into his next active challenge.",
+    "primaryOutcome": "Successfully maintain active reward streak and engage productively with ongoing challenges.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-streak",
+      "fact-challenges",
+      "fact-leaderboard"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Do not interrupt with complex value explainers.",
+      "Do not display irrelevant partner conversion cards."
+    ],
+    "completionSignals": [
+      "streak-card-viewed",
+      "challenge-action-clicked"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-streak-momentum",
+      "journeyObjective": "Review active streak status, inspect current leaderboard rank, and take immediate action on ongoing gamified challenges.",
+      "completionDefinition": "Customer views streak card and initiates action on an active challenge.",
+      "episodeSketches": [
+        "Display POINTS_BALANCE and prominent STREAK status banner (34 days active).",
+        "Present LEADERBOARD standing (Rank 3) and active CHALLENGE cards with a single dominant action button."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.3,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 90,
+    "miniJourneyCompleteness": 92,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 92,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with Marcus's GAMIFICATION_MOTIVATED persona and PLAYFUL tone preference."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns or manipulative artificial scarcity detected. Hard gates successfully passed."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Visual hierarchy supports cognitive accessibility and clear scan paths for streak and challenge data."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "VOTE",
+      "summary": "Story 'story-streak-momentum' selected as it directly reflects Marcus's active 34-day streak and challenge behavior."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "VOTE",
+      "summary": "Journey candidate-1 selected, ensuring a single dominant action pathway focused on streak maintenance and challenge progression."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Coherence assessment passed with 95% story clarity and zero conflicting narratives or orphan components."
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "39c68e7a",
+  "createdAt": "2026-03-30T00:00:00Z",
+  "expiresAt": "2026-03-30T23:59:59Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-consolidated-wallet",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Combined Reward Wallet",
+        "subtitle": "Your rewards across 3 partner programmes",
+        "programmes": [
+          {
+            "name": "LBG Coins",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Travel Partner A",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Retail Partner B",
+            "points": 2800,
+            "value": "\u00a328.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3185.00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "status": "synced",
+        "title": "All Partner Accounts Up to Date",
+        "lastSyncedAt": "Today at 09:18",
+        "message": "Your balances are synchronized across all 3 programmes.",
+        "ctaText": "Refresh now",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Simple Partner Comparison",
+        "subtitle": "See what your points are worth when moved between programmes",
+        "partners": [
+          {
+            "name": "Travel Partner A",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "1:1 transfer value for flights"
+          },
+          {
+            "name": "Retail Partner B",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "Direct voucher conversion"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-transfer",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Move Points Instantly",
+        "fromProgramme": "LBG Coins",
+        "toPartner": "Travel Partner A",
+        "points": 1000,
+        "estimatedValue": "\u00a310.00",
+        "status": "Ready to transfer",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "TRANSFER_POINTS",
+          "payload": {
+            "amount": 1000,
+            "destination": "Travel Partner A"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-partner-comparison"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Transfer History",
+        "subtitle": "Recent movement across your connected accounts",
+        "history": [
+          {
+            "source": "Partner Transfer Bonus",
+            "date": "15 Aug 2026",
+            "points": 1000
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Total Cash Worth",
+        "cashValue": "\u00a3185.00",
+        "pointsEquivalent": 18500,
+        "breakdown": {
+          "label": "Combined across 3 partner accounts",
+          "value": "\u00a3185.00 available value"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "remaining": 1250,
+        "motivationalMessage": "You are 58% towards your \u00a33,000 Family Holiday Fund goal.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-program-connection",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Connected Programmes",
+        "subtitle": "Manage your linked reward partners",
+        "programmes": [
+          {
+            "name": "LBG Coins",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Travel Partner A",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Retail Partner B",
+            "status": "Active",
+            "connected": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "steps": [
+          {
+            "title": "Combine balances",
+            "description": "View all partner rewards in one single place."
+          },
+          {
+            "title": "Transfer easily",
+            "description": "Move points between partners with zero hidden fees."
+          }
+        ],
+        "ctaLabel": "Learn more about portability",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Milestone Reward",
+        "goalName": "Family Holiday Fund",
+        "rewards": {
+          "name": "\u00a350 Flight Voucher Bonus",
+          "points": 2000,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-milestone-card",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "milestones": [
+          {
+            "label": "Connected 3 partner programmes",
+            "achieved": true
+          },
+          {
+            "label": "Reached 50% of Family Holiday Fund",
+            "achieved": true
+          },
+          {
+            "label": "Completed first plain-English transfer",
+            "achieved": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Portability Tip",
+        "insight": "Transferring points between partners maintains your \u00a31-for-\u00a31 value ratio with zero complex conversion maths.",
+        "source": "Rewards Clarity Guide",
+        "actionLabel": "Read guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-consolidated-wallet",
+          "comp-tangible-value",
+          "comp-goal-progress"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-partner-transfer",
+          "comp-how-points-work",
+          "comp-goal-linked-reward"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-milestone-card"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-sync-status",
+          "comp-partner-comparison",
+          "comp-reward-provenance",
+          "comp-program-connection",
+          "comp-educational-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-evaluate-portability",
+    "primaryOutcome": "Gain a clear, unified view of portability and goal progress across reward programmes.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-3",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-partner-transfer"
+  }
+}

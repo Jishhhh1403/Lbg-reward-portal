@@ -1,0 +1,69 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide seamless tracking of First Home Savings Knowledge progress and unhurried access to tailored educational modules.",
+  "entryPoint": "Rewards overview screen opened by customer Sophie Williams",
+  "completionDefinition": "Customer reviews goal progression and accesses or completes a self-paced financial literacy module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and savings knowledge?",
+      "entryCondition": "App opened",
+      "requiredInformation": [
+        "points balance",
+        "tier",
+        "active goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-goal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 2,
+      "customerQuestion": "What financial literacy modules and learning paths are available for me to master next?",
+      "entryCondition": "Snapshot and trust established",
+      "requiredInformation": [
+        "learning modules",
+        "quiz options",
+        "educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide clear value transparency and educational mechanics breakdown.",
+      "contentNotes": [
+        "How points work",
+        "Tangible cash value equivalents"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

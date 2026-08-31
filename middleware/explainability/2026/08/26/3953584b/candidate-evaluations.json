@@ -1,0 +1,119 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-educational-protect",
+      "strategy": "Educational value clarity combining expiring points protection (2,400 points in 9 days) with long-term retirement and children's education goal progress visualization, entirely avoiding countdown pressure or gamification.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.65,
+      "hardGatesPass": true
+    },
+    {
+      "candidate-2": "candidate-gamified-quickwin",
+      "strategy": "Gamified quick-win redemption streak and leaderboards to force immediate point spending before expiration.",
+      "scores": {
+        "customerGoalRelevance": 2,
+        "expectedCustomerUtility": 2,
+        "screenLevelStoryCoherence": 3,
+        "journeyAndActionContinuity": 2,
+        "accessibilityAndCognitiveFit": 3,
+        "brandAndLegalConsistency": 2,
+        "rewardProfileAlignment": 2,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 2,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 2.7,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-protect-value",
+    "storyTitle": "Protect Your Progress Without Pressure",
+    "oneSentenceStory": "Understand how to preserve your expiring points and redirect them safely toward your long-term goals.",
+    "customerSituation": "Customer has 2,400 points expiring in 9 days while maintaining multiple long-horizon savings goals.",
+    "storyTension": "Risk of losing accumulated value through inaction versus aversion to high-pressure, manipulative urgency tactics.",
+    "customerResolution": "Clear, educational guidance on how to secure expiring points without forced immediate spending.",
+    "primaryOutcome": "Restored confidence and protection of expiring rewards aligned with future security goals.",
+    "secondaryOutcome": null,
+    "narrativeMode": "PROTECT_VALUE",
+    "evidenceRefs": [
+      "fact-expiring-points",
+      "fact-active-goals",
+      "fact-educational-pref"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "manipulative urgency or artificial scarcity",
+      "dark patterns or gamification leaderboards"
+    ],
+    "completionSignals": [
+      "viewed_expiring_points_notice",
+      "engaged_with_projected_value"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-educational-protect",
+      "storyId": "story-protect-value",
+      "journeyObjective": "Provide transparent, educational guidance on protecting expiring points and viewing long-term goal compounding without manipulative pressure.",
+      "completionDefinition": "Customer views expiring points protection details and reviews projected growth toward their Retirement Fund.",
+      "episodeSketches": [
+        "Episode 1: Calm overview of 24,500 LBG coin balance and 2,400 points status with transparent preservation options.",
+        "Episode 2: Projected value explainer showing how redirecting points impacts the Retirement Fund (currently 25%) and Children Education Fund."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-educational-protect",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 94,
+    "actionOutcomeContinuity": 96,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Confirmed zero manipulative urgency or dark patterns. Expiring points notice is calm, factual, and supportive."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Educational tone and high cognitive fit for PLANNER_AT_RISK_MIX persona verified."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Candidate educational-protect perfectly aligns story-protect-value with journey-educational-protect."
+    }
+  ]
+}

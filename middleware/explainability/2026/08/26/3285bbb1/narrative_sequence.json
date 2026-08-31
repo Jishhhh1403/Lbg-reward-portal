@@ -1,0 +1,239 @@
+{
+  "primaryActionComponentRef": "comp-choice-panel",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reengagement-banner",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-expiring-alert",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "TENSION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quick-win",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-expiring-alert"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-instant-popup",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-quick-win"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-flash-banner",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-instant-popup"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quick-redeem",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-flash-banner"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-carousel",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-quick-redeem"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-choice-panel",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-reward-carousel"
+      ],
+      "resolves": [
+        "comp-expiring-alert"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-streak",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-choice-panel"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-challenge",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CELEBRATION",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-streak"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-choice-panel"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-sync-status",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 13,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-reengagement-banner",
+      "relationship": "sequential",
+      "bridgeIntent": "Greet returning customer warmly",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reengagement-banner",
+      "toComponentRef": "comp-expiring-alert",
+      "relationship": "sequential",
+      "bridgeIntent": "Highlight expiring points gently",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-expiring-alert",
+      "toComponentRef": "comp-quick-win",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer immediate quick win to secure expiring coins",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quick-win",
+      "toComponentRef": "comp-instant-popup",
+      "relationship": "sequential",
+      "bridgeIntent": "Showcase instant flash voucher",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-instant-popup",
+      "toComponentRef": "comp-flash-banner",
+      "relationship": "sequential",
+      "bridgeIntent": "Reinforce flash offer value",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-flash-banner",
+      "toComponentRef": "comp-quick-redeem",
+      "relationship": "sequential",
+      "bridgeIntent": "Present quick redeem options",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quick-redeem",
+      "toComponentRef": "comp-reward-carousel",
+      "relationship": "sequential",
+      "bridgeIntent": "Browse wider instant rewards",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reward-carousel",
+      "toComponentRef": "comp-choice-panel",
+      "relationship": "sequential",
+      "bridgeIntent": "Select preferred instant redemption path",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-choice-panel",
+      "toComponentRef": "comp-streak",
+      "relationship": "sequential",
+      "bridgeIntent": "Encourage return streak engagement",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-streak",
+      "toComponentRef": "comp-challenge",
+      "relationship": "sequential",
+      "bridgeIntent": "Invite to weekly comeback challenge",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-challenge",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate tangible coin wallet power",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-sync-status",
+      "relationship": "sequential",
+      "bridgeIntent": "Confirm wallet security and sync state",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

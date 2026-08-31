@@ -1,0 +1,272 @@
+{
+  "planId": "plan-39b2c4b2",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Unified rewards overview combining balances across three partner programmes with plain-English portability explanations and partner comparison tools.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 11200,
+          "tier": "Platinum",
+          "name": "Leo Morgan",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "consolidated-reward-wallet-1",
+        "type": "CONSOLIDATED_REWARD_WALLET",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Combined Reward Wallet",
+          "subtitle": "Your balances across all 3 partner programmes in one simple view",
+          "programmes": [
+            {
+              "name": "Travel Partner",
+              "points": 4500,
+              "value": "\u00a345.00",
+              "status": "Connected"
+            },
+            {
+              "name": "Retail Partner",
+              "points": 3700,
+              "value": "\u00a337.00",
+              "status": "Connected"
+            },
+            {
+              "name": "Dining Partner",
+              "points": 3000,
+              "value": "\u00a330.00",
+              "status": "Connected"
+            }
+          ],
+          "totalValue": "\u00a3112.00",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "sync-status-card-1",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "status": "synced",
+          "title": "Partner Balances Up to Date",
+          "lastSyncedAt": "Today at 06:27",
+          "message": "All three partner accounts are synchronized securely with no technical gaps.",
+          "ctaText": "Refresh Balances",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "partner-value-comparison-1",
+        "type": "PARTNER_VALUE_COMPARISON",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Partner Value Comparison",
+          "subtitle": "Compare how your points hold value across different programmes in plain English.",
+          "partners": [
+            {
+              "name": "Travel Partner",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Best for flights and hotels"
+            },
+            {
+              "name": "Retail Partner",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Best for everyday shopping"
+            },
+            {
+              "name": "Dining Partner",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Best for restaurant vouchers"
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-card-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "What Your Points Are Worth",
+          "cashValue": "\u00a3112.00",
+          "pointsEquivalent": 11200,
+          "breakdown": {
+            "Travel Partner": "\u00a345.00",
+            "Retail Partner": "\u00a337.00",
+            "Dining Partner": "\u00a330.00"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "partner-transfer-card-1",
+        "type": "PARTNER_TRANSFER_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Simple Point Transfer",
+          "fromProgramme": "Retail Partner",
+          "toPartner": "Travel Partner",
+          "points": 1000,
+          "estimatedValue": "\u00a310.00",
+          "status": "Ready to transfer instantly with zero fees",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "INITIATE_TRANSFER",
+            "payload": {
+              "from": "Retail Partner",
+              "to": "Travel Partner",
+              "points": 1000
+            }
+          }
+        ]
+      },
+      {
+        "id": "reward-provenance-card-1",
+        "type": "REWARD_PROVENANCE_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Transfer & Earn History",
+          "subtitle": "Clear record of how your points moved between programmes",
+          "history": [
+            {
+              "source": "Partner Transfer Bonus",
+              "date": "22 Aug 2026",
+              "points": 1000
+            },
+            {
+              "source": "Travel Partner Sync",
+              "date": "15 Aug 2026",
+              "points": 4500
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-card-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": [
+            {
+              "title": "1. View Together",
+              "description": "See all your partner balances in one place without jumping between apps."
+            },
+            {
+              "title": "2. Compare Value",
+              "description": "Check transfer rates clearly displayed in pounds and pence."
+            },
+            {
+              "title": "3. Move Freely",
+              "description": "Transfer points instantly with plain-English steps and no jargon."
+            }
+          ],
+          "ctaLabel": "Learn More About Portability",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-card-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "goalName": "Family Holiday Fund",
+          "current": 1750,
+          "target": 3000,
+          "percentage": 58,
+          "remaining": 1250,
+          "motivationalMessage": "You are 58% towards your Family Holiday Fund. Combine partner balances to reach your goal faster.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "programme-connection-card-1",
+        "type": "PROGRAMME_CONNECTION_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Connected Partner Programmes",
+          "subtitle": "Manage your active partner programme links",
+          "programmes": [
+            {
+              "name": "Travel Partner",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Retail Partner",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Dining Partner",
+              "status": "Active",
+              "connected": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "PORTABILITY_MOTO"
+    ]
+  },
+  "strategy": "Unified rewards overview combining balances across three partner programmes with plain-English portability explanations and partner comparison tools.",
+  "confidence": 0.95
+}

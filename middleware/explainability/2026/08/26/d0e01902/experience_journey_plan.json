@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Provide a consolidated rewards overview with jargon-free partner comparisons and goal tracking.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer successfully reviews the combined balance summary and inspects at least one plain-English partner transfer option.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my total combined reward balance across all programmes?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "brandsConnected"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-balances-three",
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my partner programmes compare in plain English?",
+      "entryCondition": "User views combined wallet",
+      "requiredInformation": [
+        "partnerComparisons"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-plain-english",
+        "fact-jargon-aversion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I easily move or transfer my rewards without complex jargon?",
+      "entryCondition": "User reviews partner comparison",
+      "requiredInformation": [
+        "portabilityPreference"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "TRANSFER_POINTS",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-asks-moving"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational",
+      "purpose": "Provide jargon-free guidance on how points work across partners",
+      "contentNotes": [
+        "Plain English transfer rules",
+        "Simple explanations of point equivalence"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

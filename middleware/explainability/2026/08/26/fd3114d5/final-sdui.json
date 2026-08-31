@@ -1,0 +1,409 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "fd3114d5",
+  "createdAt": "2026-03-31T00:00:00Z",
+  "expiresAt": "2026-04-07T00:00:00Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "points-balance-1",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "consolidated-wallet-1",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Combined Reward Wallet",
+        "subtitle": "All your partner balances in one place",
+        "programmes": [
+          {
+            "name": "Primary Bank Rewards",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Partner Retail Club",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Travel Miles Network",
+            "points": 8300,
+            "value": "\u00a383.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3240.00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "sync-status-1",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "status": "synced",
+        "title": "Partner Sync Status",
+        "lastSyncedAt": "Today at 05:16",
+        "message": "All 3 partner accounts are successfully connected and up to date.",
+        "ctaText": "Refresh Accounts",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "consolidated-wallet-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "partner-value-comparison-1",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Partner Value Comparison",
+        "subtitle": "See how your points compare across connected programmes",
+        "partners": [
+          {
+            "name": "Primary Bank Rewards",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "perk": "1 point = 1p value"
+          },
+          {
+            "name": "Partner Retail Club",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "perk": "1 point = 1p value"
+          },
+          {
+            "name": "Travel Miles Network",
+            "points": 8300,
+            "value": "\u00a383.00",
+            "perk": "1 point = 1p value"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "sync-status-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "tangible-value-card-1",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Total Cash Value",
+        "cashValue": "\u00a3240.00",
+        "pointsEquivalent": 24000,
+        "breakdown": {
+          "label": "Combined across 3 programmes",
+          "value": "\u00a3240.00 total spend value"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "partner-value-comparison-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "partner-transfer-card-1",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Simple Point Transfers",
+        "fromProgramme": "Primary Bank Rewards",
+        "toPartner": "Travel Miles Network",
+        "points": 2000,
+        "estimatedValue": "\u00a320.00",
+        "status": "Ready to transfer instantly",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXECUTE_TRANSFER",
+          "payload": {
+            "points": 2000
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "tangible-value-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "reward-provenance-card-1",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Recent Transfer Activity",
+        "subtitle": "Clear history of your reward movements",
+        "history": [
+          {
+            "source": "Partner Transfer Bonus",
+            "date": "24 Aug 2026",
+            "points": 1000
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "partner-transfer-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "how-points-work-card-1",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "steps": [
+          {
+            "title": "1. Connect Partners",
+            "description": "Link your favorite accounts to view all balances in one simple screen."
+          },
+          {
+            "title": "2. Compare Value",
+            "description": "See exact pound values clearly without any confusing hidden formulas."
+          },
+          {
+            "title": "3. Transfer Easily",
+            "description": "Move your rewards between partners instantly with just one tap."
+          }
+        ],
+        "ctaLabel": "Learn More About Transfers",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "reward-provenance-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-progress-card-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "remaining": 1250,
+        "motivationalMessage": "You're over halfway to your Family Holiday Fund goal!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "how-points-work-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "programme-connection-card-1",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Connected Partner Programmes",
+        "subtitle": "Manage your active partner programme links",
+        "programmes": [
+          {
+            "name": "Primary Bank Rewards",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Partner Retail Club",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Travel Miles Network",
+            "status": "Active",
+            "connected": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "goal-progress-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "points-balance-1",
+          "consolidated-wallet-1",
+          "tangible-value-card-1",
+          "goal-progress-card-1"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "partner-transfer-card-1",
+          "how-points-work-card-1"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "sync-status-1",
+          "partner-value-comparison-1",
+          "reward-provenance-card-1",
+          "programme-connection-card-1"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-evaluate-transfers",
+    "primaryOutcome": "Clear, unified view of multi-partner rewards and portability options without technical jargon.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "START",
+    "primaryActionComponentId": "partner-transfer-card-1"
+  }
+}

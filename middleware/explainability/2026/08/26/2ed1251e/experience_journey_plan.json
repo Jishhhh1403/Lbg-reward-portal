@@ -1,0 +1,114 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Engage with educational financial modules and review mastery progress toward home savings goals in a pressure-free environment.",
+  "entryPoint": "Rewards overview screen opened by customer_011",
+  "completionDefinition": "Customer reviews 63% home savings goal progress and engages with transparent financial literacy module options.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do my points and savings mastery currently stand?",
+      "entryCondition": "App session start",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-home-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "What is the exact cash value and working principle of my rewards?",
+      "entryCondition": "Completed snapshot review",
+      "requiredInformation": [
+        "tangible cash value breakdown",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What structured learning modules and milestones can I explore next?",
+      "entryCondition": "Trust established",
+      "requiredInformation": [
+        "learning modules",
+        "quizzes",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How does this advance my long-term home savings mastery?",
+      "entryCondition": "Module pathway selected",
+      "requiredInformation": [
+        "comprehension feedback",
+        "confidence progress",
+        "educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-home-goal",
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-preferences",
+      "purpose": "Provide access to educational notification preferences and learning settings",
+      "contentNotes": [
+        "Notification toggles for new modules",
+        "Category preferences"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

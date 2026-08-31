@@ -1,0 +1,271 @@
+{
+  "planId": "plan-5e0fb4e7",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Deliver self-paced educational module progression, transparent tangible value, and milestone tracking focusing on First Home Savings goal mastery, strictly excluding any timed challenges or leaderboards.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "Steady progress on your First Home Savings mastery journey.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Points Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Mastery Equivalence",
+            "value": "100% redemption backing"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "learning-mission-1",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Financial Competence Track",
+          "missionName": "First Home Deposit Fundamentals",
+          "description": "Master mortgage structuring and deposit optimization at your own pace.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_MISSION",
+            "payload": {
+              "missionId": "first-home-deposit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "quiz-card-1",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the recommended minimum deposit percentage for standard first-time buyer mortgages?",
+          "options": "A) 5% | B) 10% | C) 20%",
+          "reward": "150 Coins + Mastery XP",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "answer": "A"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comprehension-feedback-1",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Previous Quiz Review",
+          "question": "Compound growth calculation check",
+          "yourAnswer": "Correct (100% accuracy)",
+          "correctAnswer": "A1 formula verified",
+          "feedback": "Excellent conceptual grasp. You can retake or review anytime without pressure.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "confidence-progress-1",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Topic Mastery Assessment",
+          "topic": "First Home Savings & Mortgages",
+          "confidencePercent": 88,
+          "levelLabel": "High Mastery & Understanding",
+          "nextMilestone": "Advanced Deposit Strategies",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "educational-insight-1",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Autonomous Mastery Insight",
+          "insight": "Taking your time to fully understand mortgage terms reduces financial stress by 40% over the long term.",
+          "source": "LBG Educational Insights Research",
+          "actionLabel": "Explore Learning Hub",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "learning-hub"
+            }
+          }
+        ]
+      },
+      {
+        "id": "how-points-work-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Earn through learning",
+            "description": "Complete modules and quizzes to accumulate coins with complete cash transparency."
+          },
+          "ctaLabel": "View Programme Rules",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "milestone-card-1",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "First Home Savings 63% milestone reached - Module 5 unlocked",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-linked-reward-1",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Goal-Linked Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Expert Homebuyer Certificate & 500 Bonus Coins",
+            "points": 500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "UNLOCK_REWARD",
+            "payload": {
+              "rewardId": "expert-homebuyer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "add-goal-card-1",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Learning Goal",
+          "subtitle": "Set a new financial competence milestone at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ADD_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "rewards-insight-1",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Your Learning Velocity",
+          "topBrandName": "LBG Financial Academy",
+          "topBrandPoints": 300,
+          "growthTip": "Consistent self-paced review is your strongest asset.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "View History",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE"
+    ]
+  },
+  "strategy": "Deliver self-paced educational module progression, transparent tangible value, and milestone tracking focusing on First Home Savings goal mastery, strictly excluding any timed challenges or leaderboards.",
+  "confidence": 0.95
+}

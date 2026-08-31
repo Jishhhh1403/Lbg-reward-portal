@@ -1,0 +1,136 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Surface statement credit balance, automated payment allocation settings, and transparent bill-offset values with zero gamification or vouchers.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.9,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Display partner lifestyle vouchers alongside points balance to encourage brand discovery and alternative redemptions.",
+      "scores": {
+        "customerGoalRelevance": 3,
+        "expectedCustomerUtility": 2,
+        "screenLevelStoryCoherence": 4,
+        "journeyAndActionContinuity": 4,
+        "accessibilityAndCognitiveFit": 6,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 2,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 4,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 4.15,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-review-statement-credits",
+    "storyTitle": "Review Statement Credit & Bill Offsets",
+    "oneSentenceStory": "Daniel reviews his available coin balance and verifies automated statement credit allocations to offset upcoming card bills.",
+    "customerSituation": "Customer has accumulated 7,300 LBG coins and wants to verify how they apply directly to bill reduction.",
+    "storyTension": "Ensuring earned rewards accurately translate to guaranteed statement credits without unnecessary voucher distractions.",
+    "customerResolution": "Clear visibility of point balance and direct statement credit status.",
+    "primaryOutcome": "Effortless review and management of statement credits and bill-offsetting reward allocations.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-statement-credit-exclusive",
+      "fact-auto-payment-allocation"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "partner offers",
+      "lifestyle vouchers",
+      "gamification leaderboards"
+    ],
+    "completionSignals": [
+      "viewed_points_balance",
+      "verified_statement_credit_allocation"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-review-statement-credits",
+      "journeyObjective": "Provide clear, frictionless review of 7,300 LBG coin balance, automated statement credit allocations, and holiday savings progress without gamification.",
+      "completionDefinition": "Customer views points balance, verifies statement credit bill offset configuration, and checks holiday goal progress.",
+      "episodeSketches": [
+        "Display points balance and tangible cash value equivalent",
+        "Surface active statement credit allocation and linked card settings",
+        "Show progress toward 'Holiday Spending Money' savings goal"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.1,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 90,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 92,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with Daniel's payment utility preference and verified statement credit redemption history."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All hard gates passed. Zero gamification, dark patterns, or prohibited partner vouchers present in Candidate-1."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Cognitive load is low with clear typographic hierarchy and transparent cash-value equivalents."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story 'story-review-statement-credits' accurately reflects customer intent and avoids prohibited lifestyle detours."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate-1 cleanly sequences points balance, bill offset allocation, and holiday goal progress."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Coherence assessment passed with a score of 92/100. Ready for execution."
+    }
+  ]
+}

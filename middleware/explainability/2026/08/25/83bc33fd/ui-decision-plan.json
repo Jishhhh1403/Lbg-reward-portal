@@ -1,0 +1,260 @@
+{
+  "planId": "plan-83bc33fd",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Goal-linked educational progress focus highlighting First Home Savings Knowledge progress (63%) with unhurried mastery modules, clear value transparency, and mandatory educational stack without timed pressure or social rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You have completed 63% of your First Home Savings Knowledge target at a steady, autonomous pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Financial Knowledge Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Mastery Equivalency",
+            "value": "100% redemption power across learning modules"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Active Learning Mission",
+          "missionName": "Advanced Deposit Strategies",
+          "description": "Deepen your understanding of mortgage structures and building deposit resilience without rush or deadlines.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MISSION",
+            "payload": {
+              "mission": "Advanced Deposit Strategies"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "Which compounding frequency provides the most predictable long-term deposit growth?",
+          "options": "Monthly compounding with steady contributions",
+          "reward": "50 Mastery Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_QUIZ",
+            "payload": {
+              "topic": "compounding"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Check: Interest Mechanics",
+          "question": "How does capital growth compound over a 3-year horizon?",
+          "yourAnswer": "Calculated on principal and accumulated interest",
+          "correctAnswer": "Calculated on principal and accumulated interest",
+          "feedback": "Correct. Thorough comprehension of compounding safeguards your long-term savings trajectory.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Mastery Confidence Tracker",
+          "topic": "First Home Purchase Readiness",
+          "confidencePercent": 88,
+          "levelLabel": "High Mastery & Understanding",
+          "nextMilestone": "Complete final deposit stress-test module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Insight: Autonomous Pacing",
+          "insight": "Learners who progress without timer pressures retain complex financial concepts 35% longer and build more durable savings habits.",
+          "source": "LBG Financial Literacy Research Hub",
+          "actionLabel": "Read Methodology",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_INSIGHT",
+            "payload": {
+              "articleId": "autonomous-pacing"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Transparent Learning Points",
+            "description": "Earn 100 points for every completed financial literacy module and 50 points per successfully verified concept quiz."
+          },
+          "ctaLabel": "Explore Programme Terms",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Milestone Reward Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "First-Time Buyer Financial Guidebook & 300 Bonus Points",
+            "points": 300,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardName": "First-Time Buyer Financial Guidebook"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-card",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": {
+            "label": "60% First Home Knowledge Milestone Reached",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Portfolio Summary",
+          "topBrandName": "LBG Financial Academy",
+          "topBrandPoints": 3900,
+          "growthTip": "Your consistent module review has maximized your knowledge score.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "View Full History",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK",
+      "STRICT_NO_TIMED_PRESSURE"
+    ]
+  },
+  "strategy": "Goal-linked educational progress focus highlighting First Home Savings Knowledge progress (63%) with unhurried mastery modules, clear value transparency, and mandatory educational stack without timed pressure or social rankings.",
+  "confidence": 0.98
+}

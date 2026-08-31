@@ -1,0 +1,124 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Calm, educational-first rewards overview emphasizing learning mastery, module progress toward the First Home Savings Knowledge goal, and milestone tracking without timed challenges or competitive elements.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.8,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Standard general rewards dashboard with mixed promotional banners and gamified streak indicators.",
+      "scores": {
+        "customerGoalRelevance": 5,
+        "expectedCustomerUtility": 4,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 6,
+        "accessibilityAndCognitiveFit": 6,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 4,
+        "evidenceConfidence": 7,
+        "usefulNovelty": 3,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 5.45,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-continue-learning",
+    "storyTitle": "Advance Financial Knowledge",
+    "oneSentenceStory": "The customer continues engaging with educational modules at their own pace to achieve financial mastery.",
+    "customerSituation": "Customer is actively reviewing financial literacy content and tracking progress toward the First Home Savings Knowledge goal.",
+    "storyTension": "Desire for thorough understanding without encountering rushed, timed, or overly gamified interfaces.",
+    "customerResolution": "Clear, calm display of learning modules, points balance, and milestone tracking that respects their pace.",
+    "primaryOutcome": "Gain clear understanding and measure personal mastery progress toward financial goals.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-signal-1",
+      "fact-signal-2",
+      "fact-signal-3"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Timed challenges",
+      "Public leaderboard rankings"
+    ],
+    "completionSignals": [
+      "Module review opened",
+      "Milestone progress viewed"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-continue-learning",
+      "journeyObjective": "Provide a serene, structured rewards and learning progress overview tailored to educational mastery.",
+      "completionDefinition": "Customer reviews points balance, milestone progress, and accesses educational modules without pressure.",
+      "episodeSketches": [
+        "View points balance and educational learning progress",
+        "Inspect First Home Savings Knowledge milestone progress and select module review"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.8,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 95,
+    "actionOutcomeContinuity": 97,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with LEARNING_MASTERY motivation and educational tone preferences."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All hard gates passed successfully. Zero dark patterns or manipulative urgency detected."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Calm presentation style and cognitive load fit meet high accessibility standards."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-continue-learning and journey-candidate-1 exhibit flawless alignment and narrative continuity."
+    }
+  ]
+}

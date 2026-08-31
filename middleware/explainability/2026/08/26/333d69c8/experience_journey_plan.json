@@ -1,0 +1,90 @@
+{
+  "primaryJourneyId": "journey-statement-credit-management",
+  "storyId": "story-statement-credit-management",
+  "journeyObjective": "Effortlessly verify payment-linked reward value and manage statement credit allocations toward bills.",
+  "entryPoint": "Rewards overview dashboard landing",
+  "completionDefinition": "Customer views points balance, checks goal progress, and confirms statement credit allocation settings.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current LBG coin balance and its tangible bill value?",
+      "entryCondition": "User lands on rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tangible cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-intent-credit"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my holiday savings goal progressing and how do payment rewards support it?",
+      "entryCondition": "Balance and tangible value reviewed",
+      "requiredInformation": [
+        "Holiday Spending Money progress",
+        "Payment reward allocation rules"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-auto-allocation"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do I confirm my statement credit allocation settings for bill reduction?",
+      "entryCondition": "Goal and allocation preferences reviewed",
+      "requiredInformation": [
+        "Statement credit confirmation status",
+        "Rewards insight summary"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "CONFIRMATION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redeems-statement"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-insights",
+      "purpose": "Provide clear educational breakdown of how reward points convert to bill credits without gamification.",
+      "contentNotes": [
+        "How points work explainer",
+        "Value transparency notes"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

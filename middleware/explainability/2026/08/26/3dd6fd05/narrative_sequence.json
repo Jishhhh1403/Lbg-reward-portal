@@ -1,0 +1,206 @@
+{
+  "primaryActionComponentRef": "payment-reward-01",
+  "components": [
+    {
+      "componentRef": "points-balance-01",
+      "miniJourneyId": "mj-balance",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-01",
+      "miniJourneyId": "mj-balance",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-01",
+      "miniJourneyId": "mj-management",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-allocation-01",
+      "miniJourneyId": "mj-management",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "payment-reward-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-confirmation-01",
+      "miniJourneyId": "mj-verification",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "reward-allocation-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-card-01",
+      "miniJourneyId": "mj-verification",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "payment-reward-confirmation-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "rewards-insight-card-01",
+      "miniJourneyId": "mj-verification",
+      "narrativeRole": "PAYOFF",
+      "sequence": 7,
+      "dependsOn": [
+        "tangible-value-card-01"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "earn-breakdown-card-01",
+      "miniJourneyId": "mj-verification",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "rewards-insight-card-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "month-over-month-card-01",
+      "miniJourneyId": "mj-verification",
+      "narrativeRole": "REFERENCE",
+      "sequence": 9,
+      "dependsOn": [
+        "earn-breakdown-card-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "points-health-score-01",
+      "miniJourneyId": "mj-verification",
+      "narrativeRole": "REFERENCE",
+      "sequence": 10,
+      "dependsOn": [
+        "month-over-month-card-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "add-goal-card-01",
+      "miniJourneyId": "mj-management",
+      "narrativeRole": "OPTION",
+      "sequence": 11,
+      "dependsOn": [
+        "points-health-score-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "how-points-work-card-01",
+      "miniJourneyId": "mj-balance",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [
+        "add-goal-card-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "reward-choice-panel-01",
+      "miniJourneyId": "mj-management",
+      "narrativeRole": "OPTION",
+      "sequence": 13,
+      "dependsOn": [
+        "how-points-work-card-01"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "why-this-ui-card-01",
+      "miniJourneyId": "mj-verification",
+      "narrativeRole": "REFERENCE",
+      "sequence": 14,
+      "dependsOn": [
+        "reward-choice-panel-01"
+      ],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-01",
+      "toComponentRef": "goal-progress-01",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect coin balance to holiday spending goal progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-01",
+      "toComponentRef": "payment-reward-01",
+      "relationship": "sequential",
+      "bridgeIntent": "Translate goal and balance into statement credit action.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "payment-reward-01",
+      "toComponentRef": "reward-allocation-01",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide control over automatic allocation rules.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "reward-allocation-01",
+      "toComponentRef": "payment-reward-confirmation-01",
+      "relationship": "sequential",
+      "bridgeIntent": "Display confirmation of recent bill credits.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "payment-reward-confirmation-01",
+      "toComponentRef": "tangible-value-card-01",
+      "relationship": "sequential",
+      "bridgeIntent": "Show precise cash-equivalent valuation of points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "tangible-value-card-01",
+      "toComponentRef": "rewards-insight-card-01",
+      "relationship": "sequential",
+      "bridgeIntent": "Deliver overarching cashback and bill reduction payoff.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

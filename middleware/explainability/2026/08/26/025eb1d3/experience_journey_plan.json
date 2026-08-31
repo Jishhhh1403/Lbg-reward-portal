@@ -1,0 +1,107 @@
+{
+  "primaryJourneyId": "journey-candidate-rewards-overview",
+  "storyId": "story-continue-holiday-goal",
+  "journeyObjective": "Provide frictionless visibility into coin balance, statement credit cash value, and progress toward the holiday spending goal.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer views balance, checks statement credit conversion value, and confirms holiday goal progress.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "How many coins do I have and what are they worth in cash?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "cashEquivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-signal-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How are my automatic payments and bill reductions handled securely?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "paymentMethod",
+        "rewardRate"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-signal-auto-payment",
+        "fact-signal-guaranteed-rates"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "How can I allocate and redeem my rewards toward bills?",
+      "entryCondition": "Trust established",
+      "requiredInformation": [
+        "allocationPercent",
+        "redemptionOptions"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-signal-statement-credits"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How close am I to my Holiday Spending Money goal?",
+      "entryCondition": "Pathways reviewed",
+      "requiredInformation": [
+        "goalProgress",
+        "statementCreditValue"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-holiday"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-tips",
+      "purpose": "Provide clear educational guidance on how statement credit redemption works.",
+      "contentNotes": [
+        "How points convert directly to statement credits with guaranteed rates."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "planId": "plan-4de92d4d",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Execute the CLARITY_FIRST narrative arc (Snapshot -> Trust -> Pathways -> Hook -> Momentum) tailored to Sophie Williams's EDUCATIONAL_COMPETENCE persona, strictly adhering to the mandatory ordered stack and suppressing all countdowns, leaderboards, and timed pressures.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_WALLET",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "Steady progress through structured learning and disciplined saving brings your first home closer.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "courseName": "Rewards Academy: Advanced Property Planning",
+          "currentLesson": 3,
+          "totalLessons": 5,
+          "lessonPoints": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_LESSON",
+            "payload": {
+              "courseName": "Rewards Academy: Advanced Property Planning",
+              "lesson": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of compounding interest in long-term savings vehicles?",
+          "options": "A) Linear growth over time\nB) Earning returns on both principal and accumulated interest\nC) Fixed dividend payout regardless of balance",
+          "reward": "150 Learning Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "B"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Mastery Verification",
+          "question": "How does compound growth accelerate your savings goal?",
+          "yourAnswer": "Returns generate additional earnings.",
+          "correctAnswer": "Returns generate additional earnings on both initial principal and prior gains.",
+          "feedback": "Excellent conceptual understanding. You have fully grasped the compounding mechanism.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "REVIEW_FEEDBACK",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Competence Index",
+          "topic": "Mortgage & Savings Planning",
+          "confidencePercent": 88,
+          "levelLabel": "Advanced Mastery",
+          "nextMilestone": "Expert Property Strategist Badge",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CONFIDENCE_METRICS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Knowledge Deep-Dive",
+          "insight": "Consistent module engagement correlates with a 42% higher successful savings completion rate over 24 months.",
+          "source": "LBG Financial Literacy Research Institute",
+          "actionLabel": "Explore Reading Library",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_LIBRARY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Rewards Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "Base Balance": "\u00a331.00",
+            "Academy Modules Bonus": "\u00a38.00"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "Step 1": "Complete structured financial literacy modules at your own pace.",
+            "Step 2": "Pass knowledge quizzes to reinforce mastery without timer pressure.",
+            "Step 3": "Apply earned points and knowledge directly toward long-term savings goals."
+          },
+          "ctaLabel": "View Detailed Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_POINTS_GUIDE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "First Home Goal Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Conveyancing Fee Contribution Voucher",
+            "points": 2000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardName": "Conveyancing Fee Contribution Voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": {
+            "Foundation Module Completed": true,
+            "First Home Savings 50% Milestone": true,
+            "Advanced Compound Interest Mastery": false
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONES",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Mastery Badges & Achievements",
+          "badges": {
+            "Financial Literacy Scholar": "brain",
+            "Consistent Learner": "flame",
+            "Goal Strategist": "trophy",
+            "Mastery Expert": "crown"
+          },
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BADGES",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_COMPETENCE_MATCH",
+      "MANDATORY_STACK_COMPLIANCE"
+    ]
+  },
+  "strategy": "Execute the CLARITY_FIRST narrative arc (Snapshot -> Trust -> Pathways -> Hook -> Momentum) tailored to Sophie Williams's EDUCATIONAL_COMPETENCE persona, strictly adhering to the mandatory ordered stack and suppressing all countdowns, leaderboards, and timed pressures.",
+  "confidence": 0.96
+}

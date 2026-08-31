@@ -1,0 +1,106 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-verify-statement-credit",
+  "journeyObjective": "Enable effortless verification of coin balances and direct application of statement credits for bill reduction.",
+  "entryPoint": "Rewards Overview mobile screen",
+  "completionDefinition": "Customer views points balance and selects statement credit redemption.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and tangible cash value?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "cashEquivalentValue"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How does my balance translate to bill reduction and payment rewards?",
+      "entryCondition": "Customer reviews balance snapshot",
+      "requiredInformation": [
+        "paymentRewardRate",
+        "allocationRules"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-auto-payment",
+        "fact-wants-bills"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I allocate and apply my statement credit directly?",
+      "entryCondition": "Customer understands tangible value and payment options",
+      "requiredInformation": [
+        "statementCreditOptions",
+        "allocationControls"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-redeems-statement"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What is my confirmation and recent progress toward my holiday savings goal?",
+      "entryCondition": "Customer completes statement credit action or review",
+      "requiredInformation": [
+        "redemptionConfirmation",
+        "goalProgress"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-holiday"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-help",
+      "purpose": "Provide clear explanations of how LBG coins convert to guaranteed cash statement credits.",
+      "contentNotes": [
+        "How points work reference guide",
+        "Value transparency breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

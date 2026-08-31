@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Enable autonomous mastery of financial literacy modules and clear tracking of First Home Savings milestone progression.",
+  "entryPoint": "Rewards Overview Mobile Dashboard",
+  "completionDefinition": "Customer reviews goal progress and successfully engages with an educational quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my savings stand and what is my current financial mastery level?",
+      "entryCondition": "App launch on rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-sig-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points convert into tangible value and foundational financial knowledge?",
+      "entryCondition": "Reviewing balance and goals",
+      "requiredInformation": [
+        "tangible value",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-sig-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What structured learning modules and knowledge milestones are available next?",
+      "entryCondition": "Exploring educational offerings",
+      "requiredInformation": [
+        "learning mission",
+        "quiz",
+        "comprehension feedback",
+        "confidence progress",
+        "educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "COMPLETE_QUIZ",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency",
+      "purpose": "Provide clear breakdown of point cash equivalents and financial literacy insights without pressure.",
+      "contentNotes": [
+        "Tangible value explanation",
+        "Educational insights"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

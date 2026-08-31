@@ -1,0 +1,115 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-savings-goal",
+  "journeyObjective": "Review rewards balance and track educational mastery progress toward first home savings knowledge",
+  "entryPoint": "Rewards overview dashboard",
+  "completionDefinition": "Customer reviews 63% goal progress, inspects points balance, and engages with educational milestone module without timed pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand and what is my current coin value?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-balance"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my First Home Savings Knowledge goal progressing?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "goalName",
+        "current",
+        "target",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-active-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational milestones and learning steps await me next?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "courseName",
+        "currentLesson",
+        "totalLessons"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_LESSON",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-modules-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "How do these learning concepts apply and reinforce my financial mastery?",
+      "entryCondition": "Learning mission engaged",
+      "requiredInformation": [
+        "question",
+        "options",
+        "reward"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION",
+        "REFERENCE"
+      ],
+      "requiredActionType": "ANSWER_QUIZ",
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-modules-completion"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-insights",
+      "purpose": "Provide transparent coin valuation and educational guidance without artificial urgency.",
+      "contentNotes": [
+        "Tangible value breakdown",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-understand-portability",
+  "journeyObjective": "Provide a combined view of multi-partner reward balances with plain-English portability explanations and partner comparison tools.",
+  "entryPoint": "Rewards dashboard home",
+  "completionDefinition": "Customer reviews combined balances and explores partner transfer options using clear, jargon-free explanations.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my total reward balance across all programmes?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "wallet.lbgCoins",
+        "wallet.brandsConnected"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-balances-3-partners",
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my partner balances combine and sync?",
+      "entryCondition": "Viewing points balance",
+      "requiredInformation": [
+        "sync status",
+        "combined wallet details"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-combined-view",
+        "fact-plain-english"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do different partners compare for point transfers?",
+      "entryCondition": "Reviewing combined wallet",
+      "requiredInformation": [
+        "partner comparison data"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-asks-moving-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "Can I easily move my points between partners?",
+      "entryCondition": "Reviewing partner options",
+      "requiredInformation": [
+        "transfer rates and partner connection status"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION"
+      ],
+      "requiredActionType": "transfer",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-5",
+      "requiredEvidenceRefs": [
+        "fact-no-jargon"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-5",
+      "order": 5,
+      "customerQuestion": "Where did my past rewards come from?",
+      "entryCondition": "Completed partner transfer review",
+      "requiredInformation": [
+        "rewards history provenance"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-6",
+      "requiredEvidenceRefs": [
+        "fact-plain-english"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-6",
+      "order": 6,
+      "customerQuestion": "How is my family holiday fund progressing alongside my partner balances?",
+      "entryCondition": "Reviewed provenance",
+      "requiredInformation": [
+        "Family Holiday Fund progress"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-combined-view"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-plain-english-faq",
+      "purpose": "Provide jargon-free definitions of point transfers",
+      "contentNotes": [
+        "Explain transfers simply",
+        "No complex financial terminology"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

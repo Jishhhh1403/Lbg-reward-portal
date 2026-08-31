@@ -1,0 +1,131 @@
+{
+  "primaryJourneyId": "journey-protect-and-grow",
+  "storyId": "story-protect-and-grow",
+  "journeyObjective": "Provide clear educational insights on long-horizon savings and gentle protection options for expiring points aligned with Planner preferences.",
+  "entryPoint": "Dashboard / Rewards Overview",
+  "completionDefinition": "Customer reviews long-term goal trajectory and calmly selects a secure allocation path for expiring points.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and long-term savings?",
+      "entryCondition": "Session start on rewards overview",
+      "requiredInformation": [
+        "points_balance",
+        "long_term_goals"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-hook",
+      "requiredEvidenceRefs": [
+        "fact-idle-balance",
+        "fact-active-goals"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-hook",
+      "order": 2,
+      "customerQuestion": "What needs my attention right now without pressure?",
+      "entryCondition": "Completed snapshot review",
+      "requiredInformation": [
+        "expiring_points",
+        "risk_protection"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "How can I allocate my points and protect my expiring balance?",
+      "entryCondition": "Reviewed expiring points context",
+      "requiredInformation": [
+        "recommended_actions",
+        "goal_progress",
+        "educational_insight"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-accumulation-stalled",
+        "fact-preference-educational"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "What is the projected long-term growth of my savings?",
+      "entryCondition": "Completed action selection",
+      "requiredInformation": [
+        "future_value",
+        "projection_chart"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-accumulation-stalled"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 5,
+      "customerQuestion": "How secure is my portfolio and how do my points translate into tangible value?",
+      "entryCondition": "Reviewed long-term growth projection",
+      "requiredInformation": [
+        "tangible_value",
+        "rewards_insight"
+      ],
+      "allowedNarrativeRoles": [
+        "CONTINUATION",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-idle-balance"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-resources",
+      "purpose": "Provide deeper context on long-term compound accumulation for Diamond tier savers.",
+      "contentNotes": [
+        "Articles on retirement milestones",
+        "Value transparency guides"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

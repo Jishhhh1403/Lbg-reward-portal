@@ -1,0 +1,296 @@
+{
+  "planId": "plan-3953584b",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Educational value clarity combining expiring points protection (2,400 points in 9 days) with long-term retirement and children's education goal progress visualization, entirely avoiding countdown pressure or gamification.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 24500,
+          "tier": "Diamond",
+          "name": "Elena Vasquez",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Value Preservation Notice",
+          "expiringPoints": 2400,
+          "daysLeft": 9,
+          "message": "2,400 of your LBG coins are scheduled to reach their preservation review window in 9 days. You can safely allocate them to any active long-term goal without losing value.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PRESERVATION_DETAILS",
+            "payload": {
+              "expiringPoints": 2400
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Total Balance Value",
+          "cashValue": "\u00a3245.00",
+          "pointsEquivalent": 24500,
+          "breakdown": {
+            "label": "Base Accumulation Rate",
+            "value": "1.0p per LBG coin"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-retirement-goal",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 24500,
+          "target": 100000,
+          "percentage": 25,
+          "estimatedCompletion": "2038",
+          "message": "Your foundational pillar. Regular compounding ensures steady progress toward long-term security.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-education-goal",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 18500,
+          "target": 50000,
+          "percentage": 37,
+          "remaining": 31500,
+          "motivationalMessage": "Steady monthly contributions have built a strong foundation for future learning.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-home-goal",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 9000,
+          "target": 75000,
+          "percentage": 12,
+          "remaining": 66000,
+          "motivationalMessage": "Long-term horizon target structured for patient capital growth.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Add a New Long-Horizon Goal",
+          "subtitle": "Set a new savings milestone tailored to your family's future",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_GOAL_CREATOR",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-future-value",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Long-Term Compounding Outlook",
+          "currentValue": 24500,
+          "projectedValue": 48500,
+          "timeframe": "5 Years",
+          "growthRate": "4.5% AER equivalent",
+          "message": "Maintaining your current allocation strategy allows your balance to compound securely over time.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-projection-chart",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Retirement Fund Growth Projection",
+          "growthLabel": "Projected Growth Trajectory",
+          "data": [
+            {
+              "year": "2027",
+              "value": 24500
+            },
+            {
+              "year": "2029",
+              "value": 35000
+            },
+            {
+              "year": "2031",
+              "value": 48500
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Understanding Value Preservation",
+          "insight": "Preserving expiring points by reallocating them to active goals protects your hard-earned purchasing power without requiring immediate out-of-pocket spending.",
+          "source": "LBG Educational Insights Library",
+          "actionLabel": "Read Full Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_EDUCATIONAL_GUIDE",
+            "payload": {
+              "guideId": "value-preservation-101"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Portfolio Health Overview",
+          "topBrandName": "Partner Network",
+          "topBrandPoints": 24500,
+          "growthTip": "Redirecting your 2,400 expiring points to your Retirement Fund preserves their full \u00a324.00 cash-equivalent value.",
+          "expiringPoints": 2400,
+          "expiryDate": "15 Sep",
+          "ctaText": "Review Allocation Options",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REVIEW_ALLOCATION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "steps": [
+            {
+              "title": "1. Monitor Balance",
+              "description": "Keep track of your accumulated LBG coins and review upcoming expiration windows calmly."
+            },
+            {
+              "title": "2. Select Target Goal",
+              "description": "Choose which of your long-horizon savings goals will benefit most from reallocation."
+            },
+            {
+              "title": "3. Secure Value",
+              "description": "Confirm the transfer instantly with zero fees and full transparency."
+            }
+          ],
+          "ctaLabel": "Explore Saving Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_SAVINGS_GUIDE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Designed for Your Long-Term Strategy",
+          "intro": "This overview is tailored to your preference for educational clarity and patient capital growth, avoiding high-pressure tactics.",
+          "reasons": [
+            {
+              "label": "Transparent Protection",
+              "detail": "Clear guidance on expiring points without artificial countdown urgency."
+            },
+            {
+              "label": "Goal Alignment",
+              "detail": "Direct connection between your balance and long-horizon retirement and education milestones."
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_TONE"
+    ]
+  },
+  "strategy": "Educational value clarity combining expiring points protection (2,400 points in 9 days) with long-term retirement and children's education goal progress visualization, entirely avoiding countdown pressure or gamification.",
+  "confidence": 0.96
+}

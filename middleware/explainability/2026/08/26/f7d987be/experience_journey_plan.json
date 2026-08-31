@@ -1,0 +1,129 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Enable Sophie to track her First Home Savings Knowledge goal and access self-paced educational modules cleanly.",
+  "entryPoint": "Mobile rewards overview dashboard",
+  "completionDefinition": "Customer reviews goal progress card and engages with educational quiz or milestone details.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do my points and savings knowledge currently stand?",
+      "entryCondition": "Session start on rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-home-savings-goal",
+        "fact-coins-3900"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real educational value?",
+      "entryCondition": "After reviewing wallet balance and current goal",
+      "requiredInformation": [
+        "tangible value equivalent",
+        "points mechanics"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-signal-module-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What pathways can I explore next for my First Home Savings Knowledge?",
+      "entryCondition": "Understanding point value and current goal state",
+      "requiredInformation": [
+        "learning milestones",
+        "modules"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-hook",
+      "requiredEvidenceRefs": [
+        "fact-intent-learning"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-hook",
+      "order": 4,
+      "customerQuestion": "Why should I continue building my financial literacy right now?",
+      "entryCondition": "Reviewing available pathways",
+      "requiredInformation": [
+        "educational insights",
+        "quiz readiness"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-signal-retake-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 5,
+      "customerQuestion": "How can I maintain my steady momentum without pressure?",
+      "entryCondition": "Engaging with educational content",
+      "requiredInformation": [
+        "quiz",
+        "milestone details",
+        "confidence progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-home-savings-goal"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-learning-tips",
+      "purpose": "Provide daily financial tips aligned with mastery motivation.",
+      "contentNotes": [
+        "Self-paced tips with zero timed pressure."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

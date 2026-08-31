@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Guide customer through ongoing educational modules and goal tracking for First Home Savings Knowledge without timed pressure.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer views the recommended quiz module and interacts with the milestone progress tracker.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings goal?",
+      "entryCondition": "App launch / tab open",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational module or quiz should I tackle next?",
+      "entryCondition": "Viewing balance and goal snapshot",
+      "requiredInformation": [
+        "learning modules",
+        "quiz recommendations"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-behavior-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How does this advance my long-term financial capability?",
+      "entryCondition": "Exploring educational content",
+      "requiredInformation": [
+        "milestones",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-behavior-preference"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational context and points provenance without intrusive prompts.",
+      "contentNotes": [
+        "How points work explainer",
+        "Reward provenance history"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

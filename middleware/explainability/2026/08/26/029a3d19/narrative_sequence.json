@@ -1,0 +1,281 @@
+{
+  "primaryActionComponentRef": "comp-11-quick-win",
+  "components": [
+    {
+      "componentRef": "comp-1-balance",
+      "miniJourneyId": "mj-1-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-2-expiring",
+      "miniJourneyId": "mj-2-hook",
+      "narrativeRole": "TENSION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-1-balance"
+      ],
+      "resolves": [
+        "comp-1-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-3-health",
+      "miniJourneyId": "mj-2-hook",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-2-expiring"
+      ],
+      "resolves": [
+        "comp-2-expiring"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-4-goal-retirement",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-3-health"
+      ],
+      "resolves": [
+        "comp-3-health"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-5-goal-education",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-4-goal-retirement"
+      ],
+      "resolves": [
+        "comp-4-goal-retirement"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-6-future-value",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-5-goal-education"
+      ],
+      "resolves": [
+        "comp-5-goal-education"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-7-projection-chart",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-6-future-value"
+      ],
+      "resolves": [
+        "comp-6-future-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-8-educational-insight",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-7-projection-chart"
+      ],
+      "resolves": [
+        "comp-7-projection-chart"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-9-tangible-value",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-8-educational-insight"
+      ],
+      "resolves": [
+        "comp-8-educational-insight"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-10-add-goal",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-9-tangible-value"
+      ],
+      "resolves": [
+        "comp-9-tangible-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-11-quick-win",
+      "miniJourneyId": "mj-3-pathways",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-10-add-goal"
+      ],
+      "resolves": [
+        "comp-10-add-goal"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-12-earn-breakdown",
+      "miniJourneyId": "mj-4-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-11-quick-win"
+      ],
+      "resolves": [
+        "comp-11-quick-win"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-13-provenance",
+      "miniJourneyId": "mj-5-trust",
+      "narrativeRole": "REFERENCE",
+      "sequence": 13,
+      "dependsOn": [
+        "comp-12-earn-breakdown"
+      ],
+      "resolves": [
+        "comp-12-earn-breakdown"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-14-why-ui",
+      "miniJourneyId": "mj-5-trust",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 14,
+      "dependsOn": [
+        "comp-13-provenance"
+      ],
+      "resolves": [
+        "comp-13-provenance"
+      ],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-1-balance",
+      "toComponentRef": "comp-2-expiring",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Transition from overall balance view to specific value protection notice.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-2-expiring",
+      "toComponentRef": "comp-3-health",
+      "relationship": "sequential",
+      "bridgeIntent": "Support the expiring notice with overall health metrics.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-3-health",
+      "toComponentRef": "comp-4-goal-retirement",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect health score to long-term retirement goal progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-4-goal-retirement",
+      "toComponentRef": "comp-5-goal-education",
+      "relationship": "sequential",
+      "bridgeIntent": "Expand from retirement fund to children education fund.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-5-goal-education",
+      "toComponentRef": "comp-6-future-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Project the long-term value growth of accumulated balances.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-6-future-value",
+      "toComponentRef": "comp-7-projection-chart",
+      "relationship": "sequential",
+      "bridgeIntent": "Visualize projected growth with a compound trajectory chart.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-7-projection-chart",
+      "toComponentRef": "comp-8-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide educational context on value preservation.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-8-educational-insight",
+      "toComponentRef": "comp-9-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate the tangible cash equivalent of points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-9-tangible-value",
+      "toComponentRef": "comp-10-add-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer capability to create new long-term goals.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-10-add-goal",
+      "toComponentRef": "comp-11-quick-win",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide a calm, direct action to secure expiring points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-11-quick-win",
+      "toComponentRef": "comp-12-earn-breakdown",
+      "relationship": "sequential",
+      "bridgeIntent": "Show historical earn breakdown as a payoff for disciplined saving.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-12-earn-breakdown",
+      "toComponentRef": "comp-13-provenance",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide points provenance audit trail.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-13-provenance",
+      "toComponentRef": "comp-14-why-ui",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain why this personalized view was presented.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Provide structured access to the next First Home Savings Knowledge module and clear milestone progress without timed pressure.",
+  "entryPoint": "Dashboard load into educational competence overview",
+  "completionDefinition": "Customer views milestone progress and successfully opens or engages with the recommended educational module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and savings milestone currently stand?",
+      "entryCondition": "App launch",
+      "requiredInformation": [
+        "points",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-savings-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do these reward points convert into tangible financial value?",
+      "entryCondition": "Viewing balance snapshot",
+      "requiredInformation": [
+        "cash equivalent value"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-edu-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is my next step in mastering my First Home Savings Knowledge?",
+      "entryCondition": "Viewing value breakdown",
+      "requiredInformation": [
+        "goal progress percentage",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-savings-goal",
+        "fact-edu-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "How do points work and how can I test my conceptual understanding?",
+      "entryCondition": "Engaging with learning modules",
+      "requiredInformation": [
+        "learning modules",
+        "quiz checkpoints"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-learning-academy",
+      "purpose": "Provide supplementary unhurried educational modules and curriculum overviews.",
+      "contentNotes": [
+        "Self-paced course notes",
+        "Financial literacy glossary"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "primaryJourneyId": "journey-continue-goal",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Review First Home Savings Knowledge progress and engage with the next self-paced educational module.",
+  "entryPoint": "Rewards Overview screen loaded for Sophie Williams",
+  "completionDefinition": "Customer views goal progress metrics and successfully launches or reviews the educational quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my LBG coins and savings goal?",
+      "entryCondition": "App launched and wallet/goal state retrieved",
+      "requiredInformation": [
+        "3900 LBG coins",
+        "First Home Savings Knowledge 63% progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-goal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 2,
+      "customerQuestion": "What educational steps and milestones are available next?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "Learning mission status",
+        "Quiz module",
+        "Milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 3,
+      "customerQuestion": "How does mastering this content advance my long-term financial mastery?",
+      "entryCondition": "Pathways and quizzes explored",
+      "requiredInformation": [
+        "Confidence progress",
+        "Tangible value",
+        "Educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-3",
+        "fact-sig-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-provenance",
+      "purpose": "Provide transparency on how LBG coin value is calculated and earned.",
+      "contentNotes": [
+        "Earned via Academy Module Bonus",
+        "Zero expiring coins"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

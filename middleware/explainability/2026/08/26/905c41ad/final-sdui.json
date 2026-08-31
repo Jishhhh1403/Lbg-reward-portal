@@ -1,0 +1,485 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "905c41ad",
+  "createdAt": "2023-10-27T10:00:00Z",
+  "expiresAt": "2026-09-30T23:59:59Z",
+  "customerRef": "customer_013",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 6450,
+        "tier": "Gold",
+        "name": "Amelia Carter",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_BALANCE",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Guaranteed Cash Value Breakdown",
+        "cashValue": "\u00a364.50",
+        "pointsEquivalent": 6450,
+        "breakdown": {
+          "label": "Fixed Rate (100 coins = \u00a31.00)",
+          "value": "\u00a364.50 guaranteed"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPLAINER",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-choice-panel",
+      "type": "REWARD_CHOICE_PANEL",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Guaranteed Fixed-Value Vouchers",
+        "subtitle": "Preview full terms and guaranteed conversion before any point commitment",
+        "options": {
+          "id": "opt-grocery",
+          "label": "Supermarket Fixed Voucher",
+          "description": "Guaranteed \u00a332.00 value for 3,200 coins with zero deductions",
+          "points": 3200
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "PREVIEW_CHOICE",
+          "payload": {
+            "id": "opt-grocery"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [
+          "comp-tangible-value"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-value-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Partner Redemption Transparency",
+        "subtitle": "Compare fixed-rate partners with guaranteed equivalence",
+        "partners": {
+          "name": "Retail Partner Network",
+          "points": 2000,
+          "value": "\u00a320.00",
+          "perk": "Guaranteed 1:1 fixed conversion rate"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "COMPARE_PARTNERS",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-reward-choice-panel"
+        ],
+        "resolves": [
+          "comp-reward-choice-panel"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-allocation-control",
+      "type": "REWARD_ALLOCATION_CONTROL",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Redemption Allocation Control",
+        "subtitle": "Choose how your guaranteed points are distributed across fixed vouchers",
+        "allocation": {
+          "label": "Guaranteed Fixed Vouchers",
+          "percent": 100
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ADJUST_ALLOCATION",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-partner-value-comparison"
+        ],
+        "resolves": [
+          "comp-partner-value-comparison"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-why-this-ui",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Why You See This Layout",
+        "intro": "Designed for complete transparency and guaranteed fixed value based on your preferences.",
+        "reasons": {
+          "label": "Upfront Previews",
+          "detail": "Every reward displays full terms and guaranteed value before points are committed."
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_PREFERENCES",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-reward-allocation-control"
+        ],
+        "resolves": [
+          "comp-reward-allocation-control"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-rewards-insight",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Value Clarity Insight",
+        "topBrandName": "Groceries & Essentials",
+        "topBrandPoints": 3200,
+        "growthTip": "Fixed value redemptions protect your balance from variable conversion shifts.",
+        "expiringPoints": 0,
+        "expiryDate": "30 Sep",
+        "ctaText": "Review Terms",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_INSIGHT_TERMS",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-why-this-ui"
+        ],
+        "resolves": [
+          "comp-why-this-ui"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-personalized-offer",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Guaranteed Fixed Voucher",
+        "subtitle": "Tailored for Amelia Carter (Gold Tier)",
+        "offer": "\u00a325.00 Guaranteed Voucher for 2,500 LBG coins",
+        "validUntil": "2026-09-30",
+        "message": "Preview terms and full cash equivalent before confirming.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "PREVIEW_OFFER",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-rewards-insight"
+        ],
+        "resolves": [
+          "comp-rewards-insight"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Instant Fixed-Value Check",
+        "subtitle": "Verify your guaranteed conversion rate instantly",
+        "rewards": {
+          "name": "Guaranteed \u00a35 Voucher",
+          "points": 500
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VERIFY_QUICK_WIN",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-personalized-offer"
+        ],
+        "resolves": [
+          "comp-personalized-offer"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-best-value-redeem",
+      "type": "BEST_VALUE_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "options": {
+          "name": "Gold Tier Guaranteed Fixed Voucher",
+          "points": 6450,
+          "cashValue": "\u00a364.50",
+          "valuePerPoint": 1.0,
+          "best": true
+        },
+        "note": "Guaranteed exact conversion with zero hidden fees or surprise deductions.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "SELECT_BEST_VALUE",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-quick-win"
+        ],
+        "resolves": [
+          "comp-quick-win"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "steps": {
+          "title": "1. Preview Guaranteed Value",
+          "description": "Inspect exact cash equivalence and full terms upfront."
+        },
+        "ctaLabel": "Read Full Redemption Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_GUIDE",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-best-value-redeem"
+        ],
+        "resolves": [
+          "comp-best-value-redeem"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Educational Transparency Brief",
+        "insight": "Fixed-value redemption guarantees that your earned coins retain their exact stated purchasing power without variable conversion penalties.",
+        "source": "LBG Rewards Education Team",
+        "actionLabel": "Learn More",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "LEARN_MORE",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "comp-how-points-work"
+        ],
+        "resolves": [
+          "comp-how-points-work"
+        ],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-personalized-offer",
+          "comp-quick-win",
+          "comp-best-value-redeem",
+          "comp-how-points-work"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-reward-choice-panel",
+          "comp-partner-value-comparison",
+          "comp-reward-allocation-control",
+          "comp-why-this-ui",
+          "comp-rewards-insight",
+          "comp-educational-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Informed, confident reward evaluation with guaranteed value clarity",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-reward-choice-panel"
+  }
+}

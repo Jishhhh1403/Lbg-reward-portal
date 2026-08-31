@@ -1,0 +1,263 @@
+{
+  "planId": "plan-2412e214",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Aligns strictly with the BUILD_YOUR_FUTURE story archetype by ordering components from Snapshot to Hook, Pathways, Momentum, and Trust, focusing entirely on educational value projections, calm goal tracking, and secure expiring points management without gamification or artificial urgency.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 24500,
+          "tier": "Diamond",
+          "name": "Elena Vasquez",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Calm Point Protection",
+          "expiringPoints": 2400,
+          "daysLeft": 9,
+          "message": "2,400 points are scheduled to gentle reset in 9 days. Secure them into your retirement fund calmly with zero pressure.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SECURE_POINTS",
+            "payload": {
+              "points": 2400,
+              "targetGoal": "Retirement Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tile",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "label": "Engagement Pace",
+          "value": "4 days",
+          "unit": "active this month",
+          "tone": "brand",
+          "infoText": "Steady, deliberate long-term saving rhythm",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-retirement",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 24500,
+          "target": 100000,
+          "percentage": 25,
+          "estimatedCompletion": "2031",
+          "message": "Your foundational pillar is progressing steadily with strong long-term accumulation history.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-education",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 18500,
+          "target": 50000,
+          "percentage": 37,
+          "remaining": 31500,
+          "motivationalMessage": "Consistent educational milestone tracking supports long-horizon security.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-home",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 9000,
+          "target": 75000,
+          "percentage": 12,
+          "remaining": 66000,
+          "motivationalMessage": "Long-term horizon tracking for your property milestone.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Add a New Long-Term Goal",
+          "subtitle": "Define a future milestone to protect and grow your accumulated value.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ADD_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-edu-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Educational Perspective: Compound Growth",
+          "insight": "Allocating idle balances into structured long-term funds preserves capital purchasing power against inflation over multi-year horizons.",
+          "source": "LBG Wealth Research",
+          "actionLabel": "Read Strategy Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_GUIDE",
+            "payload": {
+              "guideId": "compound-growth-diamond"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-future-value",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Projected Portfolio Growth",
+          "currentValue": 24500,
+          "projectedValue": 42000,
+          "timeframe": "5 Years",
+          "growthRate": "4.5% AER equivalent",
+          "message": "Projected value demonstrates steady accumulation when balances remain purposefully allocated.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-projection-chart",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Long-Horizon Accumulation Trajectory",
+          "growthLabel": "Estimated Portfolio Growth",
+          "data": [
+            {
+              "year": "2026",
+              "value": 24500
+            },
+            {
+              "year": "2028",
+              "value": 31000
+            },
+            {
+              "year": "2030",
+              "value": 38500
+            },
+            {
+              "year": "2032",
+              "value": 46000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Cash Value Transparency",
+          "cashValue": "\u00a3245.00",
+          "pointsEquivalent": 24500,
+          "breakdown": {
+            "Retirement Fund Allocation": "\u00a3122.50",
+            "Education Fund Allocation": "\u00a392.50",
+            "Home Deposit Allocation": "\u00a330.00"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Portfolio Health Summary",
+          "topBrandName": "LBG Wealth & Savings",
+          "topBrandPoints": 24500,
+          "growthTip": "Your Diamond tier status ensures maximum long-term allocation efficiency.",
+          "expiringPoints": 2400,
+          "expiryDate": "15 Sep",
+          "ctaText": "Review Allocation Rules",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REVIEW_RULES",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "BUILD_YOUR_FUTURE_STORY",
+      "EDUCATIONAL_TONE_ALIGNED",
+      "NO_GAMIFICATION"
+    ]
+  },
+  "strategy": "Aligns strictly with the BUILD_YOUR_FUTURE story archetype by ordering components from Snapshot to Hook, Pathways, Momentum, and Trust, focusing entirely on educational value projections, calm goal tracking, and secure expiring points management without gamification or artificial urgency.",
+  "confidence": 0.98
+}

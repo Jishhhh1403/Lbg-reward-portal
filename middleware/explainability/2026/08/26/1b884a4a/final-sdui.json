@@ -1,0 +1,418 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "1b884a4a",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "You're 63% toward mastering your First Home deposit strategy. Keep exploring at your own pace!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goalName": "First Home Savings Knowledge"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Your LBG Coin Purchasing Power",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": {
+          "label": "Educational & Savings Value",
+          "value": "100 coin = \u00a31.00 equivalence"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [
+          "comp-goal-progress"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-learning-mission",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "courseName": "First Home Academy",
+        "currentLesson": 3,
+        "totalLessons": 5,
+        "lessonPoints": 300,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "RESUME_LESSON",
+          "payload": {
+            "lessonNumber": 3
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quiz",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "question": "Which mortgage repayment structure generally offers predictable monthly budgeting over a fixed term?",
+        "options": "Fixed-rate repayment mortgage",
+        "reward": "150 LBG Coins & Knowledge Milestone",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ_ANSWER",
+          "payload": {
+            "answer": "Fixed-rate repayment mortgage"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-learning-mission"
+        ],
+        "resolves": [
+          "comp-learning-mission"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-comprehension",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Concept Mastery Check",
+        "question": "Why does a 10% deposit unlock more competitive interest tiers?",
+        "yourAnswer": "Reduces lender risk and LTV ratio",
+        "correctAnswer": "Reduces lender risk and lower Loan-to-Value (LTV)",
+        "feedback": "Spot on! Lower LTV ratios demonstrate lower risk to lenders, securing better rates.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "comp-quiz"
+        ],
+        "resolves": [
+          "comp-quiz"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-confidence-progress",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Financial Confidence Tracker",
+        "topic": "First Home Readiness",
+        "confidencePercent": 84,
+        "levelLabel": "Building strong mastery",
+        "nextMilestone": "Deposit Strategy Expert",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-comprehension"
+        ],
+        "resolves": [
+          "comp-comprehension"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Mastery Insight for Sophie",
+        "insight": "Connecting your learning milestones directly to your First Home savings goal increases knowledge retention by 40%. Take all the time you need.",
+        "source": "LBG Financial Academy",
+        "actionLabel": "Explore Savings Modules",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "EXPLORE_MODULES",
+          "payload": {
+            "section": "savings"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-confidence-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "steps": {
+          "title": "Learn & Earn with Purpose",
+          "description": "Complete academy modules at 100%, retake quizzes to master concepts, and watch your LBG coin rewards support your long-term property goals."
+        },
+        "ctaLabel": "View Academy Syllabus",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_SYLLABUS",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-educational-insight"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Goal-Linked Milestone Reward",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": {
+          "name": "Conveyancing Fee Contribution Voucher",
+          "points": 2000,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_REWARD_DETAILS",
+          "payload": {
+            "rewardName": "Conveyancing Fee Contribution Voucher"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [
+          "comp-goal-progress"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "milestones": {
+          "label": "Completed 3 Academy Modules & Reached 63% Goal Progress",
+          "achieved": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "CELEBRATION",
+        "dependsOn": [
+          "comp-goal-linked-reward"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-learning-mission",
+          "comp-quiz",
+          "comp-how-points-work",
+          "comp-goal-linked-reward"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-comprehension",
+          "comp-confidence-progress",
+          "comp-milestone"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-continue-goal",
+    "primaryOutcome": "Deepened financial mastery and clear visibility of goal-oriented progress.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "RESUME",
+    "primaryActionComponentId": "comp-quiz"
+  }
+}

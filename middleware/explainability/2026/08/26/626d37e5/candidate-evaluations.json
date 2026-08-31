@@ -1,0 +1,136 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Utility-focused rewards overview highlighting cash-equivalent statement credits and Holiday Spending Money goal progress directly without gamification.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broader rewards exploration including experiential vouchers and partner conversion comparisons alongside statement credit summaries.",
+      "scores": {
+        "customerGoalRelevance": 4,
+        "expectedCustomerUtility": 5,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 6,
+        "accessibilityAndCognitiveFit": 6,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 3,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 5,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 5.45,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-1",
+    "storyTitle": "Statement Credit Verification & Bill Reduction",
+    "oneSentenceStory": "Customer quickly reviews statement credit allocation and verifies cash-equivalent progress toward holiday savings without distraction.",
+    "customerSituation": "Customer visits rewards overview to check accumulated balance and confirm automatic statement credit application.",
+    "storyTension": "Ensuring transparent cash-equivalent value and progress clarity without encountering gamified elements or promotional clutter.",
+    "customerResolution": "Customer instantly verifies tangible bill-reduction progress and confirms automatic payment settings.",
+    "primaryOutcome": "Effortless verification of tangible cash-equivalent rewards and automated statement credit progress.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-signal-1",
+      "fact-signal-2",
+      "fact-signal-3"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "gamified leaderboards",
+      "experiential voucher promotions",
+      "artificial urgency triggers"
+    ],
+    "completionSignals": [
+      "viewed_statement_credit_balance",
+      "confirmed_automatic_allocation"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-1",
+      "journeyObjective": "Deliver immediate transparency on points balance, cash-equivalent statement credit value, and Holiday Spending Money goal progress.",
+      "completionDefinition": "Customer views points balance converted to cash equivalent, verifies statement credit allocation, and inspects Holiday Spending Money goal progress.",
+      "episodeSketches": [
+        "Display points balance with clear cash-equivalent conversion ($73.00 value)",
+        "Show automatic statement credit allocation status on linked card",
+        "Present Holiday Spending Money goal progress card ($640.0 of $1200.0)"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.4,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 90,
+    "miniJourneyCompleteness": 92,
+    "transitionStrength": 88,
+    "actionOutcomeContinuity": 92,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly matches PAYMENT_UTILITY motive and strict preference for bill reduction over vouchers or gamification."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All risk gates passed with zero dark patterns or artificial urgency detected."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit; straightforward cash-equivalent metrics and clear text formatting support accessible comprehension."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "VOTE",
+      "summary": "Approved story-1 as it directly addresses statement credit verification and transparent bill reduction."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "VOTE",
+      "summary": "Recommended journey-candidate-1 for seamless flow from points balance to statement credit status and savings goal tracking."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Coherence assessment passed successfully with no orphan components or conflicting narratives."
+    }
+  ]
+}

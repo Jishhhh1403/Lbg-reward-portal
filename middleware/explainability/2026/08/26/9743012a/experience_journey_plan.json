@@ -1,0 +1,65 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-portability-clarity",
+  "journeyObjective": "Provide unified multi-partner balance visibility and plain-English transfer options.",
+  "entryPoint": "Unified Rewards Home",
+  "completionDefinition": "Customer reviews combined balances and inspects a partner transfer comparison with zero jargon.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand across all my partner programmes?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "partner balances"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I easily move and compare points without confusing jargon?",
+      "entryCondition": "Unified balance reviewed",
+      "requiredInformation": [
+        "partner transfer options",
+        "plain-English value"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-asks-moving-points",
+        "fact-plain-english"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-help",
+      "purpose": "Provide instant plain-English clarity on point values and rules.",
+      "contentNotes": [
+        "FAQ on transfers",
+        "Glossary of plain terms"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

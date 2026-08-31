@@ -1,0 +1,297 @@
+{
+  "planId": "plan-0fe7f2fc",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Surface instant-redemption rewards grid directly with clear expiring points notice and 1-tap quick redeem actions, avoiding notification fatigue triggers or dark pattern urgency.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3600,
+          "tier": "Gold",
+          "name": "Ryan Okafor",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Use it or lose it! 1,500 points ready for fun",
+          "expiringPoints": 1500,
+          "daysLeft": 7,
+          "message": "Hey Ryan! Your 1,500 Gold points are ready to turn into treats before they drift away in 7 days.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your instant vibe check",
+          "subtitle": "Grab a quick coffee or treat with zero wait time!",
+          "rewards": {
+            "name": "Barista Coffee & Pastry",
+            "points": 200
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_QUICK_WIN",
+            "payload": {
+              "points": 200
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-instant-popup",
+        "type": "INSTANT_REWARD_POPUP",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Welcome back, Ryan!",
+          "subtitle": "Here is your instant reward unlocked for today's session.",
+          "points": 350,
+          "expiresIn": "2 hours",
+          "celebration": true,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "DISMISS_POPUP",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-flash-banner",
+        "type": "FLASH_REWARD_BANNER",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "\u26a1 Lightning Flash Deal: Snack Box",
+          "subtitle": "Grab this fan-favourite treat instantly!",
+          "originalPoints": 450,
+          "discountedPoints": 350,
+          "timer": "02:15:00",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_FLASH_REWARD",
+            "payload": {
+              "cost": 350
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-redeem",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Tap & Enjoy Right Now",
+          "description": "Pick your instant reward and redeem in one effortless tap.",
+          "rewards": {
+            "name": "Cinema Ticket Duo",
+            "points": 800,
+            "icon": "film"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "QUICK_REDEEM",
+            "payload": {
+              "rewardName": "Cinema Ticket Duo",
+              "points": 800
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Your Wallet's Real-World Power",
+          "cashValue": "\u00a336.00",
+          "pointsEquivalent": 3600,
+          "breakdown": {
+            "label": "Ready to spend instantly",
+            "value": "\u00a336.00 value"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reward-carousel",
+        "type": "REWARD_CAROUSEL",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Curated Instant Treats for You",
+          "rewards": [
+            {
+              "name": "Artisan Coffee Bundle",
+              "points": 300,
+              "category": "Drinks",
+              "limited": true
+            },
+            {
+              "name": "Gourmet Lunch Voucher",
+              "points": 500,
+              "category": "Food",
+              "limited": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_CAROUSEL_REWARD",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-streak",
+        "type": "STREAK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "streakDays": 3,
+          "message": "You're building awesome momentum, Ryan! Keep the streak alive.",
+          "nextReward": "Bonus 100 Points on 5th Day",
+          "milestones": [
+            {
+              "days": 3,
+              "reward": "Unlocked Vibe Badge",
+              "achieved": true
+            },
+            {
+              "days": 5,
+              "reward": "Bonus 100 Points",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-badge",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Your Trophy Cabinet",
+          "badges": [
+            {
+              "name": "Instant Hunter",
+              "icon": "zap",
+              "earned": true
+            },
+            {
+              "name": "Streak Master",
+              "icon": "flame",
+              "earned": true
+            }
+          ],
+          "totalEarned": 3,
+          "totalAvailable": 10,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "status": "synced",
+          "title": "All Wallets Synced Securely",
+          "lastSyncedAt": "Today at 12:07 PM",
+          "message": "Your 3,600 coins are fully secured and ready for instant action.",
+          "ctaText": "Refresh Status",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REFRESH_SYNC",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-why-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Why you're seeing this right now",
+          "intro": "We tailored this screen just for you based on your preference for lightning-fast rewards.",
+          "reasons": [
+            {
+              "label": "Expiring Points Protection",
+              "detail": "We highlighted your 1,500 expiring points so you never miss out on free treats."
+            },
+            {
+              "label": "Instant Gratification",
+              "detail": "Zero waiting around\u2014grab vouchers that work instantly in 1 tap."
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "INSTANT_AT_RISK_MIX"
+    ]
+  },
+  "strategy": "Surface instant-redemption rewards grid directly with clear expiring points notice and 1-tap quick redeem actions, avoiding notification fatigue triggers or dark pattern urgency.",
+  "confidence": 0.96
+}

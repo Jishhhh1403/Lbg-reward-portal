@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-statement-credit",
+  "storyId": "story-statement-credit",
+  "journeyObjective": "Deliver transparent statement credit valuation and frictionless bill reduction aligned with Daniel's payment utility preference.",
+  "entryPoint": "Rewards Overview mobile screen",
+  "completionDefinition": "Customer views tangible cash equivalent and successfully initiates bill reduction statement credit.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1-balance",
+      "order": 1,
+      "customerQuestion": "How many LBG Coins do I have and what are they worth?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "7,300 LBG Coins",
+        "Cash equivalent value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2-goals",
+      "requiredEvidenceRefs": [
+        "fact-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2-goals",
+      "order": 2,
+      "customerQuestion": "How is my Holiday Spending Money goal progressing?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "Holiday Spending Money progress (640 / 1200, 53%)"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": "mj-3-action",
+      "requiredEvidenceRefs": [
+        "fact-holiday-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3-action",
+      "order": 3,
+      "customerQuestion": "How can I apply my coins directly to reduce my bill?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "Statement credit options",
+        "Allocation controls",
+        "Payment confirmation"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redeem-habit",
+        "fact-auto-allocation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education",
+      "purpose": "Provide clear educational guidance on how coins convert directly to cash statement credits.",
+      "contentNotes": [
+        "How points work",
+        "Value transparency"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

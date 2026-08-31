@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-candidate-statement-credit",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Provide frictionless verification of coin balances and direct allocation of rewards toward statement credits and bill reduction.",
+  "entryPoint": "Customer opens rewards overview to check coin balances and cashback earnings.",
+  "completionDefinition": "Customer views points balance, reviews tangible cashback value, and confirms statement credit allocation.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-balance",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and cashback status?",
+      "entryCondition": "Session initialized with Platinum tier and 7,300 LBG coins.",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name",
+        "cashback earnings"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-goals",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-cashback-checking"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-goals",
+      "order": 2,
+      "customerQuestion": "How am I progressing toward my savings and holiday spending goals?",
+      "entryCondition": "Balance verified.",
+      "requiredInformation": [
+        "Holiday Spending Money progress (53%)"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-payment",
+      "requiredEvidenceRefs": [
+        "fact-active-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-payment",
+      "order": 3,
+      "customerQuestion": "How can I apply my rewards directly to upcoming bills?",
+      "entryCondition": "Goal progress reviewed.",
+      "requiredInformation": [
+        "Payment reward options",
+        "Automatic allocation settings"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CONFIRM_STATEMENT_CREDIT",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redemption-habit",
+        "fact-auto-allocation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "educational-surface",
+      "purpose": "Provide clear explanations of point values and redemption mechanics for payment utility.",
+      "contentNotes": [
+        "How points work",
+        "Tangible value breakdowns"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Provide a seamless rewards and progress overview highlighting First Home Savings goal progression, quiz availability, and LBG coin balance at a self-directed pace.",
+  "entryPoint": "User opens rewards overview focusing on educational mastery and goal progress.",
+  "completionDefinition": "Customer reviews goal progress and accesses the next educational quiz or milestone component.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and learning goals?",
+      "entryCondition": "App launched into educational rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-home-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What financial literacy module and quiz can I explore next?",
+      "entryCondition": "User reviewed balance and goal standing",
+      "requiredInformation": [
+        "recommended financial literacy module",
+        "quiz details"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-mod-complete"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do my points translate to tangible value and how do points work?",
+      "entryCondition": "User explored next learning module",
+      "requiredInformation": [
+        "tangible value breakdown",
+        "how points work steps"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-tips",
+      "purpose": "Provide supplementary daily learning guidance and milestone competence checks.",
+      "contentNotes": [
+        "Daily money tip",
+        "Milestone details"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

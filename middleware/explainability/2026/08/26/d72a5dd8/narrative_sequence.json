@@ -1,0 +1,255 @@
+{
+  "primaryActionComponentRef": "learning-mission-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "learning-mission-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "quiz-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "learning-mission-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comprehension-feedback-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "quiz-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "confidence-progress-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "comprehension-feedback-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "educational-insight-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 9,
+      "dependsOn": [
+        "tangible-value-card-1"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "goal-linked-reward-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "learning-mission-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "milestone-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 11,
+      "dependsOn": [
+        "goal-linked-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "badge-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 12,
+      "dependsOn": [
+        "milestone-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "add-goal-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 13,
+      "dependsOn": [
+        "milestone-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "sync-status-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 14,
+      "dependsOn": [
+        "add-goal-card-1"
+      ],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect current coin balance directly to active learning goal progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "learning-mission-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Bridge 63% savings goal progress into the next available learning mission.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "learning-mission-1",
+      "toComponentRef": "quiz-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Follow up the learning mission with an interactive comprehension quiz.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "quiz-card-1",
+      "toComponentRef": "comprehension-feedback-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide immediate, educational feedback on quiz completion.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comprehension-feedback-1",
+      "toComponentRef": "confidence-progress-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Translate quiz success into overall mastery confidence progression.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "educational-insight-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer context on how educational mastery supports financial resilience.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "educational-insight-1",
+      "toComponentRef": "tangible-value-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Clarify the tangible cash value behind accumulated LBG coins.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "tangible-value-card-1",
+      "toComponentRef": "how-points-work-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain clearly how points are earned through self-paced learning.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "learning-mission-1",
+      "toComponentRef": "goal-linked-reward-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Show the goal-linked reward unlocked through continuous learning.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-linked-reward-1",
+      "toComponentRef": "milestone-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Highlight milestones achieved on the learning journey.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "milestone-card-1",
+      "toComponentRef": "badge-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Display earned mastery badges reflecting dedication.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "milestone-card-1",
+      "toComponentRef": "add-goal-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer the option to set a new learning goal upon milestone reach.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "add-goal-card-1",
+      "toComponentRef": "sync-status-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Confirm system synchronisation of learning milestones.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

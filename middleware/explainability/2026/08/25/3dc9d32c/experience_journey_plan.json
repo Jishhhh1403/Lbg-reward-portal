@@ -1,0 +1,92 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Deliver clear rewards overview highlighting progress toward financial knowledge goals and self-paced educational mastery.",
+  "entryPoint": "Customer opens rewards overview to check First Home Savings Knowledge progress and educational modules.",
+  "completionDefinition": "Customer reviews financial mastery progress and engages with goal-linked learning modules.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings knowledge?",
+      "entryCondition": "App launch",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-savings"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real value and milestones?",
+      "entryCondition": "Viewing balance and goals",
+      "requiredInformation": [
+        "cash value equivalent",
+        "learning modules"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-module"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What self-paced learning path can I take next to master my goals?",
+      "entryCondition": "Reviewing financial literacy milestones",
+      "requiredInformation": [
+        "quiz",
+        "comprehension",
+        "confidence",
+        "educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "COMPLETE_LESSON",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-quiz"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide absolute clarity on coin provenance and value without artificial urgency.",
+      "contentNotes": [
+        "Value explainer",
+        "How points work breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

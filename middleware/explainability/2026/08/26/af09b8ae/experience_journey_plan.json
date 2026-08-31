@@ -1,0 +1,72 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Provide a calm, educational overview of expiring points protection and long-term goal progress for Diamond-tier saver Elena Vasquez.",
+  "entryPoint": "Mobile rewards overview dashboard",
+  "completionDefinition": "Customer reviews points protection options and examines long-term retirement goal progress without experiencing dark patterns or stressful urgency.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand and what needs my attention calmly?",
+      "entryCondition": "App opened by Elena Vasquez after 34 days of inactivity.",
+      "requiredInformation": [
+        "points balance",
+        "tier",
+        "expiring points status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-tier-diamond",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How are my long-horizon savings and retirement fund progressing?",
+      "entryCondition": "Customer reviews current balance and calmly inspects value protection.",
+      "requiredInformation": [
+        "goal progress for retirement, education, and home",
+        "projected long-term value"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-stalled-history",
+        "fact-multiple-goals"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-insights",
+      "purpose": "Provide educational context on long-horizon accumulation and value clarity without countdown urgency.",
+      "contentNotes": [
+        "Value explainer notes",
+        "Cash value transparency breakdowns"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

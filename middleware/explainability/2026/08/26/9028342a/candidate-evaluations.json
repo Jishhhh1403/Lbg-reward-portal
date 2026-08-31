@@ -1,0 +1,126 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Calm, low-pressure points status overview focusing on value preservation without urgency countdowns or gamification, featuring clear reassuring redemption options.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Urgent countdown banner highlighting expiring points and daily streak bonuses to drive immediate click-through.",
+      "scores": {
+        "customerGoalRelevance": 3,
+        "expectedCustomerUtility": 2,
+        "screenLevelStoryCoherence": 2,
+        "journeyAndActionContinuity": 4,
+        "accessibilityAndCognitiveFit": 3,
+        "brandAndLegalConsistency": 2,
+        "rewardProfileAlignment": 3,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 2,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 3.45,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-protect-value",
+    "storyTitle": "Calm Value Preservation",
+    "oneSentenceStory": "The customer calmly reviews their available points balance and gently explores straightforward redemption options without pressure before expiry.",
+    "customerSituation": "Customer returns after 45 days of inactivity and has 1850 points expiring in 12 days.",
+    "storyTension": "Anxiety of losing accumulated value balanced against fatigue from past notifications and urgency tactics.",
+    "customerResolution": "Customer safely views their current points and accesses clear, reassuring redemption pathways at their own pace.",
+    "primaryOutcome": "Secure, calm awareness of available points and gentle guidance toward valid redemption before expiry.",
+    "secondaryOutcome": null,
+    "narrativeMode": "PROTECT_VALUE",
+    "evidenceRefs": [
+      "fact-coins-balance",
+      "fact-expiring-points",
+      "fact-declining-engagement"
+    ],
+    "confidence": 0.95,
+    "prohibitedDetours": [
+      "manipulative urgency or countdown framing",
+      "gamification or streaks",
+      "partner comparison surfaces"
+    ],
+    "completionSignals": [
+      "Customer views points balance",
+      "Customer accesses expiring points notice calmly",
+      "Customer engages with straightforward redemption options"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-protect-value",
+      "journeyObjective": "Provide a serene, low-pressure overview of current coin balance, clear expiration context without countdown anxiety, and straightforward redemption pathways.",
+      "completionDefinition": "Customer views their points balance and interacts with a reassuring redemption option at their own pace.",
+      "episodeSketches": [
+        "Episode 1: Calm Balance & Expiry Context (Reassuring summary of 1850 coins and 12-day window without countdown timers)",
+        "Episode 2: Straightforward Redemption Options (Clean, non-gamified choice panel highlighting unclaimed retail discount and direct use options)"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.4,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 94,
+    "actionOutcomeContinuity": 96,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly aligns with the customer's REASSURING tone preference and long horizon motivation while avoiding all prohibited notification fatigue triggers."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All manipulative urgency, countdown framing, and gamification risks successfully filtered out via candidate evaluation and hard gate checks."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Low-pressure, high-clarity layout meets cognitive and accessibility standards perfectly."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story and journey maintain 100% thematic and structural alignment with zero orphan components or conflicting narratives."
+    }
+  ]
+}

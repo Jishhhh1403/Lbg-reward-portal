@@ -1,0 +1,94 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Engage with educational goal progress and complete the next financial literacy module at a comfortable, self-directed pace.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer views goal progress, opens the recommended quiz module, and reviews long-term milestones.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my savings knowledge and points stand today?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "goal progress",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real-world value and learning milestones?",
+      "entryCondition": "Customer reviews current standing",
+      "requiredInformation": [
+        "cash value equivalent",
+        "how points work",
+        "learning modules"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is my next self-paced educational step to master my savings goal?",
+      "entryCondition": "Customer reviews educational pathways",
+      "requiredInformation": [
+        "quiz",
+        "comprehension",
+        "confidence",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "QUIZ_START",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplemental educational context and long-term milestone tracking without pressure.",
+      "contentNotes": [
+        "Long term savings milestone details",
+        "Educational resources"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

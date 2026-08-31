@@ -1,0 +1,269 @@
+{
+  "planId": "plan-e132ae3d",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Focus on self-paced First Home Savings Knowledge goal tracking combined with deep educational module progression and milestone value clarity, completely avoiding timed elements or social pressure.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your home savings knowledge target at your own comfortable pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Mastering House Purchase Fundamentals",
+          "missionName": "First Home Academy",
+          "description": "Deepen your understanding of mortgages, deposits, and conveyancing without any artificial time limits.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MODULE",
+            "payload": {
+              "missionId": "first-home-academy-4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is typically the recommended minimum deposit percentage for a first home mortgage?",
+          "options": "A) 5% | B) 20% | C) 50%",
+          "reward": "150 lbgCoins",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "quizId": "deposit-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Mastery Check",
+          "question": "Why do lenders review credit history during a mortgage application?",
+          "yourAnswer": "To assess consistent repayment reliability over time.",
+          "correctAnswer": "To assess consistent repayment reliability over time.",
+          "feedback": "Spot on! Lenders look for steady financial habits rather than speed.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Topic Confidence Tracker",
+          "topic": "Mortgage Readiness",
+          "confidencePercent": 84,
+          "levelLabel": "Building strong mastery",
+          "nextMilestone": "Conveyancing & Legal Fees",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Self-Paced Learning Insight",
+          "insight": "Learners who review modules at their own comfortable rhythm retain 35% more practical financial knowledge for long-term home ownership.",
+          "source": "LBG Financial Literacy Research",
+          "actionLabel": "Explore Reading Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "READ_INSIGHT",
+            "payload": {
+              "insightId": "self-paced-retention"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-ladder",
+        "type": "MILESTONE_REWARD_LADDER",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "rungs": [
+            {
+              "percent": 25,
+              "reward": "Budgeting Basics Badge",
+              "unlocked": true
+            },
+            {
+              "percent": 50,
+              "reward": "Deposit Planner Guide",
+              "unlocked": true
+            },
+            {
+              "percent": 75,
+              "reward": "Mortgage Structure Masterclass",
+              "unlocked": false
+            },
+            {
+              "percent": 100,
+              "reward": "First Home Readiness Certificate + 500 lbgCoins",
+              "unlocked": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Unlocked Goal Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Deposit Planner Guide & 300 Bonus lbgCoins",
+            "points": 300,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardName": "Deposit Planner Guide"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "steps": [
+            {
+              "title": "Learn & Master",
+              "description": "Complete educational modules and quizzes at your comfortable, self-directed pace."
+            },
+            {
+              "title": "Accumulate Value",
+              "description": "Earn lbgCoins and verified knowledge milestones as your confidence grows."
+            },
+            {
+              "title": "Redeem with Clarity",
+              "description": "Convert rewards into tangible financial value when you are ready."
+            }
+          ],
+          "ctaLabel": "View Programme Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Your Wallet Value Clarity",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Available lbgCoins Value",
+            "value": "\u00a339.00 equivalent in educational & savings perks"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "LEARNING_MASTERY_ALIGNMENT"
+    ]
+  },
+  "strategy": "Focus on self-paced First Home Savings Knowledge goal tracking combined with deep educational module progression and milestone value clarity, completely avoiding timed elements or social pressure.",
+  "confidence": 0.98
+}

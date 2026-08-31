@@ -1,0 +1,90 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-statement-credit-review",
+  "journeyObjective": "Provide frictionless verification of statement credit balances, automatic allocation settings, and holiday goal milestones with guaranteed cash-equivalent clarity.",
+  "entryPoint": "Rewards overview tab",
+  "completionDefinition": "Customer reviews coin balance, inspects holiday spending goal progress, and verifies statement credit settings.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and guaranteed cash-equivalent value?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Statement credit cash value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-balance",
+        "fact-exclusive-statement-credits"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my Holiday Spending Money goal progressing?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "Holiday Spending Money goal 640/1200",
+        "53% progress"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-holiday-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I allocate my rewards directly to my linked payment card?",
+      "entryCondition": "Goal progress inspected",
+      "requiredInformation": [
+        "Payment allocation rules",
+        "Statement credit confirmation options"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "CONFIRMATION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-exclusive-statement-credits",
+        "fact-high-payment-utility"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-insights",
+      "purpose": "Provide clear educational breakdown of how coin conversion guarantees cash value on statement bills.",
+      "contentNotes": [
+        "How points work",
+        "Tangible cash-equivalent value details"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

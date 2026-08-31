@@ -1,0 +1,345 @@
+{
+  "planId": "plan-3285bbb1",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Lead with warm welcome and points balance, highlight expiring points gently without countdown alarms, and immediately offer playful instant rewards and quick wins for 1-tap claiming.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3600,
+          "tier": "Gold",
+          "name": "Ryan Okafor",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reengagement-banner",
+        "type": "REENGAGEMENT_BANNER",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Welcome back, Ryan! \ud83c\udf89",
+          "message": "We missed you! Your 3,600 coins are ready to play. Let's grab a lightning-fast treat today!",
+          "ctaText": "Explore Instant Wins",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "target": "instant_rewards"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Friendly heads-up on 1,500 coins",
+          "expiringPoints": 1500,
+          "daysLeft": 7,
+          "message": "1,500 of your coins are set to wrap up in 7 days. Spend them on something awesome right now!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-quick-win",
+        "type": "QUICK_WIN_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "\u26a1 Instant Coffee Treat",
+          "subtitle": "Tap once to redeem instantly!",
+          "rewards": {
+            "name": "Artisan Coffee & Pastry",
+            "points": 200
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM",
+            "payload": {
+              "itemId": "coffee_pastry",
+              "points": 200
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-instant-popup",
+        "type": "INSTANT_REWARD_POPUP",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "\u26a1 Flash Voucher Unlocked!",
+          "subtitle": "Grab your favorite snack instantly with zero waiting around.",
+          "points": 350,
+          "expiresIn": "Today",
+          "celebration": true,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM",
+            "payload": {
+              "reward": "Flash Deal Snack Box",
+              "points": 350
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-flash-banner",
+        "type": "FLASH_REWARD_BANNER",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "\ud83d\udd25 Flash Snack Box Special",
+          "subtitle": "Supercharged reward just for you!",
+          "originalPoints": 400,
+          "discountedPoints": 350,
+          "timer": "24:00:00",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_FLASH",
+            "payload": {
+              "rewardId": "snack_box"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quick-redeem",
+        "type": "QUICK_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Instant Vouchers Ready",
+          "description": "Tap any treat below to claim instantly using your 3,600 coins.",
+          "rewards": {
+            "name": "Cinema Movie Pass",
+            "points": 500,
+            "icon": "film"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM",
+            "payload": {
+              "rewardId": "cinema_pass",
+              "points": 500
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-carousel",
+        "type": "REWARD_CAROUSEL",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Top Instant Rewards For You",
+          "rewards": [
+            {
+              "name": "Gourmet Burger Meal",
+              "points": 450,
+              "category": "Dining",
+              "limited": true
+            },
+            {
+              "name": "Streaming Pass 1M",
+              "points": 300,
+              "category": "Entertainment",
+              "limited": false
+            },
+            {
+              "name": "Coffee Bean Bag",
+              "points": 350,
+              "category": "Retail",
+              "limited": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_REWARD",
+            "payload": {
+              "category": "instant"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-choice-panel",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "How would you like to treat yourself today?",
+          "subtitle": "Pick your preferred instant redemption format:",
+          "options": [
+            {
+              "id": "opt-1",
+              "label": "Instant Digital Voucher",
+              "description": "Delivered to your app wallet instantly",
+              "points": 200
+            },
+            {
+              "id": "opt-2",
+              "label": "Instant In-Store QR",
+              "description": "Scan directly at checkout",
+              "points": 350
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_CHOICE",
+            "payload": {
+              "choiceId": "opt-1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-streak",
+        "type": "STREAK_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "streakDays": 1,
+          "message": "Welcome back! Start a fresh redemption streak today for bonus coin drops.",
+          "nextReward": "+100 Bonus Coins",
+          "milestones": [
+            {
+              "days": 3,
+              "reward": "+100 Bonus Coins",
+              "achieved": false
+            },
+            {
+              "days": 7,
+              "reward": "Exclusive Instant Voucher",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_STREAK",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-challenge",
+        "type": "CHALLENGE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "\ud83d\ude80 Quick Comeback Challenge",
+          "description": "Claim 1 instant reward this week to reactivate your streak bonus!",
+          "progress": 0,
+          "reward": "250 Bonus Coins",
+          "daysLeft": 7,
+          "participants": 1420,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "JOIN_CHALLENGE",
+            "payload": {
+              "challengeId": "comeback_2026"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Your Coin Wallet Power",
+          "cashValue": "\u00a336.00",
+          "pointsEquivalent": 3600,
+          "breakdown": {
+            "label": "Instant Redemption Power",
+            "value": "100% Usable Now"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "status": "synced",
+          "title": "Wallet Secure & Synced",
+          "lastSyncedAt": "Just now",
+          "message": "All 3,600 coins are safely secured in your instant wallet.",
+          "ctaText": "Refresh Balance",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SYNC",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "INSTANT_AT_RISK_MIX"
+    ]
+  },
+  "strategy": "Lead with warm welcome and points balance, highlight expiring points gently without countdown alarms, and immediately offer playful instant rewards and quick wins for 1-tap claiming.",
+  "confidence": 0.95
+}

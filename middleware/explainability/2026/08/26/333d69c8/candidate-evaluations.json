@@ -1,0 +1,126 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Display points balance and goal progress with direct statement credit allocation controls, emphasizing cash-value transparency and excluding lifestyle vouchers or gamification.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Provide a simplified rewards overview focusing strictly on balance and automatic bill credit settings with minimal UI embellishments.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 6,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.55,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-statement-credit-management",
+    "storyTitle": "Manage Bill Credits & Goal Progress",
+    "oneSentenceStory": "Review current LBG coin balance and allocate points directly toward statement credits without gamified distractions.",
+    "customerSituation": "Customer visits the rewards overview to check balance and manage statement credit allocations.",
+    "storyTension": "Ensuring reward balances are transparently translated into practical bill reductions without irrelevant voucher promotions.",
+    "customerResolution": "Effortlessly views points balance and manages payment-linked allocations toward bills.",
+    "primaryOutcome": "Effortless verification of payment-linked reward value and statement credit management.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-intent-credit",
+      "fact-redeems-statement"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Leaderboards or public rankings",
+      "Lifestyle voucher promotions",
+      "Travel experience ads"
+    ],
+    "completionSignals": [
+      "Viewed points balance",
+      "Interacted with statement credit allocation control"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-statement-credit-management",
+      "journeyObjective": "Effortlessly verify payment-linked reward value and manage statement credit allocations toward bills.",
+      "completionDefinition": "Customer views points balance, checks goal progress, and confirms statement credit allocation settings.",
+      "episodeSketches": [
+        "Episode 1: Display current LBG coin balance and tangible cash value equivalent clearly at the top of the screen.",
+        "Episode 2: Show active holiday savings goal progress with clear milestones.",
+        "Episode 3: Provide direct statement credit allocation controls allowing immediate application to linked card bills."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 94,
+    "actionOutcomeContinuity": 96,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly aligns with the payment utility motivation and avoids all lifestyle voucher distractions."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns or manipulative urgency detected. Hard gates successfully passed."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and clear financial transparency metrics satisfied."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story and journey alignment verified with a decision of PASS."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review First Home Savings progress, inspect milestone markers, and engage in mastery-oriented educational quiz modules without time pressure.",
+  "entryPoint": "Rewards Overview Dashboard",
+  "completionDefinition": "Customer reviews 63% goal progress and successfully initiates or resumes an untimed educational quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and First Home Savings knowledge stand right now?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-educ-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real-world educational value, and how do I earn more?",
+      "entryCondition": "User reviews current balance and savings progress",
+      "requiredInformation": [
+        "tangible value equivalent",
+        "how points work steps"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-retake-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What structured learning modules and quizzes can I undertake at my own pace?",
+      "entryCondition": "User understands value and mechanics",
+      "requiredInformation": [
+        "learning mission",
+        "quiz details",
+        "comprehension feedback",
+        "confidence progress",
+        "educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "START_QUIZ_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-educ-mod-100",
+        "fact-retake-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-badges",
+      "purpose": "Display earned mastery badges without competitive rankings",
+      "contentNotes": [
+        "9 badges earned out of available categories"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

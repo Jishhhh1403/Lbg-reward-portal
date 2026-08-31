@@ -1,0 +1,252 @@
+{
+  "planId": "plan-e089102b",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Streamlined payment-utility overview focusing on 7,300 coin balance translation to statement credits, featuring transparent cash-value calculations and active Holiday Spending Money goal tracking (53% progress) without gamification elements.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 7300,
+          "tier": "Platinum",
+          "name": "Daniel Brooks",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Holiday Spending Money",
+          "current": 640.0,
+          "target": 1200.0,
+          "percentage": 53.0,
+          "remaining": 560.0,
+          "motivationalMessage": "You're over halfway to your holiday fund! Keep applying statement credits to reach your goal.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "payment-reward-1",
+        "type": "PAYMENT_REWARD_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Statement Credit Auto-Redemption",
+          "paymentMethod": "Platinum Card ending in \u2022\u202248",
+          "rewardRate": "1 coin = \u00a30.01 cash back",
+          "monthlyCap": "\u00a3100.00 max monthly credit",
+          "description": "Your 7,300 coins equal \u00a373.00 in direct bill reductions. Apply now or set to auto-redeem.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "APPLY_STATEMENT_CREDIT",
+            "payload": {
+              "amount": "\u00a373.00",
+              "coins": 7300
+            }
+          }
+        ]
+      },
+      {
+        "id": "reward-allocation-1",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Monthly Reward Allocation",
+          "subtitle": "Direct your monthly earnings toward your statement credit bill reduction automatically.",
+          "allocation": {
+            "label": "Statement Credit Bill Reduction",
+            "percent": 100
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "payment-reward-conf-1",
+        "type": "PAYMENT_REWARD_CONFIRMATION",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Recent Statement Credit Applied",
+          "message": "Successfully credited to your linked card statement.",
+          "amount": "\u00a325.00",
+          "reference": "REF-8849-LBG",
+          "date": "24 Aug 2026",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Your Total Balance Value",
+          "cashValue": "\u00a373.00",
+          "pointsEquivalent": 7300,
+          "breakdown": {
+            "label": "Direct Statement Credit Value",
+            "value": "\u00a373.00 guaranteed cash reduction"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "rewards-insight-1",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Statement Credit Insight",
+          "topBrandName": "Linked Card Bill Reductions",
+          "topBrandPoints": 7300,
+          "growthTip": "Redeeming as statement credits provides 100% guaranteed cash value with zero devaluation risk.",
+          "expiringPoints": 0,
+          "expiryDate": "30 Sep",
+          "ctaText": "Review Redemptions",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "add-goal-1",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set up another financial or savings target to track with your rewards.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-linked-reward-1",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Holiday Fund Contribution",
+          "goalName": "Holiday Spending Money",
+          "rewards": {
+            "name": "Statement Credit to Holiday Fund",
+            "points": 2500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "milestone-card-1",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Reached 50% of Holiday Spending Money savings goal",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "reward-choice-panel-1",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Redemption Choice",
+          "subtitle": "Select how you would like to apply your accumulated 7,300 coins.",
+          "options": {
+            "id": "opt-1",
+            "label": "Statement Credit",
+            "description": "Apply \u00a373.00 directly to your card balance.",
+            "points": 7300
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "steps": {
+            "title": "Guaranteed 1:1 Statement Value",
+            "description": "Every 100 LBG coins translates to exactly \u00a31.00 off your monthly card bill with zero hidden fees."
+          },
+          "ctaLabel": "Learn about cash valuations",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "why-this-ui-card-1",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Designed for Your Payment Preferences",
+          "intro": "We prioritise statement credit clarity and financial utility so you can reduce your bills effortlessly.",
+          "reasons": {
+            "label": "Statement Credit Focus",
+            "detail": "No gamified distractions or irrelevant partner vouchers\u2014just straightforward cash value."
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "PAYMENT_UTILITY_OPTIMIZED"
+    ]
+  },
+  "strategy": "Streamlined payment-utility overview focusing on 7,300 coin balance translation to statement credits, featuring transparent cash-value calculations and active Holiday Spending Money goal tracking (53% progress) without gamification elements.",
+  "confidence": 0.98
+}

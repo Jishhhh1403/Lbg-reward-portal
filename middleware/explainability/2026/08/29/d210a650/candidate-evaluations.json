@@ -1,0 +1,126 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver calm, self-paced educational milestone tracker featuring First Home Savings Knowledge progress (63%), interactive quiz review modules, and transparent educational rewards without any timed elements or leaderboards.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.7,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Present generic financial rewards catalog with mixed points redemption options and light gamified badges, but without deep educational focus.",
+      "scores": {
+        "customerGoalRelevance": 5,
+        "expectedCustomerUtility": 6,
+        "screenLevelStoryCoherence": 6,
+        "journeyAndActionContinuity": 6,
+        "accessibilityAndCognitiveFit": 7,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 5,
+        "evidenceConfidence": 7,
+        "usefulNovelty": 4,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 6.15,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-1",
+    "storyTitle": "Advancing Home Savings Competence",
+    "oneSentenceStory": "The customer tracks their First Home Savings Knowledge progress and completes educational quizzes at their own pace.",
+    "customerSituation": "Customer is actively working toward mastery in their First Home Savings Knowledge goal currently at 63% progress.",
+    "storyTension": "Complex financial concepts require careful study and concept verification without rushing.",
+    "customerResolution": "Engaging with bite-sized educational modules and tracking milestone achievements step by step.",
+    "primaryOutcome": "Advance financial literacy and mastery-based goal progress",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-mod-100",
+      "fact-retake-quiz",
+      "fact-mastery-motive"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "timed-challenges",
+      "leaderboards",
+      "public-rankings"
+    ],
+    "completionSignals": [
+      "quiz-completed",
+      "milestone-viewed"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-1",
+      "journeyObjective": "Enable self-paced tracking of First Home Savings Knowledge and deep engagement with educational modules and milestones.",
+      "completionDefinition": "Customer reviews goal progress, accesses educational content, and completes a self-paced mastery milestone.",
+      "episodeSketches": [
+        "View First Home Savings Knowledge goal progress (63%) and current points balance (1480 LBG coins).",
+        "Explore recommended educational modules and undertake low-pressure concept check quiz.",
+        "Unlock goal-linked educational reward milestone upon completion."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.7,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 100,
+    "journeyContinuity": 100,
+    "miniJourneyCompleteness": 100,
+    "transitionStrength": 95,
+    "actionOutcomeContinuity": 100,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with the educational competence persona and learning mastery motive."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero timed challenges or public rankings detected. All hard gates passed successfully."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Self-paced, calm UI structure ensures optimal cognitive fit for the customer."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story and journey coherence is exceptionally high (PASS)."
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "primaryJourneyId": "journey-protect-value",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Deliver a serene, educational rewards overview that presents factual expiration data and projected-value insights to support long-term asset protection.",
+  "entryPoint": "Rewards overview dashboard",
+  "completionDefinition": "Customer reviews points balance, factual expiration notice, goal progress, and projected-value educational insights without pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and long-term accumulation?",
+      "entryCondition": "Session initialized on rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2-hook",
+      "requiredEvidenceRefs": [
+        "fact-idle-balance"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2-hook",
+      "order": 2,
+      "customerQuestion": "What needs my attention right now regarding expiring points?",
+      "entryCondition": "Snapshot viewed",
+      "requiredInformation": [
+        "expiringPoints",
+        "daysUntilExpiry"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3-pathways",
+      "requiredEvidenceRefs": [
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3-pathways",
+      "order": 3,
+      "customerQuestion": "What are my options for protecting accumulated value and continuing my savings goals?",
+      "entryCondition": "Expiration facts reviewed",
+      "requiredInformation": [
+        "goals",
+        "projectedValue"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4-momentum",
+      "requiredEvidenceRefs": [
+        "fact-accumulation-stalled",
+        "fact-preference-educational"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4-momentum",
+      "order": 4,
+      "customerQuestion": "How does this fit into my multi-year accumulation trajectory?",
+      "entryCondition": "Pathways reviewed",
+      "requiredInformation": [
+        "currentValue",
+        "projectedValue",
+        "growthRate"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-preference-educational"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education-drawer",
+      "purpose": "Provide calm, detailed breakdowns of points valuation and accumulation projections without notification spam.",
+      "contentNotes": [
+        "Educational guides on compounding points",
+        "Transparent cash value equivalents"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

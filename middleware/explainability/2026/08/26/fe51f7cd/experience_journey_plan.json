@@ -1,0 +1,106 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-verify-and-apply",
+  "journeyObjective": "Enable instant verification of coin balances and efficient application of statement credits toward bills.",
+  "entryPoint": "Dashboard load with active payment-utility focus",
+  "completionDefinition": "Customer reviews points and cashback balance and triggers statement credit application.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "What is my current balance and cash equivalent?",
+      "entryCondition": "App opened on rewards overview",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Cashback metrics"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "Are my rewards transparent and guaranteed?",
+      "entryCondition": "Balance verified",
+      "requiredInformation": [
+        "Guaranteed conversion rates",
+        "Tangible cash value breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-guaranteed-rates"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "How can I apply my points directly to my bills?",
+      "entryCondition": "Value understood",
+      "requiredInformation": [
+        "Statement credit options",
+        "Automatic payment allocation"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "APPLY_CREDIT",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-exclusive-credits",
+        "fact-automatic-rewards"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How am I progressing toward my holiday savings goal?",
+      "entryCondition": "Statement credit action reviewed",
+      "requiredInformation": [
+        "Holiday Spending Money goal progress",
+        "Milestone status"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-help",
+      "purpose": "Provide educational context on how coin valuation works without lifestyle distractions.",
+      "contentNotes": [
+        "Educational FAQ on statement credit conversions"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

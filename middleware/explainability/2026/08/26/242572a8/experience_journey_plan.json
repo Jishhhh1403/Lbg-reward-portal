@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Enable customer to review First Home Savings goal progress (63%) and seamlessly access self-paced learning modules and quizzes without timed pressure.",
+  "entryPoint": "Rewards dashboard opening with focus on active learning and savings goal mastery",
+  "completionDefinition": "Customer views goal progress and initiates or continues an educational module/quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and First Home Savings knowledge stand right now?",
+      "entryCondition": "Dashboard loaded",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-completes-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational module and quiz can I take next at my own pace?",
+      "entryCondition": "Balance and goal reviewed",
+      "requiredInformation": [
+        "learning modules",
+        "quiz readiness"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What tangible value and milestone rewards support my home savings mastery?",
+      "entryCondition": "Learning path selected",
+      "requiredInformation": [
+        "milestone rewards",
+        "tangible value conversion"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-session-time"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide clear transparency on points value and educational mastery benefits",
+      "contentNotes": [
+        "Tangible value breakdown",
+        "How points work explanation"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

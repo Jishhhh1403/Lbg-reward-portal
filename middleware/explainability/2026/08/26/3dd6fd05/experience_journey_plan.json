@@ -1,0 +1,97 @@
+{
+  "primaryJourneyId": "journey-statement-credit",
+  "storyId": "story-statement-credit",
+  "journeyObjective": "Review statement credit progress, check cashback earned against balance, and manage automatic payment rewards for predictable money off bills.",
+  "entryPoint": "Mobile rewards overview home screen",
+  "completionDefinition": "Customer views points balance, reviews statement credit summary, and verifies holiday spending goal progress.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-balance",
+      "order": 1,
+      "customerQuestion": "How many LBG coins do I currently hold and what is their statement value?",
+      "entryCondition": "App session start",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-management",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-management",
+      "order": 2,
+      "customerQuestion": "How can I allocate and apply my points directly to my statement bills?",
+      "entryCondition": "Points balance and goal progress viewed",
+      "requiredInformation": [
+        "goalName",
+        "current",
+        "target",
+        "percentage",
+        "remaining"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-verification",
+      "requiredEvidenceRefs": [
+        "fact-redeems-statement-credits",
+        "fact-auto-payment-rewards"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-verification",
+      "order": 3,
+      "customerQuestion": "Are my earnings translated transparently into cash value and bill reduction?",
+      "entryCondition": "Statement allocation reviewed",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent",
+        "breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-holiday-goal",
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-tips",
+      "purpose": "Provide clear guidance on how points automatically convert to statement credits.",
+      "contentNotes": [
+        "How points work step-by-step",
+        "Value transparency explanations"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

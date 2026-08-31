@@ -1,0 +1,112 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-milestones",
+  "journeyObjective": "Present transparent First Home Savings Knowledge progress and structured learning milestones aligned with self-paced educational mastery.",
+  "entryPoint": "Customer opens rewards overview to review learning and savings competence.",
+  "completionDefinition": "Customer reviews goal progress card and explores educational module milestones.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now in my savings and rewards value?",
+      "entryCondition": "Customer opens app",
+      "requiredInformation": [
+        "wallet balance",
+        "lbg coins",
+        "tier"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-signal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How transparent is my reward value and how do points work?",
+      "entryCondition": "Customer reviews snapshot",
+      "requiredInformation": [
+        "cash equivalent",
+        "how points work steps"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What learning pathways and savings goals can I explore next?",
+      "entryCondition": "Customer reviews value clarity",
+      "requiredInformation": [
+        "goal progress",
+        "learning mission",
+        "quiz",
+        "confidence"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-goal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What wins and milestones reflect my educational mastery?",
+      "entryCondition": "Customer interacts with learning modules",
+      "requiredInformation": [
+        "milestones",
+        "insights",
+        "goal linked reward"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CELEBRATION",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear educational guidance without time pressure",
+      "contentNotes": [
+        "Self-paced terms",
+        "No timed constraints"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

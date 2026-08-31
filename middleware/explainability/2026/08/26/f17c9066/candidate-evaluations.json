@@ -1,0 +1,136 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Payment Utility & Goal-Focused Layout: PrioritizesPOINTS_BALANCE, GOAL_PROGRESS toward holiday savings, and TANGIBLE_VALUE statement credit equivalents with educational clarity and absolute transparency.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Partner Discovery & Gamified Milestone Layout: Introduces partner offers and achievement badges alongside points balance.",
+      "scores": {
+        "customerGoalRelevance": 4,
+        "expectedCustomerUtility": 4,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 5,
+        "accessibilityAndCognitiveFit": 6,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 3,
+        "evidenceConfidence": 7,
+        "usefulNovelty": 5,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 5.15,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-1",
+    "storyTitle": "Verify Statement Credit Value & Goal Progress",
+    "oneSentenceStory": "Customer quickly reviews statement credit value and tracks progress toward their holiday spending goal with complete transparency.",
+    "customerSituation": "Customer opens the mobile rewards overview to check accumulated LBG coins and evaluate progress toward their holiday savings goal.",
+    "storyTension": "Ensuring earned rewards translate directly to predictable, guaranteed bill reductions without hidden conditions or gamified distractions.",
+    "customerResolution": "Clear visibility into tangible statement credit value and goal milestones confirms steady progress.",
+    "primaryOutcome": "Effortless verification of statement credit value and savings goal progress.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-coins",
+      "fact-goal",
+      "fact-redemption"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Displaying leaderboards or streaks",
+      "Promoting experience vouchers or non-statement rewards",
+      "Artificial scarcity messaging"
+    ],
+    "completionSignals": [
+      "User views points balance card",
+      "User checks holiday goal progress component",
+      "User reviews tangible value breakdown"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-1",
+      "journeyObjective": "Provide frictionless review of points balance, tangible statement credit value, and holiday spending goal progress.",
+      "completionDefinition": "Customer successfully views points balance, evaluates tangible statement credit worth, and inspects holiday savings goal progress.",
+      "episodeSketches": [
+        "Episode 1: Display POINTS_BALANCE and immediate cash-equivalent TANGIBLE_VALUE clearly at top.",
+        "Episode 2: Present GOAL_PROGRESS for holiday spending goal with milestone markers."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 94,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly matches payment utility motive and explicit preference for statement credits and goal tracking."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns, zero manipulative urgency, strict adherence to transparency and customer autonomy."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit with clear numerical values and straightforward typographic hierarchy."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story-1 precisely captures the customer's intent to verify statement credit value and holiday goal progress."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate-1 aligns seamlessly with mandatory components POINTS_BALANCE, GOAL_PROGRESS, TANGIBLE_VALUE, and MILESTONE."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "All coherence checks passed with high scores. Ready for Stage R execution."
+    }
+  ]
+}

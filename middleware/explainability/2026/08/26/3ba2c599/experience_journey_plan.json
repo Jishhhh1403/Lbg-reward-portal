@@ -1,0 +1,107 @@
+{
+  "primaryJourneyId": "journey-statement-credits-review",
+  "storyId": "story-review-statement-credits",
+  "journeyObjective": "Provide clear, frictionless review of 7,300 LBG coin balance, automated statement credit allocations, and holiday savings progress without gamification.",
+  "entryPoint": "Mobile rewards overview screen",
+  "completionDefinition": "Customer views points balance, verifies statement credit bill offset configuration, and checks holiday goal progress.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and tangible value?",
+      "entryCondition": "Session start on rewards overview",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Platinum tier status",
+        "Cash equivalent value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my rewards protect my bill and maintain guaranteed value?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "Payment utility focus",
+        "Statement credit configuration"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-statement-credit-exclusive"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "How are my automatic allocations and bill offsets set up?",
+      "entryCondition": "Trust established",
+      "requiredInformation": [
+        "Automatic payment allocation rules",
+        "Statement credit options"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-auto-payment-allocation"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How is my holiday savings goal progressing alongside my statement credits?",
+      "entryCondition": "Allocations verified",
+      "requiredInformation": [
+        "Holiday Spending Money goal at 53% progress"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-holiday-goal"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide transparent terms for statement credit bill offsets.",
+      "contentNotes": [
+        "Standard Platinum redemption rates apply",
+        "Credits post within 24 hours"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

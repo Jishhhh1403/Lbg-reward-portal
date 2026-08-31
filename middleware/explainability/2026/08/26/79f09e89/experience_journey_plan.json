@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-evaluate-value",
+  "journeyObjective": "Deliver precise, transparent monetary conversion and partner comparison options for Maya Thompson without urgency or pressure.",
+  "entryPoint": "Customer opens rewards overview to evaluate her 5,600 LBG coins.",
+  "completionDefinition": "Customer reviews exact pound sterling equivalent and successfully inspects partner comparison rates.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my exact coin balance and tangible cash worth in pounds?",
+      "entryCondition": "User views rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "brandsConnected"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-balance",
+        "fact-prefers-monetary-equivalents"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do different redemption partners compare in exact value?",
+      "entryCondition": "User understands total cash equivalent",
+      "requiredInformation": [
+        "partnerRates",
+        "redemptionOptions"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-compares-partner-rates"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do LBG coins work across my connected brands and how can I allocate them flexibly?",
+      "entryCondition": "User reviews partner comparison",
+      "requiredInformation": [
+        "programmeRules",
+        "allocationControl"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "CLICK",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-asks-pounds-value"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency-notes",
+      "purpose": "Provide clear educational notes on coin conversion rates across connected brands.",
+      "contentNotes": [
+        "No expiration pressure",
+        "Exact 1:0.01 conversion rate transparency"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

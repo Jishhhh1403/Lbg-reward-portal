@@ -1,0 +1,84 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-streak-defense",
+  "journeyObjective": "Provide an immediate, engaging overview of Marcus's 34-day streak, active daily challenges, and rank #3 leaderboard standing without dark patterns.",
+  "entryPoint": "Marcus opens his mobile rewards dashboard to check his active streak and current leaderboard standing.",
+  "completionDefinition": "Marcus views his streak status and successfully engages with or inspects an active daily challenge.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current points balance and streak status?",
+      "entryCondition": "App launch on mobile device",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "streakDays"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-streak"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How am I performing on daily challenges and where do I stand on the leaderboard?",
+      "entryCondition": "Streak status reviewed",
+      "requiredInformation": [
+        "challengesCompleted",
+        "leaderboardRank"
+      ],
+      "allowedNarrativeRoles": [],
+      "requiredActionType": "challenge_engaged",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-challenges",
+        "fact-leaderboard"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What badges have I earned and what is my next milestone?",
+      "entryCondition": "Challenge and leaderboard status reviewed",
+      "requiredInformation": [
+        "badges",
+        "rewardsHistory"
+      ],
+      "allowedNarrativeRoles": [],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-badges",
+        "fact-social"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-community",
+      "purpose": "Provide access to broader community events and recent achievement shares.",
+      "contentNotes": [
+        "Community challenge details",
+        "Social sharing stats"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "b03fc15b",
+  "createdAt": "2023-10-27T12:00:00Z",
+  "expiresAt": "2023-10-27T13:00:00Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "points-balance-1",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-progress-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "You're 63% toward your First Home Savings Knowledge goal. Keep exploring modules at your own pace.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "tangible-value-1",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Your Coin Value Transparency",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": {
+          "label": "First Home Savings Fund Contribution Equivalent",
+          "value": "\u00a339.00 value unlocked"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-1",
+        "role": "MEANING",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "how-points-work-1",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "steps": {
+          "title": "Learn & Earn",
+          "description": "Complete educational modules and knowledge checks to earn coins that directly support your savings goals."
+        },
+        "ctaLabel": "Learn how coins work",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-1",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "tangible-value-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "learning-mission-1",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Financial Literacy Academy",
+        "missionName": "First Home Purchase Fundamentals",
+        "description": "Master mortgages, deposit structures, and interest rates at your own comfortable pace.",
+        "modulesDone": 5,
+        "modulesTotal": 8,
+        "pointsOnCompletion": 300,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "learning_mission"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "how-points-work-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "quiz-card-1",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "question": "What percentage of a property value is typically recommended for a standard deposit?",
+        "options": "5% to 20%",
+        "reward": "150 Coins & Mastery Badge",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT",
+          "payload": {
+            "quizId": "home-deposit-basics"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "learning-mission-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comprehension-feedback-1",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Concept Check Insight",
+        "question": "Why do fixed-rate mortgages provide stability?",
+        "yourAnswer": "Payments stay consistent",
+        "correctAnswer": "Payments stay consistent across the fixed term regardless of base rate changes.",
+        "feedback": "Excellent comprehension! You have mastered this concept completely.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "quiz-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "confidence-progress-1",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Competence Builder",
+        "topic": "Mortgage & Savings Terminology",
+        "confidencePercent": 92,
+        "levelLabel": "Advanced understanding",
+        "nextMilestone": "Final Knowledge Module",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comprehension-feedback-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "educational-insight-1",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Mastery Insight",
+        "insight": "Taking time to review module details thoroughly leads to 40% higher long-term financial resilience.",
+        "source": "LBG Financial Education Research",
+        "actionLabel": "Explore Reading Notes",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "confidence-progress-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "milestone-card-1",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "milestones": {
+          "label": "First Home Savings Knowledge 75% Completion Milestone",
+          "achieved": false
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "educational-insight-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-linked-reward-1",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Goal-Aligned Reward Preview",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": {
+          "name": "Conveyancing Fee Assistance Voucher (\u00a350 equivalent)",
+          "points": 1500,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "milestone-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "rewards-insight-1",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Learning & Savings Summary",
+        "topBrandName": "LBG Education Partners",
+        "topBrandPoints": 1250,
+        "growthTip": "Your consistent module completion is steadily fueling your home savings competence.",
+        "expiringPoints": 0,
+        "expiryDate": "N/A",
+        "ctaText": "View full learning history",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "goal-linked-reward-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "add-goal-card-1",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Add a New Educational Goal",
+        "subtitle": "Set another learning objective to deepen your financial literacy.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "add_goal"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "rewards-insight-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "sync-status-card-1",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "status": "synced",
+        "title": "Wallet Synchronised",
+        "lastSyncedAt": "Today at 10:05 AM",
+        "message": "All connected brand accounts and learning modules are fully updated.",
+        "ctaText": "Refresh",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-candidate-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "add-goal-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "points-balance-1",
+          "goal-progress-1",
+          "tangible-value-1"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "how-points-work-1",
+          "learning-mission-1",
+          "quiz-card-1",
+          "goal-linked-reward-1",
+          "add-goal-card-1"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comprehension-feedback-1",
+          "confidence-progress-1",
+          "milestone-card-1"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "educational-insight-1",
+          "rewards-insight-1",
+          "sync-status-card-1"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-continue-savings-goal",
+    "primaryOutcome": "Advance financial literacy mastery and track progress toward First Home Savings knowledge goals.",
+    "primaryJourneyId": "journey-candidate-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "RESUME",
+    "primaryActionComponentId": "learning-mission-1"
+  }
+}

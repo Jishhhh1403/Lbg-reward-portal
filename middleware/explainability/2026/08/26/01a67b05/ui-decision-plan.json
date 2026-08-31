@@ -1,0 +1,219 @@
+{
+  "planId": "plan-01a67b05",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Goal-linked educational progress strategy focusing on First Home Savings Knowledge goal (63% complete), highlighting milestone advancement and LBG coin transparency without timed pressure or social leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% through your First Home Savings mastery journey. Keep building your foundational knowledge.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Coin Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Mastery Value",
+            "value": "1 coin = \u00a30.01 equivalent redemption power"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "First Home Academy",
+          "missionName": "Mortgage Interest & Deposit Structures",
+          "description": "Master the core mechanics of how interest rates impact your long-term savings trajectory.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_LESSON",
+            "payload": {
+              "missionId": "mortgage-interest-101"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary advantage of a fixed-rate savings structure when planning a house deposit?",
+          "options": "Predictable growth / High volatility / Immediate liquidity",
+          "reward": "50 coins + Mastery Badge credit",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "answer": "Predictable growth"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Check",
+          "question": "How do compound earnings affect multi-year savings goals?",
+          "yourAnswer": "Reinvested returns generate additional growth over time",
+          "correctAnswer": "Reinvested returns generate additional growth over time",
+          "feedback": "Correct! Mastery of compound growth is essential for your First Home Savings goal.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Mastery Confidence Tracker",
+          "topic": "First Home Financial Literacy",
+          "confidencePercent": 88,
+          "levelLabel": "Advanced comprehension",
+          "nextMilestone": "Final Knowledge Assessment",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Why Financial Literacy Matters",
+          "insight": "Savers who complete structured learning paths reach their deposit targets 4 months faster on average.",
+          "source": "LBG Financial Education Insights",
+          "actionLabel": "Explore curriculum",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "milestones": {
+            "label": "Completed 3 of 5 First Home Mastery Modules",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Unlockable Goal Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Conveyancing Fee Offset Voucher (\u00a350 equivalent)",
+            "points": 2000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "steps": {
+            "title": "Transparent Earning & Learning",
+            "description": "Earn coins through savings milestones and educational module completions with zero hidden fees or expiration pressure."
+          },
+          "ctaLabel": "Learn about LBG coin standards",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_MASTERY"
+    ]
+  },
+  "strategy": "Goal-linked educational progress strategy focusing on First Home Savings Knowledge goal (63% complete), highlighting milestone advancement and LBG coin transparency without timed pressure or social leaderboards.",
+  "confidence": 0.98
+}

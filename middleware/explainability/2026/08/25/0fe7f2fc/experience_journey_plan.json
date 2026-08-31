@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-instant-redemption",
+  "journeyObjective": "Surface instant rewards and expiring points clarity for rapid 1-tap redemption.",
+  "entryPoint": "User opens rewards overview after a period of inactivity",
+  "completionDefinition": "Customer views available instant rewards and initiates redemption of expiring points within session.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How many points do I have and do I have anything expiring?",
+      "entryCondition": "Session start",
+      "requiredInformation": [
+        "points balance",
+        "expiring points amount"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What instant treats or flash rewards can I grab right now?",
+      "entryCondition": "Balance and expiry acknowledged",
+      "requiredInformation": [
+        "instant reward options",
+        "flash rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-historical-redemption",
+        "fact-flash-offers"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Can I instantly claim this and keep my rewards safe?",
+      "entryCondition": "Reward selected",
+      "requiredInformation": [
+        "redemption confirmation details"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF",
+        "CELEBRATION"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-tangible-value",
+      "purpose": "Provide clear monetary equivalence for peace of mind",
+      "contentNotes": [
+        "Cash value translation of remaining coins"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

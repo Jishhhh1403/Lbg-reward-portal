@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-transparent-preview",
+  "journeyObjective": "Guide Amelia Carter through a clear, upfront guaranteed valuation review of her 6450 LBG coins with complete transparency and zero hidden deductions.",
+  "entryPoint": "Dashboard review of rewards wallet and guaranteed valuation options",
+  "completionDefinition": "Customer successfully views guaranteed value options, examines cash-equivalent metrics, and previews redemption terms.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is the exact cash value of my 6450 LBG coins right now?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "wallet balance",
+        "fixed conversion rate"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do these guaranteed reward options compare across partner choices?",
+      "entryCondition": "User reviews tangible value and choice panels",
+      "requiredInformation": [
+        "guaranteed voucher options",
+        "partner comparison data"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-preview-behavior",
+        "fact-gravitate-guaranteed"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Can I preview the full terms and confirm zero hidden deductions before committing?",
+      "entryCondition": "User selects an option for detailed preview",
+      "requiredInformation": [
+        "full terms and conditions",
+        "guaranteed minimum value"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "PREVIEW",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-reads-terms",
+        "fact-abandon-hidden"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide absolute clarity on redemption rules and guaranteed fixed rates.",
+      "contentNotes": [
+        "Full terms modal",
+        "Zero hidden fee guarantee disclosure"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

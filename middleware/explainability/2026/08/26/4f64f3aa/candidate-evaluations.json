@@ -1,0 +1,125 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Goal-centric rewards overview focusing on Holiday Spending Money progress combined with direct statement credit redemption options.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.55,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Action-first statement credit allocation strategy emphasizing immediate bill relief and guaranteed rate value transparency.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.85,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-continue-goal",
+    "storyTitle": "Track Holiday Fund & Bill Credits",
+    "oneSentenceStory": "Review current LBG coin balance and track progress toward the Holiday Spending Money goal while managing statement credits.",
+    "customerSituation": "Customer opens rewards overview on mobile to check accumulated coins and milestone progress.",
+    "storyTension": "Ensuring earned rewards translate transparently into bill reductions without navigating complex voucher catalogues.",
+    "customerResolution": "Clear display of coin balance, guaranteed rate statement credit options, and goal progression toward holiday savings.",
+    "primaryOutcome": "Review predictable monetary reward progress and apply statement credits efficiently.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-goal-holiday",
+      "fact-signal-statement-credits"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "gamification/leaderboards/public rankings/streaks",
+      "forced voucher exploration"
+    ],
+    "completionSignals": [
+      "Customer views point balance",
+      "Customer reviews goal progress"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-continue-goal",
+      "journeyObjective": "Review cashback balance, monitor Holiday Spending Money goal progress, and access direct statement credit redemptions.",
+      "completionDefinition": "Customer successfully views balance, reviews goal progression, and accesses statement credit options without distractions.",
+      "episodeSketches": [
+        "Display point balance (7,300 LBG coins) and tangible monetary equivalent.",
+        "Highlight 'Holiday Spending Money' goal progress (53% - $640.0 of $1200.0).",
+        "Surface one-touch statement credit redemption options with guaranteed rates."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.5,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 94,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with payment-utility persona and stated preference for statement credits and goal tracking."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All hard gates passed. Zero dark patterns, manipulation, or prohibited gamification elements detected."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and clarity confirmed for mobile rewards overview layout."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-continue-goal and journey-candidate-1 exhibit exceptional narrative and action continuity."
+    }
+  ]
+}

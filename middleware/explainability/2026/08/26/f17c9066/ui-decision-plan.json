@@ -1,0 +1,208 @@
+{
+  "planId": "plan-f17c9066",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Payment Utility & Goal-Focused Layout implementing the mandatory ordered stack and narrative arc: SNAPSHOT -> TRUST -> PATHWAYS -> HOOK -> MOMENTUM, tailored for Daniel Brooks.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 7300,
+          "tier": "Platinum",
+          "name": "Daniel Brooks",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Holiday Spending Money",
+          "current": 640.0,
+          "target": 1200.0,
+          "percentage": 53.0,
+          "remaining": 560.0,
+          "motivationalMessage": "You're 53% toward your holiday goal with guaranteed statement credit matching.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "payment-reward-1",
+        "type": "PAYMENT_REWARD_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Automatic Bill Credit",
+          "paymentMethod": "Primary LBG Credit Card ending in \u2022\u202284",
+          "rewardRate": "1.0% back in statement credits",
+          "monthlyCap": "No monthly cap",
+          "description": "Your LBG coins convert automatically into guaranteed bill reductions every billing cycle.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "reward-allocation-control-1",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Reward Allocation Settings",
+          "subtitle": "Choose how your monthly earnings are applied",
+          "allocation": {
+            "label": "Statement Credit Payout",
+            "percent": 100
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "UPDATE_ALLOCATION",
+            "payload": {
+              "destination": "statement_credit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "payment-reward-confirmation-1",
+        "type": "PAYMENT_REWARD_CONFIRMATION",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Next Statement Credit Payout",
+          "message": "Scheduled to apply directly to your linked card statement.",
+          "amount": "\u00a373.00",
+          "reference": "CRD-7300-LBG",
+          "date": "1st of next month",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-card-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Guaranteed Cash Equivalent",
+          "cashValue": "\u00a373.00",
+          "pointsEquivalent": 7300,
+          "breakdown": {
+            "label": "Statement Credit Value",
+            "value": "100% bill reduction power"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "rewards-insight-card-1",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Statement Credit Overview",
+          "topBrandName": "Connected Retail Partner",
+          "topBrandPoints": 2500,
+          "growthTip": "You check cashback earnings consistently; your statement credit conversion remains optimized at 1:1 value.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "View Statement History",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": {
+            "title": "Predictable Earning & Redemption",
+            "description": "Every LBG coin translates predictably into real monetary value on your statement with zero complex conversion tables."
+          },
+          "ctaLabel": "Learn about statement credits",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "reward-choice-panel-1",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Redemption Preferences",
+          "subtitle": "Select your preferred payout structure",
+          "options": {
+            "id": "opt-statement",
+            "label": "Direct Statement Credit",
+            "description": "Apply your 7,300 coins directly to your monthly card balance as cash.",
+            "points": 7300
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "SELECT_REDEMPTION",
+            "payload": {
+              "optionId": "opt-statement"
+            }
+          }
+        ]
+      },
+      {
+        "id": "milestone-card-1",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Holiday Fund 50% Milestone Reached (\u00a3600)",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE",
+      "NO_GAMIFICATION_SUPPRESSION"
+    ]
+  },
+  "strategy": "Payment Utility & Goal-Focused Layout implementing the mandatory ordered stack and narrative arc: SNAPSHOT -> TRUST -> PATHWAYS -> HOOK -> MOMENTUM, tailored for Daniel Brooks.",
+  "confidence": 0.96
+}

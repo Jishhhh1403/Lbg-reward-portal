@@ -1,0 +1,273 @@
+{
+  "planId": "plan-3ba2c599",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Surface statement credit balance, automated payment allocation settings, and transparent bill-offset values with zero gamification or vouchers.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 7300,
+          "tier": "Platinum",
+          "name": "Daniel Brooks",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Holiday Spending Money",
+          "current": 640.0,
+          "target": 1200.0,
+          "percentage": 53,
+          "remaining": 560.0,
+          "motivationalMessage": "You're over halfway to your holiday fund! Automatic contributions keep you on track.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-payment-reward",
+        "type": "PAYMENT_REWARD_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Linked Card Statement Credit",
+          "paymentMethod": "Platinum Debit & Credit Cards ending in *4892",
+          "rewardRate": "1 coin = \u00a30.01 statement credit",
+          "monthlyCap": "No limit on bill offsets",
+          "description": "Automatically offsets your monthly statement balance with guaranteed cash value.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "statement_settings"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-allocation",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Automatic Payment Allocation",
+          "subtitle": "Directly route earned coins to monthly bill reduction",
+          "allocation": {
+            "label": "Statement Credit Offset",
+            "percent": 100
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "UPDATE_ALLOCATION",
+            "payload": {
+              "percent": 100
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-payment-confirmation",
+        "type": "PAYMENT_REWARD_CONFIRMATION",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Last Bill Offset Applied",
+          "message": "Successfully credited to your linked card statement.",
+          "amount": "\u00a325.00",
+          "reference": "STMT-8849-2026",
+          "date": "24 Aug 2026",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Guaranteed Bill Reduction Power",
+          "cashValue": "\u00a373.00",
+          "pointsEquivalent": 7300,
+          "breakdown": {
+            "label": "Direct Statement Credit Value",
+            "value": "100% redeemable against card balance"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Statement Credit Summary",
+          "topBrandName": "Linked LBG Card",
+          "topBrandPoints": 7300,
+          "growthTip": "Your automated allocation ensures zero coins expire or go underutilized.",
+          "expiringPoints": 0,
+          "expiryDate": "31 Dec",
+          "ctaText": "View Redemption History",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_HISTORY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "steps": {
+            "title": "Earn & Offset",
+            "description": "Every coin earned translates directly to guaranteed cash off your statement balance with no voucher conversion required."
+          },
+          "ctaLabel": "Learn about bill offsets",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reward-choice-panel",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Redemption Options",
+          "subtitle": "Select how you want to apply your available balance",
+          "options": {
+            "id": "opt-statement-credit",
+            "label": "Immediate Statement Credit",
+            "description": "Apply directly to your card balance instantly",
+            "points": 7300
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_CREDIT",
+            "payload": {
+              "points": 7300
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set aside coins for another upcoming expense or bill offset",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": {
+            "label": "Over \u00a3500 saved in statement credits lifetime",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-metric-tile",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "label": "Average Monthly Offset",
+          "value": "\u00a336.50",
+          "unit": "/mo",
+          "tone": "brand",
+          "infoText": "Based on your last 6 months of automated redemptions.",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Why This View?",
+          "intro": "Tailored for predictable statement credit management and direct bill utility.",
+          "reasons": {
+            "label": "Payment Utility Focus",
+            "detail": "Prioritizes cash-value transparency and automated bill offsets without voucher clutter."
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "PAYMENT_UTILITY",
+      "MANDATORY_STACK_COMPLIANCE"
+    ]
+  },
+  "strategy": "Surface statement credit balance, automated payment allocation settings, and transparent bill-offset values with zero gamification or vouchers.",
+  "confidence": 0.95
+}

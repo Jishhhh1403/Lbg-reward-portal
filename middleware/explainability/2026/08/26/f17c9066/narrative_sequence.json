@@ -1,0 +1,183 @@
+{
+  "primaryActionComponentRef": "reward-allocation-control-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-1",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "MEANING",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-allocation-control-1",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "payment-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-confirmation-1",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 5,
+      "dependsOn": [
+        "reward-allocation-control-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-card-1",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "payment-reward-confirmation-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "rewards-insight-card-1",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "tangible-value-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-1",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "rewards-insight-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-choice-panel-1",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 9,
+      "dependsOn": [
+        "how-points-work-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "milestone-card-1",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "reward-choice-panel-1"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect coin balance to holiday savings goal tracking.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "payment-reward-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate how payment utility secures reliable progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "payment-reward-1",
+      "toComponentRef": "reward-allocation-control-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Empower customer to manage automatic credit settings.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "reward-allocation-control-1",
+      "toComponentRef": "payment-reward-confirmation-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Confirm next scheduled statement credit payout.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "payment-reward-confirmation-1",
+      "toComponentRef": "tangible-value-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Display transparent cash equivalent for total coins.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "tangible-value-card-1",
+      "toComponentRef": "rewards-insight-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Review cashback and redemption history.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "rewards-insight-card-1",
+      "toComponentRef": "how-points-work-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide transparent reference on coin mechanics.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "how-points-work-1",
+      "toComponentRef": "reward-choice-panel-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer direct redemption preference customization.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "reward-choice-panel-1",
+      "toComponentRef": "milestone-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Celebrate holiday savings progress and milestones.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

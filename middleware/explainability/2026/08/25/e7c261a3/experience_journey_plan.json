@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide a clean, focused view of the Japan Vacation savings goal progress, current coin balance, and matching goal-linked milestone rewards.",
+  "entryPoint": "Dashboard load for Sarah Chen focusing on Japan Vacation progress",
+  "completionDefinition": "Customer successfully reviews goal progress percentage, inspects coin balance, and views associated milestones and rewards.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my balances and primary goal?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "POINTS_BALANCE",
+        "GOAL_PROGRESS"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-active-goals"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 2,
+      "customerQuestion": "What pathways and goal-linked rewards are available to keep me moving?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "GOAL_LINKED_REWARD",
+        "MILESTONE_REWARD_LADDER",
+        "TANGIBLE_VALUE_CARD"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-5"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 3,
+      "customerQuestion": "How are my other goals tracking and what is my next win?",
+      "entryCondition": "Primary goal pathways explored",
+      "requiredInformation": [
+        "GOAL_PROGRESS",
+        "RECOMMENDED_ACTIONS",
+        "BADGE_CARD",
+        "WHY_THIS_UI_CARD"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-2",
+        "fact-signal-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-additional-goals",
+      "purpose": "Provide access to secondary savings goals without cluttering the primary narrative.",
+      "contentNotes": [
+        "New Phone goal",
+        "Emergency fund goal"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

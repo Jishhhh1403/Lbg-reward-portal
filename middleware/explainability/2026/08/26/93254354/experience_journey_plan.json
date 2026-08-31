@@ -1,0 +1,131 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Inspect reward balance, cash-equivalent worth, and active statement credit goal progress.",
+  "entryPoint": "Rewards Overview",
+  "completionDefinition": "Customer verifies point balance, sees holiday spending goal progress, and accesses statement credit redemption effortlessly.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "What is my current reward balance and cash equivalent?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "cashValue"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-signal-2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How are my rewards valued and protected for predictable bill reduction?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "rewardRate",
+        "paymentMethod"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-signal-5"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What options do I have to allocate and redeem my rewards toward bills?",
+      "entryCondition": "Trust established",
+      "requiredInformation": [
+        "allocation",
+        "redemptionOptions"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-hook",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-hook",
+      "order": 4,
+      "customerQuestion": "Did my automatic payment reward instruction confirm successfully?",
+      "entryCondition": "Redemption option selected",
+      "requiredInformation": [
+        "reference",
+        "amount",
+        "date"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 5,
+      "customerQuestion": "How much cash value do I have right now, and what insights explain my rewards?",
+      "entryCondition": "Action confirmed",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent",
+        "breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational",
+      "purpose": "Provide clear guidance on how points accrue and convert reliably to statement credits.",
+      "contentNotes": [
+        "Educational transparency regarding guaranteed reward rates"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

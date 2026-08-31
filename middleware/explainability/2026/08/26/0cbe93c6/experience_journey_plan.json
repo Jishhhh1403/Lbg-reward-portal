@@ -1,0 +1,94 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning-progress",
+  "journeyObjective": "Enable Sophie to inspect her First Home Savings Knowledge progress, review points, and seamlessly launch her next un-timed financial literacy module.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer reviews savings goal progress and successfully accesses educational module or quiz content.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my LBG coin balance and home savings goal currently stand?",
+      "entryCondition": "App launched to rewards overview",
+      "requiredInformation": [
+        "3900 LBG coins",
+        "First Home Savings Knowledge 63% progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-home-savings-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What is the exact cash value transparency and educational value of my rewards?",
+      "entryCondition": "Balance and goal reviewed",
+      "requiredInformation": [
+        "Tangible value breakdown",
+        "How points work transparently"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-home-savings-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What learning path, quiz milestone, and goal-linked reward await my next self-paced step?",
+      "entryCondition": "Tangible value and clarity established",
+      "requiredInformation": [
+        "Learning mission active module",
+        "Mastery quiz",
+        "Comprehension check",
+        "Confidence progress",
+        "Educational insight",
+        "Goal linked reward"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "OPEN_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-completes-modules",
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide in-depth points valuation details without cluttering the primary educational flow",
+      "contentNotes": [
+        "Points to cash conversion guide",
+        "Tier benefit overview"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

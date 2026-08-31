@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "d0e01902",
+  "createdAt": "2026-03-30T00:00:00Z",
+  "expiresAt": "2026-04-30T00:00:00Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-consolidated-wallet",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Your Combined Reward Wallet",
+        "subtitle": "All 3 partner programmes in one view",
+        "programmes": [
+          {
+            "name": "Partner A (Retail)",
+            "points": 4500,
+            "value": "\u00a345.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Partner B (Travel)",
+            "points": 4200,
+            "value": "\u00a342.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Partner C (Dining)",
+            "points": 2500,
+            "value": "\u00a325.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3112.00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "status": "synced",
+        "title": "Live Partner Sync",
+        "lastSyncedAt": "Today, 09:18",
+        "message": "All three partner accounts are securely connected and up to date.",
+        "ctaText": "Sync Now",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-value-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Partner Value Comparison",
+        "subtitle": "See what your points are worth across programmes in plain English.",
+        "partners": [
+          {
+            "name": "Partner A",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "Direct retail vouchers"
+          },
+          {
+            "name": "Partner B",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "Travel bookings"
+          },
+          {
+            "name": "Partner C",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "Dining credits"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Total Cash Value Equivalent",
+        "cashValue": "\u00a3112.00",
+        "pointsEquivalent": 11200,
+        "breakdown": {
+          "label": "Simple Conversion Rate",
+          "value": "100 points = \u00a31.00 across all connected partners"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-partner-value-comparison"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-transfer",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Move Points Simply",
+        "fromProgramme": "Partner A (Retail)",
+        "toPartner": "Partner B (Travel)",
+        "points": 1000,
+        "estimatedValue": "\u00a310.00",
+        "status": "Instant & Free",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "TRANSFER_POINTS",
+          "payload": {
+            "from": "Partner A",
+            "to": "Partner B",
+            "amount": 1000
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Where Your Points Came From",
+        "subtitle": "Recent activity across your connected accounts",
+        "history": {
+          "source": "Partner Transfer Bonus",
+          "date": "26 Aug 2026",
+          "points": 1000
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-partner-transfer"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "steps": {
+          "title": "Jargon-Free Transfers",
+          "description": "Moving points between partners is always free and maintains equal cash value."
+        },
+        "ctaLabel": "Learn More",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-partner-transfer"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "remaining": 1250,
+        "motivationalMessage": "You're over halfway to your family holiday goal using combined partner balances!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set another target for your combined reward balance",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-programme-connection",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Connected Partner Programmes",
+        "subtitle": "Manage your linked accounts",
+        "programmes": [
+          {
+            "name": "Partner A",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Partner B",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Partner C",
+            "status": "Active",
+            "connected": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "milestones": {
+          "label": "Three Partner Accounts Connected",
+          "achieved": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-rewards-insight",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Consolidation Insight",
+        "topBrandName": "Partner A (Retail)",
+        "topBrandPoints": 4500,
+        "growthTip": "Combining balances gives you more flexibility when booking your family holiday.",
+        "expiringPoints": 0,
+        "expiryDate": "31 Dec",
+        "ctaText": "View Breakdown",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-consolidated-wallet"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-consolidated-wallet",
+          "comp-tangible-value",
+          "comp-goal-progress"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-partner-transfer",
+          "comp-how-points-work",
+          "comp-add-goal"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-milestone"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-sync-status",
+          "comp-partner-value-comparison",
+          "comp-reward-provenance",
+          "comp-programme-connection",
+          "comp-rewards-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Gain a clear, combined view of all earned rewards and simple portability options.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-3",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-partner-transfer"
+  }
+}

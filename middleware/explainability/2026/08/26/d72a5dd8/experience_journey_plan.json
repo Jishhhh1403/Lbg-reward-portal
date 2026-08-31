@@ -1,0 +1,97 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Enable Sophie Williams to seamlessly monitor her First Home Savings Knowledge goal (63% complete) and access competence-aligned educational modules and quizzes at her own pace.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "User reviews goal progress and accesses educational learning modules without encountering timed pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my points and learning progress?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "goalName",
+        "current",
+        "target",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-signal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real educational value and how do rewards work?",
+      "entryCondition": "User reviews financial standing",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent",
+        "steps"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What learning modules and milestones can I explore next at my own pace?",
+      "entryCondition": "User understands value and points mechanics",
+      "requiredInformation": [
+        "courseName",
+        "currentLesson",
+        "question",
+        "confidencePercent",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-insights",
+      "purpose": "Provide supplementary clarity on learning goals and tangible rewards",
+      "contentNotes": [
+        "Goal linked reward details",
+        "Educational insights"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

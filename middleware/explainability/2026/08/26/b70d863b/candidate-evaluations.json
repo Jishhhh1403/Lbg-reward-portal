@@ -1,0 +1,122 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Calm, educational rewards overview focusing on long-term goal trajectory, risk protection of expiring points (2,400 points in 9 days), and value projection without any manipulative urgency or countdown timers.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.45,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Goal-centric re-engagement overview emphasizing retirement fund progress and educational value explanations for accumulated idle balances, completely avoiding gamification and streaks.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 8,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.55,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-protect-value",
+    "storyTitle": "Secure Your Long-Term Progress",
+    "oneSentenceStory": "Review your accumulated rewards calmly and explore gentle, non-urgent options to preserve expiring points before they lapse.",
+    "customerSituation": "A disciplined saver with accumulated rewards and expiring points experiencing a temporary lull in engagement.",
+    "storyTension": "A small batch of points is expiring soon, threatening long-term savings progress without immediate action.",
+    "customerResolution": "Safely reallocate or protect expiring points toward established long-term goals without pressure or urgency.",
+    "primaryOutcome": "Gain clear educational insight into long-term goal trajectory and safe points preservation options.",
+    "secondaryOutcome": null,
+    "narrativeMode": "PROTECT_VALUE",
+    "evidenceRefs": [
+      "fact-stalled-accumulation",
+      "fact-idle-balance",
+      "fact-expiring-points",
+      "fact-educational-response"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Do not use manipulative urgency, countdown timers, or artificial scarcity",
+      "Do not use leaderboards, streaks, or gamification elements"
+    ],
+    "completionSignals": [
+      "Customer views expiring points details",
+      "Customer reviews long-term goal progress",
+      "Customer selects calm educational guidance option"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-protect-value",
+      "journeyObjective": "Provide a calm, educational overview of rewards status, highlighting long-term goal progress and non-urgent options for expiring points protection.",
+      "completionDefinition": "Customer reviews goal progress and expiring points education calmly, selecting a secure preservation option.",
+      "episodeSketches": [
+        "Present calm rewards overview with points balance and transparent value education",
+        "Display gentle, non-urgent expiring points notice with educational preservation choices",
+        "Show long-term goal progress tracker (Retirement Fund) with projected growth pathways"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.5,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 90,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 93,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Confirmed zero manipulative urgency, countdown timers, or dark patterns. Expiring points handled via calm education."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Cognitive fit verified for PLANNER_AT_RISK_MIX persona; tone is educational and supportive."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-to-journey coherence verified at top tier. Single dominant action policy maintained."
+    }
+  ]
+}

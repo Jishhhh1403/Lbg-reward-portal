@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Enable self-paced tracking of First Home Savings Knowledge and deep engagement with educational modules and milestones.",
+  "entryPoint": "User opens rewards overview to check First Home Savings Knowledge progress and educational milestones.",
+  "completionDefinition": "Customer reviews goal progress, accesses educational content, and completes a self-paced mastery milestone.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points balance and home savings goal?",
+      "entryCondition": "App launch",
+      "requiredInformation": [
+        "points: 3900",
+        "lbgCoins: 1480",
+        "First Home Savings Knowledge progress: 63%"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational modules and concept checks can I explore next at my own pace?",
+      "entryCondition": "Goal overview reviewed",
+      "requiredInformation": [
+        "learning modules status",
+        "quiz content"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-retake-quiz",
+        "fact-long-session"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What milestone rewards and tangible savings values are unlocked through my learning?",
+      "entryCondition": "Educational module or quiz reviewed",
+      "requiredInformation": [
+        "milestones",
+        "tangible value equivalence"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF",
+        "CELEBRATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency",
+      "purpose": "Provide cash value transparency and educational background on points valuation.",
+      "contentNotes": [
+        "Tangible value breakdown",
+        "How points work explainer"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-instant-redemption",
+  "journeyObjective": "Provide instant visibility of 3,600 coins and expiring points, presenting a frictionless instant reward grid for immediate redemption.",
+  "entryPoint": "User returns after 41 days of inactivity and opens rewards overview.",
+  "completionDefinition": "Customer views balance and successfully claims an instant reward item.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current balance and status?",
+      "entryCondition": "Session start",
+      "requiredInformation": [
+        "wallet total",
+        "expiring points summary"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-balance",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I grab a quick, fun win right now?",
+      "entryCondition": "Balance inspected",
+      "requiredInformation": [
+        "instant rewards list",
+        "quick win items"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-instant-affinity"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do I claim my chosen reward instantly without fuss?",
+      "entryCondition": "Reward selected from grid or banner",
+      "requiredInformation": [
+        "redemption confirmation details"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF",
+        "CELEBRATION"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redemption-speed"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide transparency and sync status without countdown or fatigue triggers.",
+      "contentNotes": [
+        "Sync status card",
+        "Tangible value equivalent"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

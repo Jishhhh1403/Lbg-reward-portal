@@ -1,0 +1,111 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Deliver structured rewards overview highlighting First Home Savings progress and mastery-based educational content.",
+  "entryPoint": "Rewards Overview Home",
+  "completionDefinition": "Customer reviews goal progress (63%), engages with educational quiz module, and claims milestone-linked reward without timed pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and savings knowledge?",
+      "entryCondition": "App opened and authenticated",
+      "requiredInformation": [
+        "points balance",
+        "goal progress percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "What is the exact cash value and transparency of my accumulated points?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "cash equivalent breakdown",
+        "points value explanation"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-mod-complete"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What structured educational pathways and learning modules can I explore next?",
+      "entryCondition": "Value transparency reviewed",
+      "requiredInformation": [
+        "learning modules",
+        "how points work",
+        "quiz options"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-session-duration"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How am I progressing toward my First Home Savings goal and learning mastery?",
+      "entryCondition": "Educational pathways engaged",
+      "requiredInformation": [
+        "goal progress details",
+        "milestones reached",
+        "goal-linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-learning-history",
+      "purpose": "Provide access to completed financial literacy modules and certificates.",
+      "contentNotes": [
+        "List of completed courses",
+        "Badge achievements"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

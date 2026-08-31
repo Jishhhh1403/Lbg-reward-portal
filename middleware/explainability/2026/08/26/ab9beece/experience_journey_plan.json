@@ -1,0 +1,69 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-instant-redemption",
+  "journeyObjective": "Enable Ryan to quickly view points, acknowledge expiring balance transparently, and claim an instant reward in a single frictionless flow.",
+  "entryPoint": "App open / Rewards overview",
+  "completionDefinition": "Customer successfully views points balance, reviews expiring notice, and completes instant redemption via quick redeem action.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How many points do I have and are any expiring?",
+      "entryCondition": "App open",
+      "requiredInformation": [
+        "wallet.lbgCoins",
+        "risk.expiringPoints"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-total-points",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What quick treats can I grab right now before they slip away?",
+      "entryCondition": "Viewed wallet and expiry status",
+      "requiredInformation": [
+        "rewardsHistory",
+        "preferred_reward_type"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redemption-speed"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide context on tangible worth and gentle re-engagement",
+      "contentNotes": [
+        "Tangible value card for cash equivalent",
+        "Quick win encouragement"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

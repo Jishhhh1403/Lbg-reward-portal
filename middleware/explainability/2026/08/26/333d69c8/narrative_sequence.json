@@ -1,0 +1,193 @@
+{
+  "primaryActionComponentRef": "comp-reward-allocation",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-payment-reward",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "TENSION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [
+        "comp-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-allocation",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-payment-reward"
+      ],
+      "resolves": [
+        "comp-payment-reward"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-payment-confirmation",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-reward-allocation"
+      ],
+      "resolves": [
+        "comp-reward-allocation"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-payment-confirmation"
+      ],
+      "resolves": [
+        "comp-payment-confirmation"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-reward-choice",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-reward-allocation"
+      ],
+      "resolves": [
+        "comp-reward-allocation"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [
+        "comp-goal-progress"
+      ],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-metric-tile",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "REFERENCE",
+      "sequence": 11,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect your total coin balance to active savings goals.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-payment-reward",
+      "relationship": "sequential",
+      "bridgeIntent": "Highlight how payment rewards directly contribute to bill utility.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-payment-reward",
+      "toComponentRef": "comp-reward-allocation",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide immediate control over automatic statement credit allocations.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reward-allocation",
+      "toComponentRef": "comp-payment-confirmation",
+      "relationship": "sequential",
+      "bridgeIntent": "Confirm your scheduled bill credit payout.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-payment-confirmation",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "payoff-to-continuation",
+      "bridgeIntent": "Review your statement efficiency and history.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "comp-leaderboard",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed due to low gamification response profile and strict hard suppression rules.",
+      "reasonCode": "DEFER_SUPPRESSED_GAMIFICATION",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "comp-streak",
+      "componentType": "STREAK_CARD",
+      "reason": "Suppressed as customer prefers payment utility over streak-based gamification.",
+      "reasonCode": "DEFER_SUPPRESSED_GAMIFICATION",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

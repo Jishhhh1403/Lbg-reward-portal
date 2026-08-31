@@ -1,0 +1,127 @@
+{
+  "primaryJourneyId": "journey-protect-expiring-points",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Quickly discover and claim immediate tangible value for expiring points with minimal friction.",
+  "entryPoint": "User opens rewards overview after 41 days of inactivity.",
+  "completionDefinition": "Customer views expiring points notice and successfully redeems an instant reward item.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1-hook",
+      "order": 1,
+      "customerQuestion": "Why does this matter right now?",
+      "entryCondition": "App opened by returning user with expiring points",
+      "requiredInformation": [
+        "points balance",
+        "expiring points amount",
+        "days left"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2-snapshot",
+      "requiredEvidenceRefs": [
+        "fact-tier-points",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2-snapshot",
+      "order": 2,
+      "customerQuestion": "Where do I stand with my rewards and value?",
+      "entryCondition": "User has absorbed the expiring points notice",
+      "requiredInformation": [
+        "total LBG coins",
+        "cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3-pathways",
+      "requiredEvidenceRefs": [
+        "fact-tier-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3-pathways",
+      "order": 3,
+      "customerQuestion": "What can I instantly claim right now?",
+      "entryCondition": "User understands their balance and tangible value",
+      "requiredInformation": [
+        "instant reward grid items",
+        "quick win voucher options"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4-momentum",
+      "requiredEvidenceRefs": [
+        "fact-redemption-history"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4-momentum",
+      "order": 4,
+      "customerQuestion": "How do I keep my momentum and streak going?",
+      "entryCondition": "User has claimed an instant reward or reviewed options",
+      "requiredInformation": [
+        "streak days",
+        "active challenge progress"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CELEBRATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": "mj-5-trust",
+      "requiredEvidenceRefs": [],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-5-trust",
+      "order": 5,
+      "customerQuestion": "Are my rewards secure and under my control?",
+      "entryCondition": "User reviews session status and account control",
+      "requiredInformation": [
+        "sync status",
+        "preferences"
+      ],
+      "allowedNarrativeRoles": [
+        "CONTINUATION",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide transparent voucher terms without partner comparison clutter.",
+      "contentNotes": [
+        "Standard voucher validity rules apply."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-1",
+  "journeyObjective": "Provide frictionless review of points balance, tangible statement credit value, and holiday spending goal progress.",
+  "entryPoint": "Customer opens mobile rewards overview.",
+  "completionDefinition": "Customer successfully views points balance, evaluates tangible statement credit worth, and inspects holiday savings goal progress.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "How many LBG coins do I have and what are they worth as cash?",
+      "entryCondition": "App opens on rewards overview tab.",
+      "requiredInformation": [
+        "7300 LBG coins",
+        "statement credit value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-redemption"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my rewards translate directly to statement credits and bill reductions?",
+      "entryCondition": "Snapshot reviewed.",
+      "requiredInformation": [
+        "statement credit conversion rate",
+        "guaranteed reward terms"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-redemption"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What options do I have to allocate my earnings and manage payouts?",
+      "entryCondition": "Trust and tangible value verified.",
+      "requiredInformation": [
+        "payment reward allocation settings"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-redemption"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How am I progressing toward my holiday spending goal?",
+      "entryCondition": "Allocation reviewed.",
+      "requiredInformation": [
+        "Holiday Spending Money goal progress: $640 of $1200"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education",
+      "purpose": "Provide educational context on point valuations and redemption reliability.",
+      "contentNotes": [
+        "How points work with statement credits"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

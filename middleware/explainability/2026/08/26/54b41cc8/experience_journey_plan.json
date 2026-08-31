@@ -1,0 +1,69 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-instant-redemption",
+  "journeyObjective": "Facilitate immediate, effortless redemption of 1,500 expiring points via an instant reward card and customer choice panel.",
+  "entryPoint": "Dashboard opening after 41 days of inactivity",
+  "completionDefinition": "Customer views points, inspects expiring points banner, interacts with instant reward card, and completes redemption via customer choice panel.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What's my current balance and is anything expiring?",
+      "entryCondition": "Session starts with active expiration warning",
+      "requiredInformation": [
+        "points",
+        "expiring points",
+        "tier"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I grab a quick win right now with my points?",
+      "entryCondition": "Customer understands expiring balance",
+      "requiredInformation": [
+        "instant rewards",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-instant-reward-response",
+        "fact-redemption-speed"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide quick re-engagement and streak gamification without notification fatigue.",
+      "contentNotes": [
+        "Show streak status",
+        "Offer quick win card"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

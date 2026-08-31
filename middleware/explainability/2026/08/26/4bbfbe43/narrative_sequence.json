@@ -1,0 +1,210 @@
+{
+  "primaryActionComponentRef": "comp-payment-reward",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-payment-reward",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [
+        "comp-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-allocation",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-payment-reward"
+      ],
+      "resolves": [
+        "comp-payment-reward"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-payment-confirmation",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-payment-reward"
+      ],
+      "resolves": [
+        "comp-payment-reward"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "PAYOFF",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [
+        "comp-tangible-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 8,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-reward-choice-panel",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-payment-reward"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-value-comparison",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-earn-breakdown",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 11,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-month-over-month",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 12,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-points-health",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 13,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 14,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-why-this-ui",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 15,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect coin balance standing to holiday savings progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-payment-reward",
+      "relationship": "sequential",
+      "bridgeIntent": "Transition from goal standing to automated bill reduction action.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-payment-reward",
+      "toComponentRef": "comp-reward-allocation",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer precise control over allocation percentage.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-payment-reward",
+      "toComponentRef": "comp-payment-confirmation",
+      "relationship": "action-to-feedback",
+      "bridgeIntent": "Display confirmation of recent bill credit application.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide transparent monetary valuation leading to long-term savings insights.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Present points balance, 'First Home Savings Knowledge' goal progress, and unpressured educational quiz recommendations aligned with competence motivation.",
+  "entryPoint": "Customer opens rewards overview on mobile.",
+  "completionDefinition": "Customer views points balance and engages with knowledge milestones or self-paced quiz modules.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my coins and educational savings goals?",
+      "entryCondition": "App launched with verified wallet state.",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress",
+        "cash value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-savings-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I continue mastering financial concepts and building savings knowledge at my own pace?",
+      "entryCondition": "Customer has reviewed current balance and active goal.",
+      "requiredInformation": [
+        "learning modules",
+        "quizzes",
+        "competence milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-module-completion",
+        "fact-quiz-retakes",
+        "fact-mastery-motivation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency",
+      "purpose": "Provide clear explanations of point provenance and tangible cash equivalents without urgency.",
+      "contentNotes": [
+        "Cash value breakdown",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

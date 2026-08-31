@@ -1,0 +1,393 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "0eb3b417",
+  "createdAt": "2026-08-26T00:00:00Z",
+  "expiresAt": "2026-08-26T23:59:59Z",
+  "customerRef": "customer_010",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 7300,
+        "tier": "Platinum",
+        "name": "Daniel Brooks",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Holiday Spending Money",
+        "current": 640.0,
+        "target": 1200.0,
+        "percentage": 53.0,
+        "remaining": 560.0,
+        "motivationalMessage": "You're over halfway to your holiday goal through automatic statement credit allocations.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-payment-reward",
+      "type": "PAYMENT_REWARD_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Automatic Bill Reduction",
+        "paymentMethod": "Platinum Credit Card ending in \u2022\u202242",
+        "rewardRate": "1.0% back in statement credits",
+        "monthlyCap": "No monthly cap",
+        "description": "Your cashback is automatically calculated and ready to offset your monthly statement.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "TENSION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-allocation",
+      "type": "REWARD_ALLOCATION_CONTROL",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Reward Allocation Settings",
+        "subtitle": "Choose how your earned points are automatically distributed toward your monthly bills.",
+        "allocation": {
+          "label": "Statement Credit Auto-Apply",
+          "percent": 100
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "UPDATE_ALLOCATION",
+          "payload": {
+            "percent": 100
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-payment-confirmation",
+      "type": "PAYMENT_REWARD_CONFIRMATION",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Recent Statement Credit Applied",
+        "message": "Successfully credited to your linked card statement to reduce your bill.",
+        "amount": "\u00a325.00",
+        "reference": "SC-2026-8841",
+        "date": "26 Aug 2026",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Cash-Equivalent Translation",
+        "cashValue": "\u00a373.50",
+        "pointsEquivalent": 7300,
+        "breakdown": {
+          "label": "Guaranteed Statement Value",
+          "value": "100 points = \u00a31.00 directly off bills"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-rewards-insight",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Cashback Earnings Overview",
+        "topBrandName": "Linked Card Statement Credit",
+        "topBrandPoints": 7300,
+        "growthTip": "Maintaining 100% allocation to statement credits guarantees maximum bill reduction with zero point dilution.",
+        "expiringPoints": 0,
+        "expiryDate": "N/A",
+        "ctaText": "View Statement History",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "steps": {
+          "title": "Guaranteed Earning",
+          "description": "Every eligible purchase earns predictable cashback directly translated into your points balance."
+        },
+        "ctaLabel": "Learn about statement credits",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-choice-panel",
+      "type": "REWARD_CHOICE_PANEL",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Redemption Options",
+        "subtitle": "Apply your balance instantly as a statement credit with zero fees.",
+        "options": {
+          "id": "opt-stmt-credit",
+          "label": "Statement Credit",
+          "description": "Directly deduct cash value from your credit card balance.",
+          "points": 7300
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_STATEMENT_CREDIT",
+          "payload": {
+            "points": 7300,
+            "cashValue": "\u00a373.50"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "CELEBRATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Add a New Bill Offset Target",
+        "subtitle": "Set a financial target for your upcoming utility or card statements.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "CONTINUATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Why Cash-Equivalent Translation Matters",
+        "insight": "Statement credits offer a guaranteed 1:1 financial utility, ensuring your rewards retain full purchasing power against living expenses.",
+        "source": "LBG Financial Education Team",
+        "actionLabel": "Read guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-provenance",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Recent Cashback Activity",
+        "subtitle": "Verified earnings from linked card transactions.",
+        "history": {
+          "source": "Linked Card Spending",
+          "date": "25 Aug 2026",
+          "points": 450
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-payment-reward",
+          "comp-how-points-work",
+          "comp-add-goal"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-payment-confirmation"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-reward-allocation",
+          "comp-rewards-insight",
+          "comp-reward-choice-panel",
+          "comp-educational-insight",
+          "comp-provenance"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-verify-cashback",
+    "primaryOutcome": "Effortless verification of payment utility rewards and cash-equivalent balance.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "RESOLVE",
+    "primaryActionComponentId": "comp-tangible-value"
+  }
+}

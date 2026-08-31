@@ -1,0 +1,95 @@
+{
+  "primaryJourneyId": "journey-protect-value",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Provide a calm, educational overview of rewards status, highlighting long-term goal progress and non-urgent options for expiring points protection.",
+  "entryPoint": "Rewards overview mobile landing for Elena Vasquez",
+  "completionDefinition": "Customer reviews goal progress and expiring points education calmly, selecting a secure preservation option.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my accumulated rewards?",
+      "entryCondition": "App session start for Diamond tier customer",
+      "requiredInformation": [
+        "points balance",
+        "tier",
+        "name",
+        "expiring points status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2-pathways",
+      "requiredEvidenceRefs": [
+        "fact-idle-balance",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2-pathways",
+      "order": 2,
+      "customerQuestion": "What are my options to protect my expiring points without pressure?",
+      "entryCondition": "Customer views rewards balance and expiring notice",
+      "requiredInformation": [
+        "expiring points details",
+        "educational preservation options",
+        "tangible cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3-momentum",
+      "requiredEvidenceRefs": [
+        "fact-educational-response",
+        "fact-stalled-accumulation"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3-momentum",
+      "order": 3,
+      "customerQuestion": "How are my long-term savings goals progressing toward my future security?",
+      "entryCondition": "Customer reviews preservation and education choices",
+      "requiredInformation": [
+        "goal progress tracker",
+        "projected growth pathways",
+        "long-term value card"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-stalled-accumulation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education-modal",
+      "purpose": "Provide in-depth educational breakdown of long-term compounding value.",
+      "contentNotes": [
+        "Value explainer details",
+        "Historical accumulation metrics"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

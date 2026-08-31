@@ -1,0 +1,89 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-rescue-expiring",
+  "journeyObjective": "Instantly surface expiring points and provide a low-friction instant reward picker to secure value within the session.",
+  "entryPoint": "App opened after 41 days of inactivity, displaying coin balance and expiring points notice.",
+  "completionDefinition": "Customer interacts with the choice panel and successfully redeems an instant reward voucher.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Hey Ryan! Are my rewards still safe?",
+      "entryCondition": "Session starts with dormant status and expiring points.",
+      "requiredInformation": [
+        "wallet.lbgCoins",
+        "journeyAnalysis.expiringPoints"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What's my best quick win right now?",
+      "entryCondition": "Customer acknowledges current coin balance and expiring points status.",
+      "requiredInformation": [
+        "customerProfile.points",
+        "customerProfile.expiringPoints"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-instant-reward-preference"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Did I secure my reward instantly?",
+      "entryCondition": "Customer selects an instant reward from the choice panel.",
+      "requiredInformation": [
+        "reward.name",
+        "reward.points"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CELEBRATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-historical-redemption"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide reassurance about account safety and program clarity without manipulative pressure.",
+      "contentNotes": [
+        "Display instant reward provenance and secure wallet overview."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Streamlined payment-utility overview focusing on 7,300 coin balance translation to statement credits, featuring transparent cash-value calculations and active Holiday Spending Money goal tracking (53% progress) without gamification elements.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broader financial wellness reward dashboard presenting cash-equivalent earnings alongside automated bill reduction allocation settings and multi-goal progress metrics.",
+      "scores": {
+        "customerGoalRelevance": 8,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 8,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 8.35,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-1",
+    "storyTitle": "Review Statement Credit and Holiday Goal Progress",
+    "oneSentenceStory": "Daniel reviews his 7,300 coin balance and applies statement credits toward his active Holiday Spending Money goal.",
+    "customerSituation": "Daniel visits the rewards overview to check his accumulated balance and monitor his holiday savings.",
+    "storyTension": "Ensuring transparent cash value translation without unnecessary gamification or irrelevant partner vouchers.",
+    "customerResolution": "Clear visibility of statement credit options and direct progress tracking toward bill reduction.",
+    "primaryOutcome": "Seamless review and application of statement credits to reduce monthly card bills.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-coins",
+      "fact-goal",
+      "fact-signal-1"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "leaderboards",
+      "streaks",
+      "partner-vouchers"
+    ],
+    "completionSignals": [
+      "views_points_balance",
+      "views_goal_progress"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-1",
+      "journeyObjective": "Review statement credit progress and apply accumulated points directly toward upcoming bill reductions with transparent value calculations.",
+      "completionDefinition": "Customer views point balance, statement credit cash equivalent value, and holiday savings goal progress with zero gamification detours.",
+      "episodeSketches": [
+        "Display points balance (7,300 LBG coins) and exact monetary statement credit value.",
+        "Surface active Holiday Spending Money goal progress (53% / 640 of 1200) with direct bill-reduction allocation options."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.8,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 95,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with Daniel's payment-utility orientation and strict preference for statement credits over gamified elements."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All dark pattern, manipulation, and privacy risk gates passed cleanly with zero prohibited features surfaced."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit confirmed; financial values and goal progress are presented with crystal-clear numeric clarity."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-1 and Journey Candidate-1 exhibit exceptional narrative alignment and seamless action-outcome continuity."
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "0fe7f2fc",
+  "createdAt": "2023-10-27T12:00:00Z",
+  "expiresAt": "2023-10-27T13:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Use it or lose it! 1,500 points ready for fun",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "Hey Ryan! Your 1,500 Gold points are ready to turn into treats before they drift away in 7 days.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "TENSION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Your instant vibe check",
+        "subtitle": "Grab a quick coffee or treat with zero wait time!",
+        "rewards": {
+          "name": "Barista Coffee & Pastry",
+          "points": 200
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_QUICK_WIN",
+          "payload": {
+            "points": 200
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-expiring-alert"
+        ],
+        "resolves": [
+          "comp-expiring-alert"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-instant-popup",
+      "type": "INSTANT_REWARD_POPUP",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Welcome back, Ryan!",
+        "subtitle": "Here is your instant reward unlocked for today's session.",
+        "points": 350,
+        "expiresIn": "2 hours",
+        "celebration": true,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "DISMISS_POPUP",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-quick-win"
+        ],
+        "resolves": [
+          "comp-quick-win"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-flash-banner",
+      "type": "FLASH_REWARD_BANNER",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "\u26a1 Lightning Flash Deal: Snack Box",
+        "subtitle": "Grab this fan-favourite treat instantly!",
+        "originalPoints": 450,
+        "discountedPoints": 350,
+        "timer": "02:15:00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CLAIM_FLASH_REWARD",
+          "payload": {
+            "cost": 350
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-instant-popup"
+        ],
+        "resolves": [
+          "comp-instant-popup"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Tap & Enjoy Right Now",
+        "description": "Pick your instant reward and redeem in one effortless tap.",
+        "rewards": {
+          "name": "Cinema Ticket Duo",
+          "points": 800,
+          "icon": "film"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "QUICK_REDEEM",
+          "payload": {
+            "rewardName": "Cinema Ticket Duo",
+            "points": 800
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-flash-banner"
+        ],
+        "resolves": [
+          "comp-flash-banner"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Your Wallet's Real-World Power",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": {
+          "label": "Ready to spend instantly",
+          "value": "\u00a336.00 value"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [
+          "comp-quick-redeem"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Curated Instant Treats for You",
+        "rewards": [
+          {
+            "name": "Artisan Coffee Bundle",
+            "points": 300,
+            "category": "Drinks",
+            "limited": true
+          },
+          {
+            "name": "Gourmet Lunch Voucher",
+            "points": 500,
+            "category": "Food",
+            "limited": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "SELECT_CAROUSEL_REWARD",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-streak",
+      "type": "STREAK_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "streakDays": 3,
+        "message": "You're building awesome momentum, Ryan! Keep the streak alive.",
+        "nextReward": "Bonus 100 Points on 5th Day",
+        "milestones": [
+          {
+            "days": 3,
+            "reward": "Unlocked Vibe Badge",
+            "achieved": true
+          },
+          {
+            "days": 5,
+            "reward": "Bonus 100 Points",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-badge",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Your Trophy Cabinet",
+        "badges": [
+          {
+            "name": "Instant Hunter",
+            "icon": "zap",
+            "earned": true
+          },
+          {
+            "name": "Streak Master",
+            "icon": "flame",
+            "earned": true
+          }
+        ],
+        "totalEarned": 3,
+        "totalAvailable": 10,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "CELEBRATION",
+        "dependsOn": [
+          "comp-streak"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "status": "synced",
+        "title": "All Wallets Synced Securely",
+        "lastSyncedAt": "Today at 12:07 PM",
+        "message": "Your 3,600 coins are fully secured and ready for instant action.",
+        "ctaText": "Refresh Status",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-why-ui",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Why you're seeing this right now",
+        "intro": "We tailored this screen just for you based on your preference for lightning-fast rewards.",
+        "reasons": [
+          {
+            "label": "Expiring Points Protection",
+            "detail": "We highlighted your 1,500 expiring points so you never miss out on free treats."
+          },
+          {
+            "label": "Instant Gratification",
+            "detail": "Zero waiting around\u2014grab vouchers that work instantly in 1 tap."
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "PROTECT_AND_REASSURE",
+    "headline": "Your rewards are safe \u2014 here's the fastest win",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "HOOK",
+        "label": "Why this matters now",
+        "role": "Grab attention with the single most relevant moment",
+        "componentIds": [
+          "comp-expiring-alert",
+          "comp-instant-popup",
+          "comp-flash-banner"
+        ]
+      },
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-quick-win",
+          "comp-quick-redeem",
+          "comp-reward-carousel",
+          "comp-streak"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-badge"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-sync-status",
+          "comp-why-ui"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-instant-redemption",
+    "primaryOutcome": "Customer initiates redemption of expiring points within session.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-3",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-quick-redeem"
+  }
+}

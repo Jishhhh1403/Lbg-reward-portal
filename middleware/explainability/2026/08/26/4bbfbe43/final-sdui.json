@@ -1,0 +1,509 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "4bbfbe43",
+  "createdAt": "2026-08-26T00:00:00Z",
+  "expiresAt": "2026-09-26T00:00:00Z",
+  "customerRef": "customer_010",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 7300,
+        "tier": "Platinum",
+        "name": "Daniel Brooks",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Holiday Spending Money",
+        "current": 640.0,
+        "target": 1200.0,
+        "percentage": 53.0,
+        "remaining": 560.0,
+        "motivationalMessage": "You are 53% toward your holiday spending target with predictable cashback accumulation.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-payment-reward",
+      "type": "PAYMENT_REWARD_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Automatic Statement Credit",
+        "paymentMethod": "Linked Platinum Debit Card ending in \u20224821",
+        "rewardRate": "1.0% back in guaranteed bill reduction",
+        "monthlyCap": "No monthly cap",
+        "description": "Your earned rewards are automatically routed to reduce your monthly billing statement.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "CONFIGURE_PAYMENT_REWARD",
+          "payload": {
+            "autoApply": true
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [
+          "comp-goal-progress"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-allocation",
+      "type": "REWARD_ALLOCATION_CONTROL",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Reward Allocation Settings",
+        "subtitle": "Direct 100% of earned LBG coins to statement credit bill reduction",
+        "allocation": {
+          "label": "Statement Credit Allocation",
+          "percent": 100
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "UPDATE_ALLOCATION",
+          "payload": {
+            "percent": 100
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-payment-reward"
+        ],
+        "resolves": [
+          "comp-payment-reward"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-payment-confirmation",
+      "type": "PAYMENT_REWARD_CONFIRMATION",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Recent Statement Credit Applied",
+        "message": "Successfully credited to your linked card statement.",
+        "amount": "\u00a325.00",
+        "reference": "CR-882910-DB",
+        "date": "26 Aug 2026",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "comp-payment-reward"
+        ],
+        "resolves": [
+          "comp-payment-reward"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Coin Valuation",
+        "cashValue": "\u00a373.00",
+        "pointsEquivalent": 7300,
+        "breakdown": {
+          "label": "Guaranteed Statement Credit Rate",
+          "value": "100 coins = \u00a31.00 bill reduction"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-rewards-insight",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Statement Credit Performance Insight",
+        "topBrandName": "Linked Card Cashback",
+        "topBrandPoints": 1850,
+        "growthTip": "Maintaining your automatic statement credit allocation saves an estimated \u00a3310 annually on bills.",
+        "expiringPoints": 0,
+        "expiryDate": "30 Sep",
+        "ctaText": "Review Statement History",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [
+          "comp-tangible-value"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "steps": {
+          "title": "Guaranteed Conversion",
+          "description": "Every LBG coin you earn converts precisely at 1p toward bill reduction without fluctuating exchange rates."
+        },
+        "ctaLabel": "View Conversion Terms",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": true
+      }
+    },
+    {
+      "id": "comp-reward-choice-panel",
+      "type": "REWARD_CHOICE_PANEL",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Redemption Options",
+        "subtitle": "Select your preferred payment utility application",
+        "options": {
+          "id": "opt-stmt-credit",
+          "label": "Statement Credit",
+          "description": "Apply directly to your linked card balance to reduce upcoming bills.",
+          "points": 7300
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "SELECT_OPTION",
+          "payload": {
+            "optionId": "opt-stmt-credit"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-payment-reward"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-partner-value-comparison",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Value Comparison",
+        "subtitle": "Why statement credits provide the highest guaranteed return",
+        "partners": {
+          "name": "Direct Statement Credit",
+          "points": 7300,
+          "value": "\u00a373.00",
+          "perk": "100% guaranteed value with zero fees"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [],
+        "optional": true
+      }
+    },
+    {
+      "id": "comp-earn-breakdown",
+      "type": "EARN_BREAKDOWN_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "period": "this month",
+        "segments": {
+          "label": "Linked Card Spending",
+          "points": 1450,
+          "colorToken": "brand"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "EVIDENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": true
+      }
+    },
+    {
+      "id": "comp-month-over-month",
+      "type": "MONTH_OVER_MONTH_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "earned": 1450,
+        "prevEarned": 1320,
+        "redeemed": 2500,
+        "prevRedeemed": 1800,
+        "deltaLabel": "+10% earned vs last month",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "EVIDENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": true
+      }
+    },
+    {
+      "id": "comp-points-health",
+      "type": "POINTS_HEALTH_SCORE",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "score": 98,
+        "delta": 2,
+        "tip": "Your rewards are fully active and optimized for automatic statement credit.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "EVIDENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": true
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 14,
+      "props": {
+        "title": "Financial Efficiency Tip",
+        "insight": "Applying statement credits monthly reduces rolling credit card balances, minimizing interest exposure.",
+        "source": "LBG Rewards Financial Education Team",
+        "actionLabel": "Learn More",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": true
+      }
+    },
+    {
+      "id": "comp-why-this-ui",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 15,
+      "props": {
+        "title": "Designed for Your Preferences",
+        "intro": "This view is tailored to your focus on payment utility and predictable bill reduction.",
+        "reasons": {
+          "label": "No Gamification",
+          "detail": "We've removed leaderboards and lifestyle vouchers to focus purely on your statement credits."
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-4",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": true
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value",
+          "comp-earn-breakdown",
+          "comp-month-over-month",
+          "comp-points-health"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-payment-reward",
+          "comp-how-points-work"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-payment-confirmation"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-reward-allocation",
+          "comp-rewards-insight",
+          "comp-reward-choice-panel",
+          "comp-partner-value-comparison",
+          "comp-educational-insight",
+          "comp-why-this-ui"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Effortless tracking and application of statement credits for bill reduction.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-3",
+    "entryMode": "RESOLVE",
+    "primaryActionComponentId": "comp-payment-reward"
+  }
+}

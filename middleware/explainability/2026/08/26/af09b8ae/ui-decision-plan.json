@@ -1,0 +1,300 @@
+{
+  "planId": "plan-af09b8ae",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Educational value protection and long-horizon goal re-engagement focusing on calm insights, points security for 2,400 expiring points, and transparent projections without manipulative urgency.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 24500,
+          "tier": "Diamond",
+          "name": "Elena Vasquez",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Calm Value Protection",
+          "expiringPoints": 2400,
+          "daysLeft": 9,
+          "message": "Review your 2,400 points expiring in 9 days. Secure them safely into your long-term goals with zero pressure.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_DETAILS",
+            "payload": {
+              "target": "expiring_points_breakdown"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Accumulated Value",
+          "cashValue": "\u00a3245.00",
+          "pointsEquivalent": 24500,
+          "breakdown": {
+            "label": "Secure Long-Term Cash Equivalent",
+            "value": "\u00a3245.00 transparent value"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-retirement",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 24500,
+          "target": 100000,
+          "percentage": 25,
+          "remaining": 75500,
+          "motivationalMessage": "Your foundation is strong. Steady contributions protect your future security.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-education",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 18500,
+          "target": 50000,
+          "percentage": 37,
+          "remaining": 31500,
+          "motivationalMessage": "Growing steadily toward educational milestones with calm autonomy.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-home",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 9000,
+          "target": 75000,
+          "percentage": 12,
+          "remaining": 66000,
+          "motivationalMessage": "A long-horizon milestone secured by consistent, calm planning.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Add a New Long-Term Goal",
+          "subtitle": "Align further savings with your personal financial future",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-future-value",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Long-Horizon Growth Projection",
+          "currentValue": 24500,
+          "projectedValue": 45000,
+          "timeframe": "5 Years",
+          "growthRate": "4.2% AER projected",
+          "message": "Continuing your steady contributions ensures robust long-term compounding.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-projection-chart",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Retirement Fund Trajectory",
+          "growthLabel": "Projected Accumulation",
+          "data": [
+            {
+              "year": "2027",
+              "value": 28000
+            },
+            {
+              "year": "2028",
+              "value": 33000
+            },
+            {
+              "year": "2029",
+              "value": 39000
+            },
+            {
+              "year": "2030",
+              "value": 45000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Value Protection & Compounding Insight",
+          "insight": "Protecting expiring points preserves your cost basis and maintains the compounding momentum of your Diamond-tier accumulation.",
+          "source": "LBG Rewards Wealth Academy",
+          "actionLabel": "Read Educational Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_EDUCATIONAL_GUIDE",
+            "payload": {
+              "guideId": "wealth-protection-101"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-recommended-actions",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Recommended Calm Actions",
+          "actions": [
+            {
+              "label": "Secure Expiring Points to Retirement Fund",
+              "points": 2400,
+              "icon": "target"
+            },
+            {
+              "label": "Review Projected Value Breakdown",
+              "points": 0,
+              "icon": "shopping-bag"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "EXECUTE_RECOMMENDED_ACTION",
+            "payload": {
+              "actionIndex": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Portfolio Summary",
+          "topBrandName": "LBG Secure Savings",
+          "topBrandPoints": 24500,
+          "growthTip": "Your historical consistency remains an exceptional asset.",
+          "expiringPoints": 2400,
+          "expiryDate": "05 Sep",
+          "ctaText": "View Portfolio Details",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_PORTFOLIO",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Designed for Your Financial Security",
+          "intro": "This overview is tailored to support your long-horizon goals with calm clarity and zero stress.",
+          "reasons": [
+            {
+              "label": "Value Protection",
+              "detail": "Clear information on your 2,400 expiring points without manipulative urgency."
+            },
+            {
+              "label": "Long-Term Focus",
+              "detail": "Transparent projections designed for disciplined Diamond-tier savers."
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_TONE"
+    ]
+  },
+  "strategy": "Educational value protection and long-horizon goal re-engagement focusing on calm insights, points security for 2,400 expiring points, and transparent projections without manipulative urgency.",
+  "confidence": 0.98
+}

@@ -1,0 +1,69 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-verify-cashback",
+  "journeyObjective": "Provide instant visibility into points balance, cash-equivalent value, and direct statement credit redemption options.",
+  "entryPoint": "Customer opens rewards overview to review earned cashback and statement credit status.",
+  "completionDefinition": "Customer reviews points, sees cash value, and accesses statement credit action without distraction.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current points balance and cash-equivalent value?",
+      "entryCondition": "App launch on rewards tab",
+      "requiredInformation": [
+        "points",
+        "cashValue",
+        "tier"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-checks-cashback"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I apply my rewards directly to my statement or bills?",
+      "entryCondition": "Balance and cash translation viewed",
+      "requiredInformation": [
+        "statementCreditOptions",
+        "allocationRules"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "REDEEM",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-redeems-statement-credits",
+        "fact-automatic-allocation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-insights",
+      "purpose": "Provide clear educational context on cash-equivalent valuation and guaranteed reward rates.",
+      "contentNotes": [
+        "How points translate to statement credits",
+        "Guaranteed rate breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

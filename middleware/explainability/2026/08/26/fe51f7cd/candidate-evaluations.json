@@ -1,0 +1,127 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Streamlined statement credit verification highlighting 7,300 LBG coins and direct bill reduction options, accompanied by holiday savings goal progress tracking without gamification elements.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.7,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broader rewards dashboard featuring mixed partner voucher suggestions alongside statement credit options and progress tracking.",
+      "scores": {
+        "customerGoalRelevance": 5,
+        "expectedCustomerUtility": 4,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 6,
+        "accessibilityAndCognitiveFit": 7,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 4,
+        "evidenceConfidence": 6,
+        "usefulNovelty": 5,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 5.55,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-verify-and-apply",
+    "storyTitle": "Verify Balance and Apply Statement Credit",
+    "oneSentenceStory": "The customer verifies their current LBG coin balance and cashback metrics to apply funds directly as a practical statement credit.",
+    "customerSituation": "Customer has accumulated 7,300 LBG coins and wants to check their exact cashback value before reducing bill payments.",
+    "storyTension": "Ensuring the redemption process is transparent, straightforward, and free from complicated lifestyle partner distractions.",
+    "customerResolution": "Customer views clear points and cashback metrics, executing a seamless statement credit redemption toward linked card bills.",
+    "primaryOutcome": "Effortless verification of tangible cashback value and direct statement credit application.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-exclusive-credits",
+      "fact-checks-cashback"
+    ],
+    "confidence": 0.95,
+    "prohibitedDetours": [
+      "Lifestyle partner offers",
+      "Gamified leaderboards",
+      "Complex voucher catalogs"
+    ],
+    "completionSignals": [
+      "User views points balance component",
+      "User interacts with statement credit option",
+      "No engagement with suppressed gamification"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-verify-and-apply",
+      "journeyObjective": "Enable instant verification of coin balances and efficient application of statement credits toward bills.",
+      "completionDefinition": "Customer successfully reviews points/cashback balance and triggers statement credit application.",
+      "episodeSketches": [
+        "Display points balance and tangible cash value breakdown",
+        "Present holiday savings goal progress and milestone status",
+        "Provide direct one-touch action policy for statement credit application"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.8,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 100,
+    "journeyContinuity": 100,
+    "miniJourneyCompleteness": 100,
+    "transitionStrength": 100,
+    "actionOutcomeContinuity": 100,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly matches customer_010's payment-utility motivation and statement credit redemption preferences."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All hard gates passed. No dark patterns, dark urgency, or suppressed gamification elements detected."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and clear contrast/layout alignment with customer preferences."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-verify-and-apply and journey-candidate-1 exhibit 100% coherence with zero conflicting narratives."
+    }
+  ]
+}

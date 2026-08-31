@@ -1,0 +1,94 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide an unhurried, goal-anchored rewards overview emphasizing savings knowledge growth and educational milestones.",
+  "entryPoint": "Rewards overview dashboard for Sophie Williams",
+  "completionDefinition": "Customer reviews First Home Savings Knowledge progress and accesses self-paced learning module or goal-linked reward.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and savings knowledge goals stand right now?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings Knowledge progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-1",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my LBG Coins translate into tangible value and clear learning milestones?",
+      "entryCondition": "Customer views balance and current progress",
+      "requiredInformation": [
+        "cash value equivalent",
+        "how points work",
+        "learning milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-sig-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What unhurried module or quiz can I explore next to advance my financial literacy?",
+      "entryCondition": "Customer reviews value transparency and learning structure",
+      "requiredInformation": [
+        "quiz module",
+        "comprehension feedback",
+        "confidence progress",
+        "educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "NAVIGATE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-2",
+        "fact-sig-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary context on how educational modules contribute to long-term financial literacy.",
+      "contentNotes": [
+        "Self-paced course notes",
+        "Detailed milestone breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "planId": "plan-e7c261a3",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Highlight Japan Vacation active goal progress (67%) prominently alongside current LBG coin balance (6820) and contextual milestone targets, empowering autonomous goal-linked reward planning.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 6820,
+          "tier": "Platinum",
+          "name": "Sarah Chen",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-japan-goal",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "Japan Vacation",
+          "current": 1680,
+          "target": 2500,
+          "percentage": 67,
+          "remaining": 820,
+          "motivationalMessage": "You are 67% there! Consistent monthly accumulation is paying off.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "Japan Vacation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Coin Value Transparency",
+          "cashValue": "\u00a368.20",
+          "pointsEquivalent": 6820,
+          "breakdown": {
+            "label": "LBG Coins Value",
+            "value": "100 coins = \u00a31.00 toward travel & rewards"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Next Milestone Reward",
+          "goalName": "Japan Vacation",
+          "rewards": {
+            "name": "Flight Discount Voucher",
+            "points": 5000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_GOAL_REWARD",
+            "payload": {
+              "reward": "Flight Discount Voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-ladder",
+        "type": "MILESTONE_REWARD_LADDER",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "goalName": "Japan Vacation",
+          "rungs": [
+            {
+              "percent": 25,
+              "reward": "Lounge Access",
+              "unlocked": true
+            },
+            {
+              "percent": 50,
+              "reward": "Hotel Voucher \u00a330",
+              "unlocked": true
+            },
+            {
+              "percent": 75,
+              "reward": "Flight Discount \u00a350",
+              "unlocked": false
+            },
+            {
+              "percent": 100,
+              "reward": "Tokyo Experience Pass",
+              "unlocked": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-phone-goal",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "goalName": "New Phone",
+          "current": 890,
+          "target": 1200,
+          "percentage": 74,
+          "remaining": 310,
+          "motivationalMessage": "Almost ready for upgrade time!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-emergency-goal",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "goalName": "Emergency Fund",
+          "current": 1350,
+          "target": 3000,
+          "percentage": 45,
+          "remaining": 1650,
+          "motivationalMessage": "Steady monthly additions building security.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Add a New Goal",
+          "subtitle": "Set a new savings target to accumulate faster",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-recommended-actions",
+        "type": "RECOMMENDED_ACTIONS",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Boost Your Japan Progress",
+          "actions": [
+            {
+              "label": "Link partner shopping",
+              "points": 350,
+              "icon": "shopping-bag"
+            },
+            {
+              "label": "Set monthly auto-save",
+              "points": 200,
+              "icon": "target"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-badge-card",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Savings Achievement Badges",
+          "badges": [
+            {
+              "name": "Consistent Saver",
+              "icon": "trophy",
+              "earned": true
+            },
+            {
+              "name": "Goal Crusher",
+              "icon": "star",
+              "earned": true
+            },
+            {
+              "name": "Milestone Master",
+              "icon": "crown",
+              "earned": true
+            }
+          ],
+          "totalEarned": 5,
+          "totalAvailable": 8,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Designed for Your Savings Style",
+          "intro": "Tailored for goal-oriented savers who prefer structured tracking and milestone rewards.",
+          "reasons": [
+            {
+              "label": "Goal Priority",
+              "detail": "Japan Vacation leads your dashboard based on active progress."
+            },
+            {
+              "label": "Transparent Value",
+              "detail": "Clear cash-to-coin ratios support confident planning."
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "HIGH_GOAL_RELEVANCE"
+    ]
+  },
+  "strategy": "Highlight Japan Vacation active goal progress (67%) prominently alongside current LBG coin balance (6820) and contextual milestone targets, empowering autonomous goal-linked reward planning.",
+  "confidence": 0.95
+}

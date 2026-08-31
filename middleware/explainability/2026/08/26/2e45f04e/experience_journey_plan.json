@@ -1,0 +1,110 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide a serene, self-paced overview of First Home Savings Knowledge progress and curriculum milestones matching the learning mastery profile.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews goal progress (63%) and accesses desired educational module or milestone.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and savings knowledge?",
+      "entryCondition": "User opens rewards overview screen",
+      "requiredInformation": [
+        "wallet balance",
+        "goal progress percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What is the real-world value and structure of my accumulated coins?",
+      "entryCondition": "After reviewing points and current goal snapshot",
+      "requiredInformation": [
+        "coin equivalent value",
+        "how points work steps"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational path and milestones should I pursue next?",
+      "entryCondition": "After reviewing value transparency and mechanics",
+      "requiredInformation": [
+        "learning module status",
+        "quiz readiness",
+        "confidence and feedback"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "How does this connect to my long-term savings goals and mastery?",
+      "entryCondition": "After interacting with learning modules and quizzes",
+      "requiredInformation": [
+        "goal linked rewards",
+        "educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clarity on coin conversion rates and educational curriculum terms without pressure.",
+      "contentNotes": [
+        "No expiration warnings",
+        "No timer displays"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

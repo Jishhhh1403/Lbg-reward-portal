@@ -1,0 +1,233 @@
+{
+  "planId": "plan-fd27bb1f",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Self-paced educational milestone focus highlighting First Home Savings Knowledge progress (63%) with transparent learning modules and zero timed pressure or leaderboards, adhering strictly to narrative arc SNAPSHOT -> TRUST -> PATHWAYS -> HOOK -> MOMENTUM.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your deposit readiness.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Knowledge & Savings Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Estimated deposit guidance value",
+            "value": "\u00a339.00 equivalent in verified learning rewards"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "First Home Mastery",
+          "missionName": "Deposit & Mortgage Fundamentals",
+          "description": "Master structured concepts at your own pace without time limits.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MODULE",
+            "payload": {
+              "missionId": "deposit-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the typical minimum deposit percentage for a standard residential mortgage?",
+          "options": "A) 5% | B) 20% | C) 50%",
+          "reward": "100 points & concept mastery badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "A"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Check",
+          "question": "Why do lenders require property valuations?",
+          "yourAnswer": "To ensure market security",
+          "correctAnswer": "To confirm loan-to-value safety",
+          "feedback": "You've successfully grasped mortgage security principles.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Readiness Tracker",
+          "topic": "First Home Buying Process",
+          "confidencePercent": 82,
+          "levelLabel": "Building strong competence",
+          "nextMilestone": "Conveyancing & Completion module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Taking time to fully understand mortgage terms reduces financial stress by 40% over the life of a loan.",
+          "source": "LBG Financial Education Index",
+          "actionLabel": "Explore Reading Material",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_INSIGHT",
+            "payload": {
+              "insightId": "mortgage-terms"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Learn & Earn",
+            "description": "Complete educational modules and verified quizzes to grow your balance transparently."
+          },
+          "ctaLabel": "View Transparency Report",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 5 First Home Modules",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Home Savings Milestone Perk",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Conveyancing Fee Credit Voucher",
+            "points": 1500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardName": "Conveyancing Fee Credit Voucher"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK"
+    ]
+  },
+  "strategy": "Self-paced educational milestone focus highlighting First Home Savings Knowledge progress (63%) with transparent learning modules and zero timed pressure or leaderboards, adhering strictly to narrative arc SNAPSHOT -> TRUST -> PATHWAYS -> HOOK -> MOMENTUM.",
+  "confidence": 0.98
+}

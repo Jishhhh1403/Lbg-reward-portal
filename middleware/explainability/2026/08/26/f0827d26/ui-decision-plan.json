@@ -1,0 +1,336 @@
+{
+  "planId": "plan-f0827d26",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Autonomous learning path focusing on First Home Savings goal progress (63%), transparent milestone explainers, and self-paced financial literacy modules without timed pressure or leaderboards, strictly adhering to card rule engine directives and storytelling narrative arc.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You're 63% toward your First Home Savings milestone. Every completed module brings you closer.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Coin Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Mastery Value",
+            "value": "1 coin = \u00a30.01 transparent cash equivalent"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "learning-mission-1",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Current Learning Path",
+          "missionName": "Advanced Mortgages & Savings Fundamentals",
+          "description": "Master deposit structuring and interest compounding at your own autonomous pace.",
+          "modulesDone": 6,
+          "modulesTotal": 10,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MODULE",
+            "payload": {
+              "missionId": "mortgage-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "quiz-card-1",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary benefit of a fixed-rate savings structure for your first home deposit?",
+          "options": "Predictable interest growth, Market exposure, Immediate liquidity",
+          "reward": "100 LBG Coins & Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_QUIZ",
+            "payload": {
+              "quizId": "home-savings-q1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comprehension-feedback-1",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Comprehension Check",
+          "question": "How does compound growth accelerate your savings timeline?",
+          "yourAnswer": "Interest earns additional interest over time without extra deposits.",
+          "correctAnswer": "Interest earns additional interest over time without extra deposits.",
+          "feedback": "Spot on! Your mastery of compounding ensures steady progress toward your \u00a32,000 target.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "confidence-progress-1",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Mastery Confidence Tracking",
+          "topic": "First Home Deposit Mechanics",
+          "confidencePercent": 92,
+          "levelLabel": "High Mastery Confidence",
+          "nextMilestone": "Expert Property Acquisition Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "educational-insight-1",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Why Autonomous Pacing Matters",
+          "insight": "Learners who take time to fully understand financial fundamentals retain 40% better long-term budgeting habits.",
+          "source": "LBG Educational Research Institute",
+          "actionLabel": "Explore Module Library",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_LIBRARY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "goal-linked-reward-1",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Goal Milestone Unlock",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Homebuyer Fee-Free Account Upgrade",
+            "points": 500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "milestone-card-1",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": [
+            {
+              "label": "Completed 5 Modules",
+              "achieved": true
+            },
+            {
+              "label": "Reached 50% Savings Goal (\u00a31,000)",
+              "achieved": true
+            },
+            {
+              "label": "Achieved 100% Quiz Mastery Score",
+              "achieved": true
+            },
+            {
+              "label": "Final Home Savings Knowledge Goal Completion",
+              "achieved": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "steps": [
+            {
+              "title": "Learn & Master",
+              "description": "Complete financial literacy modules and quizzes at your own preferred pace."
+            },
+            {
+              "title": "Earn Transparent Coins",
+              "description": "Gain LBG Coins with verified cash-equivalent value (\u00a30.01 per coin)."
+            },
+            {
+              "title": "Unlock Real Goals",
+              "description": "Apply coins and educational milestones directly to your First Home Savings goal."
+            }
+          ],
+          "ctaLabel": "View Programme Terms",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "metric-tile-1",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "label": "Monthly Study Streak",
+          "value": "19",
+          "unit": "active days",
+          "tone": "brand",
+          "infoText": "Consistent autonomous learning with zero pressure",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "metric-tile-2",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "label": "Completed Modules",
+          "value": "100%",
+          "unit": "completion rate",
+          "tone": "brand",
+          "infoText": "Every quiz and module completed thoroughly",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "metric-tile-3",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "label": "Coin Value Rate",
+          "value": "\u00a30.01",
+          "unit": "per coin",
+          "tone": "white",
+          "infoText": "Transparent redemption parity across connected brands",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "badge-card-1",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 15,
+        "props": {
+          "title": "Mastery Badges Earned",
+          "badges": [
+            {
+              "name": "Savings Scholar",
+              "icon": "brain",
+              "earned": true
+            },
+            {
+              "name": "Compound Master",
+              "icon": "star",
+              "earned": true
+            },
+            {
+              "name": "Milestone Achiever",
+              "icon": "trophy",
+              "earned": true
+            },
+            {
+              "name": "Autonomous Learner",
+              "icon": "crown",
+              "earned": true
+            }
+          ],
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK"
+    ]
+  },
+  "strategy": "Autonomous learning path focusing on First Home Savings goal progress (63%), transparent milestone explainers, and self-paced financial literacy modules without timed pressure or leaderboards, strictly adhering to card rule engine directives and storytelling narrative arc.",
+  "confidence": 0.98
+}

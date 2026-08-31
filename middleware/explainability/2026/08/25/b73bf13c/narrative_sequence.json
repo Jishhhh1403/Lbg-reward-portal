@@ -1,0 +1,241 @@
+{
+  "primaryActionComponentRef": "learning-mission-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [
+        "points-balance-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "learning-mission-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "ACTION",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [
+        "goal-progress-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "quiz-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "learning-mission-1"
+      ],
+      "resolves": [
+        "learning-mission-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comprehension-feedback-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "quiz-card-1"
+      ],
+      "resolves": [
+        "quiz-card-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "confidence-progress-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comprehension-feedback-1"
+      ],
+      "resolves": [
+        "comprehension-feedback-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "confidence-progress-1"
+      ],
+      "resolves": [
+        "confidence-progress-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "educational-insight-1"
+      ],
+      "resolves": [
+        "educational-insight-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 9,
+      "dependsOn": [
+        "tangible-value-1"
+      ],
+      "resolves": [
+        "tangible-value-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-linked-reward-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "how-points-work-1"
+      ],
+      "resolves": [
+        "how-points-work-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "milestone-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 11,
+      "dependsOn": [
+        "goal-linked-reward-1"
+      ],
+      "resolves": [
+        "goal-linked-reward-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "coach-tip-card-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 12,
+      "dependsOn": [
+        "milestone-card-1"
+      ],
+      "resolves": [
+        "milestone-card-1"
+      ],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect your current balance directly to your active First Home Savings Knowledge goal.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "learning-mission-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Translate your 63% progress into the next mastery learning mission.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "learning-mission-1",
+      "toComponentRef": "quiz-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Test your understanding with a self-paced quiz.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "quiz-card-1",
+      "toComponentRef": "comprehension-feedback-1",
+      "relationship": "action-to-feedback",
+      "bridgeIntent": "Review detailed concept feedback.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comprehension-feedback-1",
+      "toComponentRef": "confidence-progress-1",
+      "relationship": "sequential",
+      "bridgeIntent": "See how your confidence score grows with every completed module.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "confidence-progress-1",
+      "toComponentRef": "educational-insight-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Understand the broader impact of financial literacy mastery.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "educational-insight-1",
+      "toComponentRef": "tangible-value-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Review the clear cash value equivalent of your earned points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "tangible-value-1",
+      "toComponentRef": "how-points-work-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Learn how points accumulate transparently through educational engagement.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "how-points-work-1",
+      "toComponentRef": "goal-linked-reward-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect your educational milestones to your home deposit goal rewards.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-linked-reward-1",
+      "toComponentRef": "milestone-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Celebrate recent learning milestones achieved at your own pace.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "milestone-card-1",
+      "toComponentRef": "coach-tip-card-1",
+      "relationship": "payoff-to-continuation",
+      "bridgeIntent": "Receive expert guidance on maintaining sustainable study habits.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

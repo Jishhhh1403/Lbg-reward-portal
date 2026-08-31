@@ -1,0 +1,70 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Enable self-paced tracking of the First Home Savings Knowledge goal and access mastery-oriented educational modules.",
+  "entryPoint": "Rewards Overview dashboard loaded with customer balance and active learning progress.",
+  "completionDefinition": "Customer reviews goal progress and opens a self-paced educational module or quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and savings knowledge stand today?",
+      "entryCondition": "Dashboard opened",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational steps and milestones can I explore next at my own pace?",
+      "entryCondition": "User has reviewed current balances and goal status",
+      "requiredInformation": [
+        "learning modules",
+        "quiz options",
+        "tangible value equivalence"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "OPEN_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-completes-modules",
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-guidance",
+      "purpose": "Provide supplementary context on how points translate to financial literacy value without pressure.",
+      "contentNotes": [
+        "Tangible value breakdown",
+        "How points work explainer"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

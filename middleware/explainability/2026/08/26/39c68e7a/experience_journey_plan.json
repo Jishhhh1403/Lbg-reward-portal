@@ -1,0 +1,87 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-evaluate-portability",
+  "journeyObjective": "Provide a unified view of multi-partner reward balances and plain-English transfer options advancing the Family Holiday Fund.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews combined balances, understands transfer portability without jargon, and views progress toward the Family Holiday Fund.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my total reward balance across all programmes?",
+      "entryCondition": "App opens on rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "connected partner balances"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my partner programmes connect and compare?",
+      "entryCondition": "Viewed combined wallet balance",
+      "requiredInformation": [
+        "partner comparison values",
+        "connection status"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-partner-balances",
+        "fact-plain-english"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How close am I to my Family Holiday Fund and can I transfer points?",
+      "entryCondition": "Evaluated partner portability options",
+      "requiredInformation": [
+        "Family Holiday Fund progress",
+        "transfer action"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "TRANSFER",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-moving-points"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide plain-English program rules without technical jargon",
+      "contentNotes": [
+        "Simple conversion ratios",
+        "No complex fees or terms"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "planId": "plan-9743012a",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Unified rewards overview emphasizing multi-partner balances, transparent cross-partner transfer comparisons, and plain-English value explanations without technical jargon.",
+    "components": [
+      {
+        "id": "points-balance-1",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 11200,
+          "tier": "Platinum",
+          "name": "Leo Morgan",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "consolidated-wallet-1",
+        "type": "CONSOLIDATED_REWARD_WALLET",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Combined Partner Balances",
+          "subtitle": "All your connected accounts in one simple view",
+          "programmes": [
+            {
+              "name": "LBG Rewards",
+              "points": 11200,
+              "value": "\u00a3112.00",
+              "status": "Connected"
+            },
+            {
+              "name": "Avios Group",
+              "points": 8500,
+              "value": "\u00a385.00",
+              "status": "Connected"
+            },
+            {
+              "name": "Retail Partners",
+              "points": 3400,
+              "value": "\u00a334.00",
+              "status": "Connected"
+            }
+          ],
+          "totalValue": "\u00a3231.00",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "sync-status-1",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "status": "synced",
+          "title": "Partner Accounts Up to Date",
+          "lastSyncedAt": "Today at 04:25",
+          "message": "All 3 partner balances are securely synchronised.",
+          "ctaText": "Refresh Now",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "partner-value-comparison-1",
+        "type": "PARTNER_VALUE_COMPARISON",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Transfer Value Compare",
+          "subtitle": "See what your points are worth across partners",
+          "partners": [
+            {
+              "name": "Avios Group",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Flight upgrades"
+            },
+            {
+              "name": "Retail Vouchers",
+              "points": 1000,
+              "value": "\u00a310.00",
+              "perk": "Instant high street spend"
+            },
+            {
+              "name": "Savings Pot",
+              "points": 1000,
+              "value": "\u00a310.50",
+              "perk": "Includes 5% transfer bonus"
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "partner-transfer-card-1",
+        "type": "PARTNER_TRANSFER_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Quick Transfer",
+          "fromProgramme": "LBG Rewards",
+          "toPartner": "Savings Pot",
+          "points": 1000,
+          "estimatedValue": "\u00a310.50",
+          "status": "Ready",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "TRANSFER_POINTS",
+            "payload": {
+              "points": 1000,
+              "destination": "Savings Pot"
+            }
+          }
+        ]
+      },
+      {
+        "id": "reward-provenance-card-1",
+        "type": "REWARD_PROVENANCE_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Transfer History",
+          "subtitle": "Recent movement between your accounts",
+          "history": [
+            {
+              "source": "Partner Transfer Bonus",
+              "date": "18 Aug 2026",
+              "points": 1000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "goal-progress-card-1",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "goalName": "Family Holiday Fund",
+          "current": 1750,
+          "target": 3000,
+          "percentage": 58,
+          "remaining": 1250,
+          "motivationalMessage": "You are over halfway to your Family Holiday Fund!",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "programme-connection-card-1",
+        "type": "PROGRAMME_CONNECTION_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Connected Programmes",
+          "subtitle": "Manage your linked partner rewards accounts",
+          "programmes": [
+            {
+              "name": "LBG Rewards",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Avios Group",
+              "status": "Active",
+              "connected": true
+            },
+            {
+              "name": "Retail Partners",
+              "status": "Active",
+              "connected": true
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "how-points-work-card-1",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": [
+            {
+              "title": "1. View All Balances",
+              "description": "See everything you've earned across all partner programmes in one clear total."
+            },
+            {
+              "title": "2. Compare Simple Value",
+              "description": "Check exactly what your points translate to in pounds and pence with zero jargon."
+            },
+            {
+              "title": "3. Transfer Instantly",
+              "description": "Move points where you need them with a single tap and no hidden fees."
+            }
+          ],
+          "ctaLabel": "Learn More About Transfers",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "tangible-value-card-1",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Total Cash Value",
+          "cashValue": "\u00a3231.00",
+          "pointsEquivalent": 23100,
+          "breakdown": {
+            "LBG Rewards": "\u00a3112.00",
+            "Avios Group": "\u00a385.00",
+            "Retail Partners": "\u00a334.00"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE"
+    ]
+  },
+  "strategy": "Unified rewards overview emphasizing multi-partner balances, transparent cross-partner transfer comparisons, and plain-English value explanations without technical jargon.",
+  "confidence": 0.95
+}

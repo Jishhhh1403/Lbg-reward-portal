@@ -1,0 +1,201 @@
+{
+  "primaryActionComponentRef": "comp-goal-linked-reward",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-japan-goal",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-japan-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-linked-reward",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-milestone-ladder",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "MEANING",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-goal-linked-reward"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-phone-goal",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-milestone-ladder"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-emergency-goal",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-phone-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "ACTION",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-emergency-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-recommended-actions",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-add-goal"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-badge-card",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-recommended-actions"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-why-this-ui",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "REFERENCE",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-badge-card"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-japan-goal",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect coin wallet balance to primary active savings goal.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-japan-goal",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide exact cash value transparency for accumulated coins.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-goal-linked-reward",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer goal-linked reward aligned with accumulated balance.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-linked-reward",
+      "toComponentRef": "comp-milestone-ladder",
+      "relationship": "sequential",
+      "bridgeIntent": "Display full milestone progression for the Japan Vacation goal.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-milestone-ladder",
+      "toComponentRef": "comp-phone-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Review secondary active savings goals for holistic momentum.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-phone-goal",
+      "toComponentRef": "comp-emergency-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Continue monitoring secondary savings progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-emergency-goal",
+      "toComponentRef": "comp-add-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Enable creation of new savings objectives.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-add-goal",
+      "toComponentRef": "comp-recommended-actions",
+      "relationship": "sequential",
+      "bridgeIntent": "Suggest ways to accelerate goal accumulation.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-recommended-actions",
+      "toComponentRef": "comp-badge-card",
+      "relationship": "sequential",
+      "bridgeIntent": "Celebrate earned savings achievements and badges.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-badge-card",
+      "toComponentRef": "comp-why-this-ui",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide transparency on why this tailored interface was chosen.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

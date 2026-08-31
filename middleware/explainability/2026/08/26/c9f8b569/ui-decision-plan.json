@@ -1,0 +1,311 @@
+{
+  "planId": "plan-c9f8b569",
+  "selectedCandidate": {
+    "candidateId": "candidate-protect-value-longterm",
+    "strategy": "Engage Diamond tier planner Elena via calm, educational long-term value protection, allocating 2,400 expiring points directly to her Retirement or Children Education Fund with zero manipulative countdown timers.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 24500,
+          "tier": "Diamond",
+          "name": "Elena Vasquez",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-expiring-alert",
+        "type": "EXPIRING_POINTS_ALERT",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Protecting Your Value",
+          "expiringPoints": 2400,
+          "daysLeft": 9,
+          "message": "2,400 points are scheduled to lapse soon. Direct them to your long-term savings to maintain full value.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Accumulated Asset Value",
+          "cashValue": "\u00a3245.00",
+          "pointsEquivalent": 24500,
+          "breakdown": {
+            "label": "Secured in Goals",
+            "value": "\u00a3185.00 equivalent"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-retirement",
+        "type": "LONG_TERM_GOAL_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "goalName": "Retirement Fund",
+          "current": 24500,
+          "target": 100000,
+          "percentage": 25,
+          "estimatedCompletion": "2038",
+          "message": "Your primary wealth anchor. Adding your expiring points preserves your long-horizon trajectory.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-education",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "goalName": "Children Education Fund",
+          "current": 18500,
+          "target": 50000,
+          "percentage": 37,
+          "remaining": 31500,
+          "motivationalMessage": "Steady contributions build dependable educational security for the future.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-home",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "goalName": "Dream Home Deposit",
+          "current": 9000,
+          "target": 75000,
+          "percentage": 12,
+          "remaining": 66000,
+          "motivationalMessage": "A long-horizon milestone supported by disciplined saving habits.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Add a New Long-Term Goal",
+          "subtitle": "Establish a new financial milestone for your portfolio",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-future-value",
+        "type": "FUTURE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Projected Retirement Growth",
+          "currentValue": 24500,
+          "projectedValue": 45000,
+          "timeframe": "5 Years",
+          "growthRate": "6.2% annual model",
+          "message": "Maintaining active contributions protects your compounding trajectory over time.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-projection-chart",
+        "type": "PROJECTION_CHART",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Retirement Fund Long-Horizon Trajectory",
+          "growthLabel": "Estimated Portfolio Growth",
+          "data": [
+            {
+              "year": "2027",
+              "value": 28000
+            },
+            {
+              "year": "2029",
+              "value": 36000
+            },
+            {
+              "year": "2031",
+              "value": 45000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Why Long-Horizon Allocations Matter",
+          "insight": "Allocating points directly to savings goals shields your accumulated wealth from inactivity loss while compounding foundational security.",
+          "source": "LBG Wealth Education Series",
+          "actionLabel": "Read Full Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Protect & Allocate Expiring Balance",
+          "goalName": "Retirement Fund",
+          "rewards": {
+            "name": "Secure 2,400 Expiring Points",
+            "points": 2400,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "ALLOCATE_POINTS",
+            "payload": {
+              "points": 2400,
+              "targetGoal": "Retirement Fund"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Portfolio Health Summary",
+          "topBrandName": "LBG Wealth Partners",
+          "topBrandPoints": 24500,
+          "growthTip": "Reallocating expiring points preserves your Diamond tier compounding advantage.",
+          "expiringPoints": 2400,
+          "expiryDate": "05 Sep",
+          "ctaText": "Review Allocation",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-sync-status",
+        "type": "SYNC_STATUS_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "status": "synced",
+          "title": "Secure Wallet Connection",
+          "lastSyncedAt": "2026-08-26 09:19",
+          "message": "All connected brand accounts and savings goals are fully synchronized.",
+          "ctaText": "Refresh Status",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-metric-tile",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 14,
+        "props": {
+          "label": "Active Savings Goals",
+          "value": "3",
+          "unit": "goals",
+          "tone": "brand",
+          "infoText": "Retirement, Education, and Home Deposit",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-metric-tile-2",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 15,
+        "props": {
+          "label": "Connected Brands",
+          "value": "3",
+          "unit": "partners",
+          "tone": "white",
+          "infoText": "Integrated with your wealth portfolio",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-metric-tile-3",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 16,
+        "props": {
+          "label": "Tier Status",
+          "value": "Diamond",
+          "unit": "",
+          "tone": "brand",
+          "infoText": "Maximum compounding tier",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "LONG_HORIZON_ALIGNMENT"
+    ]
+  },
+  "strategy": "Engage Diamond tier planner Elena via calm, educational long-term value protection, allocating 2,400 expiring points directly to her Retirement or Children Education Fund with zero manipulative countdown timers.",
+  "confidence": 0.95
+}

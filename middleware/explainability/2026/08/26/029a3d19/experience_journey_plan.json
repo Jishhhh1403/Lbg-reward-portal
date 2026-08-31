@@ -1,0 +1,130 @@
+{
+  "primaryJourneyId": "journey-protect-value",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Provide calm, transparent visibility into expiring points and educational projections for long-term goal security.",
+  "entryPoint": "Rewards Overview",
+  "completionDefinition": "Customer reviews expiring points breakdown and selects a long-term goal allocation path without pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my balance?",
+      "entryCondition": "App launch on rewards-overview",
+      "requiredInformation": [
+        "points balance",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2-hook",
+      "requiredEvidenceRefs": [
+        "fact-idle-balance"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2-hook",
+      "order": 2,
+      "customerQuestion": "What needs my attention regarding expiring value?",
+      "entryCondition": "Completed balance snapshot view",
+      "requiredInformation": [
+        "expiring points count",
+        "days left"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3-pathways",
+      "requiredEvidenceRefs": [
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3-pathways",
+      "order": 3,
+      "customerQuestion": "How can I secure and grow my long-term savings?",
+      "entryCondition": "Reviewed expiring points notice",
+      "requiredInformation": [
+        "goal progress",
+        "projected value",
+        "educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4-momentum",
+      "requiredEvidenceRefs": [
+        "fact-retirement-untouched"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4-momentum",
+      "order": 4,
+      "customerQuestion": "How are my existing retirement and education funds progressing?",
+      "entryCondition": "Allocated or reviewed goals",
+      "requiredInformation": [
+        "milestones",
+        "long-term growth projections"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "FEEDBACK"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-5-trust",
+      "requiredEvidenceRefs": [
+        "fact-accumulation-history"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-5-trust",
+      "order": 5,
+      "customerQuestion": "What is the tangible cash equivalent and long-term protection of my points?",
+      "entryCondition": "Reviewed goal momentum",
+      "requiredInformation": [
+        "tangible value breakdown",
+        "provenance history"
+      ],
+      "allowedNarrativeRoles": [
+        "REFERENCE",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-response-history"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-help",
+      "purpose": "Provide deep-dive articles on long-term compound growth for points.",
+      "contentNotes": [
+        "Compound growth calculator",
+        "Value protection guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

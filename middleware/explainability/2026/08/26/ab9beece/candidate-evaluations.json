@@ -1,0 +1,121 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-instant-focus",
+      "strategy": "Surface points balance, transparent expiring points notice (without countdown timer/manipulative urgency), and a prominent instant reward grid with a quick-redeem action tailored for Ryan's historical preference for rapid redemptions.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 9,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.95,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-balanced-protection",
+      "strategy": "Display wallet balance, an informative expiry notice, and a mixed selection of instant and long-term goal options.",
+      "scores": {
+        "customerGoalRelevance": 7,
+        "expectedCustomerUtility": 7,
+        "screenLevelStoryCoherence": 7,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 8,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 6,
+        "evidenceConfidence": 7,
+        "usefulNovelty": 5,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 7.35,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-instant-redemption",
+    "storyTitle": "Quick Win Instant Redemption",
+    "oneSentenceStory": "Ryan discovers and claims an instant reward using available points before they expire, instantly re-engaging with the program.",
+    "customerSituation": "Ryan has 3,600 coins with 1,500 points expiring in 7 days after 41 days of inactivity.",
+    "storyTension": "Risk of losing expiring points without realizing value due to recent notification fatigue and inactivity.",
+    "customerResolution": "Surfacing a clear, low-friction instant redemption option allowing immediate reward claim.",
+    "primaryOutcome": "Claim an instant reward using available points to re-engage with the rewards program.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-total-points",
+      "fact-expiring-points",
+      "fact-inactivity",
+      "fact-redemption-speed"
+    ],
+    "confidence": 0.9,
+    "prohibitedDetours": [
+      "Manipulative urgency or artificial scarcity",
+      "Forcing long-term goal setup"
+    ],
+    "completionSignals": [
+      "Customer views points balance",
+      "Customer clicks quick redeem action",
+      "Customer completes instant reward redemption"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-instant-redemption",
+      "storyId": "story-instant-redemption",
+      "journeyObjective": "Enable Ryan to quickly view points, acknowledge expiring balance transparently, and claim an instant reward in a single frictionless flow.",
+      "completionDefinition": "Customer successfully views points balance, reviews expiring notice, and completes instant redemption via quick redeem action.",
+      "episodeSketches": [
+        "Episode 1: Clear display of points balance (3,600 LBG coins) and transparent expiring points notice (1,500 points in 7 days) adhering to low-fatigue guidelines.",
+        "Episode 2: Presentation of instant reward grid and quick redeem action to immediately claim a tangible reward."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.95,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-instant-redemption",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 95,
+    "transitionStrength": 95,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Verified zero dark patterns or artificial scarcity; expiry is presented transparently without countdown timers to respect notification fatigue."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "VOTE",
+      "summary": "Selected candidate-instant-focus as it directly aligns with historical redemption speed and immediate value motivation."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Story-instant-redemption and journey-candidate-instant-redemption exhibit 100% structural and narrative alignment."
+    }
+  ]
+}

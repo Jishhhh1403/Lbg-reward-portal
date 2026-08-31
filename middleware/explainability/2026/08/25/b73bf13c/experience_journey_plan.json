@@ -1,0 +1,78 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Enable Sophie to track her First Home Savings Knowledge goal and engage with mastery-oriented learning milestones at her own pace.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer views goal progress card and interacts with the next educational module or quiz component.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my savings and knowledge milestones?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goalName",
+        "current",
+        "target",
+        "percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-home-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational module or tangible value can I explore next at my own pace?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "courseName",
+        "currentLesson",
+        "totalLessons",
+        "question",
+        "options",
+        "reward"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mod-complete",
+        "fact-avoid-timed"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide absolute clarity on coin value and how the LBG rewards programme works without pressure.",
+      "contentNotes": [
+        "How points work breakdown",
+        "Tangible cash value equivalence"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

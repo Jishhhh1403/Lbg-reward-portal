@@ -1,0 +1,269 @@
+{
+  "planId": "plan-4d957b82",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Strict adherence to educational mastery story for Sophie Williams, featuring mandatory stack (POINTS_BALANCE, GOAL_PROGRESS_CARD, LEARNING_MISSION_CARD, QUIZ_CARD, COMPREHENSION_FEEDBACK_CARD, CONFIDENCE_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD), tangible value breakdown, and goal-linked rewards while suppressing timed elements and leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward your First Home Savings mastery goal. Every module brings you closer.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your LBG Coins Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "First Home Savings Fund Contribution",
+            "value": "\u00a339.00 verified equivalent"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Current Mission",
+          "missionName": "Mortgage Deposit Structures & Help to Buy",
+          "description": "Master the core concepts of deposit tiering and government schemes to optimize your property savings.",
+          "modulesDone": 4,
+          "modulesTotal": 6,
+          "pointsOnCompletion": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_LESSON",
+            "payload": {
+              "missionId": "mortgage-deposit-structures"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary advantage of a Lifetime ISA bonus when purchasing a first home up to \u00a3450,000?",
+          "options": "A) 25% government bonus on up to \u00a34,000 saved per year | B) Tax-free interest only | C) Lower mortgage interest rates",
+          "reward": "50 LBG Coins & Knowledge Mastery",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "A"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Check",
+          "question": "How do compound returns affect long-term savings?",
+          "yourAnswer": "Earnings generate their own earnings over time.",
+          "correctAnswer": "Earnings generate their own earnings over time.",
+          "feedback": "Spot on! Reinvesting or compounding accelerates your progress toward your deposit milestone.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Savings Competence Tracker",
+          "topic": "First Home Deposit Mechanics",
+          "confidencePercent": 85,
+          "levelLabel": "High Mastery",
+          "nextMilestone": "Unlock Advanced Mortgage Structuring module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Expert Financial Literacy Insight",
+          "insight": "Consistent monthly micro-contributions paired with structured knowledge reduce mortgage approval friction by up to 14%.",
+          "source": "LBG Financial Education Institute",
+          "actionLabel": "Explore Reading Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_INSIGHT_NOTES",
+            "payload": {
+              "insightId": "insight-mortgage-friction"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "1. Complete Modules",
+            "description": "Engage deeply with financial literacy lessons at your own pace."
+          },
+          "ctaLabel": "View Learning Syllabus",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 12 Financial Modules with 100% Mastery",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Milestone Reward Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "First-Time Buyer Legal Fee Voucher (\u00a350 value)",
+            "points": 2000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardId": "legal-fee-voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-daily-money-tip",
+        "type": "DAILY_MONEY_TIP_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "tipTitle": "Understanding LTV Ratios",
+          "tipBody": "A Loan-to-Value (LTV) ratio of 85% means you need a 15% deposit. Improving this by just 5% can significantly lower interest rates.",
+          "category": "Mortgage Knowledge",
+          "readTimeMin": 2,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Add a New Knowledge Goal",
+          "subtitle": "Set another financial topic to master at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ADD_NEW_GOAL",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_COMPLIANCE",
+      "EDUCATIONAL_TONE"
+    ]
+  },
+  "strategy": "Strict adherence to educational mastery story for Sophie Williams, featuring mandatory stack (POINTS_BALANCE, GOAL_PROGRESS_CARD, LEARNING_MISSION_CARD, QUIZ_CARD, COMPREHENSION_FEEDBACK_CARD, CONFIDENCE_PROGRESS_CARD, EDUCATIONAL_INSIGHT_CARD), tangible value breakdown, and goal-linked rewards while suppressing timed elements and leaderboards.",
+  "confidence": 0.96
+}

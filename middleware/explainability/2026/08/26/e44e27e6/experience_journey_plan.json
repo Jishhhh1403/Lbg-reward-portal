@@ -1,0 +1,94 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-1",
+  "journeyObjective": "Provide a seamless rewards overview highlighting First Home Savings Knowledge goal progress, points balance, and mastery learning milestones.",
+  "entryPoint": "Dashboard load",
+  "completionDefinition": "Customer reviews goal progression and engages with educational milestone components.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings mastery?",
+      "entryCondition": "App opened",
+      "requiredInformation": [
+        "3,900 lbgCoins",
+        "First Home Savings Knowledge 63% progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate to real value and knowledge?",
+      "entryCondition": "Viewed points balance and initial goal progress",
+      "requiredInformation": [
+        "Cash value breakdown",
+        "Learning milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-4"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational steps and goal-linked modules can I pursue next?",
+      "entryCondition": "Reviewed tangible value and learning roadmap",
+      "requiredInformation": [
+        "Active learning mission",
+        "Comprehension quiz",
+        "Goal-linked reward"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-2",
+        "fact-signal-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary learning modules and educational tips on demand.",
+      "contentNotes": [
+        "Daily money tips",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

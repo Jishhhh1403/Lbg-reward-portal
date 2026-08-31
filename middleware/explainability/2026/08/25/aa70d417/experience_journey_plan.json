@@ -1,0 +1,111 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-home-savings",
+  "journeyObjective": "Guide customer through First Home Savings progress tracking and self-paced financial literacy modules.",
+  "entryPoint": "User opens the rewards and financial education overview screen.",
+  "completionDefinition": "Customer reviews goal progress (63%) and accesses the next educational module or quiz at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my points and savings competence?",
+      "entryCondition": "Screen launch with valid session wallet context.",
+      "requiredInformation": [
+        "lbgCoins balance",
+        "First Home Savings goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my rewards translate into real-world value and how do points work?",
+      "entryCondition": "User reviews current balance and tangible equivalent.",
+      "requiredInformation": [
+        "Cash value breakdown",
+        "How points work mechanism"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-long-session"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is my next self-paced educational step and mastery checkpoint?",
+      "entryCondition": "User understands value foundation and seeks learning progression.",
+      "requiredInformation": [
+        "Learning mission status",
+        "Quiz module",
+        "Comprehension check"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "CLICK",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-retake-quiz",
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What rewards are linked to my First Home Savings milestones?",
+      "entryCondition": "User completes learning check and inspects milestone rewards.",
+      "requiredInformation": [
+        "Goal linked rewards",
+        "Milestone ladder"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide transparency on reward provenance and educational source integrity.",
+      "contentNotes": [
+        "Source attribution for financial literacy modules",
+        "Clear terms on lbgCoins equivalence"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

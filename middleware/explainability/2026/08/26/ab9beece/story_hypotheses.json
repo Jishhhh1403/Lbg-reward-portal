@@ -1,0 +1,61 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-instant-redemption",
+      "storyTitle": "Quick Win Instant Redemption",
+      "oneSentenceStory": "Ryan discovers and claims an instant reward using available points before they expire, instantly re-engaging with the program.",
+      "customerSituation": "Ryan has 3,600 coins with 1,500 points expiring in 7 days after 41 days of inactivity.",
+      "storyTension": "Risk of losing expiring points without realizing value due to recent notification fatigue and inactivity.",
+      "customerResolution": "Surfacing a clear, low-friction instant redemption option allowing immediate reward claim.",
+      "primaryOutcome": "Claim an instant reward using available points to re-engage with the rewards program.",
+      "secondaryOutcome": null,
+      "narrativeMode": "RESOLVE_ACTION",
+      "evidenceRefs": [
+        "fact-total-points",
+        "fact-expiring-points",
+        "fact-inactivity",
+        "fact-redemption-speed"
+      ],
+      "confidence": 0.9,
+      "prohibitedDetours": [
+        "Manipulative urgency or artificial scarcity",
+        "Forcing long-term goal setup"
+      ],
+      "completionSignals": [
+        "Customer views points balance",
+        "Customer clicks quick redeem action",
+        "Customer completes instant reward redemption"
+      ],
+      "expiryAt": null
+    },
+    {
+      "storyId": "story-protect-value",
+      "storyTitle": "Protect Expiring Value",
+      "oneSentenceStory": "Ryan reviews the points summary and expiring notice to secure value before expiration.",
+      "customerSituation": "Points are expiring soon and past engagement has dropped.",
+      "storyTension": "Uncertainty around point expiry status.",
+      "customerResolution": "Clear, non-manipulative expiry notice combined with instant reward options.",
+      "primaryOutcome": "Customer views points balance and expiry notice transparently.",
+      "secondaryOutcome": null,
+      "narrativeMode": "PROTECT_VALUE",
+      "evidenceRefs": [
+        "fact-expiring-points",
+        "fact-notification-drop"
+      ],
+      "confidence": 0.85,
+      "prohibitedDetours": [
+        "Urgency countdown framing that triggers notification fatigue"
+      ],
+      "completionSignals": [
+        "Customer views expiring points notice"
+      ],
+      "expiryAt": null
+    }
+  ],
+  "recommendedStoryId": "story-instant-redemption",
+  "rejectedStoryReasons": {},
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

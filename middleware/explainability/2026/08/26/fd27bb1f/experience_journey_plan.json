@@ -1,0 +1,70 @@
+{
+  "primaryJourneyId": "journey-home-savings-knowledge",
+  "storyId": "story-continue-home-savings",
+  "journeyObjective": "Review First Home Savings Knowledge progress and engage with self-paced educational milestones",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer views goal progress and accesses educational module details without timed pressure",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and home savings knowledge?",
+      "entryCondition": "App launch / tab open",
+      "requiredInformation": [
+        "points: 3900",
+        "tier: Gold",
+        "goal: First Home Savings Knowledge at 63%"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2-pathways",
+      "requiredEvidenceRefs": [
+        "fact-home-savings-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2-pathways",
+      "order": 2,
+      "customerQuestion": "What structured learning steps and rewards are available next?",
+      "entryCondition": "User reviews snapshot and scrolls to learning pathways",
+      "requiredInformation": [
+        "learning modules",
+        "quizzes",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-completes-modules",
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust-details",
+      "purpose": "Provide transparent breakdowns of tangible value and how points work",
+      "contentNotes": [
+        "Tangible value card",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

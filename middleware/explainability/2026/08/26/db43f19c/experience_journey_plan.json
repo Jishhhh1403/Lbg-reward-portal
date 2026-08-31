@@ -1,0 +1,105 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-streak-momentum",
+  "journeyObjective": "Review active streak status, inspect current leaderboard rank, and take immediate action on ongoing gamified challenges.",
+  "entryPoint": "Marcus opens his rewards dashboard to check his 34-day streak and ongoing challenge progress.",
+  "completionDefinition": "Customer views streak card and initiates action on an active challenge.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "How is my streak holding up today?",
+      "entryCondition": "Dashboard loaded with wallet state.",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "streakDays"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-streak"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "Where do I stand on the leaderboard and what challenges await?",
+      "entryCondition": "Streak status reviewed.",
+      "requiredInformation": [
+        "leaderboardRank",
+        "challengesCompleted",
+        "badges"
+      ],
+      "allowedNarrativeRoles": [],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-challenges",
+        "fact-leaderboard"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I boost my momentum right now?",
+      "entryCondition": "Challenges and leaderboard inspected.",
+      "requiredInformation": [
+        "activeChallenge",
+        "streakMilestones"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION"
+      ],
+      "requiredActionType": "CLICK",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-community"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What badges and community perks do I have unlocked?",
+      "entryCondition": "Challenge action initiated.",
+      "requiredInformation": [
+        "badges",
+        "tier"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-community"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-quiz",
+      "purpose": "Offer quick brain teasers for bonus coins and streak protection.",
+      "contentNotes": [
+        "Daily trivia quiz for gamification enthusiasts."
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

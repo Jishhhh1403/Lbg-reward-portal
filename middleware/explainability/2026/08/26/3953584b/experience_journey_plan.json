@@ -1,0 +1,75 @@
+{
+  "primaryJourneyId": "journey-educational-protect",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Provide transparent, educational guidance on protecting expiring points and viewing long-term goal compounding without manipulative pressure.",
+  "entryPoint": "Dashboard load for Diamond tier customer with expiring balance",
+  "completionDefinition": "Customer views expiring points protection details and reviews projected growth toward their Retirement Fund.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand and what value do I currently hold?",
+      "entryCondition": "App opened by Diamond customer Elena Vasquez",
+      "requiredInformation": [
+        "24,500 LBG coins balance",
+        "Diamond tier status",
+        "2,400 expiring points notice"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I protect my expiring points and keep my long-term savings on track?",
+      "entryCondition": "Customer reviews calm overview of balance and expiry status",
+      "requiredInformation": [
+        "Retirement fund progress 25%",
+        "Children's education fund 37%",
+        "Dream home deposit 12%",
+        "Long-term compounding projections"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-active-goals",
+        "fact-educational-pref",
+        "fact-stalled-accumulation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-help",
+      "purpose": "Provide deep-dive explainers on points compounding and valuation transparently without urgency",
+      "contentNotes": [
+        "Value explainer guides",
+        "Long-term horizon FAQs"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "primaryActionComponentRef": "payment-reward-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1-balance",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-2-goals",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-1",
+      "miniJourneyId": "mj-3-action",
+      "narrativeRole": "ACTION",
+      "sequence": 3,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-allocation-control-1",
+      "miniJourneyId": "mj-3-action",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "payment-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "payment-reward-confirmation-1",
+      "miniJourneyId": "mj-3-action",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "payment-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-card-1",
+      "miniJourneyId": "mj-1-balance",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "rewards-insight-card-1",
+      "miniJourneyId": "mj-1-balance",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 7,
+      "dependsOn": [
+        "tangible-value-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-linked-reward-1",
+      "miniJourneyId": "mj-2-goals",
+      "narrativeRole": "MEANING",
+      "sequence": 8,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "milestone-card-1",
+      "miniJourneyId": "mj-2-goals",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "goal-linked-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-card-1",
+      "miniJourneyId": "mj-1-balance",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 10,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-choice-panel-1",
+      "miniJourneyId": "mj-3-action",
+      "narrativeRole": "OPTION",
+      "sequence": 11,
+      "dependsOn": [
+        "payment-reward-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "metric-tile-1",
+      "miniJourneyId": "mj-1-balance",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 12,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "educational-insight-card-1",
+      "miniJourneyId": "mj-1-balance",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 13,
+      "dependsOn": [
+        "how-points-work-card-1"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect coin balance to active holiday savings goal.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "payment-reward-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide immediate statement credit bill reduction option.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

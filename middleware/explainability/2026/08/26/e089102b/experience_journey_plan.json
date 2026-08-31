@@ -1,0 +1,68 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review statement credit progress and apply accumulated points directly toward upcoming bill reductions with transparent value calculations.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer views point balance, statement credit cash equivalent value, and holiday savings goal progress with zero gamification detours.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and exact cash statement credit value?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "7,300 LBG coins",
+        "Cash value translation"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How is my holiday savings goal progressing and how can I apply my statement credit?",
+      "entryCondition": "Balance and value established",
+      "requiredInformation": [
+        "Holiday Spending Money goal (640 of 1200, 53%)",
+        "Payment reward settings"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal",
+        "fact-signal-1"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education",
+      "purpose": "Provide educational context on point-to-cash valuations and reward mechanics without gamified detours.",
+      "contentNotes": [
+        "How points work",
+        "Tangible value breakdowns"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

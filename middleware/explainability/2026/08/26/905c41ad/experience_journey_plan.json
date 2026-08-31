@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Enable Amelia to examine fixed-value rewards with complete transparency, upfront previews, and tangible value explainers before committing points.",
+  "entryPoint": "Mobile rewards overview screen with Gold tier balance",
+  "completionDefinition": "Customer successfully reviews guaranteed reward options via upfront previews and inspects full terms without encountering hidden deductions.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current balance and its exact guaranteed cash worth?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-signal-guaranteed"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do these redemption options compare in true guaranteed value and terms?",
+      "entryCondition": "Balance established; viewing value breakdown and choices",
+      "requiredInformation": [
+        "reward options",
+        "tangible value breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-preview",
+        "fact-signal-terms"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "Can I inspect the full terms and preview my fixed value before committing?",
+      "entryCondition": "Inspecting specific choice panel and partner comparisons",
+      "requiredInformation": [
+        "choice terms",
+        "partner values"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-abandon",
+        "fact-signal-guaranteed"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide transparent terms and conditions for guaranteed redemptions",
+      "contentNotes": [
+        "Zero hidden deductions guarantee",
+        "Clear conversion rules"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

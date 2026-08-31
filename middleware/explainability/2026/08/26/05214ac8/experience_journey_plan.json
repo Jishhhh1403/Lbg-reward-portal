@@ -1,0 +1,111 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Review statement credit progress and cash-equivalent rewards toward utility and bill reduction goals with clear, predictable value.",
+  "entryPoint": "Mobile rewards overview",
+  "completionDefinition": "Customer views points balance, checks holiday goal progress, and accesses statement credit options.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "What is my current coin balance and tangible cash value?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tangibleValue"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-goals",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-goals",
+      "order": 2,
+      "customerQuestion": "How am I progressing toward my Holiday Spending Money goal?",
+      "entryCondition": "Balance reviewed",
+      "requiredInformation": [
+        "goalProgress"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-payment",
+      "requiredEvidenceRefs": [
+        "fact-goal-holiday"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-payment",
+      "order": 3,
+      "customerQuestion": "How can I manage my payment-linked statement credit allocation?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "paymentRewards",
+        "allocationControl",
+        "paymentConfirmation"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "SUBMIT",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-transparency",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-transparency",
+      "order": 4,
+      "customerQuestion": "What is the exact cash value breakdown and overall reward insight?",
+      "entryCondition": "Payment actions reviewed",
+      "requiredInformation": [
+        "tangibleValue",
+        "rewardsInsight",
+        "howPointsWork",
+        "rewardChoicePanel"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-5"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational",
+      "purpose": "Provide clear educational context on how LBG coins convert to statement credits without gamification distraction.",
+      "contentNotes": [
+        "How points work breakdown",
+        "Partner value comparison"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

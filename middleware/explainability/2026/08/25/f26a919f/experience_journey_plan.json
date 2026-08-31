@@ -1,0 +1,70 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide an unhurried, focused rewards-overview interface highlighting First Home Savings Knowledge progress and self-paced financial literacy modules.",
+  "entryPoint": "Rewards overview screen opened by customer Sophie Williams.",
+  "completionDefinition": "Customer reviews goal progress and accesses educational quiz content successfully without timed pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and savings knowledge?",
+      "entryCondition": "App launched into rewards overview.",
+      "requiredInformation": [
+        "points balance",
+        "goal progress percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I continue building my financial mastery at my own pace?",
+      "entryCondition": "Customer has reviewed current standing and goal progress.",
+      "requiredInformation": [
+        "learning modules",
+        "quiz options",
+        "milestone reviews"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "OPEN_MODULE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-completes-modules",
+        "fact-session-time"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear provenance and cash-value transparency without cluttering the primary learning flow.",
+      "contentNotes": [
+        "Educational reward terms",
+        "Cash equivalent breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "planId": "plan-f562e426",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Execute the mandatory ordered stack and narrative arc for Amelia Carter: POINTS_BALANCE -> TANGIBLE_VALUE_CARD -> REWARD_CHOICE_PANEL -> PARTNER_VALUE_COMPARISON -> WHY_THIS_UI_CARD -> REWARDS_INSIGHT_CARD -> PERSONALIZED_OFFER_CARD -> BEST_VALUE_REDEEM_CARD, supplemented by educational and trust components adhering strictly to the transparency-first story.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 6450,
+          "tier": "Gold",
+          "name": "Amelia Carter",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "title": "Guaranteed Cash-Equivalent Valuation",
+          "cashValue": "\u00a364.50",
+          "pointsEquivalent": 6450,
+          "breakdown": {
+            "label": "Fixed Conversion Rate (100 coins = \u00a31.00)",
+            "value": "100% Guaranteed"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reward-choice",
+        "type": "REWARD_CHOICE_PANEL",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Transparent Guaranteed Redemptions",
+          "subtitle": "Select a guaranteed-value voucher with zero hidden deductions or variable conversion rates.",
+          "options": [
+            {
+              "id": "opt-1",
+              "label": "Guaranteed Grocery Voucher \u00a350",
+              "description": "Fixed value voucher with full terms previewed upfront.",
+              "points": 5000
+            },
+            {
+              "id": "opt-2",
+              "label": "Guaranteed Dining Voucher \u00a360",
+              "description": "Direct merchant redemption with zero hidden fees.",
+              "points": 6000
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "PREVIEW_REWARD",
+            "payload": {
+              "requiresTermsReview": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-partner-comparison",
+        "type": "PARTNER_VALUE_COMPARISON",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Partner Fixed-Rate Comparison",
+          "subtitle": "Compare guaranteed returns across our verified retail partners.",
+          "partners": [
+            {
+              "name": "Partner Retailer A",
+              "points": 5000,
+              "value": "\u00a350.00",
+              "perk": "Instant fixed valuation"
+            },
+            {
+              "name": "Partner Dining B",
+              "points": 6000,
+              "value": "\u00a360.00",
+              "perk": "Guaranteed cash equivalent"
+            }
+          ],
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "steps": {
+            "title": "Guaranteed Fixed Conversion",
+            "description": "Your 6450 LBG coins maintain an absolute fixed rate of 100 coins to \u00a31.00 with no surprise sliding scales."
+          },
+          "ctaLabel": "Read Full Valuation Policy",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-why-this-ui",
+        "type": "WHY_THIS_UI_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Designed for Complete Transparency",
+          "intro": "Built specifically for your preference for upfront valuation previews and zero hidden terms.",
+          "reasons": {
+            "label": "Upfront Terms",
+            "detail": "Every redemption option displays full terms before any point commitment."
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Valuation Health & Stability",
+          "topBrandName": "Partner Retailer A",
+          "topBrandPoints": 5000,
+          "growthTip": "Your coin valuation is fully locked with zero expiry pressure.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "Review Insights",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-personalized-offer",
+        "type": "PERSONALIZED_OFFER_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Guaranteed Value Spotlight",
+          "subtitle": "Tailored for your strict value clarity preference",
+          "offer": "\u00a360 Guaranteed Voucher for 6000 LBG Coins",
+          "validUntil": "No Expiry",
+          "message": "Preview full terms and guaranteed minimum return before committing.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "PREVIEW_OFFER",
+            "payload": {
+              "offerId": "spotlight-offer-1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-best-value-redeem",
+        "type": "BEST_VALUE_REDEEM_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "options": {
+            "name": "Guaranteed \u00a360 Dining Voucher",
+            "points": 6000,
+            "cashValue": "\u00a360.00",
+            "valuePerPoint": 1.0,
+            "best": true
+          },
+          "note": "Guaranteed fixed return with zero variable deductions.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "PREVIEW_REDEMPTION",
+            "payload": {
+              "optionId": "best-val-1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-reward-provenance",
+        "type": "REWARD_PROVENANCE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Transparent Redemption History",
+          "subtitle": "Audit trail of your verified guaranteed redemptions",
+          "history": {
+            "source": "Guaranteed Value Voucher",
+            "date": "2026-08-15",
+            "points": 2000
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-reward-allocation",
+        "type": "REWARD_ALLOCATION_CONTROL",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Valuation Allocation Control",
+          "subtitle": "Ensure 100% of your holdings remain in guaranteed fixed-rate status.",
+          "allocation": {
+            "label": "Guaranteed Fixed Holdings",
+            "percent": 100
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Understanding Guaranteed Valuations",
+          "insight": "Guaranteed-value rewards protect your purchasing power by locking in fixed conversion ratios before any transaction.",
+          "source": "Rewards Academy - Transparency Guide",
+          "actionLabel": "Read More",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK"
+    ]
+  },
+  "strategy": "Execute the mandatory ordered stack and narrative arc for Amelia Carter: POINTS_BALANCE -> TANGIBLE_VALUE_CARD -> REWARD_CHOICE_PANEL -> PARTNER_VALUE_COMPARISON -> WHY_THIS_UI_CARD -> REWARDS_INSIGHT_CARD -> PERSONALIZED_OFFER_CARD -> BEST_VALUE_REDEEM_CARD, supplemented by educational and trust components adhering strictly to the transparency-first story.",
+  "confidence": 0.98
+}

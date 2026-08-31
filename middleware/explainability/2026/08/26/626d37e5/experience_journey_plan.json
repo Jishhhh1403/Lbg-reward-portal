@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Deliver immediate transparency on points balance, cash-equivalent statement credit value, and Holiday Spending Money goal progress.",
+  "entryPoint": "Rewards overview screen opened by customer",
+  "completionDefinition": "Customer views points balance converted to cash equivalent, verifies statement credit allocation, and inspects Holiday Spending Money goal progress.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current points balance and cash-equivalent value?",
+      "entryCondition": "Customer views rewards overview",
+      "requiredInformation": [
+        "lbgCoins",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How are my points working toward bill reduction and my holiday savings goal?",
+      "entryCondition": "Customer reviews goal progress and automatic statement credit settings",
+      "requiredInformation": [
+        "Holiday Spending Money goal",
+        "payment reward rules"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CONFIRM_ALLOCATION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-goal-holiday",
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do points convert into tangible bill savings over time?",
+      "entryCondition": "Customer reviews tangible value breakdown and educational insights",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent",
+        "breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-1"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-help",
+      "purpose": "Provide clear documentation on how automatic statement credits are calculated and applied.",
+      "contentNotes": [
+        "FAQ on bill reduction timings",
+        "Guaranteed reward rate terms"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

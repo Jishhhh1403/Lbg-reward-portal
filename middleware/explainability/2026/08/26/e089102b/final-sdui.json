@@ -1,0 +1,443 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "e089102b",
+  "createdAt": "2026-08-25T00:00:00Z",
+  "expiresAt": "2026-09-25T00:00:00Z",
+  "customerRef": "customer_010",
+  "components": [
+    {
+      "id": "points-balance-1",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 7300,
+        "tier": "Platinum",
+        "name": "Daniel Brooks",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-progress-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "Holiday Spending Money",
+        "current": 640.0,
+        "target": 1200.0,
+        "percentage": 53.0,
+        "remaining": 560.0,
+        "motivationalMessage": "You're over halfway to your holiday fund! Keep applying statement credits to reach your goal.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "payment-reward-1",
+      "type": "PAYMENT_REWARD_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Statement Credit Auto-Redemption",
+        "paymentMethod": "Platinum Card ending in \u2022\u202248",
+        "rewardRate": "1 coin = \u00a30.01 cash back",
+        "monthlyCap": "\u00a3100.00 max monthly credit",
+        "description": "Your 7,300 coins equal \u00a373.00 in direct bill reductions. Apply now or set to auto-redeem.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "APPLY_STATEMENT_CREDIT",
+          "payload": {
+            "amount": "\u00a373.00",
+            "coins": 7300
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [
+          "points-balance-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "reward-allocation-1",
+      "type": "REWARD_ALLOCATION_CONTROL",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Monthly Reward Allocation",
+        "subtitle": "Direct your monthly earnings toward your statement credit bill reduction automatically.",
+        "allocation": {
+          "label": "Statement Credit Bill Reduction",
+          "percent": 100
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "payment-reward-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "payment-reward-conf-1",
+      "type": "PAYMENT_REWARD_CONFIRMATION",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Recent Statement Credit Applied",
+        "message": "Successfully credited to your linked card statement.",
+        "amount": "\u00a325.00",
+        "reference": "REF-8849-LBG",
+        "date": "24 Aug 2026",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "payment-reward-1"
+        ],
+        "resolves": [
+          "payment-reward-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "tangible-value-1",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Your Total Balance Value",
+        "cashValue": "\u00a373.00",
+        "pointsEquivalent": 7300,
+        "breakdown": {
+          "label": "Direct Statement Credit Value",
+          "value": "\u00a373.00 guaranteed cash reduction"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "MEANING",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "rewards-insight-1",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Statement Credit Insight",
+        "topBrandName": "Linked Card Bill Reductions",
+        "topBrandPoints": 7300,
+        "growthTip": "Redeeming as statement credits provides 100% guaranteed cash value with zero devaluation risk.",
+        "expiringPoints": 0,
+        "expiryDate": "30 Sep",
+        "ctaText": "Review Redemptions",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "tangible-value-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "add-goal-1",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set up another financial or savings target to track with your rewards.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-linked-reward-1",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Holiday Fund Contribution",
+        "goalName": "Holiday Spending Money",
+        "rewards": {
+          "name": "Statement Credit to Holiday Fund",
+          "points": 2500,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [
+          "goal-progress-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "milestone-card-1",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "milestones": {
+          "label": "Reached 50% of Holiday Spending Money savings goal",
+          "achieved": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "reward-choice-panel-1",
+      "type": "REWARD_CHOICE_PANEL",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Redemption Choice",
+        "subtitle": "Select how you would like to apply your accumulated 7,300 coins.",
+        "options": {
+          "id": "opt-1",
+          "label": "Statement Credit",
+          "description": "Apply \u00a373.00 directly to your card balance.",
+          "points": 7300
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "payment-reward-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "how-points-work-1",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "steps": {
+          "title": "Guaranteed 1:1 Statement Value",
+          "description": "Every 100 LBG coins translates to exactly \u00a31.00 off your monthly card bill with zero hidden fees."
+        },
+        "ctaLabel": "Learn about cash valuations",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "why-this-ui-card-1",
+      "type": "WHY_THIS_UI_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Designed for Your Payment Preferences",
+        "intro": "We prioritise statement credit clarity and financial utility so you can reduce your bills effortlessly.",
+        "reasons": {
+          "label": "Statement Credit Focus",
+          "detail": "No gamified distractions or irrelevant partner vouchers\u2014just straightforward cash value."
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "rewards-insight-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "points-balance-1",
+          "goal-progress-1",
+          "tangible-value-1"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "payment-reward-1",
+          "add-goal-1",
+          "goal-linked-reward-1",
+          "how-points-work-1"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "payment-reward-conf-1",
+          "milestone-card-1"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "reward-allocation-1",
+          "rewards-insight-1",
+          "reward-choice-panel-1",
+          "why-this-ui-card-1"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Seamless review and application of statement credits to reduce monthly card bills.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "RESUME",
+    "primaryActionComponentId": "payment-reward-1"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "primaryJourneyId": "journey-candidate-protect-value",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Help Elena review her expiring points calmly and allocate them to her Retirement Fund or Education Fund.",
+  "entryPoint": "Dashboard load with expiring points notice and long-term asset overview",
+  "completionDefinition": "User successfully reviews the value protection breakdown and confirms point allocation to an active goal.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my long-term savings and expiring points?",
+      "entryCondition": "Session start for Elena Vasquez",
+      "requiredInformation": [
+        "fact-coins-balance",
+        "fact-expiring-points"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins-balance",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I protect my value and keep my retirement and education goals on track?",
+      "entryCondition": "User has reviewed balance and expiration status",
+      "requiredInformation": [
+        "fact-active-goals"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-active-goals"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do I allocate my points frictionlessly to secure my financial future?",
+      "entryCondition": "User is viewing active goals and educational value breakdown",
+      "requiredInformation": [
+        "fact-active-goals"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ALLOCATE_POINTS",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-active-goals"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-insights",
+      "purpose": "Provide calm, long-term educational context on compounding value without countdown urgency.",
+      "contentNotes": [
+        "Educational value explainer",
+        "Projected value growth curve"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

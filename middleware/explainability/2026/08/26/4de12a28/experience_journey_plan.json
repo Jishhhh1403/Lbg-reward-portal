@@ -1,0 +1,114 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-mastery-progress",
+  "journeyObjective": "Deliver self-paced financial literacy modules and transparent First Home Savings Knowledge goal tracking without timed pressure.",
+  "entryPoint": "Mobile rewards overview screen",
+  "completionDefinition": "Customer reviews educational module/quiz component and observes First Home Savings Knowledge milestone progress alongside points balance.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now with my points and value?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points: 3900",
+        "tier: Gold",
+        "cash value equivalent"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-educ-module-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my points convert into tangible value and how do rewards work?",
+      "entryCondition": "Snapshot viewed",
+      "requiredInformation": [
+        "tangible value breakdown",
+        "how points work steps"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What structured learning and savings pathways are available to deepen my mastery?",
+      "entryCondition": "Trust & value established",
+      "requiredInformation": [
+        "First Home Savings Knowledge goal progress",
+        "learning mission",
+        "quiz card",
+        "educational insight card"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_LESSON_OR_QUIZ",
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-session-time-educ",
+        "fact-avoids-timed-challenges"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "What milestones and goal-linked rewards reflect my steady progress?",
+      "entryCondition": "Pathways explored",
+      "requiredInformation": [
+        "goal milestones",
+        "goal-linked rewards",
+        "add goal option"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CELEBRATION",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-motivated-mastery"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-insights",
+      "purpose": "Provide deeper context on learning milestones and unhurried savings tips.",
+      "contentNotes": [
+        "Daily money tip for steady savers",
+        "Coach tip for financial mastery"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

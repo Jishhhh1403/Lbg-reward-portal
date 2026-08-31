@@ -1,0 +1,433 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "fa18b2a2",
+  "createdAt": "2023-10-24T00:00:00Z",
+  "expiresAt": "2023-11-02T00:00:00Z",
+  "customerRef": "customer_007",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 24500,
+        "tier": "Diamond",
+        "name": "Elena Vasquez",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Expiring Points Notice",
+        "expiringPoints": 2400,
+        "daysLeft": 9,
+        "message": "2,400 points are scheduled to expire in 9 days. Secure them transparently into your long-term savings goals.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_EXPIRING_DETAILS",
+          "payload": {
+            "points": 2400
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "TENSION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-metric-tile",
+      "type": "METRIC_TILE",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "label": "Cash Value Equivalent",
+        "value": "\u00a3245.00",
+        "unit": "GBP",
+        "tone": "brand",
+        "infoText": "Based on standard Diamond tier point valuation.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-future-value",
+      "type": "FUTURE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Long-Term Projected Value",
+        "currentValue": 24500,
+        "projectedValue": 42000,
+        "timeframe": "5 Years",
+        "growthRate": "6.2% AER equivalent",
+        "message": "Consistent allocation toward your retirement horizon compounds your Diamond tier benefits over time.",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-expiring-alert"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress-retirement",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "goalName": "Retirement Fund",
+        "current": 24500,
+        "target": 100000,
+        "percentage": 25,
+        "remaining": 75500,
+        "motivationalMessage": "Steady contributions build lasting future security for your retirement.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-future-value"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress-education",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "goalName": "Children Education Fund",
+        "current": 18500,
+        "target": 50000,
+        "percentage": 37,
+        "remaining": 31500,
+        "motivationalMessage": "You are over a third of the way toward funding educational milestones.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-goal-progress-retirement"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress-home",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "goalName": "Dream Home Deposit",
+        "current": 9000,
+        "target": 75000,
+        "percentage": 12,
+        "estimatedCompletion": "2031",
+        "message": "A long-horizon milestone supporting your property aspirations.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-goal-progress-education"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set a new long-term accumulation objective",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "OPEN_ADD_GOAL",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-goal-progress-home"
+        ],
+        "resolves": [],
+        "optional": true
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "The Power of Compounding in Rewards",
+        "insight": "Maintaining balances within dedicated long-term funds allows your LBG Coins to benefit from tiered multiplier bonuses and enhanced redemption rates.",
+        "source": "LBG Rewards Research & Strategy Team",
+        "actionLabel": "Read Educational Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "READ_GUIDE",
+          "payload": {
+            "guideId": "compounding-rewards"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-future-value"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Secure Expiring Points Allocation",
+        "goalName": "Retirement Fund",
+        "rewards": {
+          "name": "Retirement Fund Top-Up (2,400 points)",
+          "points": 2400,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "ALLOCATE_EXPIRING_POINTS",
+          "payload": {
+            "points": 2400,
+            "targetGoal": "Retirement Fund"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-expiring-alert",
+          "comp-goal-progress-retirement"
+        ],
+        "resolves": [
+          "comp-expiring-alert"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Transparent Value Breakdown",
+        "cashValue": "\u00a3245.00",
+        "pointsEquivalent": 24500,
+        "breakdown": {
+          "Base Value": "\u00a3245.00",
+          "Tier Bonus (Diamond)": "Included"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-goal-linked-reward"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-rewards-insight",
+      "type": "REWARDS_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Portfolio Security Summary",
+        "topBrandName": "LBG Premier Partners",
+        "topBrandPoints": 24500,
+        "growthTip": "Allocate expiring points before 30 Sep to maintain uninterrupted tier compounding.",
+        "expiringPoints": 2400,
+        "expiryDate": "30 Sep",
+        "ctaText": "Review Allocation History",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_HISTORY",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-linked-reward"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "BUILD_YOUR_FUTURE",
+    "headline": "Your plan, moving forward",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "HOOK",
+        "label": "Why this matters now",
+        "role": "Grab attention with the single most relevant moment",
+        "componentIds": [
+          "comp-expiring-alert"
+        ]
+      },
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-metric-tile",
+          "comp-future-value",
+          "comp-goal-progress-retirement",
+          "comp-goal-progress-education",
+          "comp-goal-progress-home",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-add-goal",
+          "comp-goal-linked-reward"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight",
+          "comp-rewards-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-realign-long-term-security",
+    "primaryOutcome": "Understand long-horizon reward status and safeguard expiring points against retirement and education savings goals.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-3",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-goal-linked-reward"
+  }
+}

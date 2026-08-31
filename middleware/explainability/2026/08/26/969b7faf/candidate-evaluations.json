@@ -1,0 +1,135 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Highlight Holiday Spending Money goal progress at 53% with a direct statement credit redemption path and tangible cash-equivalent valuation (\u20ac73.00 value for 7,300 coins).",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Provide a general points overview with partner brand voucher promotions and standard statement credit links.",
+      "scores": {
+        "customerGoalRelevance": 5,
+        "expectedCustomerUtility": 6,
+        "screenLevelStoryCoherence": 6,
+        "journeyAndActionContinuity": 7,
+        "accessibilityAndCognitiveFit": 8,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 4,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 4,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 6.35,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-holiday-progress",
+    "storyTitle": "Monitor Holiday Savings Goal",
+    "oneSentenceStory": "Review current LBG coin balance and track progress toward the Holiday Spending Money goal using transparent cash-equivalent values.",
+    "customerSituation": "Customer visits the rewards overview on mobile to check accumulated coins and evaluate savings progress.",
+    "storyTension": "Ensuring the interface clearly displays tangible cash-equivalent values without distracting gamification clutter.",
+    "customerResolution": "Customer views clear milestone progress and identifies direct statement credit pathways toward their holiday fund.",
+    "primaryOutcome": "Confirm clear statement credit value and monitor holiday savings goal progress efficiently.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-wallet-coins",
+      "fact-holiday-goal",
+      "fact-intent-credit"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "gamification leaderboards",
+      "voucher or travel partner promotions"
+    ],
+    "completionSignals": [
+      "GOAL_PROGRESS viewed",
+      "TANGIBLE_VALUE checked"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-holiday-progress",
+      "journeyObjective": "Review balance, inspect Holiday Spending Money goal progress at 53%, and execute statement credit allocation without distraction.",
+      "completionDefinition": "Customer views coin balance, checks goal progress, and selects statement credit allocation path.",
+      "episodeSketches": [
+        "Episode 1: Display current balance of 7,300 LBG coins with tangible cash equivalent (\u20ac73.00).",
+        "Episode 2: Highlight Holiday Spending Money goal at 53% progress (\u20ac640 / \u20ac1200) with milestone marker.",
+        "Episode 3: Provide clean one-tap statement credit redemption option aligned with auto-allocation preference."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 95,
+    "actionOutcomeContinuity": 98,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with Daniel Brooks' payment utility motive and 53% holiday savings goal progress."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "No dark patterns, artificial scarcity, or manipulative urgency detected. Zero gamification clutter."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and clear typographic contrast for cash-equivalent values and milestone tracking."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story 'story-holiday-progress' verified against available evidence and active customer intent."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate-1 successfully fulfills ONE_DOMINANT action policy for statement credit utility."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "All coherence metrics exceed threshold (Decision: PASS)."
+    }
+  ]
+}

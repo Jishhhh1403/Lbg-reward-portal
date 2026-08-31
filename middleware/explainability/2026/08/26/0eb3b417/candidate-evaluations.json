@@ -1,0 +1,134 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Surfaces direct points balance, cash-equivalent translation, and immediate one-click statement credit application without gamification, focusing entirely on payment utility.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.75,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Integrates holiday goal tracking alongside cash-equivalent statement credit options to provide a complete view of payment utility and milestone progression.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.15,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-verify-cashback",
+    "storyTitle": "Verify Cash-Equivalent Value & Statement Credits",
+    "oneSentenceStory": "Easily review earned cashback and apply balances directly to statement credits without distractions.",
+    "customerSituation": "Customer visits the rewards overview to check accumulated cashback and points value.",
+    "storyTension": "Need for clear, straightforward financial translation of points into bill reduction without complex gamification.",
+    "customerResolution": "Points balance and cash-equivalent value are immediately visible with straightforward statement credit options.",
+    "primaryOutcome": "Effortless verification of payment utility rewards and cash-equivalent balance.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-redeems-statement-credits",
+      "fact-checks-cashback"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Leaderboards",
+      "Partner voucher discovery",
+      "Streak counters"
+    ],
+    "completionSignals": [
+      "User views points balance",
+      "User reviews statement credit options"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-verify-cashback",
+      "journeyObjective": "Provide instant visibility into points balance, cash-equivalent value, and direct statement credit redemption options.",
+      "completionDefinition": "Customer reviews points, sees cash value, and accesses statement credit action without distraction.",
+      "episodeSketches": [
+        "Display points balance and cash-equivalent translation immediately upon load",
+        "Present transparent statement credit options and goal progress toward holiday savings"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.5,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 95,
+    "actionOutcomeContinuity": 98,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly aligns with the payment utility motivation and statement credit preference of customer_010."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero manipulation or dark patterns detected. Strict adherence to non-gamified financial transparency."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit with clear numeric display and straightforward statement credit actions."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story-verify-cashback directly addresses the customer's core objective without prohibited detours."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate provides seamless continuity from balance check to statement credit management."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "All coherence metrics exceed threshold. Decision: PASS."
+    }
+  ]
+}

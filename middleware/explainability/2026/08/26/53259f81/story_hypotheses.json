@@ -1,0 +1,62 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-verify-statement-credit",
+      "storyTitle": "Verify and Apply Statement Credit",
+      "oneSentenceStory": "The customer views their current LBG coin balance and directly applies accumulated value as a statement credit toward bill reduction.",
+      "customerSituation": "Customer visits the rewards overview on mobile to check current accumulated LBG coins and evaluate progress toward bill reduction.",
+      "storyTension": "Ensuring the available balance translates transparently to guaranteed bill reduction without unnecessary gamified clutter.",
+      "customerResolution": "Customer effortlessly verifies the balance and accesses direct statement credit redemption options.",
+      "primaryOutcome": "Effortless verification of points value and direct access to payment-linked statement credit redemption.",
+      "secondaryOutcome": null,
+      "narrativeMode": "RESOLVE_ACTION",
+      "evidenceRefs": [
+        "fact-wallet-coins",
+        "fact-redeems-statement",
+        "fact-wants-bills"
+      ],
+      "confidence": 0.92,
+      "prohibitedDetours": [
+        "Displaying leaderboards or social rankings",
+        "Promoting experiential vouchers or partner retail deals"
+      ],
+      "completionSignals": [
+        "Customer views points balance component",
+        "Customer taps statement credit redemption option"
+      ],
+      "expiryAt": null
+    },
+    {
+      "storyId": "story-track-goal-progress",
+      "storyTitle": "Track Holiday Spending Goal Progress",
+      "oneSentenceStory": "The customer reviews progress on their savings and spending goal to align automatic reward allocation with upcoming expenses.",
+      "customerSituation": "Customer wants to check how their current points and automated allocations contribute to their active holiday spending target.",
+      "storyTension": "Confirming that the ongoing reward allocation effectively supports the specific financial target at guaranteed rates.",
+      "customerResolution": "Customer observes clear milestone progress and confirms the automated allocation settings.",
+      "primaryOutcome": "Clear tracking of goal progress linked to guaranteed payment utility.",
+      "secondaryOutcome": null,
+      "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+      "evidenceRefs": [
+        "fact-goal-holiday",
+        "fact-auto-payment",
+        "fact-guaranteed-rates"
+      ],
+      "confidence": 0.89,
+      "prohibitedDetours": [
+        "Forcing engagement with gamified challenges or streaks",
+        "Introducing complex investment or cryptocurrency comparisons"
+      ],
+      "completionSignals": [
+        "Customer inspects goal progress widget",
+        "Customer verifies milestone status"
+      ],
+      "expiryAt": null
+    }
+  ],
+  "recommendedStoryId": "story-verify-statement-credit",
+  "rejectedStoryReasons": {},
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

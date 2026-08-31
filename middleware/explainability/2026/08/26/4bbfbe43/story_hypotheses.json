@@ -1,0 +1,62 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-1",
+      "storyTitle": "Apply Statement Credit for Bill Reduction",
+      "oneSentenceStory": "Customer checks current coin balance and cashback to allocate rewards directly to statement credit.",
+      "customerSituation": "Customer visits mobile app to review rewards standing and current goal progress.",
+      "storyTension": "Ensuring transparent coin-to-cash conversion rates without encountering irrelevant vouchers or gamification.",
+      "customerResolution": "Direct, frictionless application of accumulated rewards as a statement credit on the linked card.",
+      "primaryOutcome": "Effortless tracking and application of statement credits for bill reduction.",
+      "secondaryOutcome": null,
+      "narrativeMode": "RESOLVE_ACTION",
+      "evidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-2",
+        "fact-signal-3",
+        "fact-wallet-coins"
+      ],
+      "confidence": 0.94,
+      "prohibitedDetours": [
+        "Displaying leaderboards",
+        "Pushing lifestyle vouchers",
+        "Promoting partner travel experiences"
+      ],
+      "completionSignals": [
+        "statement_credit_applied",
+        "balance_viewed"
+      ],
+      "expiryAt": null
+    },
+    {
+      "storyId": "story-2",
+      "storyTitle": "Monitor Holiday Savings Goal Progress",
+      "oneSentenceStory": "Customer tracks progress toward the holiday spending goal with predictable reward allocations.",
+      "customerSituation": "Customer reviews active goal status to ensure automatic payment rewards are contributing correctly.",
+      "storyTension": "Verifying that reward accumulation aligns with the target value without unexpected delays or opaque rules.",
+      "customerResolution": "Clear view of goal milestones and tangible value breakdown supporting financial objectives.",
+      "primaryOutcome": "Transparent rewards tracking and goal progress clarity.",
+      "secondaryOutcome": null,
+      "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+      "evidenceRefs": [
+        "fact-signal-5",
+        "fact-goal-holiday"
+      ],
+      "confidence": 0.9,
+      "prohibitedDetours": [
+        "Gamified streak counters",
+        "Artificial urgency prompts"
+      ],
+      "completionSignals": [
+        "goal_progress_viewed"
+      ],
+      "expiryAt": null
+    }
+  ],
+  "recommendedStoryId": "story-1",
+  "rejectedStoryReasons": {},
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

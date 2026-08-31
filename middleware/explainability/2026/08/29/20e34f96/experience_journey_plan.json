@@ -1,0 +1,72 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Provide a serene, structured rewards and learning progress overview tailored to educational mastery.",
+  "entryPoint": "Customer opens the rewards and learning overview",
+  "completionDefinition": "Customer reviews points balance, milestone progress, and accesses educational modules without pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand in my learning and points balance?",
+      "entryCondition": "App opened to rewards dashboard",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-signal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my educational modules and tangible rewards align with my savings goal?",
+      "entryCondition": "Balance and overview reviewed",
+      "requiredInformation": [
+        "modules status",
+        "quiz understanding",
+        "tangible value equivalence"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-2",
+        "fact-signal-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-tips",
+      "purpose": "Provide daily money tips and foundational knowledge without time pressure.",
+      "contentNotes": [
+        "Daily money tip",
+        "How points work explainer"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

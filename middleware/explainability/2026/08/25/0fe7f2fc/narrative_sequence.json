@@ -1,0 +1,192 @@
+{
+  "primaryActionComponentRef": "comp-quick-redeem",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-expiring-alert",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "TENSION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quick-win",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-expiring-alert"
+      ],
+      "resolves": [
+        "comp-expiring-alert"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-instant-popup",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-quick-win"
+      ],
+      "resolves": [
+        "comp-quick-win"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-flash-banner",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-instant-popup"
+      ],
+      "resolves": [
+        "comp-instant-popup"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quick-redeem",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "ACTION",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-flash-banner"
+      ],
+      "resolves": [
+        "comp-flash-banner"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-quick-redeem"
+      ],
+      "resolves": [
+        "comp-quick-redeem"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-carousel",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-quick-redeem"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-streak",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-quick-redeem"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-badge",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CELEBRATION",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-streak"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-sync-status",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 11,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-why-ui",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-expiring-alert",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Highlight expiring points right after balance view",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-expiring-alert",
+      "toComponentRef": "comp-quick-win",
+      "relationship": "sequential",
+      "bridgeIntent": "Present an immediate quick win to solve expiring points tension",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quick-win",
+      "toComponentRef": "comp-instant-popup",
+      "relationship": "sequential",
+      "bridgeIntent": "Greet returning customer with a celebration popup",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-instant-popup",
+      "toComponentRef": "comp-flash-banner",
+      "relationship": "sequential",
+      "bridgeIntent": "Show flash reward banner for instant engagement",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-flash-banner",
+      "toComponentRef": "comp-quick-redeem",
+      "relationship": "sequential",
+      "bridgeIntent": "Lead customer into 1-tap redemption action",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quick-redeem",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate real cash equivalence of coins",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

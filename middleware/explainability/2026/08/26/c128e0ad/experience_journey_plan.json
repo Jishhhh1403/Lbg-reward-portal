@@ -1,0 +1,72 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-mastery-progress",
+  "journeyObjective": "Review educational progress and knowledge goals toward home savings with complete autonomy.",
+  "entryPoint": "Dashboard load showing current lbgCoins and First Home Savings Knowledge progress.",
+  "completionDefinition": "Customer reviews goal progress, interacts with the milestone tracker, and accesses learning-linked rewards.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my lbgCoins and savings goals?",
+      "entryCondition": "Session initialized with customer context.",
+      "requiredInformation": [
+        "lbgCoins",
+        "connected brands",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-brands"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real-world value and what can I learn next?",
+      "entryCondition": "Customer has viewed balance and goal progress.",
+      "requiredInformation": [
+        "cash value equivalent",
+        "learning modules",
+        "quiz reinforcement"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency",
+      "purpose": "Provide clear monetary equivalence for points without pressure.",
+      "contentNotes": [
+        "Tangible value breakdown for lbgCoins"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

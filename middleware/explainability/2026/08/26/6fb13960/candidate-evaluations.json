@@ -1,0 +1,129 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Focused rewards overview prioritizing points balance, direct cash-equivalent value in statement credits, and active holiday spending goal progress (53%) with zero gamification or promotional noise.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.9,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broad rewards marketplace featuring partner vouchers, retail discounts, and travel miles alongside standard statement credit options.",
+      "scores": {
+        "customerGoalRelevance": 4,
+        "expectedCustomerUtility": 3,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 4,
+        "accessibilityAndCognitiveFit": 6,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 3,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 4,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 5.15,
+      "hardGatesPass": false
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-review-balance",
+    "storyTitle": "Review Balance and Statement Credit Progress",
+    "oneSentenceStory": "The customer reviews their 7,300 LBG coins and tracks progress toward their holiday spending money goal.",
+    "customerSituation": "Customer visits the rewards overview to inspect accumulated coins and cash-equivalent value.",
+    "storyTension": "Ensuring the exact bill-reducing value of current points is clearly understood without promotional noise.",
+    "customerResolution": "Clear display of points balance, cash-equivalent value, and current goal progress.",
+    "primaryOutcome": "Effortless verification of reward balance and direct application toward bill-reducing statement credits.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-statement-credit",
+      "fact-cashback-check",
+      "fact-holiday-goal"
+    ],
+    "confidence": 0.94,
+    "prohibitedDetours": [
+      "Display of irrelevant retail vouchers",
+      "Gamified streaks or leaderboards"
+    ],
+    "completionSignals": [
+      "User views points balance",
+      "User inspects goal progress card"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-review-balance",
+      "journeyObjective": "Provide an immediate, transparent overview of accumulated points balance, cash-equivalent bill reduction value, and active holiday goal progress.",
+      "completionDefinition": "Customer successfully reviews balance, cash equivalent, and holiday spending goal progress without distraction.",
+      "episodeSketches": [
+        "Episode 1: Display POINTS_BALANCE and TANGIBLE_VALUE prominently at the top of the mobile view.",
+        "Episode 2: Present GOAL_PROGRESS and GOAL_LINKED_REWARD for the active Holiday Spending Money goal."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.8,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 98,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 96,
+    "transitionStrength": 95,
+    "actionOutcomeContinuity": 97,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly matches Daniel Brooks's declared preference for payment utility and statement credits, filtering out irrelevant retail vouchers."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns, manipulative urgency, or gamification elements detected. Hard gates successfully passed."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit with clear numerical values, high contrast targets, and screen-reader-friendly structure."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "VOTE",
+      "summary": "Journey candidate 1 selected as the single primary journey. Episode sketches align cleanly with mandatory components."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-to-journey coherence assessment passed with a 97% overall alignment score and zero orphan components."
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Direct statement credit focus with transparent cash valuation, goal progress tracking for 'Holiday Spending Money', and zero gamification distractions in alignment with payment utility motivation.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.9,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Balanced overview presenting statement credits alongside general partner redemption catalogs and educational reward tips.",
+      "scores": {
+        "customerGoalRelevance": 7,
+        "expectedCustomerUtility": 6,
+        "screenLevelStoryCoherence": 7,
+        "journeyAndActionContinuity": 7,
+        "accessibilityAndCognitiveFit": 8,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 6,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 5,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 7.15,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-statement-credit-review",
+    "storyTitle": "Review Cash Value & Apply Statement Credits",
+    "oneSentenceStory": "Customer reviews accumulated LBG coins and applies them directly as statement credits to reduce ongoing bills.",
+    "customerSituation": "Customer visits the rewards overview to check balance and cashback earnings.",
+    "storyTension": "Ensuring transparent cash-equivalent valuation and quick application without friction or gamified distractions.",
+    "customerResolution": "Customer views clear statement credit options and allocates rewards directly toward bill reduction.",
+    "primaryOutcome": "Direct visibility of cash-equivalent rewards and progress toward payment utility goals.",
+    "secondaryOutcome": null,
+    "narrativeMode": "RESOLVE_ACTION",
+    "evidenceRefs": [
+      "fact-redeems-statement-credits",
+      "fact-checks-cashback",
+      "fact-wants-money-off-bills"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Gamified social rankings",
+      "Voucher or experience upsells",
+      "Artificial urgency"
+    ],
+    "completionSignals": [
+      "Viewed points balance",
+      "Engaged with statement credit option"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-statement-credit-review",
+      "journeyObjective": "Enable Daniel Brooks to review his cash value points balance and instantly apply them as statement credits toward his linked card or active holiday goal.",
+      "completionDefinition": "Customer views points balance, reviews tangible cash value, and initiates statement credit application or goal allocation.",
+      "episodeSketches": [
+        "Episode 1: Clear display of points balance and cash equivalent value with zero gamification.",
+        "Episode 2: Transparent breakdown of active goal progress ('Holiday Spending Money') and statement credit redemption options.",
+        "Episode 3: One-touch primary action to apply statement credit or adjust automatic allocation."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.9,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 100,
+    "journeyContinuity": 100,
+    "miniJourneyCompleteness": 100,
+    "transitionStrength": 100,
+    "actionOutcomeContinuity": 100,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly matches Daniel Brooks's payment utility motivation and statement credit preference with high confidence."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns, artificial urgency, or gamification elements detected. Hard gates successfully passed."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "High cognitive fit and clear financial transparency align with accessibility and plain language standards."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Approved story 'story-statement-credit-review' precisely aligns with observed facts and customer redemption habits."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Primary journey successfully formulated around direct statement credit review and goal progress tracking."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "All coherence checks passed with maximum scores. Story and journey are fully synchronized."
+    }
+  ]
+}

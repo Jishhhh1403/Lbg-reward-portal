@@ -1,0 +1,256 @@
+{
+  "primaryActionComponentRef": "comp-reward-choice-panel",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-choice-panel",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [
+        "comp-tangible-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-value-comparison",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-reward-choice-panel"
+      ],
+      "resolves": [
+        "comp-reward-choice-panel"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-allocation-control",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-partner-value-comparison"
+      ],
+      "resolves": [
+        "comp-partner-value-comparison"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-why-this-ui",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-reward-allocation-control"
+      ],
+      "resolves": [
+        "comp-reward-allocation-control"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-why-this-ui"
+      ],
+      "resolves": [
+        "comp-why-this-ui"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-personalized-offer",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-rewards-insight"
+      ],
+      "resolves": [
+        "comp-rewards-insight"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quick-win",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-personalized-offer"
+      ],
+      "resolves": [
+        "comp-personalized-offer"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-best-value-redeem",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-quick-win"
+      ],
+      "resolves": [
+        "comp-quick-win"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "MEANING",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-best-value-redeem"
+      ],
+      "resolves": [
+        "comp-best-value-redeem"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [
+        "comp-how-points-work"
+      ],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Show exact cash value of current coin balance",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-reward-choice-panel",
+      "relationship": "sequential",
+      "bridgeIntent": "Present guaranteed choice panel for redemption",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reward-choice-panel",
+      "toComponentRef": "comp-partner-value-comparison",
+      "relationship": "sequential",
+      "bridgeIntent": "Compare partner values transparently",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-partner-value-comparison",
+      "toComponentRef": "comp-reward-allocation-control",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer allocation control over guaranteed vouchers",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reward-allocation-control",
+      "toComponentRef": "comp-why-this-ui",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain why this layout ensures transparency",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-why-this-ui",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide rewards insight on fixed value protection",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-rewards-insight",
+      "toComponentRef": "comp-personalized-offer",
+      "relationship": "sequential",
+      "bridgeIntent": "Display personalized guaranteed offer with preview",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-personalized-offer",
+      "toComponentRef": "comp-quick-win",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer quick verified fixed-value check",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quick-win",
+      "toComponentRef": "comp-best-value-redeem",
+      "relationship": "sequential",
+      "bridgeIntent": "Highlight best value guaranteed redemption option",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-best-value-redeem",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain how points work with zero deductions",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Deliver educational insight on fixed-value preservation",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "leaderboard-1",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed due to low-gamification response and suppression rules.",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    },
+    {
+      "componentRef": "streak-1",
+      "componentType": "STREAK_CARD",
+      "reason": "Suppressed per hard suppressions active (suppress_streak).",
+      "reasonCode": "DEFER_NOT_CENTRAL",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

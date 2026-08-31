@@ -1,0 +1,100 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-learning",
+  "journeyObjective": "Enable Sophie to review points balance, continue structured learning modules, and monitor First Home Savings progress at her own pace.",
+  "entryPoint": "Rewards overview dashboard",
+  "completionDefinition": "Customer reviews educational progress, accesses module quiz without timer, and views savings goal milestone update.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my balances and rewards stand today?",
+      "entryCondition": "App launched to rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "tier",
+        "tangible value conversion"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-signal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial mastery and track my savings goal?",
+      "entryCondition": "Balance reviewed, transitioning to learning path and goals",
+      "requiredInformation": [
+        "active goal progress",
+        "learning module status",
+        "knowledge quiz",
+        "comprehension feedback",
+        "confidence metrics",
+        "educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What milestones and rewards support my long-term financial mastery?",
+      "entryCondition": "Quiz and learning mission reviewed",
+      "requiredInformation": [
+        "milestones",
+        "goal-linked rewards",
+        "how points work",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education-tips",
+      "purpose": "Provide supplementary calm financial guidance aligned with mastery motivation.",
+      "contentNotes": [
+        "Daily money tip",
+        "Academy badge status"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "ab9beece",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "expiresAt": "2023-11-01T00:00:00Z",
+  "customerRef": "customer_008",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3600,
+        "tier": "Gold",
+        "name": "Ryan Okafor",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-expiring-alert",
+      "type": "EXPIRING_POINTS_ALERT",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Heads up, Ryan!",
+        "expiringPoints": 1500,
+        "daysLeft": 7,
+        "message": "1,500 of your LBG coins are gently reminding you it's treat time by next week.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "TENSION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Your Wallet Power",
+        "cashValue": "\u00a336.00",
+        "pointsEquivalent": 3600,
+        "breakdown": {
+          "label": "Available LBG Coins",
+          "value": "3,600 coins"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-expiring-alert"
+        ],
+        "resolves": [
+          "comp-expiring-alert"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quick-redeem",
+      "type": "QUICK_REDEEM_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Instant Treats Ready For You",
+        "description": "Claim instantly with zero fuss \u2014 just tap and enjoy your perks!",
+        "rewards": {
+          "name": "Artisan Coffee & Pastry Bundle",
+          "points": 350,
+          "icon": "coffee"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_INSTANT",
+          "payload": {
+            "rewardName": "Artisan Coffee & Pastry Bundle",
+            "pointsCost": 350
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [
+          "comp-expiring-alert"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reward-carousel",
+      "type": "REWARD_CAROUSEL",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "More Instant Picks",
+        "rewards": {
+          "name": "Movie Night Streaming Pass",
+          "points": 500,
+          "category": "Entertainment",
+          "limited": false
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quick-win",
+      "type": "QUICK_WIN_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Super Speedy Win",
+        "subtitle": "Claim in under 30 seconds",
+        "rewards": {
+          "name": "Snack Box Voucher",
+          "points": 200
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-streak-card",
+      "type": "STREAK_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "streakDays": 0,
+        "message": "Welcome back, Ryan! Let's kick off a brand new reward streak today.",
+        "nextReward": "Bonus 100 coins on your next instant redeem",
+        "milestones": {
+          "days": 3,
+          "reward": "Coffee voucher bonus",
+          "achieved": false
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-personalized-offer",
+      "type": "PERSONALIZED_OFFER_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Picked Just For You",
+        "subtitle": "Instant gratification special",
+        "offer": "Free Delivery Pass on next order",
+        "validUntil": "7 days",
+        "message": "Because you love fast, effortless perks!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-reengagement-banner",
+      "type": "REENGAGEMENT_BANNER",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Great to see you again, Ryan!",
+        "message": "Your rewards have been waiting patiently. Let's make today rewarding.",
+        "ctaText": "Explore Instant Treats",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-badge-card",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Your Collector Badges",
+        "badges": {
+          "name": "Instant Redeemer",
+          "icon": "zap",
+          "earned": true
+        },
+        "totalEarned": 3,
+        "totalAvailable": 10,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-quick-redeem"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-sync-status",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "status": "synced",
+        "title": "Wallet Synchronised",
+        "lastSyncedAt": "Just now",
+        "message": "All 3,600 LBG coins are fully up to date and secure.",
+        "ctaText": "Refresh",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "PROTECT_AND_REASSURE",
+    "headline": "Your rewards are safe \u2014 here's the fastest win",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "HOOK",
+        "label": "Why this matters now",
+        "role": "Grab attention with the single most relevant moment",
+        "componentIds": [
+          "comp-expiring-alert",
+          "comp-reengagement-banner"
+        ]
+      },
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-quick-redeem",
+          "comp-reward-carousel",
+          "comp-quick-win",
+          "comp-streak-card",
+          "comp-personalized-offer"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-badge-card"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-sync-status"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-instant-redemption",
+    "primaryOutcome": "Claim an instant reward using available points to re-engage with the rewards program.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-quick-redeem"
+  }
+}

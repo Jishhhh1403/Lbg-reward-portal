@@ -1,0 +1,74 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Deliver educational modules, transparent value explainers, and pressure-free savings goal tracking aligned with learning mastery.",
+  "entryPoint": "Rewards Overview Mobile Interface",
+  "completionDefinition": "Customer reviews goal progress, completes a learning quiz, or inspects a transparent value explainer at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot-trust",
+      "order": 1,
+      "customerQuestion": "Where do I stand and what is my value worth?",
+      "entryCondition": "App launch on mobile interface",
+      "requiredInformation": [
+        "Gold tier status",
+        "3900 LBG coins",
+        "First Home Savings Knowledge progress at 63%"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways-momentum",
+      "requiredEvidenceRefs": [
+        "fact-goal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways-momentum",
+      "order": 2,
+      "customerQuestion": "What educational pathways and transparent milestones can I explore next at my own pace?",
+      "entryCondition": "Completion of points and goal snapshot review",
+      "requiredInformation": [
+        "Learning mission progress",
+        "Self-paced quiz",
+        "Transparent value explainers"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "QUIZ_ANSWER",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-2",
+        "fact-sig-3"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-coach-tips",
+      "purpose": "Provide supplemental financial literacy coaching insights without pressure",
+      "contentNotes": [
+        "Ava from Rewards Coaching tips on long-term compound growth"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

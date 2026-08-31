@@ -1,0 +1,229 @@
+{
+  "primaryActionComponentRef": "comp-expiring-alert",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-expiring-alert",
+      "miniJourneyId": "mj-hook",
+      "narrativeRole": "TENSION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-metric-tile",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-retirement",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-metric-tile"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-education",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-goal-retirement"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-home",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-goal-education"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-goal-home"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-edu-insight",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "MEANING",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-expiring-alert"
+      ],
+      "resolves": [
+        "comp-expiring-alert"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-future-value",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-edu-insight"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-projection-chart",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-future-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-projection-chart"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-expiring-alert",
+      "relationship": "sequential",
+      "bridgeIntent": "Establish current standing and introduce gentle point protection.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-expiring-alert",
+      "toComponentRef": "comp-metric-tile",
+      "relationship": "sequential",
+      "bridgeIntent": "Review active savings rhythm calmly.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-metric-tile",
+      "toComponentRef": "comp-goal-retirement",
+      "relationship": "sequential",
+      "bridgeIntent": "Examine long-horizon goal trajectory.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-retirement",
+      "toComponentRef": "comp-goal-education",
+      "relationship": "sequential",
+      "bridgeIntent": "Review secondary education fund milestone.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-education",
+      "toComponentRef": "comp-goal-home",
+      "relationship": "sequential",
+      "bridgeIntent": "Review property deposit savings progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-home",
+      "toComponentRef": "comp-add-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer capability to establish new long-term objectives.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-add-goal",
+      "toComponentRef": "comp-edu-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide educational context on compound accumulation.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-edu-insight",
+      "toComponentRef": "comp-future-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Showcase projected portfolio growth over time.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-future-value",
+      "toComponentRef": "comp-projection-chart",
+      "relationship": "sequential",
+      "bridgeIntent": "Visualize long-term accumulation trajectory.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-projection-chart",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate cash value transparency for accumulated points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Summarize portfolio health and Diamond tier efficiency.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [
+    {
+      "componentRef": "comp-leaderboard",
+      "componentType": "LEADERBOARD",
+      "reason": "Suppressed due to low gamification response profile and notification fatigue guidance.",
+      "reasonCode": "SUPPRESS_GAMIFICATION",
+      "alternativeSurface": null
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

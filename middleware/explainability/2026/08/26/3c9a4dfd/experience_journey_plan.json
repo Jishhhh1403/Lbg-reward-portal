@@ -1,0 +1,90 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide a transparent overview of points, active First Home savings goal progress, and structured educational modules aligned with mastery motivation.",
+  "entryPoint": "Customer opens rewards overview with 3900 LBG coins and active goal at 63%.",
+  "completionDefinition": "Customer reviews goal progress and accesses the recommended educational quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now on my savings and learning journey?",
+      "entryCondition": "User opens rewards app.",
+      "requiredInformation": [
+        "Points balance",
+        "Goal progress percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins",
+        "fact-goal-home"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real-world value for my home goal?",
+      "entryCondition": "User views points balance and initial goal overview.",
+      "requiredInformation": [
+        "Cash value equivalent",
+        "Value transparency breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational path and milestones will help me master my financial goals?",
+      "entryCondition": "User reviews tangible value and savings progress.",
+      "requiredInformation": [
+        "Learning mission status",
+        "Quiz module",
+        "Milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-2"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education-details",
+      "purpose": "Provide deeper clarity on financial concepts without timed pressure.",
+      "contentNotes": [
+        "Detailed lesson transcripts",
+        "Mastery progress metrics"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

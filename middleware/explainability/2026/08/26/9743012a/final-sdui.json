@@ -1,0 +1,406 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "9743012a",
+  "createdAt": "2026-08-18T00:00:00Z",
+  "expiresAt": "2026-08-18T23:59:59Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "points-balance-1",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "consolidated-wallet-1",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Combined Partner Balances",
+        "subtitle": "All your connected accounts in one simple view",
+        "programmes": [
+          {
+            "name": "LBG Rewards",
+            "points": 11200,
+            "value": "\u00a3112.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Avios Group",
+            "points": 8500,
+            "value": "\u00a385.00",
+            "status": "Connected"
+          },
+          {
+            "name": "Retail Partners",
+            "points": 3400,
+            "value": "\u00a334.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3231.00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "sync-status-1",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "status": "synced",
+        "title": "Partner Accounts Up to Date",
+        "lastSyncedAt": "Today at 04:25",
+        "message": "All 3 partner balances are securely synchronised.",
+        "ctaText": "Refresh Now",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "consolidated-wallet-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "partner-value-comparison-1",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Transfer Value Compare",
+        "subtitle": "See what your points are worth across partners",
+        "partners": [
+          {
+            "name": "Avios Group",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "Flight upgrades"
+          },
+          {
+            "name": "Retail Vouchers",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "Instant high street spend"
+          },
+          {
+            "name": "Savings Pot",
+            "points": 1000,
+            "value": "\u00a310.50",
+            "perk": "Includes 5% transfer bonus"
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "sync-status-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "partner-transfer-card-1",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Quick Transfer",
+        "fromProgramme": "LBG Rewards",
+        "toPartner": "Savings Pot",
+        "points": 1000,
+        "estimatedValue": "\u00a310.50",
+        "status": "Ready",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "TRANSFER_POINTS",
+          "payload": {
+            "points": 1000,
+            "destination": "Savings Pot"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "partner-value-comparison-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "reward-provenance-card-1",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Transfer History",
+        "subtitle": "Recent movement between your accounts",
+        "history": [
+          {
+            "source": "Partner Transfer Bonus",
+            "date": "18 Aug 2026",
+            "points": 1000
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "partner-transfer-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-progress-card-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "remaining": 1250,
+        "motivationalMessage": "You are over halfway to your Family Holiday Fund!",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "reward-provenance-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "programme-connection-card-1",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Connected Programmes",
+        "subtitle": "Manage your linked partner rewards accounts",
+        "programmes": [
+          {
+            "name": "LBG Rewards",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Avios Group",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Retail Partners",
+            "status": "Active",
+            "connected": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "goal-progress-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "how-points-work-card-1",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "steps": [
+          {
+            "title": "1. View All Balances",
+            "description": "See everything you've earned across all partner programmes in one clear total."
+          },
+          {
+            "title": "2. Compare Simple Value",
+            "description": "Check exactly what your points translate to in pounds and pence with zero jargon."
+          },
+          {
+            "title": "3. Transfer Instantly",
+            "description": "Move points where you need them with a single tap and no hidden fees."
+          }
+        ],
+        "ctaLabel": "Learn More About Transfers",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "programme-connection-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "tangible-value-card-1",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Total Cash Value",
+        "cashValue": "\u00a3231.00",
+        "pointsEquivalent": 23100,
+        "breakdown": {
+          "LBG Rewards": "\u00a3112.00",
+          "Avios Group": "\u00a385.00",
+          "Retail Partners": "\u00a334.00"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "how-points-work-card-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "points-balance-1",
+          "consolidated-wallet-1",
+          "goal-progress-card-1",
+          "tangible-value-card-1"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "partner-transfer-card-1",
+          "how-points-work-card-1"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "sync-status-1",
+          "partner-value-comparison-1",
+          "reward-provenance-card-1",
+          "programme-connection-card-1"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-portability-clarity",
+    "primaryOutcome": "Effortless cross-programme reward portability visibility and plain-language transfer clarity.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "START",
+    "primaryActionComponentId": "partner-transfer-card-1"
+  }
+}

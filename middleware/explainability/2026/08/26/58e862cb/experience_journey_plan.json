@@ -1,0 +1,92 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-protect-value",
+  "journeyObjective": "Provide a calm, transparent overview of expiring points and flexible redemption options with zero artificial urgency, honoring Jessica Martinez's autonomy preference.",
+  "entryPoint": "Dashboard return after 45 days of inactivity",
+  "completionDefinition": "Customer views points balance, inspects the value explainer, and interacts with the customer choice panel at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand and are my rewards protected?",
+      "entryCondition": "User logs in after 45-day absence",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "expiringPoints",
+        "daysUntilExpiry"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-inactive-days",
+        "fact-expiring-points"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What is the actual value of my points and what are my flexible choices?",
+      "entryCondition": "Customer reviews balance and expiry context",
+      "requiredInformation": [
+        "cashValue",
+        "pointsEquivalent",
+        "breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-autonomy-preference"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I redeem or protect my points comfortably at my own pace?",
+      "entryCondition": "Customer explores transparent redemption options",
+      "requiredInformation": [
+        "options"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-autonomy-preference"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide absolute transparency on how points work and program provenance without pressure.",
+      "contentNotes": [
+        "How points work step-by-step",
+        "Reward provenance history"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}
