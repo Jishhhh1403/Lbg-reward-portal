@@ -1,0 +1,262 @@
+{
+  "planId": "plan-b81f9cbf",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Self-paced educational module continuation paired with transparent milestone progress tracking for First Home Savings Knowledge, strictly adhering to educational storytelling arc and suppressing all time pressure or public rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250.0,
+          "target": 2000.0,
+          "percentage": 63.0,
+          "remaining": 750.0,
+          "motivationalMessage": "You are making steady progress toward your first home savings knowledge milestone at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Rewards Cash Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Mastery Value",
+            "value": "\u00a339.00 equivalent value across 3,900 points"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Financial Literacy Academy",
+          "missionName": "Advanced Mortgages & Savings Mastery",
+          "description": "Continue your structured learning journey with self-paced modules designed for deep comprehension.",
+          "modulesDone": 6,
+          "modulesTotal": 10,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_LEARNING",
+            "payload": {
+              "missionName": "Advanced Mortgages & Savings Mastery"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary advantage of fixed-rate savings accumulation over variable compounding in long-term home funds?",
+          "options": "Predictable interest security,Immediate liquidity,Higher short-term volatility,Zero minimum balance",
+          "reward": "150 points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "Predictable interest security"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Mastery Review",
+          "question": "Understanding compounding horizons",
+          "yourAnswer": "Consistent monthly contribution",
+          "correctAnswer": "Consistent monthly contribution with compound interest reinvestment",
+          "feedback": "Great job! Your recent quiz performance shows complete mastery of compounding fundamentals.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Competence Tracking",
+          "topic": "Home Savings & Financial Literacy",
+          "confidencePercent": 92,
+          "levelLabel": "Mastery level achieved",
+          "nextMilestone": "Expert Mortgage Readiness Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Learners who review concepts at their own pace retain 40% more financial literacy knowledge over 12 months.",
+          "source": "LBG Financial Education Institute",
+          "actionLabel": "Explore Learning Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_INSIGHT_DETAILS",
+            "payload": {
+              "source": "LBG Financial Education Institute"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "milestones": {
+            "label": "Completed 6 educational modules without time pressure",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Milestone Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Knowledge Mastery Bonus Points",
+            "points": 500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardName": "Knowledge Mastery Bonus Points"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "steps": {
+            "title": "Transparent Value Accumulation",
+            "description": "Every educational module completed and quiz mastered earns clear, guaranteed points convertible to tangible savings support."
+          },
+          "ctaLabel": "Learn More About Points",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_POINTS_EXPLAINER",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-metric-tile",
+        "type": "METRIC_TILE",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "label": "Monthly Learning Pace",
+          "value": "19",
+          "unit": "active days",
+          "tone": "brand",
+          "infoText": "Consistent self-paced engagement",
+          "layout": {
+            "span": "third"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "EDUCATIONAL_COMPETENCE_MATCH",
+      "STRICT_MANDATORY_STACK"
+    ]
+  },
+  "strategy": "Self-paced educational module continuation paired with transparent milestone progress tracking for First Home Savings Knowledge, strictly adhering to educational storytelling arc and suppressing all time pressure or public rankings.",
+  "confidence": 0.98
+}

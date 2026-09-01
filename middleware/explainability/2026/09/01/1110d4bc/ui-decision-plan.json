@@ -1,0 +1,210 @@
+{
+  "planId": "plan-1110d4bc",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Focused mastery journey emphasizing First Home Savings goal progress (63%) with next-step educational modules, transparent value explainers, and structured quizzes, completely avoiding timed challenges and rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3550,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your First Home Savings mastery.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Coin Value Transparency",
+          "cashValue": "\u00a335.50",
+          "pointsEquivalent": 3550,
+          "breakdown": {
+            "label": "Educational Rewards Value",
+            "value": "1 coin = \u00a30.01 clear redemption equivalence"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "steps": {
+            "title": "Mastery-based earning",
+            "description": "Earn coins by completing financial literacy modules and scoring 100% on quizzes at your own pace."
+          },
+          "ctaLabel": "Explore Learning Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Current Learning Mission",
+          "missionName": "First Home Deposit Fundamentals",
+          "description": "Deepen your understanding of mortgage structures and deposit milestones without time pressure.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_MODULE",
+            "payload": {
+              "mission": "First Home Deposit Fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "question": "What percentage of a property value is typically recommended for a standard deposit?",
+          "options": "A) 5-20% | B) 50% | C) 100%",
+          "reward": "150 coins",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ANSWER_QUIZ",
+            "payload": {
+              "questionId": "home-deposit-1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Recent Quiz Reflection",
+          "question": "Understanding compound savings growth",
+          "yourAnswer": "Correct on 2nd attempt",
+          "correctAnswer": "Regular compounding accelerates deposit readiness",
+          "feedback": "Great persistence in reviewing the material until fully mastered!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Financial Literacy Confidence",
+          "topic": "First Home Savings",
+          "confidencePercent": 88,
+          "levelLabel": "High Mastery Confidence",
+          "nextMilestone": "Deposit Readiness Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Learners who complete all module segments achieve 40% greater accuracy in long-term savings planning.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Review Module Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Unlocked Goal Milestone",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Homebuyer Expert Badge & 300 Bonus Coins",
+            "points": 300,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardId": "homebuyer-badge-300"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_COMPETENCE"
+    ]
+  },
+  "strategy": "Focused mastery journey emphasizing First Home Savings goal progress (63%) with next-step educational modules, transparent value explainers, and structured quizzes, completely avoiding timed challenges and rankings.",
+  "confidence": 0.95
+}

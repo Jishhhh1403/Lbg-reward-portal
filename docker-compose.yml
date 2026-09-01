@@ -124,6 +124,23 @@ services:
       - GROQ_MODEL=${GROQ_MODEL:-openai/gpt-oss-120b}
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
+  ceaei:
+    build: ./ceaei-middleware
+    container_name: ilrp-app-ceaei
+    ports:
+      - "8004:8000"
+    volumes:
+      - ./ceaei-middleware:/app
+    depends_on:
+      - middleware
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL:-openai/gpt-oss-120b}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_API_KEY_1=${GEMINI_API_KEY_1}
+      - GEMINI_API_KEY_2=${GEMINI_API_KEY_2}
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
 volumes:
   pgdata:
   besu-data:

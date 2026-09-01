@@ -18,6 +18,13 @@ from .request_response import (
     RiskCheckResult,
     RedTeamChallengeResult,
 )
+from .objective import (
+    ObjectiveGenerateRequest,
+    ObjectiveGenerateResponse,
+    ObjectiveScreenPayload,
+    ObjectiveStage,
+    ObjectiveWallet,
+)
 
 __all__ = [
     "SDUIAction",
@@ -34,4 +41,9 @@ __all__ = [
     "ConstitutionCheckResult",
     "RiskCheckResult",
     "RedTeamChallengeResult",
+    "ObjectiveGenerateRequest",
+    "ObjectiveGenerateResponse",
+    "ObjectiveScreenPayload",
+    "ObjectiveStage",
+    "ObjectiveWallet",
 ]

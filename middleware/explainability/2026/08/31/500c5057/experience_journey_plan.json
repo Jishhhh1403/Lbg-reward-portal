@@ -1,0 +1,86 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-milestone",
+  "journeyObjective": "Enable Sophie Williams to review her points balance, track First Home Savings Knowledge progress (63%), and access self-paced educational quizzes and milestones.",
+  "entryPoint": "Rewards Overview Dashboard",
+  "completionDefinition": "Customer reviews goal progress and initiates or completes an educational quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my rewards and savings knowledge?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings Knowledge progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-complete",
+        "fact-session-time"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial mastery at my own pace?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "learning modules",
+        "educational insights"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-mastery-motivation"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What milestones and goal-linked rewards support my progression?",
+      "entryCondition": "Learning modules explored",
+      "requiredInformation": [
+        "milestone rewards",
+        "goal progress breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-quiz-retake"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide transparent point-to-cash equivalent context and foundational knowledge without artificial pressure.",
+      "contentNotes": [
+        "Cash value breakdown",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-savings-goal",
+  "journeyObjective": "Deliver structured financial literacy milestones and goal tracking for the First Home Savings goal without timed pressure.",
+  "entryPoint": "Rewards Overview dashboard loaded for Sophie Williams",
+  "completionDefinition": "Customer reviews goal progress (63%) and engages with the next recommended learning module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my coins and savings goal?",
+      "entryCondition": "Dashboard opened",
+      "requiredInformation": [
+        "LBG coins balance",
+        "First Home Savings Knowledge progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-lbg-coins",
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my points and rewards work transparently?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "Points mechanics",
+        "Tangible cash value transparency"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "What learning modules and rewards are available next?",
+      "entryCondition": "Trust & mechanics reviewed",
+      "requiredInformation": [
+        "Learning mission",
+        "Quiz",
+        "Goal linked reward"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "ACTION",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-completes-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How am I progressing on my financial mastery journey?",
+      "entryCondition": "Pathways reviewed",
+      "requiredInformation": [
+        "Comprehension feedback",
+        "Confidence progress",
+        "Educational insight"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-profile",
+      "purpose": "Provide supplementary context on Gold tier status and educational badges.",
+      "contentNotes": [
+        "Gold tier status",
+        "Badge overview"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

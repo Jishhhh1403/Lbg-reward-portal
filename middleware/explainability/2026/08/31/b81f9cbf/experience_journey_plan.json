@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Provide an uncluttered, self-paced rewards and educational milestone overview highlighting points balance, ongoing modules, and the First Home Savings Knowledge goal.",
+  "entryPoint": "Dashboard load reflecting Gold tier educational progress",
+  "completionDefinition": "Customer reviews educational progress and interacts with the self-paced module continuation module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and value clarity?",
+      "entryCondition": "App start",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-completes-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 2,
+      "customerQuestion": "What pathways can I take to deepen my financial competence and savings goals?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "modules",
+        "goals",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-session-time"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 3,
+      "customerQuestion": "How am I progressing toward my educational and savings milestones?",
+      "entryCondition": "Pathways explored",
+      "requiredInformation": [
+        "quiz",
+        "comprehension",
+        "confidence"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "COMPLETE_MODULE",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motivation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide absolute clarity on rewards provenance and educational value without commercial pressure.",
+      "contentNotes": [
+        "Tangible value breakdown",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

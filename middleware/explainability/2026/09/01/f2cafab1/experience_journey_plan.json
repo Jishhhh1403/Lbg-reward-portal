@@ -1,0 +1,92 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-financial-literacy",
+  "journeyObjective": "Provide a clear, self-paced overview of financial literacy progress, goal tracking, and knowledge milestones.",
+  "entryPoint": "User opens rewards overview screen",
+  "completionDefinition": "Customer views educational progress, reviews goal milestone status, and interacts with structured learning recommendations.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and learning goals?",
+      "entryCondition": "App launched and wallet synced",
+      "requiredInformation": [
+        "points balance",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-lbg-coins",
+        "fact-goal-first-home"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What learning modules and quizzes can I explore at my own pace?",
+      "entryCondition": "User has reviewed wallet and primary goal",
+      "requiredInformation": [
+        "module status",
+        "quiz options"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-completes-modules",
+        "fact-signal-retakes-quizzes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do my learning milestones connect to tangible rewards and future value?",
+      "entryCondition": "User has explored modules and quizzes",
+      "requiredInformation": [
+        "milestones",
+        "tangible value",
+        "goal-linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-goal-first-home"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency",
+      "purpose": "Provide clear educational breakdown of point valuation and how points work without pressure.",
+      "contentNotes": [
+        "How points work step-by-step",
+        "Tangible cash value equivalent"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

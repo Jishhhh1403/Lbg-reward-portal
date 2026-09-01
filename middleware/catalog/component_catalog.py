@@ -539,6 +539,83 @@ PERSONA_COMPOSITION_GUIDES = {
 DEFAULT_GUIDE = PERSONA_COMPOSITION_GUIDES["GOAL_ORIENTED_SAVER"]
 
 
+# ---------------------------------------------------------------------------
+# Objective Workspace SDUI catalogue
+#
+# These types are emitted by the /objective/generate endpoint and rendered by
+# the frontend's objective registry (src/components/objective/registry.tsx).
+# They follow the same SDUIComponent contract as the dashboard components.
+# ---------------------------------------------------------------------------
+
+OBJECTIVE_COMPONENT_CATALOG = {
+    "OBJECTIVE_HEADLINE": {
+        "description": "Stage heading: optional green eyebrow label and bold title (often the customer's own objective).",
+        "props": {"eyebrow": "string optional", "title": "string"},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_INPUT": {
+        "description": "Capture stage - multi-line text field where the customer states their objective. Controlled by workspace state.",
+        "props": {"label": "string", "placeholder": "string", "value": "string"},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_SUMMARY_CARD": {
+        "description": "AI summary of the customer's objective and the recommended path.",
+        "props": {"summary": "string"},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_CONSTRAINTS": {
+        "description": "List of reward-relevant constraints applied to planning, each with an applied check state.",
+        "props": {"items": [{"id": "string", "text": "string", "applied": "boolean"}]},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_OPPORTUNITIES": {
+        "description": "Reward opportunities list with partner, description and estimated GBP value.",
+        "props": {"items": [{"id": "string", "title": "string", "description": "string", "partner": "string", "estimatedValue": "string"}]},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_STRATEGIES": {
+        "description": "Selectable redemption strategy plans (radio selection). Each item carries an OBJECTIVE_SELECT_PLAN action.",
+        "props": {"items": [{"id": "string", "type": "string", "title": "string", "description": "string", "order": "number"}]},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_AI_TOOLS": {
+        "description": "Quick AI-assist chips (Understand / Compare / Consolidate / Change Constraints / Learn More).",
+        "props": {"tools": ["string"]},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_EVIDENCE": {
+        "description": "Cognitive evidence explaining why the selected plan is recommended, with supporting factors.",
+        "props": {"title": "string", "summary": "string", "factors": ["string"]},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_EXECUTION_HEADER": {
+        "description": "Execution plan banner: plan label and one-line description.",
+        "props": {"planLabel": "string", "description": "string"},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_EXECUTION_STEPS": {
+        "description": "Ordered execution steps with live status (pending/running/completed). Each item carries an OBJECTIVE_SELECT_STEP action.",
+        "props": {"items": [{"id": "string", "label": "string", "partner": "string", "status": "pending|running|completed|failed"}]},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_REDIRECT": {
+        "description": "Transient redirect-confirmation screen: shows the partner being redirected to with a go / confirm action.",
+        "props": {"planLabel": "string", "stepLabel": "string", "partner": "string", "confirmLabel": "string"},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_RESULT": {
+        "description": "Execution result screen: success or failure outcome with a return-home action.",
+        "props": {"success": "boolean", "title": "string", "message": "string", "detail": "string optional"},
+        "defaultSpan": "full",
+    },
+    "OBJECTIVE_NAV": {
+        "description": "Primary/secondary action row (e.g. Next + Modify). Actions: OBJECTIVE_NEXT, OBJECTIVE_MODIFY.",
+        "props": {"primary": "string", "secondary": "string optional"},
+        "defaultSpan": "full",
+    },
+}
+
+
 def get_persona_guide(persona: str) -> dict:
     return PERSONA_COMPOSITION_GUIDES.get(persona, DEFAULT_GUIDE)
 

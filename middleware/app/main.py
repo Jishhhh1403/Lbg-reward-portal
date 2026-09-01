@@ -13,6 +13,11 @@ from dotenv import load_dotenv
 load_dotenv(str(Path(__file__).parent.parent / ".env"))
 
 from services.orchestration_service import OrchestrationService
+from services.objective_service import ObjectiveService
+from schemas.objective import (
+    ObjectiveGenerateRequest,
+    ObjectiveGenerateResponse,
+)
 from services.db_client import (
     get_pool,
     close_pool,
@@ -55,11 +60,12 @@ class PersonalizationRequest(BaseModel):
 
 
 orchestration_service = None
+objective_service = None
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global orchestration_service
+    global orchestration_service, objective_service
     gemini_keys = []
     for i in range(1, 4):
         key = os.getenv(f"GEMINI_API_KEY_{i}", "")
@@ -79,6 +85,7 @@ async def lifespan(app: FastAPI):
         groq_api_key=groq_key,
         groq_model=groq_model,
     )
+    objective_service = ObjectiveService()
     try:
         await get_pool()
         print("[STARTUP] Database pool initialized")
@@ -131,6 +138,22 @@ async def generate_sdui(request: PersonalizationRequest):
             },
             "error": str(e),
         }
+
+
+@app.post("/objective/generate")
+async def generate_objective(request: ObjectiveGenerateRequest):
+    try:
+        if objective_service is None:
+            raise RuntimeError("ObjectiveService not initialized")
+        result = await objective_service.generate(request)
+        return result
+    except Exception as e:
+        return ObjectiveGenerateResponse(
+            status="REJECTED",
+            components=[],
+            reasonCodes=["SERVICE_ERROR"],
+            error=str(e),
+        ).model_dump()
 
 
 @app.get("/experience/customer/{customer_id}")

@@ -1,0 +1,121 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Emphasize self-paced financial literacy modules, knowledge milestones, and First Home Savings Knowledge goal tracking without timed challenges or competitive elements.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Highlight points balance and recent achievement badges with secondary links to general banking rewards and partner offers.",
+      "scores": {
+        "customerGoalRelevance": 5,
+        "expectedCustomerUtility": 4,
+        "screenLevelStoryCoherence": 5,
+        "journeyAndActionContinuity": 6,
+        "accessibilityAndCognitiveFit": 7,
+        "brandAndLegalConsistency": 8,
+        "rewardProfileAlignment": 4,
+        "evidenceConfidence": 6,
+        "usefulNovelty": 4,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 5.75,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-explore-financial-literacy",
+    "storyTitle": "Mastering Financial Knowledge",
+    "oneSentenceStory": "Review current financial literacy progress and explore structured learning modules at an autonomous, relaxed pace.",
+    "customerSituation": "Customer is engaged in building financial knowledge and tracking long-term savings competence.",
+    "storyTension": "Desire for thorough understanding without rushed timelines or competitive pressure.",
+    "customerResolution": "Clear overview of completed modules, ongoing knowledge milestones, and accessible quizzes.",
+    "primaryOutcome": "Master financial literacy topics and track savings knowledge progress at an autonomous, comfortable pace.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-signal-completes-modules",
+      "fact-signal-retakes-quizzes",
+      "fact-goal-first-home"
+    ],
+    "confidence": 0.94,
+    "prohibitedDetours": [
+      "timed_challenges",
+      "public_leaderboards",
+      "forced_urgency"
+    ],
+    "completionSignals": [
+      "customer views educational progress",
+      "customer engages with structured learning recommendations"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-explore-financial-literacy",
+      "journeyObjective": "Provide a clear, self-paced overview of financial literacy progress, goal tracking, and knowledge milestones.",
+      "completionDefinition": "Customer views educational progress, reviews goal milestone status, and interacts with structured learning recommendations.",
+      "episodeSketches": [
+        "Display points balance and First Home Savings Knowledge goal progress",
+        "Present completed modules and recommended self-paced quizzes",
+        "Offer goal-linked educational reward options without time pressure"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.2,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 90,
+    "transitionStrength": 88,
+    "actionOutcomeContinuity": 92,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with Sophie Williams' self-paced educational preference and mastery motivation."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All hard gates passed. No dark patterns, timed challenges, or public leaderboards present."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Story-explore-financial-literacy and journey-candidate-1 exhibit exceptionally high narrative and action continuity."
+    }
+  ]
+}

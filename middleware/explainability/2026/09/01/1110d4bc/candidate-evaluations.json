@@ -1,0 +1,134 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Focused mastery journey emphasizing First Home Savings goal progress (63%) with next-step educational modules and structured quizzes, completely avoiding timed challenges and rankings.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.35,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Broader financial literacy exploration with value-linked educational rewards and milestone tracking, supporting long-term savings comprehension.",
+      "scores": {
+        "customerGoalRelevance": 8,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 8,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 6,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.35,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-continue-savings-goal",
+    "storyTitle": "Advancing Your First Home Savings Mastery",
+    "oneSentenceStory": "Track your ongoing learning progress and complete your next financial literacy module toward your First Home Savings goal.",
+    "customerSituation": "Customer is actively engaged in financial literacy modules with a home savings goal at 63% progress.",
+    "storyTension": "Maintaining self-paced momentum without rushing or encountering artificial time pressures.",
+    "customerResolution": "Engaging calmly with structured educational milestones and clear goal tracking.",
+    "primaryOutcome": "Master financial literacy milestones and track learning progress toward the savings goal.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-goal-progress",
+      "fact-completes-modules"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Timed challenges",
+      "Public rankings or social gamification",
+      "Artificial scarcity"
+    ],
+    "completionSignals": [
+      "Module opened and reviewed",
+      "Goal progress component viewed"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-continue-savings-goal",
+      "journeyObjective": "Deliver structured financial literacy milestones and goal tracking for the First Home Savings goal without timed pressure.",
+      "completionDefinition": "Customer reviews goal progress (63%) and engages with the next recommended learning module.",
+      "episodeSketches": [
+        "Display First Home Savings goal progress and current points balance clearly.",
+        "Present the next recommended educational module and milestone quiz without timer mechanics."
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.4,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 90,
+    "miniJourneyCompleteness": 92,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 92,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with LEARNING_MASTERY motivation and high curiosity scores, targeting the active home savings goal."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "All hard gates passed. Zero timed challenges or public ranking mechanisms included, respecting customer boundaries."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Cognitive fit is optimal; self-paced educational flow with clear contrast and structured milestones."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story hypothesis 'story-continue-savings-goal' is fully supported by observed completion behavior and goal progress."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate-1 provides a clean, coherent episodic flow directly serving the customer objective."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Coherence assessment passed with 95% story clarity and zero conflicting narratives or orphan components."
+    }
+  ]
+}

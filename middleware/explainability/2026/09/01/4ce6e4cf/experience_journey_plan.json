@@ -1,0 +1,121 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-savings-goal",
+  "journeyObjective": "Deliver a seamless, autonomous educational rewards and goal progress experience for Sophie Williams.",
+  "entryPoint": "Rewards overview screen opened with active First Home Savings Knowledge goal at 63%.",
+  "completionDefinition": "Customer successfully reviews First Home Savings Knowledge progress and engages with educational milestone modules.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and my savings knowledge goal?",
+      "entryCondition": "Customer views rewards overview screen.",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goalName",
+        "current",
+        "target",
+        "percentage",
+        "remaining"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING",
+        "TENSION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational steps and modules will help me master my savings goal?",
+      "entryCondition": "Customer reviews goal progress and explores learning path.",
+      "requiredInformation": [
+        "courseName",
+        "currentLesson",
+        "totalLessons",
+        "lessonPoints",
+        "question",
+        "options",
+        "reward",
+        "timeLimit",
+        "title",
+        "question",
+        "yourAnswer",
+        "correctAnswer",
+        "feedback"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do my points translate into tangible future value and structured milestones?",
+      "entryCondition": "Customer reviews competence progress and educational insights.",
+      "requiredInformation": [
+        "confidencePercent",
+        "topic",
+        "levelLabel",
+        "nextMilestone",
+        "title",
+        "insight",
+        "source",
+        "actionLabel",
+        "cashValue",
+        "pointsEquivalent",
+        "breakdown",
+        "title",
+        "steps",
+        "ctaLabel"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-3",
+        "fact-signal-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-education-details",
+      "purpose": "Provide deeper context on financial literacy modules and cash value transparency.",
+      "contentNotes": [
+        "Detailed breakdown of point valuations",
+        "Module completion guides"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

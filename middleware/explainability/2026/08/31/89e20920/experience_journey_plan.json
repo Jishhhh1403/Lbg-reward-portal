@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide an unhurried, educational rewards and savings knowledge overview supporting first home ownership mastery.",
+  "entryPoint": "Customer opens rewards and savings knowledge dashboard.",
+  "completionDefinition": "Customer reviews goal progress, accesses learning milestones, and explores goal-linked educational rewards.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and savings progress stand today?",
+      "entryCondition": "Session starts",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-goal"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I continue advancing my financial literacy and first home knowledge?",
+      "entryCondition": "Customer reviews current progress snapshot",
+      "requiredInformation": [
+        "learning modules",
+        "quiz reinforcement"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-module-completion",
+        "fact-quiz-behavior"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What tangible rewards and educational benefits match my long-term savings goals?",
+      "entryCondition": "Customer explores structured learning milestones and educational rewards",
+      "requiredInformation": [
+        "goal-linked rewards",
+        "tangible value conversion"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-coins",
+        "fact-goal"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-help",
+      "purpose": "Provide supplementary context on how LBG coins convert to tangible savings knowledge and educational milestones.",
+      "contentNotes": [
+        "Detailed breakdown of coin equivalence",
+        "Self-paced curriculum overview"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

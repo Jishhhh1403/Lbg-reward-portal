@@ -1,0 +1,73 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Provide a cohesive self-paced educational overview emphasizing savings knowledge progress, goal tracking, and mastery milestones.",
+  "entryPoint": "User opens rewards overview dashboard focusing on financial literacy and savings goal progress.",
+  "completionDefinition": "Customer reviews goal progress and explores available mastery milestones without time pressure.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my savings knowledge and points stand today?",
+      "entryCondition": "Dashboard loaded for Sophie Williams",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings Knowledge progress (63%)"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-completes-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my active learning modules and milestone rewards support my savings goal?",
+      "entryCondition": "Customer reviewed current points and goal baseline",
+      "requiredInformation": [
+        "learning modules",
+        "mastery quiz",
+        "milestones",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-retakes-quizzes",
+        "fact-longest-session-edu"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Detailed educational module syllabus and history",
+      "contentNotes": [
+        "Completed courses list",
+        "Earned Academy badges"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

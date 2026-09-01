@@ -1,0 +1,97 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Continue self-paced financial literacy mastery and track savings milestone progress toward First Home Savings Knowledge.",
+  "entryPoint": "Rewards overview screen focused on educational competence and milestone tracking",
+  "completionDefinition": "Customer reviews educational goal progress, accesses the active module quiz, and checks milestone reward details.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my current financial literacy goal and balance?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "POINTS_BALANCE",
+        "GOAL_PROGRESS_CARD",
+        "TANGIBLE_VALUE_CARD"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-complete"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points work and what can I learn next at my own pace?",
+      "entryCondition": "Customer reviews balance and goal progress",
+      "requiredInformation": [
+        "LEARNING_MISSION_CARD",
+        "HOW_POINTS_WORK_CARD",
+        "QUIZ_CARD"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-retake-quiz"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How am I progressing on my comprehension and long-term milestones?",
+      "entryCondition": "Customer completes or reviews learning modules",
+      "requiredInformation": [
+        "COMPREHENSION_FEEDBACK_CARD",
+        "CONFIDENCE_PROGRESS_CARD",
+        "EDUCATIONAL_INSIGHT_CARD",
+        "MILESTONE_CARD",
+        "GOAL_LINKED_REWARD",
+        "ADD_GOAL_CARD"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-tips",
+      "purpose": "Provide daily educational money tips and academy badges without time pressure",
+      "contentNotes": [
+        "DAILY_MONEY_TIP_CARD",
+        "POINTS_ACADEMY_BADGE_CARD",
+        "MYTH_OR_FACT_CARD",
+        "SAVINGS_CALCULATOR_CARD"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

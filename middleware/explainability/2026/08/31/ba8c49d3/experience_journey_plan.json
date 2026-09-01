@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-savings-goal",
+  "journeyObjective": "Guide Sophie through her active First Home Savings Knowledge goal progress and self-paced module quiz continuation.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews goal progress (63%), engages with educational module content, and completes the milestone quiz at her own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and savings knowledge?",
+      "entryCondition": "App launched with customer context loaded",
+      "requiredInformation": [
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-savings-goal",
+        "fact-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What is my next educational step toward my savings goal?",
+      "entryCondition": "User has reviewed balance and goal progress",
+      "requiredInformation": [
+        "active module",
+        "learning mission"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do I test my understanding and unlock my next milestone reward?",
+      "entryCondition": "Module content reviewed",
+      "requiredInformation": [
+        "quiz details",
+        "comprehension feedback",
+        "confidence progress",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary educational insights and tangible coin valuation context.",
+      "contentNotes": [
+        "Tangible value breakdown",
+        "Educational tips",
+        "How points work guide"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -22,8 +22,10 @@ import {
   RefreshCw,
   Send,
   Sparkles,
+  Target,
   TrendingUp,
   UserRound,
+  Wand2,
 } from 'lucide-react'
 import type {
   BrandOption,
@@ -37,6 +39,7 @@ import { fetchWalletTransactions } from '../services/rewardsApi'
 import { generateExperience } from '../services/experienceApi'
 import LocatePointsModal from '../components/dashboard/LocatePointsModal'
 import RedeemPointsModal from '../components/dashboard/RedeemPointsModal'
+import ObjectiveWorkspace from '../components/objective/ObjectiveWorkspace'
 import MetricTile from '../components/dashboard/MetricTile'
 import SDUIRenderer from '../renderer/SDUIRenderer'
 import {
@@ -210,6 +213,7 @@ export default function RewardsDashboardPage({
   const [activeTab, setActiveTab] = useState<DashboardTab>('home')
   const [locateOpen, setLocateOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
+  const [goalOpen, setGoalOpen] = useState(false)
   const [refreshing, setRefreshing] = useState(false)
 
   const [transactions, setTransactions] = useState<WalletTransactionItem[]>([])
@@ -347,6 +351,17 @@ export default function RewardsDashboardPage({
     } finally {
       setRefreshing(false)
     }
+  }
+
+  const handlePartnerHandoff = (_partner: string, url: string) => {
+    const customerEmailVal = customerEmail ?? ''
+    const customerPhoneVal = customerPhone ?? ''
+    const customerNameVal = customer.userName
+    const baseUrl = new URL(url)
+    baseUrl.searchParams.set('customerEmail', customerEmailVal)
+    baseUrl.searchParams.set('customerName', encodeURIComponent(customerNameVal))
+    baseUrl.searchParams.set('customerPhone', customerPhoneVal)
+    window.location.assign(baseUrl.toString())
   }
 
   return (
@@ -553,29 +568,40 @@ export default function RewardsDashboardPage({
               )}
 
               {/* Action buttons */}
-              <Box sx={{ marginTop: 2, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '10px', paddingBottom: '4px' }}>
+              <Box
+                sx={{
+                  marginTop: 2,
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                  gap: '10px',
+                  padding: '10px',
+                  bgcolor: 'rgba(255,255,255,0.10)',
+                  borderRadius: '16px',
+                  backdropFilter: 'blur(8px)',
+                  paddingBottom: '4px',
+                }}
+              >
                 <MotionButton
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setLocateOpen(true)}
                   disableRipple
                   sx={{
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '8px',
+                    gap: '6px',
                     borderRadius: '12px',
-                    bgcolor: 'rgba(255,255,255,0.15)',
+                    bgcolor: 'rgba(255,255,255,0.12)',
                     paddingTop: '12px',
                     paddingBottom: '12px',
-                    fontSize: 14,
-                    fontWeight: 600,
                     fontFamily: 'inherit',
                     color: 'inherit',
-                    backdropFilter: 'blur(4px)',
-                    '&:hover': { bgcolor: 'rgba(255,255,255,0.25)' },
+                    '&:hover': { bgcolor: 'rgba(255,255,255,0.22)' },
                   }}
                 >
-                  <Link2 size={16} /> Locate Points
+                  <Link2 size={18} strokeWidth={1.75} />
+                  <span style={{ fontSize: 11, fontWeight: 600, lineHeight: 1.2 }}>Locate Points</span>
                 </MotionButton>
                 <MotionButton
                   whileTap={{ scale: 0.97 }}
@@ -583,24 +609,49 @@ export default function RewardsDashboardPage({
                   disableRipple
                   sx={{
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '8px',
+                    gap: '6px',
                     borderRadius: '12px',
                     bgcolor: '#ddbe72',
                     paddingTop: '12px',
                     paddingBottom: '12px',
-                    fontSize: 14,
-                    fontWeight: 700,
                     fontFamily: 'inherit',
                     color: '#073a2d',
                     boxShadow: shadows.card,
                     '&:hover': { bgcolor: '#ecd9a8' },
                   }}
                 >
-                  <Gift size={16} /> Redeem Coins
+                  <Gift size={18} strokeWidth={1.75} />
+                  <span style={{ fontSize: 11, fontWeight: 700, lineHeight: 1.2 }}>Redeem Coins</span>
+                </MotionButton>
+                <MotionButton
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => setGoalOpen(true)}
+                  disableRipple
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    borderRadius: '12px',
+                    bgcolor: '#ffffff',
+                    paddingTop: '12px',
+                    paddingBottom: '12px',
+                    fontFamily: 'inherit',
+                    color: '#006a4d',
+                    boxShadow: shadows.card,
+                    '&:hover': { bgcolor: '#f0fdf4' },
+                  }}
+                >
+                  <Target size={18} strokeWidth={1.75} />
+                  <span style={{ fontSize: 11, fontWeight: 700, lineHeight: 1.2 }}>Set a Goal</span>
                 </MotionButton>
               </Box>
+
+
             </MotionBox>
           )}
         </AnimatePresence>
@@ -631,6 +682,31 @@ export default function RewardsDashboardPage({
               transition={{ duration: 0.22 }}
               sx={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px', paddingBottom: '96px',  }}
             >
+              {/* Personalise LBG Coin experience */}
+              <MotionButton
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setGoalOpen(true)}
+                disableRipple
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '6px',
+                  borderRadius: '16px',
+                  padding: '16px 24px',
+                  fontFamily: 'inherit',
+                  color: '#334155',
+                  bgcolor: '#ffffff',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+                  '&:hover': { bgcolor: '#f8fafc' },
+                }}
+              >
+                <Wand2 size={24} strokeWidth={1.5} />
+                <Typography sx={{ fontSize: 12, fontWeight: 500, color: '#475569', textAlign: 'center' }}>
+                  Personalise your LBG Coin experience
+                </Typography>
+              </MotionButton>
+
               {experienceStatus === 'loading' && (
                 <div aria-busy="true" aria-label="Personalizing your rewards">
                   <div className="grid grid-cols-3 gap-2.5">
@@ -1438,6 +1514,17 @@ export default function RewardsDashboardPage({
         customerEmail={customerEmail}
         customerPhone={customerPhone}
         onClose={() => setRedeemOpen(false)}
+      />
+      <ObjectiveWorkspace
+        isOpen={goalOpen}
+        onClose={() => setGoalOpen(false)}
+        userName={customer.userName}
+        customerId={customer.customerId}
+        totalPoints={totalPoints}
+        lbgCoins={customer.totalLbgCoins}
+        tier={customer.tier ?? tier.current.name}
+        pointsByBrand={pointsByBrand}
+        onPartnerHandoff={handlePartnerHandoff}
       />
     </Box>
   )

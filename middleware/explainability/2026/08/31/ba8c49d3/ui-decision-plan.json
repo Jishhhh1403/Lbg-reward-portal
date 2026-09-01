@@ -1,0 +1,279 @@
+{
+  "planId": "plan-ba8c49d3",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Focused mastery journey emphasizing First Home Savings Knowledge goal progress (63%), self-paced educational module continuation, tangible value clarity, and milestone tracking without timed challenges or public leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3550,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward mastering your First Home Savings target. Keep going at your own steady pace!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your LBG Coins Value",
+          "cashValue": "\u00a335.50",
+          "pointsEquivalent": 3550,
+          "breakdown": {
+            "label": "Educational Value Equivalency",
+            "value": "100% unlocked toward home ownership modules"
+          },
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Active Learning Track",
+          "missionName": "Advanced Deposit Strategies",
+          "description": "Master the nuances of LISA bonuses, mortgage interest rates, and long-term budgeting.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_MODULE",
+            "payload": {
+              "missionName": "Advanced Deposit Strategies"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz-card",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the government bonus percentage on Lifetime ISAs (LISAs)?",
+          "options": "A) 15% | B) 20% | C) 25% | D) 30%",
+          "reward": "150 LBG Coins & Knowledge Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "C"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Check",
+          "question": "Why does compound interest matter for your deposit?",
+          "yourAnswer": "It helps grow savings faster over time.",
+          "correctAnswer": "It allows your savings and earned interest to generate further returns, accelerating your deposit timeline.",
+          "feedback": "Spot on! Mastering this concept secures your financial foundation.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Topic Confidence",
+          "topic": "First Home Financial Literacy",
+          "confidencePercent": 88,
+          "levelLabel": "Building strong competence",
+          "nextMilestone": "Expert Deposit Planner",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Learners who complete self-paced financial modules retain 40% more practical budgeting knowledge over 12 months.",
+          "source": "LBG Financial Education Index",
+          "actionLabel": "Explore Module Library",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE_MODULE_LIBRARY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone-ladder",
+        "type": "MILESTONE_REWARD_LADDER",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "rungs": [
+            {
+              "percent": 25,
+              "reward": "Budgeting Basics Badge",
+              "unlocked": true
+            },
+            {
+              "percent": 50,
+              "reward": "Deposit Strategy Guidebook",
+              "unlocked": true
+            },
+            {
+              "percent": 75,
+              "reward": "1-on-1 Savings Coach Consultation",
+              "unlocked": false
+            },
+            {
+              "percent": 100,
+              "reward": "First Home Masterclass Certificate & 500 Bonus Coins",
+              "unlocked": false
+            }
+          ],
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Goal-Linked Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Consultation with Home Buying Specialist",
+            "points": 500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardName": "Consultation with Home Buying Specialist"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "steps": [
+            {
+              "title": "Study & Learn",
+              "description": "Complete educational modules at your own comfortable pace."
+            },
+            {
+              "title": "Verify Understanding",
+              "description": "Retake quizzes as needed until concepts are fully mastered."
+            },
+            {
+              "title": "Unlock Milestones",
+              "description": "Convert your knowledge into tangible savings milestones and rewards."
+            }
+          ],
+          "ctaLabel": "View Programme Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Learning Goal",
+          "subtitle": "Set another educational milestone to track your financial growth.",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "ADD_NEW_GOAL",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "EDUCATIONAL_COMPETENCE",
+      "JOURNEY_FIRST"
+    ]
+  },
+  "strategy": "Focused mastery journey emphasizing First Home Savings Knowledge goal progress (63%), self-paced educational module continuation, tangible value clarity, and milestone tracking without timed challenges or public leaderboards.",
+  "confidence": 0.95
+}

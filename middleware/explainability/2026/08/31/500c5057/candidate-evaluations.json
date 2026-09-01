@@ -1,0 +1,135 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Deliver an unhurried, knowledge-first rewards overview focusing on the First Home Savings Knowledge goal (63%), displaying points balance, current milestone progress, and a recommended financial literacy quiz without any timed elements or public rankings.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 9,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 9,
+        "usefulNovelty": 8,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.65,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Provide a structured educational value explainer highlighting long-term savings principles alongside points balance, goal progress, and milestone rewards, prioritizing mastery and competence over gamified pressure.",
+      "scores": {
+        "customerGoalRelevance": 9,
+        "expectedCustomerUtility": 9,
+        "screenLevelStoryCoherence": 9,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 9,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 8.85,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-explore-milestone",
+    "storyTitle": "Advancing Your First Home Knowledge",
+    "oneSentenceStory": "Continue your savings knowledge progression and complete educational milestones at your own pace.",
+    "customerSituation": "Active in long-term financial education modules with 63% progress on First Home Savings Knowledge.",
+    "storyTension": "Maintaining steady educational momentum without artificial urgency or pressure.",
+    "customerResolution": "Accessing tailored learning modules and goal-linked rewards aligned with personal mastery.",
+    "primaryOutcome": "Master financial literacy topics and track savings knowledge progression at an individualized pace.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-mod-complete",
+      "fact-session-time",
+      "fact-mastery-motivation"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "Timed challenge countdowns",
+      "Public leaderboards or rankings"
+    ],
+    "completionSignals": [
+      "Quiz module viewed or completed",
+      "Goal progress milestone reviewed"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-explore-milestone",
+      "journeyObjective": "Enable the customer to review points balance, track First Home Savings Knowledge progress (63%), and access self-paced educational quizzes and milestones.",
+      "completionDefinition": "Customer reviews goal progress and initiates or completes an educational quiz module.",
+      "episodeSketches": [
+        "View points balance and First Home Savings Knowledge progress (63%)",
+        "Explore recommended financial literacy quiz module at own pace",
+        "Review goal-linked educational milestone rewards"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.6,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 92,
+    "miniJourneyCompleteness": 94,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 94,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate 1 perfectly aligns with the customer's high competence drive and explicit preference for learning mastery over timed challenges."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "Zero dark patterns or artificial urgency detected. All hard gates passed successfully."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Cognitive fit is excellent; unhurried educational layout supports comprehension and self-paced navigation."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story-explore-milestone directly matches the customer's active First Home Savings Knowledge goals and learning preferences."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Primary journey seamlessly bridges points balance, goal tracking, and self-paced quiz modules without friction."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "Full coherence verified across story, journey, and components. Decision is PASS."
+    }
+  ]
+}
