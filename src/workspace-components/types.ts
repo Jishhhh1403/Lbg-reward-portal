@@ -9,6 +9,8 @@ export interface WorkspaceRenderContext {
   steps: Array<{ id: string; label: string; partner: string; status: string }>
   /** When true the primary Next action is disabled (e.g. missing input/selection). */
   nextDisabled: boolean
+  /** When true the "state objective" box is open, hiding the quick pick. */
+  objectiveOpen: boolean
 }
 
 /** Action handlers the renderer wires onto registered workspace components. */
@@ -25,6 +27,8 @@ export interface WorkspaceHandlers {
   onEditObjective: (objective: string) => void
   /** Switch the Coplan tools pane between the tool views (explain/combine/edit/compare). */
   onViewChange: (view: string) => void
+  /** Open/close the state objective box (hides the quick pick while open). */
+  onObjectiveOpenChange: (open: boolean) => void
 }
 
 /** Shared, minimal DOM-friendly visual primitives for the registry components. */

@@ -13,6 +13,7 @@ interface StateObjectiveProps {
   placeholder?: string
   value: string
   onChange: (value: string) => void
+  onOpenChange?: (open: boolean) => void
 }
 
 export default function StateObjective({
@@ -20,14 +21,23 @@ export default function StateObjective({
   placeholder = 'e.g. I want to redeem my points for the best value',
   value,
   onChange,
+  onOpenChange,
 }: StateObjectiveProps) {
   const [open, setOpen] = useState(false)
+
+  const toggle = () => {
+    setOpen((o) => {
+      const next = !o
+      onOpenChange?.(next)
+      return next
+    })
+  }
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       <MotionButton
         whileTap={{ scale: 0.99 }}
-        onClick={() => setOpen((o) => !o)}
+        onClick={toggle}
         disableRipple
         sx={{
           display: 'flex',

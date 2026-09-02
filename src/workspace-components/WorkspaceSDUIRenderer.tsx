@@ -79,8 +79,10 @@ export function renderWorkspaceComponent(
       case 'WS_STATE_OBJECTIVE':
         merged.value = context.objectiveText
         merged.onChange = handlers.onTextChange
+        merged.onOpenChange = handlers.onObjectiveOpenChange
         break
       case 'WS_QUICK_PICK':
+        merged.hidden = context.objectiveOpen
         merged.selected = context.objectiveText === (merged.text as string)
         merged.onSelect = (value: string) => handlers.onTextChange(value)
         break

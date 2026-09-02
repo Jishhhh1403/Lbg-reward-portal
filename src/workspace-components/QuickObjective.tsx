@@ -13,6 +13,7 @@ interface QuickObjectiveProps {
   text: string
   selected?: boolean
   onSelect: (value: string) => void
+  hidden?: boolean
 }
 
 export default function QuickObjective({
@@ -20,7 +21,9 @@ export default function QuickObjective({
   text,
   selected = false,
   onSelect,
+  hidden = false,
 }: QuickObjectiveProps) {
+  if (hidden) return null
   return (
     <MotionButton
       whileTap={{ scale: 0.99 }}

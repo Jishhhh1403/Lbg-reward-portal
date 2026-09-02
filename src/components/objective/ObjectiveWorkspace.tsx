@@ -525,6 +525,7 @@ export default function ObjectiveWorkspace({
   /* Screen state */
   const [screen, setScreen] = useState<ObjectiveScreen>('1a')
   const [objectiveText, setObjectiveText] = useState('')
+  const [objectiveOpen, setObjectiveOpen] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<PlanType>(null)
   const [steps, setSteps] = useState<ExecutionStep[]>([])
   const [redirectConfirm, setRedirectConfirm] = useState<ExecutionStep | null>(null)
@@ -939,6 +940,7 @@ export default function ObjectiveWorkspace({
     steps,
     nextDisabled:
       screen === '1a' ? !objectiveText.trim() : screen === '2b' ? !selectedPlan : false,
+    objectiveOpen,
   }
 
 const sduiHandlers: WorkspaceHandlers = {
@@ -952,6 +954,7 @@ const sduiHandlers: WorkspaceHandlers = {
     onReturnHome: handleReturnHome,
     onEditObjective: handleEditObjective,
     onViewChange: handleCoplanViewChange,
+    onObjectiveOpenChange: setObjectiveOpen,
   }
 
   /* Background components paint across the entire modal (behind header, content
