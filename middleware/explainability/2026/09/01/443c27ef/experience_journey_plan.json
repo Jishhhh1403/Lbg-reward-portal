@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-savings-knowledge",
+  "journeyObjective": "Engage Sophie with her First Home Savings Knowledge goal progress and self-paced financial literacy modules.",
+  "entryPoint": "Customer opens rewards overview on mobile.",
+  "completionDefinition": "Customer views goal progress, inspects milestone status, and accesses a financial literacy module or quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my savings knowledge and points stand today?",
+      "entryCondition": "App launch on rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-1"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What modules can I complete next to advance my First Home Savings mastery?",
+      "entryCondition": "Viewed points balance and current goal progress",
+      "requiredInformation": [
+        "learning modules",
+        "quizzes",
+        "comprehension feedback"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "ACTION",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-signal-1",
+        "fact-signal-2"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What rewards unlock as I master these financial topics?",
+      "entryCondition": "Completed module inspection",
+      "requiredInformation": [
+        "goal-linked rewards",
+        "tangible value equivalent",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-signal-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-tips",
+      "purpose": "Provide daily money insights and financial education without time pressure.",
+      "contentNotes": [
+        "Daily money tip",
+        "Coach tip card"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

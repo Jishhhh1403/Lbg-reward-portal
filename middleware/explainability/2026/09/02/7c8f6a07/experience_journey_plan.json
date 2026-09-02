@@ -1,0 +1,71 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Deliver tailored educational modules, quiz options, and goal progress tracking aligning with the customer's mastery-oriented profile.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews points balance, engages with self-paced educational quiz, and tracks First Home Savings Knowledge progress without timed constraints.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and educational savings knowledge?",
+      "entryCondition": "Session start on rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "lbgCoins",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial competence and test my understanding at my own pace?",
+      "entryCondition": "Customer views current goal and value clarity",
+      "requiredInformation": [
+        "learning modules",
+        "quiz options",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-retake-quiz",
+        "fact-session-time",
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-guidance",
+      "purpose": "Provide supplementary educational context and milestone tracking without timed pressure",
+      "contentNotes": [
+        "Self-paced module details",
+        "Milestone breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

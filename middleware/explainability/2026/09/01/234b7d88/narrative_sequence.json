@@ -1,0 +1,243 @@
+{
+  "primaryActionComponentRef": "partner-transfer-1",
+  "components": [
+    {
+      "componentRef": "points-balance-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "consolidated-wallet-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "points-balance-1"
+      ],
+      "resolves": [
+        "points-balance-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "sync-status-1",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "consolidated-wallet-1"
+      ],
+      "resolves": [
+        "consolidated-wallet-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "partner-comparison-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "sync-status-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "tangible-value-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 5,
+      "dependsOn": [
+        "partner-comparison-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "partner-transfer-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "partner-comparison-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "reward-provenance-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "partner-transfer-1"
+      ],
+      "resolves": [
+        "partner-transfer-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "how-points-work-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 8,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-progress-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "partner-transfer-1"
+      ],
+      "resolves": [
+        "partner-transfer-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "programme-connection-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 10,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "goal-linked-reward-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "PAYOFF",
+      "sequence": 11,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [
+        "goal-progress-1"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "long-term-goal-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 12,
+      "dependsOn": [
+        "goal-progress-1"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "add-goal-card-1",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 13,
+      "dependsOn": [
+        "long-term-goal-1"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "points-balance-1",
+      "toComponentRef": "consolidated-wallet-1",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Show individual balance consolidated into multi-partner view",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "consolidated-wallet-1",
+      "toComponentRef": "sync-status-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Confirm live sync status of connected partners",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "sync-status-1",
+      "toComponentRef": "partner-comparison-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide plain-English comparison across partners",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "partner-comparison-1",
+      "toComponentRef": "tangible-value-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Clarify cash value equivalents",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "tangible-value-1",
+      "toComponentRef": "partner-transfer-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Enable effortless point transfer",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "partner-transfer-1",
+      "toComponentRef": "reward-provenance-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Display history of transferred points",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "reward-provenance-1",
+      "toComponentRef": "how-points-work-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain transfer mechanics in plain English",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "how-points-work-1",
+      "toComponentRef": "goal-progress-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect transfers to Family Holiday Fund progress",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-progress-1",
+      "toComponentRef": "programme-connection-1",
+      "relationship": "sequential",
+      "bridgeIntent": "List active programme connections",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "programme-connection-1",
+      "toComponentRef": "goal-linked-reward-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Show holiday boost reward",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "goal-linked-reward-1",
+      "toComponentRef": "long-term-goal-1",
+      "relationship": "payoff-to-continuation",
+      "bridgeIntent": "Project long-term milestone completion",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "long-term-goal-1",
+      "toComponentRef": "add-goal-card-1",
+      "relationship": "sequential",
+      "bridgeIntent": "Invite additional goal setting",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

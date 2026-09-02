@@ -9,6 +9,8 @@ export interface ConvertRouteState {
   remainingPoints?: number
   userName?: string
   hasLinkedAccount?: boolean
+  /** Full URL to hand back to the parent app after conversion. */
+  returnTo?: string
 }
 
 export interface SuccessRouteState {
@@ -19,4 +21,6 @@ export interface SuccessRouteState {
   updatedLbgPoints?: number
   transactionId?: string
   completedAt?: string
+  /** Full URL to hand back to the parent app after viewing success. */
+  returnTo?: string
 }

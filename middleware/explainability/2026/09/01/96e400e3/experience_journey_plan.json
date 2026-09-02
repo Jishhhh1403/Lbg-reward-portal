@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Enable the customer to review their First Home Savings Knowledge progress and access educational milestones at their own self-directed pace.",
+  "entryPoint": "Rewards dashboard opening with focus on active savings knowledge goal and points balance.",
+  "completionDefinition": "Customer successfully reviews goal progress (63%), examines educational milestones, and interacts with self-directed learning modules.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and home savings goal?",
+      "entryCondition": "Dashboard loaded for customer with 3,550 lbgCoins",
+      "requiredInformation": [
+        "lbgCoins balance",
+        "First Home Savings Knowledge goal progress 63%"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-home-savings-goal",
+        "fact-coins-3550"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What tangible value and educational mechanics support my mastery?",
+      "entryCondition": "User has reviewed balance and active savings goal",
+      "requiredInformation": [
+        "tangible value conversion",
+        "how points work educational steps"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-mastery-motivation"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What educational path and milestones can I explore next?",
+      "entryCondition": "User understands value mechanics and savings progress",
+      "requiredInformation": [
+        "learning mission status",
+        "quiz mastery",
+        "milestones and goal-linked rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": "click",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-module-completion",
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-insights",
+      "purpose": "Provide deeper clarity on financial competence milestones without timed pressure",
+      "contentNotes": [
+        "Self-paced module tips",
+        "Transparent value breakdown"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

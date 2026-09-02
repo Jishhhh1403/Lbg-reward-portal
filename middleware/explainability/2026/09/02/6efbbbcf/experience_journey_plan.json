@@ -1,0 +1,111 @@
+{
+  "primaryJourneyId": "rewards-overview",
+  "storyId": "story-1",
+  "journeyObjective": "Provide a serene, self-paced overview of rewards and First Home Savings knowledge progress without timed challenges or public leaderboards.",
+  "entryPoint": "Rewards & Educational Dashboard",
+  "completionDefinition": "Customer reviews points balance, examines 63% First Home Savings knowledge milestone progress, and inspects goal-linked educational rewards.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my balance and Academy tier?",
+      "entryCondition": "Session start",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How much cash value do my LBG coins represent?",
+      "entryCondition": "After reviewing points balance",
+      "requiredInformation": [
+        "lbgCoins",
+        "cashValue"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-session-time"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How am I progressing toward my First Home Savings knowledge goal?",
+      "entryCondition": "After understanding point value",
+      "requiredInformation": [
+        "goalProgress",
+        "milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "TENSION",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What educational steps and rewards can I explore next at my own pace?",
+      "entryCondition": "Goal progress reviewed",
+      "requiredInformation": [
+        "lessons",
+        "quiz",
+        "rewards"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-learning-notes",
+      "purpose": "Provide supplementary context on financial literacy module completion without timer pressure.",
+      "contentNotes": [
+        "Self-paced module review",
+        "No leaderboard pressure"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

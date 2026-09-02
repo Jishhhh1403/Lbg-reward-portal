@@ -1,4 +1,4 @@
-import { Component, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -21,7 +21,6 @@ import {
   Medal,
   RefreshCw,
   Send,
-  Sparkles,
   Target,
   TrendingUp,
   UserRound,
@@ -34,45 +33,10 @@ import type {
   PointsProvider,
   WalletTransactionItem,
 } from '../types/rewards'
-import type { SduiGenerateResponse } from '../types/sdui'
 import { fetchWalletTransactions } from '../services/rewardsApi'
-import { generateExperience } from '../services/experienceApi'
 import LocatePointsModal from '../components/dashboard/LocatePointsModal'
 import RedeemPointsModal from '../components/dashboard/RedeemPointsModal'
 import ObjectiveWorkspace from '../components/objective/ObjectiveWorkspace'
-import MetricTile from '../components/dashboard/MetricTile'
-import SDUIRenderer from '../renderer/SDUIRenderer'
-import {
-  SyncStatusCard,
-  FlashRewardBanner,
-  BonusRewardCard,
-  StreakCard,
-  QuickWinCard,
-  ChallengeCard,
-  GoalProgressCard,
-  AddGoalCard,
-  Leaderboard,
-  BadgeCard,
-  RewardCarousel,
-  QuickRedeemCard,
-  TangibleValueCard,
-  PersonalizedOfferCard,
-  RecommendedActions,
-  ExpiringPointsAlert,
-  CountdownCard,
-  MilestoneCard,
-  GoalMilestoneCard,
-  QuizCard,
-  ProjectionChart,
-  FutureValueCard,
-  LongTermGoalCard,
-  EducationalInsightCard,
-  FutureMilestoneCard,
-  GoalLinkedReward,
-  ReengagementBanner,
-  BrandExplorerCard,
-  RewardsInsightCard,
-} from '../components/rewards-intelligence'
 import {
   formatLastSyncedAt,
   formatPoints,
@@ -88,7 +52,6 @@ interface RewardsDashboardPageProps {
   customer: CustomerSummary
   pointsByBrand: PointsProvider[]
   brands: BrandOption[]
-  earnedRewardMap: Record<string, string>
   onBackToHome: () => void
   onRefresh: () => Promise<void>
   customerEmail?: string
@@ -108,10 +71,6 @@ const TIERS = [
   { name: 'Gold', min: 15000, icon: Crown },
   { name: 'Platinum', min: 25000, icon: Gem },
 ] as const
-
-/* Points scheduled to expire at the next partner reset
-   TODO: source from the customer summary endpoint once available */
-const EXPIRING_POINTS = 1250
 
 function useTier(totalPoints: number, declaredTier?: string) {
   return useMemo(() => {
@@ -183,20 +142,6 @@ const TIER_CARD_THEMES: Record<TierName, { card: string; labelText: string; name
 }
 
 /* ------------------------------------------------------------------ */
-/* Error Boundary — catches crashes in personalized SDUI rendering     */
-/* ------------------------------------------------------------------ */
-
-interface EBProps { fallback: React.ReactNode; children: React.ReactNode }
-interface EBState { hasError: boolean }
-
-class SDUIErrorBoundary extends Component<EBProps, EBState> {
-  state: EBState = { hasError: false }
-  static getDerivedStateFromError(): EBState { return { hasError: true } }
-  componentDidCatch(err: Error) { console.warn('[SDUIErrorBoundary] personalized render crashed, falling back:', err) }
-  render() { return this.state.hasError ? this.props.fallback : this.props.children }
-}
-
-/* ------------------------------------------------------------------ */
 /* Page                                                                */
 /* ------------------------------------------------------------------ */
 
@@ -204,7 +149,6 @@ export default function RewardsDashboardPage({
   customer,
   pointsByBrand,
   brands,
-  earnedRewardMap,
   onBackToHome,
   onRefresh,
   customerEmail,
@@ -214,53 +158,12 @@ export default function RewardsDashboardPage({
   const [locateOpen, setLocateOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
   const [goalOpen, setGoalOpen] = useState(false)
+  const [goalResume, setGoalResume] = useState<import('../types/objective').WorkspaceResume | null>(null)
   const [refreshing, setRefreshing] = useState(false)
 
   const [transactions, setTransactions] = useState<WalletTransactionItem[]>([])
   const [txLoading, setTxLoading] = useState(false)
   const [txError, setTxError] = useState('')
-
-  /* ---------------- personalized experience (QUEST-UI middleware) -------- */
-  const [experience, setExperience] = useState<SduiGenerateResponse | null>(null)
-  const [experienceStatus, setExperienceStatus] = useState<'loading' | 'personalized' | 'fallback'>('loading')
-  const [experienceNonce, setExperienceNonce] = useState(0)
-
-  useEffect(() => {
-    let cancelled = false
-    setExperienceStatus('loading')
-    const topBrands = [...pointsByBrand]
-      .sort((a, b) => b.points - a.points)
-      .slice(0, 5)
-      .map((p) => ({ name: p.brandName, points: p.points }))
-    generateExperience(customer.customerId, {
-      totalPoints: customer.totalBrandPoints,
-      lbgCoins: customer.totalLbgCoins,
-      brandsConnected: customer.brandsConnected,
-      topBrands,
-      lastSyncedAt: customer.lastSyncedAt,
-    })
-      .then((res) => {
-        if (cancelled) return
-        setExperience(res)
-        const hasComponents =
-          res.status === 'PERSONALIZED' && Array.isArray(res.sdui?.components) && res.sdui.components.length > 0
-        setExperienceStatus((prev) => {
-          if (hasComponents) return 'personalized'
-          if (prev === 'personalized') return 'personalized'
-          return 'fallback'
-        })
-      })
-      .catch((error) => {
-        if (cancelled) return
-        console.warn('[RewardsDashboard] Personalization unavailable, using static layout:', error)
-        setExperience(null)
-        setExperienceStatus('fallback')
-      })
-    return () => {
-      cancelled = true
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [customer.customerId, experienceNonce])
 
   const tier = useTier(customer.totalLbgCoins + customer.totalBrandPoints / 2, customer.tier)
 
@@ -292,68 +195,20 @@ export default function RewardsDashboardPage({
 
   const totalPoints = customer.totalBrandPoints
 
-  const brandCategories = useMemo(() => {
-    const categoryIcons: Record<string, string> = {
-      Travel: 'plane',
-      Shopping: 'shopping-bag',
-      Dining: 'utensils',
-      Groceries: 'basket',
-      Health: 'heart',
-    }
-    const map = new Map<string, number>()
-    brands.forEach((b) => map.set(b.category, (map.get(b.category) ?? 0) + 1))
-    return Array.from(map.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 6)
-      .map(([label, count]) => ({ label, count, icon: categoryIcons[label] ?? 'zap' }))
-  }, [brands])
-
-  const topBrand = useMemo(
-    () => [...pointsByBrand].sort((a, b) => b.points - a.points)[0] ?? null,
-    [pointsByBrand],
-  )
-
-  const walletValue = customer.totalLbgCoins + Math.floor(totalPoints / 2)
-
-  const projectionData = useMemo(() => {
-    const years = ['2026', '2027', '2028', '2029', '2030']
-    let value = Math.max(totalPoints, 500)
-    return years.map((year) => {
-      const point = { year, value: Math.round(value) }
-      value *= 1.12
-      return point
-    })
-  }, [totalPoints])
-
-  const leaderboardEntries = useMemo(() => {
-    const base: Array<{ rank: number; name: string; points: number; avatar: string; isCurrentUser?: boolean }> = [
-      { rank: 1, name: 'Amelia R.', points: 24800, avatar: 'AR' },
-      { rank: 2, name: 'Daniel K.', points: 21350, avatar: 'DK' },
-      { rank: 3, name: 'Priya S.', points: 19720, avatar: 'PS' },
-    ]
-    const mine = {
-      name: `${customer.userName.split(' ')[0]}.`,
-      points: walletValue,
-      avatar: getInitials(customer.userName),
-      isCurrentUser: true,
-    }
-    return [...base, mine]
-      .sort((a, b) => b.points - a.points)
-      .map((entry, i) => ({ ...entry, rank: i + 1 }))
-      .filter((e) => e.isCurrentUser || e.rank <= 4)
-  }, [customer.userName, customer.totalLbgCoins, walletValue])
-
   const handleRefresh = async () => {
     setRefreshing(true)
     try {
       await onRefresh()
-      setExperienceNonce((n) => n + 1)
     } finally {
       setRefreshing(false)
     }
   }
 
-  const handlePartnerHandoff = (_partner: string, url: string) => {
+  const handlePartnerHandoff = (
+    _partner: string,
+    url: string,
+    resume: import('../types/objective').WorkspaceResume,
+  ) => {
     const customerEmailVal = customerEmail ?? ''
     const customerPhoneVal = customerPhone ?? ''
     const customerNameVal = customer.userName
@@ -361,8 +216,51 @@ export default function RewardsDashboardPage({
     baseUrl.searchParams.set('customerEmail', customerEmailVal)
     baseUrl.searchParams.set('customerName', encodeURIComponent(customerNameVal))
     baseUrl.searchParams.set('customerPhone', customerPhoneVal)
+
+    const returnUrl = new URL(window.location.origin + window.location.pathname)
+    returnUrl.searchParams.set('ws_resume', JSON.stringify(resume))
+    baseUrl.searchParams.set('returnTo', returnUrl.toString())
+
+    /* Keep the dashboard data needed to re-open the workspace on the way back. */
+    try {
+      localStorage.setItem(
+        'rewards_session_snapshot',
+        JSON.stringify({
+          customerId: customer.customerId,
+          customer,
+          pointsByBrand,
+          customerEmail: customer.email ?? customerEmailVal,
+          customerPhone: customer.phone ?? customerPhoneVal,
+        }),
+      )
+    } catch {
+      /* ignore storage errors */
+    }
+
     window.location.assign(baseUrl.toString())
   }
+
+  /* Re-open the workspace where the user left after a partner portal returns. */
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const raw = params.get('ws_resume')
+    if (!raw) return
+    try {
+      const resumed = JSON.parse(raw) as import('../types/objective').WorkspaceResume
+      setGoalResume(resumed)
+      setGoalOpen(true)
+      const clean = new URL(window.location.href)
+      clean.searchParams.delete('ws_resume')
+      window.history.replaceState({}, '', clean.toString())
+    } catch {
+      /* ignore malformed resume payloads */
+    }
+  }, [])
+
+  const handleGoalClose = useCallback(() => {
+    setGoalOpen(false)
+    setGoalResume(null)
+  }, [])
 
   return (
     <Box
@@ -628,7 +526,7 @@ export default function RewardsDashboardPage({
                 </MotionButton>
                 <MotionButton
                   whileTap={{ scale: 0.97 }}
-                  onClick={() => setGoalOpen(true)}
+                  onClick={() => setGoalOpen(false)}
                   disableRipple
                   sx={{
                     display: 'flex',
@@ -692,6 +590,7 @@ export default function RewardsDashboardPage({
                   flexDirection: 'column',
                   alignItems: 'center',
                   gap: '6px',
+                  marginTop: '70px',
                   borderRadius: '16px',
                   padding: '16px 24px',
                   fontFamily: 'inherit',
@@ -706,475 +605,7 @@ export default function RewardsDashboardPage({
                   Personalise your LBG Coin experience
                 </Typography>
               </MotionButton>
-
-              {experienceStatus === 'loading' && (
-                <div aria-busy="true" aria-label="Personalizing your rewards">
-                  <div className="grid grid-cols-3 gap-2.5">
-                    {[0, 1, 2].map((i) => (
-                      <div key={i} className="h-20 animate-pulse rounded-2xl bg-white/70" />
-                    ))}
-                  </div>
-                  {[0, 1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="mt-3 h-28 animate-pulse rounded-2xl bg-white/70"
-                      style={{ animationDelay: `${i * 120}ms` }}
-                    />
-                  ))}
-                  <p className="mt-4 text-center text-xs text-slate-400">Personalizing your rewards…</p>
-                </div>
-              )}
-
-              {experienceStatus === 'personalized' && experience && (
-                <SDUIErrorBoundary
-                  fallback={
-                    <p className="rounded-xl border border-gold-200 bg-gold-50 px-3 py-2 text-xs text-gold-700">
-                      Personalized rendering hit an unexpected issue — showing the standard rewards layout.
-                    </p>
-                  }
-                >
-                  <div className="flex items-center justify-between rounded-full bg-white px-3.5 py-2 shadow-card">
-                    <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-700">
-                      <Sparkles size={13} /> Personalized for you
-                    </span>
-                    {(() => {
-                      const persona = experience.intelligence?.persona ?? experience.sdui?.persona ?? ''
-                      return persona ? (
-                        <span className="text-[11px] uppercase tracking-wide text-slate-400">
-                          {persona.replace(/_/g, ' ').toLowerCase()}
-                        </span>
-                      ) : null
-                    })()}
-                  </div>
-                  <SDUIRenderer
-                    components={experience.sdui?.components ?? []}
-                    narrative={experience.sdui?.narrative}
-                    onLocatePoints={() => setLocateOpen(true)}
-                    onRedeemPoints={() => setRedeemOpen(true)}
-                  />
-                </SDUIErrorBoundary>
-              )}
-
-              {experienceStatus === 'fallback' && (
-                <>
-                  {experience === null ? (
-                    <p className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-500">
-                      Personalization service unreachable — showing the standard rewards layout.
-                    </p>
-                  ) : (
-                    <p className="rounded-xl border border-gold-200 bg-gold-50 px-3 py-2 text-xs text-gold-700">
-                      Personalization is temporarily unavailable — showing the standard rewards layout.
-                    </p>
-                  )}
-                </>
-              )}
-
-              {experienceStatus === 'fallback' && (
-              <>
-              {/* Metrics */}
-              <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '10px' }}>
-                <MetricTile
-                  label="Total points"
-                  value={formatPoints(customer.totalLbgCoins)}
-                  tone="white"
-                  valueColor="#006a4d"
-                  infoText="Sum of points held across all connected partner brands."
-                  icon={lbgCoinImg}
-                />
-                <MetricTile
-                  label="Brands linked"
-                  value={String(customer.brandsConnected)}
-                  tone="white"
-                  valueColor="#0284c7"
-                  infoText="Partner loyalty programmes connected to this wallet."
-                />
-                <MetricTile
-                  label="Expiring soon"
-                  value={formatPoints(EXPIRING_POINTS)}
-                  tone="white"
-                  valueColor="#ef4444"
-                  infoText="Points that will expire at the next partner reset."
-                />
-              </Box>
-
-              {/* Smart rewards */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: '6px', paddingX: '4px' }}>
-                  <Sparkles size={14} color="#045a42" />
-                  <Typography sx={{ fontSize: 14, fontWeight: 600, color: '#1e293b' }}>Smart rewards</Typography>
-                </Box>
-
-                <SyncStatusCard
-                  status="synced"
-                  lastSyncedAt={formatLastSyncedAt(customer.lastSyncedAt)}
-                  onRefresh={handleRefresh}
-                />
-
-                <FlashRewardBanner
-                  title="Flash Conversion Bonus"
-                  subtitle="Double coins on every conversion this weekend."
-                  originalPoints={400}
-                  discountedPoints={200}
-                  timer="04:32:11"
-                />
-
-                <BonusRewardCard points={250} expiresIn="2 hours" />
-
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                    alignItems: 'stretch',
-                    gap: '12px',
-                    '& > *': { height: '100%' },
-                  }}
-                >
-                  <StreakCard
-                    streakDays={6}
-                    message="You're on a roll this month."
-                    nextReward="250 bonus coins"
-                    milestones={[
-                      { days: 3, reward: '50 pts', achieved: true },
-                      { days: 5, reward: '100 pts', achieved: true },
-                      { days: 7, reward: '250 coins', achieved: false },
-                    ]}
-                  />
-                  <QuickWinCard
-                    rewards={[...pointsByBrand]
-                      .sort((a, b) => a.points - b.points)
-                      .slice(0, 3)
-                      .map((p) => ({ name: p.brandName, points: p.points }))}
-                  />
-                </Box>
-
-                <ChallengeCard
-                  title="Autumn Points Sprint"
-                  description="Earn across 3 linked brands before Sunday to unlock the group bonus."
-                  progress={68}
-                  reward="500 coins"
-                  daysLeft={5}
-                  participants={2418}
-                />
-
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                    alignItems: 'stretch',
-                    gap: '12px',
-                    '& > *': { height: '100%' },
-                  }}
-                >
-                  <GoalProgressCard
-                    goalName={`${tier.next ? tier.next.name : tier.current.name} tier status`}
-                    current={walletValue}
-                    target={tier.next?.min ?? TIERS[TIERS.length - 1].min}
-                    percentage={tier.progress}
-                    remaining={Math.max(0, (tier.next?.min ?? TIERS[TIERS.length - 1].min) - walletValue)}
-                    motivationalMessage={
-                      tier.next
-                        ? `${formatPoints(Math.max(0, tier.next.min - walletValue))} more points unlocks premium conversion rates.`
-                        : 'You have reached the top of the programme.'
-                    }
-                  />
-                  <AddGoalCard subtitle="e.g. Flights, gadgets, treats" />
-                </Box>
-
-                <Leaderboard entries={leaderboardEntries} period="weekly" />
-
-                <BadgeCard
-                  badges={[
-                    { name: 'First Link', icon: 'trophy', earned: true },
-                    { name: '7-Day Streak', icon: 'flame', earned: true },
-                    { name: 'Quiz Master', icon: 'brain', earned: true },
-                    { name: 'Top Earner', icon: 'crown', earned: false },
-                    { name: 'Goal Getter', icon: 'star', earned: false },
-                    { name: 'Big Saver', icon: 'star', earned: false },
-                  ]}
-                  totalEarned={3}
-                  totalAvailable={6}
-                />
-
-                <RewardCarousel
-                  rewards={[
-                    { name: '£5 Coffee Voucher', points: 500, category: 'Dining' },
-                    { name: 'Cinema Night', points: 1200, category: 'Film', limited: true },
-                    { name: '£10 Shopping Off', points: 1000, category: 'Shopping' },
-                    { name: 'Lounge Pass', points: 4500, category: 'Travel', limited: true },
-                  ]}
-                />
-
-                <QuickRedeemCard
-                  rewards={[
-                    { name: 'Barista coffee', points: 300, icon: 'coffee' },
-                    { name: 'Lunch deal', points: 750, icon: 'utensils' },
-                    { name: 'Movie night', points: 1200, icon: 'film' },
-                  ]}
-                  onViewAll={() => setRedeemOpen(true)}
-                />
-
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                    alignItems: 'stretch',
-                    gap: '12px',
-                    '& > *': { height: '100%' },
-                  }}
-                >
-                  <TangibleValueCard
-                    cashValue={`£${(totalPoints * 0.005).toFixed(2)}`}
-                    pointsEquivalent={totalPoints}
-                    breakdown={[
-                      { label: 'Brand points', value: formatPoints(totalPoints) },
-                      { label: 'LBG coins', value: formatPoints(customer.totalLbgCoins) },
-                    ]}
-                  />
-                  <PersonalizedOfferCard
-                    title="Coins Multiplier"
-                    subtitle="Picked for your activity"
-                    offer="2× Coins Weekend"
-                    validUntil="48 hours"
-                    message="Convert any brand points and earn double LBG coins."
-                    onClaim={() => setRedeemOpen(true)}
-                  />
-                </Box>
-
-                <RecommendedActions
-                  actions={[
-                    { label: 'Link a new brand', points: 200, icon: 'shopping-bag' },
-                    { label: 'Convert idle points', points: 850, icon: 'target' },
-                    { label: 'Invite a friend', points: 500, icon: 'users' },
-                  ]}
-                />
-
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                    alignItems: 'stretch',
-                    gap: '12px',
-                    '& > *': { height: '100%' },
-                  }}
-                >
-                  <ExpiringPointsAlert
-                    expiringPoints={1250}
-                    daysLeft={21}
-                    message="Nando's balance has been idle for 60 days."
-                    onUsePoints={() => setRedeemOpen(true)}
-                  />
-                  <CountdownCard
-                    title="Offer Ends In"
-                    days={0}
-                    hours={4}
-                    minutes={32}
-                    message="Flash pricing on featured rewards"
-                  />
-                </Box>
-
-                <MilestoneCard
-                  milestones={[
-                    { label: 'Linked first brand', achieved: customer.brandsConnected > 0 },
-                    { label: 'Earned 10k brand points', achieved: totalPoints >= 10000 },
-                    { label: 'Converted to LBG coins', achieved: customer.totalLbgCoins > 0 },
-                  ]}
-                />
-
-                <GoalMilestoneCard
-                  goalName={`${tier.current.name} tier`}
-                  milestones={[
-                    { label: 'Account opened & verified', reached: true },
-                    { label: 'Gold tier unlocked', reached: walletValue >= TIERS[1].min },
-                    { label: '6k combined balance — Platinum', reached: walletValue >= TIERS[2].min },
-                    { label: '12k combined balance — Diamond', reached: walletValue >= TIERS[TIERS.length - 1].min },
-                  ]}
-                />
-
-                <QuizCard
-                  question="Which habit grows your coin balance fastest?"
-                  options={['Redeeming weekly', 'Converting monthly', 'Letting points sit']}
-                  reward="+100 LBG coins"
-                />
-
-                <ProjectionChart data={projectionData} growthLabel="Projected growth at 12% annually" />
-
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                    alignItems: 'stretch',
-                    gap: '12px',
-                    '& > *': { height: '100%' },
-                  }}
-                >
-                  <FutureValueCard
-                    currentValue={totalPoints}
-                    projectedValue={projectionData[projectionData.length - 1]?.value ?? totalPoints}
-                    timeframe="to 2030"
-                    growthRate="12% annually"
-                    message="Regular conversions protect you from point devaluation."
-                  />
-                  <LongTermGoalCard
-                    goalName="Diamond Status"
-                    current={walletValue}
-                    target={TIERS[TIERS.length - 1].min}
-                    percentage={tier.progress}
-                    estimatedCompletion="2028"
-                  />
-                </Box>
-
-                <EducationalInsightCard
-                  insight="Points lose an average of 8% of their redemption value for every year they sit unused. Converting early locks in today's rates."
-                  source="LBG Rewards Lab, 2026"
-                />
-
-                <FutureMilestoneCard
-                  milestones={[
-                    { label: 'Gold tier perks unlock', date: 'Q4 2026', achieved: walletValue >= TIERS[1].min },
-                    { label: 'Lounge pass voucher', date: 'Jan 2027', achieved: false },
-                    { label: 'Concierge access', date: '2028', achieved: false },
-                  ]}
-                />
-
-                <GoalLinkedReward
-                  goalName="Platinum Status"
-                  rewards={[
-                    { name: 'Weekly shop bonus', points: 150, goalLinked: true },
-                    { name: 'Direct debit cashback', points: 300, goalLinked: true },
-                    { name: 'Contactless promo', points: 100, goalLinked: false },
-                  ]}
-                />
-
-                <ReengagementBanner
-                  title="Welcome back!"
-                  message="Two of your brands have fresh offers waiting. Link another partner to boost every conversion."
-                  ctaText="Explore brands"
-                  onCta={() => setLocateOpen(true)}
-                />
-              </Box>
-
-              {/* Your points by brand */}
-              <Box>
-                <Typography sx={{ marginBottom: '10px', paddingX: '4px', fontSize: 14, fontWeight: 600, color: '#1e293b' }}>
-                  Your points by brand
-                </Typography>
-                <Box
-                  className="no-scrollbar"
-                  sx={{
-                    marginX: '-20px',
-                    display: 'flex',
-                    gap: '12px',
-                    overflowX: 'auto',
-                    scrollSnapType: 'x mandatory',
-                    paddingX: '20px',
-                    paddingBottom: '4px',
-                  }}
-                >
-                  {pointsByBrand.map((provider, i) => (
-                    <MotionBox
-                      key={provider.brandId}
-                      initial={{ opacity: 0, y: 14 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.05 * i }}
-                      whileTap={{ scale: 0.97 }}
-                      sx={{
-                        width: 144,
-                        flexShrink: 0,
-                        scrollSnapAlign: 'start',
-                        borderRadius: '16px',
-                        bgcolor: '#ffffff',
-                        padding: '14px',
-                        boxShadow: shadows.card,
-                      }}
-                    >
-                      <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            height: 36,
-                            width: 36,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: '12px',
-                            fontSize: 12,
-                            fontWeight: 700,
-                            color: '#ffffff',
-                            backgroundColor: provider.color,
-                          }}
-                        >
-                          {provider.logoText}
-                        </Box>
-                        {earnedRewardMap[provider.brandId] && (
-                          <Box
-                            sx={{
-                              borderRadius: '999px',
-                              bgcolor: '#eef7f3',
-                              paddingX: '6px',
-                              paddingTop: '2px',
-                              paddingBottom: '2px',
-                              fontSize: 9,
-                              fontWeight: 700,
-                              textTransform: 'uppercase',
-                              letterSpacing: '0.05em',
-                              color: '#045a42',
-                            }}
-                          >
-                            Convert
-                          </Box>
-                        )}
-                      </Box>
-                      <Typography
-                        sx={{
-                          marginTop: '8px',
-                          fontSize: 12,
-                          fontWeight: 500,
-                          color: '#64748b',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {provider.brandName}
-                      </Typography>
-                      <Typography sx={{ fontSize: 16, fontWeight: 700, color: '#0f172a' }}>
-                        {formatPoints(provider.points)}
-                      </Typography>
-                      <Typography sx={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#94a3b8' }}>
-                        points
-                      </Typography>
-                    </MotionBox>
-                  ))}
-                </Box>
-              </Box>
-
-              {/* Eligible brands by category */}
-              <Box>
-                <BrandExplorerCard
-                  categories={brandCategories}
-                  actionLabel="View all"
-                  onExplore={() => setLocateOpen(true)}
-                />
-              </Box>
-
-              {/* Insights */}
-              <Box>
-                <RewardsInsightCard
-                  title="Your Rewards Insight"
-                  topBrandName={topBrand?.brandName}
-                  topBrandPoints={topBrand?.points ?? 0}
-                  growthTip={
-                    tier.next
-                      ? `${formatPoints(Math.max(0, tier.next.min - walletValue))} points to ${tier.next.name} — converting your largest idle balance gets you there fastest.`
-                      : `You are at the top tier. Enjoy your ${tier.current.name} perks.`
-                  }
-                  expiringPoints={1250}
-                  expiryDate="12 Sep"
-                  ctaText="Redeem smarter"
-                  onCta={() => setRedeemOpen(true)}
-                />
-              </Box>
-              </>
-              )}
+              
             </MotionBox>
           )}
 
@@ -1517,7 +948,7 @@ export default function RewardsDashboardPage({
       />
       <ObjectiveWorkspace
         isOpen={goalOpen}
-        onClose={() => setGoalOpen(false)}
+        onClose={handleGoalClose}
         userName={customer.userName}
         customerId={customer.customerId}
         totalPoints={totalPoints}
@@ -1525,6 +956,7 @@ export default function RewardsDashboardPage({
         tier={customer.tier ?? tier.current.name}
         pointsByBrand={pointsByBrand}
         onPartnerHandoff={handlePartnerHandoff}
+        resume={goalResume}
       />
     </Box>
   )

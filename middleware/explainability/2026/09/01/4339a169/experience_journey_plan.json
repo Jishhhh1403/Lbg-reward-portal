@@ -1,0 +1,90 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-goal",
+  "journeyObjective": "Present a serene, self-paced rewards overview featuring First Home Savings goal progress, points balance, educational milestones, and a knowledge quiz without any timed or competitive elements.",
+  "entryPoint": "Mobile rewards overview screen initiated by customer_011",
+  "completionDefinition": "Customer views their 63% progress tracker, reviews educational milestones, and engages with the unpressured knowledge quiz component.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and First Home Savings goal?",
+      "entryCondition": "Customer opens rewards overview",
+      "requiredInformation": [
+        "points: 3550 LBG Coins",
+        "goal: First Home Savings Knowledge at 63%"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress",
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I make the most of my rewards?",
+      "entryCondition": "Customer reviews current standing and shifts focus to learning progression",
+      "requiredInformation": [
+        "learning modules completion status",
+        "knowledge milestones"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-sig-1",
+        "fact-sig-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How can I test and validate my knowledge at my own pace?",
+      "entryCondition": "Customer explores learning modules and seeks self-paced validation",
+      "requiredInformation": [
+        "quiz details",
+        "comprehension feedback"
+      ],
+      "allowedNarrativeRoles": [
+        "ACTION",
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-sig-2",
+        "fact-sig-4"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-transparency",
+      "purpose": "Provide transparent value breakdown for educational rewards without timed pressure",
+      "contentNotes": [
+        "Explains coin-to-value equivalence clearly"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

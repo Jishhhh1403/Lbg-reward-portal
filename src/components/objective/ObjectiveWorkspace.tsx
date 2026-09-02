@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, Component } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ButtonBase from '@mui/material/ButtonBase'
 import Box from '@mui/material/Box'
@@ -9,6 +9,7 @@ import type {
   ExecutionStep,
   ObjectiveScreen,
   PlanType,
+  WorkspaceResume,
 } from '../../types/objective'
 import type {
   ObjectiveStage,
@@ -16,11 +17,17 @@ import type {
 } from '../../types/objective-sdui'
 import { generateObjectiveStage } from '../../services/objectiveApi'
 import { shadows } from '../../theme'
-import ObjectiveSDUIRenderer from './ObjectiveSDUIRenderer'
+import screen1aBg from '../../assets/screen-1a.png'
+import toolsBg from '../../assets/toolsscreen.png'
+import WorkspaceSDUIRenderer, {
+  renderWorkspaceComponent,
+} from '../../workspace-components/WorkspaceSDUIRenderer'
+import { buildMergedSummaryStageComponents, buildStageComponents } from '../../workspace-components/buildStageComponents'
+import type { CoplanToolView } from '../../workspace-components/CoplanTools'
 import type {
-  ObjectiveHandlers,
-  ObjectiveRenderContext,
-} from './registry/types'
+  WorkspaceHandlers,
+  WorkspaceRenderContext,
+} from '../../workspace-components/types'
 
 /* ------------------------------------------------------------------ */
 /* Helpers to build local (client-driven) SDUI component lists          */
@@ -35,65 +42,304 @@ function makeComponent(
   return { id, type, version: '1.0', priority: 0, props, actions }
 }
 
+/** Canonical display name for each plan across all screens. */
+function planLabel(plan: PlanType): string {
+  if (plan === 'max-redeem') return 'Maximum Value Plan'
+  if (plan === 'hybrid') return 'Best of Both Plan'
+  return 'Simplicity Plan'
+}
+
+/** Plans that prioritise value follow the Plan B (4x) screen group. */
+function isValueTrack(plan: PlanType): boolean {
+  return plan === 'max-redeem' || plan === 'hybrid'
+}
+
+/** Surfaces any unexpected render error as visible text instead of a blank screen. */
+class WorkspaceErrorBoundary extends Component<
+  { children: React.ReactNode },
+  { error: Error | null }
+> {
+  state: { error: Error | null } = { error: null }
+
+  static getDerivedStateFromError(error: Error) {
+    return { error }
+  }
+
+  componentDidCatch(error: Error) {
+    console.error('[ObjectiveWorkspace] Render error:', error)
+  }
+
+  render() {
+    if (this.state.error) {
+      return (
+        <Box
+          sx={{
+            flex: 1,
+            minHeight: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '10px',
+            padding: '20px',
+            textAlign: 'center',
+          }}
+        >
+          <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#0f172a' }}>
+            Something went wrong while rendering this step
+          </Typography>
+          <Typography sx={{ fontSize: 12, color: '#64748b', lineHeight: 1.5 }}>
+            {String(this.state.error?.message ?? this.state.error)}
+          </Typography>
+        </Box>
+      )
+    }
+    return this.props.children
+  }
+}
+
 /** Capture screen (1a) — pure client composition, no AI call yet. */
-function captureComponents(objectiveText: string): SDUIComponent[] {
+export function captureComponents(objectiveText: string): SDUIComponent[] {
   return [
-    makeComponent('capture-headline', 'OBJECTIVE_HEADLINE', {
-      title: 'Hi, what are you looking for today?',
+    makeComponent('capture-bg', 'WS_BACKGROUND', {
+      image: screen1aBg,
+      fill: true,
     }),
-    makeComponent('capture-input', 'OBJECTIVE_INPUT', {
-      label: 'Enter Objective',
+    makeComponent('capture-anchor', 'WS_ANCHOR', {
+  text: 'What is your objective today?',
+}),
+
+    makeComponent('capture-quick', 'WS_QUICK_PICK', {
+      hint: 'Quick start',
+      text: 'I want to pay for my insurance using LBG coins while maximizing the value',
+    }),
+    makeComponent('capture-state', 'WS_STATE_OBJECTIVE', {
+      label: 'State objective',
       placeholder: 'e.g. I want to redeem my points for the best value',
       value: objectiveText,
     }),
     makeComponent(
       'capture-nav',
-      'OBJECTIVE_NAV',
+      'WS_NAV',
       { primary: 'Next' },
-      [{ type: 'OBJECTIVE_NEXT', payload: {} }],
+      [{ type: 'WS_NEXT', payload: {} }],
     ),
   ]
 }
 
-/** Redirect confirmation screen (3b / 4b / 4c). */
+/** Redirect confirmation screen (3b / 4b) — no monitoring, no expected date. */
 function redirectComponents(
   redirectConfirm: ExecutionStep | null,
   planLabel: string,
 ): SDUIComponent[] {
+  const partner = redirectConfirm?.partner ?? ''
+  const promptText =
+    partner === 'Cavendish Online'
+      ? 'Do you want to redirect to Cavendish Online to make your insurance payment?'
+      : partner === 'Alpha Medical'
+        ? 'Do you want to redirect to Alpha Medical to convert your points into LBG coins?'
+        : `Do you want to redirect to ${partner} to continue?`
   return [
+    makeComponent('redirect-plan', 'WS_PLAN_HERO', {
+      planLabel,
+      description: redirectConfirm?.label ?? '',
+    }),
+    makeComponent('redirect-prompt', 'WS_REDIRECT_PROMPT', {
+      partner,
+      prompt: promptText,
+    }),
     makeComponent(
-      'redirect',
-      'OBJECTIVE_REDIRECT',
-      {
-        planLabel,
-        stepLabel: redirectConfirm?.label ?? '',
-        partner: redirectConfirm?.partner ?? '',
-        confirmLabel: `Go to ${redirectConfirm?.partner ?? ''}`,
-      },
-      [{ type: 'OBJECTIVE_CONFIRM_REDIRECT', payload: {} }],
+      'redirect-confirm',
+      'WS_NAV',
+      { primary: `Go to ${partner}` },
+      [{ type: 'WS_CONFIRM', payload: {} }],
     ),
   ]
 }
 
-/** Execution result screen (3c). */
+/** Execution result screen (3c / 4c). */
 function resultComponents(result: {
   success: boolean
-  title: string
   message: string
 }): SDUIComponent[] {
+  if (result.success) {
+    return [
+      makeComponent(
+        'result-success',
+        'WS_SUCCESS',
+        { message: result.message },
+        [{ type: 'WS_RETURN_HOME', payload: {} }],
+      ),
+    ]
+  }
   return [
+    makeComponent('result-failure', 'WS_FAILURE', { message: result.message }),
     makeComponent(
-      'result',
-      'OBJECTIVE_RESULT',
-      {
-        success: result.success,
-        title: result.title,
-        message: result.message,
-        returnLabel: 'Return to Rewards Home',
-      },
-      [{ type: 'OBJECTIVE_RETURN_HOME', payload: {} }],
+      'result-recovery',
+      'WS_RECOVERY',
+      {},
+      [{ type: 'WS_RETURN_HOME', payload: {} }],
     ),
   ]
+}
+
+/* ------------------------------------------------------------------ */
+/* Plan A / Plan B execution flows                                     */
+/* ------------------------------------------------------------------ */
+
+export const PORTAL_URLS = {
+  alphaConvert: 'http://localhost:5174/lbg-rewards/convert',
+  cavendishCheckout: 'http://localhost:5175/#/checkout',
+} as const
+
+/**
+ * Deterministic execution steps per plan.
+ *
+ * Plan A (Simplicity): use the existing LBG coin balance directly, then pay for
+ * Cavendish Online insurance.
+ * Plan B (Maximum Value): convert Alpha Medical points into LBG coins at the
+ * Alpha Medical conversion page, return to the workspace, then pay for
+ * Cavendish Online insurance.
+ * Hybrid (Best of Both): the conversion runs automatically (internal step), so
+ * the customer still only takes one action to pay — with the bigger balance.
+ */
+export function buildExecutionSteps(plan: PlanType): ExecutionStep[] {
+  if (plan === 'max-redeem') {
+    return [
+      {
+        id: 'alpha-convert',
+        label: 'Convert your Alpha Medical points to LBG coins',
+        partner: 'Alpha Medical',
+        partnerUrl: PORTAL_URLS.alphaConvert,
+        status: 'pending',
+      },
+      {
+        id: 'lbg-return',
+        label: 'Transfer points to LBG coins and return to your workspace',
+        partner: 'LBG Coins',
+        partnerUrl: '',
+        status: 'pending',
+      },
+      {
+        id: 'cavendish-pay',
+        label: 'Pay for your Cavendish Online insurance',
+        partner: 'Cavendish Online',
+        partnerUrl: PORTAL_URLS.cavendishCheckout,
+        status: 'pending',
+      },
+    ]
+  }
+  if (plan === 'hybrid') {
+    return [
+      {
+        id: 'alpha-convert',
+        label: 'Auto-convert your Alpha Medical points to LBG coins',
+        partner: 'Alpha Medical',
+        partnerUrl: '',
+        status: 'pending',
+      },
+      {
+        id: 'cavendish-pay',
+        label: 'Pay for your Cavendish Online insurance',
+        partner: 'Cavendish Online',
+        partnerUrl: PORTAL_URLS.cavendishCheckout,
+        status: 'pending',
+      },
+    ]
+  }
+  return [
+    {
+      id: 'lbg-balance',
+      label: 'Use your existing LBG coin balance to pay',
+      partner: 'LBG Coins',
+      partnerUrl: '',
+      status: 'pending',
+    },
+    {
+      id: 'cavendish-pay',
+      label: 'Pay for your Cavendish Online insurance',
+      partner: 'Cavendish Online',
+      partnerUrl: PORTAL_URLS.cavendishCheckout,
+      status: 'pending',
+    },
+  ]
+}
+
+/** Execution screen (3a / 4a) — deterministic, driven by the chosen plan. */
+function executionComponents(plan: PlanType): SDUIComponent[] {
+  const steps = buildExecutionSteps(plan)
+  return [
+    makeComponent('exec-plan', 'WS_PLAN_HERO', {
+      planLabel: planLabel(plan),
+      description:
+        plan === 'max-redeem'
+          ? "Let's carry out your Maximum Value Plan to complete your objective."
+          : plan === 'hybrid'
+            ? "Let's carry out your Best of Both Plan to complete your objective."
+            : "Let's carry out your Simplicity Plan to complete your objective.",
+    }),
+    makeComponent('exec-steps', 'WS_EXECUTION_STEPS', {
+      items: steps.map((s) => ({
+        id: s.id,
+        label: s.label,
+        partner: s.partner,
+        status: s.status,
+      })),
+    }, [{ type: 'WS_SELECT_STEP', payload: {} }]),
+    makeComponent('exec-nav', 'WS_NAV', { primary: 'Next' }, [
+      { type: 'WS_NEXT', payload: {} },
+    ]),
+  ]
+}
+
+/* ------------------------------------------------------------------ */
+/* Step progression + workspace resume                                 */
+/* ------------------------------------------------------------------ */
+
+/** Auto-completes leading internal steps (no partner portal) so only the
+ *  next portal step surfaces as an action. */
+export function withInternalCompleted(steps: ExecutionStep[]): ExecutionStep[] {
+  const out = [...steps]
+  for (let i = 0; i < out.length; i++) {
+    if (out[i].status !== 'pending') continue
+    if (!out[i].partnerUrl) out[i] = { ...out[i], status: 'completed' }
+    else break
+  }
+  return out
+}
+
+/** First step still pending, or null when everything is done. */
+export function getNextPending(steps: ExecutionStep[]): ExecutionStep | null {
+  return steps.find((s) => s.status === 'pending') ?? null
+}
+
+/**
+ * Rebuilds wizard state after the user returns from a partner portal.
+ * The handed-off step counts as completed (they paid/acted there), any
+ * internal steps in between are auto-completed, and the wizard re-opens at
+ * the next portal's redirect prompt — or the result screen when finished.
+ */
+export function applyResume(
+  resume: WorkspaceResume,
+): { steps: ExecutionStep[]; screen: ObjectiveScreen; redirectConfirm: ExecutionStep | null } {
+  const done = new Set<string>([...resume.completed, resume.current])
+  const base = buildExecutionSteps(resume.plan)
+  const marked = base.map((s) => ({
+    ...s,
+    status: done.has(s.id) ? ('completed' as const) : (s.status as ExecutionStep['status']),
+  }))
+  const steps = withInternalCompleted(marked)
+  const next = getNextPending(steps)
+  const resultScreen: ObjectiveScreen = isValueTrack(resume.plan) ? '4c' : '3c'
+  if (!next) {
+    return { steps, screen: resultScreen, redirectConfirm: null }
+  }
+  const running: ExecutionStep = { ...next, status: 'running' }
+  return {
+    steps: steps.map((s) => (s.id === next.id ? running : s)),
+    screen: isValueTrack(resume.plan) ? '4b' : '3b',
+    redirectConfirm: running,
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -109,7 +355,10 @@ interface ObjectiveWorkspaceProps {
   lbgCoins: number
   tier: string
   pointsByBrand: Array<{ brandName: string; points: number }>
-  onPartnerHandoff: (partner: string, url: string) => void
+  onPartnerHandoff: (partner: string, url: string, resume: WorkspaceResume) => void
+  /** Continuation state so the wizard re-opens where the user left after a
+   *  partner portal returns them to this app. */
+  resume?: WorkspaceResume | null
 }
 
 /* ------------------------------------------------------------------ */
@@ -127,13 +376,12 @@ function ProgressBar({ segments }: { segments: [boolean, boolean, boolean] }) {
   return (
     <Box
       sx={{
+        position: 'relative',
+        zIndex: 1,
         display: 'flex',
         gap: '8px',
         padding: '16px 20px',
         paddingBottom: '24px',
-        bgcolor: 'rgba(255,255,255,0.95)',
-        backdropFilter: 'blur(8px)',
-        borderTop: '1px solid #e2e8f0',
       }}
     >
       {segments.map((active, i) => (
@@ -143,8 +391,10 @@ function ProgressBar({ segments }: { segments: [boolean, boolean, boolean] }) {
             flex: 1,
             height: 5,
             borderRadius: '999px',
-            bgcolor: active ? '#006a4d' : '#e2e8f0',
-            transition: 'background-color 0.3s ease',
+            bgcolor: active ? '#ffffff' : 'rgba(255,255,255,0.45)',
+            boxShadow: active ? '0 0 0 1px rgba(15,23,42,0.25), 0 1px 3px rgba(15,23,42,0.3)' : 'none',
+            border: active ? 'none' : '1px solid rgba(255,255,255,0.9)',
+            transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
           }}
         />
       ))}
@@ -267,6 +517,7 @@ export default function ObjectiveWorkspace({
   tier,
   pointsByBrand,
   onPartnerHandoff,
+  resume = null,
 }: ObjectiveWorkspaceProps) {
   const closeRef = useRef<HTMLButtonElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
@@ -283,7 +534,8 @@ export default function ObjectiveWorkspace({
   const [stageLoading, setStageLoading] = useState(false)
   const [stageError, setStageError] = useState<string | null>(null)
   const [stageInFlight, setStageInFlight] = useState<ObjectiveStage | null>(null)
-  const [provisionalNav, setProvisionalNav] = useState<{ stage: ObjectiveStage; nextScreen: ObjectiveScreen } | null>(null)
+  const [provisionalNav, setProvisionalNav] = useState<{ stage: ObjectiveStage; nextScreen: ObjectiveScreen; toolRequest: string | null } | null>(null)
+  const [coplanView, setCoplanView] = useState<CoplanToolView>('idle')
 
   const wallet: ObjectiveWalletPayload = {
     totalPoints,
@@ -304,25 +556,32 @@ export default function ObjectiveWorkspace({
       stage: ObjectiveStage,
       navigator: (screen: ObjectiveScreen) => void,
       nextScreen: ObjectiveScreen,
+      toolRequest: string | null = null,
+      objectiveOverride?: string,
     ) => {
       if (stage === 'execution' && stageInFlight !== null) return
-      setProvisionalNav({ stage, nextScreen })
+      setProvisionalNav({ stage, nextScreen, toolRequest })
       setStageLoading(true)
       setStageError(null)
       setStageInFlight(stage)
+      const activeObjective = objectiveOverride ?? objectiveText
       try {
         const res = await generateObjectiveStage({
           customerReference: customerId,
-          objectiveText,
+          objectiveText: activeObjective,
           stage,
           selectedPlan,
+          toolRequest: toolRequest ?? undefined,
           wallet,
         })
         if (res.status !== 'PERSONALIZED') {
           setStageError(res.error || 'The AI could not generate this content. Please try again.')
           return
         }
-        setStageComponents(res.components ?? [])
+        const screen = res.screen ?? {}
+        setStageComponents(
+          buildStageComponents(stage, screen, activeObjective, selectedPlan),
+        )
         navigator(nextScreen)
       } catch (e) {
         console.warn('[ObjectiveWorkspace] Stage generation failed:', e)
@@ -335,10 +594,67 @@ export default function ObjectiveWorkspace({
     [customerId, objectiveText, selectedPlan, wallet, stageInFlight],
   )
 
+  /* Generate the merged "What I understood + Constraints extracted" screen (1b):
+     fetch the summary and constraint stages together, combine their content into a
+     single component stream, then navigate. */
+  const generateSummaryAndConstraints = useCallback(
+    async (navigator: (s: ObjectiveScreen) => void, nextScreen: ObjectiveScreen) => {
+      setStageLoading(true)
+      setStageError(null)
+      setStageInFlight('summary')
+      try {
+        const [summaryRes, constraintsRes] = await Promise.all([
+          generateObjectiveStage({
+            customerReference: customerId,
+            objectiveText,
+            stage: 'summary',
+            selectedPlan,
+            wallet,
+          }),
+          generateObjectiveStage({
+            customerReference: customerId,
+            objectiveText,
+            stage: 'constraints',
+            selectedPlan,
+            wallet,
+          }),
+        ])
+        if (summaryRes.status !== 'PERSONALIZED' || constraintsRes.status !== 'PERSONALIZED') {
+          const err =
+            summaryRes.error || constraintsRes.error || 'The AI could not generate this content. Please try again.'
+          setStageError(err)
+          return
+        }
+        const summaryScreen = summaryRes.screen ?? {}
+        const constraintsScreen = constraintsRes.screen ?? {}
+        const constraintItems = (constraintsScreen.constraints ?? []).map((c) => ({
+          id: c.id,
+          text: c.text,
+        }))
+        setStageComponents(
+          buildMergedSummaryStageComponents(summaryScreen.summary ?? '', constraintItems),
+        )
+        navigator(nextScreen)
+      } catch (e) {
+        console.warn('[ObjectiveWorkspace] Summary/constraints generation failed:', e)
+        setStageError('Something went wrong while generating this step. Please try again.')
+      } finally {
+        setStageLoading(false)
+        setStageInFlight(null)
+      }
+    },
+    [customerId, objectiveText, selectedPlan, wallet],
+  )
+
   /* Re-run the stage that failed, using the recorded navigation target. */
   const retryStage = useCallback(() => {
     if (!provisionalNav) return
-    generateStage(provisionalNav.stage, navigateTo, provisionalNav.nextScreen)
+    generateStage(
+      provisionalNav.stage,
+      navigateTo,
+      provisionalNav.nextScreen,
+      provisionalNav.toolRequest,
+    )
   }, [provisionalNav, generateStage, navigateTo])
 
   /* Stage → progress mapping */
@@ -371,17 +687,29 @@ export default function ObjectiveWorkspace({
   /* Reset wizard + AI content each time the modal opens. */
   useEffect(() => {
     if (!isOpen) return
-    setScreen('1a')
-    setObjectiveText('')
-    setSelectedPlan(null)
-    setSteps([])
-    setRedirectConfirm(null)
     setStageComponents([])
     setStageLoading(false)
     setStageError(null)
     setStageInFlight(null)
     setProvisionalNav(null)
-  }, [isOpen])
+    setCoplanView('idle')
+
+    if (resume) {
+      const resumed = applyResume(resume)
+      setObjectiveText(resume.objective)
+      setSelectedPlan(resume.plan)
+      setSteps(resumed.steps)
+      setRedirectConfirm(resumed.redirectConfirm)
+      setScreen(resumed.screen)
+      return
+    }
+
+    setScreen('1a')
+    setObjectiveText('')
+    setSelectedPlan(null)
+    setSteps([])
+    setRedirectConfirm(null)
+  }, [isOpen, resume])
 
   /* Keyboard handling */
   useEffect(() => {
@@ -396,39 +724,46 @@ export default function ObjectiveWorkspace({
   /* Partner redirect confirmation */
   const handleConfirmRedirect = useCallback(() => {
     if (!redirectConfirm) return
+    const completed = steps
+      .filter((s) => s.id === redirectConfirm.id || s.status === 'completed')
+      .map((s) => s.id)
+
+    /* Mark the just-confirmed step complete (plus auto-skipping internal ones). */
     setSteps((prev) =>
-      prev.map((s) =>
-        s.id === redirectConfirm.id ? { ...s, status: 'completed' as const } : s,
+      withInternalCompleted(
+        prev.map((s) =>
+          s.id === redirectConfirm.id ? { ...s, status: 'completed' as const } : s,
+        ),
       ),
     )
 
-    const allCompleted = steps.every(
-      (s) => s.id === redirectConfirm.id || s.status === 'completed',
-    )
+    const allCompleted = withInternalCompleted(
+      steps.map((s) =>
+        s.id === redirectConfirm.id ? { ...s, status: 'completed' as const } : s,
+      ),
+    ).every((s) => s.status === 'completed')
     if (allCompleted) {
-      setScreen('3c')
-    } else {
-      const nextStep = steps.find((s) => s.status === 'pending' && s.id !== redirectConfirm.id)
-      if (nextStep) {
-        setSteps((prev) =>
-          prev.map((s) =>
-            s.id === nextStep.id ? { ...s, status: 'running' as const } : s,
-          ),
-        )
-        setRedirectConfirm(nextStep)
-      }
+      setScreen(isValueTrack(selectedPlan) ? '4c' : '3c')
     }
-    onPartnerHandoff(redirectConfirm.partner, redirectConfirm.partnerUrl)
-  }, [redirectConfirm, steps, onPartnerHandoff])
+
+    if (redirectConfirm.partnerUrl) {
+      onPartnerHandoff(redirectConfirm.partner, redirectConfirm.partnerUrl, {
+        objective: objectiveText,
+        plan: selectedPlan,
+        completed,
+        current: redirectConfirm.id,
+      })
+    }
+  }, [redirectConfirm, steps, onPartnerHandoff, selectedPlan, objectiveText])
 
   /* Primary (Next) action advances the wizard depending on the active screen. */
   const handleNext = useCallback(() => {
     switch (screen) {
       case '1a':
-        generateStage('summary', navigateTo, '1b')
+        generateSummaryAndConstraints(navigateTo, '1b')
         break
       case '1b':
-        generateStage('constraints', navigateTo, '1c')
+        generateStage('opportunities', navigateTo, '2a')
         break
       case '1c':
         generateStage('opportunities', navigateTo, '2a')
@@ -439,26 +774,103 @@ export default function ObjectiveWorkspace({
       case '2b':
         generateStage('evidence', navigateTo, '2c')
         break
-      case '2c':
-        generateStage('execution', navigateTo, selectedPlan === 'simplicity' ? '3a' : '4a')
+      case '2c': {
+        const plan = selectedPlan
+        setSteps(buildExecutionSteps(plan))
+        setStageComponents([])
+        setStageLoading(false)
+        setStageError(null)
+        navigateTo(isValueTrack(plan) ? '4a' : '3a')
         break
+      }
+      case '3a':
+      case '4a': {
+        const advanced = withInternalCompleted(steps)
+        setSteps(advanced)
+        const next = getNextPending(advanced)
+        if (!next) {
+          navigateTo(isValueTrack(selectedPlan) ? '4c' : '3c')
+          break
+        }
+        const running: ExecutionStep = { ...next, status: 'running' }
+        setSteps((prev) => prev.map((s) => (s.id === next.id ? running : s)))
+        setRedirectConfirm(running)
+        navigateTo(isValueTrack(selectedPlan) ? '4b' : '3b')
+        break
+      }
       default:
         break
     }
-  }, [screen, generateStage, navigateTo, selectedPlan])
+  }, [screen, generateStage, generateSummaryAndConstraints, navigateTo, selectedPlan])
 
   const handleModify = useCallback(() => {
     setStageError(null)
     setStageLoading(false)
+    setCoplanView('idle')
     navigateTo('1a')
   }, [navigateTo])
+
+  /** Coplan tools regenerate the two plans, adapting them to the user's request. */
+  const handleCoplanRequest = useCallback(
+    (toolId: string, prompt: string) => {
+      generateStage(
+        'strategies',
+        navigateTo,
+        '2b',
+        `Coplan tool "${toolId}": ${prompt}`,
+      )
+    },
+    [generateStage, navigateTo],
+  )
+
+  /** Switch the Coplan pane between its tool views (explain/combine/edit/compare). */
+  const handleCoplanViewChange = useCallback((view: string) => {
+    setCoplanView(view as CoplanToolView)
+  }, [])
+
+  /** Coplan "edit" tool: adopt a new objective and rebuild both plans around it. */
+  const handleEditObjective = useCallback(
+    (newObjective: string) => {
+      const trimmed = newObjective.trim()
+      if (!trimmed) return
+      setObjectiveText(trimmed)
+      setCoplanView('idle')
+      void generateStage(
+        'strategies',
+        navigateTo,
+        '2b',
+        `Coplan tool "edit": rebuild both plans for the updated objective: "${trimmed}"`,
+        trimmed,
+      )
+    },
+    [generateStage, navigateTo],
+  )
 
   const handleSelectStep = useCallback(
     (id: string) => {
       const step = steps.find((s) => s.id === id)
-      if (step) setRedirectConfirm(step)
+      if (!step) return
+
+      /* Internal steps (no partner portal) complete in place. */
+      if (!step.partnerUrl) {
+        setSteps((prev) =>
+          withInternalCompleted(
+            prev.map((s) =>
+              s.id === id ? { ...s, status: 'completed' as const } : s,
+            ),
+          ),
+        )
+        return
+      }
+
+      const running: ExecutionStep = { ...step, status: 'running' }
+      setRedirectConfirm(running)
+      setSteps((prev) =>
+        prev.map((s) => (s.id === id ? running : s)),
+      )
+      navigateTo(isValueTrack(selectedPlan) ? '4b' : '3b')
     },
-    [steps],
+    [steps, navigateTo, selectedPlan],
   )
 
   const handleReturnHome = useCallback(() => {
@@ -475,33 +887,53 @@ export default function ObjectiveWorkspace({
       case '1b':
       case '1c':
       case '2a':
-      case '2b':
       case '2c':
+        return stageComponents
+      case '2b':
+        /* A Coplan tool view replaces the plan cards with the tool content,
+           keeping only the nav so the screen always stays fits without scroll. */
+        if (coplanView !== 'idle') {
+          const coplan = stageComponents.find((c) => c.type === 'WS_COPLAN')
+          const nav = stageComponents.find((c) => c.id === 'str-nav')
+          return [
+            makeComponent('coplan-bg', 'WS_BACKGROUND', {
+              image: toolsBg,
+              fill: true,
+            }),
+            makeComponent(
+              'coplan-view',
+              'WS_COPLAN',
+              { ...(coplan?.props ?? {}), view: coplanView },
+              [{ type: 'WS_COPLAN_REQUEST', payload: {} }],
+            ),
+            ...(nav ? [nav] : []),
+          ]
+        }
+        return stageComponents
       case '3a':
       case '4a':
-        return stageComponents
+        return executionComponents(selectedPlan)
       case '3b':
       case '4b':
-      case '4c':
         return redirectComponents(
           redirectConfirm,
-          selectedPlan === 'max-redeem' ? 'Maximum Redeem Value Plan' : 'Simplicity Plan',
+          planLabel(selectedPlan),
         )
       case '3c':
+      case '4c':
         return resultComponents({
           success: totalSuccess,
-          title: totalSuccess ? 'Execution Successful' : 'Execution Step Failed',
           message: totalSuccess
             ? 'Your redemption has been processed successfully. Your rewards have been updated.'
-            : 'Something went wrong during the execution. Your points have not been changed.',
+            : 'Something went wrong during execution. Your points have not been changed.',
         })
       default:
         return []
     }
   })()
 
-  /* Live render context + handlers passed to the SDUI renderer. */
-  const sduiContext: ObjectiveRenderContext = {
+  /* Live render context + handlers passed to the workspace renderer. */
+  const sduiContext: WorkspaceRenderContext = {
     objectiveText,
     selectedPlan,
     steps,
@@ -509,18 +941,26 @@ export default function ObjectiveWorkspace({
       screen === '1a' ? !objectiveText.trim() : screen === '2b' ? !selectedPlan : false,
   }
 
-  const sduiHandlers: ObjectiveHandlers = {
+const sduiHandlers: WorkspaceHandlers = {
     onTextChange: setObjectiveText,
     onNext: handleNext,
     onModify: handleModify,
     onSelectPlan: setSelectedPlan,
     onSelectStep: handleSelectStep,
     onConfirmRedirect: handleConfirmRedirect,
+    onCoplanRequest: handleCoplanRequest,
     onReturnHome: handleReturnHome,
+    onEditObjective: handleEditObjective,
+    onViewChange: handleCoplanViewChange,
   }
 
+  /* Background components paint across the entire modal (behind header, content
+     and progress bar); everything else floats on top. */
+  const backgroundComponents = components.filter((c) => c.type === 'WS_BACKGROUND')
+  const contentComponents = components.filter((c) => c.type !== 'WS_BACKGROUND')
+
   const renderScreen = () => (
-    <ObjectiveSDUIRenderer components={components} context={sduiContext} handlers={sduiHandlers} />
+    <WorkspaceSDUIRenderer components={contentComponents} context={sduiContext} handlers={sduiHandlers} />
   )
 
   return (
@@ -549,13 +989,14 @@ export default function ObjectiveWorkspace({
             onClick={onClose}
           />
 
-          {/* Workspace label — top-right, outside modal */}
+          {/* Workspace label — just above the modal, top-right */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ delay: 0.1 }}
-            className="absolute right-5 top-4 z-20"
+            className="absolute right-23 z-20"
+            style={{ top: 'calc(10% - 28px)' }}
           >
             <Typography
               sx={{
@@ -565,7 +1006,7 @@ export default function ObjectiveWorkspace({
                 letterSpacing: '0.02em',
               }}
             >
-              Your Workspace
+              {`${_userName.split(' ')[0]}'s LBG Coin Workspace`}
             </Typography>
           </motion.div>
 
@@ -590,13 +1031,24 @@ export default function ObjectiveWorkspace({
               overflow: 'hidden',
             }}
           >
+            {/* Full-modal background layer (pointer-events disabled so controls pass through) */}
+            {backgroundComponents.length > 0 && (
+              <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                {backgroundComponents.map((component) =>
+                  renderWorkspaceComponent(component, sduiContext, sduiHandlers),
+                )}
+              </div>
+            )}
+
             {/* Close button — top-left */}
             <Box
               sx={{
+                position: 'relative',
+                zIndex: 1,
                 display: 'flex',
                 alignItems: 'center',
                 padding: '12px 16px',
-                borderBottom: '1px solid #f1f5f9',
+                borderBottom: '1px solid rgba(241,245,249,0.7)',
                 flexShrink: 0,
               }}
             >
@@ -631,15 +1083,25 @@ export default function ObjectiveWorkspace({
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.2 }}
-                sx={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
+                sx={{
+                  position: 'relative',
+                  zIndex: 1,
+                  flex: 1,
+                  minHeight: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflow: 'hidden',
+                }}
               >
-                <StageGate
-                  loading={stageLoading}
-                  loadingLabel="Generating your next step with AI…"
-                  error={stageError}
-                  onRetry={retryStage}
-                  render={renderScreen}
-                />
+                <WorkspaceErrorBoundary>
+                  <StageGate
+                    loading={stageLoading}
+                    loadingLabel="Generating your next step with AI…"
+                    error={stageError}
+                    onRetry={retryStage}
+                    render={renderScreen}
+                  />
+                </WorkspaceErrorBoundary>
               </MotionBox>
             </AnimatePresence>
 

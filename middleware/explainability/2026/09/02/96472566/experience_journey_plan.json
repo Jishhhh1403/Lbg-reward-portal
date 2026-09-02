@@ -1,0 +1,91 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Deliver a seamless, self-paced rewards and educational progression experience focused on First Home Savings Knowledge without timed pressure or social rankings.",
+  "entryPoint": "Dashboard load, viewing points balance and active First Home Savings goal progress.",
+  "completionDefinition": "Customer reviews 63% savings knowledge goal progress and engages with the self-paced quiz module.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my points and educational goals?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "First Home Savings Knowledge progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-home-goal",
+        "fact-lbg-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate to real value and educational growth?",
+      "entryCondition": "Points balance and goal reviewed",
+      "requiredInformation": [
+        "tangible value equivalent",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-mod-100"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What is my next self-paced step to master my savings goal?",
+      "entryCondition": "Value and mechanics understood",
+      "requiredInformation": [
+        "learning module status",
+        "quiz task",
+        "comprehension feedback",
+        "confidence check"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION",
+        "FEEDBACK"
+      ],
+      "requiredActionType": "COMPLETE_QUIZ",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-retake-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-milestone",
+      "purpose": "Display detailed competency milestones for First Home Savings Knowledge",
+      "contentNotes": [
+        "Milestone ladder breakdown",
+        "Unlocked badges and learning achievements"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

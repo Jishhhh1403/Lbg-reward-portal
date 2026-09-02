@@ -1,0 +1,486 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "234b7d88",
+  "createdAt": "2026-03-30T00:00:00Z",
+  "expiresAt": "2026-04-30T00:00:00Z",
+  "customerRef": "customer_012",
+  "components": [
+    {
+      "id": "points-balance-1",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 11200,
+        "tier": "Platinum",
+        "name": "Leo Morgan",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "consolidated-wallet-1",
+      "type": "CONSOLIDATED_REWARD_WALLET",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "title": "Your Combined Reward Wallet",
+        "subtitle": "All your partner balances in one place",
+        "programmes": [
+          {
+            "name": "Main Rewards Club",
+            "points": 10850,
+            "value": "\u00a3108.50",
+            "status": "Connected"
+          },
+          {
+            "name": "Airlines Partner",
+            "points": 350,
+            "value": "\u00a33.50",
+            "status": "Connected"
+          },
+          {
+            "name": "Retail Partner",
+            "points": 0,
+            "value": "\u00a30.00",
+            "status": "Connected"
+          }
+        ],
+        "totalValue": "\u00a3112.00",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "MEANING",
+        "dependsOn": [
+          "points-balance-1"
+        ],
+        "resolves": [
+          "points-balance-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "sync-status-1",
+      "type": "SYNC_STATUS_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "status": "synced",
+        "title": "All Partners Up to Date",
+        "lastSyncedAt": "Today at 10:04 AM",
+        "message": "Your 3 connected programmes are fully synchronized.",
+        "ctaText": "Refresh Balances",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REFRESH_SYNC",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "consolidated-wallet-1"
+        ],
+        "resolves": [
+          "consolidated-wallet-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "partner-comparison-1",
+      "type": "PARTNER_VALUE_COMPARISON",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Simple Partner Transfers",
+        "subtitle": "Compare what your points are worth across partners",
+        "partners": [
+          {
+            "name": "Main Rewards Club",
+            "points": 1000,
+            "value": "\u00a310.00",
+            "perk": "Standard value"
+          },
+          {
+            "name": "Airlines Partner",
+            "points": 1000,
+            "value": "\u00a312.00",
+            "perk": "20% transfer bonus active"
+          }
+        ],
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "sync-status-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "tangible-value-1",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Your Total Cash Value",
+        "cashValue": "\u00a3112.00",
+        "pointsEquivalent": 11200,
+        "breakdown": {
+          "label": "Direct Redemption Rate",
+          "value": "100 points = \u00a31.00"
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "partner-comparison-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "partner-transfer-1",
+      "type": "PARTNER_TRANSFER_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Move Points Easily",
+        "fromProgramme": "Main Rewards Club",
+        "toPartner": "Airlines Partner",
+        "points": 1000,
+        "estimatedValue": "\u00a312.00",
+        "status": "Ready to transfer",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "TRANSFER_POINTS",
+          "payload": {
+            "amount": 1000
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "partner-comparison-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "reward-provenance-1",
+      "type": "REWARD_PROVENANCE_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Recent Point Activity",
+        "subtitle": "Where your rewards came from",
+        "history": {
+          "source": "Partner Transfer Bonus",
+          "date": "28 Aug 2026",
+          "points": 1000
+        },
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "partner-transfer-1"
+        ],
+        "resolves": [
+          "partner-transfer-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "how-points-work-1",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "steps": {
+          "title": "Plain English Transfers",
+          "description": "Move your balances instantly with zero hidden fees or complex rules."
+        },
+        "ctaLabel": "Learn More",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-progress-1",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "remaining": 1250,
+        "motivationalMessage": "You are over halfway to your holiday goal!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "partner-transfer-1"
+        ],
+        "resolves": [
+          "partner-transfer-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "programme-connection-1",
+      "type": "PROGRAMME_CONNECTION_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Connected Partner Accounts",
+        "subtitle": "Manage your linked reward programmes",
+        "programmes": [
+          {
+            "name": "Main Rewards Club",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Airlines Partner",
+            "status": "Active",
+            "connected": true
+          },
+          {
+            "name": "Retail Partner",
+            "status": "Active",
+            "connected": true
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "EVIDENCE",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "goal-linked-reward-1",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Holiday Fund Boost",
+        "goalName": "Family Holiday Fund",
+        "rewards": {
+          "name": "Partner Transfer Top-Up Bonus",
+          "points": 500,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [
+          "goal-progress-1"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "long-term-goal-1",
+      "type": "LONG_TERM_GOAL_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "goalName": "Family Holiday Fund",
+        "current": 1750,
+        "target": 3000,
+        "percentage": 58,
+        "estimatedCompletion": "Q2 2027",
+        "message": "Consistent partner transfers will help you reach your holiday target sooner.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "goal-progress-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "add-goal-card-1",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Add a New Goal",
+        "subtitle": "Set another target for your consolidated rewards",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "ADD_GOAL",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "long-term-goal-1"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "points-balance-1",
+          "consolidated-wallet-1",
+          "tangible-value-1",
+          "goal-progress-1",
+          "long-term-goal-1"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "partner-transfer-1",
+          "how-points-work-1",
+          "goal-linked-reward-1",
+          "add-goal-card-1"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "sync-status-1",
+          "partner-comparison-1",
+          "reward-provenance-1",
+          "programme-connection-1"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Effortless understanding and management of multi-partner reward portability.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "START",
+    "primaryActionComponentId": "partner-transfer-1"
+  }
+}

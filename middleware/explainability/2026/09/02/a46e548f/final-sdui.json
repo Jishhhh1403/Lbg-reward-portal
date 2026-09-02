@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "a46e548f",
+  "createdAt": "2026-03-31T00:00:00Z",
+  "expiresAt": "2026-04-07T00:00:00Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-snapshot",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "Steady progress through dedicated module completion brings your first home goal closer.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-snapshot",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [
+          "comp-points-balance"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-learning-mission",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Knowledge Mastery",
+        "missionName": "First Home Savings Fundamentals",
+        "description": "Master deposit structures, mortgage interest mechanics, and government savings schemes at your own pace.",
+        "modulesDone": 4,
+        "modulesTotal": 6,
+        "pointsOnCompletion": 300,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "learning_mission"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-pathways",
+        "role": "TENSION",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [
+          "comp-goal-progress"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quiz",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "question": "What is the primary benefit of compounding interest in long-term savings pots?",
+        "options": "A) Faster interest accumulation over time | B) Fixed daily payouts | C) Zero risk exposure",
+        "reward": "50 Points & Module Mastery",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ",
+          "payload": {
+            "answer": "A"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-pathways",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-learning-mission"
+        ],
+        "resolves": [
+          "comp-learning-mission"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-comprehension",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Concept Verification",
+        "question": "How do fixed ISA allowances affect annual tax-free savings?",
+        "yourAnswer": "They cap the total tax-free deposit per tax year.",
+        "correctAnswer": "They cap the total tax-free deposit per tax year.",
+        "feedback": "Spot on! Fully understood and verified.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-pathways",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-quiz"
+        ],
+        "resolves": [
+          "comp-quiz"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-confidence",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Mastery Confidence",
+        "topic": "First Home Purchase Readiness",
+        "confidencePercent": 85,
+        "levelLabel": "High Comprehension",
+        "nextMilestone": "Conveyancing & Legal Fees Module",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-momentum",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "comp-comprehension"
+        ],
+        "resolves": [
+          "comp-comprehension"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Expert Knowledge Insight",
+        "insight": "Savers who review foundational mortgage mechanics before house-hunting secure better terms on average.",
+        "source": "LBG Financial Education Research 2026",
+        "actionLabel": "Explore Reading",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "educational_reading"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-momentum",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-confidence"
+        ],
+        "resolves": [
+          "comp-confidence"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-milestone",
+      "type": "MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "milestones": [
+          {
+            "label": "Completed Savings Basics",
+            "achieved": true
+          },
+          {
+            "label": "Reached 63% First Home Knowledge Goal",
+            "achieved": true
+          },
+          {
+            "label": "Master Advanced Deposit Strategies",
+            "achieved": false
+          }
+        ],
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-momentum",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-educational-insight"
+        ],
+        "resolves": [
+          "comp-educational-insight"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "title": "Goal-Linked Milestone Perk",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": {
+          "name": "Conveyancing Fee Consultation Voucher",
+          "points": 1500,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM",
+          "payload": {
+            "rewardId": "conveyancing-voucher"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-momentum",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-milestone"
+        ],
+        "resolves": [
+          "comp-milestone"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Your Accumulated Value Transparency",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": {
+          "label": "Education & Savings Module Earnings",
+          "value": "\u00a339.00 equivalent value"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-momentum",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "comp-goal-linked-reward"
+        ],
+        "resolves": [
+          "comp-goal-linked-reward"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "steps": [
+          {
+            "title": "Learn & Master",
+            "description": "Complete financial literacy modules and verify your understanding with zero time pressure."
+          },
+          {
+            "title": "Track Knowledge",
+            "description": "Watch your First Home Savings competence grow transparently toward your target."
+          },
+          {
+            "title": "Unlock Real Value",
+            "description": "Convert verified learning points into tangible home-buying milestones."
+          }
+        ],
+        "ctaLabel": "View Full Transparency Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "NAVIGATE",
+          "payload": {
+            "destination": "transparency_guide"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-momentum",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [
+          "comp-tangible-value"
+        ],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-daily-tip",
+      "type": "DAILY_MONEY_TIP_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "tipTitle": "Understanding Lifetime ISA Bonuses",
+        "tipBody": "A 25% government bonus applies to savings up to \u00a34,000 per tax year for your first home.",
+        "category": "Home Savings",
+        "readTimeMin": 2,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-momentum",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-how-points-work"
+        ],
+        "resolves": [
+          "comp-how-points-work"
+        ],
+        "optional": true
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-learning-mission",
+          "comp-quiz",
+          "comp-goal-linked-reward",
+          "comp-how-points-work",
+          "comp-daily-tip"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-comprehension",
+          "comp-confidence",
+          "comp-milestone"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Master financial concepts and track meaningful progress toward the First Home Savings knowledge goal.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-pathways",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-learning-mission"
+  }
+}

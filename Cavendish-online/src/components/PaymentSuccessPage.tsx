@@ -223,6 +223,13 @@ function DetailRow({
 export default function PaymentSuccessPage() {
   const [checkoutData, setCheckoutData] = useState<CheckoutData>(DEFAULT_DATA)
 
+  /* Query params survive the `#/success` hash transition (CheckoutPage only
+     rewrites the hash), so the parent app's return URL is read here. */
+  const returnUrl =
+    typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search).get('returnTo')
+      : null
+
   useEffect(() => {
     const raw = sessionStorage.getItem('cavendish_checkout')
     if (raw) {
@@ -236,10 +243,18 @@ export default function PaymentSuccessPage() {
     }
   }, [])
 
+  /* Automatically hand the user back to their workspace after payment. */
+  useEffect(() => {
+    if (!returnUrl) return
+    const t = window.setTimeout(() => {
+      window.location.assign(returnUrl)
+    }, 2500)
+    return () => window.clearTimeout(t)
+  }, [returnUrl])
+
   const SUBTOTAL = checkoutData.subtotal
   const COINS_APPLIED = checkoutData.coinsApplied
   const COIN_DISCOUNT = checkoutData.coinDiscount
-  const COINS_EARNED = checkoutData.coinsEarned
   const FINAL_PAID = checkoutData.finalPaid
   const ORDER_REFERENCE = checkoutData.transactionId || generateOrderRef()
 
@@ -263,7 +278,7 @@ export default function PaymentSuccessPage() {
             <Stack direction="row" spacing="12px" sx={{ alignItems: 'center' }}>
               <Box
                 component="a"
-                href={REWARDS_APP_URL}
+                href={returnUrl ?? REWARDS_APP_URL}
                 aria-label="Back to LBG Rewards Portal"
                 sx={{
                   width: 36,
@@ -467,6 +482,10 @@ export default function PaymentSuccessPage() {
           <Box
             component="button"
             onClick={() => {
+              if (returnUrl) {
+                window.location.assign(returnUrl)
+                return
+              }
               try {
                 const url = new URL(REWARDS_APP_URL)
                 const crossAppEvents = JSON.stringify([{
@@ -505,8 +524,13 @@ export default function PaymentSuccessPage() {
             }}
           >
             <Gift size={18} />
-              LBG Rewards App
+              {returnUrl ? 'Return to workspace' : 'LBG Rewards App'}
           </Box>
+          {returnUrl ? (
+            <Typography sx={{ fontFamily: FONT, fontSize: 12.5, color: C.textSecondary, textAlign: 'center' }}>
+              Returning to your workspace automatically…
+            </Typography>
+          ) : null}
         </Stack>
 
         <Stack

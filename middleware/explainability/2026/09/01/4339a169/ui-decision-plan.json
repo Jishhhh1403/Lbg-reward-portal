@@ -1,0 +1,271 @@
+{
+  "planId": "plan-4339a169",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Aligns precisely with LEARNING_MASTERY and EDUCATIONAL_COMPETENCE by structuring the narrative around points snapshot, transparent value, First Home Savings goal progress, learning modules, quizzes, and educational insights without timed or competitive elements.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3550,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward mastering your First Home Savings knowledge at your own pace.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "courseName": "First Home Foundation Mastery",
+          "currentLesson": 4,
+          "totalLessons": 6,
+          "lessonPoints": 250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "target": "lesson_details"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which mortgage deposit structure offers the most predictable long-term interest savings?",
+          "options": "Fixed-rate term structure, Variable tracker rate, Interest-only variable, Staged equity release",
+          "reward": "150 LBG Coins",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_ANSWER",
+            "payload": {
+              "quizId": "home-savings-q4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Recent Concept Mastery",
+          "question": "What is the primary advantage of a Lifetime ISA bonus for first-time buyers?",
+          "yourAnswer": "25% government bonus added to annual savings up to \u00a34,000",
+          "correctAnswer": "25% government bonus added to annual savings up to \u00a34,000",
+          "feedback": "Spot on. Your consistent review ensures thorough comprehension of property savings mechanics.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Literacy Confidence",
+          "topic": "First Home Acquisition Readiness",
+          "confidencePercent": 88,
+          "levelLabel": "Advanced Mastery",
+          "nextMilestone": "Complete final module on conveyancing and legal steps",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Self-Paced Mastery Insight",
+          "insight": "Learners who revisit complex mortgage modules achieve 94% higher confidence in property budgeting.",
+          "source": "LBG Financial Literacy Research Desk",
+          "actionLabel": "Explore Learning Resources",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MODAL",
+            "payload": {
+              "modal": "educational_insights"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Coin Value Transparency",
+          "cashValue": "\u00a335.50",
+          "pointsEquivalent": 3550,
+          "breakdown": {
+            "label": "Educational Achievement Equivalence",
+            "value": "\u00a335.50 redeemable toward partner education & verified savings tools"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Learn & Earn",
+            "description": "Complete verified financial literacy modules at your own pace to accumulate LBG Coins."
+          },
+          "ctaLabel": "View Learning Guidelines",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 10 Financial Literacy Modules with 100% Mastery",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "First Home Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Advanced Property Buying Guide & \u00a350 Partner Savings Voucher",
+            "points": 1250,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM",
+            "payload": {
+              "rewardId": "property-guide-voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Learning Goal",
+          "subtitle": "Set a new financial literacy objective to track at your own pace",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_MODAL",
+            "payload": {
+              "modal": "add_goal"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Mastery Summary",
+          "topBrandName": "LBG Academy",
+          "topBrandPoints": 2500,
+          "growthTip": "Your dedication to thorough quiz reviews sets a benchmark for financial clarity.",
+          "expiringPoints": 0,
+          "expiryDate": "N/A",
+          "ctaText": "Review Learning History",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.95,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "LEARNING_MASTERY_FOCUS"
+    ]
+  },
+  "strategy": "Aligns precisely with LEARNING_MASTERY and EDUCATIONAL_COMPETENCE by structuring the narrative around points snapshot, transparent value, First Home Savings goal progress, learning modules, quizzes, and educational insights without timed or competitive elements.",
+  "confidence": 0.95
+}

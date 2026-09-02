@@ -146,6 +146,9 @@ should guide planning. Emit an array. Emit:
 ]}
 Provide 3 constraints. Mark "applied" true when it genuinely matters to this
 customer (e.g. prefer quick steps if the objective is urgent).
+IMPORTANT: Each constraint must be a concrete hard fact extracted directly from
+the stated objective and wallet. Do not emit generic filler such as "keep it
+simple", "keep it quick" or "straightforward".
 """,
     "opportunities": SYSTEM_BASE + """
 
@@ -232,6 +235,35 @@ def _nav(primary: str = "Next", secondary: str = None, is_next: bool = True) -> 
     )
 
 
+def _hard_fact_constraints(objective: str) -> list[ObjectiveConstraint]:
+    """Return constraints that are direct hard facts of the stated objective.
+
+    The app's objective is paying an insurance premium using LBG coins while
+    maximising the value derived from the rewards balance. These items are
+    concrete and objective-specific rather than generic filler, used to anchor
+    the extracted-constraints list whenever an LLM returns a loose
+    "keep it simple"-style constraint that adds no factual information.
+    """
+    lean = (objective or "").lower()
+    if "insurance" in lean or "premium" in lean or "pay" in lean:
+        return [
+            ObjectiveConstraint(id="c1", text="Pay the insurance premium using available LBG coins", applied=True),
+            ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
+            ObjectiveConstraint(id="c3", text="Use existing connected brand points to boost the balance", applied=True),
+        ]
+    if lean.strip():
+        return [
+            ObjectiveConstraint(id="c1", text=f"Achieve your goal of: \"{objective.strip()}\"", applied=True),
+            ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
+            ObjectiveConstraint(id="c3", text="Use existing connected brand points to cover the cost", applied=True),
+        ]
+    return [
+        ObjectiveConstraint(id="c1", text="Pay the insurance premium using available LBG coins", applied=True),
+        ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
+        ObjectiveConstraint(id="c3", text="Use existing connected brand points to boost the balance", applied=True),
+    ]
+
+
 def _compose_summary(screen: ObjectiveScreenPayload) -> list[SDUIComponent]:
     return [
         _headline("Summary of your Objective", eyebrow=""),
@@ -291,7 +323,7 @@ def _compose_strategies(screen: ObjectiveScreenPayload) -> list[SDUIComponent]:
 
 
 def _compose_evidence(screen: ObjectiveScreenPayload, plan: str) -> list[SDUIComponent]:
-    plan_title = "Maximum Redeem Value Plan" if plan == "max-redeem" else "Simplicity Plan"
+    plan_title = "Maximum Value Plan" if plan == "max-redeem" else "Simplicity Plan"
     return [
         _headline(plan_title, eyebrow=""),
         _comp(
@@ -309,9 +341,9 @@ def _compose_evidence(screen: ObjectiveScreenPayload, plan: str) -> list[SDUICom
 
 def _compose_execution(screen: ObjectiveScreenPayload, plan: str) -> list[SDUIComponent]:
     if plan == "max-redeem":
-        plan_label, desc = "Maximum Redeem Value Plan", "Consolidate points, then redeem for maximum value."
+        plan_label, desc = "Maximum Value Plan", "Convert Alpha Medical points into LBG coins first, then pay for your Cavendish Online insurance for higher combined value."
     else:
-        plan_label, desc = "Simplicity Plan", "Redeem your points in a single step via Cavendish Online."
+        plan_label, desc = "Simplicity Plan", "Use your existing LBG coin balance to pay for your Cavendish Online insurance in a single step."
     items = [
         {"id": e.id, "label": e.label, "partner": e.partner, "status": e.status}
         for e in screen.executionSteps
@@ -566,8 +598,8 @@ class ObjectiveService:
         if stage == "strategies":
             return {
                 "strategies": [
-                    {"id": "simplicity", "type": "simplicity", "title": "Simplicity Plan", "description": "A single-step redemption via Cavendish Online. Quick and easy.", "order": 1},
-                    {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Redeem Value Plan", "description": "Consolidate points first, then redeem for maximum value.", "order": 2},
+                    {"id": "simplicity", "type": "simplicity", "title": "Simplicity Plan", "description": "A single-step path that uses your existing LBG coin balance to pay the Cavendish Online insurance premium. Quick and easy.", "order": 1},
+                    {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Value Plan", "description": "Convert Alpha Medical points into LBG coins first, then pay the Cavendish Online insurance premium for higher combined value.", "order": 2},
                 ]
             }
         if stage == "evidence":

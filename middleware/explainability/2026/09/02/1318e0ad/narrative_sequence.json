@@ -1,0 +1,235 @@
+{
+  "primaryActionComponentRef": "comp-learning-mission",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-learning-mission",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "ACTION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [
+        "comp-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quiz",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-learning-mission"
+      ],
+      "resolves": [
+        "comp-learning-mission"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-comprehension-feedback",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-quiz"
+      ],
+      "resolves": [
+        "comp-quiz"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-confidence-progress",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-comprehension-feedback"
+      ],
+      "resolves": [
+        "comp-comprehension-feedback"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-confidence-progress"
+      ],
+      "resolves": [
+        "comp-confidence-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-milestone",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-educational-insight"
+      ],
+      "resolves": [
+        "comp-educational-insight"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-linked-reward",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-milestone"
+      ],
+      "resolves": [
+        "comp-milestone"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-goal-linked-reward"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect your total points to your active 63% savings goal progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-learning-mission",
+      "relationship": "sequential",
+      "bridgeIntent": "Transition from knowing your progress to continuing your active learning module.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-learning-mission",
+      "toComponentRef": "comp-quiz",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer a self-paced mastery quiz to reinforce module concepts.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quiz",
+      "toComponentRef": "comp-comprehension-feedback",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide instant educational feedback on your mastery check.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-comprehension-feedback",
+      "toComponentRef": "comp-confidence-progress",
+      "relationship": "sequential",
+      "bridgeIntent": "Show how your comprehension builds overall knowledge confidence.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-confidence-progress",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Highlight why self-paced learning deepens long-term financial literacy.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-educational-insight",
+      "toComponentRef": "comp-milestone",
+      "relationship": "sequential",
+      "bridgeIntent": "Celebrate milestones achieved through steady educational progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-milestone",
+      "toComponentRef": "comp-goal-linked-reward",
+      "relationship": "sequential",
+      "bridgeIntent": "Link your achieved milestones directly to your goal-based rewards.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-linked-reward",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide transparent reference on how points are earned through education.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate the real cash value equivalent of your accumulated points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-add-goal",
+      "relationship": "sequential",
+      "bridgeIntent": "Invite you to set a new learning or savings goal when ready.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

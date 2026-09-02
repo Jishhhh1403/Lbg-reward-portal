@@ -1,0 +1,63 @@
+{
+  "hypotheses": [
+    {
+      "storyId": "story-explore-balance",
+      "storyTitle": "Discovering Available Rewards Value",
+      "oneSentenceStory": "The customer checks their current rewards balance and reviews primary redemption categories to understand their purchasing power.",
+      "customerSituation": "The customer arrives at the mobile rewards overview seeking clarity on their accumulated points.",
+      "storyTension": "Uncertainty regarding the current total value and the available categories for redemption.",
+      "customerResolution": "Viewing an accurate points balance alongside a clear category grid of redemption pathways.",
+      "primaryOutcome": "Effortless understanding of available rewards value and next redemption step.",
+      "secondaryOutcome": null,
+      "narrativeMode": "UNDERSTAND_VALUE",
+      "evidenceRefs": [
+        "fact-channel-mobile",
+        "fact-consent-valid",
+        "fact-intent-explore",
+        "fact-journey-discovery"
+      ],
+      "confidence": 0.9,
+      "prohibitedDetours": [
+        "Forced enrollment flows",
+        "Complex multi-step quizzes",
+        "Unverified third-party offers"
+      ],
+      "completionSignals": [
+        "POINTS_BALANCE component rendered and viewed",
+        "CATEGORY_GRID interacted with or scrolled"
+      ],
+      "expiryAt": null
+    },
+    {
+      "storyId": "story-recent-activity",
+      "storyTitle": "Reviewing Recent Rewards History",
+      "oneSentenceStory": "The customer examines recent activity to track recent point acquisitions and redemptions.",
+      "customerSituation": "The customer wants to verify recent transactions affecting their rewards balance.",
+      "storyTension": "Lack of visibility into recent point changes or transaction history.",
+      "customerResolution": "Clear presentation of recent activity logs alongside the main balance overview.",
+      "primaryOutcome": "Transparent overview of recent account activity supporting the rewards balance.",
+      "secondaryOutcome": null,
+      "narrativeMode": "START_NEW_JOURNEY",
+      "evidenceRefs": [
+        "fact-channel-mobile",
+        "fact-consent-valid",
+        "fact-intent-explore"
+      ],
+      "confidence": 0.8,
+      "prohibitedDetours": [
+        "Ambiguous transaction labels",
+        "Hidden fee disclosures"
+      ],
+      "completionSignals": [
+        "RECENT_ACTIVITY component loaded successfully"
+      ],
+      "expiryAt": null
+    }
+  ],
+  "recommendedStoryId": "story-explore-balance",
+  "rejectedStoryReasons": {},
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

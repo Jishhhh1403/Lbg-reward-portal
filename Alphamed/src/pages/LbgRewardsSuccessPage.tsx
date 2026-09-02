@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -47,6 +48,16 @@ export default function LbgRewardsSuccessPage() {
   const lbgCoins = routeState.lbgPoints ?? 0
   const transactionId = routeState.transactionId ?? ''
   const completedAt = routeState.completedAt ?? ''
+  const returnTo = routeState.returnTo ?? ''
+
+  /* Return the user to the parent app's workspace where they left off. */
+  useEffect(() => {
+    if (!returnTo) return
+    const t = window.setTimeout(() => {
+      window.location.assign(returnTo)
+    }, 2500)
+    return () => window.clearTimeout(t)
+  }, [returnTo])
 
   return (
     <Box sx={{ minHeight: '100%', pb: 6 }}>
@@ -153,15 +164,32 @@ export default function LbgRewardsSuccessPage() {
         </Box>
 
         <Stack spacing={1.5} sx={{ mt: 3 }} className="am-rise am-rise-3">
-          <Button
-            fullWidth
-            size="large"
-            variant="contained"
-            startIcon={<HomeIcon />}
-            onClick={() => navigate('/dashboard', { replace: true })}
-          >
-            Back to Home
-          </Button>
+          {returnTo ? (
+            <>
+              <Button
+                fullWidth
+                size="large"
+                variant="contained"
+                startIcon={<HomeIcon />}
+                onClick={() => window.location.assign(returnTo)}
+              >
+                Return to workspace
+              </Button>
+              <Typography fontSize={12} fontWeight={600} color="text.secondary">
+                Returning automatically in just a moment…
+              </Typography>
+            </>
+          ) : (
+            <Button
+              fullWidth
+              size="large"
+              variant="contained"
+              startIcon={<HomeIcon />}
+              onClick={() => navigate('/dashboard', { replace: true })}
+            >
+              Back to Home
+            </Button>
+          )}
           <Button
             fullWidth
             variant="outlined"
@@ -187,7 +215,7 @@ export default function LbgRewardsSuccessPage() {
             startIcon={<OpenInNewIcon />}
             onClick={() => {
               try {
-                const url = new URL(UNIFIED_REWARDS_URL)
+                const url = new URL(returnTo || UNIFIED_REWARDS_URL)
                 const crossAppEvents = JSON.stringify([{
                   id: `evt_${Date.now()}`,
                   type: 'CONVERT',
@@ -200,7 +228,7 @@ export default function LbgRewardsSuccessPage() {
                 url.searchParams.set('cross_app_events', crossAppEvents)
                 window.location.assign(url.toString())
               } catch {
-                window.location.assign(UNIFIED_REWARDS_URL)
+                window.location.assign(returnTo || UNIFIED_REWARDS_URL)
               }
             }}
             sx={{ borderColor: '#dce8f6', color: 'primary.dark', fontWeight: 700 }}

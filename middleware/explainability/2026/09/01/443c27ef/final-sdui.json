@@ -1,0 +1,461 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "candidate-1",
+  "correlationId": "443c27ef",
+  "createdAt": "2025-02-16T12:00:00Z",
+  "expiresAt": "2025-02-16T13:00:00Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "You're 63% towards your First Home Savings mastery goal. Keep learning at your own pace!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_GOAL_DETAILS",
+          "payload": {
+            "goal": "First Home Savings Knowledge"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Your Financial Knowledge Value",
+        "cashValue": "\u00a339.00",
+        "pointsEquivalent": 3900,
+        "breakdown": {
+          "label": "Learning Mastery Equivalent",
+          "value": "1% knowledge gain = \u00a30.62 in value"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-1",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-learning-mission",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "title": "Financial Literacy Academy",
+        "missionName": "First Home Mortgage & Deposit Fundamentals",
+        "description": "Master deposit structuring and interest calculations through structured self-paced modules.",
+        "modulesDone": 5,
+        "modulesTotal": 8,
+        "pointsOnCompletion": 300,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "RESUME_LESSON",
+          "payload": {
+            "moduleId": "module-6"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quiz-card",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "question": "What is the recommended minimum deposit percentage for a standard residential mortgage?",
+        "options": "5% | 10% | 15% | 20%",
+        "reward": "150 LBG Coins",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [
+        {
+          "type": "SUBMIT_QUIZ_ANSWER",
+          "payload": {
+            "selectedOption": "10%"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-learning-mission"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-comprehension-feedback",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Recent Concept Check",
+        "question": "Compound interest calculation in savings pots",
+        "yourAnswer": "Correct on 2nd attempt",
+        "correctAnswer": "Calculated daily, applied monthly",
+        "feedback": "Retaking quizzes until full understanding is achieved deepens long-term retention.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "comp-quiz-card"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-confidence-progress",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Financial Literacy Confidence",
+        "topic": "First Home Savings & Mortgages",
+        "confidencePercent": 84,
+        "levelLabel": "Building strong competence",
+        "nextMilestone": "Expert level at 90%",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-2",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-comprehension-feedback"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Mastery Insight",
+        "insight": "Learners who complete interactive quizzes achieve 40% better clarity on home loan eligibility criteria.",
+        "source": "LBG Financial Education Research Hub",
+        "actionLabel": "Explore Knowledge Base",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "OPEN_KNOWLEDGE_BASE",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-confidence-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-milestone",
+      "type": "GOAL_MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "milestones": {
+          "label": "Complete 5 foundation modules",
+          "reached": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-educational-insight"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "title": "Milestone Reward Unlocked",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": {
+          "name": "Conveyancing Fee Discount Voucher",
+          "points": 1250,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "REDEEM_GOAL_REWARD",
+          "payload": {
+            "reward": "Conveyancing Fee Discount Voucher"
+          }
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-milestone"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "steps": {
+          "title": "Earn through learning",
+          "description": "Complete modules and master financial quizzes to grow your savings knowledge and earn reward coins."
+        },
+        "ctaLabel": "Learn about reward valuation",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [
+        {
+          "type": "VIEW_REWARD_VALUATION",
+          "payload": {}
+        }
+      ],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-goal-linked-reward"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-coach-tip",
+      "type": "COACH_TIP_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "coachName": "Ava from Rewards Coaching",
+        "headline": "Pace yourself for deep mastery",
+        "body": "Taking time to review module summaries ensures you retain practical deposit strategies for your first home.",
+        "relatedBrand": "LBG Financial Education",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-how-points-work"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-daily-money-tip",
+      "type": "DAILY_MONEY_TIP_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "tipTitle": "Understanding Lifetime ISAs",
+        "tipBody": "A 25% government bonus applies to savings deposited into a LISA for first-time home buyers.",
+        "category": "Savings & Property",
+        "readTimeMin": 3,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "journey-1",
+        "miniJourneyId": "mj-3",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-coach-tip"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-learning-mission",
+          "comp-quiz-card",
+          "comp-goal-milestone",
+          "comp-goal-linked-reward",
+          "comp-how-points-work",
+          "comp-coach-tip",
+          "comp-daily-money-tip"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-comprehension-feedback",
+          "comp-confidence-progress"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-continue-savings-knowledge",
+    "primaryOutcome": "Master financial literacy topics and track savings knowledge progress without pressure.",
+    "primaryJourneyId": "journey-1",
+    "currentMiniJourneyId": "mj-2",
+    "entryMode": "RESUME",
+    "primaryActionComponentId": "comp-learning-mission"
+  }
+}

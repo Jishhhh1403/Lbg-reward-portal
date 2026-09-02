@@ -1,0 +1,93 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Review First Home Savings knowledge milestone progress and engage in self-paced educational module verification.",
+  "entryPoint": "Customer opens rewards overview to check First Home Savings progress and explore educational modules.",
+  "completionDefinition": "Customer views milestone progress, reviews points balance, and completes an educational quiz at their own pace.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand right now in my savings and learning journey?",
+      "entryCondition": "Session initialized",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-educ-module"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 2,
+      "customerQuestion": "What educational pathways and structured knowledge tools are available next?",
+      "entryCondition": "Snapshot reviewed",
+      "requiredInformation": [
+        "learning modules",
+        "quiz options",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-retake-quiz",
+        "fact-session-time"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 3,
+      "customerQuestion": "How am I progressing toward mastery and my First Home Savings goal?",
+      "entryCondition": "Pathways reviewed",
+      "requiredInformation": [
+        "milestones",
+        "comprehension feedback",
+        "confidence level"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-mastery-motive"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-tips",
+      "purpose": "Provide supplementary daily financial literacy guidance without pressure.",
+      "contentNotes": [
+        "Daily financial tip card for self-paced learning"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

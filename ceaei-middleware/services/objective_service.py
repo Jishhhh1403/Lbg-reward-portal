@@ -123,7 +123,37 @@ Wallet:
 - Points by brand:
 {brands}
 Selected plan: {req.selectedPlan or 'none yet'}
+Coplan tool request: {req.toolRequest or '(none)'}
 """
+
+
+def _hard_fact_constraints(objective: str) -> list[ObjectiveConstraint]:
+    """Return constraints that are direct hard facts of the stated objective.
+
+    The app's objective is paying an insurance premium using LBG coins while
+    maximising the value derived from the rewards balance. These items are
+    concrete and objective-specific rather than generic filler, and are used to
+    anchor the extracted-constraints list whenever an LLM returns a loose
+    "keep it simple"-style constraint that adds no factual information.
+    """
+    lean = (objective or "").lower()
+    if "insurance" in lean or "premium" in lean or "pay" in lean:
+        return [
+            ObjectiveConstraint(id="c1", text="Pay the insurance premium using available LBG coins", applied=True),
+            ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
+            ObjectiveConstraint(id="c3", text="Use existing connected brand points to boost the balance", applied=True),
+        ]
+    if lean.strip():
+        return [
+            ObjectiveConstraint(id="c1", text=f"Achieve your goal of: \"{objective.strip()}\"", applied=True),
+            ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
+            ObjectiveConstraint(id="c3", text="Use existing connected brand points to cover the cost", applied=True),
+        ]
+    return [
+        ObjectiveConstraint(id="c1", text="Pay the insurance premium using available LBG coins", applied=True),
+        ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
+        ObjectiveConstraint(id="c3", text="Use existing connected brand points to boost the balance", applied=True),
+    ]
 
 
 PROMPTS: dict[str, str] = {
@@ -136,15 +166,23 @@ we will find the most rewarding path."}
 """,
     "constraints": SYSTEM_BASE + """
 
-Based on the objective and wallet, determine which reward-relevant constraints
-should guide planning. Emit an array. Emit:
+This is the planning stage for the customer's stated objective (e.g. paying an
+insurance bill using LBG coins while maximising value).
+IMPORTANT: Do NOT name any specific provider or partner brand (for example
+Cavendish Online or Alpha Medical) at this stage. Partners are revealed only in
+the later opportunities and strategies steps.
+Each constraint MUST be a specific, factual requirement extracted directly from
+the customer's objective and live wallet. Do not emit generic or stock filler
+constraints such as "keep it simple", "keep it quick", or "straightforward".
+The three items together should read as concrete hard facts — things that are
+actually true of this customer's stated goal and available balance. Emit:
 {"constraints": [
-  {"id": "c1", "text": "Maximise redemption value", "applied": true},
-  {"id": "c2", "text": "...", "applied": true/false},
-  {"id": "c3", "text": "...", "applied": true}
+  {"id": "c1", "text": "e.g. Pay the insurance premium using available LBG coins", "applied": true},
+  {"id": "c2", "text": "e.g. Maximise the value gained from the rewards balance", "applied": true},
+  {"id": "c3", "text": "e.g. Use existing connected brand points to boost the balance", "applied": true}
 ]}
-Provide 3 constraints. Mark "applied" true when it genuinely matters to this
-customer (e.g. prefer quick steps if the objective is urgent).
+Provide 3 constraints that are directly tied to this specific objective, phrased
+in plain, non-branded language.
 """,
     "opportunities": SYSTEM_BASE + """
 
@@ -158,18 +196,32 @@ Estimate values in GBP consistent with their point balances. Provide 3 items.
 """,
     "strategies": SYSTEM_BASE + """
 
-Produce up to 2 distinct redemption strategy plans for the objective. The first
-should be a simple single-step path; the second a higher-value consolidated path
-if the wallet has points across multiple brands. Emit:
+Produce exactly two redemption strategy plans for the objective. The first must be
+a simple single-step path ("simplicity"); the second a higher-value consolidated
+path ("max-redeem") that first converts Alpha Medical points into LBG coins and
+then pays Cavendish Online. Emit:
 {"strategies": [
-  {"id": "simplicity", "type": "simplicity", "title": "...", "description": "...", "order": 1},
-  {"id": "max-redeem", "type": "max-redeem", "title": "...", "description": "...", "order": 2}
+  {"id": "simplicity", "type": "simplicity", "title": "Simplicity Plan", "description": "...", "order": 1},
+  {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Value Plan", "description": "...", "order": 2}
 ]}
+If a Coplan tool request is present in the prompt, adapt both plan descriptions so
+the plans directly answer that request (e.g. explain, combine, edit constraints,
+or compare). Keep the same two ids/types/titles.
 """,
     "evidence": SYSTEM_BASE + """
 
 The customer selected the plan "{plan}". Produce cognitive evidence explaining
-why this plan is recommended for them, grounded in their wallet. Emit:
+why this plan is right for them. Frame the reasoning according to their choice:
+- If the plan is "simplicity": because they chose a simple, fast and instant
+  plan, we will use their current LBG coins and make the payment straight away,
+  even though they hold points in connected partner brands.
+- If the plan is "max-redeem": because they chose the maximum value plan, we
+  will convert existing reward points from their partner brands into LBG coins
+  and then make the insurance payment with the combined balance.
+- If the plan is "hybrid": because they chose a balanced plan, we keep the
+  journey as simple as a single payment but still fold in the extra value of
+  converting their partner points first.
+Emit:
 {"evidence": {"summary": "one or two sentences", "factors": ["bullet 1", "bullet 2", "bullet 3", "bullet 4"]}}
 """,
     "execution": SYSTEM_BASE + """
@@ -212,6 +264,7 @@ class ObjectiveService:
                 "obj": req.objectiveText,
                 "stage": req.stage.value,
                 "plan": req.selectedPlan,
+                "toolRequest": req.toolRequest or "",
                 "total": req.wallet.totalPoints,
                 "tier": req.wallet.tier,
                 "brands": [(b.brandName, b.points) for b in req.wallet.pointsByBrand],
@@ -302,7 +355,20 @@ class ObjectiveService:
                 )
             if not parsed:
                 return None
-            payload.constraints = parsed
+            # Guard: drop generic/stock filler constraints and anchor the list on
+            # the actual hard facts of the customer's objective so every item is
+            # directly tied to what they asked for (never a loose "keep it simple").
+            keep = []
+            for c in parsed:
+                low = (c.text or "").lower()
+                if any(g in low for g in ("keep it simple", "keep it quick", "straightforward", "keep the redemption process simple")):
+                    continue
+                keep.append(c)
+            if len(keep) < 3:
+                keep = _hard_fact_constraints(req.objectiveText) + [
+                    c for c in keep if c.text not in {d.text for d in _hard_fact_constraints(req.objectiveText)}
+                ]
+            payload.constraints = keep[:3]
 
         elif stage == "opportunities":
             items = content.get("opportunities", [])
@@ -385,9 +451,9 @@ class ObjectiveService:
         if stage == "constraints":
             return {
                 "constraints": [
-                    {"id": "c1", "text": "Maximise redemption value", "applied": True},
-                    {"id": "c2", "text": "Prefer quick and simple steps", "applied": True},
-                    {"id": "c3", "text": "Use available partner offers", "applied": True},
+                    {"id": "c1", "text": "Pay my insurance with the least amount of effort", "applied": True},
+                    {"id": "c2", "text": "Get the most value from my rewards balance", "applied": True},
+                    {"id": "c3", "text": "Keep everything in as few steps as possible", "applied": True},
                 ]
             }
         if stage == "opportunities":
@@ -399,21 +465,48 @@ class ObjectiveService:
                 ]
             }
         if stage == "strategies":
+            request = (req.toolRequest or "").strip()
+            adapt = f" ({request})" if request else ""
             return {
                 "strategies": [
-                    {"id": "simplicity", "type": "simplicity", "title": "Simplicity Plan", "description": "A single-step redemption via Cavendish Online. Quick and easy.", "order": 1},
-                    {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Redeem Value Plan", "description": "Consolidate points first, then redeem for maximum value.", "order": 2},
+                    {"id": "simplicity", "type": "simplicity", "title": "Simplicity Plan", "description": f"A single-step path that uses your existing LBG coin balance to pay the Cavendish Online insurance premium. Quick and easy.{adapt}", "order": 1},
+                    {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Value Plan", "description": f"Convert Alpha Medical points into LBG coins first, then pay the Cavendish Online insurance premium for higher combined value.{adapt}", "order": 2},
                 ]
             }
         if stage == "evidence":
+            plan = req.selectedPlan or "simplicity"
+            if plan == "hybrid":
+                return {
+                    "evidence": {
+                        "summary": "You chose a balanced hybrid plan: we keep the payment as simple as a single step, but your partner points are still converted into LBG coins so you get the extra value too.",
+                        "factors": [
+                            "The journey stays as easy as one action for you.",
+                            "Your partner points are still put to work as LBG coins.",
+                            "You get more value without extra steps or waiting.",
+                            "The best of both plans in a single balanced path.",
+                        ],
+                    }
+                }
+            if plan == "max-redeem":
+                return {
+                    "evidence": {
+                        "summary": "Since you chose the maximum value plan, we will convert existing rewards points from your partner brands into LBG coins, then make the insurance payment with your combined balance.",
+                        "factors": [
+                            "Converting your partner points first unlocks more LBG coins.",
+                            "Your combined balance covers the full insurance premium.",
+                            "This delivers noticeably more value than paying with LBG coins alone.",
+                            "Only a couple of extra steps for a better overall outcome.",
+                        ],
+                    }
+                }
             return {
                 "evidence": {
-                    "summary": "Based on your current balances and recent activity, this plan optimises your total redemption value.",
+                    "summary": "You chose a simple, fast and instant plan. Even though you hold points in connected partner brands, we will use your current LBG coins and make the payment right away.",
                     "factors": [
-                        "Consolidating first yields approximately £8 more value.",
-                        "Your tier qualifies you for the premium conversion rate.",
-                        "Idle points lose value over time.",
-                        "Cavendish Online offers a bonus on combined redemptions.",
+                        "Keeps everything in one easy step.",
+                        "No waiting on conversions from partner brands.",
+                        "Your LBG coin balance is ready to use right now.",
+                        "The quickest way to get your insurance paid.",
                     ],
                 }
             }
@@ -422,13 +515,15 @@ class ObjectiveService:
             if plan == "max-redeem":
                 return {
                     "executionSteps": [
-                        {"id": "step-1", "label": "Consolidate points at Alpha Medical", "partner": "Alpha Medical", "partnerUrl": "http://localhost:5174", "status": "pending"},
-                        {"id": "step-2", "label": "Redeem points via Cavendish Online", "partner": "Cavendish Online", "partnerUrl": "http://localhost:5175", "status": "pending"},
+                        {"id": "step-1", "label": "Convert Alpha Medical points to LBG coins", "partner": "Alpha Medical", "partnerUrl": "http://localhost:5174/lbg-rewards/convert", "status": "pending"},
+                        {"id": "step-2", "label": "Return to your workspace", "partner": "LBG Coins", "partnerUrl": "http://localhost:5173", "status": "pending"},
+                        {"id": "step-3", "label": "Pay your Cavendish Online insurance", "partner": "Cavendish Online", "partnerUrl": "http://localhost:5175/#/checkout", "status": "pending"},
                     ]
                 }
             return {
                 "executionSteps": [
-                    {"id": "step-1", "label": "Redeem points via Cavendish Online", "partner": "Cavendish Online", "partnerUrl": "http://localhost:5175", "status": "pending"},
+                    {"id": "step-1", "label": "Use your existing LBG coin balance", "partner": "LBG Coins", "partnerUrl": "http://localhost:5173", "status": "pending"},
+                    {"id": "step-2", "label": "Pay your Cavendish Online insurance", "partner": "Cavendish Online", "partnerUrl": "http://localhost:5175/#/checkout", "status": "pending"},
                 ]
             }
         return {}

@@ -1,0 +1,425 @@
+{
+  "schemaVersion": "1.0",
+  "decisionId": "decision-candidate-1",
+  "correlationId": "6efbbbcf",
+  "createdAt": "2023-10-27T00:00:00Z",
+  "expiresAt": "2023-10-27T23:59:59Z",
+  "customerRef": "customer_011",
+  "components": [
+    {
+      "id": "comp-points-balance",
+      "type": "POINTS_BALANCE",
+      "version": "1.0",
+      "priority": 1,
+      "props": {
+        "points": 3900,
+        "tier": "Gold",
+        "name": "Sophie Williams",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-1",
+        "role": "ORIENTATION",
+        "dependsOn": [],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-progress",
+      "type": "GOAL_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 2,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "current": 1250,
+        "target": 2000,
+        "percentage": 63,
+        "remaining": 750,
+        "motivationalMessage": "You're building solid financial literacy at your own pace. Keep mastering each module!",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-3",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-learning-mission",
+      "type": "LEARNING_MISSION_CARD",
+      "version": "1.0",
+      "priority": 3,
+      "props": {
+        "title": "Academy Core Curriculum",
+        "missionName": "First Home Mortgage Fundamentals",
+        "description": "Master deposit requirements, LTV ratios, and interest structures comfortably.",
+        "modulesDone": 5,
+        "modulesTotal": 8,
+        "pointsOnCompletion": 350,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-4",
+        "role": "ORIENTATION",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-quiz",
+      "type": "QUIZ_CARD",
+      "version": "1.0",
+      "priority": 4,
+      "props": {
+        "question": "What is the standard minimum deposit percentage recommended for a first home purchase?",
+        "options": "A) 5% | B) 15% | C) 25%",
+        "reward": "100 LBG Coins",
+        "timeLimit": 0,
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-4",
+        "role": "OPTION",
+        "dependsOn": [
+          "comp-learning-mission"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-comprehension-feedback",
+      "type": "COMPREHENSION_FEEDBACK_CARD",
+      "version": "1.0",
+      "priority": 5,
+      "props": {
+        "title": "Concept Mastery Check",
+        "question": "How do fixed vs. variable rates affect long-term savings predictability?",
+        "yourAnswer": "Fixed rates lock in monthly outgoings.",
+        "correctAnswer": "Fixed rates lock in monthly outgoings, providing absolute budgeting certainty.",
+        "feedback": "Spot on. Your focus on understanding structural predictability is paying off.",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-4",
+        "role": "FEEDBACK",
+        "dependsOn": [
+          "comp-quiz"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-confidence-progress",
+      "type": "CONFIDENCE_PROGRESS_CARD",
+      "version": "1.0",
+      "priority": 6,
+      "props": {
+        "title": "Financial Literacy Confidence",
+        "topic": "Mortgage & Savings Architecture",
+        "confidencePercent": 88,
+        "levelLabel": "High Mastery",
+        "nextMilestone": "Advanced Property Tax Mechanics",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-4",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-comprehension-feedback"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-educational-insight",
+      "type": "EDUCATIONAL_INSIGHT_CARD",
+      "version": "1.0",
+      "priority": 7,
+      "props": {
+        "title": "Clarity First: Understanding Your LBG Coin Value",
+        "insight": "Every 100 LBG Coins equates to \u00a31.00 in verified educational reward value, ensuring complete transparency as you progress.",
+        "source": "LBG Financial Literacy Standards",
+        "actionLabel": "Explore Valuation Details",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-2",
+        "role": "MEANING",
+        "dependsOn": [
+          "comp-points-balance"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-tangible-value",
+      "type": "TANGIBLE_VALUE_CARD",
+      "version": "1.0",
+      "priority": 8,
+      "props": {
+        "title": "Your Total Rewards Valuation",
+        "cashValue": "\u00a335.50",
+        "pointsEquivalent": 3550,
+        "breakdown": {
+          "label": "Academy Completion Bonus",
+          "value": "\u00a335.50 equivalent across 3,550 LBG Coins"
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-2",
+        "role": "EVIDENCE",
+        "dependsOn": [
+          "comp-educational-insight"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-how-points-work",
+      "type": "HOW_POINTS_WORK_CARD",
+      "version": "1.0",
+      "priority": 9,
+      "props": {
+        "steps": {
+          "title": "Transparent Earning",
+          "description": "Earn coins strictly through completed educational modules and quiz mastery with zero hidden expiration traps."
+        },
+        "ctaLabel": "View Earning Transparency Guide",
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-2",
+        "role": "REFERENCE",
+        "dependsOn": [
+          "comp-tangible-value"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-milestone",
+      "type": "GOAL_MILESTONE_CARD",
+      "version": "1.0",
+      "priority": 10,
+      "props": {
+        "goalName": "First Home Savings Knowledge",
+        "milestones": {
+          "label": "Completed Core Deposit Module",
+          "reached": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-3",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-goal-progress"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-goal-linked-reward",
+      "type": "GOAL_LINKED_REWARD",
+      "version": "1.0",
+      "priority": 11,
+      "props": {
+        "title": "Unlock Goal-Aligned Educational Perks",
+        "goalName": "First Home Savings Knowledge",
+        "rewards": {
+          "name": "First-Time Buyer Masterclass Voucher",
+          "points": 1250,
+          "goalLinked": true
+        },
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-4",
+        "role": "ACTION",
+        "dependsOn": [
+          "comp-goal-milestone"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-add-goal",
+      "type": "ADD_GOAL_CARD",
+      "version": "1.0",
+      "priority": 12,
+      "props": {
+        "title": "Add a New Learning Goal",
+        "subtitle": "Set your own self-paced curriculum focus without timers",
+        "layout": {
+          "span": "half"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-3",
+        "role": "CONTINUATION",
+        "dependsOn": [
+          "comp-goal-linked-reward"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    },
+    {
+      "id": "comp-badge",
+      "type": "BADGE_CARD",
+      "version": "1.0",
+      "priority": 13,
+      "props": {
+        "title": "Earned Knowledge Badges",
+        "badges": {
+          "name": "Savings Master",
+          "icon": "brain",
+          "earned": true
+        },
+        "totalEarned": 9,
+        "totalAvailable": 12,
+        "layout": {
+          "span": "full"
+        }
+      },
+      "actions": [],
+      "narrative": {
+        "journeyId": "rewards-overview",
+        "miniJourneyId": "mj-4",
+        "role": "PAYOFF",
+        "dependsOn": [
+          "comp-add-goal"
+        ],
+        "resolves": [],
+        "optional": false
+      }
+    }
+  ],
+  "metadata": {
+    "schemaVersion": "1.0",
+    "policyVersions": [
+      "1.0"
+    ],
+    "componentRegistryVersion": "1.0"
+  },
+  "narrative": {
+    "archetype": "CLARITY_FIRST",
+    "headline": "Exactly what your points are worth",
+    "tone": "CONCISE",
+    "acts": [
+      {
+        "id": "SNAPSHOT",
+        "label": "Where you stand",
+        "role": "Ground the customer in their current value and progress",
+        "componentIds": [
+          "comp-points-balance",
+          "comp-goal-progress",
+          "comp-tangible-value"
+        ]
+      },
+      {
+        "id": "PATHWAYS",
+        "label": "What you can do next",
+        "role": "Present actions matched to their motivations",
+        "componentIds": [
+          "comp-learning-mission",
+          "comp-quiz",
+          "comp-how-points-work",
+          "comp-goal-milestone",
+          "comp-goal-linked-reward",
+          "comp-add-goal"
+        ]
+      },
+      {
+        "id": "MOMENTUM",
+        "label": "Wins & milestones",
+        "role": "Celebrate progress and preview what's coming",
+        "componentIds": [
+          "comp-comprehension-feedback",
+          "comp-confidence-progress",
+          "comp-badge"
+        ]
+      },
+      {
+        "id": "TRUST",
+        "label": "Your rewards, your control",
+        "role": "Close with transparency, safety and choice",
+        "componentIds": [
+          "comp-educational-insight"
+        ]
+      }
+    ],
+    "relevanceScores": {}
+  },
+  "experienceNarrative": {
+    "storyId": "story-1",
+    "primaryOutcome": "Master financial literacy topics and track savings knowledge progress at an individual pace.",
+    "primaryJourneyId": "rewards-overview",
+    "currentMiniJourneyId": "mj-4",
+    "entryMode": "START",
+    "primaryActionComponentId": "comp-goal-linked-reward"
+  }
+}

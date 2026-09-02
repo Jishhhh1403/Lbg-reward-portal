@@ -1,0 +1,73 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-continue-learning",
+  "journeyObjective": "Deliver a seamless, self-paced educational overview highlighting goal progress, milestone tracking, and mastery-focused quizzes.",
+  "entryPoint": "Rewards Overview Screen",
+  "completionDefinition": "Customer reviews goal progress (63%) and initiates or completes a self-paced learning module/quiz.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I currently stand with my rewards and savings knowledge?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What educational steps and milestones can I take next without time pressure?",
+      "entryCondition": "Customer reviewed points balance and initial goal status",
+      "requiredInformation": [
+        "learning modules",
+        "milestones",
+        "quiz options"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "EVIDENCE",
+        "OPTION",
+        "ACTION",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-completes-modules",
+        "fact-retakes-quizzes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide clear value transparency and educational support without gamified pressure",
+      "contentNotes": [
+        "How points work",
+        "Tangible cash value equivalent"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

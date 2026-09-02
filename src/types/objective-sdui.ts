@@ -26,6 +26,7 @@ export interface ObjectiveGenerateRequest {
   objectiveText: string
   stage: ObjectiveStage
   selectedPlan?: string | null
+  toolRequest?: string | null
   wallet: ObjectiveWalletPayload
 }
 
@@ -68,11 +69,24 @@ export interface ExecutionStepPayload {
   status: 'pending' | 'running' | 'completed' | 'failed'
 }
 
+/** Structured content returned by the CEAEI middleware for each wizard stage. */
+export interface ObjectiveScreenPayload {
+  screenType?: string
+  summary?: string
+  constraints?: ObjectiveConstraintPayload[]
+  opportunities?: RewardOpportunityPayload[]
+  strategies?: StrategyCardPayload[]
+  evidence?: CognitiveEvidencePayload
+  executionSteps?: ExecutionStepPayload[]
+}
+
 export interface ObjectiveGenerateResponsePayload {
   status: 'PERSONALIZED' | 'REJECTED'
   correlationId?: string
-  /** Generic SDUI component list for the generated stage, rendered via the registry. */
-  components: SDUIComponent[]
+  /** Structured stage content returned by the middleware. */
+  screen?: ObjectiveScreenPayload
+  /** Legacy: client-composed SDUI component list (used by local screens). */
+  components?: SDUIComponent[]
   intelligence?: Record<string, unknown>
   confidence?: number
   reasonCodes?: string[]

@@ -1,0 +1,219 @@
+{
+  "primaryActionComponentRef": "comp-partner-transfer",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-consolidated-wallet",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-sync-status",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-consolidated-wallet"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-value-comparison",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-sync-status"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-trust",
+      "narrativeRole": "MEANING",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-partner-value-comparison"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-partner-transfer",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-provenance",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-partner-transfer"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "MEANING",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-reward-provenance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-partner-transfer"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-program-connection",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-choice-panel",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "OPTION",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-program-connection"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-reward-choice-panel"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-consolidated-wallet",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Show combined balance across programmes",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-consolidated-wallet",
+      "toComponentRef": "comp-sync-status",
+      "relationship": "sequential",
+      "bridgeIntent": "Verify sync status of partner accounts",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-sync-status",
+      "toComponentRef": "comp-partner-value-comparison",
+      "relationship": "sequential",
+      "bridgeIntent": "Compare partner values clearly",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-partner-value-comparison",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Translate points into cash equivalents",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-partner-transfer",
+      "relationship": "sequential",
+      "bridgeIntent": "Enable simple point transfers",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-partner-transfer",
+      "toComponentRef": "comp-reward-provenance",
+      "relationship": "sequential",
+      "bridgeIntent": "Trace recent reward sources",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reward-provenance",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain how transfers work simply",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect transfers to goal progress",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-program-connection",
+      "relationship": "sequential",
+      "bridgeIntent": "Manage connected programmes",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-program-connection",
+      "toComponentRef": "comp-reward-choice-panel",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer flexible redemption paths",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-reward-choice-panel",
+      "toComponentRef": "comp-rewards-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide final transfer tip",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

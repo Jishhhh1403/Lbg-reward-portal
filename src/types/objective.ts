@@ -6,7 +6,21 @@ export type ObjectiveScreen =
 
 export type ObjectiveStage = 'capture' | 'strategy' | 'execution'
 
-export type PlanType = 'simplicity' | 'max-redeem' | null
+export type PlanType = 'simplicity' | 'max-redeem' | 'hybrid' | null
+
+/**
+ * Continuation payload handed back to the workspace after a partner portal
+ * returns. Encodes where the user was so the wizard can re-open at the exact
+ * step they left (no monitoring/date — a redirect prompt instead).
+ */
+export interface WorkspaceResume {
+  objective: string
+  plan: PlanType
+  /** Step ids already completed before the current hand-off. */
+  completed: string[]
+  /** The step id that was handed off to the partner portal. */
+  current: string
+}
 
 export interface ObjectiveConstraint {
   id: string

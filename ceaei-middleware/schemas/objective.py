@@ -48,6 +48,7 @@ class ObjectiveGenerateRequest(BaseModel):
     objectiveText: str = ""
     stage: ObjectiveStage
     selectedPlan: Optional[str] = None
+    toolRequest: Optional[str] = None
     wallet: ObjectiveWallet = Field(default_factory=ObjectiveWallet)
 
 

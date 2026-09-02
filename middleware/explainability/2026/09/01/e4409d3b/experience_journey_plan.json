@@ -1,0 +1,113 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-transfers",
+  "journeyObjective": "Present a unified multi-partner rewards overview with plain-English transfer options and clear goal progress.",
+  "entryPoint": "Dashboard load with active multi-programme balances",
+  "completionDefinition": "Leo reviews combined balances and accesses the plain-English transfer explorer.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-snapshot",
+      "order": 1,
+      "customerQuestion": "Where do I stand across my programmes?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "Total combined balance",
+        "Tier status",
+        "Connected programmes"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-trust",
+      "requiredEvidenceRefs": [
+        "fact-multi-balance",
+        "fact-combined-view"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-trust",
+      "order": 2,
+      "customerQuestion": "How do my wallet and partner connections work together safely?",
+      "entryCondition": "Snapshot viewed",
+      "requiredInformation": [
+        "Wallet totals",
+        "Sync status",
+        "Partner comparison values"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-pathways",
+      "requiredEvidenceRefs": [
+        "fact-plain-english",
+        "fact-jargon-aversion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-pathways",
+      "order": 3,
+      "customerQuestion": "How can I transfer points between partners simply?",
+      "entryCondition": "Trust established",
+      "requiredInformation": [
+        "Transfer options",
+        "Partner values",
+        "Plain-English guidance"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "CHOICE",
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-momentum",
+      "requiredEvidenceRefs": [
+        "fact-transfer-inquiry"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-momentum",
+      "order": 4,
+      "customerQuestion": "How am I progressing toward my goals?",
+      "entryCondition": "Transfer pathways explored",
+      "requiredInformation": [
+        "Goal progress",
+        "History",
+        "Next milestone"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-combined-view"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-glossary",
+      "purpose": "Provide plain-English explanations of transfer terms without technical jargon",
+      "contentNotes": [
+        "No DLT jargon",
+        "Simple conversion ratios"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

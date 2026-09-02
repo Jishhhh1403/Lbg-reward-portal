@@ -1,0 +1,95 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Provide a unified view of multi-partner balances and plain-English transfer options supporting the Family Holiday Fund.",
+  "entryPoint": "Rewards overview screen opened by customer",
+  "completionDefinition": "Customer reviews consolidated balances and successfully accesses jargon-free partner transfer comparisons.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my total combined reward balance across all my programmes?",
+      "entryCondition": "Screen load",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "name",
+        "wallet balances"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-1",
+        "fact-3"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I easily compare and move my points between partners without confusing jargon?",
+      "entryCondition": "Consolidated balance viewed",
+      "requiredInformation": [
+        "partner comparison values",
+        "transfer options"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "TENSION",
+        "EVIDENCE",
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-2",
+        "fact-4",
+        "fact-5"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How is my Family Holiday Fund progressing toward our target?",
+      "entryCondition": "Partner comparison reviewed",
+      "requiredInformation": [
+        "goal name",
+        "current value",
+        "target value",
+        "progress percentage"
+      ],
+      "allowedNarrativeRoles": [
+        "PAYOFF",
+        "CONTINUATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-1"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-1",
+      "purpose": "Provide supplementary clarity on how point calculations and transfers work in plain English.",
+      "contentNotes": [
+        "Plain English guide on transfers",
+        "FAQ on multi-partner connectivity"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

@@ -49,6 +49,12 @@ export default function LbgRewardsConvertPage() {
   const navigate = useNavigate()
   const location = useLocation()
   const routeState = (location.state ?? {}) as ConvertRouteState
+  const query = new URLSearchParams(location.search)
+
+  /** Prefill identity + return URL passed in from the parent app. */
+  const returnToUrl = routeState.returnTo ?? query.get('returnTo') ?? undefined
+  const queryEmail = query.get('customerEmail') ?? ''
+  const queryName = query.get('customerName') ? decodeURIComponent(query.get('customerName')!) : ''
 
   const [status, setStatus] = useState<LoadStatus>('loading')
   const [page, setPage] = useState<ConvertPageState>({
@@ -97,7 +103,7 @@ export default function LbgRewardsConvertPage() {
           return
         }
 
-        const email = routeState.email ?? readStoredEmail()
+        const email = routeState.email ?? readStoredEmail() ?? queryEmail
         if (!email) {
           navigate('/dashboard', { replace: true })
           return
@@ -113,10 +119,16 @@ export default function LbgRewardsConvertPage() {
         }
         await apply({
           email,
-          userName: routeState.userName ?? readStoredName(),
+          userName: routeState.userName ?? readStoredName() ?? queryName,
           maxPoints: summary.alphamedicolPoints,
           hasLinkedAccount: summary.hasAccount,
         })
+        try {
+          localStorage.setItem('am_customer_email', email)
+          if (queryName) localStorage.setItem('am_customer_name', queryName)
+        } catch {
+          /* ignore storage errors */
+        }
       } catch (error) {
         if (cancelled) return
         setStatus('error')
@@ -178,6 +190,7 @@ export default function LbgRewardsConvertPage() {
         updatedLbgPoints: updatedLbg,
         transactionId: result.transactionId,
         completedAt: result.completedAt,
+        returnTo: returnToUrl,
       }
       navigate('/lbg-rewards/success', { state: successState })
     } catch (error) {

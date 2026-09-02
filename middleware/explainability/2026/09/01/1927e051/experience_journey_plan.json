@@ -1,0 +1,87 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Deliver self-paced financial literacy modules and First Home Savings goal progress tracking aligned with learning mastery.",
+  "entryPoint": "Rewards overview dashboard for Sophie Williams",
+  "completionDefinition": "Customer engages with educational module content or quiz and views goal progress milestones.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do I stand with my current financial mastery and savings?",
+      "entryCondition": "Session start on rewards dashboard",
+      "requiredInformation": [
+        "points",
+        "tier",
+        "goal progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real-world value and knowledge?",
+      "entryCondition": "Viewing snapshot and progress",
+      "requiredInformation": [
+        "tangible value",
+        "how points work"
+      ],
+      "allowedNarrativeRoles": [
+        "EVIDENCE",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-persona"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What learning pathways and self-paced quizzes can I engage with next?",
+      "entryCondition": "Reviewed value and transparency details",
+      "requiredInformation": [
+        "learning modules",
+        "quizzes"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "COMPLETE_QUIZ",
+      "resolutionType": "CHOICE",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-behavior-modules"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-history",
+      "purpose": "Provide provenance and reward history for auditability",
+      "contentNotes": [
+        "Recent academy module bonus points record"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

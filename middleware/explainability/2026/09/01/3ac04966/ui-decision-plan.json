@@ -1,0 +1,312 @@
+{
+  "planId": "plan-3ac04966",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Aligns precisely with Sophie's LEARNING_MASTERY motivation by delivering clear educational milestones, transparent tangible value, structured learning modules, and calm home savings progress tracking without timed pressure or social leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_BALANCE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "Steady progress toward your home ownership mastery.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "courseName": "Rewards Academy: Advanced Property Planning",
+          "currentLesson": 4,
+          "totalLessons": 6,
+          "lessonPoints": 150,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CONTINUE_LESSON",
+            "payload": {
+              "lessonId": "lesson-4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of compound savings growth in dedicated property pots?",
+          "options": "A) Fixed interest only, B) Earning interest on accumulated interest over time, C) Immediate cash liquidity",
+          "reward": "100 Mastery Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "B"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Mastery Check",
+          "question": "How does consistency affect your long-term reward multiplier?",
+          "yourAnswer": "Regular monthly contributions build steady momentum.",
+          "correctAnswer": "Consistent monthly habits compound both savings and educational tier progression.",
+          "feedback": "Excellent understanding! Your steady approach secures long-term value.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "ACKNOWLEDGE_FEEDBACK",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-confidence",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Competence Tracker",
+          "topic": "Property & Savings Strategies",
+          "confidencePercent": 88,
+          "levelLabel": "Advanced Learner",
+          "nextMilestone": "Mastery Certification Module 5",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_CONFIDENCE_DETAILS",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Understanding Your Points Value",
+          "insight": "Every 1,000 points equates to \u00a310.00 of guaranteed tangible value when applied toward your home savings goal or approved learning partners.",
+          "source": "LBG Financial Education Directorate",
+          "actionLabel": "Read Full Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_EDUCATIONAL_GUIDE",
+            "payload": {
+              "guideId": "value-transparency-101"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Total Reward Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Available for Home Savings Allocation",
+            "value": "\u00a339.00 equivalent"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_VALUE_BREAKDOWN",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Earn through learning",
+            "description": "Complete educational modules and knowledge quizzes at your own pace to accumulate mastery points."
+          },
+          "ctaLabel": "Explore All Modules",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_HOW_POINTS_WORK",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 9 Financial Modules & 8-Week Learning Streak",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_MILESTONE_HISTORY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Milestone Reward Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Advanced Property Investment Masterclass",
+            "points": 500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_GOAL_REWARD",
+            "payload": {
+              "rewardId": "property-masterclass"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Learning Goal",
+          "subtitle": "Set a new educational or savings target at your own pace",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_NEW_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Mastery Badges",
+          "badges": {
+            "name": "Financial Literacy Expert",
+            "icon": "brain",
+            "earned": true
+          },
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_ALL_BADGES",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_COMPETENCE_MATCH"
+    ]
+  },
+  "strategy": "Aligns precisely with Sophie's LEARNING_MASTERY motivation by delivering clear educational milestones, transparent tangible value, structured learning modules, and calm home savings progress tracking without timed pressure or social leaderboards.",
+  "confidence": 0.98
+}

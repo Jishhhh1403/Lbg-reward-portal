@@ -1,0 +1,74 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-education",
+  "journeyObjective": "Enable Sophie to explore financial literacy modules and track home savings progress calmly without timed pressure.",
+  "entryPoint": "Rewards overview screen",
+  "completionDefinition": "Customer views educational module, completes quiz, and reviews goal progress.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my points and educational progress stand today?",
+      "entryCondition": "User opens rewards overview",
+      "requiredInformation": [
+        "points balance",
+        "tier",
+        "name",
+        "educational goal status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-completes-modules"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How can I deepen my financial mastery and track my home savings milestone?",
+      "entryCondition": "User reviews snapshot and value clarity",
+      "requiredInformation": [
+        "learning mission status",
+        "quiz content",
+        "goal progress",
+        "tangible value"
+      ],
+      "allowedNarrativeRoles": [
+        "TENSION",
+        "OPTION",
+        "ACTION",
+        "EVIDENCE",
+        "PAYOFF"
+      ],
+      "requiredActionType": "COMPLETE_QUIZ",
+      "resolutionType": "ACTION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-retakes-quizzes",
+        "fact-mastery-motivation"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-educational-archive",
+      "purpose": "Provide access to completed modules and detailed breakdown of points provenance.",
+      "contentNotes": [
+        "Completed quiz logs",
+        "Historical learning milestones"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

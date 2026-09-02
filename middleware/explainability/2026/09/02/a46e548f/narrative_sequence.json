@@ -1,0 +1,241 @@
+{
+  "primaryActionComponentRef": "comp-learning-mission",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-snapshot",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-learning-mission",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "TENSION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [
+        "comp-goal-progress"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quiz",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "OPTION",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-learning-mission"
+      ],
+      "resolves": [
+        "comp-learning-mission"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-comprehension",
+      "miniJourneyId": "mj-pathways",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-quiz"
+      ],
+      "resolves": [
+        "comp-quiz"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-confidence",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-comprehension"
+      ],
+      "resolves": [
+        "comp-comprehension"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-confidence"
+      ],
+      "resolves": [
+        "comp-confidence"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-milestone",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-educational-insight"
+      ],
+      "resolves": [
+        "comp-educational-insight"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-linked-reward",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-milestone"
+      ],
+      "resolves": [
+        "comp-milestone"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-goal-linked-reward"
+      ],
+      "resolves": [
+        "comp-goal-linked-reward"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "REFERENCE",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [
+        "comp-tangible-value"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-daily-tip",
+      "miniJourneyId": "mj-momentum",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [
+        "comp-how-points-work"
+      ],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect current balance to active First Home Savings knowledge goal.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-learning-mission",
+      "relationship": "sequential",
+      "bridgeIntent": "Translate progress percentage into actionable learning modules.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-learning-mission",
+      "toComponentRef": "comp-quiz",
+      "relationship": "sequential",
+      "bridgeIntent": "Offer self-paced concept verification.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quiz",
+      "toComponentRef": "comp-comprehension",
+      "relationship": "sequential",
+      "bridgeIntent": "Verify module comprehension without pressure.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-comprehension",
+      "toComponentRef": "comp-confidence",
+      "relationship": "sequential",
+      "bridgeIntent": "Measure growing confidence and competence.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-confidence",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Deepen mastery with expert insights.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-educational-insight",
+      "toComponentRef": "comp-milestone",
+      "relationship": "sequential",
+      "bridgeIntent": "Review achieved competence milestones.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-milestone",
+      "toComponentRef": "comp-goal-linked-reward",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect milestones to goal-linked tangible perks.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-linked-reward",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate complete financial transparency.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain how earned points translate into mastery.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-daily-tip",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide supplementary daily learning tip.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

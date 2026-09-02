@@ -9,7 +9,6 @@ import SplashPage from './pages/SplashPage'
 import {
   fetchBrandOptions,
   fetchCustomerDashboardById,
-  fetchEarnedRewardMapByBrand,
   loginWithPassword,
   setAuthToken,
   signupCustomer,
@@ -42,7 +41,6 @@ export default function App() {
   const [customer, setCustomer] = useState<CustomerSummary | null>(null)
   const [pointsByBrand, setPointsByBrand] = useState<PointsProvider[]>([])
   const [brands, setBrands] = useState<BrandOption[]>([])
-  const [earnedRewardMap, setEarnedRewardMap] = useState<Record<string, string>>({})
   const [hydrated, setHydrated] = useState(false)
 
   /* Auto-login to dashboard when ?view=dashboard is present */
@@ -68,7 +66,6 @@ export default function App() {
           setCustomer(summary)
           setPointsByBrand([])
           setBrands(brandOptions)
-          setEarnedRewardMap({})
           setStep('dashboard')
         } finally {
           setIsLoading(false)
@@ -240,7 +237,6 @@ export default function App() {
       setCustomer(summary)
       setPointsByBrand([])
       setBrands(brandOptions)
-      setEarnedRewardMap({})
       try {
         localStorage.setItem('rewards_session_id', persona.id)
         localStorage.setItem('rewards_session_name', persona.name)
@@ -273,9 +269,51 @@ export default function App() {
     const storedId = customerId
     const storedName = userName
     if (storedId && storedName) {
-      // If returning with cross-app events, go directly to dashboard
-      const hasEvents = new URLSearchParams(window.location.search).has('cross_app_events')
-      setStep(hasEvents ? 'dashboard' : 'splash')
+      const params = new URLSearchParams(window.location.search)
+      const direct =
+        params.has('ws_resume') || params.has('cross_app_events')
+
+      if (direct) {
+        // Returning from a partner portal (or with cross-app events): skip the
+        // splash/banking-home detour and land straight on the rewards dashboard
+        // with the data captured when the hand-off was made, so the objective
+        // workspace can re-open exactly where the user left.
+        type ResumeSnapshot = {
+          customerId: string
+          customer: CustomerSummary
+          pointsByBrand: PointsProvider[]
+        }
+        let snapshot: ResumeSnapshot | null = null
+        try {
+          const raw = localStorage.getItem('rewards_session_snapshot')
+          if (raw) snapshot = JSON.parse(raw) as ResumeSnapshot
+        } catch {
+          snapshot = null
+        }
+        if (snapshot && snapshot.customerId === storedId) {
+          setCustomer(snapshot.customer)
+          setPointsByBrand(snapshot.pointsByBrand ?? [])
+          setUserName(snapshot.customer.userName || storedName)
+        } else if (storedId.startsWith('customer_')) {
+          // Persona session without a snapshot: render a demo summary so the
+          // dashboard (and reopened workspace) still appears.
+          const summary: CustomerSummary = {
+            customerId: storedId,
+            userName: storedName,
+            phone: '',
+            totalLbgCoins: 15000,
+            totalBrandPoints: 0,
+            brandsConnected: 3,
+            tier: 'Gold',
+            lastSyncedAt: new Date().toISOString(),
+          }
+          setCustomer(summary)
+          setPointsByBrand([])
+        }
+        setStep('dashboard')
+      } else {
+        setStep('splash')
+      }
       void loadDashboardData(storedId)
     }
     setHydrated(true)
@@ -288,7 +326,6 @@ export default function App() {
     setCustomer(null)
     setPointsByBrand([])
     setBrands([])
-    setEarnedRewardMap({})
     setPassword('')
     setOtp([...EMPTY_OTP])
     setSignupFlow(false)
@@ -296,6 +333,7 @@ export default function App() {
     try {
       localStorage.removeItem('rewards_session_id')
       localStorage.removeItem('rewards_session_name')
+      localStorage.removeItem('rewards_session_snapshot')
     } catch { /* ignore */ }
     setStep('mobile')
   }, [])
@@ -313,15 +351,13 @@ export default function App() {
       return
     }
     try {
-      const [summary, brandOptions, earned] = await Promise.all([
+      const [summary, brandOptions] = await Promise.all([
         fetchCustomerDashboardById(targetId),
         fetchBrandOptions(),
-        fetchEarnedRewardMapByBrand(targetId),
       ])
       setCustomer(summary.customer)
       setPointsByBrand(summary.pointsByBrand)
       setBrands(brandOptions)
-      setEarnedRewardMap(earned)
       if (!userName && summary.customer.userName) setUserName(summary.customer.userName)
     } catch (error) {
       console.warn('[App] Dashboard load fell back to demo data:', error)
@@ -399,7 +435,6 @@ export default function App() {
                 customer={customer}
                 pointsByBrand={pointsByBrand}
                 brands={brands}
-                earnedRewardMap={earnedRewardMap}
                 onBackToHome={() => setStep('home')}
                 onRefresh={() => loadDashboardData()}
                 customerEmail={customer.email}

@@ -1,0 +1,276 @@
+{
+  "planId": "plan-443c27ef",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Feature First Home Savings Knowledge goal progress prominently alongside self-paced financial literacy modules, milestones, and goal-linked rewards, strictly avoiding timed challenges or leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You're 63% towards your First Home Savings mastery goal. Keep learning at your own pace!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL_DETAILS",
+            "payload": {
+              "goal": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Financial Knowledge Value",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Learning Mastery Equivalent",
+            "value": "1% knowledge gain = \u00a30.62 in value"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Financial Literacy Academy",
+          "missionName": "First Home Mortgage & Deposit Fundamentals",
+          "description": "Master deposit structuring and interest calculations through structured self-paced modules.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "RESUME_LESSON",
+            "payload": {
+              "moduleId": "module-6"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz-card",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the recommended minimum deposit percentage for a standard residential mortgage?",
+          "options": "5% | 10% | 15% | 20%",
+          "reward": "150 LBG Coins",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "selectedOption": "10%"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Recent Concept Check",
+          "question": "Compound interest calculation in savings pots",
+          "yourAnswer": "Correct on 2nd attempt",
+          "correctAnswer": "Calculated daily, applied monthly",
+          "feedback": "Retaking quizzes until full understanding is achieved deepens long-term retention.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Literacy Confidence",
+          "topic": "First Home Savings & Mortgages",
+          "confidencePercent": 84,
+          "levelLabel": "Building strong competence",
+          "nextMilestone": "Expert level at 90%",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Learners who complete interactive quizzes achieve 40% better clarity on home loan eligibility criteria.",
+          "source": "LBG Financial Education Research Hub",
+          "actionLabel": "Explore Knowledge Base",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_KNOWLEDGE_BASE",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-goal-milestone",
+        "type": "GOAL_MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "milestones": {
+            "label": "Complete 5 foundation modules",
+            "reached": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Milestone Reward Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Conveyancing Fee Discount Voucher",
+            "points": 1250,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM_GOAL_REWARD",
+            "payload": {
+              "reward": "Conveyancing Fee Discount Voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "steps": {
+            "title": "Earn through learning",
+            "description": "Complete modules and master financial quizzes to grow your savings knowledge and earn reward coins."
+          },
+          "ctaLabel": "Learn about reward valuation",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_REWARD_VALUATION",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-coach-tip",
+        "type": "COACH_TIP_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "coachName": "Ava from Rewards Coaching",
+          "headline": "Pace yourself for deep mastery",
+          "body": "Taking time to review module summaries ensures you retain practical deposit strategies for your first home.",
+          "relatedBrand": "LBG Financial Education",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-daily-money-tip",
+        "type": "DAILY_MONEY_TIP_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "tipTitle": "Understanding Lifetime ISAs",
+          "tipBody": "A 25% government bonus applies to savings deposited into a LISA for first-time home buyers.",
+          "category": "Savings & Property",
+          "readTimeMin": 3,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_PERSONA_MATCH"
+    ]
+  },
+  "strategy": "Feature First Home Savings Knowledge goal progress prominently alongside self-paced financial literacy modules, milestones, and goal-linked rewards, strictly avoiding timed challenges or leaderboards.",
+  "confidence": 0.98
+}

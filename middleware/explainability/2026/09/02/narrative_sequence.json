@@ -1,0 +1,161 @@
+{
+  "primaryActionComponentRef": "comp-brand-explorer",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [
+        "comp-points-balance"
+      ],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-metric-tile-1",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-metric-tile-2",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-brand-explorer",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-reward-carousel",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-brand-explorer"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quick-redeem",
+      "miniJourneyId": "mj-3",
+      "narrativeRole": "OPTION",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-brand-explorer"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-earn-breakdown",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-brand-explorer"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-rewards-insight",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "PAYOFF",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-earn-breakdown"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 10,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    },
+    {
+      "componentRef": "comp-provenance",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-earn-breakdown"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-sync-status",
+      "miniJourneyId": "mj-4",
+      "narrativeRole": "REFERENCE",
+      "sequence": 12,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": true
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Translate raw points balance into tangible monetary worth",
+      "bridgeCopy": "See what your points are worth in cash value"
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-brand-explorer",
+      "relationship": "sequential",
+      "bridgeIntent": "Guide user from balance value to exploring redemption categories",
+      "bridgeCopy": "Explore redemption pathways across your favorite brands"
+    },
+    {
+      "fromComponentRef": "comp-brand-explorer",
+      "toComponentRef": "comp-earn-breakdown",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide transparent earning history following category exploration",
+      "bridgeCopy": "Review recent earning activity and trends"
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

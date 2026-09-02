@@ -1,0 +1,135 @@
+{
+  "candidateEvaluations": [
+    {
+      "candidateId": "candidate-1",
+      "strategy": "Focus on educational module mastery and home savings progress tracking, avoiding timed challenges or social leaderboards, utilizing POINTS_BALANCE, QUIZ, GOAL_PROGRESS, MILESTONE, and GOAL_LINKED_REWARD.",
+      "scores": {
+        "customerGoalRelevance": 10,
+        "expectedCustomerUtility": 10,
+        "screenLevelStoryCoherence": 10,
+        "journeyAndActionContinuity": 10,
+        "accessibilityAndCognitiveFit": 10,
+        "brandAndLegalConsistency": 10,
+        "rewardProfileAlignment": 10,
+        "evidenceConfidence": 10,
+        "usefulNovelty": 9,
+        "operationalFeasibility": 10
+      },
+      "weightedTotal": 9.95,
+      "hardGatesPass": true
+    },
+    {
+      "candidateId": "candidate-2",
+      "strategy": "Highlight transparent value metrics and milestone tracking for home savings with supplementary educational content previews.",
+      "scores": {
+        "customerGoalRelevance": 8,
+        "expectedCustomerUtility": 8,
+        "screenLevelStoryCoherence": 8,
+        "journeyAndActionContinuity": 8,
+        "accessibilityAndCognitiveFit": 9,
+        "brandAndLegalConsistency": 9,
+        "rewardProfileAlignment": 8,
+        "evidenceConfidence": 8,
+        "usefulNovelty": 7,
+        "operationalFeasibility": 9
+      },
+      "weightedTotal": 8.3,
+      "hardGatesPass": true
+    }
+  ],
+  "approvedCustomerStory": {
+    "storyId": "story-explore-education",
+    "storyTitle": "Deepening Financial Mastery",
+    "oneSentenceStory": "Customer engages with tailored educational modules and tracks home savings progress at an individualized pace.",
+    "customerSituation": "Customer is exploring rewards and educational modules on mobile.",
+    "storyTension": "Desiring deep financial literacy without manipulative urgency or gamified pressure.",
+    "customerResolution": "Completing educational modules and monitoring steady progress toward long-term mastery.",
+    "primaryOutcome": "Master financial literacy topics and track savings milestones at an individualized pace.",
+    "secondaryOutcome": null,
+    "narrativeMode": "CONTINUE_ACTIVE_GOAL",
+    "evidenceRefs": [
+      "fact-completes-modules",
+      "fact-retakes-quizzes",
+      "fact-avoids-timed"
+    ],
+    "confidence": 0.92,
+    "prohibitedDetours": [
+      "timed challenges",
+      "public rankings",
+      "manipulative urgency"
+    ],
+    "completionSignals": [
+      "module_viewed",
+      "quiz_completed"
+    ],
+    "expiryAt": null
+  },
+  "journeyCandidates": [
+    {
+      "candidateId": "journey-candidate-1",
+      "storyId": "story-explore-education",
+      "journeyObjective": "Enable Sophie to explore financial literacy modules and track home savings progress calmly without timed pressure.",
+      "completionDefinition": "Customer views educational module, completes quiz, and reviews goal progress.",
+      "episodeSketches": [
+        "View points balance and current educational module recommendations",
+        "Engage with mastery quiz and goal progress metrics"
+      ],
+      "primaryActionPolicy": "ONE_DOMINANT",
+      "weightedTotal": 9.9,
+      "hardGatesPass": true
+    }
+  ],
+  "recommendedJourneyId": "journey-candidate-1",
+  "coherenceAssessment": {
+    "storyClarity": 95,
+    "journeyContinuity": 95,
+    "miniJourneyCompleteness": 95,
+    "transitionStrength": 90,
+    "actionOutcomeContinuity": 95,
+    "contentDistractionRisk": "Low",
+    "primaryActionClarity": "PASS",
+    "orphanComponents": [],
+    "conflictingNarratives": [],
+    "violations": [],
+    "decision": "PASS"
+  },
+  "riskAssessment": {
+    "manipulationRisk": "LOW",
+    "darkPatternRisk": "LOW",
+    "discriminatoryRisk": "LOW",
+    "vulnerabilityRisk": "LOW",
+    "veto": false
+  },
+  "agentMessages": [
+    {
+      "fromAgent": "Personalization Synthesiser",
+      "messageType": "APPROVAL",
+      "summary": "Candidate-1 perfectly aligns with LEARNING_MASTERY profile and avoids all prohibited competitive elements."
+    },
+    {
+      "fromAgent": "Risk Guardian",
+      "messageType": "APPROVAL",
+      "summary": "No manipulation, dark patterns, or timed pressure detected. Hard gates successfully passed."
+    },
+    {
+      "fromAgent": "Accessibility Agent",
+      "messageType": "APPROVAL",
+      "summary": "Cognitive fit is high; calm educational layout matches verified preferences."
+    },
+    {
+      "fromAgent": "Customer Story Architect",
+      "messageType": "APPROVAL",
+      "summary": "Story-explore-education selected verbatim from Stage U hypotheses."
+    },
+    {
+      "fromAgent": "Journey Composer",
+      "messageType": "APPROVAL",
+      "summary": "Journey candidate directly serves the approved customer story with clear episodic progression."
+    },
+    {
+      "fromAgent": "Coherence Guardian",
+      "messageType": "VOTE",
+      "summary": "All coherence metrics exceed threshold. Decision: PASS."
+    }
+  ]
+}

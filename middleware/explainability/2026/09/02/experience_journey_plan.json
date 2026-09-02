@@ -1,0 +1,107 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-explore-balance",
+  "journeyObjective": "Provide a clear, mobile-optimized overview of rewards balance and primary redemption categories.",
+  "entryPoint": "Mobile rewards overview screen arrival",
+  "completionDefinition": "The user successfully views their points balance and interacts with or explores the category grid and recent activity.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "What is my current points balance and tier status?",
+      "entryCondition": "User arrives at the rewards overview page",
+      "requiredInformation": [
+        "points balance",
+        "tier status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-channel-mobile",
+        "fact-consent-valid"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "What tangible value and cash equivalent do my points represent?",
+      "entryCondition": "User has viewed their points balance",
+      "requiredInformation": [
+        "cash value equivalent",
+        "points breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING",
+        "EVIDENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-intent-explore"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "What categories can I explore to redeem my points?",
+      "entryCondition": "User understands their points balance and cash value",
+      "requiredInformation": [
+        "redemption categories",
+        "brand explorer options"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CHOICE",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-intent-explore"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What are my recent earning and redemption activities?",
+      "entryCondition": "User has explored redemption categories",
+      "requiredInformation": [
+        "recent transactions history",
+        "earn provenance"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK",
+        "PAYOFF"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "CONTINUATION",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-journey-discovery"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-trust",
+      "purpose": "Provide transparency on how reward points work and ensure compliance",
+      "contentNotes": [
+        "Educational steps on points earning",
+        "Trust and provenance cards"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

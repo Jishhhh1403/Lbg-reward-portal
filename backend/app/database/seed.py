@@ -538,11 +538,13 @@ PERSONA_CUSTOMERS = [
     },
     {
         "id": uuid.UUID("10000000-0000-0000-0000-000000000011"),
+        "customer_id": "customer_011",
         "name": "Sophie Williams",
         "email": "sophie@example.com",
         "phone": "07700900211",
         "tier": "Gold",
         "points": 3900,
+        "wallet_balance": 4930.0,
         "engagement_score": 0.79,
         "behaviors": {
             "avg_redemption_time_hours": 120,
@@ -722,6 +724,7 @@ async def seed_database() -> None:
         for p in PERSONA_CUSTOMERS:
             customer = Customer(
                 id=p["id"],
+                customer_id=p.get("customer_id"),
                 name=p["name"],
                 email=p["email"],
                 phone=p["phone"],
@@ -730,7 +733,7 @@ async def seed_database() -> None:
             )
             session.add(customer)
 
-            cust_wallet = Wallet(customer_id=p["id"], lbg_coin_balance=float(p["points"]))
+            cust_wallet = Wallet(customer_id=p["id"], lbg_coin_balance=float(p.get("wallet_balance", p["points"])))
             session.add(cust_wallet)
 
             behavior = p["behaviors"]

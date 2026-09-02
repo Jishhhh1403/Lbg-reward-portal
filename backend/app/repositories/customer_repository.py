@@ -15,6 +15,10 @@ class CustomerRepository(BaseRepository[Customer]):
         result = await self.db.execute(select(Customer).where(Customer.phone == phone))
         return result.scalar_one_or_none()
 
+    async def get_by_customer_id(self, customer_id: str) -> Customer | None:
+        result = await self.db.execute(select(Customer).where(Customer.customer_id == customer_id))
+        return result.scalar_one_or_none()
+
     async def get_by_email(self, email: str) -> Customer | None:
         result = await self.db.execute(select(Customer).where(Customer.email == email))
         return result.scalar_one_or_none()

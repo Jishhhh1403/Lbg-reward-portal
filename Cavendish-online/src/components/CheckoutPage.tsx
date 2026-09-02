@@ -59,7 +59,6 @@ const formatExpiry = (v: string) => {
 }
 
 interface CardData {
-  name: string
   number: string
   expiry: string
   cvv: string
@@ -86,7 +85,6 @@ function isCardComplete(c: CardData) {
   const expOk =
     !!m && Number(m[1]) >= 1 && Number(m[1]) <= 12 && Number(`20${m[2]}`) >= 2026
   return (
-    c.name.trim().length > 1 &&
     digits.length === 16 &&
     luhnValid(digits) &&
     expOk &&
@@ -105,17 +103,15 @@ function CardDetailsModal({
   saved?: CardData | null
   onSave: (c: CardData) => void
 }) {
-  const [name, setName] = useState('')
-  const [number, setNumber] = useState('')
-  const [expiry, setExpiry] = useState('')
-  const [cvv, setCvv] = useState('')
+  const [number, setNumber] = useState('4242 4242 4242 4242')
+  const [expiry, setExpiry] = useState('12/36')
+  const [cvv, setCvv] = useState('654')
 
   useEffect(() => {
     if (open) {
-      setName(saved?.name ?? '')
-      setNumber(saved?.number ?? '')
-      setExpiry(saved?.expiry ?? '')
-      setCvv(saved?.cvv ?? '')
+      setNumber(saved?.number ?? '4242 4242 4242 4242')
+      setExpiry(saved?.expiry ?? '12/36')
+      setCvv(saved?.cvv ?? '654')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
@@ -225,27 +221,7 @@ function CardDetailsModal({
           Enter card details
         </Typography>
 
-        <Typography sx={{ fontFamily: FONT, fontSize: 14, color: '#7A7D91', lineHeight: 1.5, mb: '20px' }}>
-          Demo card details: Sindhu Nangunuri, 4242 4242 4242 4242, Expiry 12/36, CVV 654
-        </Typography>
-
         <Box component="form" onSubmit={(e) => e.preventDefault()} noValidate>
-          <Box sx={{ mb: '16px' }}>
-            <Typography component="label" htmlFor="cc-name" sx={labelSx}>
-              Cardholder name
-            </Typography>
-            <Box
-              component="input"
-              id="cc-name"
-              value={name}
-              autoFocus
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-              placeholder="Name on card"
-              autoComplete="one-time-code"
-              sx={fieldSx}
-            />
-          </Box>
-
           <Box sx={{ mb: '16px' }}>
             <Typography component="label" htmlFor="cc-number" sx={labelSx}>
               Card number
@@ -300,7 +276,7 @@ function CardDetailsModal({
             component="button"
             type="submit"
             onClick={() => {
-              onSave({ name, number, expiry, cvv })
+              onSave({ number, expiry, cvv })
               onClose()
             }}
             sx={{

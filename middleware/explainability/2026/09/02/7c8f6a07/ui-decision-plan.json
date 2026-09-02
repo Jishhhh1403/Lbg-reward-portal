@@ -1,0 +1,255 @@
+{
+  "planId": "plan-7c8f6a07",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Structured mastery pathway focusing on educational modules, progress tracking toward First Home Savings Knowledge, and self-paced quizzes without timed elements or public rankings.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3900,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You're 63% toward your First Home Savings Knowledge goal. Steady learning builds lasting stability.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Your Points Value Transparency",
+          "cashValue": "\u00a339.00",
+          "pointsEquivalent": 3900,
+          "breakdown": {
+            "label": "Educational Achievement Value",
+            "value": "\u00a339.00 equivalent value"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "title": "Knowledge Mastery Track",
+          "missionName": "First Home Savings Academy",
+          "description": "Complete self-paced modules to build complete competence in property saving strategies.",
+          "modulesDone": 8,
+          "modulesTotal": 10,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "learning_mission"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "question": "What is the primary benefit of a structured First Home Savings strategy?",
+          "options": "A) Maximising interest and compounding | B) Random saving | C) Short-term speculation",
+          "reward": "150 Learning Points",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ",
+            "payload": {
+              "answer": "A"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Concept Mastery Check",
+          "question": "How do deposit bonuses apply to savings?",
+          "yourAnswer": "Accrued monthly based on consistent contributions",
+          "correctAnswer": "Accrued monthly based on consistent contributions",
+          "feedback": "Correct! Consistent contributions ensure steady compounding growth.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Topic Confidence Index",
+          "topic": "First Home Savings Knowledge",
+          "confidencePercent": 92,
+          "levelLabel": "High mastery and conceptual clarity",
+          "nextMilestone": "Final Academy Module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Mastery Insight",
+          "insight": "Taking time to thoroughly understand mortgage structures reduces long-term interest costs by up to 15%.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Explore Module Details",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "educational_insight"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Learn & Earn",
+            "description": "Complete educational modules and verified quizzes at your own pace to earn points and tangible savings value."
+          },
+          "ctaLabel": "View Learning Framework",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "milestones": {
+            "label": "Completed 8 Savings Modules & Reached 63% Goal Milestone",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "title": "Goal-Linked Savings Boost",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "\u00a350 First Home Deposit Contribution Booster",
+            "points": 1500,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "REDEEM",
+            "payload": {
+              "rewardId": "goal-linked-boost"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Learning Goal",
+          "subtitle": "Track another financial literacy topic at your own pace",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "NAVIGATE",
+            "payload": {
+              "destination": "add_goal"
+            }
+          }
+        ]
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_STACK_INCLUDED",
+      "NO_TIMED_ELEMENTS"
+    ]
+  },
+  "strategy": "Structured mastery pathway focusing on educational modules, progress tracking toward First Home Savings Knowledge, and self-paced quizzes without timed elements or public rankings.",
+  "confidence": 0.98
+}

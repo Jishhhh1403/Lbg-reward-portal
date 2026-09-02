@@ -63,7 +63,13 @@ class CustomerService:
         )
 
     async def get_dashboard_summary(self, customer_id: uuid.UUID) -> DashboardDataResponse:
-        customer = await self.customer_repo.get_by_id(customer_id)
+        return await self._build_summary(lambda: self.customer_repo.get_by_id(customer_id))
+
+    async def get_dashboard_summary_by_customer_id(self, customer_id: str) -> DashboardDataResponse:
+        return await self._build_summary(lambda: self.customer_repo.get_by_customer_id(customer_id))
+
+    async def _build_summary(self, loader) -> DashboardDataResponse:
+        customer = await loader()
         if not customer:
             raise ValueError("Customer not found")
 

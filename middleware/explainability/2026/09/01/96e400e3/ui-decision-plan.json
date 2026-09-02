@@ -1,0 +1,277 @@
+{
+  "planId": "plan-96e400e3",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Self-directed educational goal tracking focusing on First Home Savings Knowledge progress (63%), displaying points balance, milestone achievements, and transparent educational module rewards without any timed challenges or public leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3550,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are making steady progress toward your homeownership knowledge goal.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_GOAL",
+            "payload": {
+              "goalName": "First Home Savings Knowledge"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "Homeownership Readiness",
+          "missionName": "Advanced Deposit & Mortgage Basics",
+          "description": "Master the fundamentals of mortgage structures and deposit accumulation at your own pace.",
+          "modulesDone": 3,
+          "modulesTotal": 5,
+          "pointsOnCompletion": 250,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "RESUME_LESSON",
+            "payload": {
+              "missionId": "mortgage-basics-01"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "What is the primary benefit of a fixed-rate mortgage when planning long-term savings?",
+          "options": "Predictable monthly payments insulated from interest rate fluctuations",
+          "reward": "100 lbgCoins + Mastery Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "START_QUIZ",
+            "payload": {
+              "quizId": "fixed-rate-quiz"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Concept Check",
+          "question": "Why does compound growth favor early long-term savers?",
+          "yourAnswer": "Earnings generate their own earnings over extended time horizons.",
+          "correctAnswer": "Earnings generate their own earnings over extended time horizons.",
+          "feedback": "Spot on! Consistent compounding is the cornerstone of long-term wealth building.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Mastery Confidence Tracker",
+          "topic": "First Home Savings & Mortgages",
+          "confidencePercent": 88,
+          "levelLabel": "High competence & mastery",
+          "nextMilestone": "Complete Advanced Deposit module",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Financial Literacy Insight",
+          "insight": "Savers who review educational modules regularly retain 40% more financial literacy concepts over 12 months.",
+          "source": "LBG Financial Research & Education Institute",
+          "actionLabel": "Explore Reading Library",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_LIBRARY",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Rewards Value Transparency",
+          "cashValue": "\u00a335.50",
+          "pointsEquivalent": 3550,
+          "breakdown": {
+            "label": "Educational Module Earns",
+            "value": "\u00a335.50 equivalent in redeemable partner value"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "Learn & Earn",
+            "description": "Complete financial literacy modules and quizzes at your own pace to earn lbgCoins."
+          },
+          "ctaLabel": "View Programme Guide",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "Milestone Reward Unlocked",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Homebuyer Legal Fee Voucher & Guide",
+            "points": 1000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "CLAIM_REWARD",
+            "payload": {
+              "rewardId": "homebuyer-voucher"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": {
+            "label": "Completed 10 Financial Literacy Modules",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-add-goal",
+        "type": "ADD_GOAL_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Add a New Savings or Learning Goal",
+          "subtitle": "Set a self-paced milestone for future financial mastery",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "CREATE_GOAL",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "id": "comp-badge",
+        "type": "BADGE_CARD",
+        "version": "1.0",
+        "priority": 13,
+        "props": {
+          "title": "Mastery Badges & Achievements",
+          "badges": {
+            "name": "Financial Scholar",
+            "icon": "brain",
+            "earned": true
+          },
+          "totalEarned": 9,
+          "totalAvailable": 12,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.96,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "EDUCATIONAL_COMPETENCE_ALIGNMENT"
+    ]
+  },
+  "strategy": "Self-directed educational goal tracking focusing on First Home Savings Knowledge progress (63%), displaying points balance, milestone achievements, and transparent educational module rewards without any timed challenges or public leaderboards.",
+  "confidence": 0.96
+}

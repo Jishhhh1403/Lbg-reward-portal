@@ -1,0 +1,245 @@
+{
+  "planId": "plan-1927e051",
+  "selectedCandidate": {
+    "candidateId": "candidate-1",
+    "strategy": "Self-paced mastery learning path featuring First Home Savings goal progress tracking, interactive financial literacy quiz modules, and milestone rewards linked directly to educational achievement without any timed challenges or leaderboards.",
+    "components": [
+      {
+        "id": "comp-points-balance",
+        "type": "POINTS_BALANCE",
+        "version": "1.0",
+        "priority": 1,
+        "props": {
+          "points": 3550,
+          "tier": "Gold",
+          "name": "Sophie Williams",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-progress",
+        "type": "GOAL_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 2,
+        "props": {
+          "goalName": "First Home Savings Knowledge",
+          "current": 1250,
+          "target": 2000,
+          "percentage": 63,
+          "remaining": 750,
+          "motivationalMessage": "You are 63% toward your First Home Savings Knowledge goal. Keep exploring modules at your own pace!",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-learning-mission",
+        "type": "LEARNING_MISSION_CARD",
+        "version": "1.0",
+        "priority": 3,
+        "props": {
+          "title": "First Home Mastery Path",
+          "missionName": "Mortgage Fundamentals & Deposit Structuring",
+          "description": "Deepen your understanding of mortgage products and equity building with self-paced learning modules.",
+          "modulesDone": 5,
+          "modulesTotal": 8,
+          "pointsOnCompletion": 300,
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "OPEN_LEARNING_MISSION",
+            "payload": {
+              "missionId": "mortgage-fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-quiz",
+        "type": "QUIZ_CARD",
+        "version": "1.0",
+        "priority": 4,
+        "props": {
+          "question": "Which factor most significantly influences your long-term mortgage affordability?",
+          "options": "Compound interest rates, Deposit size, Loan term length, All of the above",
+          "reward": "150 LBG Coins + Knowledge Badge",
+          "timeLimit": 0,
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": [
+          {
+            "type": "SUBMIT_QUIZ_ANSWER",
+            "payload": {
+              "questionId": "quiz-mortgage-affordability"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-comprehension-feedback",
+        "type": "COMPREHENSION_FEEDBACK_CARD",
+        "version": "1.0",
+        "priority": 5,
+        "props": {
+          "title": "Quiz Mastery Insight",
+          "question": "What is the primary benefit of a fixed-rate savings period?",
+          "yourAnswer": "Predictable returns insulated from market volatility",
+          "correctAnswer": "Predictable returns insulated from market volatility",
+          "feedback": "Spot on! Fixed rates offer guaranteed certainty for your savings horizon.",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-confidence-progress",
+        "type": "CONFIDENCE_PROGRESS_CARD",
+        "version": "1.0",
+        "priority": 6,
+        "props": {
+          "title": "Financial Mastery Confidence",
+          "topic": "Home Buying & Deposit Planning",
+          "confidencePercent": 88,
+          "levelLabel": "Advanced comprehension",
+          "nextMilestone": "Deposit Strategy Masterclass",
+          "layout": {
+            "span": "half"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-educational-insight",
+        "type": "EDUCATIONAL_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 7,
+        "props": {
+          "title": "Why Compounding Matters for Deposits",
+          "insight": "Consistent monthly savings paired with educational module bonuses accelerate your deposit timeline by up to 4 months.",
+          "source": "LBG Financial Education Research",
+          "actionLabel": "Explore Module",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": [
+          {
+            "type": "VIEW_INSIGHT_DETAIL",
+            "payload": {
+              "insightId": "compounding-deposits"
+            }
+          }
+        ]
+      },
+      {
+        "id": "comp-tangible-value",
+        "type": "TANGIBLE_VALUE_CARD",
+        "version": "1.0",
+        "priority": 8,
+        "props": {
+          "title": "Your Coin Value Transparency",
+          "cashValue": "\u00a335.50",
+          "pointsEquivalent": 3550,
+          "breakdown": {
+            "label": "Educational Mastery & Academy Bonuses",
+            "value": "\u00a335.50 equivalent value"
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-how-points-work",
+        "type": "HOW_POINTS_WORK_CARD",
+        "version": "1.0",
+        "priority": 9,
+        "props": {
+          "steps": {
+            "title": "1. Complete Modules",
+            "description": "Engage with self-paced financial literacy lessons at your own speed."
+          },
+          "ctaLabel": "View Learning Guidelines",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-goal-linked-reward",
+        "type": "GOAL_LINKED_REWARD",
+        "version": "1.0",
+        "priority": 10,
+        "props": {
+          "title": "First Home Milestone Reward",
+          "goalName": "First Home Savings Knowledge",
+          "rewards": {
+            "name": "Conveyancing Fee Voucher (\u00a350 value)",
+            "points": 2000,
+            "goalLinked": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-milestone",
+        "type": "MILESTONE_CARD",
+        "version": "1.0",
+        "priority": 11,
+        "props": {
+          "milestones": {
+            "label": "Completed 5 Financial Literacy Modules",
+            "achieved": true
+          },
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      },
+      {
+        "id": "comp-rewards-insight",
+        "type": "REWARDS_INSIGHT_CARD",
+        "version": "1.0",
+        "priority": 12,
+        "props": {
+          "title": "Your Learning Velocity",
+          "topBrandName": "LBG Academy",
+          "topBrandPoints": 3550,
+          "growthTip": "Reviewing quiz feedback increases long-term retention by 40%.",
+          "expiringPoints": 0,
+          "expiryDate": "31 Dec",
+          "ctaText": "Review Academy Notes",
+          "layout": {
+            "span": "full"
+          }
+        },
+        "actions": []
+      }
+    ],
+    "confidence": 0.98,
+    "reasonCodes": [
+      "APPROVED_STORY",
+      "JOURNEY_FIRST",
+      "MANDATORY_ORDERED_STACK"
+    ]
+  },
+  "strategy": "Self-paced mastery learning path featuring First Home Savings goal progress tracking, interactive financial literacy quiz modules, and milestone rewards linked directly to educational achievement without any timed challenges or leaderboards.",
+  "confidence": 0.98
+}

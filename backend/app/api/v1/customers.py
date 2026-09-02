@@ -45,6 +45,25 @@ async def get_summary_by_phone(
         raise HTTPException(status_code=404, detail=str(e))
 
 
+@router.get("/persona/{customer_id}/summary", response_model=DashboardDataResponse)
+async def get_persona_summary_by_customer_id(
+    customer_id: str,
+    db: AsyncSession = Depends(get_db),
+) -> DashboardDataResponse:
+    """Token-less summary for persona (demo) sessions keyed by business customer_id.
+
+    Personas are seeded as real customers in the rewards backend with a stable
+    `customer_id`, so the workspace can read their live wallet balance without
+    needing a full password-mint token. The business-key lookup ensures the
+    value reflects the current `wallets.lbg_coin_balance`.
+    """
+    try:
+        service = CustomerService(db)
+        return await service.get_dashboard_summary_by_customer_id(customer_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
 @router.get("/{customer_id}/summary", response_model=DashboardDataResponse)
 async def get_summary_by_id(
     customer_id: str,

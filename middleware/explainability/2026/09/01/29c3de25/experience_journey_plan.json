@@ -1,0 +1,148 @@
+{
+  "primaryJourneyId": "journey-1",
+  "storyId": "story-1",
+  "journeyObjective": "Explore educational rewards and track progress on financial literacy and savings goals.",
+  "entryPoint": "Dashboard load reflecting First Home Savings Knowledge progress and educational rewards balance.",
+  "completionDefinition": "Customer reviews goal progress and explores next educational module without timed constraints.",
+  "primaryActionPolicy": "ONE_DOMINANT",
+  "miniJourneys": [
+    {
+      "miniJourneyId": "mj-1",
+      "order": 1,
+      "customerQuestion": "Where do my savings and rewards stand right now?",
+      "entryCondition": "App opened to rewards overview",
+      "requiredInformation": [
+        "wallet balance",
+        "LBG coins",
+        "First Home Savings Knowledge progress"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-2",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-2",
+      "order": 2,
+      "customerQuestion": "How do my points translate into real-world tangible value?",
+      "entryCondition": "Viewing balance snapshot",
+      "requiredInformation": [
+        "cash equivalent value",
+        "points breakdown"
+      ],
+      "allowedNarrativeRoles": [
+        "MEANING"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-3",
+      "requiredEvidenceRefs": [
+        "fact-wallet-coins"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-3",
+      "order": 3,
+      "customerQuestion": "How do points work and how can I earn more through learning?",
+      "entryCondition": "Understanding value clarity",
+      "requiredInformation": [
+        "how points work steps",
+        "learning mission status"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION",
+        "REFERENCE"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-4",
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-4",
+      "order": 4,
+      "customerQuestion": "What is my current learning mission and module progress?",
+      "entryCondition": "Reviewing point mechanics",
+      "requiredInformation": [
+        "course name",
+        "current lesson",
+        "total lessons"
+      ],
+      "allowedNarrativeRoles": [
+        "ORIENTATION"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "UNDERSTANDING",
+      "transitionsTo": "mj-5",
+      "requiredEvidenceRefs": [
+        "fact-module-completion"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-5",
+      "order": 5,
+      "customerQuestion": "Can I test my knowledge with an unhurried quiz?",
+      "entryCondition": "Reviewing learning mission",
+      "requiredInformation": [
+        "quiz question",
+        "reward points"
+      ],
+      "allowedNarrativeRoles": [
+        "OPTION",
+        "ACTION"
+      ],
+      "requiredActionType": "QUIZ",
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": "mj-6",
+      "requiredEvidenceRefs": [
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    },
+    {
+      "miniJourneyId": "mj-6",
+      "order": 6,
+      "customerQuestion": "How well did I comprehend the concept in practice?",
+      "entryCondition": "Quiz completed or reviewed",
+      "requiredInformation": [
+        "comprehension feedback",
+        "correct answer detail"
+      ],
+      "allowedNarrativeRoles": [
+        "FEEDBACK"
+      ],
+      "requiredActionType": null,
+      "resolutionType": "FEEDBACK",
+      "transitionsTo": null,
+      "requiredEvidenceRefs": [
+        "fact-quiz-retakes"
+      ],
+      "optional": false
+    }
+  ],
+  "supportingSurfaces": [
+    {
+      "surfaceId": "surface-terms",
+      "purpose": "Provide clear educational context without timers or pressure.",
+      "contentNotes": [
+        "No expiration warnings",
+        "No public leaderboards"
+      ]
+    }
+  ],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}

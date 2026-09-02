@@ -1,0 +1,219 @@
+{
+  "primaryActionComponentRef": "comp-learning-mission",
+  "components": [
+    {
+      "componentRef": "comp-points-balance",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 1,
+      "dependsOn": [],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-progress",
+      "miniJourneyId": "mj-1",
+      "narrativeRole": "ORIENTATION",
+      "sequence": 2,
+      "dependsOn": [
+        "comp-points-balance"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-learning-mission",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "TENSION",
+      "sequence": 3,
+      "dependsOn": [
+        "comp-goal-progress"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-quiz",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 4,
+      "dependsOn": [
+        "comp-learning-mission"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-comprehension-feedback",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "FEEDBACK",
+      "sequence": 5,
+      "dependsOn": [
+        "comp-quiz"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-confidence-progress",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 6,
+      "dependsOn": [
+        "comp-comprehension-feedback"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-educational-insight",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "MEANING",
+      "sequence": 7,
+      "dependsOn": [
+        "comp-confidence-progress"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-tangible-value",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "EVIDENCE",
+      "sequence": 8,
+      "dependsOn": [
+        "comp-educational-insight"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-how-points-work",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "REFERENCE",
+      "sequence": 9,
+      "dependsOn": [
+        "comp-tangible-value"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-milestone",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 10,
+      "dependsOn": [
+        "comp-how-points-work"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-goal-linked-reward",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "PAYOFF",
+      "sequence": 11,
+      "dependsOn": [
+        "comp-milestone"
+      ],
+      "resolves": [],
+      "optional": false
+    },
+    {
+      "componentRef": "comp-add-goal",
+      "miniJourneyId": "mj-2",
+      "narrativeRole": "CONTINUATION",
+      "sequence": 12,
+      "dependsOn": [
+        "comp-goal-linked-reward"
+      ],
+      "resolves": [],
+      "optional": false
+    }
+  ],
+  "transitions": [
+    {
+      "fromComponentRef": "comp-points-balance",
+      "toComponentRef": "comp-goal-progress",
+      "relationship": "situation-to-meaning",
+      "bridgeIntent": "Connect total points standing to specific First Home Savings Knowledge progress.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-progress",
+      "toComponentRef": "comp-learning-mission",
+      "relationship": "sequential",
+      "bridgeIntent": "Transition from savings progress into active self-paced educational modules.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-learning-mission",
+      "toComponentRef": "comp-quiz",
+      "relationship": "sequential",
+      "bridgeIntent": "Test comprehension following module engagement.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-quiz",
+      "toComponentRef": "comp-comprehension-feedback",
+      "relationship": "sequential",
+      "bridgeIntent": "Provide immediate, constructive educational feedback.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-comprehension-feedback",
+      "toComponentRef": "comp-confidence-progress",
+      "relationship": "sequential",
+      "bridgeIntent": "Show growing confidence in financial literacy topics.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-confidence-progress",
+      "toComponentRef": "comp-educational-insight",
+      "relationship": "sequential",
+      "bridgeIntent": "Reinforce learning habits with professional insights.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-educational-insight",
+      "toComponentRef": "comp-tangible-value",
+      "relationship": "sequential",
+      "bridgeIntent": "Demonstrate the tangible cash value of accumulated points.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-tangible-value",
+      "toComponentRef": "comp-how-points-work",
+      "relationship": "sequential",
+      "bridgeIntent": "Explain transparent point mechanics.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-how-points-work",
+      "toComponentRef": "comp-milestone",
+      "relationship": "sequential",
+      "bridgeIntent": "Celebrate completed educational milestones.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-milestone",
+      "toComponentRef": "comp-goal-linked-reward",
+      "relationship": "sequential",
+      "bridgeIntent": "Connect milestones to goal-linked savings rewards.",
+      "bridgeCopy": null
+    },
+    {
+      "fromComponentRef": "comp-goal-linked-reward",
+      "toComponentRef": "comp-add-goal",
+      "relationship": "payoff-to-continuation",
+      "bridgeIntent": "Invite further self-paced goal setting.",
+      "bridgeCopy": null
+    }
+  ],
+  "deferredComponents": [],
+  "qualityGate": {
+    "passed": true,
+    "violations": []
+  }
+}
