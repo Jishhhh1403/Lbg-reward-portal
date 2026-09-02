@@ -16,7 +16,7 @@ interface StateObjectiveProps {
 }
 
 export default function StateObjective({
-  label = 'State objective',
+  label = 'Set new objective',
   placeholder = 'e.g. I want to redeem my points for the best value',
   value,
   onChange,
@@ -46,7 +46,7 @@ export default function StateObjective({
       >
         {open ? <X size={16} /> : <PenLine size={16} />}
         <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.02em' }}>
-          {open ? 'Cancel' : label}
+          {open ? 'Cancel' : 'Set new objective'}
         </Typography>
       </MotionButton>
 
