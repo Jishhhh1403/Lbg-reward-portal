@@ -132,6 +132,7 @@ export function buildStageComponents(
       return [
         makeComponent('opp-list', 'WS_OPPORTUNITY', {
           eyebrow: 'Reward opportunities',
+          objective: objectiveText,
           items: (screen.opportunities ?? []).map((o) => ({
             id: o.id,
             title: o.title,
@@ -148,6 +149,7 @@ export function buildStageComponents(
     case 'strategies':
       return [
         makeComponent('str-list', 'WS_STRATEGY', {
+          objective: objectiveText,
           items: (screen.strategies ?? []).map((s) => ({
             id: s.id,
             type: s.type,
@@ -184,6 +186,10 @@ export function buildStageComponents(
 
     case 'evidence':
       return [
+        makeComponent('ev-objective', 'WS_OBJECTIVE_HERO', {
+          eyebrow: 'Your objective',
+          objective: objectiveText,
+        }),
         makeComponent('ev-card', 'WS_EVIDENCE', {
           title: 'Cognitive evidence',
           summary: screen.evidence?.summary ?? '',

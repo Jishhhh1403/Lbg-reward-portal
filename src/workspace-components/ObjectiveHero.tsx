@@ -33,7 +33,7 @@ export default function ObjectiveHero({
       >
         {eyebrow}
       </Typography>
-      <Typography sx={{ fontSize: 15, fontWeight: 700, color: palette.textStrong, lineHeight: 1.45 }}>
+      <Typography sx={{ fontSize: 12, fontWeight: 700, color: palette.textStrong, lineHeight: 1.45 }}>
         {objective}
       </Typography>
     </Box>

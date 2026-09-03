@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import ButtonBase from '@mui/material/ButtonBase'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { Loader2, X } from 'lucide-react'
+import { ArrowLeft, Loader2, X } from 'lucide-react'
 import type { SDUIComponent } from '../../types/sdui'
 import type {
   ExecutionStep,
@@ -537,6 +537,7 @@ export default function ObjectiveWorkspace({
   const [stageInFlight, setStageInFlight] = useState<ObjectiveStage | null>(null)
   const [provisionalNav, setProvisionalNav] = useState<{ stage: ObjectiveStage; nextScreen: ObjectiveScreen; toolRequest: string | null } | null>(null)
   const [coplanView, setCoplanView] = useState<CoplanToolView>('idle')
+  const [history, setHistory] = useState<ObjectiveScreen[]>([])
 
   const wallet: ObjectiveWalletPayload = {
     totalPoints,
@@ -548,7 +549,17 @@ export default function ObjectiveWorkspace({
 
   /* Screen navigation */
   const navigateTo = useCallback((s: ObjectiveScreen) => {
+    setHistory((h) => [...h, screen])
     setScreen(s)
+  }, [screen])
+
+  const handleBack = useCallback(() => {
+    setHistory((h) => {
+      if (h.length === 0) return h
+      const prev = h[h.length - 1]
+      setScreen(prev)
+      return h.slice(0, -1)
+    })
   }, [])
 
   /* Generate a stage's SDUI at runtime, store it, and navigate. */
@@ -1043,36 +1054,60 @@ const sduiHandlers: WorkspaceHandlers = {
               </div>
             )}
 
-            {/* Close button — top-left */}
+            {/* Header — back button (left) and close button (right) */}
             <Box
               sx={{
                 position: 'relative',
                 zIndex: 1,
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'space-between',
                 padding: '12px 16px',
                 borderBottom: '1px solid rgba(241,245,249,0.7)',
                 flexShrink: 0,
               }}
             >
+              {screen !== '1a' && (
+                <MotionButton
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleBack}
+                  disableRipple
+                  disabled={history.length === 0}
+                  aria-label="Go back"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '4px',
+                    borderRadius: '8px',
+                    padding: '6px',
+                    fontFamily: 'inherit',
+                    color: '#0f172a',
+                    '&:hover': { bgcolor: '#f1f5f9', color: '#0f172a' },
+                    '&:disabled': { color: '#94a3b8' },
+                  }}
+                >
+                  <ArrowLeft size={16} />
+                </MotionButton>
+              )}
               <MotionButton
                 ref={closeRef}
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
                 disableRipple
-                aria-label="Close workspace"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  borderRadius: '8px',
-                  padding: '6px',
-                  fontSize: 13,
-                  fontWeight: 500,
-                  fontFamily: 'inherit',
-                  color: '#64748b',
-                  '&:hover': { bgcolor: '#f1f5f9', color: '#0f172a' },
-                }}
+                  aria-label="Close workspace"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '4px',
+                    borderRadius: '8px',
+                    padding: '6px',
+                    marginLeft: 'auto',
+                    fontFamily: 'inherit',
+                    color: '#0f172a',
+                    '&:hover': { bgcolor: '#f1f5f9', color: '#0f172a' },
+                  }}
               >
                 <X size={16} />
               </MotionButton>
