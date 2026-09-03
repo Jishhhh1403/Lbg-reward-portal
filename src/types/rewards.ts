@@ -13,6 +13,8 @@ export interface BrandOption {
   logoUrl?: string
   /** Optional explicit redirect URL; overrides the auto-generated brand URL */
   redirectUrl?: string
+  /** Internal (Lloyds group) or external partner brand; missing defaults to 'external' */
+  brandType?: 'internal' | 'external'
 }
 
 export interface PointsProvider {

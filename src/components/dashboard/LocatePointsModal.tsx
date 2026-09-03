@@ -23,7 +23,7 @@ const inputClass =
 
 export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVerified, customerName, customerEmail, customerPhone }: LocatePointsModalProps) {
   const [step, setStep] = useState<Step>('form')
-  const [group, setGroup] = useState<string>('All')
+  const [brandType, setBrandType] = useState<'internal' | 'external'>('internal')
   const [selectedBrandId, setSelectedBrandId] = useState<string | null>(null)
   const [contactMethod, setContactMethod] = useState<ContactMethod>('email')
   const [contactValue, setContactValue] = useState('')
@@ -32,13 +32,9 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
 
-  const groups = useMemo(
-    () => ['All', ...Array.from(new Set(brandOptions.map((b) => b.category)))],
-    [brandOptions],
-  )
   const filteredBrands = useMemo(
-    () => brandOptions.filter((b) => group === 'All' || b.category === group),
-    [brandOptions, group],
+    () => brandOptions.filter((b) => (b.brandType ?? 'external') === brandType),
+    [brandOptions, brandType],
   )
   const selectedBrand = brandOptions.find((b) => b.id === selectedBrandId) ?? null
 
@@ -48,6 +44,7 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
     setDigits(['', '', '', ''])
     setError('')
     setSelectedBrandId(null)
+    setBrandType('internal')
     setContactValue('')
   }, [isOpen])
 
@@ -84,16 +81,6 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
   return (
     <BottomSheetModal isOpen={isOpen} onClose={onClose} title="Locate your points">
       {/* Step indicator */}
-      <div className="mb-4 flex items-center gap-2">
-        {(['form', 'otp', 'done'] as Step[]).map((s) => (
-          <motion.span
-            key={s}
-            animate={{ scale: step === s ? 1 : 0.85, opacity: step === s ? 1 : 0.35 }}
-            className={`h-1.5 flex-1 rounded-full ${step === s ? 'bg-brand-600' : 'bg-slate-300'}`}
-          />
-        ))}
-      </div>
-
       <AnimatePresence mode="wait">
         {step === 'form' && (
           <motion.div
@@ -110,22 +97,27 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
             </p>
 
             <div>
-              <p className="mb-1.5 text-sm font-medium text-slate-700">Category</p>
-              <div className="flex flex-wrap gap-2">
-                {groups.map((g) => (
+              <p className="mb-1.5 text-sm font-medium text-slate-700">Brand type</p>
+              <div className="grid grid-cols-2 gap-2">
+                {(
+                  [
+                    { id: 'internal', label: 'Internal Brand' },
+                    { id: 'external', label: 'External Brand' },
+                  ] as const
+                ).map(({ id, label }) => (
                   <button
-                    key={g}
+                    key={id}
                     onClick={() => {
-                      setGroup(g)
+                      setBrandType(id)
                       setSelectedBrandId(null)
                     }}
-                    className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
-                      group === g
+                    className={`rounded-xl border px-3.5 py-2.5 text-xs font-semibold transition ${
+                      brandType === id
                         ? 'border-brand-600 bg-brand-600 text-white'
                         : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400'
                     }`}
                   >
-                    {g}
+                    {label}
                   </button>
                 ))}
               </div>
@@ -135,7 +127,7 @@ export default function LocatePointsModal({ isOpen, brandOptions, onClose, onVer
               <p className="mb-1.5 text-sm font-medium text-slate-700">Partner brand</p>
               {filteredBrands.length === 0 ? (
                 <p className="rounded-xl border border-slate-200 bg-white py-6 text-center text-sm text-slate-400">
-                  No brands in this category.
+                  No brands in this list.
                 </p>
               ) : (
                 <div className="grid grid-cols-4 gap-2.5">

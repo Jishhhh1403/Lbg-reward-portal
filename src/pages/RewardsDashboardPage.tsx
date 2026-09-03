@@ -566,7 +566,9 @@ export default function RewardsDashboardPage({
           overflowY: 'auto',
           borderTopLeftRadius: 24,
           borderTopRightRadius: 24,
-          bgcolor: '#f1f5f9',
+          //bgcolor: '#f1f5f9',
+          
+          
           
         }}
       >
@@ -578,7 +580,7 @@ export default function RewardsDashboardPage({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.22 }}
-              sx={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px', paddingBottom: '96px',  }}
+              sx={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px', paddingBottom: '96px', }}
             >
               {/* Personalise LBG Coin experience */}
               <MotionButton
