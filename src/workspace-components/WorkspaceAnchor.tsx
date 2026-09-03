@@ -15,13 +15,13 @@ export default function WorkspaceAnchor({
     <Box sx={{ textAlign: align }}>
       <Typography
         sx={{
-          fontSize: 20,
+          fontSize: 15,
           fontWeight: 800,
           color: palette.textStrong,
           lineHeight: 1.3,
         }}
       >
-        {text}
+        What is your objective today?
       </Typography>
     </Box>
   )

@@ -27,6 +27,7 @@ export interface ObjectiveGenerateRequest {
   stage: ObjectiveStage
   selectedPlan?: string | null
   toolRequest?: string | null
+  constraintValues?: string[]
   wallet: ObjectiveWalletPayload
 }
 
@@ -46,6 +47,11 @@ export interface RewardOpportunityPayload {
   description: string
   partner: string
   estimatedValue: string
+  constraints?: string[]
+  cashback?: string | null
+  conversionRate?: string | null
+  transactionFee?: string | null
+  offerType?: string | null
 }
 
 export interface StrategyCardPayload {
@@ -75,6 +81,8 @@ export interface ObjectiveScreenPayload {
   summary?: string
   constraints?: ObjectiveConstraintPayload[]
   opportunities?: RewardOpportunityPayload[]
+  shortlisted?: RewardOpportunityPayload[]
+  rejected?: RewardOpportunityPayload[]
   strategies?: StrategyCardPayload[]
   evidence?: CognitiveEvidencePayload
   executionSteps?: ExecutionStepPayload[]

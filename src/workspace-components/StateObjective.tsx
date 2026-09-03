@@ -3,7 +3,7 @@ import ButtonBase from '@mui/material/ButtonBase'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
-import { PenLine, X } from 'lucide-react'
+import { ArrowRight, PenLine, Wand2, X } from 'lucide-react'
 import { palette } from './types'
 
 const MotionButton = motion.create(ButtonBase)
@@ -14,6 +14,21 @@ interface StateObjectiveProps {
   value: string
   onChange: (value: string) => void
   onOpenChange?: (open: boolean) => void
+  onNext?: () => void
+  onQuickStart?: () => void
+  quickStartText?: string
+  disabled?: boolean
+}
+
+const btnBase = {
+  display: 'flex' as const,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+  gap: '6px',
+  flex: 1,
+  height: '42px',
+  borderRadius: '12px',
+  transition: 'all 0.25s ease',
 }
 
 export default function StateObjective({
@@ -22,6 +37,9 @@ export default function StateObjective({
   value,
   onChange,
   onOpenChange,
+  onNext,
+  onQuickStart,
+  disabled = false,
 }: StateObjectiveProps) {
   const [open, setOpen] = useState(false)
 
@@ -35,31 +53,6 @@ export default function StateObjective({
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <MotionButton
-        whileTap={{ scale: 0.99 }}
-        onClick={toggle}
-        disableRipple
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          width: '100%',
-          borderRadius: '12px',
-          border: `1.5px solid ${palette.brand}`,
-          bgcolor: open ? 'transparent' : palette.brand,
-          color: open ? palette.brand : '#ffffff',
-          padding: '12px 16px',
-          transition: 'all 0.2s',
-          '&:hover': { bgcolor: open ? palette.brandBg : palette.brandDark },
-        }}
-      >
-        {open ? <X size={16} /> : <PenLine size={16} />}
-        <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.02em' }}>
-          {open ? 'Cancel' : 'Set new objective'}
-        </Typography>
-      </MotionButton>
-
       {open && (
         <Box
           component="textarea"
@@ -86,6 +79,67 @@ export default function StateObjective({
           }}
         />
       )}
+      <Box sx={{ display: 'flex', gap: '10px', alignItems: 'stretch' }}>
+        {/* Set new objective / Cancel */}
+        <MotionButton
+          whileTap={{ scale: 0.97 }}
+          onClick={toggle}
+          disableRipple
+          sx={{
+            ...btnBase,
+            border: `1.5px solid ${palette.brand}`,
+            bgcolor: open ? 'transparent' : 'transparent',
+            color: open ? palette.brand: palette.brand,
+            '&:hover': { bgcolor: palette.brandBg },
+          }}
+        >
+          {open ? <X size={16} /> : <PenLine size={0} />}
+          <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.02em',color:'#ffffff' }}>
+            {open ? 'Cancel' : 'Set new objective'}
+          </Typography>
+        </MotionButton>
+
+        {/* Use quick objective / NEXT */}
+        <MotionButton
+          whileTap={{ scale: 0.97 }}
+          onClick={open ? onNext : onQuickStart}
+          disabled={open && disabled}
+          disableRipple
+          sx={{
+            ...btnBase,
+            border: 'none',
+            bgcolor: open
+              ? disabled
+                ? palette.textFaint
+                : palette.brand
+              : palette.brand,
+            color: '#ffffff',
+            '&:hover': {
+              bgcolor: open
+                ? disabled
+                  ? palette.textFaint
+                  : palette.brandDark
+                : palette.brandDark,
+            },
+          }}
+        >
+          {open ? (
+            <>
+              <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.02em', color: '#ffffff' }}>
+                NEXT
+              </Typography>
+              <ArrowRight size={18} color="#ffffff" />
+            </>
+          ) : (
+            <>
+              <Wand2 size={0} />
+              <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.02em', color: '#ffffff' }}>
+                Use quick start
+              </Typography>
+            </>
+          )}
+        </MotionButton>
+      </Box>
     </Box>
   )
 }

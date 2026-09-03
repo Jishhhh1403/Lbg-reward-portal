@@ -14,6 +14,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import uuid
 
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -30,6 +31,7 @@ from schemas.objective import (
     StrategyCard,
 )
 from services.llm_router import build_failover_llm
+from services.partner_offers import get_filtered_opportunities
 
 # ---------------------------------------------------------------------------
 # JSON parsing / repair (mirrors the helpers in workflow/graph.py)
@@ -110,11 +112,51 @@ Rules:
 """
 
 
+def _applied_constraint_texts(objective: str) -> list[str]:
+    """Derive applied constraint texts from the stated objective.
+
+    The store's filter engine reads constraint keywords such as 'cashback',
+    'conversion rate', 'fee' and 'insurance'. Any fixed numbers mentioned in
+    the objective (e.g. £70 cashback, 10:1) are surfaced here so the right
+    offers are shortlisted/rejected.
+    """
+    lean = (objective or "").lower()
+    out: list[str] = []
+
+    # Cashback constraint — handles "70 pounds cashback", "£70 cashback",
+    # "cashback of £70", "ensuring 70 pounds cashback", etc.
+    cashback_match = re.search(r"(?:£|\bpounds?\b)\s*(\d+)", lean)
+    if cashback_match:
+        out.append(f"cashback {cashback_match.group(1)}")
+    else:
+        cb_amt = re.search(r"(\d+)\s*(?:pounds?|\bbp\b)?(?:\s*(?:of|in|as|on|back|would give)?\s*(?:cashback|reward|rebate))", lean)
+        if cb_amt:
+            out.append(f"cashback {cb_amt.group(1)}")
+
+    # Conversion rate constraint (e.g. 10:1)
+    rate = re.search(r"(\d+):\s*1(?:\s*conversion)?", lean)
+    if rate:
+        out.append(f"conversion_rate {rate.group(1)}:1")
+
+    # No transaction/conversion fee constraint
+    if "no" in lean and ("fee" in lean or "conversion fee" in lean or "transaction fee" in lean):
+        out.append("no_fee")
+
+    # Insurance-applicable constraint
+    if "insurance" in lean or "premium" in lean:
+        out.append("insurance")
+
+    return out
+
+
 def _build_user_content(req: ObjectiveGenerateRequest) -> str:
     brands = "\n".join(
         f"- {b.brandName}: {b.points} points" for b in req.wallet.pointsByBrand
     ) or "- (no brand data)"
+    constraints = "\n".join(f"- {c}" for c in (req.constraintValues or [])) or "- (none)"
     return f"""Objective: {req.objectiveText or '(not provided)'}
+Constraints the customer cares about:
+{constraints}
 Wallet:
 - Total points: {req.wallet.totalPoints}
 - LBG coins: {req.wallet.lbgCoins}
@@ -196,33 +238,44 @@ Estimate values in GBP consistent with their point balances. Provide 3 items.
 """,
     "strategies": SYSTEM_BASE + """
 
-Produce exactly two redemption strategy plans for the objective. The first must be
+Produce exactly four redemption strategy plans for the objective. The first must be
 a simple single-step path ("simplicity"); the second a higher-value consolidated
 path ("max-redeem") that first converts Alpha Medical points into LBG coins and
-then pays Cavendish Online. Emit:
+then pays Cavendish Online; the third a "monitor" plan where the customer takes
+no action and we simply monitor for new future strategies; and the fourth a
+"no-redeem" plan where the customer pays Cavendish Online directly without using
+any LBG coins or rewards.And i want the description of the strategies to be just 2 lines short decsription.
+ Emit:
 {"strategies": [
   {"id": "simplicity", "type": "simplicity", "title": "Simplicity Plan", "description": "...", "order": 1},
-  {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Value Plan", "description": "...", "order": 2}
+  {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Value Plan", "description": "...", "order": 2},
+  {"id": "monitor", "type": "monitor", "title": "Monitor Plan", "description": "...", "order": 3},
+  {"id": "no-redeem", "type": "no-redeem", "title": "No Rewards Plan", "description": "...", "order": 4}
 ]}
-If a Coplan tool request is present in the prompt, adapt both plan descriptions so
+If a Coplan tool request is present in the prompt, adapt the short plan descriptions so
 the plans directly answer that request (e.g. explain, combine, edit constraints,
-or compare). Keep the same two ids/types/titles.
+or compare). Keep the same four ids/types/titles.
 """,
     "evidence": SYSTEM_BASE + """
 
-The customer selected the plan "{plan}". Produce cognitive evidence explaining
-why this plan is right for them. Frame the reasoning according to their choice:
-- If the plan is "simplicity": because they chose a simple, fast and instant
-  plan, we will use their current LBG coins and make the payment straight away,
-  even though they hold points in connected partner brands.
-- If the plan is "max-redeem": because they chose the maximum value plan, we
-  will convert existing reward points from their partner brands into LBG coins
-  and then make the insurance payment with the combined balance.
-- If the plan is "hybrid": because they chose a balanced plan, we keep the
-  journey as simple as a single payment but still fold in the extra value of
-  converting their partner points first.
-Emit:
-{"evidence": {"summary": "one or two sentences", "factors": ["bullet 1", "bullet 2", "bullet 3", "bullet 4"]}}
+The customer selected the plan "{plan}". Produce cognitive evidence that is factual
+and grounded in BOTH the customer's stated objective AND their constraints. The
+evidence should explain:
+1. what the user gave as their objective,
+2. which plan they chose and why this plan is a good fit for this specific user
+   and this objective,
+3. what constraints the user gave and how this strategy honours each constraint,
+4. how this strategy will help the user achieve their objective.
+
+Base every point directly on the supplied "Objective" and "Constraints" rather
+than generic filler. Use the live wallet numbers when they support a point.
+If the plan is "simplicity" the reasoning should reflect a simple, single-step
+path using the current LBG coin balance. If the plan is "max-redeem" it should
+reflect converting partner-brand points into LBG coins first for a larger
+combined payment. If the plan is "hybrid", a balanced single-step path that still
+folds in partner points.
+Emit at least 6 sharp, factual points:
+{"evidence": {"summary": "one or two sentences linking the objective, chosen plan and constraints", "factors": ["fact 1", "fact 2", "fact 3", "fact 4", "fact 5", "fact 6", ...]}}
 """,
     "execution": SYSTEM_BASE + """
 
@@ -371,23 +424,19 @@ class ObjectiveService:
             payload.constraints = keep[:3]
 
         elif stage == "opportunities":
-            items = content.get("opportunities", [])
-            parsed: list[RewardOpportunity] = []
-            for it in items or []:
-                if not isinstance(it, dict):
-                    continue
-                parsed.append(
-                    RewardOpportunity(
-                        id=it.get("id") or f"opp-{len(parsed)+1}",
-                        title=it.get("title") or "",
-                        description=it.get("description") or "",
-                        partner=it.get("partner") or "",
-                        estimatedValue=it.get("estimatedValue") or "",
-                    )
-                )
-            if not parsed:
-                return None
-            payload.opportunities = parsed
+            # Reward opportunities come from the partner offers data store,
+            # filtered by the applied constraints to partition into
+            # shortlisted and rejected buckets. The applied constraints come
+            # from the user's objective (reverse-engineered from the constraint
+            # stage) and are used to decide which offer qualifies.
+            applied_constraints = req.constraintValues or _applied_constraint_texts(req.objectiveText)
+            shortlisted, rejected = get_filtered_opportunities(
+                req.objectiveText,
+                applied_constraints,
+            )
+            payload.opportunities = shortlisted
+            payload.shortlisted = shortlisted
+            payload.rejected = rejected
 
         elif stage == "strategies":
             items = content.get("strategies", [])
@@ -457,12 +506,13 @@ class ObjectiveService:
                 ]
             }
         if stage == "opportunities":
+            shortlisted, rejected = get_filtered_opportunities(
+                req.objectiveText,
+                req.constraintValues or _applied_constraint_texts(req.objectiveText),
+            )
             return {
-                "opportunities": [
-                    {"id": "opp-1", "title": "Cavendish Voucher", "description": "Redeem 2,000 points for a £20 Cavendish gift card.", "partner": "Cavendish Online", "estimatedValue": "£20"},
-                    {"id": "opp-2", "title": "Alpha Medical Credit", "description": "Consolidate your Alpha Medical points to unlock a combined redemption.", "partner": "Alpha Medical", "estimatedValue": "£15"},
-                    {"id": "opp-3", "title": "Weekend Dining Deal", "description": "Use 1,500 points for a weekend dining experience.", "partner": "Cavendish Online", "estimatedValue": "£15"},
-                ]
+                "shortlisted": [s.model_dump() for s in shortlisted],
+                "rejected": [r.model_dump() for r in rejected],
             }
         if stage == "strategies":
             request = (req.toolRequest or "").strip()
@@ -471,42 +521,53 @@ class ObjectiveService:
                 "strategies": [
                     {"id": "simplicity", "type": "simplicity", "title": "Simplicity Plan", "description": f"A single-step path that uses your existing LBG coin balance to pay the Cavendish Online insurance premium. Quick and easy.{adapt}", "order": 1},
                     {"id": "max-redeem", "type": "max-redeem", "title": "Maximum Value Plan", "description": f"Convert Alpha Medical points into LBG coins first, then pay the Cavendish Online insurance premium for higher combined value.{adapt}", "order": 2},
+                    {"id": "monitor", "type": "monitor", "title": "Monitor Plan", "description": f"Take no action for now. We will keep watching for new strategies for your objective and let you know when something valuable appears.{adapt}", "order": 3},
+                    {"id": "no-redeem", "type": "no-redeem", "title": "No Rewards Plan", "description": f"Pay your Cavendish Online insurance directly with cash, keeping all of your LBG coins and rewards untouched.{adapt}", "order": 4},
                 ]
             }
         if stage == "evidence":
             plan = req.selectedPlan or "simplicity"
+            objective = (req.objectiveText or "").strip() or "your insurance payment"
+            constraints = req.constraintValues or _applied_constraint_texts(req.objectiveText)
+            cons_text = "; ".join(constraints) if constraints else "no extra constraints beyond achieving your objective"
             if plan == "hybrid":
                 return {
                     "evidence": {
-                        "summary": "You chose a balanced hybrid plan: we keep the payment as simple as a single step, but your partner points are still converted into LBG coins so you get the extra value too.",
+                        "summary": f"Your objective is “{objective}”. You chose the Best of Both plan, which keeps the payment as simple as a single step while folding in your partner points — so every constraint you gave is met with the least effort.",
                         "factors": [
-                            "The journey stays as easy as one action for you.",
-                            "Your partner points are still put to work as LBG coins.",
-                            "You get more value without extra steps or waiting.",
-                            "The best of both plans in a single balanced path.",
+                            f"You want to: {objective}.",
+                            "You chose the Best of Both plan, which balances ease and value.",
+                            "Your partner points are converted into LBG coins automatically.",
+                            f"Your constraints are respected: {cons_text}.",
+                            "A single payment keeps the journey simple for you.",
+                            "This plan helps you reach your objective without extra actions.",
                         ],
                     }
                 }
             if plan == "max-redeem":
                 return {
                     "evidence": {
-                        "summary": "Since you chose the maximum value plan, we will convert existing rewards points from your partner brands into LBG coins, then make the insurance payment with your combined balance.",
+                        "summary": f"Your objective is “{objective}”. You chose the Maximum Value plan, which converts your partner-brand points into LBG coins first so the larger combined balance covers the payment and your constraints are met.",
                         "factors": [
-                            "Converting your partner points first unlocks more LBG coins.",
+                            f"You want to: {objective}.",
+                            "You chose the Maximum Value plan, which maximises what you get back.",
+                            "Converting partner points into LBG coins grows your balance first.",
+                            f"Your constraints are respected: {cons_text}.",
                             "Your combined balance covers the full insurance premium.",
-                            "This delivers noticeably more value than paying with LBG coins alone.",
-                            "Only a couple of extra steps for a better overall outcome.",
+                            "This plan helps you achieve your objective with the most value.",
                         ],
                     }
                 }
             return {
                 "evidence": {
-                    "summary": "You chose a simple, fast and instant plan. Even though you hold points in connected partner brands, we will use your current LBG coins and make the payment right away.",
+                    "summary": f"Your objective is “{objective}”. You chose the Simplicity plan, which uses your current LBG coins to pay in one smooth step, so your constraints are met quickly and with no waiting on conversions.",
                     "factors": [
-                        "Keeps everything in one easy step.",
+                        f"You want to: {objective}.",
+                        "You chose the Simplicity plan, which is quick and one-step.",
+                        "Your current LBG coin balance is ready to pay right away.",
+                        f"Your constraints are respected: {cons_text}.",
                         "No waiting on conversions from partner brands.",
-                        "Your LBG coin balance is ready to use right now.",
-                        "The quickest way to get your insurance paid.",
+                        "This plan helps you achieve your objective in the simplest way.",
                     ],
                 }
             }

@@ -49,6 +49,7 @@ class ObjectiveGenerateRequest(BaseModel):
     stage: ObjectiveStage
     selectedPlan: Optional[str] = None
     toolRequest: Optional[str] = None
+    constraintValues: list[str] = Field(default_factory=list)
     wallet: ObjectiveWallet = Field(default_factory=ObjectiveWallet)
 
 
@@ -73,6 +74,11 @@ class RewardOpportunity(BaseModel):
     description: str
     partner: str
     estimatedValue: str
+    constraints: list[str] = Field(default_factory=list)
+    cashback: Optional[str] = None
+    conversionRate: Optional[str] = None
+    transactionFee: Optional[str] = None
+    offerType: Optional[str] = None
 
 
 class StrategyCard(BaseModel):
@@ -101,6 +107,8 @@ class ObjectiveScreenPayload(BaseModel):
     summary: Optional[str] = None
     constraints: list[ObjectiveConstraint] = Field(default_factory=list)
     opportunities: list[RewardOpportunity] = Field(default_factory=list)
+    shortlisted: list[RewardOpportunity] = Field(default_factory=list)
+    rejected: list[RewardOpportunity] = Field(default_factory=list)
     strategies: list[StrategyCard] = Field(default_factory=list)
     evidence: Optional[CognitiveEvidence] = None
     executionSteps: list[ExecutionStep] = Field(default_factory=list)

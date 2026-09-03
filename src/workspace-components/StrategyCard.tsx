@@ -13,13 +13,13 @@ interface StrategyCardItem {
   type: string
   title: string
   description: string
+  recommended?: boolean
 }
 
 interface StrategyCardProps {
   items: StrategyCardItem[]
   selectedPlan: PlanType | string | null
   onSelect: (type: PlanType) => void
-  objective?: string
 }
 
 /** Canonical plan headings highlighted on the strategies screen. */
@@ -33,6 +33,12 @@ function planBadge(type: string): { tag: string; title: string; color: string; b
   if (type === 'hybrid') {
     return { tag: 'Hybrid', title: 'Best of Both Plan', color: palette.brand, bg: palette.brandSoft }
   }
+  if (type === 'monitor') {
+    return { tag: 'Plan C', title: 'Monitor Plan', color: palette.brand, bg: palette.brandSoft }
+  }
+  if (type === 'no-redeem') {
+    return { tag: 'Plan D', title: 'No Rewards Plan', color: palette.amberText, bg: palette.amber }
+  }
   return { tag: 'Plan', title: type, color: palette.textStrong, bg: palette.surfaceAlt }
 }
 
@@ -40,41 +46,49 @@ export default function StrategyCard({
   items,
   selectedPlan,
   onSelect,
-  objective,
 }: StrategyCardProps) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      {items.map((s) => {
-        const badge = planBadge(s.type)
-        const selected = selectedPlan === s.type
-        return (
-          <Box key={s.id} sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {s.type === 'simplicity' && objective && (
-              <Typography
-                sx={{
-                  fontSize: 13,
-                  fontWeight: 700,
-                  color: palette.textStrong,
-                }}
-              >
-                {objective}
-              </Typography>
-            )}
+      {/* Horizontal scrollable carousel — expands edge-to-edge of the modal */}
+      <Box
+        sx={{
+          width: 'calc(100% + 24px)',
+          maxWidth: 'none',
+          display: 'flex',
+          gap: '12px',
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          marginInline: '-12px',
+          padding: '2px',
+          paddingRight: '16px',
+          pb: '6px',
+          '&::-webkit-scrollbar': { display: 'none' },
+          scrollbarWidth: 'none',
+        }}
+      >
+        {items.map((s) => {
+          const badge = planBadge(s.type)
+          const selected = selectedPlan === s.type
+          return (
             <MotionButton
+              key={s.id}
               whileTap={{ scale: 0.98 }}
               onClick={() => onSelect(s.type as PlanType)}
               disableRipple
               sx={{
+                flex: '0 0 78%',
+                width: '78%',
+                scrollSnapAlign: 'start',
                 display: 'flex',
-                width: '100%',
-                borderRadius: '14px',
+                borderRadius: '16px',
                 border: selected ? `2px solid ${palette.brand}` : `1.5px solid ${palette.border}`,
                 bgcolor: selected ? palette.brandBg : palette.surface,
-                padding: '12px 14px',
+                padding: '14px',
                 textAlign: 'left',
                 flexDirection: 'column',
                 alignItems: 'stretch',
                 gap: '8px',
+                boxShadow: selected ? '0 0 0 3px rgba(0,106,77,0.1)' : '0 1px 3px rgba(15,23,42,0.04)',
                 transition: 'all 0.2s',
                 '&:hover': { borderColor: selected ? palette.brand : palette.textFaint },
               }}
@@ -118,13 +132,31 @@ export default function StrategyCard({
               <Typography sx={{ fontSize: 15, fontWeight: 800, color: palette.textStrong, lineHeight: 1.3 }}>
                 {badge.title}
               </Typography>
+              {/* <Box
+                sx={{
+                  alignSelf: 'flex-start',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  padding: '3px 9px',
+                  borderRadius: '999px',
+                  bgcolor: palette.brandSoft,
+                  color: palette.brand,
+                  fontSize: 9.5,
+                  fontWeight: 800,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Recommended plan
+              </Box> */}
               <Typography sx={{ fontSize: 12, color: palette.textMuted, lineHeight: 1.5 }}>
                 {s.description}
               </Typography>
             </MotionButton>
-          </Box>
-        )
-      })}
+          )
+        })}
+      </Box>
     </Box>
   )
 }

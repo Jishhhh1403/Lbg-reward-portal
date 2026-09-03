@@ -7,7 +7,7 @@ interface UnderstoodAnchorProps {
 }
 
 export default function UnderstoodAnchor({
-  text = 'What I understood',
+  text = 'WHAT I UNDERSTOOD',
 }: UnderstoodAnchorProps) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -28,7 +28,7 @@ export default function UnderstoodAnchor({
           lineHeight: 1.3,
         }}
       >
-        {text}
+        WHAT I UNDERSTOOD
       </Typography>
     </Box>
   )

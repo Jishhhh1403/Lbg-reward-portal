@@ -21,9 +21,18 @@ function makeComponent(
   return { id, type, version: '1.0', priority: 0, props, actions }
 }
 
+/** Canonical display title for each plan strategy card. */
+function strategyTitle(type: string | null | undefined, fallback: string): string {
+  if (type === 'simplicity') return 'Simplicity Plan'
+  if (type === 'max-redeem') return 'Maximum Value Plan'
+  if (type === 'hybrid') return 'Best of Both Plan'
+  if (type === 'monitor') return 'Monitor Plan'
+  if (type === 'no-redeem') return 'No Rewards Plan'
+  return fallback || 'Plan'
+}
+
 /** The four Coplan tools offered on the strategies screen (2b). */
-const COPLAN_TOOLS = [
-  {
+const COPLAN_TOOLS = [  {
     id: 'explain',
     label: 'Explain the selected plan',
     hint: 'Explain the selected plan in simple words and highlight the value it gives me.',
@@ -130,6 +139,10 @@ export function buildStageComponents(
 
     case 'opportunities':
       return [
+        makeComponent('opp-objective', 'WS_OBJECTIVE_HERO', {
+          eyebrow: 'Your objective',
+          objective: objectiveText,
+        }),
         makeComponent('opp-list', 'WS_OPPORTUNITY', {
           eyebrow: 'Reward opportunities',
           objective: objectiveText,
@@ -139,6 +152,35 @@ export function buildStageComponents(
             description: o.description,
             partner: o.partner,
             estimatedValue: o.estimatedValue,
+            constraints: o.constraints ?? [],
+            cashback: o.cashback,
+            conversionRate: o.conversionRate,
+            transactionFee: o.transactionFee,
+            offerType: o.offerType,
+          })),
+          shortlisted: (screen.shortlisted ?? screen.opportunities ?? []).map((o) => ({
+            id: o.id,
+            title: o.title,
+            description: o.description,
+            partner: o.partner,
+            estimatedValue: o.estimatedValue,
+            constraints: o.constraints ?? [],
+            cashback: o.cashback,
+            conversionRate: o.conversionRate,
+            transactionFee: o.transactionFee,
+            offerType: o.offerType,
+          })),
+          rejected: (screen.rejected ?? []).map((o) => ({
+            id: o.id,
+            title: o.title,
+            description: o.description,
+            partner: o.partner,
+            estimatedValue: o.estimatedValue,
+            constraints: o.constraints ?? [],
+            cashback: o.cashback,
+            conversionRate: o.conversionRate,
+            transactionFee: o.transactionFee,
+            offerType: o.offerType,
           })),
         }),
         makeComponent('opp-nav', 'WS_NAV', { primary: 'Next' }, [
@@ -148,18 +190,18 @@ export function buildStageComponents(
 
     case 'strategies':
       return [
+        makeComponent('str-objective', 'WS_OBJECTIVE_HERO', {
+          eyebrow: 'Your objective',
+          objective: objectiveText,
+        }),
         makeComponent('str-list', 'WS_STRATEGY', {
           objective: objectiveText,
           items: (screen.strategies ?? []).map((s) => ({
             id: s.id,
             type: s.type,
-            title:
-              s.type === 'simplicity'
-                ? 'Simplicity Plan'
-                : s.type === 'max-redeem'
-                  ? 'Maximum Value Plan'
-                  : s.title,
+            title: strategyTitle(s.type, s.title),
             description: s.description,
+            recommended: true,
           })),
           selectedPlan,
         }, [{ type: 'WS_SELECT_PLAN', payload: {} }]),
@@ -169,12 +211,7 @@ export function buildStageComponents(
           strategies: (screen.strategies ?? []).map((s) => ({
             id: s.id,
             type: s.type,
-            title:
-              s.type === 'simplicity'
-                ? 'Simplicity Plan'
-                : s.type === 'max-redeem'
-                  ? 'Maximum Value Plan'
-                  : s.title,
+            title: strategyTitle(s.type, s.title),
             description: s.description,
           })),
           view: 'idle',

@@ -1,12 +1,18 @@
 export type ObjectiveScreen =
   | '1a' | '1b' | '1c'
-  | '2a' | '2b' | '2c'
+  | '2a' | '2b' | '2c' | '2d' | '2e'
   | '3a' | '3b' | '3c'
   | '4a' | '4b' | '4c'
 
 export type ObjectiveStage = 'capture' | 'strategy' | 'execution'
 
-export type PlanType = 'simplicity' | 'max-redeem' | 'hybrid' | null
+export type PlanType =
+  | 'simplicity'
+  | 'max-redeem'
+  | 'hybrid'
+  | 'monitor'
+  | 'no-redeem'
+  | null
 
 /**
  * Continuation payload handed back to the workspace after a partner portal
@@ -34,6 +40,11 @@ export interface RewardOpportunity {
   description: string
   partner: string
   estimatedValue: string
+  constraints?: string[]
+  cashback?: string | null
+  conversionRate?: string | null
+  transactionFee?: string | null
+  offerType?: string | null
 }
 
 export interface StrategyCard {
@@ -66,6 +77,8 @@ export interface ObjectiveState {
   objectiveSummary: string
   constraints: ObjectiveConstraint[]
   opportunities: RewardOpportunity[]
+  shortlisted: RewardOpportunity[]
+  rejected: RewardOpportunity[]
   strategies: StrategyCard[]
   selectedPlan: PlanType
   cognitiveEvidence: CognitiveEvidence | null

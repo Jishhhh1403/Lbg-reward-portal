@@ -28,6 +28,7 @@ import type {
   WorkspaceHandlers,
   WorkspaceRenderContext,
 } from '../../workspace-components/types'
+import { palette } from '../../workspace-components/types'
 
 /* ------------------------------------------------------------------ */
 /* Helpers to build local (client-driven) SDUI component lists          */
@@ -46,6 +47,8 @@ function makeComponent(
 function planLabel(plan: PlanType): string {
   if (plan === 'max-redeem') return 'Maximum Value Plan'
   if (plan === 'hybrid') return 'Best of Both Plan'
+  if (plan === 'monitor') return 'Monitor Plan'
+  if (plan === 'no-redeem') return 'No Rewards Plan'
   return 'Simplicity Plan'
 }
 
@@ -117,13 +120,8 @@ export function captureComponents(objectiveText: string): SDUIComponent[] {
       label: 'State objective',
       placeholder: 'e.g. I want to redeem my points for the best value',
       value: objectiveText,
+      quickStartText: 'I want to pay for my insurance using LBG coins while maximizing the value',
     }),
-    makeComponent(
-      'capture-nav',
-      'WS_NAV',
-      { primary: 'Next' },
-      [{ type: 'WS_NEXT', payload: {} }],
-    ),
   ]
 }
 
@@ -131,6 +129,7 @@ export function captureComponents(objectiveText: string): SDUIComponent[] {
 function redirectComponents(
   redirectConfirm: ExecutionStep | null,
   planLabel: string,
+  objectiveText: string,
 ): SDUIComponent[] {
   const partner = redirectConfirm?.partner ?? ''
   const promptText =
@@ -140,6 +139,10 @@ function redirectComponents(
         ? 'Do you want to redirect to Alpha Medical to convert your points into LBG coins?'
         : `Do you want to redirect to ${partner} to continue?`
   return [
+    makeComponent('redirect-objective', 'WS_OBJECTIVE_HERO', {
+      eyebrow: 'Your objective',
+      objective: objectiveText,
+    }),
     makeComponent('redirect-plan', 'WS_PLAN_HERO', {
       planLabel,
       description: redirectConfirm?.label ?? '',
@@ -179,6 +182,61 @@ function resultComponents(result: {
       'WS_RECOVERY',
       {},
       [{ type: 'WS_RETURN_HOME', payload: {} }],
+    ),
+  ]
+}
+
+/** Monitoring confirmation screen (2d) — chosen when no action is taken yet. */
+function monitoringComponents(objectiveText: string): SDUIComponent[] {
+  return [
+    makeComponent('mon-objective', 'WS_OBJECTIVE_HERO', {
+      eyebrow: 'Your objective',
+      objective: objectiveText,
+    }),
+    makeComponent('mon-plan', 'WS_PLAN_HERO', {
+      planLabel: 'Monitor Plan',
+      description:
+        'No action taken for now. We will keep watching for new strategies that match your objective and surface the best opportunities when they appear.',
+    }),
+    makeComponent('mon-prompt', 'WS_REDIRECT_PROMPT', {
+      partner: 'LBG Coins',
+      prompt:
+        'Monitoring is on. We will actively watch for new strategies for this objective and let you know as soon as something valuable becomes available.',
+    }),
+    makeComponent(
+      'mon-nav',
+      'WS_NAV',
+      { primary: 'Done' },
+      [{ type: 'WS_NEXT', payload: {} }],
+    ),
+  ]
+}
+
+/** Retain-all / No Rewards redirect screen (2e) — pay directly, use no coins. */
+function retainComponents(
+  redirectConfirm: ExecutionStep | null,
+  objectiveText: string,
+): SDUIComponent[] {
+  const partner = redirectConfirm?.partner ?? 'Cavendish Online'
+  return [
+    makeComponent('retain-objective', 'WS_OBJECTIVE_HERO', {
+      eyebrow: 'Your objective',
+      objective: objectiveText,
+    }),
+    makeComponent('retain-plan', 'WS_PLAN_HERO', {
+      planLabel: 'No Rewards Plan',
+      description: redirectConfirm?.label ?? 'Pay for your insurance directly — no LBG coins used.',
+    }),
+    makeComponent('retain-prompt', 'WS_REDIRECT_PROMPT', {
+      partner,
+      prompt:
+        'Do you want to redirect to Cavendish Online to pay for your insurance directly? You will pay the full amount and keep all of your LBG coins and rewards.',
+    }),
+    makeComponent(
+      'retain-confirm',
+      'WS_NAV',
+      { primary: `Go to ${partner}` },
+      [{ type: 'WS_CONFIRM', payload: {} }],
     ),
   ]
 }
@@ -247,6 +305,28 @@ export function buildExecutionSteps(plan: PlanType): ExecutionStep[] {
       },
     ]
   }
+  if (plan === 'monitor') {
+    return [
+      {
+        id: 'monitor-active',
+        label: 'We are monitoring for new strategies for your objective',
+        partner: 'LBG Coins',
+        partnerUrl: '',
+        status: 'pending',
+      },
+    ]
+  }
+  if (plan === 'no-redeem') {
+    return [
+      {
+        id: 'cavendish-direct-pay',
+        label: 'Pay for your Cavendish Online insurance directly, with no LBG coins',
+        partner: 'Cavendish Online',
+        partnerUrl: PORTAL_URLS.cavendishCheckout,
+        status: 'pending',
+      },
+    ]
+  }
   return [
     {
       id: 'lbg-balance',
@@ -266,9 +346,13 @@ export function buildExecutionSteps(plan: PlanType): ExecutionStep[] {
 }
 
 /** Execution screen (3a / 4a) — deterministic, driven by the chosen plan. */
-function executionComponents(plan: PlanType): SDUIComponent[] {
+function executionComponents(plan: PlanType, objectiveText: string): SDUIComponent[] {
   const steps = buildExecutionSteps(plan)
   return [
+    makeComponent('exec-objective', 'WS_OBJECTIVE_HERO', {
+      eyebrow: 'Your objective',
+      objective: objectiveText,
+    }),
     makeComponent('exec-plan', 'WS_PLAN_HERO', {
       planLabel: planLabel(plan),
       description:
@@ -539,6 +623,13 @@ export default function ObjectiveWorkspace({
   const [coplanView, setCoplanView] = useState<CoplanToolView>('idle')
   const [history, setHistory] = useState<ObjectiveScreen[]>([])
 
+  /* Cache of generated SDUI per screen so back navigation can restore the exact
+     content of a previous AI-generated screen without re-calling the AI. */
+  const stageCacheRef = useRef<Partial<Record<ObjectiveScreen, SDUIComponent[]>>>({})
+
+  /* Extracted constraint texts (from screen 1b) used to filter opportunities. */
+  const [constraintTexts, setConstraintTexts] = useState<string[]>([])
+
   const wallet: ObjectiveWalletPayload = {
     totalPoints,
     tier,
@@ -554,13 +645,12 @@ export default function ObjectiveWorkspace({
   }, [screen])
 
   const handleBack = useCallback(() => {
-    setHistory((h) => {
-      if (h.length === 0) return h
-      const prev = h[h.length - 1]
-      setScreen(prev)
-      return h.slice(0, -1)
-    })
-  }, [])
+    if (history.length === 0) return
+    const prev = history[history.length - 1]
+    if (prev !== '2b') setCoplanView('idle')
+    setHistory((h) => h.slice(0, -1))
+    setScreen(prev)
+  }, [history])
 
   /* Generate a stage's SDUI at runtime, store it, and navigate. */
   const generateStage = useCallback(
@@ -584,6 +674,8 @@ export default function ObjectiveWorkspace({
           stage,
           selectedPlan,
           toolRequest: toolRequest ?? undefined,
+          constraintValues:
+            stage === 'opportunities' || stage === 'evidence' ? constraintTexts : undefined,
           wallet,
         })
         if (res.status !== 'PERSONALIZED') {
@@ -591,9 +683,9 @@ export default function ObjectiveWorkspace({
           return
         }
         const screen = res.screen ?? {}
-        setStageComponents(
-          buildStageComponents(stage, screen, activeObjective, selectedPlan),
-        )
+        const built = buildStageComponents(stage, screen, activeObjective, selectedPlan)
+        setStageComponents(built)
+        stageCacheRef.current[nextScreen] = built
         navigator(nextScreen)
       } catch (e) {
         console.warn('[ObjectiveWorkspace] Stage generation failed:', e)
@@ -603,7 +695,7 @@ export default function ObjectiveWorkspace({
         setStageInFlight(null)
       }
     },
-    [customerId, objectiveText, selectedPlan, wallet, stageInFlight],
+    [customerId, objectiveText, selectedPlan, wallet, stageInFlight, constraintTexts],
   )
 
   /* Generate the merged "What I understood + Constraints extracted" screen (1b):
@@ -643,9 +735,17 @@ export default function ObjectiveWorkspace({
           id: c.id,
           text: c.text,
         }))
-        setStageComponents(
-          buildMergedSummaryStageComponents(summaryScreen.summary ?? '', constraintItems),
+        setConstraintTexts(
+          (constraintsScreen.constraints ?? [])
+            .filter((c) => c.applied)
+            .map((c) => c.text),
         )
+        const built = buildMergedSummaryStageComponents(
+          summaryScreen.summary ?? '',
+          constraintItems,
+        )
+        setStageComponents(built)
+        stageCacheRef.current[nextScreen] = built
         navigator(nextScreen)
       } catch (e) {
         console.warn('[ObjectiveWorkspace] Summary/constraints generation failed:', e)
@@ -677,6 +777,7 @@ export default function ObjectiveWorkspace({
     if (screen === '2a') return [true, false, false]
     if (screen === '2b') return [false, true, false]
     if (screen === '2c') return [false, false, true]
+    if (screen === '2d' || screen === '2e') return [false, false, true]
     if (screen === '3a' || screen === '4a') return [true, false, false]
     if (screen === '3b' || screen === '4b') return [false, true, false]
     if (screen === '3c' || screen === '4c') return [false, false, true]
@@ -705,6 +806,7 @@ export default function ObjectiveWorkspace({
     setStageInFlight(null)
     setProvisionalNav(null)
     setCoplanView('idle')
+    setConstraintTexts([])
 
     if (resume) {
       const resumed = applyResume(resume)
@@ -784,6 +886,23 @@ export default function ObjectiveWorkspace({
         generateStage('strategies', navigateTo, '2b')
         break
       case '2b':
+        if (selectedPlan === 'monitor') {
+          setStageComponents([])
+          setStageLoading(false)
+          setStageError(null)
+          navigateTo('2d')
+          break
+        }
+        if (selectedPlan === 'no-redeem') {
+          const step = buildExecutionSteps('no-redeem')[0]
+          setRedirectConfirm(step)
+          setSteps(buildExecutionSteps('no-redeem'))
+          setStageComponents([])
+          setStageLoading(false)
+          setStageError(null)
+          navigateTo('2e')
+          break
+        }
         generateStage('evidence', navigateTo, '2c')
         break
       case '2c': {
@@ -795,6 +914,9 @@ export default function ObjectiveWorkspace({
         navigateTo(isValueTrack(plan) ? '4a' : '3a')
         break
       }
+      case '2d':
+        onClose()
+        break
       case '3a':
       case '4a': {
         const advanced = withInternalCompleted(steps)
@@ -891,6 +1013,14 @@ export default function ObjectiveWorkspace({
 
   const totalSuccess = steps.length > 0 && steps.every((s) => s.status === 'completed')
 
+  /* Resolve the AI-generated components for a screen: prefer the live generation
+     when it matches the active screen, otherwise fall back to the cached copy so
+     back navigation shows the correct (previous) content. */
+  const resolveStage = (s: ObjectiveScreen): SDUIComponent[] =>
+    s === screen && stageComponents.length > 0
+      ? stageComponents
+      : (stageCacheRef.current[s] ?? stageComponents)
+
   /* Compose the SDUI component list for the active screen. */
   const components: SDUIComponent[] = (() => {
     switch (screen) {
@@ -900,17 +1030,21 @@ export default function ObjectiveWorkspace({
       case '1c':
       case '2a':
       case '2c':
-        return stageComponents
+        return resolveStage(screen)
       case '2b':
         /* A Coplan tool view replaces the plan cards with the tool content,
            keeping only the nav so the screen always stays fits without scroll. */
         if (coplanView !== 'idle') {
-          const coplan = stageComponents.find((c) => c.type === 'WS_COPLAN')
-          const nav = stageComponents.find((c) => c.id === 'str-nav')
+          const coplan = resolveStage(screen).find((c) => c.type === 'WS_COPLAN')
+          const nav = resolveStage(screen).find((c) => c.id === 'str-nav')
           return [
             makeComponent('coplan-bg', 'WS_BACKGROUND', {
               image: toolsBg,
               fill: true,
+            }),
+            makeComponent('coplan-objective', 'WS_OBJECTIVE_HERO', {
+              eyebrow: 'Your objective',
+              objective: objectiveText,
             }),
             makeComponent(
               'coplan-view',
@@ -921,15 +1055,16 @@ export default function ObjectiveWorkspace({
             ...(nav ? [nav] : []),
           ]
         }
-        return stageComponents
+        return resolveStage(screen)
       case '3a':
       case '4a':
-        return executionComponents(selectedPlan)
+        return executionComponents(selectedPlan, objectiveText)
       case '3b':
       case '4b':
         return redirectComponents(
           redirectConfirm,
           planLabel(selectedPlan),
+          objectiveText,
         )
       case '3c':
       case '4c':
@@ -939,6 +1074,10 @@ export default function ObjectiveWorkspace({
             ? 'Your redemption has been processed successfully. Your rewards have been updated.'
             : 'Something went wrong during execution. Your points have not been changed.',
         })
+      case '2d':
+        return monitoringComponents(objectiveText)
+      case '2e':
+        return retainComponents(redirectConfirm, objectiveText)
       default:
         return []
     }
@@ -1003,19 +1142,26 @@ const sduiHandlers: WorkspaceHandlers = {
             onClick={onClose}
           />
 
-          {/* Workspace label — just above the modal, top-right */}
+          {/* Workspace label — centered just above the modal */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ delay: 0.1 }}
-            className="absolute right-23 z-20"
-            style={{ top: 'calc(10% - 28px)' }}
+            className="absolute z-20"
+            style={{
+              top: 'calc(10% - 18px)',
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'center',
+            }}
           >
             <Typography
               sx={{
                 fontSize: 13,
                 fontWeight: 600,
+                whiteSpace: 'nowrap',
                 color: 'rgba(255,255,255,0.85)',
                 letterSpacing: '0.02em',
               }}
@@ -1054,7 +1200,7 @@ const sduiHandlers: WorkspaceHandlers = {
               </div>
             )}
 
-            {/* Header — back button (left) and close button (right) */}
+            {/* Header — back button (left), centered title, and close button (right) */}
             <Box
               sx={{
                 position: 'relative',
@@ -1063,7 +1209,7 @@ const sduiHandlers: WorkspaceHandlers = {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '12px 16px',
-                borderBottom: '1px solid rgba(241,245,249,0.7)',
+                // borderBottom: '1px solid rgba(241,245,249,0.7)',
                 flexShrink: 0,
               }}
             >
@@ -1083,6 +1229,7 @@ const sduiHandlers: WorkspaceHandlers = {
                     padding: '6px',
                     fontFamily: 'inherit',
                     color: '#0f172a',
+                    flexShrink: 0,
                     '&:hover': { bgcolor: '#f1f5f9', color: '#0f172a' },
                     '&:disabled': { color: '#94a3b8' },
                   }}
@@ -1090,6 +1237,37 @@ const sduiHandlers: WorkspaceHandlers = {
                   <ArrowLeft size={16} />
                 </MotionButton>
               )}
+              {['2a', '2b', '2c', '2d', '2e', '3a', '3b', '3c', '4a', '4b', '4c'].includes(screen) ? (
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: 12,
+                      fontWeight: 800,
+                      color: palette.brand,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.06em',
+                      whiteSpace: 'nowrap',
+                      maxWidth: '70%',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                  
+                  </Typography>
+                </Box>
+              ) : null}
               <MotionButton
                 ref={closeRef}
                 whileTap={{ scale: 0.9 }}
@@ -1106,6 +1284,7 @@ const sduiHandlers: WorkspaceHandlers = {
                     marginLeft: 'auto',
                     fontFamily: 'inherit',
                     color: '#0f172a',
+                    flexShrink: 0,
                     '&:hover': { bgcolor: '#f1f5f9', color: '#0f172a' },
                   }}
               >

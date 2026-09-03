@@ -97,7 +97,7 @@ export default function ExecutionStepsCard({
               <Typography sx={{ fontSize: 13, fontWeight: 600, color: palette.textStrong }}>
                 {step.label}
               </Typography>
-              <Typography sx={{ fontSize: 11, color: palette.textFaint }}>{step.partner}</Typography>
+              {/* <Typography sx={{ fontSize: 11, color: palette.textFaint }}>{step.partner}</Typography> */}
             </Box>
           </MotionButton>
         ))}

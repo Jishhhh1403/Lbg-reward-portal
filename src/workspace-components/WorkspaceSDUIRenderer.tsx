@@ -80,11 +80,19 @@ export function renderWorkspaceComponent(
         merged.value = context.objectiveText
         merged.onChange = handlers.onTextChange
         merged.onOpenChange = handlers.onObjectiveOpenChange
+        merged.onNext = handlers.onNext
+        merged.onQuickStart = () => {
+          const quickText = (base.quickStartText as string) || ''
+          if (quickText) handlers.onTextChange(quickText)
+          handlers.onNext()
+        }
+        merged.disabled = context.nextDisabled
         break
       case 'WS_QUICK_PICK':
         merged.hidden = context.objectiveOpen
-        merged.selected = context.objectiveText === (merged.text as string)
-        merged.onSelect = (value: string) => handlers.onTextChange(value)
+        merged.onSelect = (value: string) => {
+          handlers.onTextChange(value)
+        }
         break
       case 'WS_OBJECTIVE_HERO':
         merged.objective = context.objectiveText

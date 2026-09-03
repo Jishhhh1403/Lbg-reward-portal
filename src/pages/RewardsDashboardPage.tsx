@@ -167,12 +167,15 @@ export default function RewardsDashboardPage({
 
   const tier = useTier(customer.totalLbgCoins + customer.totalBrandPoints / 2, customer.tier)
 
-  /* Journey-scale progress for the hero slider: LBG coins earned out of the
-     final (Platinum) threshold of 25,000. */
-  const journeyProgress = Math.min(
-    100,
-    Math.round((customer.totalLbgCoins / TIERS[TIERS.length - 1].min) * 100),
-  )
+  /* Simple, hard-coded tier progress: the green fill points to the tier that
+     matches the member's badge (Silver / Gold / Platinum). */
+  const tierPosByTier: Record<TierName, number> = {
+    Silver: 0,
+    Gold: (15000 / 25000) * 100,
+    Platinum: 100,
+  }
+  const memberTierPosPct = tierPosByTier[customer.tier as TierName] ?? 0
+  const lastTierMax = TIERS[TIERS.length - 1].min
 
   useEffect(() => {
     let cancelled = false
@@ -329,7 +332,7 @@ export default function RewardsDashboardPage({
                 '&:hover': { bgcolor: 'rgba(255,255,255,0.10)' },
               }}
             >
-              <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
+              {/* <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} /> */}
             </MotionButton>
             <IconButton
               aria-label="Notifications"
@@ -387,7 +390,7 @@ export default function RewardsDashboardPage({
                   <Box sx={{ marginTop: 2 }}>
                     <Box sx={{ position: 'relative', marginBottom: '6px', height: 16 }}>
                       {TIERS.map((t, i) => {
-                        const pos = (t.min / TIERS[TIERS.length - 1].min) * 100
+                        const pos = (t.min / lastTierMax) * 100
                         const anchor = i === 0 ? { left: 0 } : i === TIERS.length - 1 ? { right: 0 } : { left: `${pos}%`, transform: 'translateX(-50%)' }
                         return (
                           <Box key={t.name} sx={{ position: 'absolute', top: 0, display: 'flex', alignItems: 'center', gap: '4px', fontSize: 11, fontWeight: 500, whiteSpace: 'nowrap', color: '#585d64', ...(tier.current.name === t.name && { color: '#585d64', fontWeight: 700 }), ...anchor }}>
@@ -396,8 +399,21 @@ export default function RewardsDashboardPage({
                         )
                       })}
                     </Box>
-                    <Box sx={{ position: 'relative', height: 8, overflow: 'hidden', borderRadius: '999px', bgcolor: '#e5e7eb' }}>
-                      <MotionBox initial={{ width: 0 }} animate={{ width: `${journeyProgress}%` }} transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }} sx={{ position: 'absolute', top: 0, bottom: 0, left: 0, borderRadius: '999px', background: '#006a4d' }} />
+                    <Box sx={{ position: 'relative', height: 8, overflow: 'visible', borderRadius: '999px', bgcolor: '#e5e7eb' }}>
+                      <MotionBox
+                        initial={{ width: 0 }}
+                        animate={{ width: `${memberTierPosPct}%` }}
+                        transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
+                        sx={{ position: 'absolute', top: 0, bottom: 0, left: 0, borderRadius: '999px', background: '#006a4d' }}
+                      />
+                      <MotionBox
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        sx={{ position: 'absolute', top: '50%', left: `${memberTierPosPct}%`, transform: 'translate(-50%, -50%)', display: 'flex', alignItems: 'center' }}
+                      >
+                        <ChevronRight size={14} style={{ transform: 'rotate(90deg)' }} color="#006a4d" />
+                      </MotionBox>
                     </Box>
                     <Box sx={{ marginTop: '6px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <Typography sx={{ fontSize: 11 }}>
@@ -443,15 +459,22 @@ export default function RewardsDashboardPage({
                       <TrendingUp size={13} className={TIER_CARD_THEMES[tier.current.name]?.metaIcon ?? ''} /> +850 this month · {formatLastSyncedAt(customer.lastSyncedAt)}
                     </p>
                     <div className="mt-4">
-                      <div className="mb-1.5 flex justify-between text-[11px] font-medium">
-                        {TIERS.map((t) => (
-                          <span key={t.name} className={`flex items-center gap-1 ${tier.current.name === t.name ? (TIER_CARD_THEMES[tier.current.name]?.tickActive ?? '') : (TIER_CARD_THEMES[tier.current.name]?.tickIdle ?? '')}`}>
-                            <t.icon size={11} /> {t.name}
-                          </span>
-                        ))}
+                      <div className="relative mb-1.5 h-4 text-[11px] font-medium">
+                        {TIERS.map((t, i) => {
+                          const pos = (t.min / lastTierMax) * 100
+                          const anchor = i === 0 ? { left: 0 } : i === TIERS.length - 1 ? { right: 0 } : { left: `${pos}%`, transform: 'translateX(-50%)' }
+                          return (
+                            <span key={t.name} className={`absolute top-0 flex items-center gap-1 ${tier.current.name === t.name ? (TIER_CARD_THEMES[tier.current.name]?.tickActive ?? '') : (TIER_CARD_THEMES[tier.current.name]?.tickIdle ?? '')}`} style={{ ...anchor, whiteSpace: 'nowrap' }}>
+                              <t.icon size={11} /> {t.name}
+                            </span>
+                          )
+                        })}
                       </div>
-                      <div className={`relative h-2 overflow-hidden rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)] ${TIER_CARD_THEMES[tier.current.name]?.track ?? ''}`}>
-                        <motion.div className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] ${TIER_CARD_THEMES[tier.current.name]?.barFill ?? ''}`} initial={{ width: 0 }} animate={{ width: `${tier.progress}%` }} transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }} />
+                      <div className={`relative h-2 overflow-visible rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)] ${TIER_CARD_THEMES[tier.current.name]?.track ?? ''}`}>
+                        <motion.div className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] ${TIER_CARD_THEMES[tier.current.name]?.barFill ?? ''}`} style={{ width: `${memberTierPosPct}%` }} initial={{ width: 0 }} animate={{ width: `${memberTierPosPct}%` }} transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }} />
+                        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center" style={{ left: `${memberTierPosPct}%` }}>
+                          {/* <ChevronRight size={14} style={{ transform: 'rotate(90deg)' }} color="#006a4d" /> */}
+                        </motion.span>
                       </div>
                       <p className={`mt-1.5 text-[11px] ${TIER_CARD_THEMES[tier.current.name]?.noteText ?? ''}`}>
                         {tier.next
@@ -472,8 +495,8 @@ export default function RewardsDashboardPage({
                   display: 'grid',
                   gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
                   gap: '10px',
-                  padding: '10px',
-                  bgcolor: 'rgba(255,255,255,0.10)',
+                  padding: '0px',
+                  // bgcolor: 'rgba(255,255,255,0.10)',
                   borderRadius: '16px',
                   backdropFilter: 'blur(8px)',
                   paddingBottom: '4px',
@@ -564,12 +587,7 @@ export default function RewardsDashboardPage({
           flex: 1,
           minHeight: 0,
           overflowY: 'auto',
-          borderTopLeftRadius: 24,
-          borderTopRightRadius: 24,
-          //bgcolor: '#f1f5f9',
-          
-          
-          
+          bgcolor: '#f1f5f9',
         }}
       >
         <AnimatePresence mode="wait">
@@ -592,7 +610,7 @@ export default function RewardsDashboardPage({
                   flexDirection: 'column',
                   alignItems: 'center',
                   gap: '6px',
-                  marginTop: '70px',
+                  marginTop: '8px',
                   borderRadius: '16px',
                   padding: '16px 24px',
                   fontFamily: 'inherit',
@@ -607,7 +625,98 @@ export default function RewardsDashboardPage({
                   Personalise your LBG Coin experience
                 </Typography>
               </MotionButton>
-              
+
+              {/* Recent activity — top 3 transactions */}
+              <Box
+                sx={{
+                  borderRadius: '16px',
+                  bgcolor: '#ffffff',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+                  overflow: 'hidden',
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', paddingX: '16px', paddingTop: '14px', paddingBottom: '8px' }}>
+                  <Activity size={15} color="#006a4d" />
+                  <Typography sx={{ fontSize: 13, fontWeight: 700, color: '#0f172a' }}>
+                    Recent activity
+                  </Typography>
+                </Box>
+
+                {txLoading && (
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '16px', fontSize: 13, color: '#64748b' }}>
+                    <Loader2 size={14} className="animate-spin" /> Loading recent activity…
+                  </Box>
+                )}
+
+                {!txLoading && (txError || transactions.length === 0) && (
+                  <Typography sx={{ padding: '16px', fontSize: 13, color: '#94a3b8' }}>
+                    {txError ? 'Could not load recent activity.' : 'No recent activity yet.'}
+                  </Typography>
+                )}
+
+                {!txLoading && !txError && transactions.length > 0 && (
+                  <Box>
+                    {transactions.slice(0, 3).map((tx, i) => {
+                      const positive = tx.amount >= 0
+                      const tint =
+                        tx.type === 'EARN'
+                          ? { bgcolor: '#eef7f3', color: '#045a42' }
+                          : tx.type === 'CONVERT'
+                            ? { bgcolor: '#f0f9ff', color: '#0284c7' }
+                            : tx.type === 'REDEEM'
+                              ? { bgcolor: '#fdf9ef', color: '#a98a41' }
+                              : tx.type === 'TRANSFER'
+                                ? { bgcolor: '#f5f3ff', color: '#7c3aed' }
+                                : tx.type === 'EXPIRE'
+                                  ? { bgcolor: '#fef2f2', color: '#b91c1c' }
+                                  : { bgcolor: '#f8fafc', color: '#64748b' }
+                      const Icon =
+                        tx.type === 'EARN'
+                          ? ArrowDownCircle
+                          : tx.type === 'CONVERT'
+                            ? RefreshCw
+                            : tx.type === 'REDEEM'
+                              ? Gift
+                              : tx.type === 'TRANSFER'
+                                ? Send
+                                : tx.type === 'EXPIRE'
+                                  ? CreditCard
+                                  : Gift
+                      return (
+                        <Box
+                          key={tx.id}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            paddingX: '16px',
+                            paddingTop: '10px',
+                            paddingBottom: '10px',
+                            ...(i > 0 && { borderTop: '1px solid #eef2f7' }),
+                          }}
+                        >
+                          <Box sx={{ display: 'flex', height: 32, width: 32, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: '999px', ...tint }}>
+                            <Icon size={15} />
+                          </Box>
+                          <Box sx={{ minWidth: 0, flex: 1 }}>
+                            <Typography sx={{ fontSize: 13, fontWeight: 500, color: '#0f172a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              {normalizeTransactionDescription(tx.description)}
+                            </Typography>
+                            <Typography sx={{ fontSize: 11.5, color: '#94a3b8' }}>
+                              {formatTransactionDate(tx.createdAt)}
+                            </Typography>
+                          </Box>
+                          <Typography sx={{ flexShrink: 0, fontSize: 13, fontWeight: 700, fontVariantNumeric: 'tabular-nums', color: positive ? '#059669' : '#0f172a' }}>
+                            {positive ? '+' : ''}
+                            {formatPoints(tx.amount)}
+                          </Typography>
+                        </Box>
+                      )
+                    })}
+                  </Box>
+                )}
+              </Box>
+
             </MotionBox>
           )}
 

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Tooltip from '@mui/material/Tooltip'
 import { motion } from 'framer-motion'
-import { Copy, Info, Sparkles } from 'lucide-react'
+import { Copy, Info, Sparkles, Wand2 } from 'lucide-react'
 import { palette } from './types'
 
 const MotionButton = motion.create(ButtonBase)
@@ -43,7 +43,7 @@ export default function QuickObjective({
         '&:hover': { borderColor: selected ? palette.brand : palette.brand },
       }}
     >
-      <Box
+      {/* <Box
         sx={{
           width: 28,
           height: 28,
@@ -57,63 +57,77 @@ export default function QuickObjective({
         }}
       >
         <Sparkles size={14} color={selected ? '#ffffff' : palette.brand} />
-      </Box>
+      </Box> */}
       <Box sx={{ flex: 1, minWidth: 0 }}>
         <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
-          gap: '4px',
+          gap: '0px',
           color: palette.textMuted,
           flexShrink: 0,
         }}
       >
+        <Box
+        sx={{
+          width: 15,
+          height: 15,
+          borderRadius: '9px',
+          // bgcolor: selected ? palette.brand : palette.surface,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+          marginRight:'4px',
+          border: `1px solid ${selected ? 'transparent' : palette.border}`,
+        }}
+      >
+        <Wand2 size={24} strokeWidth={3} />
+      </Box>
         <Typography
           sx={{
-            fontSize: 10,
+            fontSize: 13,
             fontWeight: 700,
             color: palette.brand,
-            textTransform: 'uppercase',
+            // textTransform: 'uppercase',
             letterSpacing: '0.08em',
-            marginBottom: '2px',
           }}
         >
           {hint}
         </Typography>
          <Tooltip
           title={
-            <Box sx={{ fontSize: 11.5, lineHeight: 1.5 }}>
+            <Box sx={{ fontSize: 10, lineHeight: 1.5 }}>
               Quick start suggests an objective inferred from your connected brands and recent
-              activity. It is chosen automatically so you can save time — tap it to use this
-              objective without typing, or state your own below.
+              activity.You may choose to use this one.
             </Box>
           }
           placement="top"
           arrow
-          slotProps={{ tooltip: { sx: { bgcolor: palette.textStrong, maxWidth: 260 } } }}
+          slotProps={{ tooltip: { sx: { bgcolor: palette.textStrong, maxWidth: 200 } } }}
         >
           <Box
             component="span"
             sx={{
               display: 'inline-flex',
-              alignItems: 'center',
+              alignItems: 'top',
               justifyContent: 'center',
               width: 20,
               height: 20,
-              borderRadius: '999px',
-              border: `1px solid ${palette.border}`,
+              borderRadius: '9px',
+              // border: `1px solid ${palette.border}`,
               color: palette.textMuted,
               cursor: 'pointer',
               '&:hover': { color: palette.brand, borderColor: palette.brand },
             }}
           >
-            <Info size={12} strokeWidth={2.2} />
+            <Info size={10} strokeWidth={2.2} />
           </Box>
         </Tooltip>
         </Box>
         <Typography
           sx={{
-            fontSize: 12.5,
+            fontSize: 13,
             fontWeight: 500,
             color: selected ? palette.textStrong : palette.text,
             lineHeight: 1.4,
@@ -162,16 +176,16 @@ export default function QuickObjective({
           </Box>
         </Tooltip> */}
        
-        {selected ? (
+        {/* {selected ? (
           // <Copy size={13} color={palette.brand} />
-          <Typography sx={{ fontSize: 10, fontWeight: 600, color: palette.textMuted }}>
+          <Typography sx={{ fontSize: 10, fontWeight: 100, color: palette.textMuted }}>
             In use
           </Typography>
         ) : (
-          <Typography sx={{ fontSize: 10, fontWeight: 600, color: palette.textMuted }}>
-            Tap to use
+          <Typography sx={{ fontSize: 10, fontWeight: 100, color: palette.textMuted }}>
+            
           </Typography>
-        )}
+        )} */}
       </Box>
     </MotionButton>
   )
