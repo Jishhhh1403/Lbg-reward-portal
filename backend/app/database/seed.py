@@ -97,14 +97,15 @@ DEMO_CONNECTED_BRANDS = [
 ]
 
 DEMO_TRANSACTIONS = [
-    ("EARN", "Points earned at Nando's", 320.0, "BRAND_POINT", _days_ago(0, 13)),
-    ("CONVERT", "Converted Tesco Clubcard points to LBG coins", 850.0, "LBG_COIN", _days_ago(1)),
-    ("REDEEM", "Redeemed coins at Costa Coffee", -450.0, "LBG_COIN", _days_ago(3)),
-    ("EARN", "Points earned at Tesco Clubcard", 540.0, "BRAND_POINT", _days_ago(5)),
-    ("EARN", "Points earned at Avios", 1250.0, "BRAND_POINT", _days_ago(8)),
-    ("CONVERT", "Converted Amazon points to LBG coins", 600.0, "LBG_COIN", _days_ago(11)),
-    ("REDEEM", "Redeemed coins at Cineworld", -900.0, "LBG_COIN", _days_ago(14)),
-    ("EARN", "Points earned at Boots", 210.0, "BRAND_POINT", _days_ago(18)),
+    ("EARN", "Points earned at AlphaMedicol", 320.0, "BRAND_POINT", _days_ago(0, 9)),
+    ("CONVERT", "Converted AlphaMedicol points to LBG coins", 850.0, "LBG_COIN", _days_ago(0, 13)),
+    ("REDEEM", "LBG Coins redeemed at Cavendish Online", -1800.0, "LBG_COIN", _days_ago(1, 10)),
+    ("EARN", "Points earned at Cavendish Online", 540.0, "BRAND_POINT", _days_ago(2, 15)),
+    ("CONVERT", "Converted Cavendish Online points to LBG coins", 600.0, "LBG_COIN", _days_ago(3, 11)),
+    ("EARN", "Points earned at AlphaMedicol", 1250.0, "BRAND_POINT", _days_ago(5, 14)),
+    ("REDEEM", "LBG Coins redeemed at AlphaMedicol", -450.0, "LBG_COIN", _days_ago(8, 16)),
+    ("EARN", "Points earned at Cavendish Online", 210.0, "BRAND_POINT", _days_ago(11, 12)),
+    ("CONVERT", "Converted AlphaMedicol points to LBG coins", 900.0, "LBG_COIN", _days_ago(14, 17)),
 ]
 
 PERSONA_CUSTOMERS = [

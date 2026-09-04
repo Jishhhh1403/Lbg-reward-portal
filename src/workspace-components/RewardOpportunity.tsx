@@ -72,10 +72,10 @@ export default function RewardOpportunity({
       {/* Heading */}
       <Typography
         sx={{
-          fontSize: 15,
+          fontSize: 13,
           fontWeight: 700,
           color: palette.textStrong,
-          marginBottom: '10px',
+          marginBottom: '5px',
         }}
       >
         {heading}
@@ -162,7 +162,7 @@ export default function RewardOpportunity({
                   }}
                 >
                   <Typography
-                    sx={{ fontSize: 14, fontWeight: 700, color: palette.textStrong }}
+                    sx={{ fontSize: 13, fontWeight: 700, color: palette.textStrong }}
                   >
                     {opp.title}
                   </Typography>
@@ -186,14 +186,14 @@ export default function RewardOpportunity({
                   sx={{
                     fontSize: 12,
                     color: palette.textMuted,
-                    lineHeight: 1.5,
+                    lineHeight: 1.20,
                     marginBottom: '4px',
                   }}
                 >
                   {opp.description}
                 </Typography>
                 <Typography sx={{ fontSize: 11, color: palette.textFaint }}>
-                  {opp.partner}
+                  {/* {opp.partner} */}
                 </Typography>
 
                 {/* Constraint chips */}

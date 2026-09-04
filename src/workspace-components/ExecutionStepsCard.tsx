@@ -68,8 +68,8 @@ export default function ExecutionStepsCard({
           >
             <Box
               sx={{
-                width: 28,
-                height: 28,
+                width: 20,
+                height: 20,
                 borderRadius: '999px',
                 display: 'flex',
                 alignItems: 'center',
@@ -88,13 +88,13 @@ export default function ExecutionStepsCard({
               ) : step.status === 'running' ? (
                 <Loader2 size={13} color={palette.amberText} className="animate-spin" />
               ) : (
-                <Typography sx={{ fontSize: 12, fontWeight: 700, color: palette.textMuted }}>
+                <Typography sx={{ fontSize: 8, fontWeight: 700, color: palette.textMuted }}>
                   {i + 1}
                 </Typography>
               )}
             </Box>
             <Box sx={{ flex: 1 }}>
-              <Typography sx={{ fontSize: 13, fontWeight: 600, color: palette.textStrong }}>
+              <Typography sx={{ fontSize: 11, fontWeight: 600, color: palette.textStrong }}>
                 {step.label}
               </Typography>
               {/* <Typography sx={{ fontSize: 11, color: palette.textFaint }}>{step.partner}</Typography> */}

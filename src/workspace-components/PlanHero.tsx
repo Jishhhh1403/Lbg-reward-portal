@@ -22,13 +22,13 @@ export default function PlanHero({
         padding: '16px',
         display: 'flex',
         alignItems: 'flex-start',
-        gap: '12px',
+        gap: '3px',
       }}
     >
       <Box
         sx={{
-          width: 38,
-          height: 38,
+          width: 15,
+          height: 15,
           borderRadius: '12px',
           bgcolor: palette.brand,
           display: 'flex',
@@ -39,7 +39,7 @@ export default function PlanHero({
       >
         <Target size={18} color="#ffffff" strokeWidth={2} />
       </Box>
-      <Box sx={{ flex: 1 }}>
+      <Box sx={{ flex: 1 ,marginbottom: '2px' }}>
         <Typography
           sx={{
             fontSize: 12,
@@ -47,12 +47,12 @@ export default function PlanHero({
             color: palette.brand,
             textTransform: 'uppercase',
             letterSpacing: '0.06em',
-            marginBottom: '3px',
+            marginBottom: '5px',
           }}
         >
           {planLabel}
         </Typography>
-        <Typography sx={{ fontSize: 14, fontWeight: 700, color: palette.textStrong, lineHeight: 1.5 }}>
+        <Typography sx={{ fontSize: 11, fontWeight: 500, color: palette.text, lineHeight: 1.20 }}>
           {description}
         </Typography>
       </Box>

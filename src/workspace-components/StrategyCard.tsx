@@ -49,6 +49,9 @@ export default function StrategyCard({
 }: StrategyCardProps) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <Typography sx={{ fontSize: 13, fontWeight: 800, color: palette.textStrong, lineHeight: 1.3 }}>
+                Recommended plans
+              </Typography>
       {/* Horizontal scrollable carousel — expands edge-to-edge of the modal */}
       <Box
         sx={{
@@ -129,7 +132,7 @@ export default function StrategyCard({
                   )}
                 </Box>
               </Box>
-              <Typography sx={{ fontSize: 15, fontWeight: 800, color: palette.textStrong, lineHeight: 1.3 }}>
+              <Typography sx={{ fontSize: 13, fontWeight: 800, color: palette.textStrong, lineHeight: 1.3 }}>
                 {badge.title}
               </Typography>
               {/* <Box
@@ -150,7 +153,7 @@ export default function StrategyCard({
               >
                 Recommended plan
               </Box> */}
-              <Typography sx={{ fontSize: 12, color: palette.textMuted, lineHeight: 1.5 }}>
+              <Typography sx={{ fontSize: 11, color: palette.textMuted, lineHeight: 1.20 }}>
                 {s.description}
               </Typography>
             </MotionButton>

@@ -20,15 +20,20 @@ export function formatLastSyncedAt(iso: string): string {
   return hours === 1 ? 'Synced 1 hr ago' : `Synced ${hours} hrs ago`
 }
 
+function formatTime(date: Date): string {
+  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
+}
+
 export function formatTransactionDate(iso: string): string {
   const date = new Date(iso)
   const today = new Date()
   const yesterday = new Date()
   yesterday.setDate(today.getDate() - 1)
   const sameDay = (a: Date, b: Date) => a.toDateString() === b.toDateString()
-  if (sameDay(date, today)) return 'Today'
-  if (sameDay(date, yesterday)) return 'Yesterday'
-  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+  const time = formatTime(date)
+  if (sameDay(date, today)) return `Today, ${time}`
+  if (sameDay(date, yesterday)) return `Yesterday, ${time}`
+  return `${date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}, ${time}`
 }
 
 export function normalizeTransactionDescription(description: string): string {

@@ -202,15 +202,15 @@ function daysAgo(days: number, hour = 12): string {
 }
 
 export const DEMO_TRANSACTIONS: WalletTransactionItem[] = [
-  { id: 'tx_01', type: 'EARN', description: 'Points earned at Nando\u2019s', amount: 320, currency: 'BRAND_POINT', createdAt: daysAgo(0, 13) },
-  { id: 'tx_02', type: 'CONVERT', description: 'Converted Tesco Clubcard points to LBG coins', amount: 850, currency: 'LBG_COIN', createdAt: daysAgo(1) },
-  { id: 'tx_03', type: 'REDEEM', description: 'LBG Coins redeemed at Cavendish Online', amount: -1800, currency: 'LBG_COIN', createdAt: daysAgo(2) },
-  { id: 'tx_04', type: 'REDEEM', description: 'Redeemed coins at Costa Coffee', amount: -450, currency: 'LBG_COIN', createdAt: daysAgo(3) },
-  { id: 'tx_05', type: 'EARN', description: 'Points earned at Tesco Clubcard', amount: 540, currency: 'BRAND_POINT', createdAt: daysAgo(5) },
-  { id: 'tx_06', type: 'EARN', description: 'Points earned at Avios', amount: 1250, currency: 'BRAND_POINT', createdAt: daysAgo(8) },
-  { id: 'tx_07', type: 'CONVERT', description: 'Converted Amazon points to LBG coins', amount: 600, currency: 'LBG_COIN', createdAt: daysAgo(11) },
-  { id: 'tx_08', type: 'REDEEM', description: 'Redeemed coins at Cineworld', amount: -900, currency: 'LBG_COIN', createdAt: daysAgo(14) },
-  { id: 'tx_09', type: 'EARN', description: 'Points earned at Boots', amount: 210, currency: 'BRAND_POINT', createdAt: daysAgo(18) },
+  { id: 'tx_01', type: 'EARN', description: 'Points earned at AlphaMedicol', amount: 320, currency: 'BRAND_POINT', createdAt: daysAgo(0, 9) },
+  { id: 'tx_02', type: 'CONVERT', description: 'Converted AlphaMedicol points to LBG coins', amount: 850, currency: 'LBG_COIN', createdAt: daysAgo(0, 13) },
+  { id: 'tx_03', type: 'REDEEM', description: 'LBG Coins redeemed at Cavendish Online', amount: -1800, currency: 'LBG_COIN', createdAt: daysAgo(1, 10) },
+  { id: 'tx_04', type: 'EARN', description: 'Points earned at Cavendish Online', amount: 540, currency: 'BRAND_POINT', createdAt: daysAgo(2, 15) },
+  { id: 'tx_05', type: 'CONVERT', description: 'Converted Cavendish Online points to LBG coins', amount: 600, currency: 'LBG_COIN', createdAt: daysAgo(3, 11) },
+  { id: 'tx_06', type: 'EARN', description: 'Points earned at AlphaMedicol', amount: 1250, currency: 'BRAND_POINT', createdAt: daysAgo(5, 14) },
+  { id: 'tx_07', type: 'REDEEM', description: 'LBG Coins redeemed at AlphaMedicol', amount: -450, currency: 'LBG_COIN', createdAt: daysAgo(8, 16) },
+  { id: 'tx_08', type: 'EARN', description: 'Points earned at Cavendish Online', amount: 210, currency: 'BRAND_POINT', createdAt: daysAgo(11, 12) },
+  { id: 'tx_09', type: 'CONVERT', description: 'Converted AlphaMedicol points to LBG coins', amount: 900, currency: 'LBG_COIN', createdAt: daysAgo(14, 17) },
 ]
 
 /* ------------------------------------------------------------------ */

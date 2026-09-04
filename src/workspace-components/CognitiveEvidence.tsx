@@ -8,7 +8,7 @@ import { palette } from './types'
 
 const MotionButton = motion.create(ButtonBase)
 
-const PER_PAGE = 3
+const PER_PAGE = 2
 
 interface CognitiveEvidenceProps {
   title?: string
@@ -41,10 +41,10 @@ export default function CognitiveEvidence({
         border: '1px solid',
         borderColor: palette.border,
         bgcolor: palette.surface,
-        padding: '14px 16px',
+        padding: '2px 16px',
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '8px' }}>
         <Brain size={16} color={palette.brand} />
         <Typography sx={{ fontSize: 14, fontWeight: 700, color: palette.textStrong }}>
           {title}
@@ -55,7 +55,7 @@ export default function CognitiveEvidence({
       </Typography>
 
       {pages.length > 0 ? (
-        <Box sx={{ marginTop: '12px' }}>
+        <Box sx={{ marginTop: '4px' }}>
           {/* Carousel window — three points at a time */}
           <Box sx={{ overflow: 'hidden' }}>
             <motion.div
@@ -68,7 +68,7 @@ export default function CognitiveEvidence({
               {current.map((f, i) => (
                 <Box
                   key={`${page}-${i}`}
-                  sx={{ display: 'flex', gap: '8px', alignItems: 'flex-start', padding: '5px 0' }}
+                  sx={{ display: 'flex', gap: '8px', alignItems: 'flex-start', padding: '3px 0' }}
                 >
                   <Box
                     sx={{
@@ -80,7 +80,7 @@ export default function CognitiveEvidence({
                       flexShrink: 0,
                     }}
                   />
-                  <Typography sx={{ fontSize: 12, color: palette.textMuted, lineHeight: 1.5 }}>
+                  <Typography sx={{ fontSize: 11, color: palette.textMuted, lineHeight: 1.20 }}>
                     {f}
                   </Typography>
                 </Box>

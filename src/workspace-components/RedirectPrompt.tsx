@@ -25,11 +25,13 @@ export default function RedirectPrompt({
         gap: '12px',
       }}
     >
+      <Box sx={{ flex: 1 }}>
+        
       <Box
         sx={{
-          width: 40,
-          height: 40,
-          borderRadius: '12px',
+          width: 15,
+          height: 15,
+          borderRadius: '0px',
           bgcolor: palette.brand,
           display: 'flex',
           alignItems: 'center',
@@ -39,7 +41,6 @@ export default function RedirectPrompt({
       >
         <ExternalLink size={18} color="#ffffff" strokeWidth={2} />
       </Box>
-      <Box sx={{ flex: 1 }}>
         {partner ? (
           <Typography
             sx={{
