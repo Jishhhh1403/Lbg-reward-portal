@@ -44,7 +44,7 @@ export default function CognitiveEvidence({
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '8px' }}>
-        <Brain size={16} color={palette.textFaint} />
+        <Brain size={16} color={palette.brand} />
         <Typography sx={{ fontSize: 14, fontWeight: 700, color: palette.textStrong }}>
           {title}
         </Typography>
