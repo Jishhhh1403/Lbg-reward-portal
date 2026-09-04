@@ -99,6 +99,7 @@ export default function RewardOpportunity({
           fontWeight: 700,
           color: palette.textStrong,
           marginBottom: '5px',
+          paddingLeft: '12px',
           textAlign: 'left',
         }}
       >

@@ -45,7 +45,7 @@ export default function CognitiveEvidence({
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '8px' }}>
-        <Brain size={16} color={palette.brand} />
+        <Brain size={16} color={palette.textFaint} />
         <Typography sx={{ fontSize: 14, fontWeight: 700, color: palette.textStrong }}>
           {title}
         </Typography>
@@ -75,7 +75,7 @@ export default function CognitiveEvidence({
                       width: 6,
                       height: 6,
                       borderRadius: '999px',
-                      bgcolor: palette.brand,
+                      bgcolor: palette.border,
                       marginTop: '6px',
                       flexShrink: 0,
                     }}
@@ -108,7 +108,7 @@ export default function CognitiveEvidence({
                   color: page === 0 ? palette.textFaint : palette.textStrong,
                   bgcolor: palette.surfaceAlt,
                   flexShrink: 0,
-                  '&:hover': { borderColor: palette.brand, color: palette.brand },
+                  '&:hover': { borderColor: palette.textFaint, color: palette.textFaint },
                   '&:disabled': { color: palette.textFaint },
                 }}
               >
@@ -124,7 +124,7 @@ export default function CognitiveEvidence({
                       width: i === page ? 16 : 6,
                       height: 6,
                       borderRadius: '999px',
-                      bgcolor: i === page ? palette.brand : palette.border,
+                      bgcolor: i === page ? palette.textFaint : palette.border,
                       cursor: 'pointer',
                       transition: 'all 0.2s',
                     }}
@@ -149,7 +149,7 @@ export default function CognitiveEvidence({
                   color: page >= pages.length - 1 ? palette.textFaint : palette.textStrong,
                   bgcolor: palette.surfaceAlt,
                   flexShrink: 0,
-                  '&:hover': { borderColor: palette.brand, color: palette.brand },
+                  '&:hover': { borderColor: palette.textFaint, color: palette.textFaint },
                   '&:disabled': { color: palette.textFaint },
                 }}
               >
