@@ -26,13 +26,6 @@ interface RewardOpportunityProps {
   objective?: string
 }
 
-/** Turns the (often verbose) objective into a short, plain-English essence. */
-function summariseObjective(objective: string): string {
-  const clean = objective.trim().replace(/\s+/g, ' ').replace(/^so[\s,]+/i, '')
-  if (!clean) return ''
-  return clean.charAt(0).toUpperCase() + clean.slice(1)
-}
-
 type BucketKey = 'shortlisted' | 'rejected'
 
 export default function RewardOpportunity({
@@ -40,7 +33,6 @@ export default function RewardOpportunity({
   shortlisted,
   rejected,
   eyebrow = 'Reward opportunities',
-  objective,
 }: RewardOpportunityProps) {
   /* Shortlisted wins by default; fall back to items for back-compat. */
   const shortlist = shortlisted ?? items
@@ -48,7 +40,6 @@ export default function RewardOpportunity({
   const [active, setActive] = useState<BucketKey>('shortlisted')
 
   const heading = eyebrow || 'Reward opportunities'
-  const objectiveSummary = objective ? summariseObjective(objective) : ''
 
   const bucket: RewardOpportunityItem[] = active === 'shortlisted' ? shortlist : reject
   const [current, setCurrent] = useState(0)

@@ -159,7 +159,6 @@ export default function RewardsDashboardPage({
   const [redeemOpen, setRedeemOpen] = useState(false)
   const [goalOpen, setGoalOpen] = useState(false)
   const [goalResume, setGoalResume] = useState<import('../types/objective').WorkspaceResume | null>(null)
-  const [refreshing, setRefreshing] = useState(false)
 
   const [transactions, setTransactions] = useState<WalletTransactionItem[]>([])
   const [txLoading, setTxLoading] = useState(false)
@@ -199,16 +198,11 @@ export default function RewardsDashboardPage({
   const totalPoints = customer.totalBrandPoints
 
   const handleRefresh = async () => {
-    setRefreshing(true)
-    try {
-      await onRefresh()
-    } finally {
-      setRefreshing(false)
-    }
+    await onRefresh()
   }
 
   const handlePartnerHandoff = (
-    _partner: string,
+    partner: string,
     url: string,
     resume: import('../types/objective').WorkspaceResume,
   ) => {
@@ -219,6 +213,14 @@ export default function RewardsDashboardPage({
     baseUrl.searchParams.set('customerEmail', customerEmailVal)
     baseUrl.searchParams.set('customerName', encodeURIComponent(customerNameVal))
     baseUrl.searchParams.set('customerPhone', customerPhoneVal)
+
+    /* Pre-populate how many LBG coins Cavendish should auto-apply at checkout
+       (Cavendish caps it at 80% of the premium; the user never picks the count).
+       The balance is already increased by any prior AlphaMed -> LBG conversion. */
+    if (partner === 'Cavendish Online') {
+      const coinCount = Math.round(Number(customer.totalLbgCoins ?? 0))
+      if (coinCount > 0) baseUrl.searchParams.set('coinsToApply', String(coinCount))
+    }
 
     const returnUrl = new URL(window.location.origin + window.location.pathname)
     returnUrl.searchParams.set('ws_resume', JSON.stringify(resume))
@@ -332,7 +334,6 @@ export default function RewardsDashboardPage({
                 '&:hover': { bgcolor: 'rgba(255,255,255,0.10)' },
               }}
             >
-              {/* <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} /> */}
             </MotionButton>
             <IconButton
               aria-label="Notifications"

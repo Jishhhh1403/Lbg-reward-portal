@@ -31,6 +31,8 @@ export interface WorkspaceResume {
 export interface ObjectiveConstraint {
   id: string
   text: string
+  label?: string
+  value?: string
   applied: boolean
 }
 

@@ -44,8 +44,8 @@ const COPLAN_TOOLS = [  {
   },
   {
     id: 'edit',
-    label: 'Edit the constraints and change the objective',
-    hint: 'Update the constraints and objective to suit me, then refresh the plans.',
+    label: 'Edit the constraints extracted from your objective',
+    hint: 'Update the constraints and values to suit me, then refresh the plans.',
   },
   {
     id: 'compare',
@@ -72,7 +72,7 @@ function constraintsHeading(objectiveText: string): string {
  *  single screen so the summary and the inferred hard-fact constraints are
  *  shown together before the reward opportunities. */
 export function buildMergedSummaryStageComponents(
-  summary: string,
+  _summary: string,
   constraintItems: Array<{ id: string; text: string }>,
 ): SDUIComponent[] {
   return [
@@ -105,10 +105,6 @@ export function buildStageComponents(
       return [
         makeComponent('sum-understood', 'WS_UNDERSTOOD', { text: 'What I understood' }),
         makeComponent('sum-captured', 'WS_SUMMARY', { summary: screen.summary ?? '' }),
-        makeComponent('sum-objective', 'WS_OBJECTIVE_HERO', {
-          eyebrow: 'Your objective',
-          objective: objectiveText,
-        }),
         makeComponent(
           'sum-nav',
           'WS_NAV',
@@ -223,10 +219,6 @@ export function buildStageComponents(
 
     case 'evidence':
       return [
-        makeComponent('ev-objective', 'WS_OBJECTIVE_HERO', {
-          eyebrow: 'Your objective',
-          objective: objectiveText,
-        }),
         makeComponent('ev-card', 'WS_EVIDENCE', {
           title: 'Cognitive evidence',
           summary: screen.evidence?.summary ?? '',

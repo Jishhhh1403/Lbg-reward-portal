@@ -8,7 +8,6 @@ interface WorkspaceAnchorProps {
 }
 
 export default function WorkspaceAnchor({
-  text = 'What are you looking for today?',
   align = 'left',
 }: WorkspaceAnchorProps) {
   return (

@@ -2,13 +2,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { palette } from './types'
 
-interface UnderstoodAnchorProps {
-  text?: string
-}
-
-export default function UnderstoodAnchor({
-  text = 'WHAT I UNDERSTOOD',
-}: UnderstoodAnchorProps) {
+export default function UnderstoodAnchor() {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
       <Box

@@ -179,22 +179,66 @@ def _hard_fact_constraints(objective: str) -> list[ObjectiveConstraint]:
     "keep it simple"-style constraint that adds no factual information.
     """
     lean = (objective or "").lower()
+    constraints: list[ObjectiveConstraint] = []
+
+    # Cashback amount — e.g. "£70 cashback", "70 pounds cashback"
+    import re as _re
+    m = _re.search(r"(\d+(?:[.,]\d+)?)\s*(?:pounds?|£|gbp)?\s*cashback", lean)
+    if m:
+        constraints.append(
+            ObjectiveConstraint(
+                id="c1",
+                label="Cashback value",
+                value=m.group(0).replace("cashback", "").strip().strip("£"),
+                text=f"Ensure at least {m.group(0)} on the payment",
+                applied=True,
+            )
+        )
+
+    # Conversion rate — e.g. "10:1", "minimum 10:1 conversion rate"
+    m = _re.search(r"(\d+(?:[.,]\d+)?)\s*:\s*(\d+(?:[.,]\d+)?)", lean)
+    if m:
+        constraints.append(
+            ObjectiveConstraint(
+                id="c2",
+                label="Conversion rate",
+                value=f"{m.group(1)}:{m.group(2)}",
+                text="Minimum conversion rate of coins to GBP as stated",
+                applied=True,
+            )
+        )
+
+    # Conversion fee — e.g. "no conversion fee", "zero fee"
+    if _re.search(r"no\s+conversion\s+fee|zero\s+fee|no\s+fee", lean):
+        constraints.append(
+            ObjectiveConstraint(
+                id="c3",
+                label="Fees",
+                value="0",
+                text="No conversion fee on the payment",
+                applied=True,
+            )
+        )
+
+    if constraints:
+        return constraints
+
     if "insurance" in lean or "premium" in lean or "pay" in lean:
         return [
-            ObjectiveConstraint(id="c1", text="Pay the insurance premium using available LBG coins", applied=True),
-            ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
-            ObjectiveConstraint(id="c3", text="Use existing connected brand points to boost the balance", applied=True),
+            ObjectiveConstraint(id="c1", label="Payment method", value="LBG coins", text="Pay the insurance premium using available LBG coins", applied=True),
+            ObjectiveConstraint(id="c2", label="Redemption value", value="Maximise", text="Maximise the value gained from the rewards balance", applied=True),
+            ObjectiveConstraint(id="c3", label="Connected brands", value="Use", text="Use existing connected brand points to boost the balance", applied=True),
         ]
     if lean.strip():
         return [
-            ObjectiveConstraint(id="c1", text=f"Achieve your goal of: \"{objective.strip()}\"", applied=True),
-            ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
-            ObjectiveConstraint(id="c3", text="Use existing connected brand points to cover the cost", applied=True),
+            ObjectiveConstraint(id="c1", label="Goal", value=objective.strip(), text=f"Achieve your goal of: \"{objective.strip()}\"", applied=True),
+            ObjectiveConstraint(id="c2", label="Redemption value", value="Maximise", text="Maximise the value gained from the rewards balance", applied=True),
+            ObjectiveConstraint(id="c3", label="Connected brands", value="Use", text="Use existing connected brand points to cover the cost", applied=True),
         ]
     return [
-        ObjectiveConstraint(id="c1", text="Pay the insurance premium using available LBG coins", applied=True),
-        ObjectiveConstraint(id="c2", text="Maximise the value gained from the rewards balance", applied=True),
-        ObjectiveConstraint(id="c3", text="Use existing connected brand points to boost the balance", applied=True),
+        ObjectiveConstraint(id="c1", label="Payment method", value="LBG coins", text="Pay the insurance premium using available LBG coins", applied=True),
+        ObjectiveConstraint(id="c2", label="Redemption value", value="Maximise", text="Maximise the value gained from the rewards balance", applied=True),
+        ObjectiveConstraint(id="c3", label="Connected brands", value="Use", text="Use existing connected brand points to boost the balance", applied=True),
     ]
 
 
@@ -214,14 +258,18 @@ IMPORTANT: Do NOT name any specific provider or partner brand (for example
 Cavendish Online or Alpha Medical) at this stage. Partners are revealed only in
 the later opportunities and strategies steps.
 Each constraint MUST be a specific, factual requirement extracted directly from
-the customer's objective and live wallet. Do not emit generic or stock filler
+the customer's objective and live wallet, expressed as a structured label/value
+pair. "label" is a short canonical name (e.g. "Cashback value", "Conversion
+rate", "Fees", "Redemption value", "Steps") and "value" is the concrete number,
+ratio or figure the user stated (e.g. "£70", "10:1", "0", "High"). Include a
+human-readable "text" sentence for display. Do not emit generic or stock filler
 constraints such as "keep it simple", "keep it quick", or "straightforward".
 The three items together should read as concrete hard facts — things that are
 actually true of this customer's stated goal and available balance. Emit:
 {"constraints": [
-  {"id": "c1", "text": "e.g. Pay the insurance premium using available LBG coins", "applied": true},
-  {"id": "c2", "text": "e.g. Maximise the value gained from the rewards balance", "applied": true},
-  {"id": "c3", "text": "e.g. Use existing connected brand points to boost the balance", "applied": true}
+  {"id": "c1", "label": "Cashback value", "value": "£70", "text": "Ensure at least £70 cashback on the payment", "applied": true},
+  {"id": "c2", "label": "Conversion rate", "value": "10:1", "text": "Minimum 10:1 conversion rate of coins to GBP", "applied": true},
+  {"id": "c3", "label": "Fees", "value": "0", "text": "No conversion fee on the payment", "applied": true}
 ]}
 Provide 3 constraints that are directly tied to this specific objective, phrased
 in plain, non-branded language.
@@ -403,6 +451,8 @@ class ObjectiveService:
                     ObjectiveConstraint(
                         id=it.get("id") or f"c{len(parsed)+1}",
                         text=it.get("text") or "",
+                        label=it.get("label") or "",
+                        value=it.get("value") or "",
                         applied=bool(it.get("applied", False)),
                     )
                 )
@@ -500,9 +550,9 @@ class ObjectiveService:
         if stage == "constraints":
             return {
                 "constraints": [
-                    {"id": "c1", "text": "Pay my insurance with the least amount of effort", "applied": True},
-                    {"id": "c2", "text": "Get the most value from my rewards balance", "applied": True},
-                    {"id": "c3", "text": "Keep everything in as few steps as possible", "applied": True},
+                    {"id": "c1", "label": "Effort", "value": "Low", "text": "Pay my insurance with the least amount of effort", "applied": True},
+                    {"id": "c2", "label": "Redemption value", "value": "Maximise", "text": "Get the most value from my rewards balance", "applied": True},
+                    {"id": "c3", "label": "Steps", "value": "Few", "text": "Keep everything in as few steps as possible", "applied": True},
                 ]
             }
         if stage == "opportunities":

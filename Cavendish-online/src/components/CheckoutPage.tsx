@@ -694,7 +694,6 @@ function PaymentProcessingModal({ open }: { open: boolean }) {
 }
 
 export default function CheckoutPage() {
-  const [coins, setCoins] = useState(600)
   const [appliedCoins, setAppliedCoins] = useState(0)
   const [method, setMethod] = useState('card')
   const [cardModalOpen, setCardModalOpen] = useState(false)
@@ -710,12 +709,22 @@ export default function CheckoutPage() {
   const [paying, setPaying] = useState(false)
   const [payError, setPayError] = useState('')
 
-  const coinCap = Math.min(DEFAULT_COIN_CAP, coinBalance)
-
   const discount = appliedCoins / COINS_PER_POUND
   const payable = Math.max(ANNUAL_PREMIUM - discount, 0)
   const rewardCoins = Math.round(payable * 5)
-  const fillPct = coinCap > 0 ? (coins / coinCap) * 100 : 0
+
+  /* Auto-apply the LBG coins (max 80% of premium) — the user does not pick how
+     many coins to use. The amount can be pre-populated via a `coinsToApply` URL
+     param sent by the LBG reward workspace. */
+  useEffect(() => {
+    if (balanceLoading) return
+    const params = new URLSearchParams(window.location.search)
+    const requested = Number(params.get('coinsToApply'))
+    const maxApply = Math.min(DEFAULT_COIN_CAP, coinBalance)
+    const target =
+      Number.isFinite(requested) && requested > 0 ? Math.min(requested, maxApply) : maxApply
+    setAppliedCoins(target)
+  }, [coinBalance, balanceLoading])
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -742,12 +751,6 @@ export default function CheckoutPage() {
       setBalanceLoading(false)
     }
   }, [])
-
-  useEffect(() => {
-    if (coinBalance > 0 && coins > coinCap) {
-      setCoins(coinCap)
-    }
-  }, [coinBalance, coinCap, coins])
 
   const onPay = () => {
     if (method === 'card' && (!card || !isCardComplete(card))) {
@@ -933,76 +936,42 @@ export default function CheckoutPage() {
             )}
           </Typography>
 
-          <Box
-            component="input"
-            type="range"
-            min={0}
-            max={coinCap}
-            step={50}
-            value={coins}
-            aria-label="Select coins to redeem"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCoins(Number(e.target.value))}
-            disabled={balanceLoading}
-            sx={{
-              width: '100%',
-              mt: '18px',
-              mb: '4px',
-              appearance: 'none',
-              height: '6px',
-              borderRadius: '6px',
-              background: `linear-gradient(to right, ${C.primary} ${fillPct}%, ${C.tint} ${fillPct}%)`,
-              outline: 'none',
-              cursor: 'pointer',
-              '&::-webkit-slider-thumb': {
-                appearance: 'none',
-                width: 22,
-                height: 22,
-                borderRadius: '50%',
-                background: '#fff',
-                border: `3px solid ${C.primary}`,
-                boxShadow: '0 1px 4px rgba(45,47,74,.25)',
-              },
-              '&::-moz-range-thumb': {
-                width: 22,
-                height: 22,
-                borderRadius: '50%',
-                background: '#fff',
-                border: `3px solid ${C.primary}`,
-                boxShadow: '0 1px 4px rgba(45,47,74,.25)',
-              },
-              '&:focus-visible': { outline: `2px solid ${C.primaryDark}`, outlineOffset: 4 },
-            }}
-          />
+          <Stack
+            direction="row"
+            sx={{ mt: '16px', mb: '4px', justifyContent: 'space-between', alignItems: 'center' }}
+          >
+            <Typography sx={{ fontFamily: FONT, fontSize: 13.5, fontWeight: 700, color: C.textPrimary }}>
+              Coins applied automatically
+            </Typography>
+            {appliedCoins > 0 ? (
+              <Box
+                sx={{
+                  flexShrink: 0,
+                  px: '12px',
+                  borderRadius: '999px',
+                  bgcolor: C.green,
+                  color: '#fff',
+                  fontFamily: FONT,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  py: '4px',
+                }}
+              >
+                {appliedCoins.toLocaleString('en-GB')} applied
+              </Box>
+            ) : null}
+          </Stack>
 
           <Stack direction="row" sx={{ mt: '10px', gap: '12px', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography sx={{ fontFamily: FONT, fontSize: 10, lineHeight: '17px', color: C.textSecondary, flex: '1 1 auto', minWidth: 0 }}>
-              Balance <strong style={{ color: C.textPrimary }}>{coinBalance.toLocaleString('en-GB')}</strong> | Cap{' '}
-              <strong style={{ color: C.textPrimary }}>{coinCap.toLocaleString('en-GB')}</strong> | {COINS_PER_POUND} coins = £1
+            <Typography sx={{ fontFamily: FONT, fontSize: 11, lineHeight: '17px', color: C.textSecondary, flex: '1 1 auto', minWidth: 0 }}>
+              Balance <strong style={{ color: C.textPrimary }}>{coinBalance.toLocaleString('en-GB')}</strong> |{' '}
+              {COINS_PER_POUND} coins = £1
+              {appliedCoins > 0 ? (
+                <> | <strong style={{ color: C.green }}>Auto-applied to reduce your payment</strong></>
+              ) : (
+                <> | No coins available to apply</>
+              )}
             </Typography>
-            <Box
-              component="button"
-              onClick={() => setAppliedCoins(appliedCoins === coins ? 0 : coins)}
-              disabled={balanceLoading || coinBalance === 0}
-              sx={{
-                flexShrink: 0,
-                cursor: 'pointer',
-                minHeight: 44,
-                px: '20px',
-                borderRadius: '12px',
-                border: `1.5px solid ${C.primary}`,
-                background: appliedCoins === coins ? C.tint : 'transparent',
-                color: appliedCoins === coins ? C.primaryDark : C.primary,
-                fontFamily: FONT,
-                fontSize: 13.5,
-                fontWeight: 700,
-                transition: 'background .15s ease',
-                '&:hover': { background: C.tint },
-                '&:focus-visible': { outline: `2px solid ${C.primaryDark}`, outlineOffset: 2 },
-                '&:disabled': { opacity: 0.5, cursor: 'not-allowed' },
-              }}
-            >
-              {appliedCoins === coins ? 'Applied ✓' : 'Apply'}
-            </Box>
           </Stack>
         </Card>
 

@@ -129,7 +129,6 @@ export function captureComponents(objectiveText: string): SDUIComponent[] {
 function redirectComponents(
   redirectConfirm: ExecutionStep | null,
   planLabel: string,
-  objectiveText: string,
 ): SDUIComponent[] {
   const partner = redirectConfirm?.partner ?? ''
   const promptText =
@@ -139,10 +138,6 @@ function redirectComponents(
         ? 'Do you want to redirect to Alpha Medical to convert your points into LBG coins?'
         : `Do you want to redirect to ${partner} to continue?`
   return [
-    makeComponent('redirect-objective', 'WS_OBJECTIVE_HERO', {
-      eyebrow: 'Your objective',
-      objective: objectiveText,
-    }),
     makeComponent('redirect-plan', 'WS_PLAN_HERO', {
       planLabel,
       description: redirectConfirm?.label ?? '',
@@ -187,12 +182,8 @@ function resultComponents(result: {
 }
 
 /** Monitoring confirmation screen (2d) — chosen when no action is taken yet. */
-function monitoringComponents(objectiveText: string): SDUIComponent[] {
+function monitoringComponents(): SDUIComponent[] {
   return [
-    makeComponent('mon-objective', 'WS_OBJECTIVE_HERO', {
-      eyebrow: 'Your objective',
-      objective: objectiveText,
-    }),
     makeComponent('mon-plan', 'WS_PLAN_HERO', {
       planLabel: 'Monitor Plan',
       description:
@@ -215,14 +206,9 @@ function monitoringComponents(objectiveText: string): SDUIComponent[] {
 /** Retain-all / No Rewards redirect screen (2e) — pay directly, use no coins. */
 function retainComponents(
   redirectConfirm: ExecutionStep | null,
-  objectiveText: string,
 ): SDUIComponent[] {
   const partner = redirectConfirm?.partner ?? 'Cavendish Online'
   return [
-    makeComponent('retain-objective', 'WS_OBJECTIVE_HERO', {
-      eyebrow: 'Your objective',
-      objective: objectiveText,
-    }),
     makeComponent('retain-plan', 'WS_PLAN_HERO', {
       planLabel: 'No Rewards Plan',
       description: redirectConfirm?.label ?? 'Pay for your insurance directly — no LBG coins used.',
@@ -247,6 +233,7 @@ function retainComponents(
 
 export const PORTAL_URLS = {
   alphaConvert: 'http://localhost:5174/lbg-rewards/convert',
+  cavendishPolicy: 'http://localhost:5175/#/policy',
   cavendishCheckout: 'http://localhost:5175/#/checkout',
 } as const
 
@@ -261,50 +248,20 @@ export const PORTAL_URLS = {
  * Hybrid (Best of Both): the conversion runs automatically (internal step), so
  * the customer still only takes one action to pay — with the bigger balance.
  */
+/**
+ * Deterministic execution steps per plan.
+ *
+ * Redeem plans (Simplicity, Maximum Value, Hybrid) share a single, inline
+ * 4-step flowchart shown on one execution screen:
+ *   1. Use your real LBG coin balance for the Cavendish insurance payment.
+ *   2. Review the insurance plan details (Cavendish policy page).
+ *   3. Authorize card details (Cavendish checkout — coins auto-applied).
+ *   4. Payment completed.
+ * The first and last steps are internal (no redirect); the two middle steps
+ * hand off to the Cavendish portal and return to this screen, ticking off as
+ * the user completes them.
+ */
 export function buildExecutionSteps(plan: PlanType): ExecutionStep[] {
-  if (plan === 'max-redeem') {
-    return [
-      {
-        id: 'alpha-convert',
-        label: 'Convert your Alpha Medical points to LBG coins',
-        partner: 'Alpha Medical',
-        partnerUrl: PORTAL_URLS.alphaConvert,
-        status: 'pending',
-      },
-      {
-        id: 'lbg-return',
-        label: 'Transfer points to LBG coins and return to your workspace',
-        partner: 'LBG Coins',
-        partnerUrl: '',
-        status: 'pending',
-      },
-      {
-        id: 'cavendish-pay',
-        label: 'Pay for your Cavendish Online insurance',
-        partner: 'Cavendish Online',
-        partnerUrl: PORTAL_URLS.cavendishCheckout,
-        status: 'pending',
-      },
-    ]
-  }
-  if (plan === 'hybrid') {
-    return [
-      {
-        id: 'alpha-convert',
-        label: 'Auto-convert your Alpha Medical points to LBG coins',
-        partner: 'Alpha Medical',
-        partnerUrl: '',
-        status: 'pending',
-      },
-      {
-        id: 'cavendish-pay',
-        label: 'Pay for your Cavendish Online insurance',
-        partner: 'Cavendish Online',
-        partnerUrl: PORTAL_URLS.cavendishCheckout,
-        status: 'pending',
-      },
-    ]
-  }
   if (plan === 'monitor') {
     return [
       {
@@ -327,32 +284,82 @@ export function buildExecutionSteps(plan: PlanType): ExecutionStep[] {
       },
     ]
   }
+  if (plan === 'max-redeem') {
+    return [
+      {
+        id: 'alpha-convert',
+        label: 'Convert your Alpha Medical points to LBG coins',
+        partner: 'Alpha Medical',
+        partnerUrl: PORTAL_URLS.alphaConvert,
+        status: 'pending',
+      },
+      {
+        id: 'lbg-balance',
+        label: 'Use your increased LBG coin balance for payment',
+        partner: 'LBG Coins',
+        partnerUrl: '',
+        status: 'pending',
+      },
+      {
+        id: 'review-plan',
+        label: 'Review the insurance plan details',
+        partner: 'Cavendish Online',
+        partnerUrl: PORTAL_URLS.cavendishPolicy,
+        status: 'pending',
+      },
+      {
+        id: 'authorize-card',
+        label: 'Authorize card details',
+        partner: 'Cavendish Online',
+        partnerUrl: PORTAL_URLS.cavendishCheckout,
+        status: 'pending',
+      },
+      {
+        id: 'payment-completed',
+        label: 'Payment completed',
+        partner: 'LBG Coins',
+        partnerUrl: '',
+        status: 'pending',
+      },
+    ]
+  }
   return [
     {
       id: 'lbg-balance',
-      label: 'Use your existing LBG coin balance to pay',
+      label: 'Use your LBG coin balance for payment',
       partner: 'LBG Coins',
       partnerUrl: '',
       status: 'pending',
     },
     {
-      id: 'cavendish-pay',
-      label: 'Pay for your Cavendish Online insurance',
+      id: 'review-plan',
+      label: 'Review the insurance plan details',
+      partner: 'Cavendish Online',
+      partnerUrl: PORTAL_URLS.cavendishPolicy,
+      status: 'pending',
+    },
+    {
+      id: 'authorize-card',
+      label: 'Authorize card details',
       partner: 'Cavendish Online',
       partnerUrl: PORTAL_URLS.cavendishCheckout,
+      status: 'pending',
+    },
+    {
+      id: 'payment-completed',
+      label: 'Payment completed',
+      partner: 'LBG Coins',
+      partnerUrl: '',
       status: 'pending',
     },
   ]
 }
 
 /** Execution screen (3a / 4a) — deterministic, driven by the chosen plan. */
-function executionComponents(plan: PlanType, objectiveText: string): SDUIComponent[] {
+function executionComponents(plan: PlanType, lbgCoins = 0): SDUIComponent[] {
   const steps = buildExecutionSteps(plan)
+  const coinValue = Math.round(lbgCoins / COINS_PER_POUND * 100) / 100
   return [
-    makeComponent('exec-objective', 'WS_OBJECTIVE_HERO', {
-      eyebrow: 'Your objective',
-      objective: objectiveText,
-    }),
     makeComponent('exec-plan', 'WS_PLAN_HERO', {
       planLabel: planLabel(plan),
       description:
@@ -365,7 +372,10 @@ function executionComponents(plan: PlanType, objectiveText: string): SDUICompone
     makeComponent('exec-steps', 'WS_EXECUTION_STEPS', {
       items: steps.map((s) => ({
         id: s.id,
-        label: s.label,
+        label:
+          s.id === 'lbg-balance' && lbgCoins > 0
+            ? `Use your LBG coin balance (${lbgCoins.toLocaleString('en-GB')} coins = £${coinValue.toFixed(2)})`
+            : s.label,
         partner: s.partner,
         status: s.status,
       })),
@@ -419,9 +429,18 @@ export function applyResume(
     return { steps, screen: resultScreen, redirectConfirm: null }
   }
   const running: ExecutionStep = { ...next, status: 'running' }
+  /* Redeem plans resume on the single execution screen (3a/4a); only the
+     no-redeem direct-pay flow still uses the redirect-confirmation screen. */
+  if (resume.plan === 'no-redeem') {
+    return {
+      steps: steps.map((s) => (s.id === next.id ? running : s)),
+      screen: '3b',
+      redirectConfirm: running,
+    }
+  }
   return {
     steps: steps.map((s) => (s.id === next.id ? running : s)),
-    screen: isValueTrack(resume.plan) ? '4b' : '3b',
+    screen: isValueTrack(resume.plan) ? '4a' : '3a',
     redirectConfirm: running,
   }
 }
@@ -629,6 +648,10 @@ export default function ObjectiveWorkspace({
 
   /* Extracted constraint texts (from screen 1b) used to filter opportunities. */
   const [constraintTexts, setConstraintTexts] = useState<string[]>([])
+  /* Full extracted constraints (label/value) shown/edited in the Coplan edit view. */
+  const [constraintItems, setConstraintItems] = useState<
+    Array<{ id: string; text: string; label: string; value: string; applied: boolean }>
+  >([])
 
   const wallet: ObjectiveWalletPayload = {
     totalPoints,
@@ -648,6 +671,7 @@ export default function ObjectiveWorkspace({
     if (history.length === 0) return
     const prev = history[history.length - 1]
     if (prev !== '2b') setCoplanView('idle')
+    if (prev === '1a') setObjectiveOpen(false)
     setHistory((h) => h.slice(0, -1))
     setScreen(prev)
   }, [history])
@@ -675,7 +699,9 @@ export default function ObjectiveWorkspace({
           selectedPlan,
           toolRequest: toolRequest ?? undefined,
           constraintValues:
-            stage === 'opportunities' || stage === 'evidence' ? constraintTexts : undefined,
+            stage === 'opportunities' || stage === 'evidence' || stage === 'strategies'
+              ? constraintTexts
+              : undefined,
           wallet,
         })
         if (res.status !== 'PERSONALIZED') {
@@ -735,6 +761,15 @@ export default function ObjectiveWorkspace({
           id: c.id,
           text: c.text,
         }))
+        setConstraintItems(
+          (constraintsScreen.constraints ?? []).map((c) => ({
+            id: c.id,
+            text: c.text,
+            label: c.label ?? '',
+            value: c.value ?? '',
+            applied: c.applied,
+          })),
+        )
         setConstraintTexts(
           (constraintsScreen.constraints ?? [])
             .filter((c) => c.applied)
@@ -807,6 +842,7 @@ export default function ObjectiveWorkspace({
     setProvisionalNav(null)
     setCoplanView('idle')
     setConstraintTexts([])
+    setConstraintItems([])
 
     if (resume) {
       const resumed = applyResume(resume)
@@ -929,18 +965,42 @@ export default function ObjectiveWorkspace({
         const running: ExecutionStep = { ...next, status: 'running' }
         setSteps((prev) => prev.map((s) => (s.id === next.id ? running : s)))
         setRedirectConfirm(running)
+        /* Redeem plans hand off straight to the partner from the single execution
+           screen (no redirect-confirmation page); only no-redeem still uses 3b. */
+        if (selectedPlan !== 'no-redeem') {
+          const completed = steps
+            .filter((s) => s.id === running.id || s.status === 'completed')
+            .map((s) => s.id)
+          setSteps((prev) =>
+            withInternalCompleted(
+              prev.map((s) =>
+                s.id === running.id ? { ...s, status: 'completed' as const } : s,
+              ),
+            ),
+          )
+          if (running.partnerUrl) {
+            onPartnerHandoff(running.partner, running.partnerUrl, {
+              objective: objectiveText,
+              plan: selectedPlan,
+              completed,
+              current: running.id,
+            })
+          }
+          break
+        }
         navigateTo(isValueTrack(selectedPlan) ? '4b' : '3b')
         break
       }
       default:
         break
     }
-  }, [screen, generateStage, generateSummaryAndConstraints, navigateTo, selectedPlan])
+  }, [screen, generateStage, generateSummaryAndConstraints, navigateTo, selectedPlan, steps, onPartnerHandoff, objectiveText])
 
   const handleModify = useCallback(() => {
     setStageError(null)
     setStageLoading(false)
     setCoplanView('idle')
+    setObjectiveOpen(true)
     navigateTo('1a')
   }, [navigateTo])
 
@@ -962,22 +1022,70 @@ export default function ObjectiveWorkspace({
     setCoplanView(view as CoplanToolView)
   }, [])
 
-  /** Coplan "edit" tool: adopt a new objective and rebuild both plans around it. */
-  const handleEditObjective = useCallback(
-    (newObjective: string) => {
-      const trimmed = newObjective.trim()
-      if (!trimmed) return
-      setObjectiveText(trimmed)
+  /** Coplan "edit constraints" tool: adopt edited constraint deltas and rebuild
+   *  both plans around the updated constraints, keeping the objective unchanged. */
+  const handleEditConstraints = useCallback(
+    (constraints: Array<{ id: string; label: string; value: string }>) => {
+      const updated = constraints.map((c) => ({
+        id: c.id,
+        label: c.label.trim() || 'Constraint',
+        value: c.value.trim(),
+      }))
+      if (updated.every((c) => !c.value)) return
+      const deltas = updated.map(
+        (c) => `${c.label}: ${c.value}`,
+      )
+      setConstraintTexts(deltas)
+      setConstraintItems((prev) =>
+        prev.map((c) => {
+          const found = updated.find((n) => n.id === c.id)
+          if (!found) return c
+          return {
+            ...c,
+            label: found.label,
+            value: found.value,
+            text: `${found.label}: ${found.value}`,
+          }
+        }),
+      )
       setCoplanView('idle')
       void generateStage(
         'strategies',
         navigateTo,
         '2b',
-        `Coplan tool "edit": rebuild both plans for the updated objective: "${trimmed}"`,
-        trimmed,
+        `Coplan tool "edit": rebuild both plans for the objective with updated constraints: ${JSON.stringify(deltas)}`,
+        objectiveText,
       )
     },
-    [generateStage, navigateTo],
+    [generateStage, navigateTo, objectiveText],
+  )
+
+  /** Execute the partner hand-off for a step, marking it complete and going to
+   *  the partner portal straight from the execution screen. */
+  const handleConfirm = useCallback(
+    (step: ExecutionStep) => {
+      const completed = steps
+        .filter((s) => s.id === step.id || s.status === 'completed')
+        .map((s) => s.id)
+
+      setSteps((prev) =>
+        withInternalCompleted(
+          prev.map((s) =>
+            s.id === step.id ? { ...s, status: 'completed' as const } : s,
+          ),
+        ),
+      )
+
+      if (step.partnerUrl) {
+        onPartnerHandoff(step.partner, step.partnerUrl, {
+          objective: objectiveText,
+          plan: selectedPlan,
+          completed,
+          current: step.id,
+        })
+      }
+    },
+    [steps, onPartnerHandoff, selectedPlan, objectiveText],
   )
 
   const handleSelectStep = useCallback(
@@ -997,14 +1105,15 @@ export default function ObjectiveWorkspace({
         return
       }
 
-      const running: ExecutionStep = { ...step, status: 'running' }
-      setRedirectConfirm(running)
+      /* Portal steps hand off to the partner directly from the execution screen
+         (no separate redirect-confirmation page), then return to this screen. */
+      setRedirectConfirm({ ...step, status: 'running' })
       setSteps((prev) =>
-        prev.map((s) => (s.id === id ? running : s)),
+        prev.map((s) => (s.id === id ? { ...s, status: 'running' as const } : s)),
       )
-      navigateTo(isValueTrack(selectedPlan) ? '4b' : '3b')
+      handleConfirm({ ...step, status: 'running' })
     },
-    [steps, navigateTo, selectedPlan],
+    [steps, handleConfirm],
   )
 
   const handleReturnHome = useCallback(() => {
@@ -1042,10 +1151,6 @@ export default function ObjectiveWorkspace({
               image: toolsBg,
               fill: true,
             }),
-            makeComponent('coplan-objective', 'WS_OBJECTIVE_HERO', {
-              eyebrow: 'Your objective',
-              objective: objectiveText,
-            }),
             makeComponent(
               'coplan-view',
               'WS_COPLAN',
@@ -1058,13 +1163,12 @@ export default function ObjectiveWorkspace({
         return resolveStage(screen)
       case '3a':
       case '4a':
-        return executionComponents(selectedPlan, objectiveText)
+        return executionComponents(selectedPlan)
       case '3b':
       case '4b':
         return redirectComponents(
           redirectConfirm,
           planLabel(selectedPlan),
-          objectiveText,
         )
       case '3c':
       case '4c':
@@ -1075,9 +1179,9 @@ export default function ObjectiveWorkspace({
             : 'Something went wrong during execution. Your points have not been changed.',
         })
       case '2d':
-        return monitoringComponents(objectiveText)
+        return monitoringComponents()
       case '2e':
-        return retainComponents(redirectConfirm, objectiveText)
+        return retainComponents(redirectConfirm)
       default:
         return []
     }
@@ -1091,6 +1195,7 @@ export default function ObjectiveWorkspace({
     nextDisabled:
       screen === '1a' ? !objectiveText.trim() : screen === '2b' ? !selectedPlan : false,
     objectiveOpen,
+    constraintItems,
   }
 
 const sduiHandlers: WorkspaceHandlers = {
@@ -1102,7 +1207,7 @@ const sduiHandlers: WorkspaceHandlers = {
     onConfirmRedirect: handleConfirmRedirect,
     onCoplanRequest: handleCoplanRequest,
     onReturnHome: handleReturnHome,
-    onEditObjective: handleEditObjective,
+    onEditConstraints: handleEditConstraints,
     onViewChange: handleCoplanViewChange,
     onObjectiveOpenChange: setObjectiveOpen,
   }

@@ -11,6 +11,8 @@ export interface WorkspaceRenderContext {
   nextDisabled: boolean
   /** When true the "state objective" box is open, hiding the quick pick. */
   objectiveOpen: boolean
+  /** Extracted constraints from the objective (shown in coplan edit view). */
+  constraintItems: Array<{ id: string; text: string; label: string; value: string; applied: boolean }>
 }
 
 /** Action handlers the renderer wires onto registered workspace components. */
@@ -23,8 +25,8 @@ export interface WorkspaceHandlers {
   onConfirmRedirect: (id: string) => void
   onCoplanRequest: (toolId: string, prompt: string) => void
   onReturnHome: () => void
-  /** Refresh the two plans around a brand-new objective (Coplan "edit" tool). */
-  onEditObjective: (objective: string) => void
+  /** Refresh plans with edited constraints (Coplan "edit constraints" tool). */
+  onEditConstraints: (constraints: Array<{ id: string; label: string; value: string }>) => void
   /** Switch the Coplan tools pane between the tool views (explain/combine/edit/compare). */
   onViewChange: (view: string) => void
   /** Open/close the state objective box (hides the quick pick while open). */

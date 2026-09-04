@@ -18,7 +18,6 @@ interface CognitiveEvidenceProps {
 
 export default function CognitiveEvidence({
   title = 'Cognitive evidence',
-  summary = '',
   factors = [],
 }: CognitiveEvidenceProps) {
   const pages = useMemo(() => {

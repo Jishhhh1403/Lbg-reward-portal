@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import ButtonBase from '@mui/material/ButtonBase'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -13,6 +12,7 @@ interface StateObjectiveProps {
   placeholder?: string
   value: string
   onChange: (value: string) => void
+  open?: boolean
   onOpenChange?: (open: boolean) => void
   onNext?: () => void
   onQuickStart?: () => void
@@ -36,19 +36,16 @@ export default function StateObjective({
   placeholder = 'e.g. I want to redeem my points for the best value',
   value,
   onChange,
+  open: controlledOpen,
   onOpenChange,
   onNext,
   onQuickStart,
   disabled = false,
 }: StateObjectiveProps) {
-  const [open, setOpen] = useState(false)
+  const open = controlledOpen ?? false
 
   const toggle = () => {
-    setOpen((o) => {
-      const next = !o
-      onOpenChange?.(next)
-      return next
-    })
+    onOpenChange?.(!open)
   }
 
   return (
@@ -87,15 +84,15 @@ export default function StateObjective({
           disableRipple
           sx={{
             ...btnBase,
-            border: `1.5px solid ${palette.brand}`,
-            bgcolor: open ? 'transparent' : 'transparent',
-            color: open ? palette.brand: palette.brand,
-            '&:hover': { bgcolor: palette.brandBg },
+            border: 'none',
+            bgcolor: open ? 'transparent' : palette.brand,
+            color: open ? palette.brand : '#ffffff',
+            '&:hover': open ? { bgcolor: palette.brandBg } : { bgcolor: palette.brandDark },
           }}
         >
-          {open ? <X size={16} /> : <PenLine size={0} />}
-          <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.02em',color:'#ffffff' }}>
-            {open ? 'Cancel' : 'Set new objective'}
+          {open ? <X size={16} color={palette.brand} /> : <PenLine size={0} />}
+          <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.02em', color: open ? palette.brand : '#ffffff' }}>
+            {open ? 'Cancel' : label}
           </Typography>
         </MotionButton>
 

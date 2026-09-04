@@ -38,6 +38,8 @@ export interface ObjectiveSummaryPayload {
 export interface ObjectiveConstraintPayload {
   id: string
   text: string
+  label?: string
+  value?: string
   applied: boolean
 }
 

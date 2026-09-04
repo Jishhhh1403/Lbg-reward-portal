@@ -43,7 +43,8 @@ function resolveActions(
         actions.onReturnHome = handlers.onReturnHome
         break
       case 'WS_EDIT_OBJECTIVE':
-        actions.onEditObjective = (objective: string) => handlers.onEditObjective(objective)
+        actions.onEditConstraints = (constraints: Array<{ id: string; label: string; value: string }>) =>
+          handlers.onEditConstraints(constraints)
         break
       case 'WS_COPLAN_VIEW':
         actions.onViewChange = (view: string) => handlers.onViewChange(view)
@@ -79,6 +80,7 @@ export function renderWorkspaceComponent(
       case 'WS_STATE_OBJECTIVE':
         merged.value = context.objectiveText
         merged.onChange = handlers.onTextChange
+        merged.open = context.objectiveOpen
         merged.onOpenChange = handlers.onObjectiveOpenChange
         merged.onNext = handlers.onNext
         merged.onQuickStart = () => {
@@ -102,8 +104,10 @@ export function renderWorkspaceComponent(
         merged.selectedPlan = context.selectedPlan
         merged.view = base.view ?? 'idle'
         merged.objectiveText = context.objectiveText
+        merged.constraints = context.constraintItems
         merged.onSelectPlan = (type: string) => handlers.onSelectPlan(type as PlanType)
-        merged.onEditObjective = (objective: string) => handlers.onEditObjective(objective)
+        merged.onEditConstraints = (constraints: Array<{ id: string; label: string; value: string }>) =>
+          handlers.onEditConstraints(constraints)
         merged.onViewChange = (view: string) => handlers.onViewChange(view)
         break
       case 'WS_STRATEGY':

@@ -64,7 +64,9 @@ class ObjectiveSummary(BaseModel):
 
 class ObjectiveConstraint(BaseModel):
     id: str
-    text: str
+    text: str = ""
+    label: str = ""
+    value: str = ""
     applied: bool = False
 
 
