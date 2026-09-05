@@ -347,7 +347,7 @@ export default function CoplanTools({
 
         {view === 'explain' ? (
           <Box>
-            <BackRow onBack={goBack} title="Plan explained" />
+            <Typography sx={{ fontSize: 13, fontWeight: 700, color: palette.textStrong, marginBottom: '10px' }}>Plan explained</Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '10px' }}>
               <MotionButton
                 whileTap={{ scale: 0.9 }}
@@ -439,15 +439,12 @@ export default function CoplanTools({
                 padding: '12px',
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                 <PlanTag
                   text={planTag(currentExplainPlan).text}
                   color={planTag(currentExplainPlan).color}
                   bg={planTag(currentExplainPlan).bg}
                 />
-                <Typography sx={{ fontSize: 14, fontWeight: 800, color: palette.textStrong }}>
-                  {planTitle(currentExplainPlan)}
-                </Typography>
               </Box>
               <Typography sx={{ fontSize: 12, color: palette.text, lineHeight: 1.55, marginTop: '8px' }}>
                 {strategyByType.get(currentExplainPlan)?.description ??
