@@ -14,6 +14,7 @@ from app.schemas.auth import LoginRequest, SignupRequest, TokenResponse
 from app.schemas.customer import CustomerSummaryResponse, DashboardDataResponse, PointsProviderResponse
 from app.utils import hash_password, verify_password
 from app.services.jwt import create_access_token
+from app.database.seed import reseed_customer_demo_balance
 
 
 class CustomerService:
@@ -54,6 +55,9 @@ class CustomerService:
         if not customer or not verify_password(payload.password, customer.password_hash):
             raise ValueError("Invalid phone number or password")
 
+        # Restore the seeded demo balances so every login re-shows a fresh demo.
+        await reseed_customer_demo_balance(self.db, customer)
+
         token = create_access_token(str(customer.id))
         return TokenResponse(
             access_token=token,
@@ -66,7 +70,11 @@ class CustomerService:
         return await self._build_summary(lambda: self.customer_repo.get_by_id(customer_id))
 
     async def get_dashboard_summary_by_customer_id(self, customer_id: str) -> DashboardDataResponse:
-        return await self._build_summary(lambda: self.customer_repo.get_by_customer_id(customer_id))
+        # Persona (demo) login path: seed fresh balances before building the summary.
+        customer = await self.customer_repo.get_by_customer_id(customer_id)
+        if customer:
+            await reseed_customer_demo_balance(self.db, customer)
+        return await self._build_summary(lambda: customer)
 
     async def _build_summary(self, loader) -> DashboardDataResponse:
         customer = await loader()
@@ -98,6 +106,7 @@ class CustomerService:
             customerId=str(customer.id),
             userName=customer.name,
             phone=customer.phone,
+            email=customer.email,
             totalLbgCoins=wallet.lbg_coin_balance if wallet else 0.0,
             totalBrandPoints=total_brand_points,
             brandsConnected=brands_connected,

@@ -151,14 +151,15 @@ export default function AuthPage(props: AuthPageProps) {
                   <p className="text-sm font-semibold uppercase tracking-widest text-slate-300">Quick demo</p>
                   <p className="text-xs text-slate-400">Tap a customer to explore the personalized rewards dashboard.</p>
                   {(() => {
+                    const demoPersonas = [
+                      { id: 'customer_009', name: 'Maya Thompson', points: 5600, tier: 'Gold' },
+                      { id: 'customer_011', name: 'Sophie Williams', points: 3900, tier: 'Gold' },
+                      { id: 'customer_012', name: 'Leo Morgan', points: 11200, tier: 'Platinum' },
+                    ] as const
+                    const kept = new Set(['customer_009', 'customer_011', 'customer_012'])
                     const list = personas.length > 0
-                      ? personas
-                      : ([
-                          { id: 'customer_003', name: 'David Park', points: 28400, tier: 'Diamond' },
-                          { id: 'customer_002', name: 'Sarah Chen', points: 6820, tier: 'Platinum' },
-                          { id: 'customer_001', name: 'Alex Rivera', points: 4250, tier: 'Gold' },
-                          { id: 'customer_004', name: 'Jessica Martinez', points: 1850, tier: 'Silver' },
-                        ] as const)
+                      ? personas.filter((p) => kept.has(p.id))
+                      : demoPersonas
                     const tierColor: Record<string, string> = {
                       Diamond: 'from-cyan-400 to-blue-500',
                       Platinum: 'from-slate-300 to-slate-400',

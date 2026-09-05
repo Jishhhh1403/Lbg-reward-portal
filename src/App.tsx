@@ -14,6 +14,8 @@ import {
   signupCustomer,
   consumeCrossAppEventsFromUrl,
   computeAdjustedLbgBalance,
+  clearCrossAppEvents,
+  reseedDemoBalance,
 } from './services/rewardsApi'
 
 const EMPTY_OTP = ['', '', '', '', '', '']
@@ -191,11 +193,17 @@ export default function App() {
     setLoginError('')
     try {
       const res = await loginWithPassword(phone, pass)
+      /* Fresh demo on every sign-in: drop any balance adjustments left over
+         from previous partner hand-offs so the seeded balance is shown again. */
+      clearCrossAppEvents()
+      /* Also reset the middleware ledger for demo personas (no-op otherwise). */
+      void reseedDemoBalance(res.customerId)
       setCustomerId(res.customerId)
       setUserName(res.userName)
       setMobile(res.phone)
       setSignupFlow(false)
       try {
+        localStorage.removeItem('rewards_session_snapshot')
         localStorage.setItem('rewards_session_id', res.customerId)
         localStorage.setItem('rewards_session_name', res.userName)
       } catch { /* ignore */ }
@@ -217,6 +225,11 @@ export default function App() {
     setIsLoading(true)
     setLoginError('')
     try {
+      /* Fresh demo balance each persona sign-in. */
+      clearCrossAppEvents()
+      /* Back the middleware ledger up to the persona's seeded balances so
+         AlphaMed/LBG coins show their full starting amounts partner-side. */
+      void reseedDemoBalance(persona.id)
       const personaEmail = `${persona.name.split(' ')[0].toLowerCase()}@example.com`
       const summary: CustomerSummary = {
         customerId: persona.id,
@@ -238,6 +251,7 @@ export default function App() {
       setPointsByBrand([])
       setBrands(brandOptions)
       try {
+        localStorage.removeItem('rewards_session_snapshot')
         localStorage.setItem('rewards_session_id', persona.id)
         localStorage.setItem('rewards_session_name', persona.name)
       } catch { /* ignore */ }
@@ -282,6 +296,7 @@ export default function App() {
           customerId: string
           customer: CustomerSummary
           pointsByBrand: PointsProvider[]
+          baseLbgCoins?: number
         }
         let snapshot: ResumeSnapshot | null = null
         try {
@@ -291,7 +306,16 @@ export default function App() {
           snapshot = null
         }
         if (snapshot && snapshot.customerId === storedId) {
-          setCustomer(snapshot.customer)
+          /* Re-apply any coins converted since the hand-off (cross_app_events)
+             on top of the stored un-adjusted base, so the resumed workspace
+             shows the increased LBG balance. */
+          const baseLbg = Number.isFinite(snapshot.baseLbgCoins)
+            ? (snapshot.baseLbgCoins as number)
+            : (snapshot.customer.totalLbgCoins ?? 0)
+          setCustomer({
+            ...snapshot.customer,
+            totalLbgCoins: computeAdjustedLbgBalance(baseLbg),
+          })
           setPointsByBrand(snapshot.pointsByBrand ?? [])
           setUserName(snapshot.customer.userName || storedName)
         } else if (storedId.startsWith('customer_')) {

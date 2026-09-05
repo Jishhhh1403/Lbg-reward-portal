@@ -427,6 +427,9 @@ class ObjectiveService:
     def __init__(self, llm=None):
         self.llm = llm or self._build_llm()
         self._cache: dict[str, dict] = {}
+        self._mock_mode = os.getenv("MOCK_OBJECTIVE_MODE", "").lower() in ("1", "true", "yes")
+        if self._mock_mode:
+            print("[OBJECTIVE] Mock mode enabled — skipping LLM calls")
 
     @staticmethod
     def _build_llm():

@@ -31,9 +31,9 @@ const C = {
 
 // FONT comes from the shared theme so the whole app renders one font family
 
-const ANNUAL_PREMIUM = 60
+const ANNUAL_PREMIUM = 100
 const COINS_PER_POUND = 100
-const DEFAULT_COIN_CAP = Math.round(ANNUAL_PREMIUM * 0.8 * COINS_PER_POUND)
+const DEFAULT_COIN_CAP = ANNUAL_PREMIUM * COINS_PER_POUND
 
 const METHODS = [
   { id: 'card', title: 'Card Payment', subtitle: 'Visa, Mastercard, Amex', icon: <CreditCard size={22} color={C.primary} /> },
@@ -702,7 +702,13 @@ export default function CheckoutPage() {
   const [failMessage, setFailMessage] = useState('')
   const [processing, setProcessing] = useState(false)
 
-  const [coinBalance, setCoinBalance] = useState(0)
+  /* The LBG workspace passes the customer's real balance as `coinsToApply` and
+     their real name as `customerName`. These are the source of truth so we never
+     show dummy data when the backend lookup is unavailable. */
+  const [coinBalance, setCoinBalance] = useState(() => {
+    const requested = Number(new URLSearchParams(window.location.search).get('coinsToApply'))
+    return Number.isFinite(requested) && requested > 0 ? requested : 0
+  })
   const [customerEmail, setCustomerEmail] = useState('')
   const [_customerId, setCustomerId] = useState('')
   const [balanceLoading, setBalanceLoading] = useState(true)
@@ -713,9 +719,9 @@ export default function CheckoutPage() {
   const payable = Math.max(ANNUAL_PREMIUM - discount, 0)
   const rewardCoins = Math.round(payable * 5)
 
-  /* Auto-apply the LBG coins (max 80% of premium) — the user does not pick how
-     many coins to use. The amount can be pre-populated via a `coinsToApply` URL
-     param sent by the LBG reward workspace. */
+  /* Auto-apply the LBG coins (up to 100% of the premium) — the user does not
+     pick how many coins to use. The amount can be pre-populated via a
+     `coinsToApply` URL param sent by the LBG reward workspace. */
   useEffect(() => {
     if (balanceLoading) return
     const params = new URLSearchParams(window.location.search)
@@ -735,19 +741,18 @@ export default function CheckoutPage() {
       setBalanceLoading(true)
       fetchCustomerSummary(email)
         .then((data) => {
-          if (data) {
+          if (data && data.customerId && data.customerId !== 'cst_demo') {
             setCoinBalance(data.totalLbgPoints ?? 0)
             setCustomerId(data.customerId ?? '')
-          } else {
-            setCoinBalance(0)
           }
+          /* When the backend is unavailable we keep the real balance that the LBG
+             workspace passed via `coinsToApply` — never fall back to dummy data. */
         })
         .catch(() => {
-          setCoinBalance(0)
+          /* keep backend-passed balance */
         })
         .finally(() => setBalanceLoading(false))
     } else {
-      setCoinBalance(0)
       setBalanceLoading(false)
     }
   }, [])

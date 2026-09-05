@@ -18,18 +18,18 @@ const POLICY = {
   cover: '£150,000',
   term: '20 years (12 August 2046)',
   start: '12 August 2025',
-  premium: '£60.00',
+  premium: '£100.00',
   dueDate: '20 September 2026',
-  dueAmount: '£60.00',
+  dueAmount: '£100.00',
   insurer: 'BrightLife Assurance',
   directDebit: '•••• 4421',
   status: 'Payment due',
 }
 
 const HISTORY = [
-  { date: '1 August 2026', amount: '£60.00', status: 'Paid' },
-  { date: '1 July 2026', amount: '£60.00', status: 'Paid' },
-  { date: '1 June 2026', amount: '£60.00', status: 'Paid' },
+  { date: '1 August 2026', amount: '£100.00', status: 'Paid' },
+  { date: '1 July 2026', amount: '£100.00', status: 'Paid' },
+  { date: '1 June 2026', amount: '£100.00', status: 'Paid' },
 ]
 
 const CARD = {
@@ -46,8 +46,21 @@ function goCheckout() {
   window.location.hash = `#/checkout${qs ? `?${qs}` : ''}`
 }
 
-const FIELDS: { label: string; value: React.ReactNode }[] = [
-  { label: 'Policyholder', value: POLICY.holder },
+function readReturnTo(): string | null {
+  if (typeof window === 'undefined') return null
+  return new URLSearchParams(window.location.search).get('returnTo')
+}
+
+function readCustomerName(): string {
+  if (typeof window === 'undefined') return ''
+  const raw = new URLSearchParams(window.location.search).get('customerName')
+  if (raw) return decodeURIComponent(raw)
+  /* Fall back to anything stored from the LBG app hand-off. */
+  return localStorage.getItem('am_customer_name') || ''
+}
+
+const buildFields = (holder: string): { label: string; value: React.ReactNode }[] => [
+  { label: 'Policyholder', value: holder },
   { label: 'Policy number', value: POLICY.number },
   { label: 'Cover type', value: POLICY.type },
   { label: 'Cover amount', value: POLICY.cover },
@@ -59,6 +72,18 @@ const FIELDS: { label: string; value: React.ReactNode }[] = [
 
 export default function PolicyPage() {
   const paid = false
+  const returnTo = readReturnTo()
+  const inReviewFlow = returnTo !== null
+  const customerName = readCustomerName() || POLICY.holder
+  const firstName = customerName.trim().split(/\s+/)[0] || customerName
+  const FIELDS = buildFields(customerName)
+
+  /* In the LBG execution flow this is a review step only: the "Next" button
+     returns the user to their workspace execution chart instead of paying. */
+  const reviewNext = () => {
+    if (!returnTo) return
+    window.location.assign(returnTo)
+  }
 
   return (
     <Box sx={{ bgcolor: '#f8f7f9', pb: '64px' }}>
@@ -92,7 +117,7 @@ export default function PolicyPage() {
               Your account
             </Typography>
             <Typography component="h1" sx={{ color: '#191919', fontSize: { xs: 26, md: 32 }, fontWeight: 700, letterSpacing: '.3px', lineHeight: 1.15 }}>
-              Hello, {POLICY.firstName}
+              Hello, {firstName}
             </Typography>
           </Box>
           <Box
@@ -140,7 +165,11 @@ export default function PolicyPage() {
                 {POLICY.dueAmount} payable by <strong style={{ color: '#670539' }}>{POLICY.dueDate}</strong> to keep your cover active.
               </Typography>
             </Box>
-            <PillPayButton onClick={goCheckout} />
+            {inReviewFlow ? (
+              <PillNextButton onClick={reviewNext} />
+            ) : (
+              <PillPayButton onClick={goCheckout} />
+            )}
           </Stack>
         )}
 
@@ -242,7 +271,11 @@ export default function PolicyPage() {
                 by {POLICY.dueDate}
               </Typography>
               {!paid ? (
-                <PillPayButton onClick={goCheckout} fullWidthLabel />
+                inReviewFlow ? (
+                  <PillNextButton onClick={reviewNext} fullWidthLabel />
+                ) : (
+                  <PillPayButton onClick={goCheckout} fullWidthLabel />
+                )
               ) : (
                 <Typography sx={{ color: '#82b450', fontSize: 14.5, fontWeight: 700 }}>Paid — thank you</Typography>
               )}
@@ -302,6 +335,35 @@ function PillPayButton({ onClick, fullWidthLabel = false }: { onClick: () => voi
       }}
     >
       Pay now
+    </Box>
+  )
+}
+
+function PillNextButton({ onClick, fullWidthLabel = false }: { onClick: () => void; fullWidthLabel?: boolean }) {
+  return (
+    <Box
+      component="button"
+      onClick={onClick}
+      sx={{
+        cursor: 'pointer',
+        ...(fullWidthLabel ? { width: '100%' } : { alignSelf: { xs: 'stretch', sm: 'auto' } }),
+        bgcolor: '#840544',
+        color: '#fff',
+        border: '1px solid #670539',
+        borderRadius: '150px',
+        padding: '13px 36px',
+        fontFamily: 'inherit',
+        fontSize: 13.5,
+        fontWeight: 700,
+        lineHeight: '16px',
+        textTransform: 'uppercase',
+        transition: 'all .15s ease',
+        whiteSpace: 'nowrap',
+        '&:hover': { bgcolor: '#670539' },
+        '&:focus-visible': { outline: '2px solid #670539', outlineOffset: 2 },
+      }}
+    >
+      Next
     </Box>
   )
 }

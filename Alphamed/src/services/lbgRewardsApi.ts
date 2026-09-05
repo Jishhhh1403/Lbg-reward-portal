@@ -114,7 +114,16 @@ export async function fetchLinkedCustomerSummaryByEmail(
     }
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 404) {
-      return { hasAccount: false, alphamedicolPoints: 0, totalLbgPoints: 0 }
+      /* Unknown email (e.g. the password-login demo customer is not seeded in
+         the middleware DB). Keep the demo journey working by showing the demo
+         linked account instead of zero points. */
+      await delay(400)
+      return {
+        hasAccount: true,
+        alphamedicolPoints: 138,
+        totalLbgPoints: 12480,
+        phone: storedPhone() ?? '07700900123',
+      }
     }
     // Demo fallback: simulated linked account so the rewards journey works.
     await delay(650)

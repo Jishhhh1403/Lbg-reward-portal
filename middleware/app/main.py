@@ -30,6 +30,7 @@ from services.db_client import (
     get_customer_transactions,
     list_brands,
     log_dlt_audit,
+    reseed_customer_demo_balance,
 )
 
 
@@ -347,6 +348,29 @@ async def lookup_customer_summary(email: str = Query(...)):
             "cavendishPoints": customer.get("cavendish_points", 0) or 0,
             "totalLbgPoints": customer["points"],
             "phone": "",
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/v1/customers/{customer_id}/reseed")
+async def reseed_customer_demo(customer_id: str):
+    """Restore a demo persona's balances to their seed baseline so a fresh
+    sign-in always starts the demo from a full balance. Called on login by the
+    LBG rewards workspace; no-op (404) for non-seeded customers."""
+    try:
+        customer = await reseed_customer_demo_balance(customer_id)
+        if not customer:
+            raise HTTPException(status_code=404, detail="Customer not found")
+        return {
+            "customerId": customer["customer_id"],
+            "userName": customer["name"],
+            "totalLbgCoins": customer["points"],
+            "alphamedicolPoints": customer["alphamed_points"],
+            "cavendishPoints": customer.get("cavendish_points", 0) or 0,
+            "status": "reseeded",
         }
     except HTTPException:
         raise

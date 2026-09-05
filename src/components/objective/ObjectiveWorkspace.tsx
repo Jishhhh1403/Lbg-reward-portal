@@ -11,17 +11,15 @@ import type {
   PlanType,
   WorkspaceResume,
 } from '../../types/objective'
+import type { ScreenBackgroundKey } from '../../assets/screen-backgrounds'
 import type {
   ObjectiveStage,
   ObjectiveWalletPayload,
 } from '../../types/objective-sdui'
 import { generateObjectiveStage } from '../../services/objectiveApi'
 import { shadows } from '../../theme'
-import screen1aBg from '../../assets/screen-1a.png'
-import toolsBg from '../../assets/toolsscreen.png'
-import WorkspaceSDUIRenderer, {
-  renderWorkspaceComponent,
-} from '../../workspace-components/WorkspaceSDUIRenderer'
+import WorkspaceSDUIRenderer from '../../workspace-components/WorkspaceSDUIRenderer'
+import WorkspaceBottomBackdrop from '../../workspace-components/WorkspaceBottomBackdrop'
 import { buildMergedSummaryStageComponents, buildStageComponents } from '../../workspace-components/buildStageComponents'
 import type { CoplanToolView } from '../../workspace-components/CoplanTools'
 import type {
@@ -104,10 +102,6 @@ class WorkspaceErrorBoundary extends Component<
 /** Capture screen (1a) — pure client composition, no AI call yet. */
 export function captureComponents(objectiveText: string): SDUIComponent[] {
   return [
-    makeComponent('capture-bg', 'WS_BACKGROUND', {
-      image: screen1aBg,
-      fill: true,
-    }),
     makeComponent('capture-anchor', 'WS_ANCHOR', {
   text: 'What is your objective today?',
 }),
@@ -230,6 +224,61 @@ function retainComponents(
 /* ------------------------------------------------------------------ */
 /* Plan A / Plan B execution flows                                     */
 /* ------------------------------------------------------------------ */
+
+/**
+ * Screen → screen-background folder mapping. Returns the folder whose art is
+ * pinned to the bottom of the workspace for the active screen, or null when
+ * the screen shows no bottom artwork (redirect/result confirmations).
+ *
+ * The shared execution screen (3a/4a) swaps artwork based on context:
+ *   - all steps done         → task-completion
+ *   - monitor plan           → moniter
+ *   - no-redeem plan         → retain
+ *   - a redirect step active → redirect
+ *   - otherwise              → execution-steps
+ */
+export function backgroundKeyForScreen(
+  screen: ObjectiveScreen,
+  plan: PlanType,
+  steps: ExecutionStep[],
+  redirectConfirm: ExecutionStep | null,
+  coplanToolsActive: boolean,
+): ScreenBackgroundKey | null {
+  switch (screen) {
+    case '1a':
+      return 'Objective-screen'
+    case '1b':
+    case '1c':
+      return 'objective-summery'
+    case '2a':
+      return 'reward-opportunites'
+    case '2b':
+      /* The Co-plan art belongs to the tools workspace, not the strategy cards. */
+      return coplanToolsActive ? 'Co-plan' : null
+    case '2c':
+      return 'Cognitive-evidence'
+    case '2d':
+      return 'moniter'
+    case '2e':
+      return 'retain'
+    case '3a':
+    case '4a':
+      if (steps.length > 0 && steps.every((s) => s.status === 'completed')) {
+        return 'Task-completion'
+      }
+      if (plan === 'monitor') return 'moniter'
+      if (plan === 'no-redeem') return 'retain'
+      if (redirectConfirm) return 'redirect'
+      return 'execution-steps'
+    case '3b':
+    case '4b':
+    case '3c':
+    case '4c':
+      return null
+    default:
+      return null
+  }
+}
 
 export const PORTAL_URLS = {
   alphaConvert: 'http://localhost:5174/lbg-rewards/convert',
@@ -355,6 +404,8 @@ export function buildExecutionSteps(plan: PlanType): ExecutionStep[] {
   ]
 }
 
+const COINS_PER_POUND = 100
+
 /** Execution screen (3a / 4a) — deterministic, driven by the chosen plan. */
 function executionComponents(plan: PlanType, lbgCoins = 0): SDUIComponent[] {
   const steps = buildExecutionSteps(plan)
@@ -380,9 +431,6 @@ function executionComponents(plan: PlanType, lbgCoins = 0): SDUIComponent[] {
         status: s.status,
       })),
     }, [{ type: 'WS_SELECT_STEP', payload: {} }]),
-    makeComponent('exec-nav', 'WS_NAV', { primary: 'Next' }, [
-      { type: 'WS_NEXT', payload: {} },
-    ]),
   ]
 }
 
@@ -424,9 +472,15 @@ export function applyResume(
   }))
   const steps = withInternalCompleted(marked)
   const next = getNextPending(steps)
-  const resultScreen: ObjectiveScreen = isValueTrack(resume.plan) ? '4c' : '3c'
+  /* When everything is complete, land back on the execution chart (3a/4a) so
+     the user sees the full flow with every step checked, not the dedicated
+     result screen. */
   if (!next) {
-    return { steps, screen: resultScreen, redirectConfirm: null }
+    return {
+      steps,
+      screen: isValueTrack(resume.plan) ? '4a' : '3a',
+      redirectConfirm: null,
+    }
   }
   const running: ExecutionStep = { ...next, status: 'running' }
   /* Redeem plans resume on the single execution screen (3a/4a); only the
@@ -642,6 +696,10 @@ export default function ObjectiveWorkspace({
   const [coplanView, setCoplanView] = useState<CoplanToolView>('idle')
   const [history, setHistory] = useState<ObjectiveScreen[]>([])
 
+  /* Every modal open bumps this so the bottom backdrop re-picks a random
+     screen-background image even when the landing screen is the same (1a). */
+  const [backdropNonce, setBackdropNonce] = useState(0)
+
   /* Cache of generated SDUI per screen so back navigation can restore the exact
      content of a previous AI-generated screen without re-calling the AI. */
   const stageCacheRef = useRef<Partial<Record<ObjectiveScreen, SDUIComponent[]>>>({})
@@ -843,6 +901,7 @@ export default function ObjectiveWorkspace({
     setCoplanView('idle')
     setConstraintTexts([])
     setConstraintItems([])
+    setBackdropNonce((n) => n + 1)
 
     if (resume) {
       const resumed = applyResume(resume)
@@ -1122,6 +1181,16 @@ export default function ObjectiveWorkspace({
 
   const totalSuccess = steps.length > 0 && steps.every((s) => s.status === 'completed')
 
+  /* Bottom-band artwork for the active screen (one random image from the
+     matching screen-background folder, re-picked on each screen/open). */
+  const backgroundFolderKey: ScreenBackgroundKey | null = backgroundKeyForScreen(
+    screen,
+    selectedPlan,
+    steps,
+    redirectConfirm,
+    coplanView !== 'idle',
+  )
+
   /* Resolve the AI-generated components for a screen: prefer the live generation
      when it matches the active screen, otherwise fall back to the cached copy so
      back navigation shows the correct (previous) content. */
@@ -1147,10 +1216,6 @@ export default function ObjectiveWorkspace({
           const coplan = resolveStage(screen).find((c) => c.type === 'WS_COPLAN')
           const nav = resolveStage(screen).find((c) => c.id === 'str-nav')
           return [
-            makeComponent('coplan-bg', 'WS_BACKGROUND', {
-              image: toolsBg,
-              fill: true,
-            }),
             makeComponent(
               'coplan-view',
               'WS_COPLAN',
@@ -1163,7 +1228,7 @@ export default function ObjectiveWorkspace({
         return resolveStage(screen)
       case '3a':
       case '4a':
-        return executionComponents(selectedPlan)
+        return executionComponents(selectedPlan, lbgCoins)
       case '3b':
       case '4b':
         return redirectComponents(
@@ -1212,13 +1277,8 @@ const sduiHandlers: WorkspaceHandlers = {
     onObjectiveOpenChange: setObjectiveOpen,
   }
 
-  /* Background components paint across the entire modal (behind header, content
-     and progress bar); everything else floats on top. */
-  const backgroundComponents = components.filter((c) => c.type === 'WS_BACKGROUND')
-  const contentComponents = components.filter((c) => c.type !== 'WS_BACKGROUND')
-
   const renderScreen = () => (
-    <WorkspaceSDUIRenderer components={contentComponents} context={sduiContext} handlers={sduiHandlers} />
+    <WorkspaceSDUIRenderer components={components} context={sduiContext} handlers={sduiHandlers} />
   )
 
   return (
@@ -1296,15 +1356,6 @@ const sduiHandlers: WorkspaceHandlers = {
               overflow: 'hidden',
             }}
           >
-            {/* Full-modal background layer (pointer-events disabled so controls pass through) */}
-            {backgroundComponents.length > 0 && (
-              <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-                {backgroundComponents.map((component) =>
-                  renderWorkspaceComponent(component, sduiContext, sduiHandlers),
-                )}
-              </div>
-            )}
-
             {/* Header — back button (left), centered title, and close button (right) */}
             <Box
               sx={{
@@ -1427,8 +1478,28 @@ const sduiHandlers: WorkspaceHandlers = {
               </MotionBox>
             </AnimatePresence>
 
-            {/* Progress bar — fixed at bottom */}
-            <ProgressBar segments={getProgress()} />
+            {/* Bottom artwork strip — confined to the progress-bar zone only (image backs
+                the progress bar, never the components above). */}
+            {backgroundFolderKey ? (
+              <Box
+                sx={{
+                  position: 'relative',
+                  flexShrink: 0,
+                  height: '92px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                }}
+              >
+                <WorkspaceBottomBackdrop
+                  folderKey={backgroundFolderKey}
+                  nonce={backdropNonce}
+                />
+                <ProgressBar segments={getProgress()} />
+              </Box>
+            ) : (
+              <ProgressBar segments={getProgress()} />
+            )}
           </MotionBox>
         </Box>
       )}

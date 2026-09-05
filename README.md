@@ -81,3 +81,6 @@ when the customer profile genuinely supports them.
 
 I want to pay my insurance using LBG coins , while ensuring 70 pounds cashback on the  payment ,no conversion fee,and minimum 10:1 conversion rate of coins to GBP.
 
+I do not want to use my LBG coins for my insurance payment right now but i would want you to monitor for better LBG coin redemption offers for next 2 weeks .
+
+I want to pay my insurance using LBG coins , while ensuring maximum value .

@@ -50,13 +50,36 @@ export default function LbgRewardsSuccessPage() {
   const completedAt = routeState.completedAt ?? ''
   const returnTo = routeState.returnTo ?? ''
 
-  /* Return the user to the parent app's workspace where they left off. */
+  /* Return the user to the parent app's workspace where they left off. The
+     converted LBG coins are carried back via `cross_app_events` so the LBG app
+     reflects the new balance immediately. */
+  const returnToWithEvent = (): string => {
+    if (!returnTo) return returnTo
+    try {
+      const url = new URL(returnTo, window.location.origin)
+      const crossAppEvents = JSON.stringify([{
+        id: `evt_${Date.now()}`,
+        type: 'CONVERT',
+        description: `Converted ${converted.toLocaleString()} AlphaMedicol points to LBG coins`,
+        amount: lbgCoins,
+        currency: 'LBG_COIN',
+        createdAt: completedAt || new Date().toISOString(),
+        source: 'AlphaMedicol',
+      }])
+      url.searchParams.set('cross_app_events', crossAppEvents)
+      return url.toString()
+    } catch {
+      return returnTo
+    }
+  }
+
   useEffect(() => {
     if (!returnTo) return
     const t = window.setTimeout(() => {
-      window.location.assign(returnTo)
+      window.location.assign(returnToWithEvent())
     }, 2500)
     return () => window.clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [returnTo])
 
   return (
@@ -171,7 +194,7 @@ export default function LbgRewardsSuccessPage() {
                 size="large"
                 variant="contained"
                 startIcon={<HomeIcon />}
-                onClick={() => window.location.assign(returnTo)}
+                onClick={() => window.location.assign(returnToWithEvent())}
               >
                 Return to workspace
               </Button>
@@ -213,24 +236,7 @@ export default function LbgRewardsSuccessPage() {
             fullWidth
             variant="outlined"
             startIcon={<OpenInNewIcon />}
-            onClick={() => {
-              try {
-                const url = new URL(returnTo || UNIFIED_REWARDS_URL)
-                const crossAppEvents = JSON.stringify([{
-                  id: `evt_${Date.now()}`,
-                  type: 'CONVERT',
-                  description: `Converted ${converted.toLocaleString()} AlphaMedicol points to LBG coins`,
-                  amount: lbgCoins,
-                  currency: 'LBG_COIN',
-                  createdAt: completedAt || new Date().toISOString(),
-                  source: 'AlphaMedicol',
-                }])
-                url.searchParams.set('cross_app_events', crossAppEvents)
-                window.location.assign(url.toString())
-              } catch {
-                window.location.assign(returnTo || UNIFIED_REWARDS_URL)
-              }
-            }}
+            onClick={() => window.location.assign(returnToWithEvent() || UNIFIED_REWARDS_URL)}
             sx={{ borderColor: '#dce8f6', color: 'primary.dark', fontWeight: 700 }}
           >
             View My LBG Coins

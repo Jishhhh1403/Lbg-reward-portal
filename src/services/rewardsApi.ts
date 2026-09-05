@@ -69,6 +69,16 @@ export function getCrossAppEvents(): CrossAppEvent[] {
   }
 }
 
+/** Wipe any balance adjustments carried over from a previous partner hand-off,
+    so a fresh login always starts from a freshly seeded demo balance. */
+export function clearCrossAppEvents(): void {
+  try {
+    localStorage.removeItem(CROSS_APP_KEY)
+  } catch {
+    /* ignore storage errors */
+  }
+}
+
 export function addCrossAppEvent(event: Omit<CrossAppEvent, 'id'>): void {
   const events = getCrossAppEvents()
   const newEvent: CrossAppEvent = {
@@ -235,6 +245,15 @@ export async function loginWithPassword(
   await delay(LATENCY_MS)
   const customer = DEMO_CUSTOMER
   return { customerId: customer.customerId, userName: customer.userName, phone }
+}
+
+/** Restore a demo persona's live balances in the middleware DB so every fresh
+    sign-in starts from the seeded AlphaMed/LBG/Cavendish balances. Called on
+    login; failures are ignored so the demo still works offline. */
+export async function reseedDemoBalance(customerId: string): Promise<void> {
+  await tryFetch(`/api/v1/customers/${encodeURIComponent(customerId)}/reseed`, {
+    method: 'POST',
+  })
 }
 
 export async function signupCustomer(payload: {

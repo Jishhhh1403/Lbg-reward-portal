@@ -30,11 +30,11 @@ interface CheckoutData {
 }
 
 const DEFAULT_DATA: CheckoutData = {
-  subtotal: 60,
+  subtotal: 100,
   coinsApplied: 0,
   coinDiscount: 0,
-  coinsEarned: 42,
-  finalPaid: 60,
+  coinsEarned: 70,
+  finalPaid: 100,
   transactionId: '',
   updatedLbgPoints: 0,
   paymentMethod: 'card',
@@ -230,6 +230,29 @@ export default function PaymentSuccessPage() {
       ? new URLSearchParams(window.location.search).get('returnTo')
       : null
 
+  /* When returning to the parent rewards app, carry the redeemed coins back via
+     `cross_app_events` (negative REDEEM amount) so the workspace LBG balance is
+     debited immediately. */
+  const returnToWithRedeemEvent = (): string | null => {
+    if (!returnUrl) return returnUrl
+    try {
+      const url = new URL(returnUrl, window.location.origin)
+      const crossAppEvents = JSON.stringify([{
+        id: `evt_${Date.now()}`,
+        type: 'REDEEM',
+        description: `Redeemed ${COINS_APPLIED} LBG coins at Cavendish Online`,
+        amount: -COINS_APPLIED,
+        currency: 'LBG_COIN',
+        createdAt: new Date().toISOString(),
+        source: 'Cavendish Online',
+      }])
+      url.searchParams.set('cross_app_events', crossAppEvents)
+      return url.toString()
+    } catch {
+      return returnUrl
+    }
+  }
+
   useEffect(() => {
     const raw = sessionStorage.getItem('cavendish_checkout')
     if (raw) {
@@ -243,13 +266,15 @@ export default function PaymentSuccessPage() {
     }
   }, [])
 
-  /* Automatically hand the user back to their workspace after payment. */
+  /* Automatically hand the user back to their workspace after payment. Waits at
+     least 10 seconds so the user can review their confirmation before returning. */
   useEffect(() => {
     if (!returnUrl) return
     const t = window.setTimeout(() => {
-      window.location.assign(returnUrl)
-    }, 2500)
+      window.location.assign(returnToWithRedeemEvent() ?? returnUrl)
+    }, 10000)
     return () => window.clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [returnUrl])
 
   const SUBTOTAL = checkoutData.subtotal
@@ -278,7 +303,13 @@ export default function PaymentSuccessPage() {
             <Stack direction="row" spacing="12px" sx={{ alignItems: 'center' }}>
               <Box
                 component="a"
-                href={returnUrl ?? REWARDS_APP_URL}
+                href={returnToWithRedeemEvent() ?? REWARDS_APP_URL}
+                onClick={(e: React.MouseEvent) => {
+                  if (returnUrl) {
+                    e.preventDefault()
+                    window.location.assign(returnToWithRedeemEvent() ?? returnUrl)
+                  }
+                }}
                 aria-label="Back to LBG Rewards Portal"
                 sx={{
                   width: 36,
@@ -483,7 +514,7 @@ export default function PaymentSuccessPage() {
             component="button"
             onClick={() => {
               if (returnUrl) {
-                window.location.assign(returnUrl)
+                window.location.assign(returnToWithRedeemEvent() ?? returnUrl)
                 return
               }
               try {
@@ -528,7 +559,7 @@ export default function PaymentSuccessPage() {
           </Box>
           {returnUrl ? (
             <Typography sx={{ fontFamily: FONT, fontSize: 12.5, color: C.textSecondary, textAlign: 'center' }}>
-              Returning to your workspace automatically…
+              Returning to your workspace automatically in a few seconds…
             </Typography>
           ) : null}
         </Stack>

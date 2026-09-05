@@ -33,7 +33,7 @@ import type {
   PointsProvider,
   WalletTransactionItem,
 } from '../types/rewards'
-import { fetchWalletTransactions } from '../services/rewardsApi'
+import { fetchWalletTransactions, getCrossAppEvents } from '../services/rewardsApi'
 import LocatePointsModal from '../components/dashboard/LocatePointsModal'
 import RedeemPointsModal from '../components/dashboard/RedeemPointsModal'
 import ObjectiveWorkspace from '../components/objective/ObjectiveWorkspace'
@@ -215,7 +215,7 @@ export default function RewardsDashboardPage({
     baseUrl.searchParams.set('customerPhone', customerPhoneVal)
 
     /* Pre-populate how many LBG coins Cavendish should auto-apply at checkout
-       (Cavendish caps it at 80% of the premium; the user never picks the count).
+       (Cavendish uses up to 100% of the premium; the user never picks the count).
        The balance is already increased by any prior AlphaMed -> LBG conversion. */
     if (partner === 'Cavendish Online') {
       const coinCount = Math.round(Number(customer.totalLbgCoins ?? 0))
@@ -226,7 +226,13 @@ export default function RewardsDashboardPage({
     returnUrl.searchParams.set('ws_resume', JSON.stringify(resume))
     baseUrl.searchParams.set('returnTo', returnUrl.toString())
 
-    /* Keep the dashboard data needed to re-open the workspace on the way back. */
+    /* Keep the dashboard data needed to re-open the workspace on the way back.
+       Store the un-adjusted LBG coin base so that, on return, any converted
+       coins carried via cross_app_events are applied on top of it. */
+    const lbgDelta = getCrossAppEvents()
+      .filter((e) => e.currency === 'LBG_COIN')
+      .reduce((s, e) => s + e.amount, 0)
+    const baseLbgCoins = Math.round((customer.totalLbgCoins ?? 0) - lbgDelta)
     try {
       localStorage.setItem(
         'rewards_session_snapshot',
@@ -234,6 +240,7 @@ export default function RewardsDashboardPage({
           customerId: customer.customerId,
           customer,
           pointsByBrand,
+          baseLbgCoins,
           customerEmail: customer.email ?? customerEmailVal,
           customerPhone: customer.phone ?? customerPhoneVal,
         }),

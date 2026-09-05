@@ -6,7 +6,7 @@ import os
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from sqlalchemy import text
+from sqlalchemy import delete, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import Base, engine, async_session
@@ -37,6 +37,34 @@ def _hash_password(password: str) -> str:
 def _days_ago(days: int, hour: int = 12) -> datetime:
     d = datetime.now(timezone.utc) - timedelta(days=days)
     return d.replace(hour=hour, minute=0, second=0, microsecond=0)
+
+
+def _stable_seed(value: str) -> int:
+    """Deterministic, process-independent seed derived from a string.
+
+    Python's built-in `hash()` is salted per process, so it cannot be used to
+    derive a stable brand distribution across restarts.
+    """
+    return int.from_bytes(hashlib.sha256(value.encode("utf-8")).digest()[:8], "big")
+
+
+def deterministic_brand_points(email: str, points: float) -> list[tuple[str, float]]:
+    """Re-compute the seed store's per-brand point distribution for a persona.
+
+    Mirrors the distribution used in `seed_database` so reseeding a logged-in
+    persona reproduces exactly the same brands and points on every login.
+    """
+    import random
+
+    random.seed(_stable_seed(email))
+    brand_ids = [b["id"] for b in SEED_BRANDS]
+    connected = random.sample(brand_ids, min(6, len(brand_ids)))
+    points_per_brand = int(points) // max(len(connected), 1)
+    remainder = points - points_per_brand * len(connected)
+    return [
+        (bid, float(points_per_brand + (remainder if i == 0 else 0)))
+        for i, bid in enumerate(connected)
+    ]
 
 
 SEED_BRANDS = [
@@ -787,7 +815,7 @@ async def seed_database() -> None:
 
             brand_ids = [b["id"] for b in SEED_BRANDS]
             import random
-            random.seed(hash(p["email"]))
+            random.seed(_stable_seed(p["email"]))
             connected_brands = random.sample(brand_ids, min(6, len(brand_ids)))
             points_per_brand = p["points"] // max(len(connected_brands), 1)
             remainder = p["points"] - points_per_brand * len(connected_brands)
@@ -804,3 +832,76 @@ async def seed_database() -> None:
                 ))
 
         await session.commit()
+
+
+DEMO_CUSTOMER_EMAIL = "alex.morgan@demo.com"
+DEMO_WALLET_BALANCE = 12480.0
+DEMO_CUSTOMER_ID = uuid.UUID("00000000-0000-0000-0000-000000000001")
+
+
+async def reseed_customer_demo_balance(session: AsyncSession, customer: Customer) -> None:
+    """Restore a seeded (demo/persona) customer's balances to the seed state.
+
+    Called on every login so a demo can be re-shown repeatedly even after prior
+    sessions converted brand points or redeemed LBG coins.  Resets the LBG coin
+    wallet, the per-brand points ledgers, the EARNED rewards and the wallet
+    transaction history (for the main demo customer).  Customers that are not
+    part of the seed dataset are left untouched.
+    """
+    if customer.email == DEMO_CUSTOMER_EMAIL or str(customer.id) == str(DEMO_CUSTOMER_ID):
+        target_wallet_balance = DEMO_WALLET_BALANCE
+        target_brands = [
+            (brand_id, brand_name, points)
+            for brand_id, brand_name, _category, points, _color, _logo in DEMO_CONNECTED_BRANDS
+        ]
+        target_transactions = DEMO_TRANSACTIONS
+    else:
+        persona = next(
+            (
+                p
+                for p in PERSONA_CUSTOMERS
+                if p["email"].lower() == customer.email.lower()
+                or str(p["id"]) == str(customer.id)
+            ),
+            None,
+        )
+        if persona is None:
+            return
+        target_wallet_balance = float(persona.get("wallet_balance", persona["points"]))
+        target_brands = [
+            (brand_id, brand_id, points)
+            for brand_id, points in deterministic_brand_points(persona["email"], float(persona["points"]))
+        ]
+        target_transactions = []
+
+    # Wallet balance + transaction history.
+    result = await session.execute(select(Wallet).where(Wallet.customer_id == customer.id))
+    wallet = result.scalar_one_or_none()
+    if wallet:
+        wallet.lbg_coin_balance = target_wallet_balance
+        session.add(wallet)
+        await session.execute(delete(WalletTransaction).where(WalletTransaction.wallet_id == wallet.id))
+        for tx_type, desc, amount, currency, created_at in target_transactions:
+            session.add(WalletTransaction(
+                wallet_id=wallet.id,
+                type=TransactionType(tx_type),
+                description=desc,
+                amount=amount,
+                currency=TransactionCurrency(currency),
+                created_at=created_at,
+            ))
+
+    # Brand points + rewards: wipe and rebuild from the seed values.
+    await session.execute(delete(BrandPointsLedger).where(BrandPointsLedger.customer_id == customer.id))
+    await session.execute(delete(Reward).where(Reward.customer_id == customer.id))
+    for brand_id, brand_name, points in target_brands:
+        session.add(BrandPointsLedger(customer_id=customer.id, brand_id=brand_id, available_points=points))
+        session.add(Reward(
+            customer_id=customer.id,
+            brand_id=brand_id,
+            status=RewardStatus.EARNED,
+            points=points,
+            description=f"Earned at {brand_name}",
+        ))
+
+    await session.commit()

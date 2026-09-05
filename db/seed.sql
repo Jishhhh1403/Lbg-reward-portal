@@ -156,7 +156,7 @@ INSERT INTO customers (customer_id, name, email, points, tier, engagement_score,
  '[{"name": "First Home Savings Knowledge", "target_value": 2000, "current_value": 1250, "progress": 63}]'::jsonb,
  6, 9, 8, NULL,
  '{"value_explainer_view_count": 9, "cash_equivalent_uses": 1, "partner_comparisons": 1, "probabilities": {"instant_rewards": 0.08, "goal_linked_reward": 0.60, "tangible_value_explainer": 0.75, "partner_conversion": 0.12, "value_explainer": 0.80}, "motive_scores": {"value_explainer": 0.78, "autonomy_preference": 0.50, "progress_orientation": 0.82, "payment_utility": 0.12, "portability_preference": 0.15, "curiosity_response": 0.94}, "predicted_responses": {"tangible_value_explainer": 0.74, "customer_choice_panel": 0.50, "partner_value_comparison": 0.18, "gamification_choice": 0.55}}'::jsonb,
-  '{"competenceMotivation": 0.93, "probPreferEducationReward": 0.86}'::jsonb, 195)
+     '{"competenceMotivation": 0.93, "probPreferEducationReward": 0.86}'::jsonb, 200)
 ON CONFLICT (customer_id) DO NOTHING;
 
 -- customer_012: Leo Morgan (Platinum, portability/interoperability seeker)

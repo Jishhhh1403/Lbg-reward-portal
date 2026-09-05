@@ -2,7 +2,7 @@ import ButtonBase from '@mui/material/ButtonBase'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
-import { ArrowDownToLine, Check, Loader2 } from 'lucide-react'
+import { ArrowDownToLine, Check, CheckCircle2, Loader2 } from 'lucide-react'
 import { palette } from './types'
 
 const MotionButton = motion.create(ButtonBase)
@@ -197,6 +197,28 @@ export default function ExecutionStepsCard({
           />
         ))}
       </Box>
+      {items.length > 0 && items.every((s) => s.status === 'completed') && (
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            bgcolor: palette.brandSoft,
+            borderTop: `1px solid ${palette.border}`,
+            padding: '12px 14px',
+          }}
+        >
+          <CheckCircle2 size={20} color={palette.brand} />
+          <Box>
+            <Typography sx={{ fontSize: 13, fontWeight: 800, color: palette.textStrong }}>
+              Payment completed successfully
+            </Typography>
+            <Typography sx={{ fontSize: 11.5, color: palette.textMuted, lineHeight: 1.4 }}>
+              All execution steps are complete. Your reward payment has been processed.
+            </Typography>
+          </Box>
+        </Box>
+      )}
     </Box>
   )
 }

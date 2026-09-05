@@ -11,6 +11,7 @@ class CustomerSummaryResponse(BaseModel):
     customerId: str
     userName: str
     phone: str
+    email: str | None = None
     totalLbgCoins: float
     totalBrandPoints: float
     brandsConnected: int

@@ -68,6 +68,64 @@ async def get_customer_by_email(email: str) -> dict | None:
     }
 
 
+# Fresh-sign-in baseline balances per demo persona (mirrors db/seed.sql).
+# Restored on every login so repeated demos start from a full balance instead
+# of whatever remains after previous converts/redeems drained the ledger.
+DEMO_SEED_BALANCES: dict[str, dict[str, int]] = {
+    "customer_001": {"points": 4250, "alphamed_points": 138, "cavendish_points": 0},
+    "customer_002": {"points": 6820, "alphamed_points": 450, "cavendish_points": 0},
+    "customer_003": {"points": 28400, "alphamed_points": 720, "cavendish_points": 0},
+    "customer_004": {"points": 1850, "alphamed_points": 95, "cavendish_points": 0},
+    "customer_005": {"points": 8750, "alphamed_points": 320, "cavendish_points": 0},
+    "customer_006": {"points": 15400, "alphamed_points": 580, "cavendish_points": 0},
+    "customer_007": {"points": 24500, "alphamed_points": 890, "cavendish_points": 0},
+    "customer_008": {"points": 3600, "alphamed_points": 210, "cavendish_points": 0},
+    "customer_009": {"points": 5600, "alphamed_points": 275, "cavendish_points": 0},
+    "customer_010": {"points": 7300, "alphamed_points": 410, "cavendish_points": 0},
+    "customer_011": {"points": 3900, "alphamed_points": 200, "cavendish_points": 0},
+    "customer_012": {"points": 11200, "alphamed_points": 630, "cavendish_points": 0},
+    "customer_013": {"points": 6450, "alphamed_points": 340, "cavendish_points": 0},
+}
+
+
+async def reseed_customer_demo_balance(customer_id: str) -> dict | None:
+    """Restore a demo persona's LBG/AlphaMed/Cavendish balances to their seed
+    values. Safe to call on every fresh sign-in; returns None for customers
+    that are not seeded demo personas (e.g. real/signup accounts)."""
+    baseline = DEMO_SEED_BALANCES.get(customer_id)
+    if not baseline:
+        return None
+    pool = await get_pool()
+    row = await pool.fetchrow(
+        """
+        UPDATE customers
+           SET points = $2,
+               alphamed_points = $3,
+               cavendish_points = $4
+         WHERE customer_id = $1
+        RETURNING customer_id, name, email, points, tier, alphamed_points,
+                  cavendish_points, wallet_address
+        """,
+        customer_id,
+        baseline["points"],
+        baseline["alphamed_points"],
+        baseline["cavendish_points"],
+    )
+    if not row:
+        return None
+    d = dict(row)
+    return {
+        "customer_id": d["customer_id"],
+        "name": d["name"],
+        "email": d["email"],
+        "points": d["points"],
+        "tier": d["tier"],
+        "alphamed_points": d["alphamed_points"],
+        "cavendish_points": d.get("cavendish_points", 0) or 0,
+        "wallet_address": d["wallet_address"],
+    }
+
+
 async def get_customer_by_id(customer_id: str) -> dict | None:
     pool = await get_pool()
     row = await pool.fetchrow(
